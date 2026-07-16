@@ -1,0 +1,33 @@
+{
+  "name": "Alvin M. Silva, MDM — Development Management & Resilience Consultant",
+  "short_name": "A. Silva",
+  "description": "18+ years turning risk into resilience: climate adaptation, DRR, and systems innovation for governments, NGOs, and investors.",
+  "id": "/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0e27",
+  "theme_color": "#0a0e27",
+  "lang": "en",
+  "categories": ["business", "professional", "consulting"],
+  "icons": [
+    { "src": "assets/logo-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/logo-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/logo-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact Alvin",
+      "short_name": "Contact",
+      "url": "./index.html#contact",
+      "icons": [{ "src": "assets/logo-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Impact Timeline",
+      "short_name": "Impact",
+      "url": "./index.html#impact",
+      "icons": [{ "src": "assets/logo-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

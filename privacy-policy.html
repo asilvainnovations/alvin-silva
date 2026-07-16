@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Privacy Policy — A. Silva Innovations</title>
+<meta name="description" content="How A. Silva Innovations collects, uses, and protects your personal information — compliant with GDPR, RA 10173, and ISO 27001 standards.">
+<meta name="author" content="Alvin M. Silva, MDM — A. Silva Innovations">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://asilvainnovations.github.io/website/policies/privacy-policy.html">
+<meta name="theme-color" content="#0a0e27">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
+<link rel="apple-touch-icon" href="assets/logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SHARED DESIGN TOKENS — A. Silva Innovations
+   ============================================================ */
+:root {
+  --navy:#0a0e27; --card:#1a1f3a;
+  --blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+  --text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+  --glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  --glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+  --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28);
+  --font-display:'Montserrat',system-ui,sans-serif; --font-body:'Poppins',system-ui,sans-serif;
+  --font-cond:'Roboto Condensed',system-ui,sans-serif;
+  --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+  --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+  --ease:cubic-bezier(.22,.8,.28,1);
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:92px; }
+body {
+  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:1rem; color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%),
+    linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
+  background-attachment:fixed; min-height:100vh; overflow-x:hidden;
+}
+body::before { content:''; position:fixed; inset:0; z-index:0; pointer-events:none; background:url('assets/logo-512.png') center/ min(78vw,560px) no-repeat; opacity:.045; }
+main, header, footer { position:relative; z-index:1; }
+img { max-width:100%; }
+h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.15; letter-spacing:-.01em; }
+a { color:var(--sky); }
+::selection { background:rgba(255,215,0,.35); color:#fff; }
+::-webkit-scrollbar { width:9px; height:9px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(100,140,200,.35); border-radius:6px; }
+:focus-visible { outline:3px solid var(--gold); outline-offset:2px; border-radius:4px; }
+.skip-link { position:absolute; top:-48px; left:8px; z-index:12000; background:var(--gold); color:#0a0e27; font-family:var(--font-display); font-weight:700; padding:.6rem 1.1rem; border-radius:0 0 10px 10px; text-decoration:none; transition:top .25s; }
+.skip-link:focus { top:0; }
+.wrap { width:100%; max-width:1080px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
+.glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); }
+.glass-strong { background:var(--glass-strong); border:1px solid var(--line); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:var(--shadow-1); }
+.glass-gold { background:linear-gradient(135deg, rgba(255,215,0,.14), rgba(255,215,0,.04)); border:1px solid var(--line-gold); backdrop-filter:blur(14px); }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-family:var(--font-display); font-weight:700; font-size:.92rem; letter-spacing:.03em; padding:.85rem 1.7rem; border-radius:999px; border:2px solid transparent; cursor:pointer; text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s; min-height:48px; }
+.btn svg { width:17px; height:17px; flex:none; }
+.btn-primary { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff !important; box-shadow:0 8px 24px rgba(0,102,255,.35); }
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
+.btn-gold { background:transparent; color:var(--gold); border-color:var(--gold); }
+.btn-gold:hover { background:var(--gold); color:#0a0e27; transform:translateY(-3px); }
+.btn-ghost { background:rgba(255,255,255,.06); color:var(--text); border-color:var(--line); }
+.btn-ghost:hover { background:rgba(255,255,255,.12); }
+.btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
+
+/* ============ HEADER / NAV (shared) ============ */
+.site-header { position:sticky; top:0; z-index:1000; background:rgba(10,14,39,.86); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(0,102,255,.45); box-shadow:0 8px 30px rgba(0,0,0,.35); }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem clamp(1rem,4vw,2.5rem); max-width:1400px; margin:0 auto; }
+.brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; min-width:0; }
+.brand img { width:46px; height:46px; border-radius:50%; border:2px solid var(--gold); background:#fff; padding:2px; flex:none; }
+.brand-name { font-family:var(--font-display); font-weight:800; font-size:1.02rem; letter-spacing:.03em; background:linear-gradient(45deg,var(--sky),var(--blue),var(--gold)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; white-space:nowrap; }
+.brand-sub { font-family:var(--font-cond); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); white-space:nowrap; }
+.nav-links { display:none; list-style:none; align-items:center; gap:.35rem; }
+.nav-links > li > a, .drop-btn { font-family:var(--font-cond); font-size:.92rem; font-weight:600; letter-spacing:.06em; color:var(--text); text-decoration:none; padding:.55rem .85rem; border-radius:8px; display:inline-flex; align-items:center; gap:.4rem; background:none; border:1px solid transparent; cursor:pointer; transition:.25s; }
+.nav-links a:hover, .drop-btn:hover, .drop.open .drop-btn { color:var(--gold); background:rgba(255,215,0,.08); }
+.nav-links a[aria-current="page"] { color:var(--gold); background:rgba(255,215,0,.10); }
+.drop { position:relative; }
+.drop-btn .chev { width:10px; height:10px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform .3s; }
+.drop.open .drop-btn .chev { transform:rotate(225deg) translateY(-1px); }
+.drop-menu { position:absolute; top:calc(100% + .6rem); left:50%; transform:translate(-50%, -8px); min-width:250px; padding:.6rem; border-radius:14px; opacity:0; visibility:hidden; transition:.28s var(--ease); background:linear-gradient(150deg, rgba(13,18,40,.98), rgba(8,11,28,.98)); border:1px solid var(--line-gold); box-shadow:0 20px 50px rgba(0,0,0,.6); z-index:1001; }
+.drop.open .drop-menu { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+.drop-head { font-family:var(--font-cond); font-size:.66rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); padding:.45rem .8rem .55rem; border-bottom:1px solid var(--line); margin-bottom:.4rem; }
+.drop-item { display:flex; align-items:center; gap:.7rem; padding:.6rem .8rem; border-radius:9px; color:var(--text); text-decoration:none; font-size:.9rem; transition:.2s; }
+.drop-item svg { width:16px; height:16px; color:var(--sky); flex:none; }
+.drop-item:hover { background:rgba(255,215,0,.12); color:var(--gold); }
+.nav-cta { display:none; align-items:center; gap:.6rem; }
+.menu-btn { display:inline-flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:.55rem; z-index:1102; }
+.menu-btn span { width:24px; height:2.5px; background:#fff; border-radius:2px; transition:.3s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform:rotate(-45deg) translate(6px,-6px); }
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:1098; opacity:0; visibility:hidden; transition:.3s; }
+.overlay.show { opacity:1; visibility:visible; }
+.mobile-menu { position:fixed; top:0; right:-105%; width:min(84vw,340px); height:100dvh; z-index:1099; background:linear-gradient(160deg,#0d1430,#070b1d); border-left:1px solid var(--line); padding:1.4rem; transition:right .35s var(--ease); overflow-y:auto; }
+.mobile-menu.open { right:0; }
+.mobile-menu .mm-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4rem; }
+.mobile-menu .mm-head img { width:52px; height:52px; border-radius:50%; border:2px solid var(--gold); }
+.mm-close { background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer; padding:.4rem; line-height:1; }
+.mm-group { margin-bottom:1.1rem; }
+.mm-group-title { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-bottom:.5rem; padding-left:.2rem; }
+.mm-link { display:flex; align-items:center; gap:.7rem; padding:.68rem .6rem; color:#fff; text-decoration:none; font-size:1rem; border-radius:9px; }
+.mm-link svg { width:16px; height:16px; color:var(--sky); }
+.mm-link:active, .mm-link:hover, .mm-link[aria-current="page"] { background:rgba(255,255,255,.07); color:var(--gold); }
+
+/* ============ POLICY HERO ============ */
+.hero { text-align:center; padding:clamp(2.6rem,6vw,4rem) 0 clamp(1.6rem,3vw,2.4rem); }
+.back-home { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-cond); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); text-decoration:none; margin-bottom:1.1rem; }
+.back-home:hover { color:var(--gold); }
+.back-home svg { width:14px; height:14px; }
+.hero h1 { font-size:clamp(2rem,6vw,3rem); font-weight:900; background:linear-gradient(92deg, var(--sky), var(--blue) 45%, var(--gold)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:.5rem; }
+.last-updated, .effective-date { font-family:var(--font-cond); font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); }
+.compliance-badges { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-top:1.1rem; }
+.compliance-badges .badge { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.06em; padding:.42rem 1rem; border-radius:999px; border:1px solid var(--line-gold); background:rgba(255,215,0,.08); color:var(--text-2); }
+
+/* ============ POLICY CONTENT ============ */
+main { padding-bottom:3rem; }
+.container { width:100%; max-width:1080px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
+.content-card { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); border-radius:20px; padding:clamp(1.4rem,4vw,2.8rem); }
+.toc { background:rgba(0,102,255,.07); border:1px solid rgba(0,191,255,.25); border-radius:14px; padding:1.2rem 1.4rem; margin-bottom:2rem; }
+.toc ol { margin-left:1.2rem; columns:1; }
+.toc li { margin-bottom:.4rem; color:var(--text-2); }
+.toc a { color:var(--sky); text-decoration:none; font-size:.92rem; }
+.toc a:hover { color:var(--gold); text-decoration:underline; }
+.section { margin-bottom:2.2rem; scroll-margin-top:100px; }
+.section h2 { font-size:clamp(1.25rem,3vw,1.6rem); font-weight:800; color:#fff; margin-bottom:.9rem; padding-bottom:.55rem; border-bottom:2px solid transparent; border-image:linear-gradient(90deg, var(--blue), var(--sky), transparent) 1; }
+.section h3 { font-size:1.05rem; font-weight:700; color:var(--gold); margin:1.3rem 0 .5rem; }
+.section h4 { font-size:.98rem; font-weight:700; color:var(--sky); margin:1.1rem 0 .4rem; }
+.section p { font-size:.93rem; font-weight:300; color:var(--text-2); line-height:1.8; margin-bottom:.85rem; }
+.section ul, .section ol { margin:0 0 1rem 1.3rem; }
+.section li { font-size:.9rem; font-weight:300; color:var(--text-2); line-height:1.75; margin-bottom:.4rem; }
+.section li::marker { color:var(--gold); }
+.section a { color:var(--sky); }
+.section a:hover { color:var(--gold); }
+.section strong { color:#fff; font-weight:600; }
+.section table { width:100%; border-collapse:collapse; margin:1rem 0 1.4rem; font-size:.86rem; display:block; overflow-x:auto; }
+.section thead th { font-family:var(--font-cond); font-size:.74rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); text-align:left; padding:.7rem .9rem; background:rgba(255,215,0,.07); border:1px solid var(--line-gold); white-space:nowrap; }
+.section tbody td { padding:.7rem .9rem; border:1px solid var(--line); color:var(--text-2); font-weight:300; vertical-align:top; }
+.section tbody tr:nth-child(even) td { background:rgba(255,255,255,.03); }
+.cookie-type { display:inline-block; font-family:var(--font-cond); font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.2rem .6rem; border-radius:999px; white-space:nowrap; }
+.type-necessary { background:rgba(52,211,153,.14); border:1px solid var(--green); color:var(--green); }
+.type-functional { background:rgba(0,191,255,.12); border:1px solid var(--sky); color:var(--sky); }
+.type-analytics { background:rgba(167,139,250,.13); border:1px solid var(--violet); color:var(--violet); }
+.type-marketing { background:rgba(248,113,113,.12); border:1px solid var(--red); color:var(--red); }
+.label { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+.contact-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin-top:1rem; }
+.contact-box { background:rgba(0,102,255,.07); border:1px solid rgba(0,191,255,.25); border-radius:14px; padding:1.2rem 1.3rem; }
+.contact-box h3, .contact-box h4 { margin-top:0; }
+.contact-item { display:flex; align-items:center; gap:.8rem; padding:.55rem 0; }
+.contact-item .label { min-width:86px; }
+.contact-link { color:var(--sky); text-decoration:none; font-weight:500; }
+.contact-link:hover { color:var(--gold); text-decoration:underline; }
+.highlight-box { background:linear-gradient(135deg, rgba(255,215,0,.10), rgba(255,215,0,.03)); border:1px solid var(--line-gold); border-left:4px solid var(--gold); border-radius:12px; padding:1.1rem 1.3rem; margin:1.2rem 0; }
+.mission-section { background:rgba(0,191,255,.06); border:1px solid rgba(0,191,255,.25); border-radius:14px; padding:1.2rem 1.4rem; margin:1.2rem 0; }
+.grid-container { display:grid; gap:1rem; grid-template-columns:1fr; margin:1rem 0; }
+.features-with-icons { display:grid; gap:1rem; grid-template-columns:1fr; margin:1rem 0; }
+.feature-card, .icon-card { background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.2rem; transition:transform .3s var(--ease), border-color .3s; }
+.feature-card:hover, .icon-card:hover { transform:translateY(-4px); border-color:rgba(0,191,255,.4); }
+.icon-circle { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3rem; background:linear-gradient(135deg, var(--blue), var(--sky)); margin-bottom:.7rem; }
+.compliance-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin:.8rem 0; }
+.compliance-tag { font-family:var(--font-cond); font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.3rem .75rem; border-radius:999px; }
+.compliance-tag.success { background:rgba(52,211,153,.14); border:1px solid var(--green); color:var(--green); }
+.compliance-tag.primary { background:rgba(0,191,255,.12); border:1px solid var(--sky); color:var(--sky); }
+.quick-access { background:var(--glass); border:1px solid var(--line-gold); border-radius:16px; padding:1.3rem 1.4rem; margin:1.4rem 0; }
+.quick-access h4 { color:var(--gold); margin-bottom:.9rem; }
+.quick-access-links { display:flex; flex-wrap:wrap; gap:.6rem; }
+.quick-access-link { font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.05em; color:var(--text); text-decoration:none; padding:.5rem 1rem; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.05); transition:.25s; }
+.quick-access-link:hover { color:var(--gold); border-color:var(--line-gold); transform:translateY(-2px); }
+
+/* ============ FOOTER (shared) ============ */
+.site-footer { background:rgba(6,9,24,.96); border-top:1px solid rgba(0,102,255,.4); padding:3.2rem 0 1.6rem; margin-top:2rem; }
+.footer-grid { display:grid; gap:2rem; margin-bottom:2.2rem; }
+.footer-brand p { font-size:.86rem; font-weight:300; color:var(--text-3); line-height:1.7; margin-top:.8rem; max-width:340px; }
+.footer-col h4 { font-family:var(--font-cond); font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.9rem; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:.45rem; }
+.footer-col a { color:var(--text-3); text-decoration:none; font-size:.88rem; transition:.2s; }
+.footer-col a:hover { color:var(--sky); padding-left:4px; }
+.socials { display:flex; gap:.7rem; margin-top:1.1rem; }
+.socials a { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--blue), var(--sky)); transition:transform .3s var(--ease), box-shadow .3s; }
+.socials a svg { width:18px; height:18px; fill:#fff; }
+.socials a:hover { transform:translateY(-4px) rotate(8deg); box-shadow:0 10px 24px rgba(0,191,255,.45); }
+.footer-base { border-top:1px solid rgba(255,255,255,.08); padding-top:1.4rem; display:flex; flex-direction:column; gap:.8rem; align-items:center; text-align:center; }
+.footer-base p { font-size:.8rem; color:var(--text-3); font-weight:300; }
+.footer-legal a, .linklike { color:var(--text-3); font-size:.8rem; text-decoration:none; background:none; border:none; cursor:pointer; font-family:inherit; padding:0; }
+.footer-legal a:hover, .linklike:hover { color:var(--gold); text-decoration:underline; }
+
+/* ============ COOKIE CONSENT (shared) ============ */
+.consent-banner { position:fixed; bottom:1rem; left:50%; transform:translate(-50%, 140%); z-index:1150; width:min(680px, calc(100% - 2rem)); border-radius:18px; padding:1.3rem 1.4rem; transition:transform .5s var(--ease); }
+.consent-banner.show { transform:translate(-50%, 0); }
+.consent-banner h3 { font-size:1rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem; color:#fff; }
+.consent-banner h3 svg { width:18px; height:18px; color:var(--gold); }
+.consent-banner p { font-size:.82rem; font-weight:300; color:var(--text-2); line-height:1.6; margin-bottom:.9rem; }
+.consent-banner p a { color:var(--sky); }
+.consent-actions { display:flex; flex-wrap:wrap; gap:.6rem; }
+.consent-actions .btn { min-height:42px; padding:.55rem 1.2rem; font-size:.8rem; flex:1 1 140px; }
+.consent-prefs { display:none; margin:.9rem 0; padding:.9rem 1rem; border:1px dashed var(--line); border-radius:12px; }
+.consent-prefs.open { display:block; }
+.pref-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.45rem 0; }
+.pref-row + .pref-row { border-top:1px solid rgba(255,255,255,.06); }
+.pref-row .pr-name { font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em; color:#fff; }
+.pref-row .pr-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.switch { position:relative; width:46px; height:26px; flex:none; }
+.switch input { opacity:0; width:100%; height:100%; position:absolute; margin:0; cursor:pointer; z-index:2; }
+.switch .track { position:absolute; inset:0; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid var(--line); transition:.25s; }
+.switch .track::after { content:''; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:#fff; transition:.25s var(--ease); }
+.switch input:checked + .track { background:linear-gradient(135deg, var(--blue), var(--sky)); border-color:transparent; }
+.switch input:checked + .track::after { transform:translateX(20px); }
+.switch input:disabled { cursor:not-allowed; }
+.switch input:disabled + .track { background:rgba(255,215,0,.25); border-color:var(--line-gold); }
+.toast { position:fixed; top:88px; left:50%; transform:translate(-50%, -16px); z-index:1300; padding:.75rem 1.3rem; border-radius:999px; font-family:var(--font-cond); font-size:.85rem; letter-spacing:.05em; opacity:0; visibility:hidden; transition:.35s var(--ease); white-space:nowrap; color:var(--text); }
+.toast.show { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+.back-to-top { position:fixed; bottom:1.2rem; right:1.2rem; z-index:900; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg, var(--blue), var(--sky)); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transform:translateY(12px); transition:.3s; box-shadow:0 8px 22px rgba(0,102,255,.4); }
+.back-to-top.visible { opacity:1; visibility:visible; transform:none; }
+.back-to-top svg { width:20px; height:20px; fill:#fff; }
+
+@media (min-width:700px) {
+  .toc ol { columns:2; column-gap:2.5rem; }
+  .contact-grid, .grid-container { grid-template-columns:repeat(2, 1fr); }
+  .features-with-icons { grid-template-columns:repeat(2, 1fr); }
+}
+@media (min-width:900px) {
+  .nav-links { display:flex; }
+  .nav-cta { display:flex; }
+  .menu-btn { display:none; }
+  .footer-grid { grid-template-columns:1.4fr 1fr 1fr 1fr; }
+  .footer-base { flex-direction:row; justify-content:space-between; }
+  .features-with-icons { grid-template-columns:repeat(4, 1fr); }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+}
+@media print {
+  .site-header, .site-footer, .back-to-top, .consent-banner, .hero .compliance-badges, .back-home { display:none !important; }
+  body { background:#fff; color:#000; }
+  body::before { display:none; }
+  .content-card, .toc, .contact-box, .feature-card, .icon-card { background:#fff; border:1px solid #999; box-shadow:none; }
+  .section h2, .section h3, .section p, .section li, .section td { color:#000; -webkit-text-fill-color:#000; }
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5 2.5 2.5 0 0 0 6.5 19H19"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V6m0 14h16M8 16v-5m4 5V8m4 8v-3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a href="https://alvin-silva.asilvainnovations.com" class="brand" aria-label="Alvin M. Silva — home">
+      <img src="assets/logo-192.png" alt="A. Silva Innovations logo" width="46" height="46">
+      <span>
+        <span class="brand-name">ALVIN M. SILVA</span><br>
+        <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">The Professional</div>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#about" role="menuitem"><svg><use href="#i-user"/></svg> Profile &amp; Proof</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> Track Record</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#works" role="menuitem"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
+        </div>
+      </li>
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Expertise <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">What I Deliver</div>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#value" role="menuitem"><svg><use href="#i-target"/></svg> Value For You</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Core Expertise</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#impact" role="menuitem"><svg><use href="#i-star"/></svg> Impact Timeline</a>
+        </div>
+      </li>
+      <li><a href="https://alvin-portfolio.asilvainnovations.com" class="drop-btn" style="text-decoration:none">Portfolio</a></li>
+      <li><a href="policies.html" class="drop-btn" style="text-decoration:none" aria-current="page">Policies</a></li>
+      <li><a href="https://alvin-silva.asilvainnovations.com/#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://alvin-silva.asilvainnovations.com/#contact" class="btn btn-primary btn-sm"><span>Start a Conversation</span></a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <div class="mm-head">
+    <img src="assets/logo-192.png" alt="" width="52" height="52">
+    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">Navigate</div>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#about"><svg><use href="#i-user"/></svg> About</a>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#expertise"><svg><use href="#i-bulb"/></svg> Expertise</a>
+    <a class="mm-link" href="https://alvin-portfolio.asilvainnovations.com"><svg><use href="#i-book"/></svg> Portfolio</a>
+    <a class="mm-link" href="policies.html" aria-current="page"><svg><use href="#i-shield"/></svg> Policies</a>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#contact"><svg><use href="#i-mail"/></svg> Contact</a>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">Legal</div>
+    <a class="mm-link" href="cookie-policy.html"><svg><use href="#i-check"/></svg> Cookie Policy</a>
+    <a class="mm-link" href="privacy-policy.html"><svg><use href="#i-check"/></svg> Privacy Policy</a>
+    <a class="mm-link" href="https://asilvainnovations.github.io/website/terms.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-check"/></svg> Terms ↗</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <a href="https://alvin-silva.asilvainnovations.com" class="back-home"><svg><use href="#i-back"/></svg> alvin-silva.asilvainnovations.com</a>
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last Updated: April 29, 2026</p>
+    <div class="compliance-badges"><span class="badge">🔒 GDPR Compliant</span><span class="badge">🇵🇭 RA 10173 Data Privacy</span><span class="badge">🛡️ ISO 27001 Security</span><span class="badge">✨ Privacy by Design</span></div>
+  </div>
+</section>
+<main id="main">
+        <div class="container" style="margin-top: -2rem;">
+            <div class="content-card">
+                
+                <!-- Introduction -->
+                <section class="section">
+                    <h2>Our Commitment to Your Privacy</h2>
+                    <p>At ASilva Innovations, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you use our digital platforms, including our AI-powered resilience solutions and strategic planning tools.</p>
+                    
+                    <div class="compliance-tags">
+                        <span class="compliance-tag primary">GDPR Compliant</span>
+                        <span class="compliance-tag success">RA 10173 Aligned</span>
+                        <span class="compliance-tag primary">ISO 27001 Certified</span>
+                        <span class="compliance-tag success">End-to-End Encryption</span>
+                    </div>
+                    
+                    <div class="mission-section" style="background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);">
+                        <h3>We Treat Your Data as Trust</h3>
+                        <p>Your privacy is paramount to us. We implement robust security measures, adhere to international standards, and only collect information necessary for delivering exceptional services.</p>
+                    </div>
+                </section>
+
+                <!-- Table of Contents -->
+                <nav class="toc" aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#information-collection">Information We Collect</a></li>
+                        <li><a href="#how-we-use">How We Use Your Information</a></li>
+                        <li><a href="#data-protection">Data Protection & Security</a></li>
+                        <li><a href="#user-rights">Your Rights</a></li>
+                        <li><a href="#cookies-tracking">Cookies & Tracking Technologies</a></li>
+                        <li><a href="#third-party-services">Third-Party Services</a></li>
+                        <li><a href="#international-transfers">International Data Transfers</a></li>
+                        <li><a href="#data-retention">Data Retention Periods</a></li>
+                        <li><a href="#policy-updates">Updates to This Policy</a></li>
+                        <li><a href="#contact-us">Contact Us</a></li>
+                    </ol>
+                </nav>
+
+                <!-- Section 1: Information Collection -->
+                <section id="information-collection" class="section">
+                    <h2>1. Information We Collect</h2>
+                    <p>We collect different types of information to provide and improve our services:</p>
+                    
+                    <div class="features-with-icons">
+                        <div class="icon-card">
+                            <div class="icon-circle">📋</div>
+                            <h4>Personal Information</h4>
+                            <p>Name, email address, phone number, organization, job title, and contact details provided during registration or inquiry submissions.</p>
+                        </div>
+                        
+                        <div class="icon-card">
+                            <div class="icon-circle">📊</div>
+                            <h4>Usage Data</h4>
+                            <p>Information about how you interact with our website, including pages visited, time spent, click patterns, and referral sources.</p>
+                        </div>
+                        
+                        <div class="icon-card">
+                            <div class="icon-circle">💾</div>
+                            <h4>Technical Information</h4>
+                            <p>Device information, browser type, IP address, operating system, and technical configuration data collected automatically.</p>
+                        </div>
+                        
+                        <div class="icon-card">
+                            <div class="icon-circle">📁</div>
+                            <h4>Transactional Data</h4>
+                            <p>Information related to payments, subscriptions, service usage records, and billing details when applicable.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: How We Use -->
+                <section id="how-we-use" class="section">
+                    <h2>2. How We Use Your Information</h2>
+                    <p>We use the information we collect for specific, legitimate purposes:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Purpose</th>
+                                <th>Description</th>
+                                <th>Legal Basis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Service Delivery</strong></td>
+                                <td>To provide and maintain our digital platforms and services</td>
+                                <td>Contract Fulfillment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Communication</strong></td>
+                                <td>To respond to inquiries, send updates, and provide customer support</td>
+                                <td>Legitimate Interest</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analytics</strong></td>
+                                <td>To understand user behavior and improve platform performance</td>
+                                <td>Consent</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security</strong></td>
+                                <td>To detect fraud, prevent abuse, and protect against unauthorized access</td>
+                                <td>Legitimate Interest</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Compliance</strong></td>
+                                <td>To meet legal obligations and regulatory requirements</td>
+                                <td>Legal Obligation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Section 3: Data Protection -->
+                <section id="data-protection" class="section">
+                    <h2>3. Data Protection & Security</h2>
+                    <p>We implement industry-leading security measures to protect your personal information:</p>
+                    
+                    <div class="grid-container">
+                        <div class="feature-card">
+                            <h4>🔐 Encryption</h4>
+                            <p>All sensitive data is encrypted using AES-256 bit encryption both in transit and at rest.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4>🌐 Access Controls</h4>
+                            <p>Role-based access controls ensure only authorized personnel can access personal data.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4>🔄 Regular Audits</h4>
+                            <p>We conduct regular security audits and penetration testing to identify and fix vulnerabilities.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4>📱 Multi-Factor Auth</h4>
+                            <p>Mandatory multi-factor authentication for all administrative and user accounts.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4>⚡ Incident Response</h4>
+                            <p>24/7 monitoring with rapid incident response capabilities for any security events.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <h4>☁️ Secure Hosting</h4>
+                            <p>Data hosted on AWS with redundant backups across multiple geographic regions.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: User Rights -->
+                <section id="user-rights" class="section">
+                    <h2>4. Your Rights</h2>
+                    <p>Depending on your jurisdiction, you have certain rights regarding your personal data:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Right</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Access</strong></td>
+                                <td>Request a copy of all personal data we hold about you</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rectification</strong></td>
+                                <td>Request correction of inaccurate or incomplete data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Erasure</strong></td>
+                                <td>Request deletion of your personal data under certain conditions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Restriction</strong></td>
+                                <td>Request limitation of processing your personal data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Portability</strong></td>
+                                <td>Receive your data in a structured, machine-readable format</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Objection</strong></td>
+                                <td>Object to processing based on legitimate interests</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Withdraw Consent</strong></td>
+                                <td>Withdraw consent at any time where processing is based on consent</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="contact-box">
+                        <h3>How to Exercise Your Rights</h3>
+                        <p>To exercise any of these rights, please contact our Data Protection Officer using the information below. We aim to respond within 30 days.</p>
+                    </div>
+                </section>
+
+                <!-- Section 5: Cookies & Tracking -->
+                <section id="cookies-tracking" class="section">
+                    <h2>5. Cookies & Tracking Technologies</h2>
+                    <p>We use cookies and similar technologies to enhance your experience:</p>
+                    
+                    <div class="features-with-icons">
+                        <div class="icon-card">
+                            <div class="icon-circle">🍪</div>
+                            <h4>Essential Cookies</h4>
+                            <p>Required for basic functionality like session management and login. Cannot be disabled.</p>
+                        </div>
+                        
+                        <div class="icon-card">
+                            <div class="icon-circle">⚙️</div>
+                            <h4>Functional Cookies</h4>
+                            <p>Remember your preferences such as language, theme settings, and accessibility options.</p>
+                        </div>
+                        
+                        <div class="icon-card">
+                            <div class="icon-circle">📈</div>
+                            <h4>Analytics Cookies</h4>
+                            <p>Help us understand how visitors use our site through tools like Google Analytics.</p>
+                        </div>
+                        
+                        <div class="icon-card">
+                            <div class="icon-circle">🎯</div>
+                            <h4>Marketing Cookies</h4>
+                            <p>Track browsing habits to deliver relevant advertising. Opt-in required.</p>
+                        </div>
+                    </div>
+                    
+                    <p>For more detailed information about our cookie practices, please refer to our <a href="https://asilvainnovations.github.io/website/cookie-policy.html">Cookie Policy</a>.</p>
+                </section>
+
+                <!-- Section 6: Third-Party Services -->
+                <section id="third-party-services" class="section">
+                    <h2>6. Third-Party Services</h2>
+                    <p>We may share limited information with trusted third-party service providers:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Provider</th>
+                                <th>Purpose</th>
+                                <th>Data Shared</th>
+                                <th>Compliance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AWS Cloud Services</td>
+                                <td>Infrastructure hosting</td>
+                                <td>Server logs, traffic data</td>
+                                <td>ISO 27001, SOC 2</td>
+                            </tr>
+                            <tr>
+                                <td>Google Analytics</td>
+                                <td>Web analytics</td>
+                                <td>IP address, usage patterns</td>
+                                <td>GDPR Compliant</td>
+                            </tr>
+                            <tr>
+                                <td>Cloudflare</td>
+                                <td>CDN & Security</td>
+                                <td>IP address, request headers</td>
+                                <td>CCPA Compliant</td>
+                            </tr>
+                            <tr>
+                                <td>Stripe</td>
+                                <td>Payment Processing</td>
+                                <td>Transaction details (no full card data)</td>
+                                <td>PCI DSS Level 1</td>
+                            </tr>
+                            <tr>
+                                <td>SendGrid/Mailgun</td>
+                                <td>Email delivery</td>
+                                <td>Email addresses, engagement metrics</td>
+                                <td>GDPAR Compliant</td>
+                            </tr>
+                            <tr>
+                                <td>Hotjar</td>
+                                <td>User experience insights</td>
+                                <td>Anonymous interaction data</td>
+                                <td>GDPR Compliant</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="highlight-box" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid var(--primary); border-radius: 0 1rem 1rem 0; padding: 1.5rem; margin: 1.5rem 0;">
+                        <p style="color: var(--dark); font-weight: 500; margin: 0;"><strong>Important:</strong> All third-party providers must comply with our strict data protection requirements and enter into Data Processing Agreements (DPA).</p>
+                    </div>
+                </section>
+
+                <!-- Section 7: International Transfers -->
+                <section id="international-transfers" class="section">
+                    <h2>7. International Data Transfers</h2>
+                    <p>Your data may be transferred to and processed in countries other than your own:</p>
+                    
+                    <div class="feature-card">
+                        <h4>🌍 Where We Process Data</h4>
+                        <ul style="margin-top: 1rem;">
+                            <li>Primary servers located in Singapore (AWS Region ap-southeast-1)</li>
+                            <li>Backup systems distributed across Asia-Pacific region</li>
+                            <li>Administrative offices in the Philippines</li>
+                            <li>Sub-processors in Europe and United States for specific services</li>
+                        </ul>
+                    </div>
+                    
+                    <p>We ensure appropriate safeguards are in place for international transfers:</p>
+                    <ul>
+                        <li><strong>EU Users:</strong> Standard Contractual Clauses (SCCs) compliant with GDPR</li>
+                        <li><strong>US Users:</strong> Privacy Shield framework adherence (where applicable)</li>
+                        <li><strong>Global Users:</strong> Adequacy decisions where recognized</li>
+                    </ul>
+                </section>
+
+                <!-- Section 8: Data Retention -->
+                <section id="data-retention" class="section">
+                    <h2>8. Data Retention Periods</h2>
+                    <p>We retain personal data only for as long as necessary:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data Category</th>
+                                <th>Retention Period</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Account Registration Data</td>
+                                <td>Active account + 2 years after closure</td>
+                                <td>Business operations & legal compliance</td>
+                            </tr>
+                            <tr>
+                                <td>Transactional Records</td>
+                                <td>7 years from transaction date</td>
+                                <td>Tax law requirements</td>
+                            </tr>
+                            <tr>
+                                <td>Customer Support Records</td>
+                                <td>3 years from last contact</td>
+                                <td>Service improvement & dispute resolution</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics Data</td>
+                                <td>26 months maximum</td>
+                                <td>Statistical analysis period</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing Preferences</td>
+                                <td>Until withdrawal of consent</td>
+                                <td>Preference retention per consent terms</td>
+                            </tr>
+                            <tr>
+                                <td>Website Logs</td>
+                                <td>90 days</td>
+                                <td>Security monitoring & troubleshooting</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Section 9: Policy Updates -->
+                <section id="policy-updates" class="section">
+                    <h2>9. Updates to This Policy</h2>
+                    <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. When we make material changes:</p>
+                    
+                    <ul>
+                        <li>We will notify you via email at least 30 days before the change takes effect</li>
+                        <li>Changes will be clearly indicated on this page with an updated "Last Updated" date</li>
+                        <li>Continued use of our services constitutes acceptance of the updated policy</li>
+                        <li>You will have the opportunity to review and accept the new terms before they become effective</li>
+                    </ul>
+                </section>
+
+                <!-- Section 10: Contact Us -->
+                <section id="contact-us" class="section">
+                    <h2>10. Contact Us</h2>
+                    <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+                    
+                    <div class="contact-box">
+                        <h3>Data Protection Officer</h3>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <span class="label">Email:</span>
+                                <a href="mailto:privacy@asilvainnovations.com" class="contact-link">privacy@asilvainnovations.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="label">Data Officer:</span>
+                                <a href="mailto:dataofficer@asilvainnovations.com" class="contact-link">dataofficer@asilvainnovations.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="label">Phone:</span>
+                                <span>+639178555134</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="label">Address:</span>
+                                <span>ASilva Innovations<br>Muntinlupa City, Metro Manila, Philippines</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 1.5rem;">We aim to respond to privacy-related inquiries within <strong>14 business days</strong>.</p>
+                        
+                        <h3 style="color: white; margin-top: 2rem;">Regulatory Complaints</h3>
+                        <p style="color: rgba(255, 255, 255, 0.9);">If you wish to lodge a complaint with your local supervisory authority, you may do so at any time:</p>
+                        <ul style="color: rgba(255, 255, 255, 0.9); margin-top: 1rem;">
+                            <li><strong>Philippines:</strong> National Privacy Commission (npc.gov.ph)</li>
+                            <li><strong>European Union:</strong> Your local Data Protection Authority</li>
+                            <li><strong>United States:</strong> Federal Trade Commission (FTC.gov)</li>
+                            <li><strong>Other jurisdictions:</strong> Relevant national authorities</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Additional Information -->
+                <section class="section">
+                    <h2>Additional Information</h2>
+                    
+                    <h3>About This Policy</h3>
+                    <p>This Privacy Policy provides comprehensive coverage of ASilva Innovations' commitment to transparency, data protection, and ethical handling of personal information. Our policies evolve continuously to meet emerging regulations and best practices.</p>
+                    
+                    <h3>Certifications & Compliance</h3>
+                    <ul>
+                        <li>Registered Business Entity in the Republic of the Philippines</li>
+                        <li>Compliant with Data Privacy Act (RA 10173)</li>
+                        <li>Aligned with ISO 27001 Information Security Standards</li>
+                        <li>WCAG 2.1 AA Accessible Digital Platform</li>
+                        <li>GDPR Compliant for EU Users</li>
+                    </ul>
+                    
+                    <h3>Related Policies</h3>
+                    <ul>
+                        <li><a href="https://asilvainnovations.github.io/website/terms.html">Terms & Conditions</a></li>
+                        <li><a href="https://asilvainnovations.github.io/website/cookie-policy.html">Cookie Policy</a></li>
+                        <li><a href="https://asilvainnovations.github.io/website/accessibility-policy.html">Accessibility Policy</a></li>
+                        <li><a href="https://asilvainnovations.github.io/website/ai-ethics.html">AI Ethics Policy</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://alvin-silva.asilvainnovations.com" class="brand"><img src="assets/logo-192.png" alt="" width="46" height="46"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
+        <p>Building resilient communities through ethical AI and human-centered design — development management, systems innovation, and humanitarian practice.</p>
+        <div class="socials">
+          <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
+          <a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
+          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
+          <a href="tel:+639178555134" aria-label="Call +63 917 855 5134"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-phone"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#about">About</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#expertise">Core Expertise</a></li>
+          <li><a href="https://alvin-portfolio.asilvainnovations.com">Portfolio</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platforms</h4>
+        <ul>
+          <li><a href="https://bangsamro-investment-roadmapp.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
+          <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
+          <li><a href="https://preview-ljjsipjm--strategy-ai-planner.deploypad.app/" target="_blank" rel="noopener noreferrer">Strat Planner Pro ↗</a></li>
+          <li><a href="https://cognitio-plus.com/" target="_blank" rel="noopener noreferrer">Cognitio+ ↗</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="https://asilvainnovations.github.io/website/terms.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions ↗</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          <li><a href="https://asilvainnovations.github.io/website/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility ↗</a></li>
+          <li><a href="https://asilvainnovations.github.io/website/ai-ethics.html" target="_blank" rel="noopener noreferrer">AI Ethics ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 A. Silva Innovations · Alvin M. Silva, MDM. All rights reserved.</p>
+      <p class="footer-legal">
+        <a href="policies.html">Policies</a> ·
+        <a href="privacy-policy.html">Privacy</a> ·
+        <a href="cookie-policy.html">Cookies</a> ·
+        <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+<div class="toast glass-strong" id="toast" role="status" aria-live="polite"></div>
+
+<div class="consent-banner glass-strong" id="consentBanner" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentDesc" hidden>
+  <h3 id="consentTitle"><svg><use href="#i-shield"/></svg> Your privacy, your choice</h3>
+  <p id="consentDesc">This site uses essential storage to remember your preferences, plus optional analytics and marketing cookies. Read our
+    <a href="cookie-policy.html">Cookie Policy</a> and
+    <a href="privacy-policy.html">Privacy Policy</a>.
+  </p>
+  <div class="consent-prefs" id="consentPrefs">
+    <div class="pref-row">
+      <div><div class="pr-name">Essential</div><div class="pr-desc">Required — remembers your consent choice. Always on.</div></div>
+      <span class="switch"><input type="checkbox" checked disabled aria-label="Essential cookies (always on)"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Analytics</div><div class="pr-desc">Anonymous usage statistics that help improve this site.</div></div>
+      <span class="switch"><input type="checkbox" id="prefAnalytics" aria-label="Analytics cookies"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Marketing</div><div class="pr-desc">Used to measure outreach and referrals.</div></div>
+      <span class="switch"><input type="checkbox" id="prefMarketing" aria-label="Marketing cookies"><span class="track"></span></span>
+    </div>
+  </div>
+  <div class="consent-actions">
+    <button class="btn btn-primary" id="consentAccept"><span>Accept All</span></button>
+    <button class="btn btn-gold" id="consentSave" style="display:none"><span>Save Choices</span></button>
+    <button class="btn btn-ghost" id="consentDecline"><span>Decline Optional</span></button>
+    <button class="btn btn-ghost" id="consentCustomize"><span>Customize</span></button>
+  </div>
+</div>
+
+<script>
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+
+/* dropdowns */
+$$('[data-drop] > .drop-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const drop = btn.parentElement, wasOpen = drop.classList.contains('open');
+    $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+    if (!wasOpen) { drop.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+});
+
+/* mobile menu */
+const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
+function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn.addEventListener('click', openMobile);
+$('#mmClose').addEventListener('click', closeMobile);
+overlay.addEventListener('click', closeMobile);
+$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMobile(); $$('[data-drop]').forEach(d => d.classList.remove('open')); } });
+
+/* smooth anchors */
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); history.pushState(null,'',a.getAttribute('href')); }
+}));
+
+/* back to top */
+const btt = $('#backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
+btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* cookie consent */
+const CONSENT_KEY = 'as-cookie-consent-v1';
+const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
+function getConsent() { try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; } }
+function setConsent(analytics, marketing) {
+  const rec = { essential:true, analytics:!!analytics, marketing:!!marketing, ts:new Date().toISOString(), v:1 };
+  localStorage.setItem(CONSENT_KEY, JSON.stringify(rec));
+  window.dispatchEvent(new CustomEvent('as:consent', { detail:rec }));
+}
+function showConsent() { cBanner.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => cBanner.classList.add('show'))); }
+function hideConsent() { cBanner.classList.remove('show'); setTimeout(() => { cBanner.hidden = true; }, 500); }
+$('#consentAccept').addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
+$('#consentDecline').addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
+$('#consentSave').addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
+$('#consentCustomize').addEventListener('click', () => {
+  cPrefs.classList.toggle('open');
+  $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
+});
+$('#cookieSettings').addEventListener('click', () => {
+  const c = getConsent();
+  if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
+  cPrefs.classList.add('open'); $('#consentSave').style.display = '';
+  showConsent();
+});
+if (!getConsent()) setTimeout(showConsent, 1800);
+</script>
+</body>
+</html>

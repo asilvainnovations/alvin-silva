@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alvin-silva.asilvainnovations.com/sitemap.xml

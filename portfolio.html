@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ============ SEO CORE ============ -->
+<title>Portfolio | Alvin M. Silva, MDM — Platforms, Consulting & Publications</title>
+<meta name="description" content="The portfolio of Alvin M. Silva, MDM: the BIRD 2026–2035 Investment Roadmapping Platform, DDRiVE-M, Strat Planner Pro, national strategic plans, climate resilience programs, and published books on resilience.">
+<meta name="keywords" content="Alvin Silva portfolio, BIRD platform, Bangsamoro investment roadmap, DDRiVE-M, Strat Planner Pro, resilience books, climate adaptation projects, DRR consulting Philippines">
+<meta name="author" content="Alvin M. Silva, MDM">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://alvin-portfolio.asilvainnovations.com/">
+<meta name="theme-color" content="#0a0e27">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
+<link rel="apple-touch-icon" href="assets/logo-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="A. Silva Innovations">
+<meta property="og:url" content="https://alvin-portfolio.asilvainnovations.com/">
+<meta property="og:title" content="Portfolio | Alvin M. Silva, MDM">
+<meta property="og:description" content="Digital platforms, national frameworks, climate resilience programs, and publications — 18+ years of measurable impact.">
+<meta property="og:image" content="https://alvin-portfolio.asilvainnovations.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio | Alvin M. Silva, MDM">
+<meta name="twitter:description" content="Platforms, frameworks, programs, and books in resilience and development.">
+<meta name="twitter:image" content="https://alvin-portfolio.asilvainnovations.com/assets/og-image.jpg">
+
+<!-- Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Portfolio — Alvin M. Silva, MDM",
+  "url": "https://alvin-portfolio.asilvainnovations.com/",
+  "about": { "@type": "Person", "name": "Alvin M. Silva", "jobTitle": "Development Management Professional & Resilience Consultant" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "BIRD — Bangsamoro Investment Roadmapping Platform 2026–2035" },
+      { "@type": "ListItem", "position": 2, "name": "DDRiVE-M Platform" },
+      { "@type": "ListItem", "position": 3, "name": "Strat Planner Pro" },
+      { "@type": "ListItem", "position": 4, "name": "WorldSkills Philippines – TESDA Strategic Plan 2026–2030" },
+      { "@type": "ListItem", "position": 5, "name": "Personal Resilience: The Path to Oneness" }
+    ]
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — shared with index.html
+   ============================================================ */
+:root {
+  --navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
+  --blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+  --text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+  --glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  --glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+  --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28);
+  --radius:14px;
+  --font-display:'Montserrat',system-ui,sans-serif; --font-body:'Poppins',system-ui,sans-serif;
+  --font-cond:'Roboto Condensed',system-ui,sans-serif; --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+  --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+  --ease:cubic-bezier(.22,.8,.28,1);
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:92px; }
+body {
+  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:1rem; color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%),
+    linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
+  background-attachment:fixed; min-height:100vh; overflow-x:hidden;
+}
+body::before { content:''; position:fixed; inset:0; z-index:0; pointer-events:none; background:url('assets/logo-512.png') center/ min(78vw,560px) no-repeat; opacity:.045; }
+main, header, footer { position:relative; z-index:1; }
+img { max-width:100%; display:block; }
+h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.15; letter-spacing:-.01em; }
+a { color:var(--sky); }
+button { font-family:inherit; }
+::selection { background:rgba(255,215,0,.35); color:#fff; }
+::-webkit-scrollbar { width:9px; height:9px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(100,140,200,.35); border-radius:6px; }
+:focus-visible { outline:3px solid var(--gold); outline-offset:2px; border-radius:4px; }
+.skip-link { position:absolute; top:-48px; left:8px; z-index:12000; background:var(--gold); color:#0a0e27; font-family:var(--font-display); font-weight:700; padding:.6rem 1.1rem; border-radius:0 0 10px 10px; text-decoration:none; transition:top .25s; }
+.skip-link:focus { top:0; }
+.sr-only { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+.wrap { width:100%; max-width:1280px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
+.section { padding:clamp(3rem,7vw,5rem) 0; position:relative; }
+.kicker { font-family:var(--font-cond); font-size:.8rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--sky); margin-bottom:.9rem; display:flex; align-items:center; gap:.7rem; justify-content:center; }
+.kicker::before,.kicker::after { content:''; height:1px; width:34px; background:linear-gradient(90deg,transparent,var(--sky)); }
+.kicker::after { transform:scaleX(-1); }
+.section-title { font-size:clamp(1.7rem,4.6vw,2.6rem); font-weight:800; text-align:center; margin-bottom:.9rem; }
+.grad-text, .section-title .hl { background:linear-gradient(92deg, var(--sky) 0%, var(--blue) 45%, var(--gold) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.section-sub { text-align:center; color:var(--text-3); max-width:720px; margin:0 auto clamp(2rem,5vw,3rem); font-weight:300; }
+
+.glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); }
+.glass-strong { background:var(--glass-strong); border:1px solid var(--line); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:var(--shadow-1); }
+.glass-gold { background:linear-gradient(135deg, rgba(255,215,0,.14), rgba(255,215,0,.04)); border:1px solid var(--line-gold); backdrop-filter:blur(14px); }
+
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-family:var(--font-display); font-weight:700; font-size:.92rem; letter-spacing:.03em; padding:.85rem 1.7rem; border-radius:999px; border:2px solid transparent; cursor:pointer; text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s; min-height:48px; }
+.btn svg { width:17px; height:17px; flex:none; }
+.btn-primary { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 8px 24px rgba(0,102,255,.35); }
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
+.btn-gold { background:transparent; color:var(--gold); border-color:var(--gold); }
+.btn-gold:hover { background:var(--gold); color:#0a0e27; transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,215,0,.35); }
+.btn-ghost { background:rgba(255,255,255,.06); color:var(--text); border-color:var(--line); }
+.btn-ghost:hover { background:rgba(255,255,255,.12); transform:translateY(-2px); }
+.btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
+.chip { display:inline-flex; align-items:center; gap:.45rem; padding:.42rem 1rem; border-radius:999px; font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em; border:1px solid var(--line); background:rgba(255,255,255,.05); color:var(--text-2); }
+
+/* ============ HEADER / NAV (shared) ============ */
+.site-header { position:sticky; top:0; z-index:1000; background:rgba(10,14,39,.86); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(0,102,255,.45); box-shadow:0 8px 30px rgba(0,0,0,.35); }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem clamp(1rem,4vw,2.5rem); max-width:1400px; margin:0 auto; }
+.brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; min-width:0; }
+.brand img { width:46px; height:46px; border-radius:50%; border:2px solid var(--gold); background:#fff; padding:2px; flex:none; }
+.brand-name { font-family:var(--font-display); font-weight:800; font-size:1.02rem; letter-spacing:.03em; background:linear-gradient(45deg,var(--sky),var(--blue),var(--gold)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; white-space:nowrap; }
+.brand-sub { font-family:var(--font-cond); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); white-space:nowrap; }
+.nav-links { display:none; list-style:none; align-items:center; gap:.35rem; }
+.nav-links > li > a, .drop-btn { font-family:var(--font-cond); font-size:.92rem; font-weight:600; letter-spacing:.06em; color:var(--text); text-decoration:none; padding:.55rem .85rem; border-radius:8px; display:inline-flex; align-items:center; gap:.4rem; background:none; border:1px solid transparent; cursor:pointer; transition:.25s; }
+.nav-links a:hover, .drop-btn:hover, .drop.open .drop-btn { color:var(--gold); background:rgba(255,215,0,.08); }
+.nav-links a[aria-current="page"] { color:var(--gold); background:rgba(255,215,0,.10); }
+.drop { position:relative; }
+.drop-btn .chev { width:10px; height:10px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform .3s; }
+.drop.open .drop-btn .chev { transform:rotate(225deg) translateY(-1px); }
+.drop-menu { position:absolute; top:calc(100% + .6rem); left:50%; transform:translate(-50%, -8px); min-width:250px; padding:.6rem; border-radius:14px; opacity:0; visibility:hidden; transition:.28s var(--ease); background:linear-gradient(150deg, rgba(13,18,40,.98), rgba(8,11,28,.98)); border:1px solid var(--line-gold); box-shadow:0 20px 50px rgba(0,0,0,.6); z-index:1001; }
+.drop.open .drop-menu { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+.drop-head { font-family:var(--font-cond); font-size:.66rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); padding:.45rem .8rem .55rem; border-bottom:1px solid var(--line); margin-bottom:.4rem; }
+.drop-item { display:flex; align-items:center; gap:.7rem; padding:.6rem .8rem; border-radius:9px; color:var(--text); text-decoration:none; font-size:.9rem; transition:.2s; }
+.drop-item svg { width:16px; height:16px; color:var(--sky); flex:none; }
+.drop-item:hover { background:rgba(255,215,0,.12); color:var(--gold); }
+.nav-cta { display:none; align-items:center; gap:.6rem; }
+.menu-btn { display:inline-flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:.55rem; z-index:1102; }
+.menu-btn span { width:24px; height:2.5px; background:#fff; border-radius:2px; transition:.3s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform:rotate(-45deg) translate(6px,-6px); }
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:1098; opacity:0; visibility:hidden; transition:.3s; }
+.overlay.show { opacity:1; visibility:visible; }
+.mobile-menu { position:fixed; top:0; right:-105%; width:min(84vw,340px); height:100dvh; z-index:1099; background:linear-gradient(160deg,#0d1430,#070b1d); border-left:1px solid var(--line); padding:1.4rem; transition:right .35s var(--ease); overflow-y:auto; }
+.mobile-menu.open { right:0; }
+.mobile-menu .mm-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4rem; }
+.mobile-menu .mm-head img { width:52px; height:52px; border-radius:50%; border:2px solid var(--gold); }
+.mm-close { background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer; padding:.4rem; line-height:1; }
+.mm-group { margin-bottom:1.1rem; }
+.mm-group-title { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-bottom:.5rem; padding-left:.2rem; }
+.mm-link { display:flex; align-items:center; gap:.7rem; padding:.68rem .6rem; color:#fff; text-decoration:none; font-size:1rem; border-radius:9px; }
+.mm-link svg { width:16px; height:16px; color:var(--sky); }
+.mm-link:active, .mm-link:hover, .mm-link[aria-current="page"] { background:rgba(255,255,255,.07); color:var(--gold); }
+</style>
+<style>
+/* ============ HERO ============ */
+.hero { position:relative; padding:0 0 clamp(2.5rem,6vw,4rem); }
+.hero-banner { position:relative; height:clamp(180px, 30vw, 340px); overflow:hidden; }
+.hero-banner img { width:100%; height:100%; object-fit:cover; object-position:center 62%; animation:kenburns 22s ease-in-out infinite alternate; }
+@keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.07); } }
+.hero-banner::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.55) 55%, var(--navy) 100%); }
+.hero-inner { margin-top:clamp(-6rem,-10vw,-3.4rem); position:relative; z-index:2; text-align:center; }
+.breadcrumb { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-cond); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-bottom:1rem; text-decoration:none; }
+.breadcrumb:hover { color:var(--gold); }
+.breadcrumb svg { width:13px; height:13px; }
+.hero h1 { font-size:clamp(2rem,6.5vw,3.4rem); font-weight:900; margin-bottom:.8rem; }
+.hero-sub { font-size:clamp(.98rem,2.6vw,1.12rem); font-weight:300; color:var(--text-2); line-height:1.8; max-width:720px; margin:0 auto 1.6rem; }
+.hero-stats { display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin-bottom:1.6rem; }
+.stat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; max-width:640px; margin:0 auto; }
+.stat-num { font-family:var(--font-display); font-size:clamp(1.6rem,4.2vw,2.1rem); font-weight:800; background:linear-gradient(45deg, var(--gold), var(--sky)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-variant-numeric:tabular-nums; }
+.stat-label { font-family:var(--font-cond); font-size:.72rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--text-3); margin-top:.15rem; }
+
+/* ============ FILTERS ============ */
+.filter-bar { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-bottom:2rem; }
+.filter-btn { font-family:var(--font-display); font-weight:700; font-size:.85rem; letter-spacing:.04em; padding:.65rem 1.4rem; border-radius:999px; cursor:pointer; color:#fff; background:rgba(255,255,255,.06); border:1px solid var(--line); transition:.28s var(--ease); }
+.filter-btn:hover { background:rgba(255,255,255,.12); }
+.filter-btn.active { background:linear-gradient(135deg, var(--blue), var(--sky)); border-color:transparent; box-shadow:0 8px 22px rgba(0,102,255,.4); }
+.filter-btn .count-pill { font-family:var(--font-mono); font-size:.68rem; opacity:.8; margin-left:.35rem; }
+
+/* ============ PORTFOLIO GRID ============ */
+.pf-grid { display:grid; gap:1.3rem; grid-template-columns:1fr; }
+.pf-card { border-radius:18px; overflow:hidden; transition:transform .35s var(--ease), box-shadow .35s, border-color .35s; display:flex; flex-direction:column; animation:fadeUp .5s var(--ease) backwards; }
+.pf-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-2); border-color:rgba(0,191,255,.4); }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+.pf-media { position:relative; height:210px; overflow:hidden; cursor:zoom-in; border:none; padding:0; background:#0d1224; width:100%; display:block; }
+.pf-media::before { content:''; position:absolute; inset:0 0 55% 0; z-index:1; background:linear-gradient(180deg, rgba(8,12,32,.72), transparent); pointer-events:none; }
+.pf-media .pf-badge, .pf-media .zoom-hint { z-index:2; }
+.pf-media img { width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .5s var(--ease); }
+.pf-card:hover .pf-media img { transform:scale(1.06); }
+.pf-media .zoom-hint { position:absolute; right:.8rem; bottom:.8rem; display:inline-flex; align-items:center; gap:.4rem; font-family:var(--font-cond); font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:rgba(8,12,32,.85); border:1px solid var(--line); padding:.35rem .7rem; border-radius:999px; opacity:0; transition:.3s; }
+.pf-media:hover .zoom-hint, .pf-media:focus-visible .zoom-hint { opacity:1; }
+.pf-media .zoom-hint svg { width:12px; height:12px; color:var(--gold); }
+.pf-badge { position:absolute; top:.9rem; left:.9rem; padding:.3rem .85rem; border-radius:999px; font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.4); }
+.pf-badge.badge-gold { background:linear-gradient(135deg, #c9a400, var(--gold)); color:#0a0e27; }
+.pf-badge.badge-violet { background:linear-gradient(135deg, #7c5cd6, var(--violet)); }
+.pf-body { padding:1.4rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
+.pf-body h3 { font-size:1.08rem; font-weight:700; color:#fff; margin-bottom:.3rem; }
+.pf-meta { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
+.pf-body p { font-size:.88rem; font-weight:300; color:var(--text-2); line-height:1.7; flex:1; }
+.pf-actions { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.1rem; }
+.pf-actions .btn { flex:1 1 130px; }
+.pf-card.featured { border:1px solid var(--line-gold); background:linear-gradient(135deg, rgba(255,215,0,.08), rgba(26,31,58,.8)); box-shadow:0 12px 40px rgba(255,215,0,.12), var(--shadow-1); }
+.pf-card.featured .pf-media { height:230px; }
+
+/* ============ LIGHTBOX ============ */
+.lightbox { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; padding:1rem; background:rgba(4,7,18,.92); backdrop-filter:blur(12px); opacity:0; visibility:hidden; transition:.35s; }
+.lightbox.show { opacity:1; visibility:visible; }
+.lb-frame { width:min(1080px, 100%); max-height:92dvh; display:flex; flex-direction:column; border-radius:18px; overflow:hidden; transform:scale(.96) translateY(14px); transition:.35s var(--ease); }
+.lightbox.show .lb-frame { transform:none; }
+.lb-media { background:#070b1d; display:flex; align-items:center; justify-content:center; min-height:0; flex:1; }
+.lb-media img { max-width:100%; max-height:68dvh; object-fit:contain; }
+.lb-caption { display:flex; flex-wrap:wrap; align-items:center; gap:.8rem; padding:1rem 1.2rem; background:rgba(10,14,39,.95); border-top:1px solid var(--line); }
+.lb-caption .lb-title { font-family:var(--font-display); font-weight:700; font-size:.98rem; flex:1 1 220px; }
+.lb-caption .lb-meta { font-family:var(--font-cond); font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
+.lb-close { position:absolute; top:1rem; right:1rem; width:44px; height:44px; border-radius:50%; background:rgba(10,14,39,.9); border:1px solid var(--line); color:#fff; font-size:1.2rem; cursor:pointer; z-index:2; transition:.25s; }
+.lb-close:hover { background:var(--gold); color:#0a0e27; transform:rotate(90deg); }
+
+/* ============ CTA STRIP ============ */
+.cta-strip { border-block:1px solid rgba(255,255,255,.07); background:linear-gradient(135deg, rgba(0,102,255,.12), rgba(0,191,255,.05)); text-align:center; }
+.cta-strip .btn { margin:.4rem; }
+
+/* ============ FOOTER (shared) ============ */
+.site-footer { background:rgba(6,9,24,.96); border-top:1px solid rgba(0,102,255,.4); padding:3.2rem 0 1.6rem; margin-top:2rem; }
+.footer-grid { display:grid; gap:2rem; margin-bottom:2.2rem; }
+.footer-brand p { font-size:.86rem; font-weight:300; color:var(--text-3); line-height:1.7; margin-top:.8rem; max-width:340px; }
+.footer-col h4 { font-family:var(--font-cond); font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.9rem; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:.45rem; }
+.footer-col a { color:var(--text-3); text-decoration:none; font-size:.88rem; transition:.2s; }
+.footer-col a:hover { color:var(--sky); padding-left:4px; }
+.socials { display:flex; gap:.7rem; margin-top:1.1rem; }
+.socials a { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--blue), var(--sky)); transition:transform .3s var(--ease), box-shadow .3s; }
+.socials a svg { width:18px; height:18px; fill:#fff; }
+.socials a:hover { transform:translateY(-4px) rotate(8deg); box-shadow:0 10px 24px rgba(0,191,255,.45); }
+.footer-base { border-top:1px solid rgba(255,255,255,.08); padding-top:1.4rem; display:flex; flex-direction:column; gap:.8rem; align-items:center; text-align:center; }
+.footer-base p { font-size:.8rem; color:var(--text-3); font-weight:300; }
+.footer-legal a, .linklike { color:var(--text-3); font-size:.8rem; text-decoration:none; background:none; border:none; cursor:pointer; font-family:inherit; padding:0; }
+.footer-legal a:hover, .linklike:hover { color:var(--gold); text-decoration:underline; }
+.pwa-badge { display:inline-flex; align-items:center; gap:.45rem; font-family:var(--font-cond); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--green); border:1px solid rgba(52,211,153,.4); background:rgba(52,211,153,.08); padding:.3rem .8rem; border-radius:999px; }
+.pwa-badge svg { width:13px; height:13px; }
+
+/* ============ FLOATING ============ */
+.back-to-top { position:fixed; bottom:1.2rem; right:1.2rem; z-index:900; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg, var(--blue), var(--sky)); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transform:translateY(12px); transition:.3s; box-shadow:0 8px 22px rgba(0,102,255,.4); }
+.back-to-top.visible { opacity:1; visibility:visible; transform:none; }
+.back-to-top svg { width:20px; height:20px; fill:#fff; }
+.toast { position:fixed; top:88px; left:50%; transform:translate(-50%, -16px); z-index:1300; padding:.75rem 1.3rem; border-radius:999px; font-family:var(--font-cond); font-size:.85rem; letter-spacing:.05em; opacity:0; visibility:hidden; transition:.35s var(--ease); white-space:nowrap; color:var(--text); }
+.toast.show { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+
+/* ============ COOKIE CONSENT (shared) ============ */
+.consent-banner { position:fixed; bottom:1rem; left:50%; transform:translate(-50%, 140%); z-index:1150; width:min(680px, calc(100% - 2rem)); border-radius:18px; padding:1.3rem 1.4rem; transition:transform .5s var(--ease); }
+.consent-banner.show { transform:translate(-50%, 0); }
+.consent-banner h3 { font-size:1rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem; color:#fff; }
+.consent-banner h3 svg { width:18px; height:18px; color:var(--gold); }
+.consent-banner p { font-size:.82rem; font-weight:300; color:var(--text-2); line-height:1.6; margin-bottom:.9rem; }
+.consent-banner p a { color:var(--sky); }
+.consent-actions { display:flex; flex-wrap:wrap; gap:.6rem; }
+.consent-actions .btn { min-height:42px; padding:.55rem 1.2rem; font-size:.8rem; flex:1 1 140px; }
+.consent-prefs { display:none; margin:.9rem 0; padding:.9rem 1rem; border:1px dashed var(--line); border-radius:12px; }
+.consent-prefs.open { display:block; }
+.pref-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.45rem 0; }
+.pref-row + .pref-row { border-top:1px solid rgba(255,255,255,.06); }
+.pref-row .pr-name { font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em; }
+.pref-row .pr-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.switch { position:relative; width:46px; height:26px; flex:none; }
+.switch input { opacity:0; width:100%; height:100%; position:absolute; margin:0; cursor:pointer; z-index:2; }
+.switch .track { position:absolute; inset:0; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid var(--line); transition:.25s; }
+.switch .track::after { content:''; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:#fff; transition:.25s var(--ease); }
+.switch input:checked + .track { background:linear-gradient(135deg, var(--blue), var(--sky)); border-color:transparent; }
+.switch input:checked + .track::after { transform:translateX(20px); }
+.switch input:disabled { cursor:not-allowed; }
+.switch input:disabled + .track { background:rgba(255,215,0,.25); border-color:var(--line-gold); }
+
+/* ============ REVEAL / RESPONSIVE ============ */
+html.js .reveal { opacity:0; transform:translateY(34px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+html.js .reveal.in { opacity:1; transform:none; }
+@media (min-width:640px) {
+  .pf-grid { grid-template-columns:repeat(2, 1fr); }
+  .stat-grid { grid-template-columns:repeat(4, 1fr); }
+  .pf-card.featured { grid-column:span 2; }
+  .pf-card.featured .pf-media { height:260px; }
+}
+@media (min-width:900px) {
+  .nav-links { display:flex; }
+  .nav-cta { display:flex; }
+  .menu-btn { display:none; }
+  .footer-grid { grid-template-columns:1.4fr 1fr 1fr 1fr; }
+  .footer-base { flex-direction:row; justify-content:space-between; }
+}
+@media (min-width:1200px) {
+  .pf-grid { grid-template-columns:repeat(3, 1fr); }
+  .pf-card.featured { grid-column:span 3; flex-direction:row; }
+  .pf-card.featured .pf-media { width:46%; height:auto; min-height:280px; flex:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+  html.js .reveal { opacity:1; transform:none; }
+}
+@media print {
+  .site-header, .back-to-top, .consent-banner, .filter-bar, .lightbox, .hero-banner, .cta-strip { display:none !important; }
+  body { background:#fff; color:#000; }
+  body::before { display:none; }
+  .glass, .glass-strong, .glass-gold { background:#fff; border:1px solid #999; box-shadow:none; }
+  .pf-body h3, .section-title, .hero h1 { color:#000; -webkit-text-fill-color:#000; }
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5 2.5 2.5 0 0 0 6.5 19H19"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6m-3-3v6"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4h6v6M20 4 10 14M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V6m0 14h16M8 16v-5m4 5V8m4 8v-3"/></symbol>
+    <symbol id="i-app" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5h4M12 18.5h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a href="https://alvin-silva.asilvainnovations.com" class="brand" aria-label="Alvin M. Silva — home">
+      <img src="assets/logo-192.png" alt="A. Silva Innovations logo" width="46" height="46">
+      <span>
+        <span class="brand-name">ALVIN M. SILVA</span><br>
+        <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
+      </span>
+    </a>
+
+    <ul class="nav-links">
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">The Professional</div>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#about" role="menuitem"><svg><use href="#i-user"/></svg> Profile &amp; Proof</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> Track Record</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#works" role="menuitem"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
+        </div>
+      </li>
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Expertise <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">What I Deliver</div>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#value" role="menuitem"><svg><use href="#i-target"/></svg> Value For You</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Core Expertise</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#impact" role="menuitem"><svg><use href="#i-star"/></svg> Impact Timeline</a>
+        </div>
+      </li>
+      <li><a href="portfolio.html" class="drop-btn" style="text-decoration:none" aria-current="page">Portfolio</a></li>
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Resources <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">Go Deeper</div>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
+          <a class="drop-item" href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-shield"/></svg> Policies ↗</a>
+          <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
+        </div>
+      </li>
+      <li><a href="https://alvin-silva.asilvainnovations.com/#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://alvin-silva.asilvainnovations.com/#contact" class="btn btn-primary btn-sm"><span>Start a Conversation</span></a>
+    </div>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <div class="mm-head">
+    <img src="assets/logo-192.png" alt="" width="52" height="52">
+    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">Navigate</div>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#about"><svg><use href="#i-user"/></svg> About</a>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#expertise"><svg><use href="#i-bulb"/></svg> Expertise</a>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#impact"><svg><use href="#i-star"/></svg> Impact Timeline</a>
+    <a class="mm-link" href="portfolio.html" aria-current="page"><svg><use href="#i-book"/></svg> Portfolio</a>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#contact"><svg><use href="#i-mail"/></svg> Contact</a>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">External</div>
+    <a class="mm-link" href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-shield"/></svg> Policies ↗</a>
+    <a class="mm-link" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
+    <a class="mm-link" href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-fb"/></svg> Facebook ↗</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-banner" role="img" aria-label="Abstract digital landscape: glowing network lines over dark terrain at dawn">
+    <img src="assets/hero-banner.jpg" alt="" fetchpriority="high" decoding="async">
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <a class="breadcrumb" href="https://alvin-silva.asilvainnovations.com"><svg><use href="#i-back"/></svg> alvin-silva.asilvainnovations.com</a>
+      <p class="kicker">The Work</p>
+      <h1>Proof in <span class="grad-text">platforms, plans &amp; print</span></h1>
+      <p class="hero-sub">Twenty engagements that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, field-proven resilience programs, and three published books. Tap any image to view it full-screen.</p>
+      <div class="stat-grid">
+        <div><div class="stat-num"><span class="count" data-to="20">20</span></div><div class="stat-label">Featured Works</div></div>
+        <div><div class="stat-num"><span class="count" data-to="6">6</span></div><div class="stat-label">Digital Platforms</div></div>
+        <div><div class="stat-num"><span class="count" data-to="10">10</span>+</div><div class="stat-label">Consulting Engagements</div></div>
+        <div><div class="stat-num"><span class="count" data-to="4">4</span></div><div class="stat-label">Books &amp; Manuals</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="section" id="portfolio" style="padding-top:1rem">
+  <div class="wrap">
+    <div class="filter-bar" role="group" aria-label="Filter portfolio items">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">20</span></button>
+      <button class="filter-btn" data-filter="platforms" aria-pressed="false">Platforms <span class="count-pill">6</span></button>
+      <button class="filter-btn" data-filter="consulting" aria-pressed="false">Consulting <span class="count-pill">10</span></button>
+      <button class="filter-btn" data-filter="publications" aria-pressed="false">Publications <span class="count-pill">4</span></button>
+    </div>
+    <div class="pf-grid" id="pfGrid"><!-- cards injected by JS --></div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP ============ -->
+<section class="section cta-strip">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <h2 class="section-title">Your project could be <span class="hl">card #21</span></h2>
+    <p class="section-sub">Every engagement above started with one conversation.</p>
+    <a href="https://alvin-silva.asilvainnovations.com/#contact" class="btn btn-primary"><span>Start a Conversation</span><svg><use href="#i-arrow"/></svg></a>
+    <a href="mailto:alvin.silva@asilvainnovations.com" class="btn btn-gold"><span>alvin.silva@asilvainnovations.com</span></a>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://alvin-silva.asilvainnovations.com" class="brand"><img src="assets/logo-192.png" alt="" width="46" height="46"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
+        <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
+        <div class="socials">
+          <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
+          <a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
+          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
+          <a href="tel:+639178555134" aria-label="Call +63 917 855 5134"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-phone"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#about">About</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#expertise">Core Expertise</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#impact">Impact Timeline</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Flagship Work</h4>
+        <ul>
+          <li><a href="https://bangsamro-investment-roadmapp.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
+          <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
+          <li><a href="#portfolio" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
+          <li><a href="#portfolio" data-jump="Cognitio+">Cognitio+</a></li>
+          <li><a href="https://asilvainnovations.github.io/website/rtl.html" target="_blank" rel="noopener noreferrer">RTL ↗</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Credentials</h4>
+        <ul>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#about">MDM — Asian Institute of Management</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#expertise">Certified SRMP</a></li>
+          <li><a href="#portfolio" data-jump="Personal Resilience">Published Author ×3</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer">Main Site ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
+      <p class="footer-legal">
+        <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
+        <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
+      </p>
+      <span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
+    </div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close viewer">✕</button>
+  <div class="lb-frame glass-strong">
+    <div class="lb-media"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-caption">
+      <div><div class="lb-title" id="lbTitle"></div><div class="lb-meta" id="lbMeta"></div></div>
+      <a href="#" class="btn btn-gold btn-sm" id="lbLink" target="_blank" rel="noopener noreferrer"><span>Visit project</span><svg><use href="#i-ext"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+<div class="toast glass-strong" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ COOKIE CONSENT ============ -->
+<div class="consent-banner glass-strong" id="consentBanner" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentDesc" hidden>
+  <h3 id="consentTitle"><svg><use href="#i-shield"/></svg> Your privacy, your choice</h3>
+  <p id="consentDesc">This site uses essential storage to remember your preferences, plus optional analytics and marketing cookies. Read our
+    <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a> and
+    <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+  </p>
+  <div class="consent-prefs" id="consentPrefs">
+    <div class="pref-row">
+      <div><div class="pr-name">Essential</div><div class="pr-desc">Required — remembers your consent choice. Always on.</div></div>
+      <span class="switch"><input type="checkbox" checked disabled aria-label="Essential cookies (always on)"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Analytics</div><div class="pr-desc">Anonymous usage statistics that help improve this site.</div></div>
+      <span class="switch"><input type="checkbox" id="prefAnalytics" aria-label="Analytics cookies"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Marketing</div><div class="pr-desc">Used to measure outreach and referrals.</div></div>
+      <span class="switch"><input type="checkbox" id="prefMarketing" aria-label="Marketing cookies"><span class="track"></span></span>
+    </div>
+  </div>
+  <div class="consent-actions">
+    <button class="btn btn-primary" id="consentAccept"><span>Accept All</span></button>
+    <button class="btn btn-gold" id="consentSave" style="display:none"><span>Save Choices</span></button>
+    <button class="btn btn-ghost" id="consentDecline"><span>Decline Optional</span></button>
+    <button class="btn btn-ghost" id="consentCustomize"><span>Customize</span></button>
+  </div>
+</div>
+<script>
+document.documentElement.classList.add('js');
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+
+/* ================================================================
+   PORTFOLIO DATA — 20 works, newest flagship first
+   img: primary screenshot URL · ph: branded local fallback
+   ================================================================ */
+const WORKS = [
+  { cat:'platforms', badge:'★ Latest · Platform', badgeCls:'badge-gold', featured:true,
+    title:'BIRD — Investment Roadmapping Platform of BARMM',
+    meta:'BARMM Bureau of Investments–MTIT · 2026',
+    desc:'The digital home of the Bangsamoro Investment Roadmap 2026–2035 — the decade-long binding investment framework for the Bangsamoro Autonomous Region, architected end-to-end and published as an interactive platform.',
+    img:'assets/card-bird.jpg', ph:'assets/card-bird.jpg',
+    links:[['Platform','https://bangsamro-investment-roadmapp.asilvainnovations.com'],['App','https://bird-app.ailvainnovations.com']] },
+  { cat:'platforms', badge:'Platform',
+    title:'DDRiVE-M Platform', meta:'ASilva Innovations',
+    desc:'Comprehensive intelligence platform compliant with RA 10121, ISO 31000, and UNDRR frameworks — AI-powered disaster risk management from detection to recovery.',
+    img:'https://appimize.app/assets/apps/user_1097/images/4750f689086d_379_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Learn More','https://asilvainnovations.github.io/ddrive-m/']] },
+  { cat:'platforms', badge:'Platform',
+    title:'Strat Planner Pro', meta:'ASilva Innovations',
+    desc:'All-in-one, AI-powered progressive web app for deep systems diagnosis, structured planning, and disciplined execution. Works offline and prints beautifully.',
+    img:'https://appimize.app/assets/apps/user_1097/images/d6780c531792_34_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Get Started','https://preview-ljjsipjm--strategy-ai-planner.deploypad.app/']] },
+  { cat:'platforms', badge:'Platform',
+    title:'RTL — Real-Time Leadership', meta:'ASilva Innovations',
+    desc:'Rooted in culture, powered by awareness, enhanced with technology — digital learning experiences for growth, resilience, and wellness.',
+    img:'https://appimize.app/assets/apps/user_1097/images/1c6d5db02bde_433_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Explore RTL','https://asilvainnovations.github.io/website/rtl.html']] },
+  { cat:'platforms', badge:'Platform',
+    title:'Cognitio+: Your Partner in Resilience', meta:'Cognitio+',
+    desc:'The knowledge ecosystem behind the resilience practice — your path to growth, resilience, and wellness through digital learning experiences.',
+    img:'https://appimize.app/assets/apps/user_1097/images/40bb2a1c6ec0_322_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Explore Cognitio+','https://cognitio-plus.com/']] },
+  { cat:'platforms', badge:'Platform',
+    title:'Balatan Climate Resilience Hub', meta:'SOLHUM · People’s Survival Fund · 2024–2025',
+    desc:'Pioneering climate-smart model funded by the People’s Survival Fund (PSF), driving sustainable development in Balatan, Camarines Sur — a ₱190M project design.',
+    img:'https://appimize.app/assets/apps/user_1097/images/c74671719bdd_217_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Learn More','https://balatan-psf.aiwaapp.live/']] },
+
+  { cat:'consulting', badge:'Strategy',
+    title:'WorldSkills Philippines – TESDA Strategic Plan', meta:'TESDA · 2026–2030',
+    desc:'National Quality Engine: sole-authored strategic plan mapping vision, mission, and organizational goals toward long-term resilience and sustainability.',
+    img:'https://appimize.app/assets/apps/user_1097/images/e472511f68cc_607_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['View Plan','https://asilvainnovations.com/wsp-strategic-plan']] },
+  { cat:'consulting', badge:'Health',
+    title:'Seamless Care Guidebook', meta:'Cognitio+ · 2024',
+    desc:'Rigorous analysis of the Philippine health sector as a Complex Adaptive System, identifying critical systemic barriers to mental health integration.',
+    img:'https://appimize.app/assets/apps/user_1097/images/2a0918113bfa_696_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Read Guidebook','https://asilvainnovations.com/seamless-care']] },
+  { cat:'consulting', badge:'DRR Planning',
+    title:'Risk-Informed CDP of Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
+    desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in rigorous analysis and community engagement.',
+    img:'https://appimize.app/assets/apps/user_1097/images/54438df5ed4c_875_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Access CDP','https://asilvainnovations.com/salcedo-cdp']] },
+  { cat:'consulting', badge:'Mental Health',
+    title:'MHPSS Intervention Module for Emergency Responders', meta:'WHO & DOH · 2023',
+    desc:'Mental Health and Psychosocial Support intervention module for PEMAT members, aligned with WHO guidance on mental health as a determinant of health outcomes.',
+    img:'https://appimize.app/assets/apps/user_1097/images/1f5d8b41b89b_461_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Request Details','mailto:alvin.silva@asilvainnovations.com?subject=MHPSS%20Module%20—%20details%20request']] },
+  { cat:'consulting', badge:'Resilience',
+    title:'Integrated Risk & Resilience Management — BARMM', meta:'USAID & Action Against Hunger · 2022',
+    desc:'Final report on IRRM for CSOs and communities in the Bangsamoro — Food Security, Livelihoods, DRR, and WASH systems innovation.',
+    img:'https://appimize.app/assets/apps/user_1097/images/fb15885ec7ea_325_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Request Report','mailto:alvin.silva@asilvainnovations.com?subject=BARMM%20IRRM%20Report%20—%20request']] },
+  { cat:'consulting', badge:'DRR Review',
+    title:'Conflict-Sensitive DRR Project Review — Mindanao', meta:'Philippine & German Red Cross',
+    desc:'Participatory conflict assessment and mid-term review of a DRR project in fragile, conflict-affected Mindanao communities and schools.',
+    img:'https://appimize.app/assets/apps/user_1097/images/e3778ca568a7_916_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Request Summary','mailto:alvin.silva@asilvainnovations.com?subject=Conflict-Sensitive%20DRR%20Review%20—%20request']] },
+  { cat:'consulting', badge:'Performance',
+    title:'Performance Management at DLSU Manila', meta:'DLSU · 2024',
+    desc:'Baseline and needs assessment with a performance management hub — frameworks, prototypes, metrics, and guides for organizational effectiveness.',
+    img:'https://appimize.app/assets/apps/user_1097/images/4b54edc205e9_573_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Access Hub','https://oupms-dlsu.aiwaapp.live/']] },
+  { cat:'consulting', badge:'Policy Research',
+    title:'Urban Resilience Policy Review — Metro Manila', meta:'MMDA · Policy Research',
+    desc:'Policy review framework integrating resilience into organizational strategies and governance, with actionable insights for vulnerable communities.',
+    img:'https://appimize.app/assets/apps/user_1097/images/150e099d15df_913_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Request Report','mailto:alvin.silva@asilvainnovations.com?subject=Urban%20Resilience%20Policy%20Review%20—%20request']] },
+  { cat:'consulting', badge:'Systems Innovation',
+    title:'Systems Innovation — DRR-CCA, WASH, FSL in Mindanao', meta:'Mindanao Programs',
+    desc:'Results, methodologies, and recommendations tied to innovation in DRR-CCA, Food Security and Livelihoods, and WASH systems across Mindanao.',
+    img:'https://appimize.app/assets/apps/user_1097/images/6b106eabab8e_230_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Request Details','mailto:alvin.silva@asilvainnovations.com?subject=Systems%20Innovation%20Mindanao%20—%20request']] },
+  { cat:'consulting', badge:'Climate Resilience',
+    title:'₱190M Climate-Smart Resilience Project Design', meta:'SOLHUM · Balatan, Camarines Sur · 2024–2025',
+    desc:'Community-based, climate-smart resilience project design engineered to attract climate finance and protect coastal livelihoods.',
+    img:'https://appimize.app/assets/apps/user_1097/images/c74671719bdd_217_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Learn More','https://balatan-psf.aiwaapp.live/']] },
+
+  { cat:'publications', badge:'Book · 2025', badgeCls:'badge-violet',
+    title:'Personal Resilience: The Path to Oneness', meta:'Cognitio+ · 2025',
+    desc:'The deeper ground of human experience — the sacred space of spirituality beyond psychological resilience. Timeless wisdom for personal transformation.',
+    img:'https://appimize.app/assets/apps/user_1097/images/d4ff156ea5e3_667_1097.png', ph:'assets/ph-publication.jpg',
+    links:[['Learn More','https://resilienceone.appimize.app/']] },
+  { cat:'publications', badge:'Book · 2024', badgeCls:'badge-violet',
+    title:'Resilient Futures: Nurturing Oneness in Education', meta:'Cognitio+ · 2024',
+    desc:'The extension volume — resilience in education and beyond, for adapting, recovering, and thriving amid rapid change and uncertainty.',
+    img:'https://appimize.app/assets/apps/user_1097/images/82640a49c19d_363_1097.png', ph:'assets/ph-publication.jpg',
+    links:[['Explore the Book','https://asilvainnovations.com/resilient-futures']] },
+  { cat:'publications', badge:'Book · 2023', badgeCls:'badge-violet',
+    title:'Building Resilience: The Path to a More Fulfilling Life', meta:'Cognitio+ · 2023',
+    desc:'The foundational guide to building and sustaining resilience — knowledge, tools, and mindsets to thrive in an ever-changing world.',
+    img:'https://appimize.app/assets/apps/user_1097/images/4368ba1afd1f_884_1097.jpg', ph:'assets/ph-publication.jpg',
+    links:[['Get the Guide','https://building-resilience.aiwaapp.live/']] },
+  { cat:'publications', badge:'Operations Manual · 2022', badgeCls:'badge-violet',
+    title:'Shock-Responsive & Sustainable Livelihoods — Process Manual', meta:'MOVEUP Mindanao · 2022',
+    desc:'Four interrelated chapters covering Livelihoods and MSMEs, Livelihood Risk Profiling, Asset & Market Assessment, and Resilience Development.',
+    img:'https://appimize.app/assets/apps/user_1097/images/7171389db22b_970_1097.png', ph:'assets/ph-publication.jpg',
+    links:[['Explore Manual','https://rilhub.org/2022/02/16/promoting-and-strengthening-shock-responsive-resilient-and-sustainable-livelihoods-and-livelihood-interventions-a-process-manual/']] },
+];
+
+/* ================================================================
+   RENDER CARDS
+   ================================================================ */
+const grid = $('#pfGrid');
+grid.innerHTML = WORKS.map((w, i) => `
+  <article class="pf-card glass reveal${w.featured ? ' featured' : ''}" data-cat="${w.cat}" style="animation-delay:${Math.min(i*60, 600)}ms">
+    <button class="pf-media" data-lb="${i}" aria-label="View image of ${w.title} full-screen">
+      <img src="${w.img}" alt="${w.title} — visual" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async"
+           onerror="this.onerror=null;this.src='${w.ph}';">
+      <span class="pf-badge ${w.badgeCls || ''}">${w.badge}</span>
+      <span class="zoom-hint"><svg><use href="#i-zoom"/></svg> Full view</span>
+    </button>
+    <div class="pf-body">
+      <h3>${w.title}</h3>
+      <p class="pf-meta">${w.meta}</p>
+      <p>${w.desc}</p>
+      <div class="pf-actions">
+        ${w.links.map(([t,u],j) => `<a class="btn ${j===0 ? 'btn-primary' : 'btn-ghost'} btn-sm" href="${u}" ${u.startsWith('mailto:') ? '' : 'target="_blank" rel="noopener noreferrer"'}><span>${t}</span>${u.startsWith('mailto:') ? '' : '<svg><use href="#i-ext"/></svg>'}</a>`).join('')}
+      </div>
+    </div>
+  </article>`).join('');
+
+/* ================================================================
+   FILTERS
+   ================================================================ */
+$$('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+  $$('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+  btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+  const f = btn.dataset.filter;
+  $$('.pf-card').forEach(card => {
+    const show = f === 'all' || card.dataset.cat === f;
+    card.style.display = show ? '' : 'none';
+  });
+}));
+
+/* footer "jump to card" links */
+$$('[data-jump]').forEach(a => a.addEventListener('click', e => {
+  const q = a.dataset.jump.toLowerCase();
+  const card = $$('.pf-card').find(c => c.querySelector('h3').textContent.toLowerCase().includes(q));
+  if (card) {
+    e.preventDefault();
+    $$('.filter-btn')[0].click();
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.style.borderColor = 'var(--gold)';
+    setTimeout(() => card.style.borderColor = '', 2400);
+  }
+}));
+
+/* ================================================================
+   LIGHTBOX — full view of portfolio images
+   ================================================================ */
+const lb = $('#lightbox'), lbImg = $('#lbImg');
+function openLB(i) {
+  const w = WORKS[i];
+  lbImg.src = w.img;
+  lbImg.onerror = () => { lbImg.onerror = null; lbImg.src = w.ph; };
+  lbImg.alt = `${w.title} — full view`;
+  $('#lbTitle').textContent = w.title;
+  $('#lbMeta').textContent = w.meta;
+  const first = w.links[0];
+  const lbLink = $('#lbLink');
+  lbLink.href = first[1];
+  lbLink.querySelector('span').textContent = first[0].startsWith('Request') ? 'Request details' : 'Visit project';
+  if (first[1].startsWith('mailto:')) lbLink.removeAttribute('target'); else lbLink.setAttribute('target','_blank');
+  lb.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  $('#lbClose').focus();
+}
+function closeLB() { lb.classList.remove('show'); document.body.style.overflow = ''; }
+grid.addEventListener('click', e => {
+  const m = e.target.closest('.pf-media');
+  if (m) openLB(+m.dataset.lb);
+});
+$('#lbClose').addEventListener('click', closeLB);
+lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+
+/* ================================================================
+   NAV: dropdowns + mobile menu
+   ================================================================ */
+$$('[data-drop] > .drop-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const drop = btn.parentElement, wasOpen = drop.classList.contains('open');
+    $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+    if (!wasOpen) { drop.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+});
+const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
+function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn.addEventListener('click', openMobile);
+$('#mmClose').addEventListener('click', closeMobile);
+overlay.addEventListener('click', closeMobile);
+$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeMobile(); closeLB(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
+});
+
+/* ================================================================
+   SCROLL: reveal, counters, back-to-top
+   ================================================================ */
+const revealIO = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) { en.target.classList.add('in'); revealIO.unobserve(en.target); }
+}), {threshold:.1, rootMargin:'0px 0px -5% 0px'});
+$$('.reveal').forEach(el => revealIO.observe(el));
+setTimeout(() => {
+  const sweep = () => $$('.reveal:not(.in)').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight * .95) el.classList.add('in');
+  });
+  sweep(); addEventListener('scroll', sweep, {passive:true});
+}, 1500);
+
+const countIO = new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return;
+  const el = en.target; countIO.unobserve(el);
+  const to = +el.dataset.to, dur = 1200, t0 = performance.now();
+  el.textContent = '0';
+  const step = now => {
+    const p = Math.min((now - t0) / dur, 1), e2 = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(to * e2);
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}), {threshold:.5});
+$$('.count').forEach(el => countIO.observe(el));
+
+const btt = $('#backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
+btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ================================================================
+   COOKIE CONSENT — shared with index.html
+   ================================================================ */
+const CONSENT_KEY = 'as-cookie-consent-v1';
+const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
+function getConsent() { try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; } }
+function setConsent(analytics, marketing) {
+  const rec = { essential:true, analytics:!!analytics, marketing:!!marketing, ts:new Date().toISOString(), v:1 };
+  localStorage.setItem(CONSENT_KEY, JSON.stringify(rec));
+  window.dispatchEvent(new CustomEvent('as:consent', { detail:rec }));
+}
+function showConsent() { cBanner.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => cBanner.classList.add('show'))); }
+function hideConsent() { cBanner.classList.remove('show'); setTimeout(() => { cBanner.hidden = true; }, 500); }
+$('#consentAccept').addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
+$('#consentDecline').addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
+$('#consentSave').addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
+$('#consentCustomize').addEventListener('click', () => {
+  cPrefs.classList.toggle('open');
+  $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
+});
+$('#cookieSettings').addEventListener('click', () => {
+  const c = getConsent();
+  if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
+  cPrefs.classList.add('open'); $('#consentSave').style.display = '';
+  showConsent();
+});
+if (!getConsent()) setTimeout(showConsent, 1800);
+
+/* ================================================================
+   PWA
+   ================================================================ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>
