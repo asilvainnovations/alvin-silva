@@ -201,6 +201,17 @@ button { font-family:inherit; }
 .pf-badge { position:absolute; top:.9rem; left:.9rem; padding:.3rem .85rem; border-radius:999px; font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.4); }
 .pf-badge.badge-gold { background:linear-gradient(135deg, #c9a400, var(--gold)); color:#0a0e27; }
 .pf-badge.badge-violet { background:linear-gradient(135deg, #7c5cd6, var(--violet)); }
+.pf-badge.badge-green { background:linear-gradient(135deg, #0e9f6e, var(--green)); color:#06281c; }
+
+/* ============ DOCUMENT CARDS (technical reports) ============ */
+.doc-card { border-left:4px solid var(--green); }
+.doc-body { padding:1.3rem 1.4rem 1.4rem; display:flex; flex-direction:column; flex:1; }
+.doc-top { display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem; }
+.doc-icon { width:44px; height:44px; flex:none; border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.4); }
+.doc-icon svg { width:20px; height:20px; color:var(--green); }
+.doc-year { font-family:var(--font-mono); font-size:.78rem; font-weight:700; color:var(--gold); letter-spacing:.06em; }
+.doc-card .pf-badge { position:static; margin-left:auto; }
+.doc-card h3 { font-size:1rem; line-height:1.35; }
 .pf-body { padding:1.4rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
 .pf-body h3 { font-size:1.08rem; font-weight:700; color:#fff; margin-bottom:.3rem; }
 .pf-meta { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
@@ -327,6 +338,7 @@ html.js .reveal.in { opacity:1; transform:none; }
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
     <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
     <symbol id="i-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6m-3-3v6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5M9 13h6M9 17h4"/></symbol>
     <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4h6v6M20 4 10 14M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
     <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
@@ -374,7 +386,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="drop-menu" role="menu">
           <div class="drop-head">Go Deeper</div>
           <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
-          <a class="drop-item" href="policies.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-shield"/></svg> Policies ↗</a>
+          <a class="drop-item" href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-shield"/></svg> Policies ↗</a>
           <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
         </div>
       </li>
@@ -425,11 +437,11 @@ html.js .reveal.in { opacity:1; transform:none; }
       <a class="breadcrumb" href="https://alvin-silva.asilvainnovations.com"><svg><use href="#i-back"/></svg> alvin-silva.asilvainnovations.com</a>
       <p class="kicker">The Work</p>
       <h1>Proof in <span class="grad-text">platforms, plans &amp; print</span></h1>
-      <p class="hero-sub">Twenty engagements that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, field-proven resilience programs, and three published books. Tap any image to view it full-screen.</p>
+      <p class="hero-sub">Thirty-three documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
       <div class="stat-grid">
-        <div><div class="stat-num"><span class="count" data-to="20">20</span></div><div class="stat-label">Featured Works</div></div>
+        <div><div class="stat-num"><span class="count" data-to="33">33</span></div><div class="stat-label">Featured Works</div></div>
         <div><div class="stat-num"><span class="count" data-to="6">6</span></div><div class="stat-label">Digital Platforms</div></div>
-        <div><div class="stat-num"><span class="count" data-to="10">10</span>+</div><div class="stat-label">Consulting Engagements</div></div>
+        <div><div class="stat-num"><span class="count" data-to="13">13</span></div><div class="stat-label">Technical Reports</div></div>
         <div><div class="stat-num"><span class="count" data-to="4">4</span></div><div class="stat-label">Books &amp; Manuals</div></div>
       </div>
     </div>
@@ -440,10 +452,11 @@ html.js .reveal.in { opacity:1; transform:none; }
 <section class="section" id="portfolio" style="padding-top:1rem">
   <div class="wrap">
     <div class="filter-bar" role="group" aria-label="Filter portfolio items">
-      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">20</span></button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">33</span></button>
       <button class="filter-btn" data-filter="platforms" aria-pressed="false">Platforms <span class="count-pill">6</span></button>
       <button class="filter-btn" data-filter="consulting" aria-pressed="false">Consulting <span class="count-pill">10</span></button>
       <button class="filter-btn" data-filter="publications" aria-pressed="false">Publications <span class="count-pill">4</span></button>
+      <button class="filter-btn" data-filter="reports" aria-pressed="false">Reports <span class="count-pill">13</span></button>
     </div>
     <div class="pf-grid" id="pfGrid"><!-- cards injected by JS --></div>
   </div>
@@ -453,7 +466,7 @@ html.js .reveal.in { opacity:1; transform:none; }
 <section class="section cta-strip">
   <div class="wrap">
     <p class="kicker">Next</p>
-    <h2 class="section-title">Your project could be <span class="hl">card #21</span></h2>
+    <h2 class="section-title">Your project could be <span class="hl">card #34</span></h2>
     <p class="section-sub">Every engagement above started with one conversation.</p>
     <a href="https://alvin-silva.asilvainnovations.com/#contact" class="btn btn-primary"><span>Start a Conversation</span><svg><use href="#i-arrow"/></svg></a>
     <a href="mailto:alvin.silva@asilvainnovations.com" class="btn btn-gold"><span>alvin.silva@asilvainnovations.com</span></a>
@@ -488,10 +501,10 @@ html.js .reveal.in { opacity:1; transform:none; }
       <div class="footer-col">
         <h4>Flagship Work</h4>
         <ul>
-          <li><a href="https://bangsamro-investment-roadmapp.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
+          <li><a href="https://bangsamoro-investment-roadmap.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD App ↗</a></li>
           <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
-          <li><a href="#portfolio" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
-          <li><a href="#portfolio" data-jump="Cognitio+">Cognitio+</a></li>
+          <li><a href="https://strat-planner-pro.asilvainnovations.com/" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
+          <li><a href="" data-jump="Cognitio+">Cognitio+</a></li>
           <li><a href="https://asilvainnovations.github.io/website/rtl.html" target="_blank" rel="noopener noreferrer">RTL ↗</a></li>
         </ul>
       </div>
@@ -617,7 +630,7 @@ const WORKS = [
     title:'Risk-Informed CDP of Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
     desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in rigorous analysis and community engagement.',
     img:'https://appimize.app/assets/apps/user_1097/images/54438df5ed4c_875_1097.png', ph:'assets/ph-consulting.jpg',
-    links:[['Access CDP','https://asilvainnovations.com/salcedo-cdp']] },
+    links:[['Report PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
   { cat:'consulting', badge:'Mental Health',
     title:'MHPSS Intervention Module for Emergency Responders', meta:'WHO & DOH · 2023',
     desc:'Mental Health and Psychosocial Support intervention module for PEMAT members, aligned with WHO guidance on mental health as a determinant of health outcomes.',
@@ -627,12 +640,12 @@ const WORKS = [
     title:'Integrated Risk & Resilience Management — BARMM', meta:'USAID & Action Against Hunger · 2022',
     desc:'Final report on IRRM for CSOs and communities in the Bangsamoro — Food Security, Livelihoods, DRR, and WASH systems innovation.',
     img:'https://appimize.app/assets/apps/user_1097/images/fb15885ec7ea_325_1097.png', ph:'assets/ph-consulting.jpg',
-    links:[['Request Report','mailto:alvin.silva@asilvainnovations.com?subject=BARMM%20IRRM%20Report%20—%20request']] },
+    links:[['Completion Report','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
   { cat:'consulting', badge:'DRR Review',
     title:'Conflict-Sensitive DRR Project Review — Mindanao', meta:'Philippine & German Red Cross',
     desc:'Participatory conflict assessment and mid-term review of a DRR project in fragile, conflict-affected Mindanao communities and schools.',
     img:'https://appimize.app/assets/apps/user_1097/images/e3778ca568a7_916_1097.png', ph:'assets/ph-consulting.jpg',
-    links:[['Request Summary','mailto:alvin.silva@asilvainnovations.com?subject=Conflict-Sensitive%20DRR%20Review%20—%20request']] },
+    links:[['MTR Report PDF','https://drive.google.com/file/d/1W-Zo5DqCOstJSBnie1CAGH2whvO_rR3V/view?usp=sharing']] },
   { cat:'consulting', badge:'Performance',
     title:'Performance Management at DLSU Manila', meta:'DLSU · 2024',
     desc:'Baseline and needs assessment with a performance management hub — frameworks, prototypes, metrics, and guides for organizational effectiveness.',
@@ -642,12 +655,12 @@ const WORKS = [
     title:'Urban Resilience Policy Review — Metro Manila', meta:'MMDA · Policy Research',
     desc:'Policy review framework integrating resilience into organizational strategies and governance, with actionable insights for vulnerable communities.',
     img:'https://appimize.app/assets/apps/user_1097/images/150e099d15df_913_1097.png', ph:'assets/ph-consulting.jpg',
-    links:[['Request Report','mailto:alvin.silva@asilvainnovations.com?subject=Urban%20Resilience%20Policy%20Review%20—%20request']] },
+    links:[['Policy Review PDF','https://drive.google.com/file/d/1jhPPG6ov2shDQhEepywDxWBUxTENkfCC/view?usp=sharing']] },
   { cat:'consulting', badge:'Systems Innovation',
     title:'Systems Innovation — DRR-CCA, WASH, FSL in Mindanao', meta:'Mindanao Programs',
     desc:'Results, methodologies, and recommendations tied to innovation in DRR-CCA, Food Security and Livelihoods, and WASH systems across Mindanao.',
     img:'https://appimize.app/assets/apps/user_1097/images/6b106eabab8e_230_1097.png', ph:'assets/ph-consulting.jpg',
-    links:[['Request Details','mailto:alvin.silva@asilvainnovations.com?subject=Systems%20Innovation%20Mindanao%20—%20request']] },
+    links:[['Final Report PDF','https://drive.google.com/file/d/1gYcw9OnsL0JQPifbE16ZaDsoQJeY_B_q/view?usp=sharing']] },
   { cat:'consulting', badge:'Climate Resilience',
     title:'₱190M Climate-Smart Resilience Project Design', meta:'SOLHUM · Balatan, Camarines Sur · 2024–2025',
     desc:'Community-based, climate-smart resilience project design engineered to attract climate finance and protect coastal livelihoods.',
@@ -658,7 +671,7 @@ const WORKS = [
     title:'Personal Resilience: The Path to Oneness', meta:'Cognitio+ · 2025',
     desc:'The deeper ground of human experience — the sacred space of spirituality beyond psychological resilience. Timeless wisdom for personal transformation.',
     img:'https://appimize.app/assets/apps/user_1097/images/d4ff156ea5e3_667_1097.png', ph:'assets/ph-publication.jpg',
-    links:[['Learn More','https://resilienceone.appimize.app/']] },
+    links:[['Read Online','https://personal-resilience.aiwaapp.live']] },
   { cat:'publications', badge:'Book · 2024', badgeCls:'badge-violet',
     title:'Resilient Futures: Nurturing Oneness in Education', meta:'Cognitio+ · 2024',
     desc:'The extension volume — resilience in education and beyond, for adapting, recovering, and thriving amid rapid change and uncertainty.',
@@ -668,19 +681,79 @@ const WORKS = [
     title:'Building Resilience: The Path to a More Fulfilling Life', meta:'Cognitio+ · 2023',
     desc:'The foundational guide to building and sustaining resilience — knowledge, tools, and mindsets to thrive in an ever-changing world.',
     img:'https://appimize.app/assets/apps/user_1097/images/4368ba1afd1f_884_1097.jpg', ph:'assets/ph-publication.jpg',
-    links:[['Get the Guide','https://building-resilience.aiwaapp.live/']] },
+    links:[['Buy on Amazon','https://www.amazon.com/BUILDING-RESILIENCE-Path-Fulfilling-Resilient-ebook/dp/B0CJ45LDRG'],['Read Online','https://building-resilience.aiwaapp.live/']] },
   { cat:'publications', badge:'Operations Manual · 2022', badgeCls:'badge-violet',
     title:'Shock-Responsive & Sustainable Livelihoods — Process Manual', meta:'MOVEUP Mindanao · 2022',
     desc:'Four interrelated chapters covering Livelihoods and MSMEs, Livelihood Risk Profiling, Asset & Market Assessment, and Resilience Development.',
     img:'https://appimize.app/assets/apps/user_1097/images/7171389db22b_970_1097.png', ph:'assets/ph-publication.jpg',
-    links:[['Explore Manual','https://rilhub.org/2022/02/16/promoting-and-strengthening-shock-responsive-resilient-and-sustainable-livelihoods-and-livelihood-interventions-a-process-manual/']] },
+    links:[['Process Manual PDF','https://drive.google.com/file/d/16miLT_qd-pFxc2B2AWV07iN7hNuGp4UL/view?usp=sharing'],['RILHub Entry','https://rilhub.org/2022/02/16/promoting-and-strengthening-shock-responsive-resilient-and-sustainable-livelihoods-and-livelihood-interventions-a-process-manual/']] },
 ];
+
+
+/* Technical Reports — full document library (Google Drive PDFs) */
+const REPORTS = [
+  { doc:true, year:'2024', title:'SME 2024 Report', meta:'ASilva Innovations · 2024',
+    desc:'Annual SME report — analysis and recommendations for small and medium enterprise development.',
+    links:[['View PDF','https://drive.google.com/file/d/1hKzp1S2jjK5THTeFjU7jdFJRX79v-JXf/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'Shock-Responsive & Sustainable Livelihoods', meta:'Mindanao Programs',
+    desc:'Framework and field guidance for livelihoods that absorb shocks and keep households moving forward.',
+    links:[['View PDF','https://drive.google.com/file/d/1jIbvbI-GXbfOgnAq8mFZtU8txb27Iubn/view?usp=sharing']] },
+  { doc:true, year:'2023', title:'Risk-Informed CDP — Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
+    desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in community engagement.',
+    links:[['View PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
+  { doc:true, year:'2020', title:'Policy Review to Integrate Resilience', meta:'MMDA · Policy Research',
+    desc:'Policy review framework integrating resilience into organizational strategies and governance across Metro Manila.',
+    links:[['View PDF','https://drive.google.com/file/d/1jhPPG6ov2shDQhEepywDxWBUxTENkfCC/view?usp=sharing']] },
+  { doc:true, year:'2020', title:'Policy Research, Recommendations & Validation — DSWD-SLP', meta:'DSWD Sustainable Livelihood Program · 2020',
+    desc:'Policy research, recommendations, and validation report on the DSWD Sustainable Livelihood Program.',
+    links:[['View PDF','https://drive.google.com/file/d/1ZWsHPOeXQGWmd5L5rum608ZoUKOiv_OO/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'IRRM — BARMM Completion Report', meta:'USAID & Action Against Hunger · 2022',
+    desc:'Integrated Risk and Resilience Management completion report for CSOs and communities in the Bangsamoro.',
+    links:[['View PDF','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'FSL · DRR · WASH Systems Innovation — Final Report', meta:'Mindanao Programs',
+    desc:'Results, methodologies, and recommendations from systems innovation across food security, livelihoods, DRR, and WASH.',
+    links:[['View PDF','https://drive.google.com/file/d/1gYcw9OnsL0JQPifbE16ZaDsoQJeY_B_q/view?usp=sharing']] },
+  { doc:true, year:'2021', title:'Review of LGU Vulnerability Indicators in Mindanao', meta:'Mindanao Programs',
+    desc:'Critical review of vulnerability indicators used by local government units — toward sharper, decision-grade measurement.',
+    links:[['View PDF','https://drive.google.com/file/d/1_5S8JA-WRFA-ID5V2DxwCWFga6Dcezqf/view?usp=sharing']] },
+  { doc:true, year:'2021', title:'CONSENT DRR-II Mid-Term Review Report', meta:'Philippine & German Red Cross',
+    desc:'Participatory conflict assessment and mid-term review of DRR programming in fragile, conflict-affected communities and schools.',
+    links:[['View PDF','https://drive.google.com/file/d/1W-Zo5DqCOstJSBnie1CAGH2whvO_rR3V/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'Agri-Fishery Situational Assessment — Maguindanao del Norte & Sulu', meta:'BARMM',
+    desc:'Situational assessment of agriculture and fishery sectors informing livelihoods and food-security programming.',
+    links:[['View PDF','https://drive.google.com/file/d/1Gwemq7EuzKGkNK1cl7nwNlT-ZpLqPRvI/view?usp=sharing']] },
+  { doc:true, year:'2021', title:'BDA Strategic Directions Strengthening', meta:'Bangsamoro Development Agency',
+    desc:'Strategic directions and institutional strengthening recommendations for the Bangsamoro Development Agency.',
+    links:[['View PDF','https://drive.google.com/file/d/1rBQmBq_kYQSbVu5eZRvrcjA5w354KK53/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'Shock-Responsive, Resilient & Sustainable Livelihoods — Process Manual', meta:'MOVEUP Mindanao · 2022',
+    desc:'Four-chapter operations manual: Livelihoods & MSMEs, Risk Profiling, Asset & Market Assessment, Resilience Development.',
+    links:[['View PDF','https://drive.google.com/file/d/16miLT_qd-pFxc2B2AWV07iN7hNuGp4UL/view?usp=sharing']] },
+  { doc:true, year:'2021', title:'Shock-Responsive Livelihood Options for Urban Poor Households in Mindanao', meta:'Mindanao Programs',
+    desc:'Assessment of shock-responsive, resilient, and sustainable livelihood options and modalities for urban poor households.',
+    links:[['View PDF','https://drive.google.com/file/d/1XD5IeF8xdkQKVn3Vu65IcyF6RulBWS9t/view?usp=sharing']] },
+];
+const ALL_WORKS = [...WORKS, ...REPORTS];
 
 /* ================================================================
    RENDER CARDS
    ================================================================ */
 const grid = $('#pfGrid');
-grid.innerHTML = WORKS.map((w, i) => `
+grid.innerHTML = ALL_WORKS.map((w, i) => w.doc ? `
+  <article class="pf-card doc-card glass reveal" data-cat="reports" style="animation-delay:${Math.min(i*40, 500)}ms">
+    <div class="doc-body">
+      <div class="doc-top">
+        <span class="doc-icon"><svg><use href="#i-file"/></svg></span>
+        <span class="doc-year">${w.year}</span>
+        <span class="pf-badge badge-green">PDF Report</span>
+      </div>
+      <h3>${w.title}</h3>
+      <p class="pf-meta">${w.meta}</p>
+      <p>${w.desc}</p>
+      <div class="pf-actions">
+        <a class="btn btn-primary btn-sm" href="${w.links[0][1]}" target="_blank" rel="noopener noreferrer"><span>${w.links[0][0]}</span><svg><use href="#i-ext"/></svg></a>
+      </div>
+    </div>
+  </article>` : `
   <article class="pf-card glass reveal${w.featured ? ' featured' : ''}" data-cat="${w.cat}" style="animation-delay:${Math.min(i*60, 600)}ms">
     <button class="pf-media" data-lb="${i}" aria-label="View image of ${w.title} full-screen">
       <img src="${w.img}" alt="${w.title} — visual" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async"
@@ -729,7 +802,7 @@ $$('[data-jump]').forEach(a => a.addEventListener('click', e => {
    ================================================================ */
 const lb = $('#lightbox'), lbImg = $('#lbImg');
 function openLB(i) {
-  const w = WORKS[i];
+  const w = ALL_WORKS[i];
   lbImg.src = w.img;
   lbImg.onerror = () => { lbImg.onerror = null; lbImg.src = w.ph; };
   lbImg.alt = `${w.title} — full view`;
