@@ -75,7 +75,7 @@
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:92px; }
 body {
-  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:1rem; color:var(--text);
+  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:calc(1rem * var(--a11y-scale,1)); color:var(--text);
   background:
     radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%),
     radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%),
@@ -159,6 +159,31 @@ button { font-family:inherit; }
 .mm-link { display:flex; align-items:center; gap:.7rem; padding:.68rem .6rem; color:#fff; text-decoration:none; font-size:1rem; border-radius:9px; }
 .mm-link svg { width:16px; height:16px; color:var(--sky); }
 .mm-link:active, .mm-link:hover, .mm-link[aria-current="page"] { background:rgba(255,255,255,.07); color:var(--gold); }
+
+.doc-cover { overflow:hidden; aspect-ratio:16/9; background:#fff; border-bottom:1px solid var(--line); }
+.doc-cover img { width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+html { --a11y-scale:1; }
+.a11y-fab { position:fixed; bottom:1.2rem; left:1.2rem; z-index:950; width:52px; height:52px; border-radius:50%; border:1px solid var(--line-gold); cursor:pointer; background:linear-gradient(135deg, rgba(10,20,60,.92), rgba(10,14,39,.96)); color:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,.45); transition:.3s; }
+.a11y-fab:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(255,215,0,.25); }
+.a11y-fab svg { width:24px; height:24px; }
+.a11y-panel { position:fixed; top:50%; right:-105%; transform:translateY(-50%); z-index:1140; width:min(320px, 88vw); border-radius:18px 0 0 18px; padding:1.3rem 1.3rem 1.4rem; transition:right .4s var(--ease); max-height:86dvh; overflow-y:auto; }
+.a11y-panel.open { right:0; }
+.a11y-panel h2 { font-size:1rem; font-weight:800; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:#fff; }
+.a11y-panel h2 svg { width:18px; height:18px; color:var(--gold); }
+.a11y-row { display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:.6rem 0; border-top:1px solid rgba(255,255,255,.06); }
+.a11y-row:first-of-type { border-top:none; }
+.a11y-row .ar-name { font-family:var(--font-cond); font-size:.85rem; font-weight:600; letter-spacing:.04em; color:#fff; }
+.a11y-row .ar-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.a11y-close { position:absolute; top:.8rem; right:.8rem; background:none; border:none; color:var(--text-3); font-size:1.1rem; cursor:pointer; padding:.3rem; }
+html.a11y-contrast body { background:#000 !important; }
+html.a11y-contrast .glass, html.a11y-contrast .glass-strong, html.a11y-contrast .glass-gold { background:#0a0a0a !important; border-color:#FFD700 !important; }
+html.a11y-contrast p, html.a11y-contrast li, html.a11y-contrast td, html.a11y-contrast .section-sub { color:#fff !important; }
+html.a11y-grayscale body { filter:grayscale(1); }
+html.a11y-links a { text-decoration:underline !important; text-underline-offset:3px; }
+html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M6 3 L34 20 L20 23 L15 36 Z' fill='%23FFD700' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") 6 3, auto !important; }
+@media print { .a11y-fab, .a11y-panel { display:none !important; } }
 </style>
 <style>
 /* ============ HERO ============ */
@@ -328,6 +353,8 @@ html.js .reveal.in { opacity:1; transform:none; }
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <symbol id="i-a11y" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.2"/><path d="M4 9.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 10.8v5.2m0 0-3.5 6m3.5-6 3.5 6"/></symbol>
+    <symbol id="i-speak" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
     <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></symbol>
@@ -501,10 +528,10 @@ html.js .reveal.in { opacity:1; transform:none; }
       <div class="footer-col">
         <h4>Flagship Work</h4>
         <ul>
-          <li><a href="https://bangsamoro-investment-roadmap.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD App ↗</a></li>
+          <li><a href="https://bangsamro-investment-roadmapp.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
           <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
-          <li><a href="https://strat-planner-pro.asilvainnovations.com/" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
-          <li><a href="" data-jump="Cognitio+">Cognitio+</a></li>
+          <li><a href="#portfolio" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
+          <li><a href="#portfolio" data-jump="Cognitio+">Cognitio+</a></li>
           <li><a href="https://asilvainnovations.github.io/website/rtl.html" target="_blank" rel="noopener noreferrer">RTL ↗</a></li>
         </ul>
       </div>
@@ -524,6 +551,8 @@ html.js .reveal.in { opacity:1; transform:none; }
         <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/terms-of-services.html" target="_blank" rel="noopener noreferrer">Terms</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility</a> ·
         <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
       </p>
       <span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
@@ -542,6 +571,44 @@ html.js .reveal.in { opacity:1; transform:none; }
     </div>
   </div>
 </div>
+
+<!-- ============ ACCESSIBILITY TOOLS ============ -->
+<button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
+<aside class="a11y-panel glass-strong" id="a11yPanel" role="dialog" aria-label="Accessibility tools" aria-hidden="true">
+  <button class="a11y-close" id="a11yClose" aria-label="Close accessibility tools">✕</button>
+  <h2><svg><use href="#i-a11y"/></svg> Accessibility</h2>
+  <div class="a11y-row">
+    <div><div class="ar-name">Read page aloud</div><div class="ar-desc">Text-to-speech of the full page</div></div>
+    <button class="btn btn-gold btn-sm" id="a11ySpeak" aria-pressed="false"><svg style="width:14px;height:14px"><use href="#i-speak"/></svg><span>Listen</span></button>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Text size</div><div class="ar-desc">Scale content font</div></div>
+    <div style="display:flex;gap:.4rem">
+      <button class="btn btn-ghost btn-sm" id="a11yFontDown" aria-label="Decrease text size">A&minus;</button>
+      <button class="btn btn-ghost btn-sm" id="a11yFontUp" aria-label="Increase text size">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">High contrast</div><div class="ar-desc">Maximum legibility</div></div>
+    <span class="switch"><input type="checkbox" id="a11yContrast" aria-label="Toggle high contrast"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Grayscale</div><div class="ar-desc">Reduce color stimulation</div></div>
+    <span class="switch"><input type="checkbox" id="a11yGray" aria-label="Toggle grayscale"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Highlight links</div><div class="ar-desc">Underline every link</div></div>
+    <span class="switch"><input type="checkbox" id="a11yLinks" aria-label="Toggle link highlighting"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Large cursor</div><div class="ar-desc">Easier pointer tracking</div></div>
+    <span class="switch"><input type="checkbox" id="a11yCursor" aria-label="Toggle large cursor"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Reset all</div><div class="ar-desc">Back to defaults</div></div>
+    <button class="btn btn-ghost btn-sm" id="a11yReset">Reset</button>
+  </div>
+</aside>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
 <div class="toast glass-strong" id="toast" role="status" aria-live="polite"></div>
@@ -629,32 +696,32 @@ const WORKS = [
   { cat:'consulting', badge:'DRR Planning',
     title:'Risk-Informed CDP of Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
     desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in rigorous analysis and community engagement.',
-    img:'https://appimize.app/assets/apps/user_1097/images/54438df5ed4c_875_1097.png', ph:'assets/ph-consulting.jpg',
+    img:'assets/cover-cdp-salcedo.jpg', ph:'assets/ph-consulting.jpg',
     links:[['Report PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
   { cat:'consulting', badge:'Mental Health',
     title:'MHPSS Intervention Module for Emergency Responders', meta:'WHO & DOH · 2023',
     desc:'Mental Health and Psychosocial Support intervention module for PEMAT members, aligned with WHO guidance on mental health as a determinant of health outcomes.',
-    img:'https://appimize.app/assets/apps/user_1097/images/1f5d8b41b89b_461_1097.png', ph:'assets/ph-consulting.jpg',
+    img:'assets/cover-mhpss-module.jpg', ph:'assets/ph-consulting.jpg',
     links:[['Request Details','mailto:alvin.silva@asilvainnovations.com?subject=MHPSS%20Module%20—%20details%20request']] },
   { cat:'consulting', badge:'Resilience',
     title:'Integrated Risk & Resilience Management — BARMM', meta:'USAID & Action Against Hunger · 2022',
     desc:'Final report on IRRM for CSOs and communities in the Bangsamoro — Food Security, Livelihoods, DRR, and WASH systems innovation.',
-    img:'https://appimize.app/assets/apps/user_1097/images/fb15885ec7ea_325_1097.png', ph:'assets/ph-consulting.jpg',
+    img:'assets/cover-irrm-barmm.jpg', ph:'assets/ph-consulting.jpg',
     links:[['Completion Report','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
   { cat:'consulting', badge:'DRR Review',
     title:'Conflict-Sensitive DRR Project Review — Mindanao', meta:'Philippine & German Red Cross',
     desc:'Participatory conflict assessment and mid-term review of a DRR project in fragile, conflict-affected Mindanao communities and schools.',
-    img:'https://appimize.app/assets/apps/user_1097/images/e3778ca568a7_916_1097.png', ph:'assets/ph-consulting.jpg',
+    img:'assets/cover-consent-drr.jpg', ph:'assets/ph-consulting.jpg',
     links:[['MTR Report PDF','https://drive.google.com/file/d/1W-Zo5DqCOstJSBnie1CAGH2whvO_rR3V/view?usp=sharing']] },
   { cat:'consulting', badge:'Performance',
     title:'Performance Management at DLSU Manila', meta:'DLSU · 2024',
     desc:'Baseline and needs assessment with a performance management hub — frameworks, prototypes, metrics, and guides for organizational effectiveness.',
-    img:'https://appimize.app/assets/apps/user_1097/images/4b54edc205e9_573_1097.png', ph:'assets/ph-consulting.jpg',
+    img:'assets/cover-dlsu-oupms.jpg', ph:'assets/ph-consulting.jpg',
     links:[['Access Hub','https://oupms-dlsu.aiwaapp.live/']] },
   { cat:'consulting', badge:'Policy Research',
     title:'Urban Resilience Policy Review — Metro Manila', meta:'MMDA · Policy Research',
     desc:'Policy review framework integrating resilience into organizational strategies and governance, with actionable insights for vulnerable communities.',
-    img:'https://appimize.app/assets/apps/user_1097/images/150e099d15df_913_1097.png', ph:'assets/ph-consulting.jpg',
+    img:'assets/cover-policy-report.jpg', ph:'assets/ph-consulting.jpg',
     links:[['Policy Review PDF','https://drive.google.com/file/d/1jhPPG6ov2shDQhEepywDxWBUxTENkfCC/view?usp=sharing']] },
   { cat:'consulting', badge:'Systems Innovation',
     title:'Systems Innovation — DRR-CCA, WASH, FSL in Mindanao', meta:'Mindanao Programs',
@@ -670,7 +737,7 @@ const WORKS = [
   { cat:'publications', badge:'Book · 2025', badgeCls:'badge-violet',
     title:'Personal Resilience: The Path to Oneness', meta:'Cognitio+ · 2025',
     desc:'The deeper ground of human experience — the sacred space of spirituality beyond psychological resilience. Timeless wisdom for personal transformation.',
-    img:'https://appimize.app/assets/apps/user_1097/images/d4ff156ea5e3_667_1097.png', ph:'assets/ph-publication.jpg',
+    img:'assets/cover-personal-resilience-3d.jpg', ph:'assets/ph-publication.jpg',
     links:[['Read Online','https://personal-resilience.aiwaapp.live']] },
   { cat:'publications', badge:'Book · 2024', badgeCls:'badge-violet',
     title:'Resilient Futures: Nurturing Oneness in Education', meta:'Cognitio+ · 2024',
@@ -680,7 +747,7 @@ const WORKS = [
   { cat:'publications', badge:'Book · 2023', badgeCls:'badge-violet',
     title:'Building Resilience: The Path to a More Fulfilling Life', meta:'Cognitio+ · 2023',
     desc:'The foundational guide to building and sustaining resilience — knowledge, tools, and mindsets to thrive in an ever-changing world.',
-    img:'https://appimize.app/assets/apps/user_1097/images/4368ba1afd1f_884_1097.jpg', ph:'assets/ph-publication.jpg',
+    img:'assets/cover-building-resilience.jpg', ph:'assets/ph-publication.jpg',
     links:[['Buy on Amazon','https://www.amazon.com/BUILDING-RESILIENCE-Path-Fulfilling-Resilient-ebook/dp/B0CJ45LDRG'],['Read Online','https://building-resilience.aiwaapp.live/']] },
   { cat:'publications', badge:'Operations Manual · 2022', badgeCls:'badge-violet',
     title:'Shock-Responsive & Sustainable Livelihoods — Process Manual', meta:'MOVEUP Mindanao · 2022',
@@ -692,31 +759,31 @@ const WORKS = [
 
 /* Technical Reports — full document library (Google Drive PDFs) */
 const REPORTS = [
-  { doc:true, year:'2024', title:'SME 2024 Report', meta:'ASilva Innovations · 2024',
+  { doc:true, cover:'assets/cover-2024-sme-report.jpg', year:'2024', title:'SME 2024 Report', meta:'ASilva Innovations · 2024',
     desc:'Annual SME report — analysis and recommendations for small and medium enterprise development.',
     links:[['View PDF','https://drive.google.com/file/d/1hKzp1S2jjK5THTeFjU7jdFJRX79v-JXf/view?usp=sharing']] },
   { doc:true, year:'2022', title:'Shock-Responsive & Sustainable Livelihoods', meta:'Mindanao Programs',
     desc:'Framework and field guidance for livelihoods that absorb shocks and keep households moving forward.',
     links:[['View PDF','https://drive.google.com/file/d/1jIbvbI-GXbfOgnAq8mFZtU8txb27Iubn/view?usp=sharing']] },
-  { doc:true, year:'2023', title:'Risk-Informed CDP — Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
+  { doc:true, cover:'assets/cover-cdp-salcedo.jpg', year:'2023', title:'Risk-Informed CDP — Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
     desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in community engagement.',
     links:[['View PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
-  { doc:true, year:'2020', title:'Policy Review to Integrate Resilience', meta:'MMDA · Policy Research',
+  { doc:true, cover:'assets/cover-policy-report.jpg', year:'2020', title:'Policy Review to Integrate Resilience', meta:'MMDA · Policy Research',
     desc:'Policy review framework integrating resilience into organizational strategies and governance across Metro Manila.',
     links:[['View PDF','https://drive.google.com/file/d/1jhPPG6ov2shDQhEepywDxWBUxTENkfCC/view?usp=sharing']] },
   { doc:true, year:'2020', title:'Policy Research, Recommendations & Validation — DSWD-SLP', meta:'DSWD Sustainable Livelihood Program · 2020',
     desc:'Policy research, recommendations, and validation report on the DSWD Sustainable Livelihood Program.',
     links:[['View PDF','https://drive.google.com/file/d/1ZWsHPOeXQGWmd5L5rum608ZoUKOiv_OO/view?usp=sharing']] },
-  { doc:true, year:'2022', title:'IRRM — BARMM Completion Report', meta:'USAID & Action Against Hunger · 2022',
+  { doc:true, cover:'assets/cover-irrm-barmm.jpg', year:'2022', title:'IRRM — BARMM Completion Report', meta:'USAID & Action Against Hunger · 2022',
     desc:'Integrated Risk and Resilience Management completion report for CSOs and communities in the Bangsamoro.',
     links:[['View PDF','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
   { doc:true, year:'2022', title:'FSL · DRR · WASH Systems Innovation — Final Report', meta:'Mindanao Programs',
     desc:'Results, methodologies, and recommendations from systems innovation across food security, livelihoods, DRR, and WASH.',
     links:[['View PDF','https://drive.google.com/file/d/1gYcw9OnsL0JQPifbE16ZaDsoQJeY_B_q/view?usp=sharing']] },
-  { doc:true, year:'2021', title:'Review of LGU Vulnerability Indicators in Mindanao', meta:'Mindanao Programs',
+  { doc:true, cover:'assets/cover-vulnerability-indicators.jpg', year:'2021', title:'Review of LGU Vulnerability Indicators in Mindanao', meta:'Mindanao Programs',
     desc:'Critical review of vulnerability indicators used by local government units — toward sharper, decision-grade measurement.',
     links:[['View PDF','https://drive.google.com/file/d/1_5S8JA-WRFA-ID5V2DxwCWFga6Dcezqf/view?usp=sharing']] },
-  { doc:true, year:'2021', title:'CONSENT DRR-II Mid-Term Review Report', meta:'Philippine & German Red Cross',
+  { doc:true, cover:'assets/cover-consent-drr.jpg', year:'2021', title:'CONSENT DRR-II Mid-Term Review Report', meta:'Philippine & German Red Cross',
     desc:'Participatory conflict assessment and mid-term review of DRR programming in fragile, conflict-affected communities and schools.',
     links:[['View PDF','https://drive.google.com/file/d/1W-Zo5DqCOstJSBnie1CAGH2whvO_rR3V/view?usp=sharing']] },
   { doc:true, year:'2022', title:'Agri-Fishery Situational Assessment — Maguindanao del Norte & Sulu', meta:'BARMM',
@@ -740,6 +807,7 @@ const ALL_WORKS = [...WORKS, ...REPORTS];
 const grid = $('#pfGrid');
 grid.innerHTML = ALL_WORKS.map((w, i) => w.doc ? `
   <article class="pf-card doc-card glass reveal" data-cat="reports" style="animation-delay:${Math.min(i*40, 500)}ms">
+    ${w.cover ? `<div class="doc-cover"><img src="${w.cover}" alt="Cover of ${w.title}" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>` : ''}
     <div class="doc-body">
       <div class="doc-top">
         <span class="doc-icon"><svg><use href="#i-file"/></svg></span>
@@ -847,7 +915,7 @@ $('#mmClose').addEventListener('click', closeMobile);
 overlay.addEventListener('click', closeMobile);
 $$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeMobile(); closeLB(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
+  if (e.key === 'Escape') { closeMobile(); closeLB(); closeA11y(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
 });
 
 /* ================================================================
@@ -891,6 +959,53 @@ function toast(msg) {
 /* ================================================================
    COOKIE CONSENT — shared with index.html
    ================================================================ */
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+const A11Y_KEY = 'as-a11y-prefs';
+const a11yPanelEl = document.getElementById('a11yPanel');
+let a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false };
+try { Object.assign(a11yState, JSON.parse(localStorage.getItem(A11Y_KEY)) || {}); } catch (e) {}
+function applyA11y() {
+  const root = document.documentElement;
+  root.style.setProperty('--a11y-scale', a11yState.scale);
+  root.classList.toggle('a11y-contrast', a11yState.contrast);
+  root.classList.toggle('a11y-grayscale', a11yState.gray);
+  root.classList.toggle('a11y-links', a11yState.links);
+  root.classList.toggle('a11y-largecursor', a11yState.cursor);
+  document.getElementById('a11yContrast').checked = a11yState.contrast;
+  document.getElementById('a11yGray').checked = a11yState.gray;
+  document.getElementById('a11yLinks').checked = a11yState.links;
+  document.getElementById('a11yCursor').checked = a11yState.cursor;
+  localStorage.setItem(A11Y_KEY, JSON.stringify(a11yState));
+}
+function openA11y() { a11yPanelEl.classList.add('open'); a11yPanelEl.setAttribute('aria-hidden','false'); }
+function closeA11y() { a11yPanelEl.classList.remove('open'); a11yPanelEl.setAttribute('aria-hidden','true'); }
+document.getElementById('a11yFab').addEventListener('click', openA11y);
+document.getElementById('a11yClose').addEventListener('click', closeA11y);
+document.getElementById('a11yFontUp').addEventListener('click', () => { a11yState.scale = Math.min(1.4, +(a11yState.scale + 0.1).toFixed(2)); applyA11y(); toast('Text size increased'); });
+document.getElementById('a11yFontDown').addEventListener('click', () => { a11yState.scale = Math.max(0.85, +(a11yState.scale - 0.1).toFixed(2)); applyA11y(); toast('Text size decreased'); });
+document.getElementById('a11yContrast').addEventListener('change', e => { a11yState.contrast = e.target.checked; applyA11y(); });
+document.getElementById('a11yGray').addEventListener('change', e => { a11yState.gray = e.target.checked; applyA11y(); });
+document.getElementById('a11yLinks').addEventListener('change', e => { a11yState.links = e.target.checked; applyA11y(); });
+document.getElementById('a11yCursor').addEventListener('change', e => { a11yState.cursor = e.target.checked; applyA11y(); });
+document.getElementById('a11yReset').addEventListener('click', () => { a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false }; applyA11y(); toast('Accessibility settings reset'); });
+applyA11y();
+let a11ySpeaking = false;
+document.getElementById('a11ySpeak').addEventListener('click', () => {
+  const btn = document.getElementById('a11ySpeak');
+  if (!('speechSynthesis' in window)) { toast('Read-aloud is not supported in this browser'); return; }
+  if (a11ySpeaking) { speechSynthesis.cancel(); a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; return; }
+  const mainEl = document.getElementById('main') || document.querySelector('main') || document.body;
+  const u = new SpeechSynthesisUtterance(mainEl.innerText.replace(/\s+\n/g,'\n').slice(0, 12000));
+  u.rate = 1; u.lang = document.documentElement.lang || 'en';
+  u.onend = () => { a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; };
+  speechSynthesis.speak(u);
+  a11ySpeaking = true;
+  btn.setAttribute('aria-pressed','true');
+  btn.querySelector('span').textContent = 'Stop';
+  toast('Reading page aloud — tap again to stop');
+});
+
 const CONSENT_KEY = 'as-cookie-consent-v1';
 const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
 function getConsent() { try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; } }
