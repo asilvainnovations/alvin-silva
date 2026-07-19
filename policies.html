@@ -603,7 +603,104 @@ main { padding-bottom:3rem; }
                 </section>
             </div>
         </div>
-    
+
+/* ============ ASILVA FLOATING WIDGET ============ */
+.asilva-widget {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 5rem; /* left of back-to-top button (right:1.2rem + 48px + ~12px gap) */
+  z-index: 950;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, var(--blue), var(--sky));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.45), 0 0 0 0 rgba(0, 191, 255, 0.4);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+  text-decoration: none;
+  animation: asilvaPulse 2.4s ease-in-out infinite;
+}
+
+.asilva-widget:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 12px 32px rgba(0, 191, 255, 0.55), 0 0 0 8px rgba(0, 191, 255, 0.15);
+}
+
+.asilva-widget img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.asilva-widget .asilva-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  background: linear-gradient(135deg, rgba(13, 18, 40, 0.98), rgba(8, 11, 28, 0.98));
+  border: 1px solid var(--line-gold);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-family: var(--font-cond);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.asilva-widget .asilva-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 18px;
+  border: 6px solid transparent;
+  border-top-color: var(--line-gold);
+}
+
+.asilva-widget:hover .asilva-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@keyframes asilvaPulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0, 102, 255, 0.45), 0 0 0 0 rgba(0, 191, 255, 0.4); }
+  50% { box-shadow: 0 8px 24px rgba(0, 102, 255, 0.45), 0 0 0 10px rgba(0, 191, 255, 0); }
+}
+
+/* Mobile: adjust position to not overlap with back-to-top */
+@media (max-width: 640px) {
+  .asilva-widget {
+    right: 4.5rem;
+    width: 46px;
+    height: 46px;
+  }
+  .asilva-widget img {
+    width: 32px;
+    height: 32px;
+  }
+  .asilva-widget .asilva-tooltip {
+    display: none; /* hide tooltip on mobile for space */
+  }
+}
+
+/* Print: hide widget */
+@media print {
+  .asilva-widget { display: none !important; }
+}
+   
 </main>
 
 <footer class="site-footer">
