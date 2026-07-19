@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Terms of Service — A. Silva Innovations</title>
+<meta name="description" content="The terms governing use of alvin-silva.asilvainnovations.com — intellectual property, acceptable use, third-party services, purchases, disclaimers, and governing law.">
+<meta name="author" content="Alvin M. Silva, MDM — A. Silva Innovations">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://asilvainnovations.github.io/website/policies/terms-of-services.html">
+<meta name="theme-color" content="#0a0e27">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
+<link rel="apple-touch-icon" href="assets/logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SHARED DESIGN TOKENS — A. Silva Innovations
+   ============================================================ */
+:root {
+  --navy:#0a0e27; --card:#1a1f3a;
+  --blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+  --text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+  --glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  --glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+  --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28);
+  --font-display:'Montserrat',system-ui,sans-serif; --font-body:'Poppins',system-ui,sans-serif;
+  --font-cond:'Roboto Condensed',system-ui,sans-serif;
+  --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+  --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+  --ease:cubic-bezier(.22,.8,.28,1);
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:92px; }
+body {
+  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:calc(1rem * var(--a11y-scale,1)); color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%),
+    linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
+  background-attachment:fixed; min-height:100vh; overflow-x:hidden;
+}
+body::before { content:''; position:fixed; inset:0; z-index:0; pointer-events:none; background:url('assets/logo-512.png') center/ min(78vw,560px) no-repeat; opacity:.045; }
+main, header, footer { position:relative; z-index:1; }
+img { max-width:100%; }
+h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.15; letter-spacing:-.01em; }
+a { color:var(--sky); }
+::selection { background:rgba(255,215,0,.35); color:#fff; }
+::-webkit-scrollbar { width:9px; height:9px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(100,140,200,.35); border-radius:6px; }
+:focus-visible { outline:3px solid var(--gold); outline-offset:2px; border-radius:4px; }
+.skip-link { position:absolute; top:-48px; left:8px; z-index:12000; background:var(--gold); color:#0a0e27; font-family:var(--font-display); font-weight:700; padding:.6rem 1.1rem; border-radius:0 0 10px 10px; text-decoration:none; transition:top .25s; }
+.skip-link:focus { top:0; }
+.wrap { width:100%; max-width:1080px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
+.glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); }
+.glass-strong { background:var(--glass-strong); border:1px solid var(--line); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:var(--shadow-1); }
+.glass-gold { background:linear-gradient(135deg, rgba(255,215,0,.14), rgba(255,215,0,.04)); border:1px solid var(--line-gold); backdrop-filter:blur(14px); }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-family:var(--font-display); font-weight:700; font-size:.92rem; letter-spacing:.03em; padding:.85rem 1.7rem; border-radius:999px; border:2px solid transparent; cursor:pointer; text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s; min-height:48px; }
+.btn svg { width:17px; height:17px; flex:none; }
+.btn-primary { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff !important; box-shadow:0 8px 24px rgba(0,102,255,.35); }
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
+.btn-gold { background:transparent; color:var(--gold); border-color:var(--gold); }
+.btn-gold:hover { background:var(--gold); color:#0a0e27; transform:translateY(-3px); }
+.btn-ghost { background:rgba(255,255,255,.06); color:var(--text); border-color:var(--line); }
+.btn-ghost:hover { background:rgba(255,255,255,.12); }
+.btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
+
+/* ============ HEADER / NAV (shared) ============ */
+.site-header { position:sticky; top:0; z-index:1000; background:rgba(10,14,39,.86); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(0,102,255,.45); box-shadow:0 8px 30px rgba(0,0,0,.35); }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem clamp(1rem,4vw,2.5rem); max-width:1400px; margin:0 auto; }
+.brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; min-width:0; }
+.brand img { width:46px; height:46px; border-radius:50%; border:2px solid var(--gold); background:#fff; padding:2px; flex:none; }
+.brand-name { font-family:var(--font-display); font-weight:800; font-size:1.02rem; letter-spacing:.03em; background:linear-gradient(45deg,var(--sky),var(--blue),var(--gold)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; white-space:nowrap; }
+.brand-sub { font-family:var(--font-cond); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); white-space:nowrap; }
+.nav-links { display:none; list-style:none; align-items:center; gap:.35rem; }
+.nav-links > li > a, .drop-btn { font-family:var(--font-cond); font-size:.92rem; font-weight:600; letter-spacing:.06em; color:var(--text); text-decoration:none; padding:.55rem .85rem; border-radius:8px; display:inline-flex; align-items:center; gap:.4rem; background:none; border:1px solid transparent; cursor:pointer; transition:.25s; }
+.nav-links a:hover, .drop-btn:hover, .drop.open .drop-btn { color:var(--gold); background:rgba(255,215,0,.08); }
+.nav-links a[aria-current="page"] { color:var(--gold); background:rgba(255,215,0,.10); }
+.drop { position:relative; }
+.drop-btn .chev { width:10px; height:10px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform .3s; }
+.drop.open .drop-btn .chev { transform:rotate(225deg) translateY(-1px); }
+.drop-menu { position:absolute; top:calc(100% + .6rem); left:50%; transform:translate(-50%, -8px); min-width:250px; padding:.6rem; border-radius:14px; opacity:0; visibility:hidden; transition:.28s var(--ease); background:linear-gradient(150deg, rgba(13,18,40,.98), rgba(8,11,28,.98)); border:1px solid var(--line-gold); box-shadow:0 20px 50px rgba(0,0,0,.6); z-index:1001; }
+.drop.open .drop-menu { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+.drop-head { font-family:var(--font-cond); font-size:.66rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); padding:.45rem .8rem .55rem; border-bottom:1px solid var(--line); margin-bottom:.4rem; }
+.drop-item { display:flex; align-items:center; gap:.7rem; padding:.6rem .8rem; border-radius:9px; color:var(--text); text-decoration:none; font-size:.9rem; transition:.2s; }
+.drop-item svg { width:16px; height:16px; color:var(--sky); flex:none; }
+.drop-item:hover { background:rgba(255,215,0,.12); color:var(--gold); }
+.nav-cta { display:none; align-items:center; gap:.6rem; }
+.menu-btn { display:inline-flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:.55rem; z-index:1102; }
+.menu-btn span { width:24px; height:2.5px; background:#fff; border-radius:2px; transition:.3s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform:rotate(-45deg) translate(6px,-6px); }
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:1098; opacity:0; visibility:hidden; transition:.3s; }
+.overlay.show { opacity:1; visibility:visible; }
+.mobile-menu { position:fixed; top:0; right:-105%; width:min(84vw,340px); height:100dvh; z-index:1099; background:linear-gradient(160deg,#0d1430,#070b1d); border-left:1px solid var(--line); padding:1.4rem; transition:right .35s var(--ease); overflow-y:auto; }
+.mobile-menu.open { right:0; }
+.mobile-menu .mm-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4rem; }
+.mobile-menu .mm-head img { width:52px; height:52px; border-radius:50%; border:2px solid var(--gold); }
+.mm-close { background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer; padding:.4rem; line-height:1; }
+.mm-group { margin-bottom:1.1rem; }
+.mm-group-title { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-bottom:.5rem; padding-left:.2rem; }
+.mm-link { display:flex; align-items:center; gap:.7rem; padding:.68rem .6rem; color:#fff; text-decoration:none; font-size:1rem; border-radius:9px; }
+.mm-link svg { width:16px; height:16px; color:var(--sky); }
+.mm-link:active, .mm-link:hover, .mm-link[aria-current="page"] { background:rgba(255,255,255,.07); color:var(--gold); }
+
+/* ============ POLICY HERO ============ */
+.hero { text-align:center; padding:clamp(2.6rem,6vw,4rem) 0 clamp(1.6rem,3vw,2.4rem); }
+.back-home { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-cond); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); text-decoration:none; margin-bottom:1.1rem; }
+.back-home:hover { color:var(--gold); }
+.back-home svg { width:14px; height:14px; }
+.hero h1 { font-size:clamp(2rem,6vw,3rem); font-weight:900; background:linear-gradient(92deg, var(--sky), var(--blue) 45%, var(--gold)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:.5rem; }
+.last-updated, .effective-date { font-family:var(--font-cond); font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); }
+.compliance-badges { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-top:1.1rem; }
+.compliance-badges .badge { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.06em; padding:.42rem 1rem; border-radius:999px; border:1px solid var(--line-gold); background:rgba(255,215,0,.08); color:var(--text-2); }
+
+/* ============ POLICY CONTENT ============ */
+main { padding-bottom:3rem; }
+.container { width:100%; max-width:1080px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
+.content-card { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); border-radius:20px; padding:clamp(1.4rem,4vw,2.8rem); }
+.toc { background:rgba(0,102,255,.07); border:1px solid rgba(0,191,255,.25); border-radius:14px; padding:1.2rem 1.4rem; margin-bottom:2rem; }
+.toc ol { margin-left:1.2rem; columns:1; }
+.toc li { margin-bottom:.4rem; color:var(--text-2); }
+.toc a { color:var(--sky); text-decoration:none; font-size:.92rem; }
+.toc a:hover { color:var(--gold); text-decoration:underline; }
+.section { margin-bottom:2.2rem; scroll-margin-top:100px; }
+.section h2 { font-size:clamp(1.25rem,3vw,1.6rem); font-weight:800; color:#fff; margin-bottom:.9rem; padding-bottom:.55rem; border-bottom:2px solid transparent; border-image:linear-gradient(90deg, var(--blue), var(--sky), transparent) 1; }
+.section h3 { font-size:1.05rem; font-weight:700; color:var(--gold); margin:1.3rem 0 .5rem; }
+.section h4 { font-size:.98rem; font-weight:700; color:var(--sky); margin:1.1rem 0 .4rem; }
+.section p { font-size:.93rem; font-weight:300; color:var(--text-2); line-height:1.8; margin-bottom:.85rem; }
+.section ul, .section ol { margin:0 0 1rem 1.3rem; }
+.section li { font-size:.9rem; font-weight:300; color:var(--text-2); line-height:1.75; margin-bottom:.4rem; }
+.section li::marker { color:var(--gold); }
+.section a { color:var(--sky); }
+.section a:hover { color:var(--gold); }
+.section strong { color:#fff; font-weight:600; }
+.section table { width:100%; border-collapse:collapse; margin:1rem 0 1.4rem; font-size:.86rem; display:block; overflow-x:auto; }
+.section thead th { font-family:var(--font-cond); font-size:.74rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); text-align:left; padding:.7rem .9rem; background:rgba(255,215,0,.07); border:1px solid var(--line-gold); white-space:nowrap; }
+.section tbody td { padding:.7rem .9rem; border:1px solid var(--line); color:var(--text-2); font-weight:300; vertical-align:top; }
+.section tbody tr:nth-child(even) td { background:rgba(255,255,255,.03); }
+.cookie-type { display:inline-block; font-family:var(--font-cond); font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.2rem .6rem; border-radius:999px; white-space:nowrap; }
+.type-necessary { background:rgba(52,211,153,.14); border:1px solid var(--green); color:var(--green); }
+.type-functional { background:rgba(0,191,255,.12); border:1px solid var(--sky); color:var(--sky); }
+.type-analytics { background:rgba(167,139,250,.13); border:1px solid var(--violet); color:var(--violet); }
+.type-marketing { background:rgba(248,113,113,.12); border:1px solid var(--red); color:var(--red); }
+.label { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); }
+.contact-grid { display:grid; gap:1rem; grid-template-columns:1fr; margin-top:1rem; }
+.contact-box { background:rgba(0,102,255,.07); border:1px solid rgba(0,191,255,.25); border-radius:14px; padding:1.2rem 1.3rem; }
+.contact-box h3, .contact-box h4 { margin-top:0; }
+.contact-item { display:flex; align-items:center; gap:.8rem; padding:.55rem 0; }
+.contact-item .label { min-width:86px; }
+.contact-link { color:var(--sky); text-decoration:none; font-weight:500; }
+.contact-link:hover { color:var(--gold); text-decoration:underline; }
+.highlight-box { background:linear-gradient(135deg, rgba(255,215,0,.10), rgba(255,215,0,.03)); border:1px solid var(--line-gold); border-left:4px solid var(--gold); border-radius:12px; padding:1.1rem 1.3rem; margin:1.2rem 0; }
+.mission-section { background:rgba(0,191,255,.06); border:1px solid rgba(0,191,255,.25); border-radius:14px; padding:1.2rem 1.4rem; margin:1.2rem 0; }
+.grid-container { display:grid; gap:1rem; grid-template-columns:1fr; margin:1rem 0; }
+.features-with-icons { display:grid; gap:1rem; grid-template-columns:1fr; margin:1rem 0; }
+.feature-card, .icon-card { background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.2rem; transition:transform .3s var(--ease), border-color .3s; }
+.feature-card:hover, .icon-card:hover { transform:translateY(-4px); border-color:rgba(0,191,255,.4); }
+.icon-circle { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3rem; background:linear-gradient(135deg, var(--blue), var(--sky)); margin-bottom:.7rem; }
+.compliance-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin:.8rem 0; }
+.compliance-tag { font-family:var(--font-cond); font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.3rem .75rem; border-radius:999px; }
+.compliance-tag.success { background:rgba(52,211,153,.14); border:1px solid var(--green); color:var(--green); }
+.compliance-tag.primary { background:rgba(0,191,255,.12); border:1px solid var(--sky); color:var(--sky); }
+.quick-access { background:var(--glass); border:1px solid var(--line-gold); border-radius:16px; padding:1.3rem 1.4rem; margin:1.4rem 0; }
+.quick-access h4 { color:var(--gold); margin-bottom:.9rem; }
+.quick-access-links { display:flex; flex-wrap:wrap; gap:.6rem; }
+.quick-access-link { font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.05em; color:var(--text); text-decoration:none; padding:.5rem 1rem; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.05); transition:.25s; }
+.quick-access-link:hover { color:var(--gold); border-color:var(--line-gold); transform:translateY(-2px); }
+
+/* ============ FOOTER (shared) ============ */
+.site-footer { background:rgba(6,9,24,.96); border-top:1px solid rgba(0,102,255,.4); padding:3.2rem 0 1.6rem; margin-top:2rem; }
+.footer-grid { display:grid; gap:2rem; margin-bottom:2.2rem; }
+.footer-brand p { font-size:.86rem; font-weight:300; color:var(--text-3); line-height:1.7; margin-top:.8rem; max-width:340px; }
+.footer-col h4 { font-family:var(--font-cond); font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.9rem; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:.45rem; }
+.footer-col a { color:var(--text-3); text-decoration:none; font-size:.88rem; transition:.2s; }
+.footer-col a:hover { color:var(--sky); padding-left:4px; }
+.socials { display:flex; gap:.7rem; margin-top:1.1rem; }
+.socials a { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--blue), var(--sky)); transition:transform .3s var(--ease), box-shadow .3s; }
+.socials a svg { width:18px; height:18px; fill:#fff; }
+.socials a:hover { transform:translateY(-4px) rotate(8deg); box-shadow:0 10px 24px rgba(0,191,255,.45); }
+.footer-base { border-top:1px solid rgba(255,255,255,.08); padding-top:1.4rem; display:flex; flex-direction:column; gap:.8rem; align-items:center; text-align:center; }
+.footer-base p { font-size:.8rem; color:var(--text-3); font-weight:300; }
+.footer-legal a, .linklike { color:var(--text-3); font-size:.8rem; text-decoration:none; background:none; border:none; cursor:pointer; font-family:inherit; padding:0; }
+.footer-legal a:hover, .linklike:hover { color:var(--gold); text-decoration:underline; }
+
+/* ============ COOKIE CONSENT (shared) ============ */
+.consent-banner { position:fixed; bottom:1rem; left:50%; transform:translate(-50%, 140%); z-index:1150; width:min(680px, calc(100% - 2rem)); border-radius:18px; padding:1.3rem 1.4rem; transition:transform .5s var(--ease); }
+.consent-banner.show { transform:translate(-50%, 0); }
+.consent-banner h3 { font-size:1rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem; color:#fff; }
+.consent-banner h3 svg { width:18px; height:18px; color:var(--gold); }
+.consent-banner p { font-size:.82rem; font-weight:300; color:var(--text-2); line-height:1.6; margin-bottom:.9rem; }
+.consent-banner p a { color:var(--sky); }
+.consent-actions { display:flex; flex-wrap:wrap; gap:.6rem; }
+.consent-actions .btn { min-height:42px; padding:.55rem 1.2rem; font-size:.8rem; flex:1 1 140px; }
+.consent-prefs { display:none; margin:.9rem 0; padding:.9rem 1rem; border:1px dashed var(--line); border-radius:12px; }
+.consent-prefs.open { display:block; }
+.pref-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.45rem 0; }
+.pref-row + .pref-row { border-top:1px solid rgba(255,255,255,.06); }
+.pref-row .pr-name { font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em; color:#fff; }
+.pref-row .pr-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.switch { position:relative; width:46px; height:26px; flex:none; }
+.switch input { opacity:0; width:100%; height:100%; position:absolute; margin:0; cursor:pointer; z-index:2; }
+.switch .track { position:absolute; inset:0; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid var(--line); transition:.25s; }
+.switch .track::after { content:''; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:#fff; transition:.25s var(--ease); }
+.switch input:checked + .track { background:linear-gradient(135deg, var(--blue), var(--sky)); border-color:transparent; }
+.switch input:checked + .track::after { transform:translateX(20px); }
+.switch input:disabled { cursor:not-allowed; }
+.switch input:disabled + .track { background:rgba(255,215,0,.25); border-color:var(--line-gold); }
+.toast { position:fixed; top:88px; left:50%; transform:translate(-50%, -16px); z-index:1300; padding:.75rem 1.3rem; border-radius:999px; font-family:var(--font-cond); font-size:.85rem; letter-spacing:.05em; opacity:0; visibility:hidden; transition:.35s var(--ease); white-space:nowrap; color:var(--text); }
+.toast.show { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+.back-to-top { position:fixed; bottom:1.2rem; right:1.2rem; z-index:900; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg, var(--blue), var(--sky)); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transform:translateY(12px); transition:.3s; box-shadow:0 8px 22px rgba(0,102,255,.4); }
+.back-to-top.visible { opacity:1; visibility:visible; transform:none; }
+.back-to-top svg { width:20px; height:20px; fill:#fff; }
+
+@media (min-width:700px) {
+  .toc ol { columns:2; column-gap:2.5rem; }
+  .contact-grid, .grid-container { grid-template-columns:repeat(2, 1fr); }
+  .features-with-icons { grid-template-columns:repeat(2, 1fr); }
+}
+@media (min-width:900px) {
+  .nav-links { display:flex; }
+  .nav-cta { display:flex; }
+  .menu-btn { display:none; }
+  .footer-grid { grid-template-columns:1.4fr 1fr 1fr 1fr; }
+  .footer-base { flex-direction:row; justify-content:space-between; }
+  .features-with-icons { grid-template-columns:repeat(4, 1fr); }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+}
+@media print {
+  .site-header, .site-footer, .back-to-top, .consent-banner, .hero .compliance-badges, .back-home { display:none !important; }
+  body { background:#fff; color:#000; }
+  body::before { display:none; }
+  .content-card, .toc, .contact-box, .feature-card, .icon-card { background:#fff; border:1px solid #999; box-shadow:none; }
+  .section h2, .section h3, .section p, .section li, .section td { color:#000; -webkit-text-fill-color:#000; }
+}
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+html { --a11y-scale:1; }
+.a11y-fab { position:fixed; bottom:1.2rem; left:1.2rem; z-index:950; width:52px; height:52px; border-radius:50%; border:1px solid var(--line-gold); cursor:pointer; background:linear-gradient(135deg, rgba(10,20,60,.92), rgba(10,14,39,.96)); color:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,.45); transition:.3s; }
+.a11y-fab:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(255,215,0,.25); }
+.a11y-fab svg { width:24px; height:24px; }
+.a11y-panel { position:fixed; top:50%; right:-105%; transform:translateY(-50%); z-index:1140; width:min(320px, 88vw); border-radius:18px 0 0 18px; padding:1.3rem 1.3rem 1.4rem; transition:right .4s var(--ease); max-height:86dvh; overflow-y:auto; }
+.a11y-panel.open { right:0; }
+.a11y-panel h2 { font-size:1rem; font-weight:800; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:#fff; }
+.a11y-panel h2 svg { width:18px; height:18px; color:var(--gold); }
+.a11y-row { display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:.6rem 0; border-top:1px solid rgba(255,255,255,.06); }
+.a11y-row:first-of-type { border-top:none; }
+.a11y-row .ar-name { font-family:var(--font-cond); font-size:.85rem; font-weight:600; letter-spacing:.04em; color:#fff; }
+.a11y-row .ar-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.a11y-close { position:absolute; top:.8rem; right:.8rem; background:none; border:none; color:var(--text-3); font-size:1.1rem; cursor:pointer; padding:.3rem; }
+html.a11y-contrast body { background:#000 !important; }
+html.a11y-contrast .glass, html.a11y-contrast .glass-strong, html.a11y-contrast .glass-gold { background:#0a0a0a !important; border-color:#FFD700 !important; }
+html.a11y-contrast p, html.a11y-contrast li, html.a11y-contrast td, html.a11y-contrast .section-sub { color:#fff !important; }
+html.a11y-grayscale body { filter:grayscale(1); }
+html.a11y-links a { text-decoration:underline !important; text-underline-offset:3px; }
+html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M6 3 L34 20 L20 23 L15 36 Z' fill='%23FFD700' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") 6 3, auto !important; }
+@media print { .a11y-fab, .a11y-panel { display:none !important; } }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-a11y" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.2"/><path d="M4 9.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 10.8v5.2m0 0-3.5 6m3.5-6 3.5 6"/></symbol>
+    <symbol id="i-speak" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5 2.5 2.5 0 0 0 6.5 19H19"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V6m0 14h16M8 16v-5m4 5V8m4 8v-3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a href="https://alvin-silva.asilvainnovations.com" class="brand" aria-label="Alvin M. Silva — home">
+      <img src="assets/logo-192.png" alt="A. Silva Innovations logo" width="46" height="46">
+      <span>
+        <span class="brand-name">ALVIN M. SILVA</span><br>
+        <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">The Professional</div>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#about" role="menuitem"><svg><use href="#i-user"/></svg> Profile &amp; Proof</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> Track Record</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#works" role="menuitem"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
+        </div>
+      </li>
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Expertise <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">What I Deliver</div>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#value" role="menuitem"><svg><use href="#i-target"/></svg> Value For You</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Core Expertise</a>
+          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#impact" role="menuitem"><svg><use href="#i-star"/></svg> Impact Timeline</a>
+        </div>
+      </li>
+      <li><a href="https://alvin-portfolio.asilvainnovations.com" class="drop-btn" style="text-decoration:none">Portfolio</a></li>
+      <li><a href="policies.html" class="drop-btn" style="text-decoration:none" aria-current="page">Policies</a></li>
+      <li><a href="https://alvin-silva.asilvainnovations.com/#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://alvin-silva.asilvainnovations.com/#contact" class="btn btn-primary btn-sm"><span>Start a Conversation</span></a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <div class="mm-head">
+    <img src="assets/logo-192.png" alt="" width="52" height="52">
+    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">Navigate</div>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#about"><svg><use href="#i-user"/></svg> About</a>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#expertise"><svg><use href="#i-bulb"/></svg> Expertise</a>
+    <a class="mm-link" href="https://alvin-portfolio.asilvainnovations.com"><svg><use href="#i-book"/></svg> Portfolio</a>
+    <a class="mm-link" href="policies.html" aria-current="page"><svg><use href="#i-shield"/></svg> Policies</a>
+    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#contact"><svg><use href="#i-mail"/></svg> Contact</a>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">Legal</div>
+    <a class="mm-link" href="privacy-policy.html"><svg><use href="#i-check"/></svg> Privacy Policy</a>
+    <a class="mm-link" href="cookie-policy.html"><svg><use href="#i-check"/></svg> Cookie Policy</a>
+    <a class="mm-link" href="terms-of-services.html"><svg><use href="#i-check"/></svg> Terms of Service</a>
+    <a class="mm-link" href="accessibility-policy.html"><svg><use href="#i-a11y"/></svg> Accessibility Policy</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <a href="https://alvin-silva.asilvainnovations.com" class="back-home"><svg><use href="#i-back"/></svg> alvin-silva.asilvainnovations.com</a>
+    <h1>Terms of Service</h1>
+    <p class="effective-date">Effective Date: July 19, 2026</p><p class="last-updated">Last Updated: July 19, 2026</p>
+    <div class="compliance-badges"><span class="badge">⚖️ Fair Use</span><span class="badge">📜 Clear Terms</span><span class="badge">🤝 Mutual Respect</span></div>
+  </div>
+</section>
+<main id="main">
+        <div class="container" style="margin-top: -2rem;">
+            <div class="content-card">
+                <nav class="toc" aria-label="Table of Contents">
+                    <ol>
+                        <li><a href="#acceptance">Acceptance of Terms</a></li>
+                        <li><a href="#about-site">About This Website</a></li>
+                        <li><a href="#intellectual-property">Intellectual Property</a></li>
+                        <li><a href="#acceptable-use">Acceptable Use</a></li>
+                        <li><a href="#third-party">Third-Party Links &amp; Services</a></li>
+                        <li><a href="#purchases">Digital Products &amp; Purchases</a></li>
+                        <li><a href="#disclaimers">Disclaimers</a></li>
+                        <li><a href="#liability">Limitation of Liability</a></li>
+                        <li><a href="#privacy-terms">Privacy &amp; Cookies</a></li>
+                        <li><a href="#governing-law">Governing Law</a></li>
+                        <li><a href="#changes">Changes to These Terms</a></li>
+                        <li><a href="#contact-terms">Contact</a></li>
+                    </ol>
+                </nav>
+
+                <section id="acceptance" class="section">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>These Terms of Service ("Terms") govern your access to and use of <strong>alvin-silva.asilvainnovations.com</strong>, its subdomains, and associated pages (the "Site"), operated by <strong>A. Silva Innovations</strong> ("we", "us", "our"). By accessing or using the Site, you agree to be bound by these Terms and by our <a href="privacy-policy.html">Privacy Policy</a> and <a href="cookie-policy.html">Cookie Policy</a>. If you do not agree, please discontinue use of the Site.</p>
+                </section>
+
+                <section id="about-site" class="section">
+                    <h2>2. About This Website</h2>
+                    <p>The Site is the professional portfolio and publications hub of <strong>Alvin M. Silva, MDM</strong> — a development management, resilience, and systems-innovation practice. It provides informational content, downloadable curriculum vitae versions, books and technical reports, and links to digital platforms and partner services. Content is offered for general information and professional-evaluation purposes.</p>
+                </section>
+
+                <section id="intellectual-property" class="section">
+                    <h2>3. Intellectual Property</h2>
+                    <p>Unless otherwise stated, all content on the Site — text, design, logos, book covers, reports, frameworks, and downloadable documents — is the property of Alvin M. Silva, A. Silva Innovations, or Cognitio+, and is protected by applicable intellectual-property laws.</p>
+                    <ul>
+                        <li>You <strong>may</strong> view, download, and print CVs, reports, and pages for personal, recruitment, evaluation, or reference purposes;</li>
+                        <li>You <strong>may not</strong> republish, sell, sublicense, or present Site content as your own work, or use it to train machine-learning systems, without prior written permission;</li>
+                        <li>Book excerpts remain © their respective publishers; purchase does not grant redistribution rights.</li>
+                    </ul>
+                </section>
+
+                <section id="acceptable-use" class="section">
+                    <h2>4. Acceptable Use</h2>
+                    <p>You agree to use the Site lawfully and respectfully. You must not:</p>
+                    <ul>
+                        <li>Attempt to gain unauthorized access to the Site, its hosting, or connected services;</li>
+                        <li>Scrape, crawl, or bulk-download the Site in a way that degrades service for others;</li>
+                        <li>Use the Site to distribute malware, spam, or misleading or unlawful content;</li>
+                        <li>Misrepresent your identity or affiliation when contacting us through the Site;</li>
+                        <li>Interfere with accessibility features, security controls, or consent mechanisms.</li>
+                    </ul>
+                </section>
+
+                <section id="third-party" class="section">
+                    <h2>5. Third-Party Links &amp; Services</h2>
+                    <p>The Site links to third-party platforms and services — including Amazon, Xendit, Canva, Google Drive, LinkedIn, Facebook, GitHub Pages, and independently operated web applications (such as the BIRD platform, Strat Planner Pro, and Cognitio+). These are provided for convenience. We do not control and are not responsible for third-party content, availability, terms, or privacy practices. Your dealings with any third party are solely between you and that party.</p>
+                </section>
+
+                <section id="purchases" class="section">
+                    <h2>6. Digital Products &amp; Purchases</h2>
+                    <p>Books and digital products referenced on the Site are sold through third-party checkouts (for example Amazon and Xendit). Pricing, payment, delivery, refunds, and returns are governed by the terms of the platform completing your purchase. <strong>No payment card or banking data is collected or stored on this Site.</strong> If a purchase issue arises, please contact the selling platform first; we will assist where we reasonably can.</p>
+                </section>
+
+                <section id="disclaimers" class="section">
+                    <h2>7. Disclaimers</h2>
+                    <p>The Site is provided on an "as is" and "as available" basis. While content is prepared with professional care, it is general information — not legal, financial, engineering, or other professional advice, and not a substitute for engagement-specific consulting. We make no warranty that the Site will be uninterrupted, error-free, or free of harmful components, and we may modify or withdraw content at any time without notice.</p>
+                </section>
+
+                <section id="liability" class="section">
+                    <h2>8. Limitation of Liability</h2>
+                    <p>To the maximum extent permitted by law, A. Silva Innovations and Alvin M. Silva shall not be liable for any indirect, incidental, consequential, or punitive damages — including lost profits, lost data, or lost opportunities — arising from or related to your use of, or inability to use, the Site or any linked service. Where liability cannot be excluded, it is limited to the amount you paid us, if any, for access to the Site (which is ordinarily zero).</p>
+                </section>
+
+                <section id="privacy-terms" class="section">
+                    <h2>9. Privacy &amp; Cookies</h2>
+                    <p>Your use of the Site is also governed by our <a href="privacy-policy.html">Privacy Policy</a> and <a href="cookie-policy.html">Cookie Policy</a>, which explain what limited data is processed, why, and the choices you have — including the on-site consent manager and accessibility preferences stored only on your device.</p>
+                </section>
+
+                <section id="governing-law" class="section">
+                    <h2>10. Governing Law</h2>
+                    <p>These Terms are governed by the laws of the <strong>Republic of the Philippines</strong>, without regard to conflict-of-law rules. Courts located in Mandaluyong City, Metro Manila shall have exclusive venue over disputes arising from these Terms, unless applicable law provides otherwise.</p>
+                </section>
+
+                <section id="changes" class="section">
+                    <h2>11. Changes to These Terms</h2>
+                    <p>We may revise these Terms from time to time. The "Last Updated" date above shows the current version. Material changes will be indicated on this page. Continued use of the Site after an update constitutes acceptance of the revised Terms.</p>
+                </section>
+
+                <section id="contact-terms" class="section">
+                    <h2>12. Contact</h2>
+                    <p>Questions about these Terms are welcome:</p>
+                    <ul>
+                        <li><strong>Email:</strong> <a href="mailto:alvin.silva@asilvainnovations.com">alvin.silva@asilvainnovations.com</a></li>
+                        <li><strong>Mobile:</strong> <a href="tel:+639178555134">+63 917 855 5134</a></li>
+                        <li><strong>Address:</strong> Pioneer Woodlands, Mandaluyong City, Metro Manila, Philippines</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="https://alvin-silva.asilvainnovations.com" class="brand"><img src="assets/logo-192.png" alt="" width="46" height="46"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
+        <p>Building resilient communities through ethical AI and human-centered design — development management, systems innovation, and humanitarian practice.</p>
+        <div class="socials">
+          <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
+          <a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
+          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
+          <a href="tel:+639178555134" aria-label="Call +63 917 855 5134"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-phone"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#about">About</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#expertise">Core Expertise</a></li>
+          <li><a href="https://alvin-portfolio.asilvainnovations.com">Portfolio</a></li>
+          <li><a href="https://alvin-silva.asilvainnovations.com/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Platforms</h4>
+        <ul>
+          <li><a href="https://bangsamro-investment-roadmapp.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
+          <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
+          <li><a href="https://preview-ljjsipjm--strategy-ai-planner.deploypad.app/" target="_blank" rel="noopener noreferrer">Strat Planner Pro ↗</a></li>
+          <li><a href="https://cognitio-plus.com/" target="_blank" rel="noopener noreferrer">Cognitio+ ↗</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="https://asilvainnovations.github.io/website/terms.html" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions ↗</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+          <li><a href="https://asilvainnovations.github.io/website/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility ↗</a></li>
+          <li><a href="https://asilvainnovations.github.io/website/ai-ethics.html" target="_blank" rel="noopener noreferrer">AI Ethics ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 A. Silva Innovations · Alvin M. Silva, MDM. All rights reserved.</p>
+      <p class="footer-legal">
+        <a href="policies.html">Policies</a> ·
+        <a href="privacy-policy.html">Privacy</a> ·
+        <a href="cookie-policy.html">Cookies</a> ·
+        <a href="terms-of-services.html">Terms</a> ·
+        <a href="accessibility-policy.html">Accessibility</a> ·
+        <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ ACCESSIBILITY TOOLS ============ -->
+<button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
+<aside class="a11y-panel glass-strong" id="a11yPanel" role="dialog" aria-label="Accessibility tools" aria-hidden="true">
+  <button class="a11y-close" id="a11yClose" aria-label="Close accessibility tools">✕</button>
+  <h2><svg><use href="#i-a11y"/></svg> Accessibility</h2>
+  <div class="a11y-row">
+    <div><div class="ar-name">Read page aloud</div><div class="ar-desc">Text-to-speech of the full page</div></div>
+    <button class="btn btn-gold btn-sm" id="a11ySpeak" aria-pressed="false"><svg style="width:14px;height:14px"><use href="#i-speak"/></svg><span>Listen</span></button>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Text size</div><div class="ar-desc">Scale content font</div></div>
+    <div style="display:flex;gap:.4rem">
+      <button class="btn btn-ghost btn-sm" id="a11yFontDown" aria-label="Decrease text size">A&minus;</button>
+      <button class="btn btn-ghost btn-sm" id="a11yFontUp" aria-label="Increase text size">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">High contrast</div><div class="ar-desc">Maximum legibility</div></div>
+    <span class="switch"><input type="checkbox" id="a11yContrast" aria-label="Toggle high contrast"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Grayscale</div><div class="ar-desc">Reduce color stimulation</div></div>
+    <span class="switch"><input type="checkbox" id="a11yGray" aria-label="Toggle grayscale"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Highlight links</div><div class="ar-desc">Underline every link</div></div>
+    <span class="switch"><input type="checkbox" id="a11yLinks" aria-label="Toggle link highlighting"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Large cursor</div><div class="ar-desc">Easier pointer tracking</div></div>
+    <span class="switch"><input type="checkbox" id="a11yCursor" aria-label="Toggle large cursor"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Reset all</div><div class="ar-desc">Back to defaults</div></div>
+    <button class="btn btn-ghost btn-sm" id="a11yReset">Reset</button>
+  </div>
+</aside>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+<div class="toast glass-strong" id="toast" role="status" aria-live="polite"></div>
+
+<div class="consent-banner glass-strong" id="consentBanner" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentDesc" hidden>
+  <h3 id="consentTitle"><svg><use href="#i-shield"/></svg> Your privacy, your choice</h3>
+  <p id="consentDesc">This site uses essential storage to remember your preferences, plus optional analytics and marketing cookies. Read our
+    <a href="cookie-policy.html">Cookie Policy</a> and
+    <a href="privacy-policy.html">Privacy Policy</a>.
+  </p>
+  <div class="consent-prefs" id="consentPrefs">
+    <div class="pref-row">
+      <div><div class="pr-name">Essential</div><div class="pr-desc">Required — remembers your consent choice. Always on.</div></div>
+      <span class="switch"><input type="checkbox" checked disabled aria-label="Essential cookies (always on)"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Analytics</div><div class="pr-desc">Anonymous usage statistics that help improve this site.</div></div>
+      <span class="switch"><input type="checkbox" id="prefAnalytics" aria-label="Analytics cookies"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Marketing</div><div class="pr-desc">Used to measure outreach and referrals.</div></div>
+      <span class="switch"><input type="checkbox" id="prefMarketing" aria-label="Marketing cookies"><span class="track"></span></span>
+    </div>
+  </div>
+  <div class="consent-actions">
+    <button class="btn btn-primary" id="consentAccept"><span>Accept All</span></button>
+    <button class="btn btn-gold" id="consentSave" style="display:none"><span>Save Choices</span></button>
+    <button class="btn btn-ghost" id="consentDecline"><span>Decline Optional</span></button>
+    <button class="btn btn-ghost" id="consentCustomize"><span>Customize</span></button>
+  </div>
+</div>
+
+<script>
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+
+/* dropdowns */
+$$('[data-drop] > .drop-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const drop = btn.parentElement, wasOpen = drop.classList.contains('open');
+    $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+    if (!wasOpen) { drop.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+});
+
+/* mobile menu */
+const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
+function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn.addEventListener('click', openMobile);
+$('#mmClose').addEventListener('click', closeMobile);
+overlay.addEventListener('click', closeMobile);
+$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMobile(); closeA11y(); $$('[data-drop]').forEach(d => d.classList.remove('open')); } });
+
+/* smooth anchors */
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); history.pushState(null,'',a.getAttribute('href')); }
+}));
+
+/* back to top */
+const btt = $('#backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
+btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* cookie consent */
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+const A11Y_KEY = 'as-a11y-prefs';
+const a11yPanelEl = document.getElementById('a11yPanel');
+let a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false };
+try { Object.assign(a11yState, JSON.parse(localStorage.getItem(A11Y_KEY)) || {}); } catch (e) {}
+function applyA11y() {
+  const root = document.documentElement;
+  root.style.setProperty('--a11y-scale', a11yState.scale);
+  root.classList.toggle('a11y-contrast', a11yState.contrast);
+  root.classList.toggle('a11y-grayscale', a11yState.gray);
+  root.classList.toggle('a11y-links', a11yState.links);
+  root.classList.toggle('a11y-largecursor', a11yState.cursor);
+  document.getElementById('a11yContrast').checked = a11yState.contrast;
+  document.getElementById('a11yGray').checked = a11yState.gray;
+  document.getElementById('a11yLinks').checked = a11yState.links;
+  document.getElementById('a11yCursor').checked = a11yState.cursor;
+  localStorage.setItem(A11Y_KEY, JSON.stringify(a11yState));
+}
+function openA11y() { a11yPanelEl.classList.add('open'); a11yPanelEl.setAttribute('aria-hidden','false'); }
+function closeA11y() { a11yPanelEl.classList.remove('open'); a11yPanelEl.setAttribute('aria-hidden','true'); }
+document.getElementById('a11yFab').addEventListener('click', openA11y);
+document.getElementById('a11yClose').addEventListener('click', closeA11y);
+document.getElementById('a11yFontUp').addEventListener('click', () => { a11yState.scale = Math.min(1.4, +(a11yState.scale + 0.1).toFixed(2)); applyA11y(); toast('Text size increased'); });
+document.getElementById('a11yFontDown').addEventListener('click', () => { a11yState.scale = Math.max(0.85, +(a11yState.scale - 0.1).toFixed(2)); applyA11y(); toast('Text size decreased'); });
+document.getElementById('a11yContrast').addEventListener('change', e => { a11yState.contrast = e.target.checked; applyA11y(); });
+document.getElementById('a11yGray').addEventListener('change', e => { a11yState.gray = e.target.checked; applyA11y(); });
+document.getElementById('a11yLinks').addEventListener('change', e => { a11yState.links = e.target.checked; applyA11y(); });
+document.getElementById('a11yCursor').addEventListener('change', e => { a11yState.cursor = e.target.checked; applyA11y(); });
+document.getElementById('a11yReset').addEventListener('click', () => { a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false }; applyA11y(); toast('Accessibility settings reset'); });
+applyA11y();
+let a11ySpeaking = false;
+document.getElementById('a11ySpeak').addEventListener('click', () => {
+  const btn = document.getElementById('a11ySpeak');
+  if (!('speechSynthesis' in window)) { toast('Read-aloud is not supported in this browser'); return; }
+  if (a11ySpeaking) { speechSynthesis.cancel(); a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; return; }
+  const mainEl = document.getElementById('main') || document.querySelector('main') || document.body;
+  const u = new SpeechSynthesisUtterance(mainEl.innerText.replace(/\s+\n/g,'\n').slice(0, 12000));
+  u.rate = 1; u.lang = document.documentElement.lang || 'en';
+  u.onend = () => { a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; };
+  speechSynthesis.speak(u);
+  a11ySpeaking = true;
+  btn.setAttribute('aria-pressed','true');
+  btn.querySelector('span').textContent = 'Stop';
+  toast('Reading page aloud — tap again to stop');
+});
+
+const CONSENT_KEY = 'as-cookie-consent-v1';
+const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
+function getConsent() { try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; } }
+function setConsent(analytics, marketing) {
+  const rec = { essential:true, analytics:!!analytics, marketing:!!marketing, ts:new Date().toISOString(), v:1 };
+  localStorage.setItem(CONSENT_KEY, JSON.stringify(rec));
+  window.dispatchEvent(new CustomEvent('as:consent', { detail:rec }));
+}
+function showConsent() { cBanner.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => cBanner.classList.add('show'))); }
+function hideConsent() { cBanner.classList.remove('show'); setTimeout(() => { cBanner.hidden = true; }, 500); }
+$('#consentAccept').addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
+$('#consentDecline').addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
+$('#consentSave').addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
+$('#consentCustomize').addEventListener('click', () => {
+  cPrefs.classList.toggle('open');
+  $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
+});
+$('#cookieSettings').addEventListener('click', () => {
+  const c = getConsent();
+  if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
+  cPrefs.classList.add('open'); $('#consentSave').style.display = '';
+  showConsent();
+});
+if (!getConsent()) setTimeout(showConsent, 1800);
+</script>
+</body>
+</html>
