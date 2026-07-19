@@ -39,7 +39,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Alvin M. Silva, MDM | Development Management & Resilience Consultant">
 <meta name="twitter:description" content="Systems innovator and certified international humanitarian practitioner. Lead architect, BIRD 2026–2035.">
-<meta name="twitter:image" content="https://alvin-silva.asilvainnovations.com/assets/Alvin-Silva-Site-Banner.png">
+<meta name="twitter:image" content="https://alvin-silva.asilvainnovations.com/assets/og-image.jpg">
 
 <!-- ============ PERFORMANCE ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +63,7 @@
       "url": "https://alvin-silva.asilvainnovations.com/",
       "email": "mailto:alvin.silva@asilvainnovations.com",
       "telephone": "+63-917-855-5134",
-      "image": "https://alvin-silva.asilvainnovations.com/assets/Alvin-Silva-Site-Banner.png",
+      "image": "https://alvin-silva.asilvainnovations.com/assets/og-image.jpg",
       "nationality": "Filipino",
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "Asian Institute of Management" },
       "hasCredential": [
@@ -141,7 +141,7 @@ html[data-persona="academic"]     { --accent:#A78BFA; --accent-soft:rgba(167,139
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:92px; -webkit-text-size-adjust:100%; }
 body {
-  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:1rem;
+  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:calc(1rem * var(--a11y-scale,1));
   color:var(--text);
   background:
     radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%),
@@ -254,6 +254,51 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
   visibility:visible; opacity:1; transform:translate(-50%, 0); pointer-events:auto;
 }
 .tooltip .tt strong { color:var(--gold); font-weight:600; display:block; margin-bottom:.2rem; font-family:var(--font-cond); letter-spacing:.05em; text-transform:uppercase; font-size:.72rem; }
+
+/* ============ TAILORED CV SECTION ============ */
+.hero-portrait { width:100%; display:block; border-radius:14px; border:1px solid var(--line); margin-bottom:1.1rem; aspect-ratio:2.18; object-fit:cover; object-position:center 30%; }
+.cv-rec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2rem; }
+.cv-card { padding:1.5rem 1.5rem 1.35rem; border-radius:18px; display:flex; flex-direction:column; gap:.65rem; position:relative; overflow:hidden; }
+.cv-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--accent); opacity:.75; }
+.cv-tag { font-family:var(--font-cond); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+.cv-card h3 { font-size:1.12rem; font-weight:800; }
+.cv-card p { font-size:.88rem; color:var(--text-3); font-weight:300; flex:1; }
+.cv-dl { display:inline-flex; align-items:center; gap:.45rem; font-family:var(--font-cond); font-weight:600; font-size:.86rem; color:var(--gold); text-decoration:none; }
+.cv-dl:hover { text-decoration:underline; text-underline-offset:3px; }
+.cv-all { margin-top:1.4rem; border-radius:16px; overflow:hidden; }
+.cv-all summary { cursor:pointer; list-style:none; padding:1.05rem 1.4rem; font-family:var(--font-cond); font-weight:600; letter-spacing:.05em; display:flex; align-items:center; justify-content:space-between; color:#fff; }
+.cv-all summary::-webkit-details-marker { display:none; }
+.cv-all summary .chev { transition:.3s; }
+.cv-all[open] summary { border-bottom:1px solid var(--line); }
+.cv-all[open] summary .chev { transform:rotate(180deg); }
+.cv-all-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; padding:1.3rem 1.4rem 1.5rem; }
+.cv-row { display:flex; flex-direction:column; gap:.4rem; padding:1rem 1.15rem; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.03); }
+.cv-row h4 { font-size:.97rem; font-weight:700; }
+.cv-row p { font-size:.8rem; color:var(--text-3); font-weight:300; flex:1; }
+.cv-note { margin-top:1.3rem; font-size:.82rem; color:var(--text-3); font-weight:300; }
+@media (max-width:900px){ .cv-rec-grid { grid-template-columns:1fr; } .cv-all-grid { grid-template-columns:1fr; } }
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+html { --a11y-scale:1; }
+.a11y-fab { position:fixed; bottom:1.2rem; left:1.2rem; z-index:950; width:52px; height:52px; border-radius:50%; border:1px solid var(--line-gold); cursor:pointer; background:linear-gradient(135deg, rgba(10,20,60,.92), rgba(10,14,39,.96)); color:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,.45); transition:.3s; }
+.a11y-fab:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(255,215,0,.25); }
+.a11y-fab svg { width:24px; height:24px; }
+.a11y-panel { position:fixed; top:50%; right:-105%; transform:translateY(-50%); z-index:1140; width:min(320px, 88vw); border-radius:18px 0 0 18px; padding:1.3rem 1.3rem 1.4rem; transition:right .4s var(--ease); max-height:86dvh; overflow-y:auto; }
+.a11y-panel.open { right:0; }
+.a11y-panel h2 { font-size:1rem; font-weight:800; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:#fff; }
+.a11y-panel h2 svg { width:18px; height:18px; color:var(--gold); }
+.a11y-row { display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:.6rem 0; border-top:1px solid rgba(255,255,255,.06); }
+.a11y-row:first-of-type { border-top:none; }
+.a11y-row .ar-name { font-family:var(--font-cond); font-size:.85rem; font-weight:600; letter-spacing:.04em; color:#fff; }
+.a11y-row .ar-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.a11y-close { position:absolute; top:.8rem; right:.8rem; background:none; border:none; color:var(--text-3); font-size:1.1rem; cursor:pointer; padding:.3rem; }
+html.a11y-contrast body { background:#000 !important; }
+html.a11y-contrast .glass, html.a11y-contrast .glass-strong, html.a11y-contrast .glass-gold { background:#0a0a0a !important; border-color:#FFD700 !important; }
+html.a11y-contrast p, html.a11y-contrast li, html.a11y-contrast td, html.a11y-contrast .section-sub { color:#fff !important; }
+html.a11y-grayscale body { filter:grayscale(1); }
+html.a11y-links a { text-decoration:underline !important; text-underline-offset:3px; }
+html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M6 3 L34 20 L20 23 L15 36 Z' fill='%23FFD700' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") 6 3, auto !important; }
+@media print { .a11y-fab, .a11y-panel { display:none !important; } }
 </style>
 <style>
 /* ============================================================
@@ -656,6 +701,8 @@ html.js .reveal.in { opacity:1; transform:none; }
 <!-- SVG icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <symbol id="i-a11y" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.2"/><path d="M4 9.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 10.8v5.2m0 0-3.5 6m3.5-6 3.5 6"/></symbol>
+    <symbol id="i-speak" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
     <symbol id="i-gov" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M4 18h16M6 18v-7m4 7v-7m4 7v-7m4 7v-7M3 11l9-7 9 7z"/></symbol>
     <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7.5-4.9-9.8-9.2C.6 8.6 2.6 5 6 5c2 0 3.4 1.1 4 2.2C10.6 6.1 12 5 14 5c3.4 0 5.4 3.6 3.8 6.8C19.5 16.1 12 21 12 21z"/><path d="M7 12h3l1.5-3 2 5L15 12h2"/></symbol>
@@ -751,7 +798,8 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="drop-menu" role="menu">
           <div class="drop-head">Go Deeper</div>
           <a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
-          <a class="drop-item" href="portfolio.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
+          <a class="drop-item" href="#cvs" role="menuitem"><svg><use href="#i-dl"/></svg> Tailored CVs</a>
+          <a class="drop-item" href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
           <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
         </div>
       </li>
@@ -786,11 +834,12 @@ html.js .reveal.in { opacity:1; transform:none; }
     <a class="mm-link" href="#impact"><svg><use href="#i-star"/></svg> Impact Timeline</a>
     <a class="mm-link" href="#works"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
     <a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> FAQ</a>
+    <a class="mm-link" href="#cvs"><svg><use href="#i-dl"/></svg> Tailored CVs</a>
     <a class="mm-link" href="#contact"><svg><use href="#i-mail"/></svg> Contact</a>
   </div>
   <div class="mm-group">
     <div class="mm-group-title">External</div>
-    <a class="mm-link" href="portfolio.html" target="_blank" rel="noopener noreferrer"><svg><use href="https://alvin-portfolio.asilvainnovations.com"/></svg> Full Portfolio ↗</a>
+    <a class="mm-link" href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
     <a class="mm-link" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
   </div>
   <div class="mm-persona">
@@ -807,7 +856,7 @@ html.js .reveal.in { opacity:1; transform:none; }
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-banner" role="img" aria-label="Abstract digital landscape: glowing network lines over dark terrain at dawn — resilience after the storm">
-    <img src="assets/Alvin-Silva-Site-Banner.png" alt="" fetchpriority="high" decoding="async">
+    <img src="assets/hero-banner.jpg" alt="" fetchpriority="high" decoding="async">
   </div>
   <div class="wrap">
     <div class="hero-grid" id="about">
@@ -829,6 +878,7 @@ html.js .reveal.in { opacity:1; transform:none; }
       </div>
 
       <aside class="hero-card glass-strong" aria-label="Key statistics">
+        <img class="hero-portrait" src="assets/hero-portrait-banner.jpg" alt="Official portrait banner of Alvin M. Silva against a digital world-map backdrop with the Alvin Silva medallion" loading="lazy" decoding="async">
         <div class="hc-title"><span>Proof, not promises</span><span class="chip" style="border-color:var(--accent);color:var(--accent);font-size:.66rem;padding:.2rem .6rem" data-p="hero.badge">EXECUTIVE LENS</span></div>
         <div class="stat-grid">
           <div><div class="stat-num"><span class="count" data-to="18">0</span>+</div><div class="stat-label">Years of Global Experience</div></div>
@@ -1069,6 +1119,21 @@ html.js .reveal.in { opacity:1; transform:none; }
   </div>
 </section>
 
+<!-- ============ TAILORED CVS ============ -->
+<section class="section" id="cvs">
+  <div class="wrap">
+    <p class="kicker">Tailored CVs</p>
+    <h2 class="section-title">The right CV for <span class="hl">your desk</span></h2>
+    <p class="section-sub" data-p="cv.sub">Ten role-targeted versions of one documented career — ranked below for your lens.</p>
+    <div class="cv-rec-grid" id="cvRecGrid" aria-live="polite"></div>
+    <details class="cv-all glass" id="cvAll">
+      <summary>Browse all 10 tailored versions <span class="chev" aria-hidden="true"></span></summary>
+      <div class="cv-all-grid" id="cvAllGrid"></div>
+    </details>
+    <p class="cv-note">Every version draws on the same verified record — reframed for the reader, never inflated. Editable DOCX copies available on request.</p>
+  </div>
+</section>
+
 <!-- ============ NUMBERS BAND ============ -->
 <section class="section numbers" id="numbers">
   <div class="wrap">
@@ -1234,6 +1299,8 @@ html.js .reveal.in { opacity:1; transform:none; }
         <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/terms-of-services.html" target="_blank" rel="noopener noreferrer">Terms</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility</a> ·
         <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
       </p>
       <span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
@@ -1242,6 +1309,44 @@ html.js .reveal.in { opacity:1; transform:none; }
 </footer>
 
 <!-- floating -->
+<!-- ============ ACCESSIBILITY TOOLS ============ -->
+<button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
+<aside class="a11y-panel glass-strong" id="a11yPanel" role="dialog" aria-label="Accessibility tools" aria-hidden="true">
+  <button class="a11y-close" id="a11yClose" aria-label="Close accessibility tools">✕</button>
+  <h2><svg><use href="#i-a11y"/></svg> Accessibility</h2>
+  <div class="a11y-row">
+    <div><div class="ar-name">Read page aloud</div><div class="ar-desc">Text-to-speech of the full page</div></div>
+    <button class="btn btn-gold btn-sm" id="a11ySpeak" aria-pressed="false"><svg style="width:14px;height:14px"><use href="#i-speak"/></svg><span>Listen</span></button>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Text size</div><div class="ar-desc">Scale content font</div></div>
+    <div style="display:flex;gap:.4rem">
+      <button class="btn btn-ghost btn-sm" id="a11yFontDown" aria-label="Decrease text size">A&minus;</button>
+      <button class="btn btn-ghost btn-sm" id="a11yFontUp" aria-label="Increase text size">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">High contrast</div><div class="ar-desc">Maximum legibility</div></div>
+    <span class="switch"><input type="checkbox" id="a11yContrast" aria-label="Toggle high contrast"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Grayscale</div><div class="ar-desc">Reduce color stimulation</div></div>
+    <span class="switch"><input type="checkbox" id="a11yGray" aria-label="Toggle grayscale"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Highlight links</div><div class="ar-desc">Underline every link</div></div>
+    <span class="switch"><input type="checkbox" id="a11yLinks" aria-label="Toggle link highlighting"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Large cursor</div><div class="ar-desc">Easier pointer tracking</div></div>
+    <span class="switch"><input type="checkbox" id="a11yCursor" aria-label="Toggle large cursor"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Reset all</div><div class="ar-desc">Back to defaults</div></div>
+    <button class="btn btn-ghost btn-sm" id="a11yReset">Reset</button>
+  </div>
+</aside>
+
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
 <div class="install-banner glass-gold" id="installBanner" role="region" aria-label="Install app">
   <div class="ib-icon"><svg><use href="#i-dl"/></svg></div>
@@ -1287,6 +1392,7 @@ document.documentElement.classList.add('js');
 const PROFILES = {
   executive: {
     label: 'Executive',
+    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for decision-makers: the full leadership arc first.', rec: ['dm','stp','pm'] },
     hero: {
       eyebrow: 'Development Management · Resilience · Systems Innovation',
       headline: 'Turning risk into <span class="grad-text">resilience</span> — and resilience into <span class="grad-text">growth</span>.',
@@ -1328,6 +1434,7 @@ const PROFILES = {
 
   government: {
     label: 'Government',
+    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for public-sector mandates: PPP, institutions, and capacity first.', rec: ['ppp','dm','cbt'] },
     hero: {
       eyebrow: 'Policy Frameworks · Multi-Stakeholder Consultation · Regional Development',
       headline: 'Policy that holds — <span class="grad-text">through audits, transitions, and typhoons</span>.',
@@ -1369,6 +1476,7 @@ const PROFILES = {
 
   humanitarian: {
     label: 'NGO & Humanitarian',
+    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for program teams: field delivery, MEAL, and evaluation first.', rec: ['ccadrr','mel','pe'] },
     hero: {
       eyebrow: 'DRR · CCA · Community Resilience · Humanitarian Operations',
       headline: 'Programs that hold <span class="grad-text">when systems fail</span>.',
@@ -1410,6 +1518,7 @@ const PROFILES = {
 
   private: {
     label: 'Private Sector',
+    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for delivery-focused organizations: execution and structuring first.', rec: ['pm','ppp','stp'] },
     hero: {
       eyebrow: 'Investment Roadmaps · Risk Intelligence · ESG-Aligned Strategy',
       headline: 'De-risk growth in <span class="grad-text">complex markets</span>.',
@@ -1451,6 +1560,7 @@ const PROFILES = {
 
   academic: {
     label: 'Academia',
+    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for research and learning institutions: evidence and instruction first.', rec: ['res','pea','cbt'] },
     hero: {
       eyebrow: 'Research · Publications · Methodology · Capacity Building',
       headline: 'Rigor you can cite. <span class="grad-text">Results you can see</span>.',
@@ -1500,6 +1610,69 @@ function resolvePath(obj, path) {
   return path.split('.').reduce((o,k) => (o && o[k] !== undefined) ? o[k] : undefined, obj);
 }
 
+const CV_BASE = 'https://asilvainnovations.github.io/alvin-silva/CV/';
+const CVS = [
+  { k:'ccadrr', file:'CCA-DRR.pdf', title:'Climate Change Adaptation & DRR',
+    short:'Policy advisory, project design, and digital innovation for climate adaptation and disaster risk reduction leadership.',
+    full:'A seasoned CCA-DRR professional with a strong mix of policy advisory, project design, digital innovation, and academic mentorship — tailored for leadership roles in climate adaptation and disaster risk reduction.' },
+  { k:'cbt', file:'Capacity-Building-Training.pdf', title:'Capacity-Building & Training',
+    short:'Executive education, resilience systems, and multi-stakeholder training backed by international certifications.',
+    full:'A seasoned capacity-building and organizational development consultant with deep expertise in executive education, resilience systems, and multi-stakeholder training, backed by international certifications and leadership in high-impact projects.' },
+  { k:'dm', file:'Development-Management.pdf', title:'Development Management',
+    short:'15+ years leading strategic initiatives for WHO, DOH, TESDA, and Bangsamoro institutions.',
+    full:'Over 15 years in capacity building, organizational development, and executive education — leading strategic initiatives for institutions such as WHO, DOH, TESDA, and the Bangsamoro, focusing on resilience planning, institutional strengthening, and executive training across Asia-Pacific.' },
+  { k:'mel', file:'MEL.pdf', title:'Monitoring, Evaluation & Learning',
+    short:'MEAL systems and evidence-based development for government, humanitarian, and academic institutions.',
+    full:'Specializing in Monitoring, Evaluation & Learning (MEAL) systems and evidence-based development — designing and implementing MEL frameworks that ensure accountability, resilience, and organizational growth through data-driven approaches.' },
+  { k:'ppp', file:'PPP.pdf', title:'Public-Private Partnerships',
+    short:'PPP, investment roadmapping, and risk-informed infrastructure planning — including BIRD 2026–2035.',
+    full:'Expertise in public-private partnerships, investment roadmapping, and risk-informed infrastructure planning — including the Bangsamoro Investment Roadmap 2026–2035 and climate-smart resilience projects integrating governance, finance, and risk management.' },
+  { k:'pea', file:'Political-Economy-Analysis.pdf', title:'Political-Economy Analysis',
+    short:'Governance, conflict-sensitive programming, and stakeholder analysis in complex contexts.',
+    full:'A seasoned analyst in political-economy analysis, governance, and conflict-sensitive programming — shaping strategic directions for the Bangsamoro Development Agency and conducting conflict-sensitive assessments for EU and Red Cross programs.' },
+  { k:'pe', file:'Project-Evaluation.pdf', title:'Project Evaluation',
+    short:'Evaluation frameworks that strengthen accountability and inform strategic decision-making.',
+    full:'Specializing in project evaluation, results assessment, and evidence-based programming — designing and implementing evaluation frameworks that strengthen accountability and inform strategic decision-making for government, humanitarian, and academic institutions.' },
+  { k:'pm', file:'Project-Management.pdf', title:'Project Management',
+    short:'Program delivery and multi-stakeholder implementation across complex national initiatives.',
+    full:'Strong expertise in project management, program delivery, and multi-stakeholder implementation — leading complex initiatives such as national strategic planning, investment roadmapping, and resilience-focused projects across government, humanitarian, and academic institutions.' },
+  { k:'res', file:'Research.pdf', title:'Development Research',
+    short:'Development research, policy studies, and applied data analytics for evidence-based governance.',
+    full:'Expertise in development research, policy studies, and applied data analytics — designing evidence-based frameworks and conducting policy analyses that inform governance, resilience planning, and institutional strengthening across sectors.' },
+  { k:'stp', file:'Strategic-Thinking-Planning.pdf', title:'Strategic Thinking & Planning',
+    short:'Systems innovation and institutional strategy — national roadmaps and organizational strengthening.',
+    full:'Expertise in strategic thinking, systems innovation, and institutional strategy — leading major initiatives such as national investment roadmapping, resilience-focused infrastructure planning, and organizational strengthening for government, humanitarian, and academic institutions.' },
+];
+
+/* render persona-matched CV recommendations */
+function renderCvRecs(P) {
+  const wrap = document.getElementById('cvRecGrid');
+  if (!wrap || !P.cv) return;
+  wrap.innerHTML = P.cv.rec.map(k => {
+    const c = CVS.find(x => x.k === k);
+    if (!c) return '';
+    return `<article class="cv-card glass">
+      <span class="cv-tag">Recommended · ${P.label} lens</span>
+      <h3>${c.title}</h3>
+      <p>${c.short}</p>
+      <a class="cv-dl" href="${CV_BASE}${c.file}" target="_blank" rel="noopener noreferrer" aria-label="Download ${c.title} CV (PDF)"><svg style="width:15px;height:15px"><use href="#i-dl"/></svg> Download PDF</a>
+    </article>`;
+  }).join('');
+}
+
+/* render the full CV library once + initial recommendations */
+(function renderCvLibrary() {
+  renderCvRecs(PROFILES[localStorage.getItem(STORE_KEY)] || PROFILES.executive);
+  const allWrap = document.getElementById('cvAllGrid');
+  if (!allWrap) return;
+  allWrap.innerHTML = CVS.map(c => `
+    <div class="cv-row">
+      <h4>${c.title}</h4>
+      <p>${c.full}</p>
+      <a class="cv-dl" href="${CV_BASE}${c.file}" target="_blank" rel="noopener noreferrer" aria-label="Download ${c.title} CV (PDF)"><svg style="width:14px;height:14px"><use href="#i-dl"/></svg> Download PDF</a>
+    </div>`).join('');
+})();
+
 function applyPersona(key, {announce=true} = {}) {
   if (!PROFILES[key]) key = 'executive';
   currentPersona = key;
@@ -1532,6 +1705,9 @@ function applyPersona(key, {announce=true} = {}) {
   $$('[data-tl-badge]').forEach(el => {
     el.classList.toggle('on', P.tlPriority.includes(el.dataset.tlBadge));
   });
+
+  // tailored CV recommendations
+  renderCvRecs(P);
 
   // header pill + mobile chips
   $('#personaPill .pp-label').textContent = P.label;
@@ -1599,7 +1775,7 @@ $('#mmClose').addEventListener('click', closeMobile);
 overlay.addEventListener('click', closeMobile);
 $$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeMobile(); closeModal(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
+  if (e.key === 'Escape') { closeMobile(); closeModal(); closeA11y(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
 });
 
 /* ================================================================
@@ -1729,6 +1905,53 @@ window.addEventListener('appinstalled', () => { iBanner.classList.remove('show')
 /* ================================================================
    COOKIE CONSENT — GDPR / RA 10173 aligned
    ================================================================ */
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+const A11Y_KEY = 'as-a11y-prefs';
+const a11yPanelEl = document.getElementById('a11yPanel');
+let a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false };
+try { Object.assign(a11yState, JSON.parse(localStorage.getItem(A11Y_KEY)) || {}); } catch (e) {}
+function applyA11y() {
+  const root = document.documentElement;
+  root.style.setProperty('--a11y-scale', a11yState.scale);
+  root.classList.toggle('a11y-contrast', a11yState.contrast);
+  root.classList.toggle('a11y-grayscale', a11yState.gray);
+  root.classList.toggle('a11y-links', a11yState.links);
+  root.classList.toggle('a11y-largecursor', a11yState.cursor);
+  document.getElementById('a11yContrast').checked = a11yState.contrast;
+  document.getElementById('a11yGray').checked = a11yState.gray;
+  document.getElementById('a11yLinks').checked = a11yState.links;
+  document.getElementById('a11yCursor').checked = a11yState.cursor;
+  localStorage.setItem(A11Y_KEY, JSON.stringify(a11yState));
+}
+function openA11y() { a11yPanelEl.classList.add('open'); a11yPanelEl.setAttribute('aria-hidden','false'); }
+function closeA11y() { a11yPanelEl.classList.remove('open'); a11yPanelEl.setAttribute('aria-hidden','true'); }
+document.getElementById('a11yFab').addEventListener('click', openA11y);
+document.getElementById('a11yClose').addEventListener('click', closeA11y);
+document.getElementById('a11yFontUp').addEventListener('click', () => { a11yState.scale = Math.min(1.4, +(a11yState.scale + 0.1).toFixed(2)); applyA11y(); toast('Text size increased'); });
+document.getElementById('a11yFontDown').addEventListener('click', () => { a11yState.scale = Math.max(0.85, +(a11yState.scale - 0.1).toFixed(2)); applyA11y(); toast('Text size decreased'); });
+document.getElementById('a11yContrast').addEventListener('change', e => { a11yState.contrast = e.target.checked; applyA11y(); });
+document.getElementById('a11yGray').addEventListener('change', e => { a11yState.gray = e.target.checked; applyA11y(); });
+document.getElementById('a11yLinks').addEventListener('change', e => { a11yState.links = e.target.checked; applyA11y(); });
+document.getElementById('a11yCursor').addEventListener('change', e => { a11yState.cursor = e.target.checked; applyA11y(); });
+document.getElementById('a11yReset').addEventListener('click', () => { a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false }; applyA11y(); toast('Accessibility settings reset'); });
+applyA11y();
+let a11ySpeaking = false;
+document.getElementById('a11ySpeak').addEventListener('click', () => {
+  const btn = document.getElementById('a11ySpeak');
+  if (!('speechSynthesis' in window)) { toast('Read-aloud is not supported in this browser'); return; }
+  if (a11ySpeaking) { speechSynthesis.cancel(); a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; return; }
+  const mainEl = document.getElementById('main') || document.querySelector('main') || document.body;
+  const u = new SpeechSynthesisUtterance(mainEl.innerText.replace(/\s+\n/g,'\n').slice(0, 12000));
+  u.rate = 1; u.lang = document.documentElement.lang || 'en';
+  u.onend = () => { a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; };
+  speechSynthesis.speak(u);
+  a11ySpeaking = true;
+  btn.setAttribute('aria-pressed','true');
+  btn.querySelector('span').textContent = 'Stop';
+  toast('Reading page aloud — tap again to stop');
+});
+
 const CONSENT_KEY = 'as-cookie-consent-v1';
 const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
 
