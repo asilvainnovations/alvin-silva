@@ -1371,6 +1371,148 @@ document.getElementById('a11ySpeak').addEventListener('click', () => {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
+  /* ================================================================
+   LOCALSTORAGE MANAGER — Shared Data Collection System
+   ================================================================ */
+const LS_KEYS = {
+  visitors: 'as-visitors',
+  contacts: 'as-contacts',
+  leadCapture: 'as-lead-captured'
+};
+
+const DataStore = {
+  // Portfolio visitors
+  addVisitor(data) {
+    const visitors = this.getVisitors();
+    const entry = {
+      id: 'v_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+      name: data.name,
+      email: data.email,
+      organization: data.organization || '',
+      role: data.role || '',
+      persona: data.persona || currentPersona,
+      page: data.page || 'portfolio',
+      timestamp: new Date().toISOString(),
+      userAgent: navigator.userAgent,
+      referrer: document.referrer || 'direct'
+    };
+    visitors.push(entry);
+    localStorage.setItem(LS_KEYS.visitors, JSON.stringify(visitors));
+    return entry;
+  },
+  getVisitors() {
+    try { return JSON.parse(localStorage.getItem(LS_KEYS.visitors)) || []; } catch { return []; }
+  },
+  
+  // Contact form submissions
+  addContact(data) {
+    const contacts = this.getContacts();
+    const entry = {
+      id: 'c_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+      ...data,
+      timestamp: new Date().toISOString(),
+      userAgent: navigator.userAgent
+    };
+    contacts.push(entry);
+    localStorage.setItem(LS_KEYS.contacts, JSON.stringify(contacts));
+    return entry;
+  },
+  getContacts() {
+    try { return JSON.parse(localStorage.getItem(LS_KEYS.contacts)) || []; } catch { return []; }
+  },
+  
+  // Lead capture tracking (has user provided info?)
+  hasCapturedLead(email) {
+    const captured = JSON.parse(localStorage.getItem(LS_KEYS.leadCapture) || '[]');
+    return captured.some(c => c.email.toLowerCase() === email.toLowerCase());
+  },
+  markLeadCaptured(email, name) {
+    const captured = JSON.parse(localStorage.getItem(LS_KEYS.leadCapture) || '[]');
+    captured.push({ email, name, timestamp: new Date().toISOString() });
+    localStorage.setItem(LS_KEYS.leadCapture, JSON.stringify(captured));
+  },
+  
+  // Export data
+  exportAll() {
+    const data = {
+      exportedAt: new Date().toISOString(),
+      site: 'alvin-silva.asilvainnovations.com',
+      visitors: this.getVisitors(),
+      contacts: this.getContacts()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `asilva-data-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    return data;
+  },
+  
+  exportCSV(type) {
+    const items = type === 'visitors' ? this.getVisitors() : this.getContacts();
+    if (!items.length) return null;
+    const headers = Object.keys(items[0]).join(',');
+    const rows = items.map(i => Object.values(i).map(v => `"${String(v).replace(/"/g, '""')}"`).join(','));
+    const csv = [headers, ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `asilva-${type}-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  },
+  
+  // Stats
+  getStats() {
+    return {
+      visitors: this.getVisitors().length,
+      contacts: this.getContacts().length,
+      lastVisitor: this.getVisitors().slice(-1)[0]?.timestamp || null,
+      lastContact: this.getContacts().slice(-1)[0]?.timestamp || null
+    };
+  }
+};
+
+// Contact form → save to localStorage
+$('#contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = $('#fName').value.trim(), email = $('#fEmail').value.trim(),
+        org = $('#fOrg').value.trim(), topic = $('#fTopic').value, msg = $('#fMsg').value.trim();
+  const status = $('#formStatus');
+  
+  const fail = m => { status.textContent = m; status.className = 'form-status error'; };
+  if (!name || !email || !msg) return fail('Please complete name, email, and message.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('That email address doesn\'t look right.');
+  if (msg.length < 10) return fail('A sentence or two more would help me prepare a useful reply.');
+  
+  // Save to localStorage
+  DataStore.addContact({
+    name, email, organization: org, topic, message: msg,
+    persona: currentPersona,
+    page: 'index.html#contact'
+  });
+  
+  const persona = PROFILES[currentPersona].label;
+  const subject = encodeURIComponent(`[${topic}] Inquiry from ${name}`);
+  const body = encodeURIComponent(
+`Hi Alvin,
+
+${msg}
+
+—
+Name: ${name}
+Email: ${email}
+Organization / role: ${org || '—'}
+Need: ${topic}
+Site profile selected: ${persona}`);
+  status.textContent = 'Opening your email app with the message pre-filled…';
+  status.className = 'form-status success';
+  location.href = `mailto:alvin.silva@asilvainnovations.com?subject=${subject}&body=${body}`;
+  setTimeout(() => { status.className = 'form-status'; }, 6000);
+});
 </script>
 </body>
 </html>
