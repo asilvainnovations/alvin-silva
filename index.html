@@ -44,7 +44,7 @@
 <!-- ============ PERFORMANCE ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/hero-banner.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-portrait-banner.jpg" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
@@ -120,7 +120,7 @@
   --line:        rgba(255,255,255,.13);
   --line-gold:   rgba(255,215,0,.28);
   --radius:      14px;
-  --accent:      #00BFFF;              /* persona accent, swapped by JS */
+  --accent:      #00BFFF;
   --accent-soft: rgba(0,191,255,.14);
   --font-display:'Montserrat', system-ui, sans-serif;
   --font-body:   'Poppins', system-ui, sans-serif;
@@ -141,7 +141,7 @@ html[data-persona="academic"]     { --accent:#A78BFA; --accent-soft:rgba(167,139
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:92px; -webkit-text-size-adjust:100%; }
 body {
-  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:calc(1rem * var(--a11y-scale,1));
+  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:1rem;
   color:var(--text);
   background:
     radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%),
@@ -150,7 +150,6 @@ body {
   background-attachment:fixed;
   min-height:100vh; overflow-x:hidden;
 }
-/* watermark monogram, Stronghold-style */
 body::before {
   content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
   background:url('assets/logo-512.png') center/ min(78vw,560px) no-repeat;
@@ -177,7 +176,7 @@ button { font-family:inherit; }
 .sr-only { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
 /* ============================================================
-   LAYOUT PRIMITIVES
+   LAYOUT PRIMITIVES  — single column, stacked, mobile-first
    ============================================================ */
 .wrap { width:100%; max-width:1280px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
 .section { padding:clamp(3.5rem,8vw,6rem) 0; position:relative; }
@@ -198,12 +197,10 @@ button { font-family:inherit; }
 }
 .section-sub { text-align:center; color:var(--text-3); max-width:720px; margin:0 auto clamp(2rem,5vw,3.2rem); font-weight:300; font-size:clamp(.95rem,2.4vw,1.05rem); }
 
-/* glass */
 .glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); }
 .glass-strong { background:var(--glass-strong); border:1px solid var(--line); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:var(--shadow-1); }
 .glass-gold { background:linear-gradient(135deg, rgba(255,215,0,.14), rgba(255,215,0,.04)); border:1px solid var(--line-gold); backdrop-filter:blur(14px); }
 
-/* buttons */
 .btn {
   display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
   font-family:var(--font-display); font-weight:700; font-size:.92rem; letter-spacing:.03em;
@@ -223,7 +220,6 @@ button { font-family:inherit; }
 .btn-ghost:hover { background:rgba(255,255,255,.12); transform:translateY(-2px); }
 .btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
 
-/* chips / badges */
 .chip {
   display:inline-flex; align-items:center; gap:.45rem; padding:.42rem 1rem; border-radius:999px;
   font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em;
@@ -237,9 +233,7 @@ button { font-family:inherit; }
 }
 html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:scale(1); }
 
-/* ============================================================
-   TOOLTIP
-   ============================================================ */
+/* tooltip */
 .tooltip { position:relative; display:inline-block; cursor:help; border-bottom:2px dotted var(--sky); }
 .tooltip .tt {
   visibility:hidden; opacity:0; width:min(300px, 84vw);
@@ -254,51 +248,6 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
   visibility:visible; opacity:1; transform:translate(-50%, 0); pointer-events:auto;
 }
 .tooltip .tt strong { color:var(--gold); font-weight:600; display:block; margin-bottom:.2rem; font-family:var(--font-cond); letter-spacing:.05em; text-transform:uppercase; font-size:.72rem; }
-
-/* ============ TAILORED CV SECTION ============ */
-.hero-portrait { width:100%; display:block; border-radius:14px; border:1px solid var(--line); margin-bottom:1.1rem; aspect-ratio:2.18; object-fit:cover; object-position:center 30%; }
-.cv-rec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2rem; }
-.cv-card { padding:1.5rem 1.5rem 1.35rem; border-radius:18px; display:flex; flex-direction:column; gap:.65rem; position:relative; overflow:hidden; }
-.cv-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--accent); opacity:.75; }
-.cv-tag { font-family:var(--font-cond); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
-.cv-card h3 { font-size:1.12rem; font-weight:800; }
-.cv-card p { font-size:.88rem; color:var(--text-3); font-weight:300; flex:1; }
-.cv-dl { display:inline-flex; align-items:center; gap:.45rem; font-family:var(--font-cond); font-weight:600; font-size:.86rem; color:var(--gold); text-decoration:none; }
-.cv-dl:hover { text-decoration:underline; text-underline-offset:3px; }
-.cv-all { margin-top:1.4rem; border-radius:16px; overflow:hidden; }
-.cv-all summary { cursor:pointer; list-style:none; padding:1.05rem 1.4rem; font-family:var(--font-cond); font-weight:600; letter-spacing:.05em; display:flex; align-items:center; justify-content:space-between; color:#fff; }
-.cv-all summary::-webkit-details-marker { display:none; }
-.cv-all summary .chev { transition:.3s; }
-.cv-all[open] summary { border-bottom:1px solid var(--line); }
-.cv-all[open] summary .chev { transform:rotate(180deg); }
-.cv-all-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; padding:1.3rem 1.4rem 1.5rem; }
-.cv-row { display:flex; flex-direction:column; gap:.4rem; padding:1rem 1.15rem; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.03); }
-.cv-row h4 { font-size:.97rem; font-weight:700; }
-.cv-row p { font-size:.8rem; color:var(--text-3); font-weight:300; flex:1; }
-.cv-note { margin-top:1.3rem; font-size:.82rem; color:var(--text-3); font-weight:300; }
-@media (max-width:900px){ .cv-rec-grid { grid-template-columns:1fr; } .cv-all-grid { grid-template-columns:1fr; } }
-
-/* ============ ACCESSIBILITY TOOLS ============ */
-html { --a11y-scale:1; }
-.a11y-fab { position:fixed; bottom:1.2rem; left:1.2rem; z-index:950; width:52px; height:52px; border-radius:50%; border:1px solid var(--line-gold); cursor:pointer; background:linear-gradient(135deg, rgba(10,20,60,.92), rgba(10,14,39,.96)); color:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,.45); transition:.3s; }
-.a11y-fab:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(255,215,0,.25); }
-.a11y-fab svg { width:24px; height:24px; }
-.a11y-panel { position:fixed; top:50%; right:-105%; transform:translateY(-50%); z-index:1140; width:min(320px, 88vw); border-radius:18px 0 0 18px; padding:1.3rem 1.3rem 1.4rem; transition:right .4s var(--ease); max-height:86dvh; overflow-y:auto; }
-.a11y-panel.open { right:0; }
-.a11y-panel h2 { font-size:1rem; font-weight:800; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:#fff; }
-.a11y-panel h2 svg { width:18px; height:18px; color:var(--gold); }
-.a11y-row { display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:.6rem 0; border-top:1px solid rgba(255,255,255,.06); }
-.a11y-row:first-of-type { border-top:none; }
-.a11y-row .ar-name { font-family:var(--font-cond); font-size:.85rem; font-weight:600; letter-spacing:.04em; color:#fff; }
-.a11y-row .ar-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
-.a11y-close { position:absolute; top:.8rem; right:.8rem; background:none; border:none; color:var(--text-3); font-size:1.1rem; cursor:pointer; padding:.3rem; }
-html.a11y-contrast body { background:#000 !important; }
-html.a11y-contrast .glass, html.a11y-contrast .glass-strong, html.a11y-contrast .glass-gold { background:#0a0a0a !important; border-color:#FFD700 !important; }
-html.a11y-contrast p, html.a11y-contrast li, html.a11y-contrast td, html.a11y-contrast .section-sub { color:#fff !important; }
-html.a11y-grayscale body { filter:grayscale(1); }
-html.a11y-links a { text-decoration:underline !important; text-underline-offset:3px; }
-html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M6 3 L34 20 L20 23 L15 36 Z' fill='%23FFD700' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") 6 3, auto !important; }
-@media print { .a11y-fab, .a11y-panel { display:none !important; } }
 </style>
 <style>
 /* ============================================================
@@ -339,7 +288,6 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .drop-item:hover { background:rgba(255,215,0,.12); color:var(--gold); }
 .nav-cta { display:none; align-items:center; gap:.6rem; }
 
-/* persona pill in header */
 .persona-pill {
   display:inline-flex; align-items:center; gap:.45rem; cursor:pointer;
   font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.05em;
@@ -350,14 +298,12 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .persona-pill svg { width:13px; height:13px; }
 .persona-pill .pp-label { max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
-/* hamburger */
 .menu-btn { display:inline-flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:.55rem; z-index:1102; }
 .menu-btn span { width:24px; height:2.5px; background:#fff; border-radius:2px; transition:.3s; }
 .menu-btn[aria-expanded="true"] span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
 .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity:0; }
 .menu-btn[aria-expanded="true"] span:nth-child(3) { transform:rotate(-45deg) translate(6px,-6px); }
 
-/* mobile slide-in menu (Stronghold pattern) */
 .overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:1098; opacity:0; visibility:hidden; transition:.3s; }
 .overlay.show { opacity:1; visibility:visible; }
 .mobile-menu {
@@ -380,30 +326,29 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .mm-persona .chip.active { border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
 
 /* ============================================================
-   HERO
+   HERO  — portrait banner, stacked single column
    ============================================================ */
 .hero { position:relative; padding:0 0 clamp(3rem,7vw,5rem); }
-.hero-banner { position:relative; height:clamp(210px, 38vw, 460px); overflow:hidden; }
-.hero-banner img { width:100%; height:100%; object-fit:cover; object-position:center 62%; animation:kenburns 22s ease-in-out infinite alternate; }
-@keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.07); } }
+.hero-banner { position:relative; height:clamp(240px, 58vw, 520px); overflow:hidden; }
+.hero-banner img { width:100%; height:100%; object-fit:cover; object-position:20% center; animation:kenburns 22s ease-in-out infinite alternate; }
+@keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.05); } }
 .hero-banner::after {
   content:''; position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.55) 55%, var(--navy) 100%);
+  background:linear-gradient(180deg, rgba(10,14,39,.15) 0%, rgba(10,14,39,.35) 60%, var(--navy) 100%);
 }
-.hero-grid { display:grid; gap:2.2rem; margin-top:clamp(-7.5rem, -12vw, -4rem); position:relative; z-index:2; }
+.hero-grid { display:grid; gap:2.2rem; margin-top:2.2rem; position:relative; z-index:2; }
 .eyebrow { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-bottom:.8rem; }
 .hero-name { font-family:var(--font-cond); font-size:clamp(.95rem,2.4vw,1.1rem); font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--text-2); margin-bottom:.4rem; }
 .hero h1 { font-size:clamp(2.1rem, 7.2vw, 4rem); font-weight:900; color:#fff; margin-bottom:1.1rem; }
 .hero-sub { font-size:clamp(1rem, 2.8vw, 1.18rem); font-weight:300; color:var(--text-2); line-height:1.8; max-width:620px; margin-bottom:1.8rem; }
 .cta-row { display:flex; flex-wrap:wrap; gap:.9rem; }
-.cta-row .btn { flex:1 1 220px; }
+.cta-row .btn { flex:1 1 100%; }
+@media (min-width:480px){ .cta-row .btn { flex:1 1 220px; } }
 
-/* hero proof card */
-.hero-card { padding:1.6rem; border-radius:20px; align-self:start; animation:floatY 5s ease-in-out infinite; }
-@keyframes floatY { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+.hero-card { padding:1.6rem; border-radius:20px; align-self:start; }
 .hero-card .hc-title { font-family:var(--font-cond); font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); margin-bottom:1.1rem; display:flex; justify-content:space-between; align-items:center; }
-.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
-.stat-num { font-family:var(--font-display); font-size:clamp(1.7rem,4.5vw,2.3rem); font-weight:800; background:linear-gradient(45deg, var(--gold), var(--sky)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-variant-numeric:tabular-nums; }
+.stat-grid { display:grid; grid-template-columns:1fr; gap:1.1rem; }
+.stat-num { font-family:var(--font-display); font-size:clamp(1.9rem,5vw,2.4rem); font-weight:800; background:linear-gradient(45deg, var(--gold), var(--sky)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-variant-numeric:tabular-nums; }
 .stat-label { font-family:var(--font-cond); font-size:.74rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--text-3); margin-top:.15rem; }
 .rec-panel { margin-top:1.3rem; padding-top:1.1rem; border-top:1px dashed var(--line); }
 .rec-panel .rp-title { font-family:var(--font-cond); font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.6rem; }
@@ -411,7 +356,6 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .rec-link svg { width:13px; height:13px; color:var(--accent); flex:none; }
 .rec-link:hover { color:var(--gold); transform:translateX(4px); }
 
-/* persona swap transition */
 .swapping { animation:swapFade .34s var(--ease); }
 @keyframes swapFade { 0% { opacity:0; transform:translateY(10px); } 100% { opacity:1; transform:none; } }
 
@@ -452,7 +396,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 </style>
 <style>
 /* ============================================================
-   VALUE CARDS (persona-tailored)
+   VALUE CARDS  — single column stack
    ============================================================ */
 .value-grid { display:grid; gap:1.2rem; grid-template-columns:1fr; }
 .value-card { border-radius:var(--radius); padding:1.6rem; position:relative; overflow:hidden; transition:transform .3s var(--ease), box-shadow .3s, border-color .3s; }
@@ -463,7 +407,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .value-card p { font-size:.9rem; font-weight:300; color:var(--text-2); line-height:1.7; }
 
 /* ============================================================
-   EXPERTISE
+   EXPERTISE  — single column stack
    ============================================================ */
 .exp-grid { display:grid; gap:1.1rem; grid-template-columns:1fr; }
 .exp-card { border-radius:var(--radius); padding:1.5rem; position:relative; overflow:hidden; transition:transform .3s var(--ease), box-shadow .3s, border-color .3s; display:flex; flex-direction:column; }
@@ -478,7 +422,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .for-you .fy-tag { font-family:var(--font-cond); font-weight:700; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:.15rem; }
 
 /* ============================================================
-   TIMELINE
+   TIMELINE  — single column
    ============================================================ */
 .timeline { position:relative; max-width:960px; margin:0 auto; padding-left:34px; }
 .timeline::before { content:''; position:absolute; left:9px; top:6px; bottom:6px; width:3px; border-radius:3px; background:linear-gradient(180deg, var(--blue), var(--sky), var(--gold)); }
@@ -505,7 +449,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .tl-deliv-list li::before { content:'▸'; position:absolute; left:0; color:var(--gold); }
 
 /* ============================================================
-   TABS (platforms / publications)
+   TABS (platforms / publications)  — single column
    ============================================================ */
 .tab-bar { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-bottom:2rem; }
 .tab-btn {
@@ -527,10 +471,10 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .work-card .wc-foot { margin-top:1rem; font-family:var(--font-cond); font-size:.76rem; letter-spacing:.08em; color:var(--gold); text-transform:uppercase; }
 
 /* ============================================================
-   NUMBERS BAND
+   NUMBERS BAND  — single column stack
    ============================================================ */
 .numbers { border-block:1px solid rgba(255,255,255,.07); background:linear-gradient(135deg, rgba(0,102,255,.12), rgba(0,191,255,.05)); }
-.numbers-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.numbers-grid { display:grid; grid-template-columns:1fr; gap:1rem; }
 .num-card { border-radius:var(--radius); padding:1.4rem 1rem; text-align:center; transition:transform .25s; }
 .num-card:hover { transform:translateY(-5px); }
 .num-card .stat-num { font-size:clamp(1.9rem,6vw,2.6rem); }
@@ -549,9 +493,9 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .faq-a p { padding:0 1.3rem 1.2rem; font-size:.9rem; font-weight:300; color:var(--text-2); line-height:1.75; }
 
 /* ============================================================
-   CONTACT
+   CONTACT  — single column stack
    ============================================================ */
-.contact-grid { display:grid; gap:2rem; }
+.contact-grid { display:grid; gap:2rem; grid-template-columns:1fr; }
 .contact-intro { font-weight:300; color:var(--text-2); font-size:.95rem; line-height:1.75; margin-bottom:1.4rem; }
 .contact-item { display:flex; align-items:center; gap:1rem; border-radius:12px; padding:1rem 1.15rem; margin-bottom:.85rem; border-left:4px solid var(--gold); transition:transform .3s var(--ease), box-shadow .3s; }
 .contact-item:hover { transform:translateX(8px); box-shadow:var(--shadow-2); border-left-color:var(--sky); }
@@ -577,10 +521,10 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .form-hint { font-size:.78rem; color:var(--text-3); margin-top:.7rem; font-weight:300; }
 
 /* ============================================================
-   FOOTER
+   FOOTER  — single column stack
    ============================================================ */
 .site-footer { background:rgba(6,9,24,.96); border-top:1px solid rgba(0,102,255,.4); padding:3.2rem 0 1.6rem; margin-top:2rem; }
-.footer-grid { display:grid; gap:2rem; margin-bottom:2.2rem; }
+.footer-grid { display:grid; gap:2rem; grid-template-columns:1fr; margin-bottom:2.2rem; }
 .footer-brand p { font-size:.86rem; font-weight:300; color:var(--text-3); line-height:1.7; margin-top:.8rem; max-width:340px; }
 .footer-col h4 { font-family:var(--font-cond); font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.9rem; }
 .footer-col ul { list-style:none; }
@@ -612,41 +556,24 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .toast.show { opacity:1; visibility:visible; transform:translate(-50%, 0); }
 
 /* ============================================================
-   SCROLL REVEAL  (only when JS is active — see .js gate)
+   SCROLL REVEAL
    ============================================================ */
 html.js .reveal { opacity:0; transform:translateY(34px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 html.js .reveal.in { opacity:1; transform:none; }
 
 /* ============================================================
-   RESPONSIVE — tablet & up
+   RESPONSIVE — nav only; layout stays single column
    ============================================================ */
-@media (min-width:640px) {
-  .numbers-grid { grid-template-columns:repeat(4, 1fr); }
-  .value-grid, .work-grid { grid-template-columns:repeat(3, 1fr); }
-  .cta-row .btn { flex:0 1 auto; }
-}
 @media (min-width:900px) {
   .nav-links { display:flex; }
   .nav-cta { display:flex; }
   .menu-btn { display:none; }
-  .hero-grid { grid-template-columns:1.15fr .85fr; align-items:center; margin-top:clamp(-9rem,-11vw,-6rem); }
-  .exp-grid { grid-template-columns:repeat(2, 1fr); }
-  .contact-grid { grid-template-columns:1fr 1fr; align-items:start; }
-  .footer-grid { grid-template-columns:1.4fr 1fr 1fr 1fr; }
-  .footer-base { flex-direction:row; justify-content:space-between; }
   .install-banner { right:auto; max-width:400px; }
 }
-@media (min-width:1200px) {
-  .exp-grid { grid-template-columns:repeat(3, 1fr); }
-  .exp-card.wide { grid-column:span 1; }
-}
 
-/* ============================================================
-   MOTION / CONTRAST / PRINT
-   ============================================================ */
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
-  .reveal { opacity:1; transform:none; }
+  html.js .reveal { opacity:1; transform:none; }
   .trust-track { animation:none; flex-wrap:wrap; justify-content:center; width:100%; }
 }
 @media (prefers-contrast:high) {
@@ -701,8 +628,6 @@ html.js .reveal.in { opacity:1; transform:none; }
 <!-- SVG icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="i-a11y" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.2"/><path d="M4 9.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 10.8v5.2m0 0-3.5 6m3.5-6 3.5 6"/></symbol>
-    <symbol id="i-speak" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
     <symbol id="i-gov" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21h18M4 18h16M6 18v-7m4 7v-7m4 7v-7m4 7v-7M3 11l9-7 9 7z"/></symbol>
     <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7.5-4.9-9.8-9.2C.6 8.6 2.6 5 6 5c2 0 3.4 1.1 4 2.2C10.6 6.1 12 5 14 5c3.4 0 5.4 3.6 3.8 6.8C19.5 16.1 12 21 12 21z"/><path d="M7 12h3l1.5-3 2 5L15 12h2"/></symbol>
@@ -798,7 +723,6 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="drop-menu" role="menu">
           <div class="drop-head">Go Deeper</div>
           <a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
-          <a class="drop-item" href="#cvs" role="menuitem"><svg><use href="#i-dl"/></svg> Tailored CVs</a>
           <a class="drop-item" href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
           <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
         </div>
@@ -834,7 +758,6 @@ html.js .reveal.in { opacity:1; transform:none; }
     <a class="mm-link" href="#impact"><svg><use href="#i-star"/></svg> Impact Timeline</a>
     <a class="mm-link" href="#works"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
     <a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> FAQ</a>
-    <a class="mm-link" href="#cvs"><svg><use href="#i-dl"/></svg> Tailored CVs</a>
     <a class="mm-link" href="#contact"><svg><use href="#i-mail"/></svg> Contact</a>
   </div>
   <div class="mm-group">
@@ -855,8 +778,8 @@ html.js .reveal.in { opacity:1; transform:none; }
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-banner" role="img" aria-label="Abstract digital landscape: glowing network lines over dark terrain at dawn — resilience after the storm">
-    <img src="assets/hero-banner.jpg" alt="" fetchpriority="high" decoding="async">
+  <div class="hero-banner" role="img" aria-label="Alvin M. Silva — development management and resilience consultant">
+    <img src="assets/hero-portrait-banner.jpg" alt="" fetchpriority="high" decoding="async">
   </div>
   <div class="wrap">
     <div class="hero-grid" id="about">
@@ -865,7 +788,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <p class="hero-name">Alvin M. Silva, MDM</p>
         <h1 data-ph="hero.headline">Turning risk into <span class="grad-text">resilience</span> — and resilience into <span class="grad-text">growth</span>.</h1>
         <p class="hero-sub" data-ph="hero.sub">
-          18+ years across 15+ countries, designing the strategies institutions stake their futures on — from the
+          18+ years across 15+ countries. From the
           <span class="tooltip" tabindex="0">BIRD 2026–2035<span class="tt" role="tooltip"><strong>BIRD 2026–2035</strong>The Bangsamoro Investment and Roadmap for Development — the decade-long binding investment framework of the Bangsamoro Autonomous Region, architected end-to-end for the Bureau of Investments–MTIT.</span></span>
           to a
           <span class="tooltip" tabindex="0">₱190M climate-smart program<span class="tt" role="tooltip"><strong>Climate-Smart Resilience</strong>Community-based project design for Balatan, Camarines Sur with SOLHUM — engineered to attract climate finance and protect livelihoods.</span></span>.
@@ -878,7 +801,6 @@ html.js .reveal.in { opacity:1; transform:none; }
       </div>
 
       <aside class="hero-card glass-strong" aria-label="Key statistics">
-        <img class="hero-portrait" src="assets/hero-portrait-banner.jpg" alt="Official portrait banner of Alvin M. Silva against a digital world-map backdrop with the Alvin Silva medallion" loading="lazy" decoding="async">
         <div class="hc-title"><span>Proof, not promises</span><span class="chip" style="border-color:var(--accent);color:var(--accent);font-size:.66rem;padding:.2rem .6rem" data-p="hero.badge">EXECUTIVE LENS</span></div>
         <div class="stat-grid">
           <div><div class="stat-num"><span class="count" data-to="18">0</span>+</div><div class="stat-label">Years of Global Experience</div></div>
@@ -936,14 +858,15 @@ html.js .reveal.in { opacity:1; transform:none; }
   <div class="wrap">
     <p class="kicker" data-p="value.kicker">Why It Matters</p>
     <h2 class="section-title" data-ph="value.title">What this means <span class="hl">for you</span></h2>
-    <p class="section-sub" data-p="value.sub">Credentials are common. Outcomes are not. Here is the difference an 18-year systems practitioner makes — stated in your terms.</p>
+    <p class="section-sub" data-p="value.sub">Credentials are common. Outcomes are not. Here is the difference an 18-year systems practitioner makes.</p>
     <div class="value-grid" id="valueGrid">
-      <article class="value-card glass reveal"><div class="vc-num" data-p="value.c1num">01</div><h3 data-p="value.c1title">Strategy that survives contact with reality</h3><p data-p="value.c1body">Frameworks designed in the field, not the boardroom — stress-tested against typhoons, transitions, and audits before they reach your desk.</p></article>
-      <article class="value-card glass reveal"><div class="vc-num" data-p="value.c2num">02</div><h3 data-p="value.c2title">One accountable architect, end to end</h3><p data-p="value.c2body">From stakeholder workshops to the final published framework, you work with the same senior practitioner. No hand-offs, no dilution.</p></article>
-      <article class="value-card glass reveal"><div class="vc-num" data-p="value.c3num">03</div><h3 data-p="value.c3title">Systems that keep working after handover</h3><p data-p="value.c3body">Digital platforms, playbooks, and trained teams — the engagement ends, the capability stays.</p></article>
+      <article class="value-card glass reveal"><div class="vc-num" data-p="value.c1num">01</div><h3 data-p="value.c1title">Strategy that survives contact with reality</h3><p data-p="value.c1body">Field-tested frameworks. Built for typhoons, transitions, and audits.</p></article>
+      <article class="value-card glass reveal"><div class="vc-num" data-p="value.c2num">02</div><h3 data-p="value.c2title">One accountable architect, end to end</h3><p data-p="value.c2body">One senior partner from workshop to final framework. Zero hand-offs.</p></article>
+      <article class="value-card glass reveal"><div class="vc-num" data-p="value.c3num">03</div><h3 data-p="value.c3title">Systems that keep working after handover</h3><p data-p="value.c3body">Platforms, playbooks, and trained teams that outlast the contract.</p></article>
     </div>
   </div>
 </section>
+
 <!-- ============ EXPERTISE ============ -->
 <section class="section section-alt" id="expertise">
   <div class="wrap">
@@ -954,44 +877,44 @@ html.js .reveal.in { opacity:1; transform:none; }
       <article class="exp-card glass reveal" data-exp="cca">
         <div class="exp-icon"><svg><use href="#i-globe"/></svg></div>
         <h3>Climate Change Adaptation</h3>
-        <p>15+ years designing CCA strategies with ECHO, USAID, and the World Bank — translating climate science into <span class="tooltip" tabindex="0">bankable adaptation programs<span class="tt" role="tooltip"><strong>Bankable = fundable</strong>Programs structured with the results frameworks, safeguards, and cost logic that climate finance institutions require before releasing funds.</span></span> that communities can actually run.</p>
-        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="cca">A partner who has already navigated the funders, the science, and the politics — so your program doesn't have to learn the hard way.</span></div>
+        <p>15+ years designing bankable CCA strategies with ECHO, USAID, and the World Bank. Science-backed, community-owned, funder-ready.</p>
+        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="cca">A partner who has navigated the funders, science, and politics — so your program doesn't learn the hard way.</span></div>
       </article>
       <article class="exp-card glass reveal" data-exp="drr">
         <div class="exp-icon"><svg><use href="#i-shield"/></svg></div>
         <h3>Disaster Risk Reduction</h3>
-        <p>Certified practitioner building DRR systems across communities, agencies, and regions — from barangay-level protocols to regional integrated risk management in the Bangsamoro.</p>
-        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="drr">DRR strategies that hold up in audits and in storms — because they're built with the people who'll execute them.</span></div>
+        <p>Certified DRR practitioner. From barangay protocols to regional integrated risk management in the Bangsamoro.</p>
+        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="drr">DRR strategies that hold up in audits and in storms — built with the people who execute them.</span></div>
       </article>
       <article class="exp-card glass reveal" data-exp="sysinno">
         <div class="exp-icon"><svg><use href="#i-bulb"/></svg></div>
         <h3>Systems Innovation</h3>
-        <p>Designer of the <span class="tooltip" tabindex="0">DDRiVE-M platform<span class="tt" role="tooltip"><strong>DDRiVE-M</strong>A data-driven risk and vulnerability evaluation platform for evidence-based DRR and development decisions.</span></span>, Strategic Planner Pro, and the Cognitio+ ecosystem — digital tools that turn risk data into decisions.</p>
-        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="sysinno">Custom tooling that outlives the engagement — dashboards and decision systems your team owns outright.</span></div>
+        <p>Architect of DDRiVE-M, Strat Planner Pro, and Cognitio+. Digital tools that turn risk data into decisions.</p>
+        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="sysinno">Custom tooling your team owns outright — dashboards and decision systems that outlast the engagement.</span></div>
       </article>
       <article class="exp-card glass reveal" data-exp="orgdev">
         <div class="exp-icon"><svg><use href="#i-chart"/></svg></div>
         <h3>Organizational Development</h3>
-        <p>Performance management systems and intuitive dashboards for government agencies, NGOs, and international development organizations — built for adoption, not shelf-ware.</p>
-        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="orgdev">Performance systems your staff actually use — because they were co-designed with them.</span></div>
+        <p>Performance systems and dashboards for government and NGOs. Built for adoption, not shelf-ware.</p>
+        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="orgdev">Performance systems your staff actually use — co-designed with them, not imposed.</span></div>
       </article>
       <article class="exp-card glass reveal" data-exp="strategy">
         <div class="exp-icon"><svg><use href="#i-target"/></svg></div>
         <h3>Strategic Thinking &amp; Planning</h3>
-        <p>Long-horizon strategy that anticipates disruption: aligning resources, partnerships, and sequencing so decade-scale goals survive short-term shocks. Sole author of a national TVET strategic plan.</p>
-        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="strategy">A strategist who has authored national frameworks — and can pressure-test yours before the world does.</span></div>
+        <p>Decade-scale roadmaps that survive short-term shocks. Sole author of a national TVET strategic plan.</p>
+        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="strategy">National-framework authorship. Pressure-test your strategy before the world does.</span></div>
       </article>
       <article class="exp-card glass reveal" data-exp="capacity">
         <div class="exp-icon"><svg><use href="#i-cap"/></svg></div>
         <h3>Capacity Building</h3>
-        <p>MDM-trained facilitator running workshops and mentoring programs globally — from executive strategy retreats to frontline responder training with the WHO and DOH.</p>
-        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="capacity">Training designed for transfer, not attendance — your people leave with tools they'll use on Monday.</span></div>
+        <p>MDM-trained facilitator. Executive strategy retreats to frontline responder training with WHO and DOH.</p>
+        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="capacity">Training for transfer, not attendance. Your people leave with tools for Monday.</span></div>
       </article>
       <article class="exp-card glass reveal" data-exp="security">
         <div class="exp-icon"><svg><use href="#i-lock"/></svg></div>
         <h3>Security Risk Management</h3>
-        <p><span class="tooltip" tabindex="0">Certified SRMP<span class="tt" role="tooltip"><strong>SRMP</strong>Security Risk Management Professional — certification for managing personnel and operational security in humanitarian and high-risk environments.</span></span> specializing in humanitarian operations and emergency response coordination in complex environments.</p>
-        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="security">Duty-of-care expertise that keeps your people safe and your operations moving in high-risk areas.</span></div>
+        <p>Certified SRMP. Humanitarian operations and emergency response coordination in complex environments.</p>
+        <div class="for-you"><span class="fy-tag">For you</span><span data-exp-fy="security">SRMP-certified oversight that keeps your people safe and operations moving.</span></div>
       </article>
     </div>
   </div>
@@ -1009,15 +932,15 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass-strong">
           <div class="tl-top"><span class="tl-flag">★ Flagship</span><span class="tl-date">2025–2026</span><span class="badge-priority" data-tl-badge="bird">Priority for you</span></div>
           <h3>Co-Architect — Bangsamoro Investment Roadmap (BIRD) 2026–2035 · BoI–MTIT</h3>
-          <p>Engaged by the Bureau of Investments–MTIT as lead technical architect for the decade-long Bangsamoro Investment and Roadmap for Development — end-to-end ownership from workshop design through final publication of a binding investment framework for the entire autonomous region.</p>
+          <p>Lead technical architect for the decade-long Bangsamoro Investment Roadmap — from workshop design to published framework.</p>
           <div class="tl-deliv">
             <button class="tl-deliv-btn" aria-expanded="false" aria-controls="deliv-bird">Key deliverables <span class="chev"></span></button>
             <div class="tl-deliv-list" id="deliv-bird">
               <ul>
-                <li>End-to-end design and execution of high-level multi-stakeholder consultative workshops — government, private sector, civil society</li>
-                <li>Comprehensive Workshop Design Package: the technical engine driving the entire BIRD formulation process</li>
+                <li>End-to-end design and execution of high-level multi-stakeholder consultative workshops</li>
+                <li>Comprehensive Workshop Design Package: the technical engine driving the entire BIRD formulation</li>
                 <li>Synthesis reports and progress updates submitted to the Bureau of Investments</li>
-                <li>Final BIRD 2026–2035 Report in professional book format — technical annexes, investment profiles, executive summaries</li>
+                <li>Final BIRD 2026–2035 Report in professional book format with technical annexes and investment profiles</li>
               </ul>
             </div>
           </div>
@@ -1028,7 +951,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass">
           <div class="tl-top"><span class="tl-date">2025–2026</span><span class="badge-priority" data-tl-badge="tesda">Priority for you</span></div>
           <h3>WorldSkills Philippines – TESDA Strategic Plan 2026–2030</h3>
-          <p>Sole author of the national institutional framework guiding the Philippines' premier technical-vocational body for half a decade — full strategy map and strategic options integrating risk-informed governance, ESG alignment, and the national TVET landscape.</p>
+          <p>Sole author of the national strategic plan guiding the Philippines' premier technical-vocational body for half a decade.</p>
         </div>
       </div>
       <div class="tl-item reveal" data-tl="book2">
@@ -1036,7 +959,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass">
           <div class="tl-top"><span class="tl-date">April 2025</span><span class="badge-priority" data-tl-badge="book2">Priority for you</span></div>
           <h3>Published "Personal Resilience: The Path to Oneness"</h3>
-          <p>Latest contribution to resilience literature — transformative approaches to building personal and collective resilience for individuals and organizations.</p>
+          <p>Latest contribution to resilience literature — transformative approaches to personal and collective resilience.</p>
         </div>
       </div>
       <div class="tl-item reveal" data-tl="balatan">
@@ -1044,7 +967,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass">
           <div class="tl-top"><span class="tl-date">2024–2025</span><span class="badge-priority" data-tl-badge="balatan">Priority for you</span></div>
           <h3>₱190M Climate-Smart Resilience Project Design</h3>
-          <p>Innovative community-based, climate-smart resilience project for Balatan, Camarines Sur, in partnership with SOLHUM — designed to attract climate finance and protect coastal livelihoods.</p>
+          <p>Community-based, climate-smart resilience project for Balatan, Camarines Sur — engineered to attract climate finance.</p>
         </div>
       </div>
       <div class="tl-item reveal" data-tl="who">
@@ -1052,7 +975,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass">
           <div class="tl-top"><span class="tl-date">2023</span><span class="badge-priority" data-tl-badge="who">Priority for you</span></div>
           <h3>WHO Emergency Medical Responders Program</h3>
-          <p>Comprehensive <span class="tooltip" tabindex="0">MHPSS<span class="tt" role="tooltip"><strong>MHPSS</strong>Mental Health and Psychosocial Support — the standard humanitarian framework for protecting mental wellbeing in emergencies.</span></span> intervention module for PEMAT members, developed with the Department of Health.</p>
+          <p>MHPSS intervention module for PEMAT members, developed with the Department of Health.</p>
         </div>
       </div>
       <div class="tl-item reveal" data-tl="book1">
@@ -1060,7 +983,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass">
           <div class="tl-top"><span class="tl-date">September 2023</span><span class="badge-priority" data-tl-badge="book1">Priority for you</span></div>
           <h3>Published "Building Resilience"</h3>
-          <p>"Building Resilience: The Path To A More Fulfilling and Resilient Life" — the foundational text of the Cognitio+ resilience practice.</p>
+          <p>The foundational text of the Cognitio+ resilience practice — knowledge and tools to thrive amid change.</p>
         </div>
       </div>
       <div class="tl-item reveal" data-tl="barmm">
@@ -1068,7 +991,7 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass">
           <div class="tl-top"><span class="tl-date">2022</span><span class="badge-priority" data-tl-badge="barmm">Priority for you</span></div>
           <h3>BARMM Integrated Risk &amp; Resilience Management</h3>
-          <p>Systems innovation for food security, livelihoods, DRR, and WASH across the Bangsamoro region — partnering with USAID and Action Against Hunger.</p>
+          <p>Systems innovation for food security, livelihoods, DRR, and WASH across the Bangsamoro with USAID and Action Against Hunger.</p>
         </div>
       </div>
       <div class="tl-item reveal" data-tl="mmda">
@@ -1076,12 +999,13 @@ html.js .reveal.in { opacity:1; transform:none; }
         <div class="tl-card glass">
           <div class="tl-top"><span class="tl-date">2017–2020</span><span class="badge-priority" data-tl-badge="mmda">Priority for you</span></div>
           <h3>Development Management Consultant — MMDA</h3>
-          <p>Three years of strategic advisory to the MMDA Chairman's Office on corporate governance, DRR-CCA policy integration, and regional urban resilience — shaping policies affecting 13M+ Metro Manila residents, with high-level policy reviews aligned to national resilience and environmental standards.</p>
+          <p>Three years advising the MMDA Chairman's Office on corporate governance and urban resilience policy — shaping outcomes for 13M+ residents.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- ============ WORKS: PLATFORMS & PUBLICATIONS ============ -->
 <section class="section section-alt" id="works">
   <div class="wrap">
@@ -1095,42 +1019,27 @@ html.js .reveal.in { opacity:1; transform:none; }
     </div>
     <div class="tab-panel active" id="panel-platforms" role="tabpanel" aria-labelledby="tab-platforms">
       <div class="work-grid">
-        <article class="work-card glass-gold reveal" style="border:1px solid var(--line-gold)"><span class="work-tag" style="color:var(--gold);background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.4)">★ Latest · Flagship</span><h3>BIRD — Investment Roadmapping Platform</h3><p>The digital home of the Bangsamoro Investment Roadmap 2026–2035 — the decade-long investment framework Alvin architected for the BARMM Bureau of Investments–MTIT, published as an interactive platform.</p><div class="wc-foot"><a href="https://bangsamro-investment-roadmapp.asilvainnovations.com" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">bangsamro-investment-roadmapp.asilvainnovations.com ↗</a></div></article>
-        <article class="work-card glass reveal"><span class="work-tag">Risk Intelligence</span><h3>DDRiVE-M</h3><p>Data-driven risk and vulnerability evaluation platform — turning field data into prioritized, evidence-based DRR and development decisions for agencies and LGUs. Compliant with RA 10121, ISO 31000, and UNDRR frameworks.</p><div class="wc-foot">Decision-grade analytics</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">Strategy OS</span><h3>Strat Planner Pro</h3><p>An all-in-one, AI-powered progressive web app for deep systems diagnosis, structured planning, and disciplined execution. Works offline and prints beautifully.</p><div class="wc-foot">From analysis to execution</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">Digital Learning</span><h3>RTL — Real-Time Leadership</h3><p>Rooted in culture, powered by awareness, enhanced with technology — digital learning experiences for growth, resilience, and wellness.</p><div class="wc-foot">Leadership development</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">Knowledge Ecosystem</span><h3>Cognitio+</h3><p>The digital ecosystem behind Alvin's resilience practice — publishing, learning, and evaluation tooling that carries methods from one engagement to the next.</p><div class="wc-foot">Compounding knowledge</div></article>
+        <article class="work-card glass-gold reveal" style="border:1px solid var(--line-gold)"><span class="work-tag" style="color:var(--gold);background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.4)">★ Latest · Flagship</span><h3>BIRD — Investment Roadmapping Platform</h3><p>The digital home of the Bangsamoro Investment Roadmap 2026–2035 — architected end-to-end and published as an interactive platform.</p><div class="wc-foot"><a href="https://bangsamro-investment-roadmapp.asilvainnovations.com" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">bangsamro-investment-roadmapp.asilvainnovations.com ↗</a></div></article>
+        <article class="work-card glass reveal"><span class="work-tag">Risk Intelligence</span><h3>DDRiVE-M</h3><p>Data-driven risk and vulnerability evaluation. Compliant with RA 10121, ISO 31000, and UNDRR frameworks.</p><div class="wc-foot">Decision-grade analytics</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">Strategy OS</span><h3>Strat Planner Pro</h3><p>AI-powered progressive web app for systems diagnosis and disciplined execution. Works offline and prints beautifully.</p><div class="wc-foot">From analysis to execution</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">Digital Learning</span><h3>RTL — Real-Time Leadership</h3><p>Digital learning for growth, resilience, and wellness. Rooted in culture, powered by awareness.</p><div class="wc-foot">Leadership development</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">Knowledge Ecosystem</span><h3>Cognitio+</h3><p>The knowledge ecosystem behind the resilience practice — publishing, learning, and evaluation tooling.</p><div class="wc-foot">Compounding knowledge</div></article>
       </div>
     </div>
     <div class="tab-panel" id="panel-books" role="tabpanel" aria-labelledby="tab-books">
       <div class="work-grid">
-        <article class="work-card glass reveal"><span class="work-tag">2025</span><h3>Personal Resilience: The Path to Oneness</h3><p>The newest work — a transformative framework for building personal and collective resilience, written for leaders navigating compounding crises.</p><div class="wc-foot">Latest release</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">2023</span><h3>Building Resilience</h3><p>"The Path To A More Fulfilling and Resilient Life" — the foundational text translating 15+ years of field practice into a method anyone can apply.</p><div class="wc-foot">Via Cognitio+</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">10+ Works</span><h3>Reports, Modules &amp; Frameworks</h3><p>Workshop design packages, MHPSS intervention modules, synthesis reports, and strategic plans — a decade of documented, reusable practice.</p><div class="wc-foot">Institutional-grade documentation</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">2025</span><h3>Personal Resilience: The Path to Oneness</h3><p>The newest work — a transformative framework for leaders navigating compounding crises.</p><div class="wc-foot">Latest release</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">2023</span><h3>Building Resilience</h3><p>The foundational text translating 15+ years of field practice into a method anyone can apply.</p><div class="wc-foot">Via Cognitio+</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">10+ Works</span><h3>Reports, Modules &amp; Frameworks</h3><p>Workshop design packages, MHPSS modules, synthesis reports, and strategic plans — a decade of documented practice.</p><div class="wc-foot">Institutional-grade documentation</div></article>
       </div>
     </div>
     <div class="tab-panel" id="panel-frameworks" role="tabpanel" aria-labelledby="tab-frameworks">
       <div class="work-grid">
-        <article class="work-card glass reveal"><span class="work-tag">Regional</span><h3>BIRD Formulation Method</h3><p>The workshop-to-publication pipeline behind the Bangsamoro Investment Roadmap — a repeatable method for turning multi-stakeholder consultation into binding frameworks.</p><div class="wc-foot">Proven at regional scale</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">Institutional</span><h3>Risk-Informed Strategic Planning</h3><p>Strategy maps that integrate ESG, risk governance, and sector landscapes — authored for national institutions and adaptable to yours.</p><div class="wc-foot">National-scale authorship</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">Field</span><h3>Integrated Risk &amp; Resilience Management</h3><p>Cross-sector integration of food security, livelihoods, DRR, and WASH — battle-tested in the Bangsamoro with USAID and Action Against Hunger.</p><div class="wc-foot">Community-proven</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">Regional</span><h3>BIRD Formulation Method</h3><p>The workshop-to-publication pipeline behind the Bangsamoro Investment Roadmap — repeatable and binding.</p><div class="wc-foot">Proven at regional scale</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">Institutional</span><h3>Risk-Informed Strategic Planning</h3><p>Strategy maps integrating ESG, risk governance, and sector landscapes — authored for national institutions.</p><div class="wc-foot">National-scale authorship</div></article>
+        <article class="work-card glass reveal"><span class="work-tag">Field</span><h3>Integrated Risk &amp; Resilience Management</h3><p>Cross-sector integration of food security, livelihoods, DRR, and WASH — battle-tested in the Bangsamoro.</p><div class="wc-foot">Community-proven</div></article>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ TAILORED CVS ============ -->
-<section class="section" id="cvs">
-  <div class="wrap">
-    <p class="kicker">Tailored CVs</p>
-    <h2 class="section-title">The right CV for <span class="hl">your desk</span></h2>
-    <p class="section-sub" data-p="cv.sub">Ten role-targeted versions of one documented career — ranked below for your lens.</p>
-    <div class="cv-rec-grid" id="cvRecGrid" aria-live="polite"></div>
-    <details class="cv-all glass" id="cvAll">
-      <summary>Browse all 10 tailored versions <span class="chev" aria-hidden="true"></span></summary>
-      <div class="cv-all-grid" id="cvAllGrid"></div>
-    </details>
-    <p class="cv-note">Every version draws on the same verified record — reframed for the reader, never inflated. Editable DOCX copies available on request.</p>
   </div>
 </section>
 
@@ -1157,23 +1066,23 @@ html.js .reveal.in { opacity:1; transform:none; }
     <div class="faq-list">
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">What does a development management consultant actually deliver?<span class="chev"></span></button>
-        <div class="faq-a"><p>Fundable strategies, investment roadmaps, program designs, and evaluation systems — not slide decks that gather dust. Recent deliverables include the BIRD 2026–2035 investment framework for an entire autonomous region, a national TVET strategic plan, and a ₱190M climate-smart resilience project design.</p></div>
+        <div class="faq-a"><p>Fundable strategies, investment roadmaps, and evaluation systems. Recent work includes BIRD 2026–2035, a national TVET plan, and a ₱190M climate-smart design.</p></div>
       </div>
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">Can you work within government or UN procurement systems?<span class="chev"></span></button>
-        <div class="faq-a"><p>Yes. Engagements span government agencies (BoI-MTIT, TESDA, MMDA, DOH) and international organizations (ECHO, USAID, World Bank, UNICEF, WHO) — with full compliance to each institution's contracting, safeguarding, and reporting standards.</p></div>
+        <div class="faq-a"><p>Yes. Full compliance with government and UN standards across BoI-MTIT, TESDA, MMDA, DOH, ECHO, USAID, World Bank, UNICEF, and WHO.</p></div>
       </div>
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">What is the BIRD 2026–2035, and what was your role?<span class="chev"></span></button>
-        <div class="faq-a"><p>The Bangsamoro Investment and Roadmap for Development is the decade-long binding investment framework of the Bangsamoro Autonomous Region. As lead technical architect for the Bureau of Investments–MTIT, Alvin owned the process end to end: workshop architecture, multi-stakeholder consultations, synthesis reporting, and the final published report.</p></div>
+        <div class="faq-a"><p>The Bangsamoro Investment and Roadmap for Development is the region's decade-long binding investment framework. Alvin served as lead technical architect for BoI–MTIT, end to end.</p></div>
       </div>
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">Do you take short-term or fractional engagements?<span class="chev"></span></button>
-        <div class="faq-a"><p>Yes — from focused advisory sprints and workshop facilitation to multi-year embedded consulting. Scope is shaped around your mandate, budget cycle, and decision calendar.</p></div>
+        <div class="faq-a"><p>Yes — from advisory sprints to multi-year embedded consulting. Scoped to your mandate and budget cycle.</p></div>
       </div>
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">How do engagements usually start?<span class="chev"></span></button>
-        <div class="faq-a"><p>With a 30-minute scoping call. You bring the mandate or the problem; Alvin brings a structured read on feasibility, risks, and the fastest credible path to a result. No obligation, no boilerplate proposal.</p></div>
+        <div class="faq-a"><p>With a 30-minute scoping call. You bring the problem; Alvin brings a structured read on feasibility and the fastest path to results.</p></div>
       </div>
     </div>
   </div>
@@ -1186,7 +1095,7 @@ html.js .reveal.in { opacity:1; transform:none; }
     <h2 class="section-title" data-ph="contact.title">Let's build what's <span class="hl">next</span></h2>
     <div class="contact-grid">
       <div>
-        <p class="contact-intro" data-p="contact.intro">Tell me the outcome you're accountable for. I'll reply within one business day with a structured read on how — and whether — I can help.</p>
+        <p class="contact-intro" data-p="contact.intro">Tell me the outcome you're accountable for. I'll reply within one business day with a structured read on how I can help.</p>
         <div class="contact-item glass">
           <div class="ci-icon"><svg><use href="#i-phone"/></svg></div>
           <div><h4>Mobile</h4><a href="tel:+639178555134">+63 917 855 5134</a></div>
@@ -1299,8 +1208,6 @@ html.js .reveal.in { opacity:1; transform:none; }
         <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/terms-of-services.html" target="_blank" rel="noopener noreferrer">Terms</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility</a> ·
         <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
       </p>
       <span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
@@ -1309,44 +1216,6 @@ html.js .reveal.in { opacity:1; transform:none; }
 </footer>
 
 <!-- floating -->
-<!-- ============ ACCESSIBILITY TOOLS ============ -->
-<button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
-<aside class="a11y-panel glass-strong" id="a11yPanel" role="dialog" aria-label="Accessibility tools" aria-hidden="true">
-  <button class="a11y-close" id="a11yClose" aria-label="Close accessibility tools">✕</button>
-  <h2><svg><use href="#i-a11y"/></svg> Accessibility</h2>
-  <div class="a11y-row">
-    <div><div class="ar-name">Read page aloud</div><div class="ar-desc">Text-to-speech of the full page</div></div>
-    <button class="btn btn-gold btn-sm" id="a11ySpeak" aria-pressed="false"><svg style="width:14px;height:14px"><use href="#i-speak"/></svg><span>Listen</span></button>
-  </div>
-  <div class="a11y-row">
-    <div><div class="ar-name">Text size</div><div class="ar-desc">Scale content font</div></div>
-    <div style="display:flex;gap:.4rem">
-      <button class="btn btn-ghost btn-sm" id="a11yFontDown" aria-label="Decrease text size">A&minus;</button>
-      <button class="btn btn-ghost btn-sm" id="a11yFontUp" aria-label="Increase text size">A+</button>
-    </div>
-  </div>
-  <div class="a11y-row">
-    <div><div class="ar-name">High contrast</div><div class="ar-desc">Maximum legibility</div></div>
-    <span class="switch"><input type="checkbox" id="a11yContrast" aria-label="Toggle high contrast"><span class="track"></span></span>
-  </div>
-  <div class="a11y-row">
-    <div><div class="ar-name">Grayscale</div><div class="ar-desc">Reduce color stimulation</div></div>
-    <span class="switch"><input type="checkbox" id="a11yGray" aria-label="Toggle grayscale"><span class="track"></span></span>
-  </div>
-  <div class="a11y-row">
-    <div><div class="ar-name">Highlight links</div><div class="ar-desc">Underline every link</div></div>
-    <span class="switch"><input type="checkbox" id="a11yLinks" aria-label="Toggle link highlighting"><span class="track"></span></span>
-  </div>
-  <div class="a11y-row">
-    <div><div class="ar-name">Large cursor</div><div class="ar-desc">Easier pointer tracking</div></div>
-    <span class="switch"><input type="checkbox" id="a11yCursor" aria-label="Toggle large cursor"><span class="track"></span></span>
-  </div>
-  <div class="a11y-row">
-    <div><div class="ar-name">Reset all</div><div class="ar-desc">Back to defaults</div></div>
-    <button class="btn btn-ghost btn-sm" id="a11yReset">Reset</button>
-  </div>
-</aside>
-
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
 <div class="install-banner glass-gold" id="installBanner" role="region" aria-label="Install app">
   <div class="ib-icon"><svg><use href="#i-dl"/></svg></div>
@@ -1392,11 +1261,10 @@ document.documentElement.classList.add('js');
 const PROFILES = {
   executive: {
     label: 'Executive',
-    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for decision-makers: the full leadership arc first.', rec: ['dm','stp','pm'] },
     hero: {
       eyebrow: 'Development Management · Resilience · Systems Innovation',
       headline: 'Turning risk into <span class="grad-text">resilience</span> — and resilience into <span class="grad-text">growth</span>.',
-      sub: '18+ years across 15+ countries, designing the strategies institutions stake their futures on — from the <span class="tooltip" tabindex="0">BIRD 2026–2035<span class="tt" role="tooltip"><strong>BIRD 2026–2035</strong>The Bangsamoro Investment and Roadmap for Development — the decade-long binding investment framework of the Bangsamoro Autonomous Region, architected end-to-end for the Bureau of Investments–MTIT.</span></span> to a <span class="tooltip" tabindex="0">₱190M climate-smart program<span class="tt" role="tooltip"><strong>Climate-Smart Resilience</strong>Community-based project design for Balatan, Camarines Sur with SOLHUM — engineered to attract climate finance and protect livelihoods.</span></span>.',
+      sub: '18+ years across 15+ countries. From the <span class="tooltip" tabindex="0">BIRD 2026–2035<span class="tt" role="tooltip"><strong>BIRD 2026–2035</strong>The decade-long binding investment framework of the Bangsamoro Autonomous Region — designed, consulted, and published end-to-end.</span></span> to a <span class="tooltip" tabindex="0">₱190M climate-smart program<span class="tt" role="tooltip"><strong>Climate-Smart Resilience</strong>Community-based project design for Balatan, Camarines Sur with SOLHUM — engineered to attract climate finance and protect livelihoods.</span></span>.',
       cta1: 'Start a Conversation', cta2: 'See the Evidence', badge: 'EXECUTIVE LENS',
       recTitle: 'Start here',
       rec1: 'The BIRD 2026–2035 flagship mandate',
@@ -1406,39 +1274,38 @@ const PROFILES = {
     value: {
       kicker: 'Why It Matters',
       title: 'What this means <span class="hl">for you</span>',
-      sub: 'Credentials are common. Outcomes are not. Here is the difference an 18-year systems practitioner makes — stated in your terms.',
-      c1num: '01', c1title: 'Strategy that survives contact with reality', c1body: 'Frameworks designed in the field, not the boardroom — stress-tested against typhoons, transitions, and audits before they reach your desk.',
-      c2num: '02', c2title: 'One accountable architect, end to end', c2body: 'From stakeholder workshops to the final published framework, you work with the same senior practitioner. No hand-offs, no dilution.',
-      c3num: '03', c3title: 'Systems that keep working after handover', c3body: 'Digital platforms, playbooks, and trained teams — the engagement ends, the capability stays.'
+      sub: 'Credentials are common. Outcomes are not. Here is the difference an 18-year systems practitioner makes.',
+      c1num: '01', c1title: 'Strategy that survives contact with reality', c1body: 'Field-tested frameworks. Built for typhoons, transitions, and audits.',
+      c2num: '02', c2title: 'One accountable architect, end to end', c2body: 'One senior partner from workshop to final framework. Zero hand-offs.',
+      c3num: '03', c3title: 'Systems that keep working after handover', c3body: 'Platforms, playbooks, and trained teams that outlast the contract.'
     },
     expNote: 'Select your profile above and the grid re-ranks around your priorities.',
     expOrder: ['cca','drr','sysinno','orgdev','strategy','capacity','security'],
     fy: {
-      cca: 'A partner who has already navigated the funders, the science, and the politics — so your program doesn’t have to learn the hard way.',
-      drr: 'DRR strategies that hold up in audits and in storms — because they’re built with the people who’ll execute them.',
-      sysinno: 'Custom tooling that outlives the engagement — dashboards and decision systems your team owns outright.',
-      orgdev: 'Performance systems your staff actually use — because they were co-designed with them.',
-      strategy: 'A strategist who has authored national frameworks — and can pressure-test yours before the world does.',
-      capacity: 'Training designed for transfer, not attendance — your people leave with tools they’ll use on Monday.',
-      security: 'Duty-of-care expertise that keeps your people safe and your operations moving in high-risk areas.'
+      cca: 'A partner who has navigated the funders, science, and politics — so your program doesn’t learn the hard way.',
+      drr: 'DRR strategies that hold up in audits and in storms — built with the people who execute them.',
+      sysinno: 'Custom tooling your team owns outright — dashboards and decision systems that outlast the engagement.',
+      orgdev: 'Performance systems your staff actually use — co-designed with them, not imposed.',
+      strategy: 'National-framework authorship. Pressure-test your strategy before the world does.',
+      capacity: 'Training for transfer, not attendance. Your people leave with tools for Monday.',
+      security: 'SRMP-certified oversight that keeps your people safe and operations moving.'
     },
     tlNote: 'Gold badges mark the work most relevant to your profile.',
     tlPriority: [],
     numbersNote: 'Every figure is tied to a documented engagement above — ask for the evidence pack.',
     contact: {
       title: 'Let’s build what’s <span class="hl">next</span>',
-      intro: 'Tell me the outcome you’re accountable for. I’ll reply within one business day with a structured read on how — and whether — I can help.',
+      intro: 'Tell me the outcome you’re accountable for. I’ll reply within one business day with a structured read on how I can help.',
       cta: 'Send — opens your email app'
     }
   },
 
   government: {
     label: 'Government',
-    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for public-sector mandates: PPP, institutions, and capacity first.', rec: ['ppp','dm','cbt'] },
     hero: {
       eyebrow: 'Policy Frameworks · Multi-Stakeholder Consultation · Regional Development',
       headline: 'Policy that holds — <span class="grad-text">through audits, transitions, and typhoons</span>.',
-      sub: 'Lead technical architect of the <span class="tooltip" tabindex="0">BIRD 2026–2035<span class="tt" role="tooltip"><strong>BIRD 2026–2035</strong>The decade-long binding investment framework of the Bangsamoro Autonomous Region — designed, consulted, and published end-to-end.</span></span> and sole author of a national TVET strategic plan. I run the consultation-to-publication pipeline that turns mandates into binding, implementable frameworks.',
+      sub: 'Lead architect of the <span class="tooltip" tabindex="0">BIRD 2026–2035<span class="tt" role="tooltip"><strong>BIRD 2026–2035</strong>The decade-long binding investment framework of the Bangsamoro Autonomous Region — designed, consulted, and published end-to-end.</span></span> and sole author of a national TVET plan. Consultation to publication, end to end.',
       cta1: 'Discuss Your Mandate', cta2: 'Review the Frameworks', badge: 'GOVERNMENT LENS',
       recTitle: 'Most relevant to your mandate',
       rec1: 'BIRD 2026–2035 — regional investment framework',
@@ -1449,18 +1316,18 @@ const PROFILES = {
       kicker: 'Public Sector Lens',
       title: 'What this means for <span class="hl">government</span>',
       sub: 'Mandates are political capital. Here is how they get protected — from first consultation to published framework.',
-      c1num: '01', c1title: 'Consultations that end in consensus, not minutes', c1body: 'The BIRD workshop method: government, private sector, and civil society aligned behind one signed, implementable framework — every voice documented, every objection answered on record.',
-      c2num: '02', c2title: 'Audit-ready by design', c2body: 'Documentation, process trails, and synthesis reports built to survive procurement review and leadership transitions — because scrutiny is a certainty, not a risk.',
-      c3num: '03', c3title: 'Frameworks that outlast administrations', c3body: 'Decade-scale roadmaps (BIRD 2026–2035, TESDA 2026–2030) engineered so successors inherit momentum, not loose ends.'
+      c1num: '01', c1title: 'Consultations that end in consensus', c1body: 'Every voice documented, every objection answered. Signed, implementable frameworks.',
+      c2num: '02', c2title: 'Audit-ready by design', c2body: 'Process trails and documentation built to survive procurement review and transitions.',
+      c3num: '03', c3title: 'Frameworks that outlast administrations', c3body: 'Decade-scale roadmaps so successors inherit momentum, not loose ends.'
     },
     expNote: 'Re-ranked for public-sector priorities — strategy, governance, and institutional continuity first.',
     expOrder: ['strategy','orgdev','capacity','drr','cca','sysinno','security'],
     fy: {
-      strategy: 'A sole-author track record at national scale: strategy maps, risk-informed governance, ESG alignment.',
+      strategy: 'National-framework authorship. Pressure-test your strategy before the world does.',
       orgdev: 'Performance dashboards leadership actually reads — and frontliners actually maintain.',
       capacity: 'Workshops that produce signed outputs — the BIRD consultation method, not seminar fatigue.',
       drr: 'DRR protocols that satisfy both auditors and the next typhoon — tested from barangay to region.',
-      cca: 'CCA programs structured for climate-finance compliance — safeguards, results frameworks, and LGU ownership built in.',
+      cca: 'CCA programs structured for climate-finance compliance — safeguards and LGU ownership built in.',
       sysinno: 'Digital systems that institutionalize your programs — they keep running when personnel rotate.',
       security: 'SRMP-certified risk oversight for field deployments in complex areas like the Bangsamoro.'
     },
@@ -1469,18 +1336,17 @@ const PROFILES = {
     numbersNote: '13M+ residents reached through MMDA policy advisory; an entire autonomous region through BIRD.',
     contact: {
       title: 'Let’s advance your <span class="hl">mandate</span>',
-      intro: 'Share the directive, the deadline, and the stakeholders. You’ll get a structured feasibility read within one business day — including the risks your brief hasn’t named yet.',
+      intro: 'Share the directive, deadline, and stakeholders. You’ll get a structured feasibility read within one business day — including the risks your brief hasn’t named yet.',
       cta: 'Send — opens your email app'
     }
   },
 
   humanitarian: {
     label: 'NGO & Humanitarian',
-    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for program teams: field delivery, MEAL, and evaluation first.', rec: ['ccadrr','mel','pe'] },
     hero: {
       eyebrow: 'DRR · CCA · Community Resilience · Humanitarian Operations',
       headline: 'Programs that hold <span class="grad-text">when systems fail</span>.',
-      sub: 'Certified humanitarian practitioner (<span class="tooltip" tabindex="0">SRMP<span class="tt" role="tooltip"><strong>SRMP</strong>Security Risk Management Professional — certification for managing personnel and operational security in humanitarian and high-risk environments.</span></span>) with ECHO, USAID, UNICEF, and WHO delivery experience. I build community resilience that doesn’t collapse when the project cycle ends.',
+      sub: 'Certified humanitarian practitioner (<span class="tooltip" tabindex="0">SRMP<span class="tt" role="tooltip"><strong>SRMP</strong>Security Risk Management Professional — certification for managing personnel and operational security in humanitarian and high-risk environments.</span></span>) with ECHO, USAID, UNICEF, and WHO experience. Community resilience that survives the project cycle.',
       cta1: 'Scope a Program', cta2: 'See Field Results', badge: 'FIELD LENS',
       recTitle: 'Field-proven work',
       rec1: 'BARMM integrated risk & resilience — USAID',
@@ -1491,9 +1357,9 @@ const PROFILES = {
       kicker: 'Humanitarian Lens',
       title: 'What this means for <span class="hl">your mission</span>',
       sub: 'Funding cycles end. Communities stay. Everything here is built for the day after handover.',
-      c1num: '01', c1title: 'Resilience that survives handover', c1body: 'Systems, playbooks, and trained local teams — capability stays in the community when the project closes.',
-      c2num: '02', c2title: 'Donor-grade evidence, field-grade practicality', c2body: 'Results frameworks that satisfy ECHO and USAID reporting while remaining usable by the people actually implementing them.',
-      c3num: '03', c3title: 'Safety and wellbeing are scope, not afterthoughts', c3body: 'SRMP-certified risk management and WHO-co-developed MHPSS modules protect your staff and the communities you serve.'
+      c1num: '01', c1title: 'Resilience that survives handover', c1body: 'Systems, playbooks, and trained local teams. Capability stays when the project closes.',
+      c2num: '02', c2title: 'Donor-grade evidence, field-grade practicality', c2body: 'Results frameworks that satisfy donors while remaining usable by implementers.',
+      c3num: '03', c3title: 'Safety and wellbeing are scope, not afterthoughts', c3body: 'SRMP-certified risk management and WHO-co-developed MHPSS modules.'
     },
     expNote: 'Re-ranked for humanitarian operations — field delivery first.',
     expOrder: ['drr','cca','security','capacity','sysinno','orgdev','strategy'],
@@ -1518,11 +1384,10 @@ const PROFILES = {
 
   private: {
     label: 'Private Sector',
-    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for delivery-focused organizations: execution and structuring first.', rec: ['pm','ppp','stp'] },
     hero: {
       eyebrow: 'Investment Roadmaps · Risk Intelligence · ESG-Aligned Strategy',
       headline: 'De-risk growth in <span class="grad-text">complex markets</span>.',
-      sub: '₱190M in climate-smart project design and a decade of regional risk intelligence — including the investment framework for an entire autonomous region. I help enterprises and investors read fragile markets clearly, then enter them safely.',
+      sub: '₱190M in climate-smart design and a decade of regional risk intelligence — including the investment framework for an entire autonomous region. Read fragile markets clearly, then enter safely.',
       cta1: 'Request a Capability Briefing', cta2: 'See the Numbers', badge: 'INVESTOR LENS',
       recTitle: 'Where the returns hide',
       rec1: 'BIRD — regional investment architecture',
@@ -1533,9 +1398,9 @@ const PROFILES = {
       kicker: 'Investor Lens',
       title: 'What this means for <span class="hl">your capital</span>',
       sub: 'Frontier and post-conflict markets price risk they cannot read. Clarity is the arbitrage.',
-      c1num: '01', c1title: 'Market-entry risk, mapped before you commit', c1body: 'Political, climate, and community risk surfaced as structured intelligence — before capital is exposed, not after.',
-      c2num: '02', c2title: 'Frameworks boards can underwrite', c2body: 'Investment profiles and roadmaps built to the standard financiers actually rely on — the same rigor behind a region’s decade-long investment framework.',
-      c3num: '03', c3title: 'ESG that survives due diligence', c3body: 'Climate and social safeguards integrated into project design — verifiable, not performative.'
+      c1num: '01', c1title: 'Market-entry risk, mapped before you commit', c1body: 'Political, climate, and community risk surfaced as structured intelligence before capital is exposed.',
+      c2num: '02', c2title: 'Frameworks boards can underwrite', c2body: 'Investment profiles built to the standard financiers rely on — the same rigor behind a regional decade-long framework.',
+      c3num: '03', c3title: 'ESG that survives due diligence', c3body: 'Climate and social safeguards integrated into project design. Verifiable, not performative.'
     },
     expNote: 'Re-ranked for commercial priorities — risk, returns, and compliance.',
     expOrder: ['strategy','sysinno','cca','orgdev','security','drr','capacity'],
@@ -1553,14 +1418,13 @@ const PROFILES = {
     numbersNote: '₱190M designed for a single municipality — the same methods scale to portfolio level.',
     contact: {
       title: 'Let’s price the <span class="hl">risk properly</span>',
-      intro: 'Describe the market, the asset, or the decision on your desk. Expect a candid read — including when the honest answer is “don’t”.',
+      intro: 'Describe the market, asset, or decision on your desk. Expect a candid read — including when the honest answer is “don’t”.',
       cta: 'Send — opens your email app'
     }
   },
 
   academic: {
     label: 'Academia',
-    cv: { sub: 'Ten role-targeted versions of one documented career — ranked for research and learning institutions: evidence and instruction first.', rec: ['res','pea','cbt'] },
     hero: {
       eyebrow: 'Research · Publications · Methodology · Capacity Building',
       headline: 'Rigor you can cite. <span class="grad-text">Results you can see</span>.',
@@ -1575,9 +1439,9 @@ const PROFILES = {
       kicker: 'Academic Lens',
       title: 'What this means for <span class="hl">your scholarship</span>',
       sub: 'Theory earns its keep in the field. These methods were published after they were proven.',
-      c1num: '01', c1title: 'Methods documented for replication', c1body: 'Workshop design packages, formulation pipelines, and evaluation tools written to institutional standard — citable, adaptable, extensible.',
-      c2num: '02', c2title: 'Field data you can’t get from a desk', c2body: '18 years across 15+ countries of documented practice in DRR, CCA, and development management — available for case development and collaboration.',
-      c3num: '03', c3title: 'A practitioner who teaches', c3body: 'Global workshop facilitation and mentoring — content calibrated from executive classrooms to community halls.'
+      c1num: '01', c1title: 'Methods documented for replication', c1body: 'Workshop design packages and formulation pipelines written to institutional standard — citable and extensible.',
+      c2num: '02', c2title: 'Field data you can’t get from a desk', c2body: '18 years across 15+ countries of documented practice. Available for case development and collaboration.',
+      c3num: '03', c3title: 'A practitioner who teaches', c3body: 'Global facilitation calibrated from executive classrooms to community halls.'
     },
     expNote: 'Re-ranked for knowledge work — methodology and transfer first.',
     expOrder: ['capacity','strategy','sysinno','cca','drr','orgdev','security'],
@@ -1595,7 +1459,7 @@ const PROFILES = {
     numbersNote: '10+ published works and platforms — citations and review copies available on request.',
     contact: {
       title: 'Let’s advance the <span class="hl">knowledge</span>',
-      intro: 'Share the research question, the course, or the publication timeline. Collaboration inquiries are answered personally within one business day.',
+      intro: 'Share the research question, course, or publication timeline. Collaboration inquiries are answered personally within one business day.',
       cta: 'Send — opens your email app'
     }
   }
@@ -1610,69 +1474,6 @@ function resolvePath(obj, path) {
   return path.split('.').reduce((o,k) => (o && o[k] !== undefined) ? o[k] : undefined, obj);
 }
 
-const CV_BASE = 'https://asilvainnovations.github.io/alvin-silva/CV/';
-const CVS = [
-  { k:'ccadrr', file:'CCA-DRR.pdf', title:'Climate Change Adaptation & DRR',
-    short:'Policy advisory, project design, and digital innovation for climate adaptation and disaster risk reduction leadership.',
-    full:'A seasoned CCA-DRR professional with a strong mix of policy advisory, project design, digital innovation, and academic mentorship — tailored for leadership roles in climate adaptation and disaster risk reduction.' },
-  { k:'cbt', file:'Capacity-Building-Training.pdf', title:'Capacity-Building & Training',
-    short:'Executive education, resilience systems, and multi-stakeholder training backed by international certifications.',
-    full:'A seasoned capacity-building and organizational development consultant with deep expertise in executive education, resilience systems, and multi-stakeholder training, backed by international certifications and leadership in high-impact projects.' },
-  { k:'dm', file:'Development-Management.pdf', title:'Development Management',
-    short:'15+ years leading strategic initiatives for WHO, DOH, TESDA, and Bangsamoro institutions.',
-    full:'Over 15 years in capacity building, organizational development, and executive education — leading strategic initiatives for institutions such as WHO, DOH, TESDA, and the Bangsamoro, focusing on resilience planning, institutional strengthening, and executive training across Asia-Pacific.' },
-  { k:'mel', file:'MEL.pdf', title:'Monitoring, Evaluation & Learning',
-    short:'MEAL systems and evidence-based development for government, humanitarian, and academic institutions.',
-    full:'Specializing in Monitoring, Evaluation & Learning (MEAL) systems and evidence-based development — designing and implementing MEL frameworks that ensure accountability, resilience, and organizational growth through data-driven approaches.' },
-  { k:'ppp', file:'PPP.pdf', title:'Public-Private Partnerships',
-    short:'PPP, investment roadmapping, and risk-informed infrastructure planning — including BIRD 2026–2035.',
-    full:'Expertise in public-private partnerships, investment roadmapping, and risk-informed infrastructure planning — including the Bangsamoro Investment Roadmap 2026–2035 and climate-smart resilience projects integrating governance, finance, and risk management.' },
-  { k:'pea', file:'Political-Economy-Analysis.pdf', title:'Political-Economy Analysis',
-    short:'Governance, conflict-sensitive programming, and stakeholder analysis in complex contexts.',
-    full:'A seasoned analyst in political-economy analysis, governance, and conflict-sensitive programming — shaping strategic directions for the Bangsamoro Development Agency and conducting conflict-sensitive assessments for EU and Red Cross programs.' },
-  { k:'pe', file:'Project-Evaluation.pdf', title:'Project Evaluation',
-    short:'Evaluation frameworks that strengthen accountability and inform strategic decision-making.',
-    full:'Specializing in project evaluation, results assessment, and evidence-based programming — designing and implementing evaluation frameworks that strengthen accountability and inform strategic decision-making for government, humanitarian, and academic institutions.' },
-  { k:'pm', file:'Project-Management.pdf', title:'Project Management',
-    short:'Program delivery and multi-stakeholder implementation across complex national initiatives.',
-    full:'Strong expertise in project management, program delivery, and multi-stakeholder implementation — leading complex initiatives such as national strategic planning, investment roadmapping, and resilience-focused projects across government, humanitarian, and academic institutions.' },
-  { k:'res', file:'Research.pdf', title:'Development Research',
-    short:'Development research, policy studies, and applied data analytics for evidence-based governance.',
-    full:'Expertise in development research, policy studies, and applied data analytics — designing evidence-based frameworks and conducting policy analyses that inform governance, resilience planning, and institutional strengthening across sectors.' },
-  { k:'stp', file:'Strategic-Thinking-Planning.pdf', title:'Strategic Thinking & Planning',
-    short:'Systems innovation and institutional strategy — national roadmaps and organizational strengthening.',
-    full:'Expertise in strategic thinking, systems innovation, and institutional strategy — leading major initiatives such as national investment roadmapping, resilience-focused infrastructure planning, and organizational strengthening for government, humanitarian, and academic institutions.' },
-];
-
-/* render persona-matched CV recommendations */
-function renderCvRecs(P) {
-  const wrap = document.getElementById('cvRecGrid');
-  if (!wrap || !P.cv) return;
-  wrap.innerHTML = P.cv.rec.map(k => {
-    const c = CVS.find(x => x.k === k);
-    if (!c) return '';
-    return `<article class="cv-card glass">
-      <span class="cv-tag">Recommended · ${P.label} lens</span>
-      <h3>${c.title}</h3>
-      <p>${c.short}</p>
-      <a class="cv-dl" href="${CV_BASE}${c.file}" target="_blank" rel="noopener noreferrer" aria-label="Download ${c.title} CV (PDF)"><svg style="width:15px;height:15px"><use href="#i-dl"/></svg> Download PDF</a>
-    </article>`;
-  }).join('');
-}
-
-/* render the full CV library once + initial recommendations */
-(function renderCvLibrary() {
-  renderCvRecs(PROFILES[localStorage.getItem(STORE_KEY)] || PROFILES.executive);
-  const allWrap = document.getElementById('cvAllGrid');
-  if (!allWrap) return;
-  allWrap.innerHTML = CVS.map(c => `
-    <div class="cv-row">
-      <h4>${c.title}</h4>
-      <p>${c.full}</p>
-      <a class="cv-dl" href="${CV_BASE}${c.file}" target="_blank" rel="noopener noreferrer" aria-label="Download ${c.title} CV (PDF)"><svg style="width:14px;height:14px"><use href="#i-dl"/></svg> Download PDF</a>
-    </div>`).join('');
-})();
-
 function applyPersona(key, {announce=true} = {}) {
   if (!PROFILES[key]) key = 'executive';
   currentPersona = key;
@@ -1681,7 +1482,6 @@ function applyPersona(key, {announce=true} = {}) {
   localStorage.setItem(STORE_KEY, key);
   $('#fPersona').value = key;
 
-  // text + html bindings
   $$('[data-p]').forEach(el => {
     const v = resolvePath(P, el.dataset.p) ?? resolvePath(D, el.dataset.p);
     if (v !== undefined) el.textContent = v;
@@ -1691,7 +1491,6 @@ function applyPersona(key, {announce=true} = {}) {
     if (v !== undefined) el.innerHTML = v;
   });
 
-  // expertise: persona "for you" lines + re-ranking
   $$('[data-exp-fy]').forEach(el => {
     const k = el.dataset.expFy;
     el.textContent = P.fy[k] ?? D.fy[k] ?? '';
@@ -1701,20 +1500,14 @@ function applyPersona(key, {announce=true} = {}) {
     if (card) card.style.order = i;
   });
 
-  // timeline priority badges
   $$('[data-tl-badge]').forEach(el => {
     el.classList.toggle('on', P.tlPriority.includes(el.dataset.tlBadge));
   });
 
-  // tailored CV recommendations
-  renderCvRecs(P);
-
-  // header pill + mobile chips
   $('#personaPill .pp-label').textContent = P.label;
   $('#personaPill').setAttribute('aria-label', `Change audience profile. Current: ${P.label}`);
   $$('.mm-persona .chip').forEach(c => c.classList.toggle('active', c.dataset.setPersona === key));
 
-  // restart swap animation on hero + value grid
   ['#heroCopy', '#valueGrid'].forEach(sel => {
     const n = $(sel);
     if (n) { n.classList.remove('swapping'); void n.offsetWidth; n.classList.add('swapping'); }
@@ -1745,7 +1538,7 @@ $('#personaPill').addEventListener('click', openModal);
 $('#heroTailor').addEventListener('click', openModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
-/* first visit → invite a choice */
+/* first visit */
 window.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem(STORE_KEY);
   if (saved && PROFILES[saved]) applyPersona(saved, {announce:false});
@@ -1775,7 +1568,7 @@ $('#mmClose').addEventListener('click', closeMobile);
 overlay.addEventListener('click', closeMobile);
 $$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeMobile(); closeModal(); closeA11y(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
+  if (e.key === 'Escape') { closeMobile(); closeModal(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
 });
 
 /* ================================================================
@@ -1821,7 +1614,6 @@ const revealIO = new IntersectionObserver(es => es.forEach(en => {
   if (en.isIntersecting) { en.target.classList.add('in'); revealIO.unobserve(en.target); }
 }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 $$('.reveal').forEach(el => revealIO.observe(el));
-/* Fallback: if observers are unavailable/throttled, never leave content hidden */
 setTimeout(() => {
   const sweep = () => $$('.reveal:not(.in)').forEach(el => {
     if (el.getBoundingClientRect().top < innerHeight * .92) el.classList.add('in');
@@ -1905,53 +1697,6 @@ window.addEventListener('appinstalled', () => { iBanner.classList.remove('show')
 /* ================================================================
    COOKIE CONSENT — GDPR / RA 10173 aligned
    ================================================================ */
-
-/* ============ ACCESSIBILITY TOOLS ============ */
-const A11Y_KEY = 'as-a11y-prefs';
-const a11yPanelEl = document.getElementById('a11yPanel');
-let a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false };
-try { Object.assign(a11yState, JSON.parse(localStorage.getItem(A11Y_KEY)) || {}); } catch (e) {}
-function applyA11y() {
-  const root = document.documentElement;
-  root.style.setProperty('--a11y-scale', a11yState.scale);
-  root.classList.toggle('a11y-contrast', a11yState.contrast);
-  root.classList.toggle('a11y-grayscale', a11yState.gray);
-  root.classList.toggle('a11y-links', a11yState.links);
-  root.classList.toggle('a11y-largecursor', a11yState.cursor);
-  document.getElementById('a11yContrast').checked = a11yState.contrast;
-  document.getElementById('a11yGray').checked = a11yState.gray;
-  document.getElementById('a11yLinks').checked = a11yState.links;
-  document.getElementById('a11yCursor').checked = a11yState.cursor;
-  localStorage.setItem(A11Y_KEY, JSON.stringify(a11yState));
-}
-function openA11y() { a11yPanelEl.classList.add('open'); a11yPanelEl.setAttribute('aria-hidden','false'); }
-function closeA11y() { a11yPanelEl.classList.remove('open'); a11yPanelEl.setAttribute('aria-hidden','true'); }
-document.getElementById('a11yFab').addEventListener('click', openA11y);
-document.getElementById('a11yClose').addEventListener('click', closeA11y);
-document.getElementById('a11yFontUp').addEventListener('click', () => { a11yState.scale = Math.min(1.4, +(a11yState.scale + 0.1).toFixed(2)); applyA11y(); toast('Text size increased'); });
-document.getElementById('a11yFontDown').addEventListener('click', () => { a11yState.scale = Math.max(0.85, +(a11yState.scale - 0.1).toFixed(2)); applyA11y(); toast('Text size decreased'); });
-document.getElementById('a11yContrast').addEventListener('change', e => { a11yState.contrast = e.target.checked; applyA11y(); });
-document.getElementById('a11yGray').addEventListener('change', e => { a11yState.gray = e.target.checked; applyA11y(); });
-document.getElementById('a11yLinks').addEventListener('change', e => { a11yState.links = e.target.checked; applyA11y(); });
-document.getElementById('a11yCursor').addEventListener('change', e => { a11yState.cursor = e.target.checked; applyA11y(); });
-document.getElementById('a11yReset').addEventListener('click', () => { a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false }; applyA11y(); toast('Accessibility settings reset'); });
-applyA11y();
-let a11ySpeaking = false;
-document.getElementById('a11ySpeak').addEventListener('click', () => {
-  const btn = document.getElementById('a11ySpeak');
-  if (!('speechSynthesis' in window)) { toast('Read-aloud is not supported in this browser'); return; }
-  if (a11ySpeaking) { speechSynthesis.cancel(); a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; return; }
-  const mainEl = document.getElementById('main') || document.querySelector('main') || document.body;
-  const u = new SpeechSynthesisUtterance(mainEl.innerText.replace(/\s+\n/g,'\n').slice(0, 12000));
-  u.rate = 1; u.lang = document.documentElement.lang || 'en';
-  u.onend = () => { a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; };
-  speechSynthesis.speak(u);
-  a11ySpeaking = true;
-  btn.setAttribute('aria-pressed','true');
-  btn.querySelector('span').textContent = 'Stop';
-  toast('Reading page aloud — tap again to stop');
-});
-
 const CONSENT_KEY = 'as-cookie-consent-v1';
 const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
 
@@ -1986,7 +1731,6 @@ $('#cookieSettings').addEventListener('click', () => {
   $('#consentSave').style.display = '';
   showConsent();
 });
-/* first visit → ask */
 if (!getConsent()) setTimeout(showConsent, 1800);
 </script>
 </body>
