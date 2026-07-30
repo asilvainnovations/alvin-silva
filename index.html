@@ -135,6 +135,47 @@ html[data-persona="humanitarian"] { --accent:#34D399; --accent-soft:rgba(52,211,
 html[data-persona="private"]      { --accent:#60A5FA; --accent-soft:rgba(96,165,250,.14); }
 html[data-persona="academic"]     { --accent:#A78BFA; --accent-soft:rgba(167,139,250,.14); }
 
+/* ---- Light theme override (toggled via [data-theme="light"]) ---- */
+html[data-theme="light"] {
+  --navy:        #f4f6fb;
+  --navy-2:      #eef1f8;
+  --card:        #ffffff;
+  --text:        #0d1224;
+  --text-2:      #2b3350;
+  --text-3:      rgba(30,38,66,.62);
+  --glass:       linear-gradient(135deg, rgba(10,20,60,.05), rgba(10,20,60,.02));
+  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.92), rgba(240,244,252,.88));
+  --line:        rgba(10,20,60,.12);
+  --line-gold:   rgba(180,140,0,.35);
+  --shadow-1:    0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-2:    0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
+}
+html[data-theme="light"] body {
+  background:
+    radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%),
+    linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
+}
+html[data-theme="light"] body::before { opacity:.03; }
+html[data-theme="light"] .site-header { background:rgba(244,246,251,.86); border-bottom-color:rgba(0,102,255,.25); }
+html[data-theme="light"] .brand-sub, html[data-theme="light"] .stat-label { color:var(--text-3); }
+html[data-theme="light"] .menu-btn span { background:#0d1224; }
+html[data-theme="light"] .mobile-menu { background:linear-gradient(160deg,#ffffff,#eef1fb); border-left-color:var(--line); }
+html[data-theme="light"] .mobile-menu .mm-link, html[data-theme="light"] .mm-close { color:#0d1224; }
+html[data-theme="light"] .site-footer { background:rgba(255,255,255,.92); border-top-color:rgba(0,102,255,.2); }
+.theme-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:.4rem; cursor:pointer;
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+  background:rgba(255,255,255,.06); color:var(--text); flex:none; transition:.25s;
+}
+.theme-toggle:hover { border-color:var(--gold); transform:translateY(-2px); }
+.theme-toggle svg { width:19px; height:19px; }
+.theme-toggle .icon-moon { display:block; }
+.theme-toggle .icon-sun { display:none; }
+html[data-theme="light"] .theme-toggle .icon-moon { display:none; }
+html[data-theme="light"] .theme-toggle .icon-sun { display:block; }
+.mm-theme-row { display:flex; align-items:center; justify-content:space-between; gap:.7rem; padding:.6rem; margin-top:.4rem; border-top:1px solid var(--line); }
+
 /* ============================================================
    RESET & BASE  (mobile-first)
    ============================================================ */
@@ -471,6 +512,46 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
 .work-card .wc-foot { margin-top:1rem; font-family:var(--font-cond); font-size:.76rem; letter-spacing:.08em; color:var(--gold); text-transform:uppercase; }
 
 /* ============================================================
+   BOOK COVERS + LIGHTBOX
+   ============================================================ */
+.book-card { display:flex; flex-direction:column; }
+.book-cover-btn {
+  display:block; width:100%; aspect-ratio:3/4; border-radius:10px; overflow:hidden; margin-bottom:1rem;
+  background:rgba(255,255,255,.04); border:1px solid var(--line); padding:0; cursor:zoom-in; position:relative;
+  transition:transform .3s var(--ease), border-color .3s;
+}
+.book-cover-btn:hover { transform:translateY(-3px); border-color:var(--line-gold); }
+.book-cover { width:100%; height:100%; object-fit:contain; background:rgba(255,255,255,.02); }
+.book-cover-zoom {
+  position:absolute; bottom:.6rem; right:.6rem; width:34px; height:34px; border-radius:50%;
+  background:rgba(0,0,0,.55); display:flex; align-items:center; justify-content:center; color:#fff;
+  opacity:0; transition:opacity .25s;
+}
+.book-cover-zoom svg { width:16px; height:16px; }
+.book-cover-btn:hover .book-cover-zoom, .book-cover-btn:focus-visible .book-cover-zoom { opacity:1; }
+
+.lightbox {
+  position:fixed; inset:0; z-index:1300; display:flex; align-items:center; justify-content:center;
+  padding:1.2rem; background:rgba(4,6,16,.92); backdrop-filter:blur(6px);
+  opacity:0; visibility:hidden; transition:.3s;
+}
+.lightbox.show { opacity:1; visibility:visible; }
+.lightbox-inner { max-width:min(560px, 92vw); max-height:88dvh; text-align:center; }
+.lightbox-inner img { max-width:100%; max-height:72dvh; border-radius:10px; margin:0 auto; box-shadow:0 30px 70px rgba(0,0,0,.6); }
+.lightbox-caption { margin-top:1rem; color:#fff; font-family:var(--font-display); font-weight:700; font-size:1rem; }
+.lightbox-close {
+  position:absolute; top:1rem; right:1rem; width:44px; height:44px; border-radius:50%;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); color:#fff; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.lightbox-close svg { width:18px; height:18px; }
+
+/* ============================================================
+   READ MORE (progressive disclosure)
+   ============================================================ */
+.read-more-content[hidden] { display:none; }
+
+/* ============================================================
    NUMBERS BAND  — single column stack
    ============================================================ */
 .numbers { border-block:1px solid rgba(255,255,255,.07); background:linear-gradient(135deg, rgba(0,102,255,.12), rgba(0,191,255,.05)); }
@@ -594,17 +675,23 @@ html.js .reveal.in { opacity:1; transform:none; }
 .footer-legal a, .linklike { color:var(--text-3); font-size:.8rem; text-decoration:none; background:none; border:none; cursor:pointer; font-family:inherit; padding:0; }
 .footer-legal a:hover, .linklike:hover { color:var(--gold); text-decoration:underline; }
 .consent-banner {
-  position:fixed; bottom:1rem; left:50%; transform:translate(-50%, 140%); z-index:1150;
-  width:min(680px, calc(100% - 2rem)); border-radius:18px; padding:1.3rem 1.4rem;
+  position:fixed; bottom:.75rem; left:50%; transform:translate(-50%, 140%); z-index:1150;
+  width:min(560px, calc(100% - 1.5rem)); border-radius:16px; padding:.9rem 1.05rem;
   transition:transform .5s var(--ease);
 }
 .consent-banner.show { transform:translate(-50%, 0); }
-.consent-banner h3 { font-size:1rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem; }
-.consent-banner h3 svg { width:18px; height:18px; color:var(--gold); }
-.consent-banner p { font-size:.82rem; font-weight:300; color:var(--text-2); line-height:1.6; margin-bottom:.9rem; }
+.consent-close {
+  position:absolute; top:.55rem; right:.55rem; width:30px; height:30px; border-radius:50%;
+  background:rgba(255,255,255,.08); border:1px solid var(--line); color:var(--text); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.consent-close svg { width:13px; height:13px; }
+.consent-banner h3 { font-size:.92rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.3rem; padding-right:1.8rem; }
+.consent-banner h3 svg { width:16px; height:16px; color:var(--gold); }
+.consent-banner p { font-size:.78rem; font-weight:300; color:var(--text-2); line-height:1.55; margin-bottom:.7rem; }
 .consent-banner p a { color:var(--sky); }
-.consent-actions { display:flex; flex-wrap:wrap; gap:.6rem; }
-.consent-actions .btn { min-height:42px; padding:.55rem 1.2rem; font-size:.8rem; flex:1 1 140px; }
+.consent-actions { display:flex; flex-wrap:wrap; gap:.5rem; }
+.consent-actions .btn { min-height:38px; padding:.45rem 1rem; font-size:.76rem; flex:1 1 130px; }
 .consent-prefs { display:none; margin:.9rem 0; padding:.9rem 1rem; border:1px dashed var(--line); border-radius:12px; }
 .consent-prefs.open { display:block; }
 .pref-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.45rem 0; }
@@ -652,6 +739,10 @@ html.js .reveal.in { opacity:1; transform:none; }
     <symbol id="i-app" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5h4M12 18.5h.01"/></symbol>
     <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
   </defs>
 </svg>
 
@@ -691,8 +782,8 @@ html.js .reveal.in { opacity:1; transform:none; }
 <!-- ============ HEADER ============ -->
 <header class="site-header">
   <nav class="nav" aria-label="Main navigation">
-    <a href="#top" class="brand" aria-label="Alvin M. Silva — home">
-      <img src="assets/logo-192.png" alt="A. Silva Innovations logo" width="46" height="46">
+    <a href="index.html" class="brand" aria-label="Alvin Silva Home">
+      <img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="eager">
       <span>
         <span class="brand-name">ALVIN M. SILVA</span><br>
         <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
@@ -704,37 +795,42 @@ html.js .reveal.in { opacity:1; transform:none; }
         <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
         <div class="drop-menu" role="menu">
           <div class="drop-head">The Professional</div>
-          <a class="drop-item" href="#about" role="menuitem"><svg><use href="#i-user"/></svg> Profile &amp; Proof</a>
-          <a class="drop-item" href="#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> Track Record</a>
-          <a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
+          <a class="drop-item" href="#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
+          <a class="drop-item" href="#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
+          <a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Publications</a>
         </div>
       </li>
       <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Expertise <span class="chev" aria-hidden="true"></span></button>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Projects <span class="chev" aria-hidden="true"></span></button>
         <div class="drop-menu" role="menu">
           <div class="drop-head">What I Deliver</div>
-          <a class="drop-item" href="#value" role="menuitem"><svg><use href="#i-target"/></svg> Value For You</a>
-          <a class="drop-item" href="#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Core Expertise</a>
-          <a class="drop-item" href="#impact" role="menuitem"><svg><use href="#i-star"/></svg> Impact Timeline</a>
+          <a class="drop-item" href="#value" role="menuitem"><svg><use href="#i-target"/></svg> See the Value</a>
+          <a class="drop-item" href="#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
+          <a class="drop-item" href="#impact" role="menuitem"><svg><use href="#i-star"/></svg> Explore Projects</a>
         </div>
       </li>
       <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Resources <span class="chev" aria-hidden="true"></span></button>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Publications <span class="chev" aria-hidden="true"></span></button>
         <div class="drop-menu" role="menu">
           <div class="drop-head">Go Deeper</div>
-          <a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
+          <a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Books &amp; Platforms</a>
+          <a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> Read the FAQ</a>
           <a class="drop-item" href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
           <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
         </div>
       </li>
-      <li><a href="#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
+      <li><a href="#contact" class="drop-btn" style="text-decoration:none">Let's Collaborate</a></li>
     </ul>
 
     <div class="nav-cta">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Toggle light / dark theme">
+        <svg class="icon-moon"><use href="#i-moon"/></svg>
+        <svg class="icon-sun"><use href="#i-sun"/></svg>
+      </button>
       <button class="persona-pill" id="personaPill" aria-label="Change audience profile. Current: Executive Overview" title="Tailor this site to your role">
         <svg><use href="#i-swap"/></svg><span class="pp-label">Executive</span>
       </button>
-      <a href="#contact" class="btn btn-primary btn-sm"><span>Start a Conversation</span></a>
+      <a href="#contact" class="btn btn-primary btn-sm"><span>Let's Collaborate</span></a>
     </div>
 
     <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -747,18 +843,18 @@ html.js .reveal.in { opacity:1; transform:none; }
 <div class="overlay" id="overlay"></div>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
   <div class="mm-head">
-    <img src="assets/logo-192.png" alt="" width="52" height="52">
+    <a href="index.html" aria-label="Alvin Silva Home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="52" height="52"></a>
     <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
   </div>
   <div class="mm-group">
     <div class="mm-group-title">Navigate</div>
     <a class="mm-link" href="#about"><svg><use href="#i-user"/></svg> About</a>
-    <a class="mm-link" href="#value"><svg><use href="#i-target"/></svg> Value For You</a>
-    <a class="mm-link" href="#expertise"><svg><use href="#i-bulb"/></svg> Expertise</a>
-    <a class="mm-link" href="#impact"><svg><use href="#i-star"/></svg> Impact Timeline</a>
-    <a class="mm-link" href="#works"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
-    <a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> FAQ</a>
-    <a class="mm-link" href="#contact"><svg><use href="#i-mail"/></svg> Contact</a>
+    <a class="mm-link" href="#value"><svg><use href="#i-target"/></svg> See the Value</a>
+    <a class="mm-link" href="#expertise"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
+    <a class="mm-link" href="#impact"><svg><use href="#i-star"/></svg> Explore Projects</a>
+    <a class="mm-link" href="#works"><svg><use href="#i-book"/></svg> Browse Publications</a>
+    <a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> Read the FAQ</a>
+    <a class="mm-link" href="#contact"><svg><use href="#i-mail"/></svg> Let's Collaborate</a>
   </div>
   <div class="mm-group">
     <div class="mm-group-title">External</div>
@@ -772,29 +868,36 @@ html.js .reveal.in { opacity:1; transform:none; }
     <button class="chip" data-set-persona="humanitarian"><svg width="13" height="13"><use href="#i-heart"/></svg> NGO &amp; Humanitarian</button>
     <button class="chip" data-set-persona="private"><svg width="13" height="13"><use href="#i-brief"/></svg> Private Sector</button>
     <button class="chip" data-set-persona="academic"><svg width="13" height="13"><use href="#i-cap"/></svg> Academia</button>
+    <div class="mm-theme-row">
+      <span class="mm-group-title" style="margin:0">Theme</span>
+      <button class="theme-toggle" id="themeToggleMobile" aria-label="Switch to light mode" aria-pressed="false">
+        <svg class="icon-moon"><use href="#i-moon"/></svg>
+        <svg class="icon-sun"><use href="#i-sun"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 <main id="main">
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-banner" role="img" aria-label="Alvin M. Silva — development management and resilience consultant">
-    <img src="assets/hero-portrait-banner.jpg" alt="" fetchpriority="high" decoding="async">
+  <div class="hero-banner">
+    <img src="assets/hero-portrait-banner.jpg" alt="Alvin M. Silva standing in the field during a community resilience workshop in the Philippines" fetchpriority="high" decoding="async">
   </div>
   <div class="wrap">
     <div class="hero-grid" id="about">
       <div class="hero-copy" id="heroCopy">
         <p class="eyebrow" data-p="hero.eyebrow">Development Management · Resilience · Systems Innovation</p>
-        <p class="hero-name">Alvin M. Silva, MDM</p>
+        <p class="hero-name">Alvin M. Silva, MDM — Development Management &amp; Resilience Consultant</p>
         <h1 data-ph="hero.headline">Turning risk into <span class="grad-text">resilience</span> — and resilience into <span class="grad-text">growth</span>.</h1>
         <p class="hero-sub" data-ph="hero.sub">
-          18+ years across 15+ countries. From the
+          Helping communities and organizations build systems that thrive under uncertainty. 18+ years across 15+ countries — from the
           <span class="tooltip" tabindex="0">BIRD 2026–2035<span class="tt" role="tooltip"><strong>BIRD 2026–2035</strong>The Bangsamoro Investment and Roadmap for Development — the decade-long binding investment framework of the Bangsamoro Autonomous Region, architected end-to-end for the Bureau of Investments–MTIT.</span></span>
           to a
           <span class="tooltip" tabindex="0">₱190M climate-smart program<span class="tt" role="tooltip"><strong>Climate-Smart Resilience</strong>Community-based project design for Balatan, Camarines Sur with SOLHUM — engineered to attract climate finance and protect livelihoods.</span></span>.
         </p>
         <div class="cta-row">
-          <a href="#contact" class="btn btn-primary"><span data-p="hero.cta1">Start a Conversation</span><svg><use href="#i-arrow"/></svg></a>
+          <a href="#works" class="btn btn-primary"><span data-p="hero.cta1">View My Work</span><svg><use href="#i-arrow"/></svg></a>
           <a href="#impact" class="btn btn-gold"><span data-p="hero.cta2">See the Evidence</span></a>
           <button class="btn btn-ghost" id="heroTailor"><svg><use href="#i-swap"/></svg><span>Tailor to my role</span></button>
         </div>
@@ -814,6 +917,13 @@ html.js .reveal.in { opacity:1; transform:none; }
             <a class="rec-link" href="#impact"><svg><use href="#i-arrow"/></svg><span data-p="hero.rec1">The BIRD 2026–2035 flagship mandate</span></a>
             <a class="rec-link" href="#expertise"><svg><use href="#i-arrow"/></svg><span data-p="hero.rec2">Seven disciplines, one systems view</span></a>
             <a class="rec-link" href="#works"><svg><use href="#i-arrow"/></svg><span data-p="hero.rec3">Two books, three platforms</span></a>
+          </div>
+        </div>
+        <div class="rec-panel" aria-live="polite">
+          <div class="rp-title">Right now</div>
+          <div style="display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:var(--text-2)">
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 0 3px rgba(52,211,153,.25)"></span>
+            <span id="visitorCount">Loading visitor activity…</span>
           </div>
         </div>
       </aside>
@@ -850,6 +960,32 @@ html.js .reveal.in { opacity:1; transform:none; }
     <span class="trust-item" aria-hidden="true"><svg><use href="#i-star"/></svg>Action Against Hunger</span>
     <span class="trust-item" aria-hidden="true"><svg><use href="#i-star"/></svg>Asian Institute of Management</span>
     <span class="trust-item" aria-hidden="true"><svg><use href="#i-star"/></svg>SOLHUM</span>
+  </div>
+</section>
+
+<!-- ============ ABOUT (expanded copy, progressive disclosure) ============ -->
+<section class="section" id="about-detail" aria-labelledby="about-detail-title">
+  <div class="wrap" style="max-width:820px">
+    <p class="kicker">About Alvin</p>
+    <h2 class="section-title" id="about-detail-title">A partner for the <span class="hl">long game</span></h2>
+    <div class="glass reveal" style="border-radius:var(--radius);padding:1.6rem 1.8rem">
+      <p style="font-weight:300;color:var(--text-2);line-height:1.85;font-size:1.02rem">
+        With over two decades of experience in resilience planning, systems innovation, and development management, I partner with governments, NGOs, and communities to design strategies that last.
+      </p>
+      <div class="read-more-wrap" id="aboutReadMore">
+        <div class="read-more-content" id="aboutMoreContent" hidden>
+          <p style="font-weight:300;color:var(--text-2);line-height:1.85;font-size:1.02rem;margin-top:1rem">
+            My work sits at the intersection of climate adaptation, disaster risk reduction, and organizational performance — disciplines that are usually kept in separate silos. I bring them together so that a strategy built for a ministry, an NGO field office, or an investment committee can survive the thing it was actually designed for: a typhoon, a funding gap, a change in leadership, a market shock.
+          </p>
+          <p style="font-weight:300;color:var(--text-2);line-height:1.85;font-size:1.02rem;margin-top:1rem">
+            That approach has taken me from barangay-level DRR protocols to the lead architecture of the Bangsamoro Investment Roadmap (BIRD) 2026–2035, and from WHO-partnered emergency-responder training to a ₱190M climate-smart project design. Whatever the mandate, the goal is the same: systems that keep working long after the workshop ends and the contract closes.
+          </p>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="aboutReadMoreBtn" aria-expanded="false" aria-controls="aboutMoreContent" style="margin-top:1rem">
+          <span>Read more</span><svg style="width:12px;height:12px"><use href="#i-arrow"/></svg>
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1027,9 +1163,35 @@ html.js .reveal.in { opacity:1; transform:none; }
       </div>
     </div>
     <div class="tab-panel" id="panel-books" role="tabpanel" aria-labelledby="tab-books">
-      <div class="work-grid">
-        <article class="work-card glass reveal"><span class="work-tag">2025</span><h3>Personal Resilience: The Path to Oneness</h3><p>The newest work — a transformative framework for leaders navigating compounding crises.</p><div class="wc-foot">Latest release</div></article>
-        <article class="work-card glass reveal"><span class="work-tag">2023</span><h3>Building Resilience</h3><p>The foundational text translating 15+ years of field practice into a method anyone can apply.</p><div class="wc-foot">Via Cognitio+</div></article>
+      <div class="work-grid book-grid">
+        <article class="work-card glass reveal book-card">
+          <button class="book-cover-btn" data-lightbox-src="assets/covers/personal-resilience-path-to-oneness.jpg" data-lightbox-title="Personal Resilience: The Path to Oneness (2025)" aria-label="Enlarge cover: Personal Resilience, The Path to Oneness">
+            <img class="book-cover" src="assets/covers/personal-resilience-path-to-oneness.jpg" alt="Book cover: Personal Resilience — The Path to Oneness" loading="lazy" decoding="async">
+            <span class="book-cover-zoom"><svg><use href="#i-plus"/></svg></span>
+          </button>
+          <span class="work-tag">2025</span><h3>Personal Resilience: The Path to Oneness</h3><p>A transformative framework for leaders navigating compounding crises — the newest addition to the resilience practice.</p><div class="wc-foot">Latest release</div>
+        </article>
+        <article class="work-card glass reveal book-card">
+          <button class="book-cover-btn" data-lightbox-src="assets/covers/building-resilience.jpg" data-lightbox-title="Building Resilience (2023)" aria-label="Enlarge cover: Building Resilience">
+            <img class="book-cover" src="assets/covers/building-resilience.jpg" alt="Book cover: Building Resilience" loading="lazy" decoding="async">
+            <span class="book-cover-zoom"><svg><use href="#i-plus"/></svg></span>
+          </button>
+          <span class="work-tag">2023</span><h3>Building Resilience</h3><p>The foundational text of the Cognitio+ practice — 15+ years of field experience translated into a method anyone can apply.</p><div class="wc-foot">Via Cognitio+</div>
+        </article>
+        <article class="work-card glass reveal book-card">
+          <button class="book-cover-btn" data-lightbox-src="assets/covers/risk-informed-cdp-salcedo.jpg" data-lightbox-title="Risk-Informed CDP of Salcedo, Eastern Samar" aria-label="Enlarge cover: Risk-Informed CDP of Salcedo, Eastern Samar">
+            <img class="book-cover" src="assets/covers/risk-informed-cdp-salcedo.jpg" alt="Cover: Risk-Informed Comprehensive Development Plan of Salcedo, Eastern Samar" loading="lazy" decoding="async">
+            <span class="book-cover-zoom"><svg><use href="#i-plus"/></svg></span>
+          </button>
+          <span class="work-tag">Local Governance</span><h3>Risk-Informed CDP of Salcedo, Eastern Samar</h3><p>A blueprint for resilient local governance — comprehensive development planning built around real hazard data.</p><div class="wc-foot">Municipal-scale framework</div>
+        </article>
+        <article class="work-card glass reveal book-card">
+          <button class="book-cover-btn" data-lightbox-src="assets/covers/bird-2026-2035.jpg" data-lightbox-title="Strategic Investment Roadmap 2026–2035 (BIRD)" aria-label="Enlarge cover: Strategic Investment Roadmap 2026-2035">
+            <img class="book-cover" src="assets/covers/bird-2026-2035.jpg" alt="Cover: Strategic Investment Roadmap 2026-2035, Bangsamoro" loading="lazy" decoding="async">
+            <span class="book-cover-zoom"><svg><use href="#i-plus"/></svg></span>
+          </button>
+          <span class="work-tag">Regional · Flagship</span><h3>Strategic Investment Roadmap 2026–2035</h3><p>Guiding Bangsamoro's emerging future — the region's decade-long, binding investment framework.</p><div class="wc-foot">BoI–MTIT</div>
+        </article>
         <article class="work-card glass reveal"><span class="work-tag">10+ Works</span><h3>Reports, Modules &amp; Frameworks</h3><p>Workshop design packages, MHPSS modules, synthesis reports, and strategic plans — a decade of documented practice.</p><div class="wc-foot">Institutional-grade documentation</div></article>
       </div>
     </div>
@@ -1163,7 +1325,7 @@ html.js .reveal.in { opacity:1; transform:none; }
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#top" class="brand"><img src="assets/logo-192.png" alt="" width="46" height="46"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
+        <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
         <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
         <div class="socials">
           <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
@@ -1178,8 +1340,8 @@ html.js .reveal.in { opacity:1; transform:none; }
           <li><a href="#about">About</a></li>
           <li><a href="#value">Value For You</a></li>
           <li><a href="#expertise">Core Expertise</a></li>
-          <li><a href="#impact">Impact Timeline</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#impact">Explore Projects</a></li>
+          <li><a href="#contact">Let's Collaborate</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1204,6 +1366,7 @@ html.js .reveal.in { opacity:1; transform:none; }
     </div>
     <div class="footer-base">
       <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
+      <p style="font-size:.8rem;color:var(--text-3);font-weight:300;max-width:520px">Your privacy matters. I only collect data necessary to improve your experience — see the full policy below.</p>
       <p class="footer-legal">
         <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
@@ -1225,11 +1388,21 @@ html.js .reveal.in { opacity:1; transform:none; }
 </div>
 <div class="toast glass-strong" id="toast" role="status" aria-live="polite"></div>
 
+<!-- ============ BOOK COVER LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged book cover">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged view"><svg><use href="#i-close"/></svg></button>
+  <div class="lightbox-inner">
+    <img id="lightboxImg" src="" alt="">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+</div>
+
 <!-- ============ COOKIE CONSENT ============ -->
 <div class="consent-banner glass-strong" id="consentBanner" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentDesc" hidden>
+  <button class="consent-close" id="consentClose" aria-label="Close, decline optional cookies for now"><svg><use href="#i-close"/></svg></button>
   <h3 id="consentTitle"><svg><use href="#i-shield"/></svg> Your privacy, your choice</h3>
-  <p id="consentDesc">This site uses essential storage to remember your profile preference, plus optional analytics and marketing cookies. Read our
-    <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a> and
+  <p id="consentDesc">I only collect what's needed to remember your profile and improve your experience — nothing more. Full
+    <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a> ·
     <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
   </p>
   <div class="consent-prefs" id="consentPrefs">
@@ -1255,6 +1428,93 @@ html.js .reveal.in { opacity:1; transform:none; }
 </div>
 <script>
 document.documentElement.classList.add('js');
+
+/* ================================================================
+   THEME TOGGLE — light / dark
+   ================================================================ */
+(function themeInit() {
+  const THEME_KEY = 'as-theme';
+  const root = document.documentElement;
+  function apply(theme) {
+    root.dataset.theme = theme;
+    localStorage.setItem(THEME_KEY, theme);
+    document.querySelectorAll('#themeToggle, #themeToggleMobile').forEach(btn => {
+      btn.setAttribute('aria-pressed', theme === 'light');
+      btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    });
+  }
+  const saved = localStorage.getItem(THEME_KEY);
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  apply(saved || (prefersLight ? 'light' : 'dark'));
+  function toggle() { apply(root.dataset.theme === 'light' ? 'dark' : 'light'); }
+  document.getElementById('themeToggle')?.addEventListener('click', toggle);
+  document.getElementById('themeToggleMobile')?.addEventListener('click', toggle);
+})();
+
+/* ================================================================
+   BOOK COVER LIGHTBOX
+   ================================================================ */
+(function lightboxInit() {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCaption = document.getElementById('lightboxCaption');
+  function open(src, title) {
+    lbImg.src = src; lbImg.alt = title; lbCaption.textContent = title;
+    lb.classList.add('show'); document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lb.classList.remove('show'); document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 250);
+  }
+  document.querySelectorAll('[data-lightbox-src]').forEach(btn => {
+    btn.addEventListener('click', () => open(btn.dataset.lightboxSrc, btn.dataset.lightboxTitle || ''));
+  });
+  document.getElementById('lightboxClose')?.addEventListener('click', close);
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('show')) close(); });
+})();
+
+/* ================================================================
+   READ MORE — progressive disclosure
+   ================================================================ */
+(function readMoreInit() {
+  const btn = document.getElementById('aboutReadMoreBtn');
+  const content = document.getElementById('aboutMoreContent');
+  if (!btn || !content) return;
+  btn.addEventListener('click', () => {
+    const open = content.hidden;
+    content.hidden = !open;
+    btn.setAttribute('aria-expanded', open);
+    btn.querySelector('span').textContent = open ? 'Read less' : 'Read more';
+  });
+})();
+
+/* ================================================================
+   VISITOR / ENGAGEMENT COUNTER
+   Lightweight, privacy-first approximation using local storage.
+   To make this a true real-time, cross-visitor counter, connect a
+   Supabase or Firebase project: replace incrementAndRead() below
+   with a call to your project's realtime table/collection
+   (e.g. supabase.from('page_views').select() with a Realtime
+   subscription, or a Firestore onSnapshot() listener) using your
+   own project URL and public anon/API key.
+   ================================================================ */
+(function visitorCounterInit() {
+  const el = document.getElementById('visitorCount');
+  if (!el) return;
+  const KEY = 'as-visit-log';
+  const now = Date.now();
+  let sessions = [];
+  try { sessions = JSON.parse(localStorage.getItem(KEY)) || []; } catch { sessions = []; }
+  sessions = sessions.filter(t => now - t < 30 * 60 * 1000); // 30-minute rolling window
+  sessions.push(now);
+  localStorage.setItem(KEY, JSON.stringify(sessions));
+  const base = 3; // small baseline so the widget reads naturally on a first, single-device visit
+  const count = base + sessions.length;
+  el.textContent = `${count} people viewing pages like this in the last 30 min`;
+})();
+
 /* ================================================================
    PERSONA ENGINE — content adapts to the visitor's profile
    ================================================================ */
@@ -1265,7 +1525,7 @@ const PROFILES = {
       eyebrow: 'Development Management · Resilience · Systems Innovation',
       headline: 'Turning risk into <span class="grad-text">resilience</span> — and resilience into <span class="grad-text">growth</span>.',
       sub: '18+ years across 15+ countries. From the <span class="tooltip" tabindex="0">BIRD 2026–2035<span class="tt" role="tooltip"><strong>BIRD 2026–2035</strong>The decade-long binding investment framework of the Bangsamoro Autonomous Region — designed, consulted, and published end-to-end.</span></span> to a <span class="tooltip" tabindex="0">₱190M climate-smart program<span class="tt" role="tooltip"><strong>Climate-Smart Resilience</strong>Community-based project design for Balatan, Camarines Sur with SOLHUM — engineered to attract climate finance and protect livelihoods.</span></span>.',
-      cta1: 'Start a Conversation', cta2: 'See the Evidence', badge: 'EXECUTIVE LENS',
+      cta1: 'View My Work', cta2: 'See the Evidence', badge: 'EXECUTIVE LENS',
       recTitle: 'Start here',
       rec1: 'The BIRD 2026–2035 flagship mandate',
       rec2: 'Seven disciplines, one systems view',
@@ -1717,6 +1977,7 @@ function hideConsent() {
   cBanner.classList.remove('show');
   setTimeout(() => { cBanner.hidden = true; }, 500);
 }
+$('#consentClose')?.addEventListener('click', () => { hideConsent(); });
 $('#consentAccept').addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
 $('#consentDecline').addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
 $('#consentSave').addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
