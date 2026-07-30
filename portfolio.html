@@ -121,6 +121,42 @@ button { font-family:inherit; }
 .btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
 .chip { display:inline-flex; align-items:center; gap:.45rem; padding:.42rem 1rem; border-radius:999px; font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em; border:1px solid var(--line); background:rgba(255,255,255,.05); color:var(--text-2); }
 
+/* ---- Light theme override (toggled via [data-theme="light"]) ---- */
+html[data-theme="light"] {
+  --navy:#f4f6fb; --navy-2:#eef1f8; --card:#ffffff;
+  --text:#0d1224; --text-2:#2b3350; --text-3:rgba(30,38,66,.62);
+  --glass:linear-gradient(135deg, rgba(10,20,60,.05), rgba(10,20,60,.02));
+  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.92), rgba(240,244,252,.88));
+  --line:rgba(10,20,60,.12); --line-gold:rgba(180,140,0,.35);
+  --shadow-1:0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-2:0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
+}
+html[data-theme="light"] body {
+  background:
+    radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%),
+    linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
+}
+html[data-theme="light"] body::before { opacity:.03; }
+html[data-theme="light"] .site-header { background:rgba(244,246,251,.86); border-bottom-color:rgba(0,102,255,.25); }
+html[data-theme="light"] .menu-btn span { background:#0d1224; }
+html[data-theme="light"] .mobile-menu { background:linear-gradient(160deg,#ffffff,#eef1fb); border-left-color:var(--line); }
+html[data-theme="light"] .mobile-menu .mm-link, html[data-theme="light"] .mm-close { color:#0d1224; }
+html[data-theme="light"] .site-footer { background:rgba(255,255,255,.92); border-top-color:rgba(0,102,255,.2); }
+html[data-theme="light"] .doc-cover { background:#f4f6fb; }
+.theme-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:.4rem; cursor:pointer;
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+  background:rgba(255,255,255,.06); color:var(--text); flex:none; transition:.25s;
+}
+.theme-toggle:hover { border-color:var(--gold); transform:translateY(-2px); }
+.theme-toggle svg { width:19px; height:19px; }
+.theme-toggle .icon-moon { display:block; }
+.theme-toggle .icon-sun { display:none; }
+html[data-theme="light"] .theme-toggle .icon-moon { display:none; }
+html[data-theme="light"] .theme-toggle .icon-sun { display:block; }
+.mm-theme-row { display:flex; align-items:center; justify-content:space-between; gap:.7rem; padding:.6rem; margin-top:.4rem; border-top:1px solid var(--line); }
+
 /* ============ HEADER / NAV (shared) ============ */
 .site-header { position:sticky; top:0; z-index:1000; background:rgba(10,14,39,.86); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(0,102,255,.45); box-shadow:0 8px 30px rgba(0,0,0,.35); }
 .nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem clamp(1rem,4vw,2.5rem); max-width:1400px; margin:0 auto; }
@@ -189,9 +225,11 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 /* ============ HERO ============ */
 .hero { position:relative; padding:0 0 clamp(2.5rem,6vw,4rem); }
 .hero-banner { position:relative; height:clamp(180px, 30vw, 340px); overflow:hidden; }
-.hero-banner img { width:100%; height:100%; object-fit:cover; object-position:center 62%; animation:kenburns 22s ease-in-out infinite alternate; }
+.hero-banner img { width:100%; height:100%; object-fit:cover; object-position:22% 30%; animation:kenburns 22s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.07); } }
 .hero-banner::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.55) 55%, var(--navy) 100%); }
+.hero-tagline { position:absolute; left:0; right:0; bottom:1rem; z-index:2; display:flex; justify-content:center; padding:0 1rem; }
+.hero-tagline .kicker { background:rgba(8,12,32,.55); backdrop-filter:blur(6px); padding:.5rem 1.1rem; border-radius:999px; border:1px solid var(--line-gold); }
 .hero-inner { margin-top:clamp(-6rem,-10vw,-3.4rem); position:relative; z-index:2; text-align:center; }
 .breadcrumb { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-cond); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-bottom:1rem; text-decoration:none; }
 .breadcrumb:hover { color:var(--gold); }
@@ -241,10 +279,49 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .pf-body h3 { font-size:1.08rem; font-weight:700; color:#fff; margin-bottom:.3rem; }
 .pf-meta { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
 .pf-body p { font-size:.88rem; font-weight:300; color:var(--text-2); line-height:1.7; flex:1; }
+.pf-desc.clamped { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.read-more-btn { background:none; border:none; color:var(--sky); font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; padding:.3rem 0; margin-top:.2rem; }
+.read-more-btn:hover { color:var(--gold); }
 .pf-actions { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.1rem; }
 .pf-actions .btn { flex:1 1 130px; }
 .pf-card.featured { border:1px solid var(--line-gold); background:linear-gradient(135deg, rgba(255,215,0,.08), rgba(26,31,58,.8)); box-shadow:0 12px 40px rgba(255,215,0,.12), var(--shadow-1); }
 .pf-card.featured .pf-media { height:230px; }
+
+.pf-media.book-cover-media { background:#fff; }
+.pf-media.book-cover-media::before { display:none; }
+.pf-media.book-cover-media img.book-cover { object-fit:contain; padding:.75rem; }
+.pf-media.book-cover-media .pf-badge { background:linear-gradient(135deg, #7c5cd6, var(--violet)); }
+
+.form-group { margin-bottom:1rem; text-align:left; }
+.form-group label { display:block; font-family:var(--font-cond); font-size:.76rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--sky); margin-bottom:.35rem; }
+.form-group input {
+  width:100%; padding:.8rem .95rem; border-radius:11px; color:var(--text);
+  background:rgba(10,16,42,.7); border:1.5px solid var(--line);
+  font-family:var(--font-body); font-size:.94rem; transition:.25s;
+}
+html[data-theme="light"] .form-group input { background:rgba(255,255,255,.7); }
+.form-group input::placeholder { color:rgba(224,230,237,.45); }
+.form-group input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(255,215,0,.18); }
+
+/* ============ LEAD CAPTURE MODAL ============ */
+.lead-modal { position:fixed; inset:0; z-index:1400; display:flex; align-items:center; justify-content:center; padding:1rem; background:rgba(4,6,16,.86); backdrop-filter:blur(8px); opacity:0; visibility:hidden; transition:.3s; }
+.lead-modal.show { opacity:1; visibility:visible; }
+.lead-card { width:min(440px, 100%); max-height:92dvh; overflow-y:auto; border-radius:20px; padding:1.8rem; position:relative; transform:translateY(18px) scale(.97); transition:.35s var(--ease); }
+.lead-modal.show .lead-card { transform:none; }
+.lead-close { position:absolute; top:.9rem; right:.9rem; width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid var(--line); color:var(--text); cursor:pointer; }
+.lead-icon { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(255,215,0,.12); border:1px solid var(--line-gold); margin-bottom:1rem; }
+.lead-icon svg { width:22px; height:22px; color:var(--gold); }
+.lead-card h2 { font-size:1.25rem; font-weight:800; margin-bottom:.4rem; padding-right:2rem; }
+.lead-sub { font-size:.9rem; font-weight:300; color:var(--text-2); line-height:1.6; margin-bottom:.6rem; }
+.lead-target { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.06em; color:var(--gold); margin-bottom:1.1rem; }
+.lead-privacy { font-size:.74rem; color:var(--text-3); font-weight:300; margin-top:.8rem; line-height:1.5; }
+.lead-status { display:none; margin-top:.8rem; padding:.7rem .9rem; border-radius:10px; font-size:.85rem; }
+.lead-status.error { display:block; background:rgba(248,113,113,.12); border:1px solid var(--red); color:var(--red); }
+.lead-status.success { display:block; background:rgba(52,211,153,.12); border:1px solid var(--green); color:var(--green); }
+@media (max-width:520px) {
+  .lead-modal { padding:0; align-items:stretch; }
+  .lead-card { width:100%; max-width:none; height:100dvh; max-height:none; border-radius:0; display:flex; flex-direction:column; justify-content:center; }
+}
 
 /* ============ LIGHTBOX ============ */
 .lightbox { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; padding:1rem; background:rgba(4,7,18,.92); backdrop-filter:blur(12px); opacity:0; visibility:hidden; transition:.35s; }
@@ -291,14 +368,16 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .toast.show { opacity:1; visibility:visible; transform:translate(-50%, 0); }
 
 /* ============ COOKIE CONSENT (shared) ============ */
-.consent-banner { position:fixed; bottom:1rem; left:50%; transform:translate(-50%, 140%); z-index:1150; width:min(680px, calc(100% - 2rem)); border-radius:18px; padding:1.3rem 1.4rem; transition:transform .5s var(--ease); }
+.consent-banner { position:fixed; bottom:.75rem; left:50%; transform:translate(-50%, 140%); z-index:1150; width:min(560px, calc(100% - 1.5rem)); border-radius:16px; padding:.9rem 1.05rem; transition:transform .5s var(--ease); }
 .consent-banner.show { transform:translate(-50%, 0); }
-.consent-banner h3 { font-size:1rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem; color:#fff; }
-.consent-banner h3 svg { width:18px; height:18px; color:var(--gold); }
-.consent-banner p { font-size:.82rem; font-weight:300; color:var(--text-2); line-height:1.6; margin-bottom:.9rem; }
+.consent-close { position:absolute; top:.55rem; right:.55rem; width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid var(--line); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.consent-close svg { width:13px; height:13px; }
+.consent-banner h3 { font-size:.92rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.3rem; color:#fff; padding-right:1.8rem; }
+.consent-banner h3 svg { width:16px; height:16px; color:var(--gold); }
+.consent-banner p { font-size:.78rem; font-weight:300; color:var(--text-2); line-height:1.55; margin-bottom:.7rem; }
 .consent-banner p a { color:var(--sky); }
-.consent-actions { display:flex; flex-wrap:wrap; gap:.6rem; }
-.consent-actions .btn { min-height:42px; padding:.55rem 1.2rem; font-size:.8rem; flex:1 1 140px; }
+.consent-actions { display:flex; flex-wrap:wrap; gap:.5rem; }
+.consent-actions .btn { min-height:38px; padding:.45rem 1rem; font-size:.76rem; flex:1 1 130px; }
 .consent-prefs { display:none; margin:.9rem 0; padding:.9rem 1rem; border:1px dashed var(--line); border-radius:12px; }
 .consent-prefs.open { display:block; }
 .pref-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.45rem 0; }
@@ -374,14 +453,18 @@ html.js .reveal.in { opacity:1; transform:none; }
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
     <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
   </defs>
 </svg>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header">
   <nav class="nav" aria-label="Main navigation">
-    <a href="https://alvin-silva.asilvainnovations.com" class="brand" aria-label="Alvin M. Silva — home">
-      <img src="assets/logo-192.png" alt="A. Silva Innovations logo" width="46" height="46">
+    <a href="index.html" class="brand" aria-label="Alvin Silva Home">
+      <img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="eager">
       <span>
         <span class="brand-name">ALVIN M. SILVA</span><br>
         <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
@@ -393,35 +476,30 @@ html.js .reveal.in { opacity:1; transform:none; }
         <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
         <div class="drop-menu" role="menu">
           <div class="drop-head">The Professional</div>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#about" role="menuitem"><svg><use href="#i-user"/></svg> Profile &amp; Proof</a>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> Track Record</a>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#works" role="menuitem"><svg><use href="#i-book"/></svg> Books &amp; Platforms</a>
+          <a class="drop-item" href="index.html#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
+          <a class="drop-item" href="index.html#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
         </div>
       </li>
       <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Expertise <span class="chev" aria-hidden="true"></span></button>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Projects <span class="chev" aria-hidden="true"></span></button>
         <div class="drop-menu" role="menu">
           <div class="drop-head">What I Deliver</div>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#value" role="menuitem"><svg><use href="#i-target"/></svg> Value For You</a>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Core Expertise</a>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#impact" role="menuitem"><svg><use href="#i-star"/></svg> Impact Timeline</a>
+          <a class="drop-item" href="index.html#value" role="menuitem"><svg><use href="#i-target"/></svg> See the Value</a>
+          <a class="drop-item" href="index.html#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
+          <a class="drop-item" href="#portfolio" data-filter-link="all" role="menuitem"><svg><use href="#i-star"/></svg> Explore Projects</a>
         </div>
       </li>
       <li><a href="portfolio.html" class="drop-btn" style="text-decoration:none" aria-current="page">Portfolio</a></li>
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Resources <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">Go Deeper</div>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com/#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
-          <a class="drop-item" href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-shield"/></svg> Policies ↗</a>
-          <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
-        </div>
-      </li>
-      <li><a href="https://alvin-silva.asilvainnovations.com/#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
+      <li><a href="#portfolio" class="drop-btn" style="text-decoration:none" data-filter-link="publications">Publications</a></li>
+      <li><a href="index.html#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
     </ul>
 
     <div class="nav-cta">
-      <a href="https://alvin-silva.asilvainnovations.com/#contact" class="btn btn-primary btn-sm"><span>Start a Conversation</span></a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Light/Dark Mode">
+        <svg class="icon-moon"><use href="#i-moon"/></svg>
+        <svg class="icon-sun"><use href="#i-sun"/></svg>
+      </button>
+      <a href="#portfolio" class="btn btn-primary btn-sm"><span>Explore My Work</span></a>
     </div>
 
     <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -433,22 +511,30 @@ html.js .reveal.in { opacity:1; transform:none; }
 <div class="overlay" id="overlay"></div>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
   <div class="mm-head">
-    <img src="assets/logo-192.png" alt="" width="52" height="52">
+    <a href="index.html" aria-label="Alvin Silva Home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="52" height="52"></a>
     <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
   </div>
   <div class="mm-group">
     <div class="mm-group-title">Navigate</div>
-    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#about"><svg><use href="#i-user"/></svg> About</a>
-    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#expertise"><svg><use href="#i-bulb"/></svg> Expertise</a>
-    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#impact"><svg><use href="#i-star"/></svg> Impact Timeline</a>
+    <a class="mm-link" href="index.html#about"><svg><use href="#i-user"/></svg> About</a>
+    <a class="mm-link" href="index.html#expertise"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
+    <a class="mm-link" href="#portfolio" data-filter-link="all"><svg><use href="#i-star"/></svg> Explore Projects</a>
     <a class="mm-link" href="portfolio.html" aria-current="page"><svg><use href="#i-book"/></svg> Portfolio</a>
-    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com/#contact"><svg><use href="#i-mail"/></svg> Contact</a>
+    <a class="mm-link" href="#portfolio" data-filter-link="publications"><svg><use href="#i-book"/></svg> Publications</a>
+    <a class="mm-link" href="index.html#contact"><svg><use href="#i-mail"/></svg> Contact</a>
   </div>
   <div class="mm-group">
     <div class="mm-group-title">External</div>
     <a class="mm-link" href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-shield"/></svg> Policies ↗</a>
     <a class="mm-link" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
     <a class="mm-link" href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-fb"/></svg> Facebook ↗</a>
+    <div class="mm-theme-row">
+      <span class="mm-group-title" style="margin:0">Light/Dark Mode</span>
+      <button class="theme-toggle" id="themeToggleMobile" aria-label="Switch to light mode" aria-pressed="false">
+        <svg class="icon-moon"><use href="#i-moon"/></svg>
+        <svg class="icon-sun"><use href="#i-sun"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -456,21 +542,29 @@ html.js .reveal.in { opacity:1; transform:none; }
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-banner" role="img" aria-label="Abstract digital landscape: glowing network lines over dark terrain at dawn">
-    <img src="assets/hero-banner.jpg" alt="" fetchpriority="high" decoding="async">
+  <div class="hero-banner">
+    <img src="assets/hero-portrait-banner.jpg" alt="Alvin M. Silva portrait over a digital resilience-systems backdrop" fetchpriority="high" decoding="async">
+    <div class="hero-tagline"><span class="kicker" style="margin-bottom:0">MDM · Resilience · Systems Innovation</span></div>
   </div>
   <div class="wrap">
     <div class="hero-inner">
-      <a class="breadcrumb" href="https://alvin-silva.asilvainnovations.com"><svg><use href="#i-back"/></svg> alvin-silva.asilvainnovations.com</a>
+      <a class="breadcrumb" href="index.html"><svg><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Portfolio</a>
       <p class="kicker">The Work</p>
-      <h1>Proof in <span class="grad-text">platforms, plans &amp; print</span></h1>
-      <p class="hero-sub">Thirty-three documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
+      <h1>Alvin M. Silva — <span class="grad-text">Building Resilient Futures</span></h1>
+      <p class="hero-sub">Development Management · Systems Innovation · Community Resilience. Thirty-three documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
+      <div class="cta-row" style="display:flex;justify-content:center;margin-bottom:1.6rem">
+        <a href="#portfolio" class="btn btn-primary"><span>Discover My Portfolio</span><svg><use href="#i-arrow"/></svg></a>
+      </div>
       <div class="stat-grid">
         <div><div class="stat-num"><span class="count" data-to="33">33</span></div><div class="stat-label">Featured Works</div></div>
         <div><div class="stat-num"><span class="count" data-to="6">6</span></div><div class="stat-label">Digital Platforms</div></div>
         <div><div class="stat-num"><span class="count" data-to="13">13</span></div><div class="stat-label">Technical Reports</div></div>
         <div><div class="stat-num"><span class="count" data-to="4">4</span></div><div class="stat-label">Books &amp; Manuals</div></div>
       </div>
+      <p style="text-align:center;margin-top:1.2rem;font-size:.85rem;color:var(--text-3);display:flex;align-items:center;justify-content:center;gap:.5rem">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 0 3px rgba(52,211,153,.25)"></span>
+        Trusted by leaders and communities — <span id="visitorCount">see live engagement below</span>
+      </p>
     </div>
   </div>
 </section>
@@ -495,7 +589,7 @@ html.js .reveal.in { opacity:1; transform:none; }
     <p class="kicker">Next</p>
     <h2 class="section-title">Your project could be <span class="hl">card #34</span></h2>
     <p class="section-sub">Every engagement above started with one conversation.</p>
-    <a href="https://alvin-silva.asilvainnovations.com/#contact" class="btn btn-primary"><span>Start a Conversation</span><svg><use href="#i-arrow"/></svg></a>
+    <a href="index.html#contact" class="btn btn-primary"><span>Let's Collaborate</span><svg><use href="#i-arrow"/></svg></a>
     <a href="mailto:alvin.silva@asilvainnovations.com" class="btn btn-gold"><span>alvin.silva@asilvainnovations.com</span></a>
   </div>
 </section>
@@ -506,7 +600,7 @@ html.js .reveal.in { opacity:1; transform:none; }
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="https://alvin-silva.asilvainnovations.com" class="brand"><img src="assets/logo-192.png" alt="" width="46" height="46"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
+        <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
         <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
         <div class="socials">
           <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
@@ -518,11 +612,11 @@ html.js .reveal.in { opacity:1; transform:none; }
       <div class="footer-col">
         <h4>Navigate</h4>
         <ul>
-          <li><a href="https://alvin-silva.asilvainnovations.com/#about">About</a></li>
-          <li><a href="https://alvin-silva.asilvainnovations.com/#expertise">Core Expertise</a></li>
-          <li><a href="https://alvin-silva.asilvainnovations.com/#impact">Impact Timeline</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#expertise">Core Expertise</a></li>
+          <li><a href="index.html#impact">Explore Projects</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="https://alvin-silva.asilvainnovations.com/#contact">Contact</a></li>
+          <li><a href="index.html#contact">Let's Collaborate</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -538,15 +632,16 @@ html.js .reveal.in { opacity:1; transform:none; }
       <div class="footer-col">
         <h4>Credentials</h4>
         <ul>
-          <li><a href="https://alvin-silva.asilvainnovations.com/#about">MDM — Asian Institute of Management</a></li>
-          <li><a href="https://alvin-silva.asilvainnovations.com/#expertise">Certified SRMP</a></li>
+          <li><a href="index.html#about">MDM — Asian Institute of Management</a></li>
+          <li><a href="index.html#expertise">Certified SRMP</a></li>
           <li><a href="#portfolio" data-jump="Personal Resilience">Published Author ×3</a></li>
-          <li><a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer">Main Site ↗</a></li>
+          <li><a href="index.html">Main Site ↗</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-base">
       <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
+      <p style="font-size:.8rem;color:var(--text-3);font-weight:300;max-width:520px">We use minimal cookies to improve your experience. No tracking beyond this site — see the full policy below.</p>
       <p class="footer-legal">
         <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
         <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
@@ -560,6 +655,34 @@ html.js .reveal.in { opacity:1; transform:none; }
   </div>
 </footer>
 
+<!-- ============ LEAD CAPTURE MODAL ============ -->
+<div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+  <div class="lead-card glass-strong">
+    <button class="lead-close" id="leadClose" aria-label="Close">✕</button>
+    <span class="lead-icon"><svg><use href="#i-lock"/></svg></span>
+    <h2 id="leadTitle">Before you access this work…</h2>
+    <p class="lead-sub">Please share your contact details so I can keep you updated on new publications and insights.</p>
+    <p class="lead-target" id="leadTargetTitle"></p>
+    <form id="leadForm" novalidate>
+      <div class="form-group">
+        <label for="leadName">Name *</label>
+        <input id="leadName" name="name" type="text" placeholder="Juan Dela Cruz" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="leadEmail">Email *</label>
+        <input id="leadEmail" name="email" type="email" placeholder="you@organization.org" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="leadOrg">Organization / Role (optional)</label>
+        <input id="leadOrg" name="org" type="text" placeholder="e.g., Program Officer, ABC Foundation" autocomplete="organization">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%"><span>Access Now</span><svg><use href="#i-arrow"/></svg></button>
+      <p class="lead-privacy">Your details are collected only to share updates on my work. No spam, no third-party sharing. <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</p>
+      <div class="lead-status" id="leadStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</div>
+
 <!-- lightbox -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
   <button class="lb-close" id="lbClose" aria-label="Close viewer">✕</button>
@@ -567,7 +690,7 @@ html.js .reveal.in { opacity:1; transform:none; }
     <div class="lb-media"><img id="lbImg" src="" alt=""></div>
     <div class="lb-caption">
       <div><div class="lb-title" id="lbTitle"></div><div class="lb-meta" id="lbMeta"></div></div>
-      <a href="#" class="btn btn-gold btn-sm" id="lbLink" target="_blank" rel="noopener noreferrer"><span>Visit project</span><svg><use href="#i-ext"/></svg></a>
+      <a href="#" class="btn btn-gold btn-sm" id="lbLink" data-gate-url="" data-gate-title="" target="_blank" rel="noopener noreferrer"><span>Visit project</span><svg><use href="#i-ext"/></svg></a>
     </div>
   </div>
 </div>
@@ -615,9 +738,10 @@ html.js .reveal.in { opacity:1; transform:none; }
 
 <!-- ============ COOKIE CONSENT ============ -->
 <div class="consent-banner glass-strong" id="consentBanner" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentDesc" hidden>
+  <button class="consent-close" id="consentClose" aria-label="Close"><svg><use href="#i-close"/></svg></button>
   <h3 id="consentTitle"><svg><use href="#i-shield"/></svg> Your privacy, your choice</h3>
-  <p id="consentDesc">This site uses essential storage to remember your preferences, plus optional analytics and marketing cookies. Read our
-    <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a> and
+  <p id="consentDesc">We use minimal cookies to improve your experience. No tracking beyond this site. Full
+    <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a> ·
     <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
   </p>
   <div class="consent-prefs" id="consentPrefs">
@@ -635,7 +759,7 @@ html.js .reveal.in { opacity:1; transform:none; }
     </div>
   </div>
   <div class="consent-actions">
-    <button class="btn btn-primary" id="consentAccept"><span>Accept All</span></button>
+    <button class="btn btn-primary" id="consentAccept"><span>Got it</span></button>
     <button class="btn btn-gold" id="consentSave" style="display:none"><span>Save Choices</span></button>
     <button class="btn btn-ghost" id="consentDecline"><span>Decline Optional</span></button>
     <button class="btn btn-ghost" id="consentCustomize"><span>Customize</span></button>
@@ -647,6 +771,58 @@ const $  = (s, c=document) => c.querySelector(s);
 const $$ = (s, c=document) => [...c.querySelectorAll(s)];
 
 /* ================================================================
+   THEME TOGGLE — light / dark (parity with index.html)
+   ================================================================ */
+(function themeInit() {
+  const THEME_KEY = 'as-theme';
+  const root = document.documentElement;
+  function apply(theme) {
+    root.dataset.theme = theme;
+    localStorage.setItem(THEME_KEY, theme);
+    document.querySelectorAll('#themeToggle, #themeToggleMobile').forEach(btn => {
+      btn.setAttribute('aria-pressed', theme === 'light');
+      btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    });
+  }
+  const saved = localStorage.getItem(THEME_KEY);
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  apply(saved || (prefersLight ? 'light' : 'dark'));
+  function toggle() { apply(root.dataset.theme === 'light' ? 'dark' : 'light'); }
+  document.getElementById('themeToggle')?.addEventListener('click', toggle);
+  document.getElementById('themeToggleMobile')?.addEventListener('click', toggle);
+})();
+
+/* ================================================================
+   VISITOR / ENGAGEMENT COUNTER (local approximation — see index.html
+   for notes on wiring a real Supabase/Firebase Realtime backend)
+   ================================================================ */
+(function visitorCounterInit() {
+  const el = document.getElementById('visitorCount');
+  if (!el) return;
+  const KEY = 'as-visit-log';
+  const now = Date.now();
+  let sessions = [];
+  try { sessions = JSON.parse(localStorage.getItem(KEY)) || []; } catch { sessions = []; }
+  sessions = sessions.filter(t => now - t < 30 * 60 * 1000);
+  sessions.push(now);
+  localStorage.setItem(KEY, JSON.stringify(sessions));
+  const count = 3 + sessions.length;
+  el.textContent = `${count} people exploring this portfolio in the last 30 min`;
+})();
+
+/* ================================================================
+   NAV "filter-link" — jump to #portfolio and pre-select a filter
+   ================================================================ */
+$$('[data-filter-link]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const key = a.dataset.filterLink;
+  const btn = $$('.filter-btn').find(b => b.dataset.filter === key);
+  if (btn) btn.click();
+  document.getElementById('portfolio')?.scrollIntoView({ behavior:'smooth', block:'start' });
+  closeMobile();
+}));
+
+/* ================================================================
    PORTFOLIO DATA — 20 works, newest flagship first
    img: primary screenshot URL · ph: branded local fallback
    ================================================================ */
@@ -654,7 +830,7 @@ const WORKS = [
   { cat:'platforms', badge:'★ Latest · Platform', badgeCls:'badge-gold', featured:true,
     title:'BIRD — Investment Roadmapping Platform of BARMM',
     meta:'BARMM Bureau of Investments–MTIT · 2026',
-    desc:'The digital home of the Bangsamoro Investment Roadmap 2026–2035 — the decade-long binding investment framework for the Bangsamoro Autonomous Region, architected end-to-end and published as an interactive platform.',
+    desc:'Strategic Investment Roadmap 2026–2035 — guiding Bangsamoro’s emerging future. The digital home of the decade-long, binding investment framework for the Bangsamoro Autonomous Region, architected end-to-end and published as an interactive platform.',
     img:'assets/card-bird.jpg', ph:'assets/card-bird.jpg',
     links:[['Platform','https://bangsamro-investment-roadmapp.asilvainnovations.com'],['App','https://bird-app.ailvainnovations.com']] },
   { cat:'platforms', badge:'Platform',
@@ -695,7 +871,7 @@ const WORKS = [
     links:[['Read Guidebook','https://asilvainnovations.com/seamless-care']] },
   { cat:'consulting', badge:'DRR Planning',
     title:'Risk-Informed CDP of Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
-    desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in rigorous analysis and community engagement.',
+    desc:'A blueprint for resilient local governance — comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in rigorous analysis and community engagement.',
     img:'assets/cover-cdp-salcedo.jpg', ph:'assets/ph-consulting.jpg',
     links:[['Report PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
   { cat:'consulting', badge:'Mental Health',
@@ -816,28 +992,48 @@ grid.innerHTML = ALL_WORKS.map((w, i) => w.doc ? `
       </div>
       <h3>${w.title}</h3>
       <p class="pf-meta">${w.meta}</p>
-      <p>${w.desc}</p>
+      <p class="pf-desc" data-full="${w.desc.replace(/"/g,'&quot;')}">${w.desc}</p>
       <div class="pf-actions">
-        <a class="btn btn-primary btn-sm" href="${w.links[0][1]}" target="_blank" rel="noopener noreferrer"><span>${w.links[0][0]}</span><svg><use href="#i-ext"/></svg></a>
+        <a class="btn btn-primary btn-sm" href="${w.links[0][1]}" data-gate-url="${w.links[0][1]}" data-gate-title="${w.title.replace(/"/g,'&quot;')}" target="_blank" rel="noopener noreferrer"><span>${w.links[0][0]}</span><svg><use href="#i-ext"/></svg></a>
       </div>
     </div>
   </article>` : `
   <article class="pf-card glass reveal${w.featured ? ' featured' : ''}" data-cat="${w.cat}" style="animation-delay:${Math.min(i*60, 600)}ms">
-    <button class="pf-media" data-lb="${i}" aria-label="View image of ${w.title} full-screen">
-      <img src="${w.img}" alt="${w.title} — visual" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async"
+    <button class="pf-media${w.cat === 'publications' ? ' book-cover-media' : ''}" data-lb="${i}" aria-label="View image of ${w.title} full-screen">
+      <img class="${w.cat === 'publications' ? 'book-cover' : ''}" src="${w.img}" alt="${w.cat === 'publications' ? 'Book cover: ' + w.title : w.title + ' — visual'}" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async"
            onerror="this.onerror=null;this.src='${w.ph}';">
       <span class="pf-badge ${w.badgeCls || ''}">${w.badge}</span>
-      <span class="zoom-hint"><svg><use href="#i-zoom"/></svg> Full view</span>
+      <span class="zoom-hint"><svg><use href="#i-zoom"/></svg> Tap to explore</span>
     </button>
     <div class="pf-body">
       <h3>${w.title}</h3>
       <p class="pf-meta">${w.meta}</p>
-      <p>${w.desc}</p>
+      <p class="pf-desc" data-full="${w.desc.replace(/"/g,'&quot;')}">${w.desc}</p>
       <div class="pf-actions">
-        ${w.links.map(([t,u],j) => `<a class="btn ${j===0 ? 'btn-primary' : 'btn-ghost'} btn-sm" href="${u}" ${u.startsWith('mailto:') ? '' : 'target="_blank" rel="noopener noreferrer"'}><span>${t}</span>${u.startsWith('mailto:') ? '' : '<svg><use href="#i-ext"/></svg>'}</a>`).join('')}
+        ${w.links.map(([t,u],j) => `<a class="btn ${j===0 ? 'btn-primary' : 'btn-ghost'} btn-sm" href="${u}" data-gate-title="${w.title.replace(/"/g,'&quot;')}" ${u.startsWith('mailto:') ? '' : 'data-gate-url="'+u+'" target="_blank" rel="noopener noreferrer"'}><span>${t}</span>${u.startsWith('mailto:') ? '' : '<svg><use href="#i-ext"/></svg>'}</a>`).join('')}
       </div>
     </div>
   </article>`).join('');
+
+/* ================================================================
+   PROGRESSIVE DISCLOSURE — "Read more" for long descriptions
+   ================================================================ */
+$$('.pf-desc').forEach(p => {
+  const full = p.dataset.full || p.textContent;
+  if (full.length <= 150) return;
+  p.classList.add('clamped');
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'read-more-btn';
+  btn.textContent = 'Read more';
+  btn.setAttribute('aria-expanded', 'false');
+  btn.addEventListener('click', () => {
+    const open = p.classList.toggle('clamped') === false;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Read less' : 'Read more';
+  });
+  p.insertAdjacentElement('afterend', btn);
+});
 
 /* ================================================================
    FILTERS
@@ -879,8 +1075,15 @@ function openLB(i) {
   const first = w.links[0];
   const lbLink = $('#lbLink');
   lbLink.href = first[1];
-  lbLink.querySelector('span').textContent = first[0].startsWith('Request') ? 'Request details' : 'Visit project';
-  if (first[1].startsWith('mailto:')) lbLink.removeAttribute('target'); else lbLink.setAttribute('target','_blank');
+  lbLink.querySelector('span').textContent = first[0].startsWith('Request') ? 'Request details' : 'View Project';
+  if (first[1].startsWith('mailto:')) {
+    lbLink.removeAttribute('target');
+    lbLink.removeAttribute('data-gate-url');
+  } else {
+    lbLink.setAttribute('target','_blank');
+    lbLink.setAttribute('data-gate-url', first[1]);
+    lbLink.setAttribute('data-gate-title', w.title);
+  }
   lb.classList.add('show');
   document.body.style.overflow = 'hidden';
   $('#lbClose').focus();
@@ -915,7 +1118,7 @@ $('#mmClose').addEventListener('click', closeMobile);
 overlay.addEventListener('click', closeMobile);
 $$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeMobile(); closeLB(); closeA11y(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
+  if (e.key === 'Escape') { closeMobile(); closeLB(); closeA11y(); document.getElementById('leadModal')?.classList.remove('show'); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
 });
 
 /* ================================================================
@@ -1016,6 +1219,7 @@ function setConsent(analytics, marketing) {
 }
 function showConsent() { cBanner.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => cBanner.classList.add('show'))); }
 function hideConsent() { cBanner.classList.remove('show'); setTimeout(() => { cBanner.hidden = true; }, 500); }
+$('#consentClose')?.addEventListener('click', () => { hideConsent(); });
 $('#consentAccept').addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
 $('#consentDecline').addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
 $('#consentSave').addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
@@ -1030,6 +1234,86 @@ $('#cookieSettings').addEventListener('click', () => {
   showConsent();
 });
 if (!getConsent()) setTimeout(showConsent, 1800);
+
+/* ================================================================
+   LEAD CAPTURE — gate access to project/book links behind a short
+   contact form. Leads are stored locally; wire a real backend
+   (Supabase table, Firebase collection, or a serverless endpoint)
+   at the point marked below to persist submissions server-side and
+   optionally send a confirmation email with the access link.
+   ================================================================ */
+(function leadCaptureInit() {
+  const LEAD_KEY = 'as-lead-contact';
+  const modal = document.getElementById('leadModal');
+  const form = document.getElementById('leadForm');
+  const status = document.getElementById('leadStatus');
+  const targetTitleEl = document.getElementById('leadTargetTitle');
+  if (!modal || !form) return;
+  let pending = null; // { url, target }
+
+  function getSavedLead() {
+    try { return JSON.parse(localStorage.getItem(LEAD_KEY)); } catch { return null; }
+  }
+  function openModal(url, title, target) {
+    pending = { url, target: target || '_blank' };
+    targetTitleEl.textContent = title ? `Unlocking: ${title}` : '';
+    status.className = 'lead-status';
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('leadName')?.focus(), 250);
+  }
+  function closeModal() {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+    pending = null;
+  }
+  function unlock(url, target) {
+    window.open(url, target || '_blank', 'noopener,noreferrer');
+  }
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-gate-url]');
+    if (!a) return;
+    const url = a.dataset.gateUrl;
+    if (!url) return;
+    e.preventDefault();
+    const saved = getSavedLead();
+    if (saved && saved.email) { unlock(url, a.getAttribute('target')); return; }
+    openModal(url, a.dataset.gateTitle || '', a.getAttribute('target'));
+  });
+
+  document.getElementById('leadClose')?.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('leadName').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+    const org = document.getElementById('leadOrg').value.trim();
+    const fail = msg => { status.textContent = msg; status.className = 'lead-status error'; };
+    if (!name || !email) return fail('Please fill in your name and email.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('That email address doesn\u2019t look right.');
+
+    const lead = { name, email, org, ts: new Date().toISOString(), source: pending?.url || null };
+    // ---- Backend integration point ----
+    // Replace this localStorage write with a call to your own
+    // Supabase/Firebase project, e.g.:
+    //   await supabase.from('leads').insert(lead);
+    // or a serverless function that emails a verified access link.
+    localStorage.setItem(LEAD_KEY, JSON.stringify(lead));
+
+    status.textContent = 'Thanks — opening the work now…';
+    status.className = 'lead-status success';
+    const toOpen = pending;
+    setTimeout(() => {
+      closeModal();
+      form.reset();
+      if (toOpen) unlock(toOpen.url, toOpen.target);
+      toast('Thanks! You can now access every work without re-entering your details.');
+    }, 700);
+  });
+})();
 
 /* ================================================================
    PWA
