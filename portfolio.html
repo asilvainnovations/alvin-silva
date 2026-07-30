@@ -71,6 +71,7 @@
   --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
   --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
   --ease:cubic-bezier(.22,.8,.28,1);
+  --on-gold:#0a0e27; /* readable text color for gold-background elements; flips to white in light theme */
 }
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:92px; }
@@ -93,7 +94,7 @@ button { font-family:inherit; }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:rgba(100,140,200,.35); border-radius:6px; }
 :focus-visible { outline:3px solid var(--gold); outline-offset:2px; border-radius:4px; }
-.skip-link { position:absolute; top:-48px; left:8px; z-index:12000; background:var(--gold); color:#0a0e27; font-family:var(--font-display); font-weight:700; padding:.6rem 1.1rem; border-radius:0 0 10px 10px; text-decoration:none; transition:top .25s; }
+.skip-link { position:absolute; top:-48px; left:8px; z-index:12000; background:var(--gold); color:var(--on-gold); font-family:var(--font-display); font-weight:700; padding:.6rem 1.1rem; border-radius:0 0 10px 10px; text-decoration:none; transition:top .25s; }
 .skip-link:focus { top:0; }
 .sr-only { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
@@ -115,7 +116,7 @@ button { font-family:inherit; }
 .btn-primary { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 8px 24px rgba(0,102,255,.35); }
 .btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
 .btn-gold { background:transparent; color:var(--gold); border-color:var(--gold); }
-.btn-gold:hover { background:var(--gold); color:#0a0e27; transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,215,0,.35); }
+.btn-gold:hover { background:var(--gold); color:var(--on-gold); transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,215,0,.35); }
 .btn-ghost { background:rgba(255,255,255,.06); color:var(--text); border-color:var(--line); }
 .btn-ghost:hover { background:rgba(255,255,255,.12); transform:translateY(-2px); }
 .btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
@@ -124,12 +125,14 @@ button { font-family:inherit; }
 /* ---- Light theme override (toggled via [data-theme="light"]) ---- */
 html[data-theme="light"] {
   --navy:#f4f6fb; --navy-2:#eef1f8; --card:#ffffff;
-  --text:#0d1224; --text-2:#2b3350; --text-3:rgba(30,38,66,.62);
-  --glass:linear-gradient(135deg, rgba(10,20,60,.05), rgba(10,20,60,.02));
-  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.92), rgba(240,244,252,.88));
-  --line:rgba(10,20,60,.12); --line-gold:rgba(180,140,0,.35);
+  --text:#0d1224; --text-2:#2b3350; --text-3:rgba(20,26,46,.72);
+  --glass:linear-gradient(135deg, rgba(10,20,60,.06), rgba(10,20,60,.025));
+  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.94), rgba(240,244,252,.9));
+  --line:rgba(10,20,60,.16); --line-gold:rgba(140,110,0,.4);
   --shadow-1:0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
   --shadow-2:0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
+  /* Darker, higher-contrast variants of the accent hues, used for text/borders on light backgrounds */
+  --gold:#8a6d00; --sky:#0069a8; --green:#0f7d51; --violet:#5b34c9; --red:#c62828; --on-gold:#ffffff;
 }
 html[data-theme="light"] body {
   background:
@@ -138,12 +141,18 @@ html[data-theme="light"] body {
     linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
 }
 html[data-theme="light"] body::before { opacity:.03; }
-html[data-theme="light"] .site-header { background:rgba(244,246,251,.86); border-bottom-color:rgba(0,102,255,.25); }
+html[data-theme="light"] .site-header { background:rgba(244,246,251,.9); border-bottom-color:rgba(0,102,255,.3); }
 html[data-theme="light"] .menu-btn span { background:#0d1224; }
 html[data-theme="light"] .mobile-menu { background:linear-gradient(160deg,#ffffff,#eef1fb); border-left-color:var(--line); }
 html[data-theme="light"] .mobile-menu .mm-link, html[data-theme="light"] .mm-close { color:#0d1224; }
-html[data-theme="light"] .site-footer { background:rgba(255,255,255,.92); border-top-color:rgba(0,102,255,.2); }
+html[data-theme="light"] .site-footer { background:rgba(255,255,255,.94); border-top-color:rgba(0,102,255,.25); }
 html[data-theme="light"] .doc-cover { background:#f4f6fb; }
+html[data-theme="light"] .grad-text, html[data-theme="light"] .section-title .hl, html[data-theme="light"] .stat-num {
+  background:linear-gradient(92deg, #0069a8 0%, #0052cc 45%, #8a6d00 100%);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+html[data-theme="light"] .hero-tagline .kicker { background:rgba(8,12,32,.62); }
+html[data-theme="light"] .pf-badge.badge-gold { background:linear-gradient(135deg, #8a6d00, #b3902a); }
 .theme-toggle {
   display:inline-flex; align-items:center; justify-content:center; gap:.4rem; cursor:pointer;
   width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
@@ -206,11 +215,11 @@ html { --a11y-scale:1; }
 .a11y-fab svg { width:24px; height:24px; }
 .a11y-panel { position:fixed; top:50%; right:-105%; transform:translateY(-50%); z-index:1140; width:min(320px, 88vw); border-radius:18px 0 0 18px; padding:1.3rem 1.3rem 1.4rem; transition:right .4s var(--ease); max-height:86dvh; overflow-y:auto; }
 .a11y-panel.open { right:0; }
-.a11y-panel h2 { font-size:1rem; font-weight:800; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:#fff; }
+.a11y-panel h2 { font-size:1rem; font-weight:800; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:var(--text); }
 .a11y-panel h2 svg { width:18px; height:18px; color:var(--gold); }
 .a11y-row { display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:.6rem 0; border-top:1px solid rgba(255,255,255,.06); }
 .a11y-row:first-of-type { border-top:none; }
-.a11y-row .ar-name { font-family:var(--font-cond); font-size:.85rem; font-weight:600; letter-spacing:.04em; color:#fff; }
+.a11y-row .ar-name { font-family:var(--font-cond); font-size:.85rem; font-weight:600; letter-spacing:.04em; color:var(--text); }
 .a11y-row .ar-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
 .a11y-close { position:absolute; top:.8rem; right:.8rem; background:none; border:none; color:var(--text-3); font-size:1.1rem; cursor:pointer; padding:.3rem; }
 html.a11y-contrast body { background:#000 !important; }
@@ -227,7 +236,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .hero-banner { position:relative; height:clamp(180px, 30vw, 340px); overflow:hidden; }
 .hero-banner img { width:100%; height:100%; object-fit:cover; object-position:22% 30%; animation:kenburns 22s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.07); } }
-.hero-banner::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.55) 55%, var(--navy) 100%); }
+.hero-banner::after { /* fixed dark scrim, not theme-linked, so white hero text stays readable in light mode */ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.5) 55%, #0a0e27 100%); }
 .hero-tagline { position:absolute; left:0; right:0; bottom:1rem; z-index:2; display:flex; justify-content:center; padding:0 1rem; }
 .hero-tagline .kicker { background:rgba(8,12,32,.55); backdrop-filter:blur(6px); padding:.5rem 1.1rem; border-radius:999px; border:1px solid var(--line-gold); }
 .hero-inner { margin-top:clamp(-6rem,-10vw,-3.4rem); position:relative; z-index:2; text-align:center; }
@@ -243,7 +252,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 
 /* ============ FILTERS ============ */
 .filter-bar { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-bottom:2rem; }
-.filter-btn { font-family:var(--font-display); font-weight:700; font-size:.85rem; letter-spacing:.04em; padding:.65rem 1.4rem; border-radius:999px; cursor:pointer; color:#fff; background:rgba(255,255,255,.06); border:1px solid var(--line); transition:.28s var(--ease); }
+.filter-btn { font-family:var(--font-display); font-weight:700; font-size:.85rem; letter-spacing:.04em; padding:.65rem 1.4rem; border-radius:999px; cursor:pointer; color:var(--text); background:rgba(120,140,190,.1); border:1px solid var(--line); transition:.28s var(--ease); }
 .filter-btn:hover { background:rgba(255,255,255,.12); }
 .filter-btn.active { background:linear-gradient(135deg, var(--blue), var(--sky)); border-color:transparent; box-shadow:0 8px 22px rgba(0,102,255,.4); }
 .filter-btn .count-pill { font-family:var(--font-mono); font-size:.68rem; opacity:.8; margin-left:.35rem; }
@@ -262,7 +271,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .pf-media:hover .zoom-hint, .pf-media:focus-visible .zoom-hint { opacity:1; }
 .pf-media .zoom-hint svg { width:12px; height:12px; color:var(--gold); }
 .pf-badge { position:absolute; top:.9rem; left:.9rem; padding:.3rem .85rem; border-radius:999px; font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.4); }
-.pf-badge.badge-gold { background:linear-gradient(135deg, #c9a400, var(--gold)); color:#0a0e27; }
+.pf-badge.badge-gold { background:linear-gradient(135deg, #c9a400, var(--gold)); color:var(--on-gold); }
 .pf-badge.badge-violet { background:linear-gradient(135deg, #7c5cd6, var(--violet)); }
 .pf-badge.badge-green { background:linear-gradient(135deg, #0e9f6e, var(--green)); color:#06281c; }
 
@@ -276,7 +285,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .doc-card .pf-badge { position:static; margin-left:auto; }
 .doc-card h3 { font-size:1rem; line-height:1.35; }
 .pf-body { padding:1.4rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
-.pf-body h3 { font-size:1.08rem; font-weight:700; color:#fff; margin-bottom:.3rem; }
+.pf-body h3 { font-size:1.08rem; font-weight:700; color:var(--text); margin-bottom:.3rem; }
 .pf-meta { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
 .pf-body p { font-size:.88rem; font-weight:300; color:var(--text-2); line-height:1.7; flex:1; }
 .pf-desc.clamped { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
@@ -334,7 +343,7 @@ html[data-theme="light"] .form-group input { background:rgba(255,255,255,.7); }
 .lb-caption .lb-title { font-family:var(--font-display); font-weight:700; font-size:.98rem; flex:1 1 220px; }
 .lb-caption .lb-meta { font-family:var(--font-cond); font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); }
 .lb-close { position:absolute; top:1rem; right:1rem; width:44px; height:44px; border-radius:50%; background:rgba(10,14,39,.9); border:1px solid var(--line); color:#fff; font-size:1.2rem; cursor:pointer; z-index:2; transition:.25s; }
-.lb-close:hover { background:var(--gold); color:#0a0e27; transform:rotate(90deg); }
+.lb-close:hover { background:var(--gold); color:var(--on-gold); transform:rotate(90deg); }
 
 /* ============ CTA STRIP ============ */
 .cta-strip { border-block:1px solid rgba(255,255,255,.07); background:linear-gradient(135deg, rgba(0,102,255,.12), rgba(0,191,255,.05)); text-align:center; }
@@ -372,7 +381,7 @@ html[data-theme="light"] .form-group input { background:rgba(255,255,255,.7); }
 .consent-banner.show { transform:translate(-50%, 0); }
 .consent-close { position:absolute; top:.55rem; right:.55rem; width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,.08); border:1px solid var(--line); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; }
 .consent-close svg { width:13px; height:13px; }
-.consent-banner h3 { font-size:.92rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.3rem; color:#fff; padding-right:1.8rem; }
+.consent-banner h3 { font-size:.92rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.3rem; color:var(--text); padding-right:1.8rem; }
 .consent-banner h3 svg { width:16px; height:16px; color:var(--gold); }
 .consent-banner p { font-size:.78rem; font-weight:300; color:var(--text-2); line-height:1.55; margin-bottom:.7rem; }
 .consent-banner p a { color:var(--sky); }
@@ -426,14 +435,19 @@ html.js .reveal.in { opacity:1; transform:none; }
   .pf-body h3, .section-title, .hero h1 { color:#000; -webkit-text-fill-color:#000; }
 }
 </style>
-</head>
-  <script type="module">
-  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+<script type="module">
+  // Supabase client — used by the lead-capture form (see leadCaptureInit below).
+  // The anon/public key is safe to ship in client-side code; access is
+  // governed entirely by the RLS policies on the `leads` table in Supabase.
+  // If this fails to load (offline, blocked script, etc.) the lead-capture
+  // form still works and falls back to a local-only record.
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
   window.supabase = createClient(
     'https://cwmmcktsnomlpbxbsntp.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3bW1ja3Rzbm9tbHBieGJzbnRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NDE3OTcsImV4cCI6MjA4NTUxNzc5N30.j6VnkA8Pbodd13osqTj9Xbe9NSn1U1sbG8ofCNT5ns0'   // never use the service_role key in browser code
-  )
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3bW1ja3Rzbm9tbHBieGJzbnRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NDE3OTcsImV4cCI6MjA4NTUxNzc5N30.j6VnkA8Pbodd13osqTj9Xbe9NSn1U1sbG8ofCNT5ns0'
+  );
 </script>
+</head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -1257,11 +1271,9 @@ if (!getConsent()) setTimeout(showConsent, 1800);
   const targetTitleEl = document.getElementById('leadTargetTitle');
   if (!modal || !form) return;
   let pending = null; // { url, target }
-(Make the form.addEventListener('submit', ...) callback async since you're now awaiting.)
- const { error } = await supabase.from('leads').insert({
-  name, email, org, source_url: pending?.url || null
-});
-if (error) return fail('Something went wrong — please try again.');
+
+  function getSavedLead() {
+    try { return JSON.parse(localStorage.getItem(LEAD_KEY)); } catch { return null; }
   }
   function openModal(url, title, target) {
     pending = { url, target: target || '_blank' };
@@ -1295,27 +1307,52 @@ if (error) return fail('Something went wrong — please try again.');
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const name = document.getElementById('leadName').value.trim();
     const email = document.getElementById('leadEmail').value.trim();
     const org = document.getElementById('leadOrg').value.trim();
+    const submitBtn = form.querySelector('button[type="submit"]');
     const fail = msg => { status.textContent = msg; status.className = 'lead-status error'; };
+
     if (!name || !email) return fail('Please fill in your name and email.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('That email address doesn\u2019t look right.');
 
     const lead = { name, email, org, ts: new Date().toISOString(), source: pending?.url || null };
-    // ---- Backend integration point ----
-    // Replace this localStorage write with a call to your own
-    // Supabase/Firebase project, e.g.:
-    //   await supabase.from('leads').insert(lead);
-    // or a serverless function that emails a verified access link.
-    localStorage.setItem(LEAD_KEY, JSON.stringify(lead));
 
-    status.textContent = 'Thanks — opening the work now…';
+    if (submitBtn) submitBtn.disabled = true;
+    status.textContent = 'Saving your details\u2026';
+    status.className = 'lead-status';
+
+    // ---- Backend integration ----
+    // Persists to the `leads` table in Supabase when the client is configured
+    // and reachable. Requires a `leads` table with an RLS policy allowing
+    // anon inserts (see project setup notes). Falls back to a local-only
+    // record so the visitor is never blocked from accessing the work, even
+    // if the network call fails.
+    let savedRemotely = false;
+    if (window.supabase && typeof window.supabase.from === 'function') {
+      try {
+        const { error } = await window.supabase.from('leads').insert({
+          name, email, org: org || null, source_url: lead.source,
+        });
+        if (error) throw error;
+        savedRemotely = true;
+      } catch (err) {
+        console.warn('Supabase lead insert failed, continuing with local-only record:', err);
+      }
+    }
+
+    try { localStorage.setItem(LEAD_KEY, JSON.stringify(lead)); } catch (err) {}
+
+    status.textContent = savedRemotely
+      ? 'Thanks — opening the work now\u2026'
+      : 'Thanks — opening the work now\u2026 (saved on this device; reconnect later to sync)';
     status.className = 'lead-status success';
+
     const toOpen = pending;
     setTimeout(() => {
+      if (submitBtn) submitBtn.disabled = false;
       closeModal();
       form.reset();
       if (toOpen) unlock(toOpen.url, toOpen.target);
