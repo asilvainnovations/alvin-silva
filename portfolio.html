@@ -170,7 +170,7 @@ button { font-family:inherit; }
 .kicker::before,.kicker::after { content:''; height:1px; width:34px; background:linear-gradient(90deg,transparent,var(--sky)); }
 .kicker::after { transform:scaleX(-1); }
 .section-title { font-size:clamp(1.7rem,4.6vw,2.6rem); font-weight:800; text-align:center; margin-bottom:.9rem; }
-.grad-text, .section-title .hl { background:linear-gradient(92deg, var(--sky) 0%, var(--blue) 45%, var(--gold) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(0 1px 3px rgba(0,0,0,.12)); }
+.grad-text, .section-title .hl { background:linear-gradient(92deg, var(--sky) 0%, var(--blue) 45%, var(--gold) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .section-sub { text-align:center; color:var(--text-3); max-width:720px; margin:0 auto clamp(2rem,5vw,3rem); font-weight:300; }
 
 .glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); }
@@ -825,6 +825,11 @@ html.js .reveal.in { opacity:1; transform:none; }
 </div>
 <script>
 document.documentElement.classList.add('js');
+// Restore persisted persona from index.html onboarding
+(function restorePersona() {
+  const saved = localStorage.getItem('as-persona');
+  if (saved) { document.documentElement.dataset.persona = saved; }
+})();
 const $  = (s, c=document) => c.querySelector(s);
 const $$ = (s, c=document) => [...c.querySelectorAll(s)];
 
