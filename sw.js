@@ -5,8 +5,6 @@ const PRECACHE = [
   '/portfolio.html',
   '/building-resilience.html',
   '/personal-resilience.html',
-  '/margallo.html',
-  '/margallo-2.html',
   '/policies.html',
   '/privacy-policy.html',
   '/cookie-policy.html',
