@@ -155,7 +155,7 @@ h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.15; letter-spacing:
 a { color:var(--link); }
 a:hover { color:var(--link-hover); }
 button { font-family:inherit; }
-::selection { background:rgba(255,215,0,.35); color:#fff; }
+::selection { background:rgba(255,215,0,.35); color:var(--text); }
 ::-webkit-scrollbar { width:9px; height:9px; }
 ::-webkit-scrollbar-track { background:transparent; }
 ::-webkit-scrollbar-thumb { background:rgba(100,140,200,.35); border-radius:6px; }
@@ -271,10 +271,10 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .hero-banner { position:relative; height:clamp(180px, 30vw, 340px); overflow:hidden; }
 .hero-banner img { width:100%; height:100%; object-fit:cover; object-position:22% 30%; animation:kenburns 22s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.07); } }
-.hero-banner::after { /* fixed dark scrim, not theme-linked, so white hero text stays readable in light mode */ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.5) 55%, #0a0e27 100%); }
+.hero-banner::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.5) 55%, #0a0e27 100%); }
 .hero-tagline { position:absolute; left:0; right:0; bottom:1rem; z-index:2; display:flex; justify-content:center; padding:0 1rem; }
-.hero-tagline .kicker { background:rgba(8,12,32,.55); backdrop-filter:blur(6px); padding:.5rem 1.1rem; border-radius:999px; border:1px solid var(--line-gold); color:#00BFFF; }
-.hero-tagline .kicker::before, .hero-tagline .kicker::after { background:linear-gradient(90deg,transparent,#00BFFF); }
+.hero-tagline .kicker { background:rgba(8,12,32,.55); backdrop-filter:blur(6px); padding:.5rem 1.1rem; border-radius:999px; border:1px solid var(--line-gold); color:var(--sky); }
+.hero-tagline .kicker::before, .hero-tagline .kicker::after { background:linear-gradient(90deg,transparent,var(--sky)); }
 .hero-inner { margin-top:clamp(-6rem,-10vw,-3.4rem); position:relative; z-index:2; text-align:center; }
 .breadcrumb { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-cond); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-bottom:1rem; text-decoration:none; }
 .breadcrumb:hover { color:var(--gold); }
@@ -437,6 +437,66 @@ html[data-theme="light"] .pf-badge.badge-gold { background:linear-gradient(135de
 .switch input:checked + .track::after { transform:translateX(20px); }
 .switch input:disabled { cursor:not-allowed; }
 .switch input:disabled + .track { background:rgba(255,215,0,.25); border-color:var(--line-gold); }
+
+/* ============ IMPACT METRICS ============ */
+.impact-section { padding-top:0; }
+.impact-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; max-width:900px; margin:0 auto; }
+.impact-card { padding:1.5rem 1rem; border-radius:16px; text-align:center; transition:transform .3s var(--ease), box-shadow .3s; }
+.impact-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-2); }
+.impact-num { font-family:var(--font-display); font-size:clamp(1.8rem,5vw,2.5rem); font-weight:800; background:linear-gradient(45deg, var(--gold), var(--sky)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; line-height:1.1; }
+.impact-label { font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--text-2); margin-top:.4rem; }
+.impact-desc { font-size:.78rem; color:var(--text-3); margin-top:.25rem; line-height:1.5; }
+.impact-sub { text-align:center; margin-top:1.8rem; }
+.impact-sub p { color:var(--text-3); font-size:.9rem; line-height:1.8; }
+@media (min-width:640px) { .impact-grid { grid-template-columns:repeat(3,1fr); gap:1.1rem; } }
+
+/* ============ ASILVA CHATBOT WIDGET ============ */
+.chatbot-widget { position:fixed; bottom:1.2rem; right:1.2rem; z-index:2000; font-family:var(--font-body); }
+.chatbot-trigger { width:60px; height:60px; border-radius:50%; border:3px solid var(--gold); background:var(--card); cursor:pointer; box-shadow:0 8px 32px rgba(0,0,0,.35); transition:transform .3s var(--ease), box-shadow .3s; padding:0; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.chatbot-trigger:hover { transform:scale(1.08) rotate(5deg); box-shadow:0 12px 40px rgba(255,215,0,.3); }
+.chatbot-trigger img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.chatbot-trigger .chatbot-tooltip { position:absolute; right:70px; top:50%; transform:translateY(-50%); background:var(--card); color:var(--text); padding:.45rem .85rem; border-radius:10px; font-size:.78rem; font-family:var(--font-cond); font-weight:600; white-space:nowrap; border:1px solid var(--line); box-shadow:var(--shadow-1); opacity:0; visibility:hidden; transition:.25s; pointer-events:none; }
+.chatbot-trigger:hover .chatbot-tooltip { opacity:1; visibility:visible; }
+.chatbot-panel { position:absolute; bottom:76px; right:0; width:min(400px, 92vw); height:560px; border-radius:20px; background:var(--glass-strong); border:1px solid var(--line-gold); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:var(--shadow-2); display:flex; flex-direction:column; overflow:hidden; opacity:0; visibility:hidden; transform:translateY(16px) scale(.96); transition:all .35s var(--ease); }
+.chatbot-panel.open { opacity:1; visibility:visible; transform:none; }
+.chatbot-header { display:flex; align-items:center; gap:.75rem; padding:1rem 1.2rem; border-bottom:1px solid var(--line); background:linear-gradient(135deg, rgba(255,215,0,.08), rgba(0,102,255,.05)); flex:none; }
+.chatbot-avatar { width:40px; height:40px; border-radius:50%; border:2px solid var(--gold); object-fit:cover; background:var(--card); }
+.chatbot-header-info { flex:1; min-width:0; }
+.chatbot-name { display:block; font-family:var(--font-display); font-weight:700; font-size:.95rem; color:var(--text); line-height:1.2; }
+.chatbot-status { font-size:.72rem; color:var(--green); font-family:var(--font-cond); letter-spacing:.04em; }
+.chatbot-close { width:32px; height:32px; border-radius:50%; border:1px solid var(--line); background:var(--pill-bg); color:var(--text); cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:.2s; flex:none; }
+.chatbot-close:hover { background:var(--red); color:#fff; border-color:var(--red); }
+.chatbot-messages { flex:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:.8rem; min-height:0; }
+.chatbot-message { display:flex; gap:.6rem; max-width:92%; animation:fadeUp .3s var(--ease); }
+.chatbot-message.bot { align-self:flex-start; }
+.chatbot-message.user { align-self:flex-end; flex-direction:row-reverse; }
+.chatbot-bubble { padding:.8rem 1rem; border-radius:14px; font-size:.88rem; line-height:1.65; color:var(--text); word-break:break-word; }
+.chatbot-message.bot .chatbot-bubble { background:var(--pill-bg); border:1px solid var(--line); border-bottom-left-radius:4px; }
+.chatbot-message.user .chatbot-bubble { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; border-bottom-right-radius:4px; }
+.chatbot-typing { display:none; gap:4px; padding:.5rem 1rem; align-self:flex-start; }
+.chatbot-typing.active { display:flex; }
+.chatbot-typing span { width:7px; height:7px; border-radius:50%; background:var(--text-3); animation:chatbotTyping 1.4s infinite ease-in-out both; }
+.chatbot-typing span:nth-child(1) { animation-delay:-.32s; }
+.chatbot-typing span:nth-child(2) { animation-delay:-.16s; }
+@keyframes chatbotTyping { 0%,80%,100%{transform:scale(0);opacity:.5;} 40%{transform:scale(1);opacity:1;} }
+@keyframes chatbotPulse { 0%,100%{box-shadow:0 8px 32px rgba(0,0,0,.35);} 50%{box-shadow:0 8px 32px rgba(255,215,0,.5), 0 0 0 8px rgba(255,215,0,.1);} }
+.chatbot-input-area { display:flex; gap:.5rem; padding:.75rem 1rem; border-top:1px solid var(--line); background:var(--glass); flex:none; }
+.chatbot-input-area input { flex:1; padding:.65rem 1rem; border-radius:999px; border:1.5px solid var(--line); background:var(--input-bg); color:var(--text); font-family:var(--font-body); font-size:.9rem; outline:none; transition:.2s; }
+.chatbot-input-area input:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(255,215,0,.15); }
+.chatbot-input-area input::placeholder { color:var(--text-3); }
+.chatbot-input-area button { width:40px; height:40px; border-radius:50%; border:none; background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.2s; flex:none; }
+.chatbot-input-area button:hover { transform:scale(1.08); box-shadow:0 4px 14px rgba(0,102,255,.4); }
+.chatbot-input-area button svg { width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.chatbot-setup { padding:1rem; text-align:center; }
+.chatbot-setup p { font-size:.85rem; color:var(--text-3); line-height:1.6; margin-bottom:.8rem; }
+.chatbot-setup input { width:100%; padding:.65rem 1rem; border-radius:11px; border:1.5px solid var(--line); background:var(--input-bg); color:var(--text); font-family:var(--font-body); font-size:.9rem; margin-bottom:.5rem; }
+.chatbot-setup input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(255,215,0,.15); }
+.chatbot-setup .btn { width:100%; margin-top:.3rem; }
+.chatbot-disclaimer { font-size:.7rem; color:var(--text-3); text-align:center; padding:.5rem 1rem; border-top:1px solid var(--divider); }
+@media (max-width:480px) {
+  .chatbot-panel { width:100vw; height:70vh; bottom:76px; right:-1.2rem; border-radius:20px 20px 0 0; }
+  .chatbot-widget { right:.8rem; bottom:.8rem; }
+}
 
 /* ============ REVEAL / RESPONSIVE ============ */
 html.js .reveal { opacity:0; transform:translateY(34px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
@@ -608,9 +668,9 @@ html.js .reveal.in { opacity:1; transform:none; }
       <a class="breadcrumb" href="index.html"><svg><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Portfolio</a>
       <p class="kicker">The Work</p>
       <h1>Alvin M. Silva — <span class="grad-text">Building Resilient Futures</span></h1>
-      <p class="hero-sub">Development Management · Systems Innovation · Community Resilience. Thirty-three documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
+      <p class="hero-sub"><strong style="color:var(--gold)">18+ years. 15 countries. ₱190M in climate-smart programs.</strong> One systems architect — from the BIRD 2026–2035 Investment Roadmapping Platform to national strategic plans, 13 technical reports, and three published books. Every engagement documented. Every outcome measurable.</p>
       <div class="cta-row" style="display:flex;justify-content:center;margin-bottom:1.6rem">
-        <a href="#portfolio" class="btn btn-primary"><span>Discover My Portfolio</span><svg><use href="#i-arrow"/></svg></a>
+        <a href="#portfolio" class="btn btn-primary"><span>Explore the Evidence Pack</span><svg><use href="#i-arrow"/></svg></a>
       </div>
       <div class="stat-grid">
         <div><div class="stat-num"><span class="count" data-to="33">33</span></div><div class="stat-label">Featured Works</div></div>
@@ -622,6 +682,50 @@ html.js .reveal.in { opacity:1; transform:none; }
         <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 0 3px rgba(52,211,153,.25)"></span>
         Trusted by leaders and communities — <span id="visitorCount">see live engagement below</span>
       </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMPACT METRICS ============ -->
+<section class="section impact-section" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker">Evidence Pack</p>
+    <h2 class="section-title">18+ Years, 15 Countries, <span class="hl">Measurable Impact</span></h2>
+    <p class="section-sub">Numbers that tell the story of systems moved, communities reached, and frameworks that outlast the contract.</p>
+    <div class="impact-grid">
+      <div class="impact-card glass">
+        <div class="impact-num">18+</div>
+        <div class="impact-label">Years in Practice</div>
+        <div class="impact-desc">Development management &amp; resilience consulting</div>
+      </div>
+      <div class="impact-card glass">
+        <div class="impact-num">15</div>
+        <div class="impact-label">Countries</div>
+        <div class="impact-desc">Across Asia, Africa &amp; the Pacific</div>
+      </div>
+      <div class="impact-card glass">
+        <div class="impact-num">₱190M</div>
+        <div class="impact-label">Climate-Smart Funding</div>
+        <div class="impact-desc">Programs designed &amp; delivered</div>
+      </div>
+      <div class="impact-card glass">
+        <div class="impact-num">50K+</div>
+        <div class="impact-label">Households Reached</div>
+        <div class="impact-desc">Resilience &amp; livelihood interventions</div>
+      </div>
+      <div class="impact-card glass">
+        <div class="impact-num">30+</div>
+        <div class="impact-label">Institutions</div>
+        <div class="impact-desc">UNICEF, UNDP, WHO, USAID, World Bank &amp; more</div>
+      </div>
+      <div class="impact-card glass">
+        <div class="impact-num">100%</div>
+        <div class="impact-label">Completion Rate</div>
+        <div class="impact-desc">Measurable outcomes, fully documented</div>
+      </div>
+    </div>
+    <div class="impact-sub">
+      <p>Also: <strong style="color:var(--gold)">7 disciplines</strong> integrated into one systems framework · <strong style="color:var(--gold)">20+</strong> strategic plans facilitated · <strong style="color:var(--gold)">10+</strong> published frameworks · <strong style="color:var(--gold)">5+</strong> university collaborations · Policy inputs adopted into <strong style="color:var(--gold)">national resilience strategies</strong></p>
     </div>
   </div>
 </section>
@@ -643,10 +747,10 @@ html.js .reveal.in { opacity:1; transform:none; }
 <!-- ============ CTA STRIP ============ -->
 <section class="section cta-strip">
   <div class="wrap">
-    <p class="kicker">Next</p>
-    <h2 class="section-title">Your project could be <span class="hl">card #34</span></h2>
-    <p class="section-sub">Every engagement above started with one conversation.</p>
-    <a href="index.html#contact" class="btn btn-primary"><span>Let's Collaborate</span><svg><use href="#i-arrow"/></svg></a>
+    <p class="kicker">Next Step</p>
+    <h2 class="section-title">Your challenge deserves a <span class="hl">systems architect</span></h2>
+    <p class="section-sub">Every project above started with one conversation. Let's design card #34 — scoped to your mandate, budget, and timeline.</p>
+    <a href="index.html#contact" class="btn btn-primary"><span>Start the Conversation</span><svg><use href="#i-arrow"/></svg></a>
     <a href="mailto:alvin.silva@asilvainnovations.com" class="btn btn-gold"><span>alvin.silva@asilvainnovations.com</span></a>
   </div>
 </section>
@@ -822,6 +926,38 @@ html.js .reveal.in { opacity:1; transform:none; }
     <button class="btn btn-ghost" id="consentCustomize"><span>Customize</span></button>
   </div>
 </div>
+
+<!-- ============ ASILVA CHATBOT WIDGET ============ -->
+<div class="chatbot-widget" id="chatbotWidget" aria-label="ASilva AI assistant">
+  <div class="chatbot-panel" id="chatbotPanel" role="dialog" aria-label="ASilva chat" aria-hidden="true">
+    <div class="chatbot-header">
+      <img src="https://asilvainnovations.github.io/alvin-silva/assets/logo-192.png" alt="ASilva" class="chatbot-avatar" loading="lazy">
+      <div class="chatbot-header-info">
+        <span class="chatbot-name">ASilva</span>
+        <span class="chatbot-status">● Online</span>
+      </div>
+      <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages" role="log" aria-live="polite" aria-atomic="false">
+      <!-- Messages injected by JS -->
+    </div>
+    <div class="chatbot-typing" id="chatbotTyping" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatbotInput" placeholder="Ask about Alvin's work..." autocomplete="off" aria-label="Type your message">
+      <button id="chatbotSend" aria-label="Send message">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+    <div class="chatbot-disclaimer">Powered by Kimi AI · Responses are AI-generated</div>
+  </div>
+  <button class="chatbot-trigger" id="chatbotTrigger" aria-label="Open ASilva chat assistant">
+    <span class="chatbot-tooltip">Ask ASilva</span>
+    <img src="https://asilvainnovations.github.io/alvin-silva/assets/logo-192.png" alt="ASilva" loading="lazy">
+  </button>
+</div>
+
 <script>
 document.documentElement.classList.add('js');
 const $  = (s, c=document) => c.querySelector(s);
@@ -1403,6 +1539,283 @@ if (!getConsent()) setTimeout(showConsent, 1800);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
+
+/* ================================================================
+   ASILVA CHATBOT — Kimi/Moonshot API Integration
+   ================================================================
+   CONFIGURATION:
+   Set your Kimi API key via browser console:
+     localStorage.setItem('asilva-kimi-key', 'your-api-key-here')
+   
+   For production, replace direct API calls with a Supabase Edge
+   Function or backend proxy to keep the key server-side.
+   ================================================================ */
+(function asilvaChatbotInit() {
+  const WIDGET_KEY = 'asilva-chat-state';
+  const API_KEY_KEY = 'asilva-kimi-key';
+  const API_URL = 'https://api.moonshot.cn/v1/chat/completions';
+  const MODEL = 'moonshot-v1-8k';
+
+  // Comprehensive system prompt — ASilva knows Alvin's full profile
+  const SYSTEM_PROMPT = `You are ASilva, the professional AI assistant for Alvin M. Silva, MDM. You represent Alvin with authority, warmth, and precision. Your role is to help visitors understand Alvin's work, expertise, and how he can support their projects.
+
+IDENTITY:
+- Full name: Alvin M. Silva, MDM (Master in Development Management, Asian Institute of Management)
+- Professional title: Development Management Professional & Resilience Consultant
+- Affiliations: Cognitio+ (alvin.silva@cognitioplus.com) and ASilva Innovations
+- Current focus: BIRD 2026–2035 strategic planning ecosystem, CRO executive opportunities
+
+IMPACT METRICS:
+- 18+ years of professional experience in development management and resilience consulting
+- 15 countries across Asia, Africa, and the Pacific where projects have been implemented
+- ₱190 million in climate-smart program funding designed and delivered
+- 50,000+ households reached through resilience and livelihood interventions
+- 30+ institutions partnered with, including UNICEF, UNDP, ECHO, USAID, World Bank, WHO, TESDA, MMDA, DOH, BARMM BoI–MTIT, Action Against Hunger, Asian Institute of Management, SOLHUM
+- 100% project completion rate with measurable outcomes documented
+- 20+ strategic plans facilitated for governments, NGOs, and private sector organizations
+- 10+ published frameworks and intellectual property contributions
+- 5+ university academic collaborations
+- Policy inputs adopted into national resilience strategies in the Philippines
+- Global footprint spanning 3 continents
+
+SEVEN DISCIPLINES (integrated into one systems framework):
+1. Climate Change Adaptation — 15+ years designing bankable CCA strategies with ECHO, USAID, and the World Bank. Science-backed, community-owned, funder-ready.
+2. Disaster Risk Reduction — Certified DRR practitioner. From barangay protocols to regional integrated risk management in the Bangsamoro.
+3. Systems Innovation — Architect of DDRiVE-M, Strat Planner Pro, and Cognitio+. Digital tools that turn risk data into decisions.
+4. Organizational Development — Performance systems and dashboards for government and NGOs. Built for adoption, not shelf-ware.
+5. Strategic Thinking & Planning — Decade-scale roadmaps that survive short-term shocks. Sole author of the national WorldSkills Philippines TESDA Strategic Plan 2026–2030.
+6. Capacity Building — MDM-trained facilitator. Executive strategy retreats to frontline responder training with WHO and DOH.
+7. Security Risk Management — Certified SRMP. Humanitarian operations and emergency response coordination in complex environments.
+
+KEY PROJECTS & PLATFORMS:
+- BIRD 2026–2035: Bangsamoro Investment Roadmapping Platform — lead technical architect for the decade-long binding investment framework of the Bangsamoro Autonomous Region, published as an interactive platform for BoI–MTIT.
+- DDRiVE-M: Comprehensive AI-powered disaster risk management platform compliant with RA 10121, ISO 31000, and UNDRR frameworks — from detection to recovery.
+- Strat Planner Pro: AI-powered progressive web app for deep systems diagnosis, structured planning, and disciplined execution. Works offline and prints beautifully.
+- RTL (Real-Time Leadership): Digital learning for growth, resilience, and wellness — rooted in culture, powered by awareness, enhanced with technology.
+- Cognitio+: The knowledge ecosystem behind the resilience practice — publishing, learning, and evaluation tooling.
+- Balatan Climate Resilience Hub: ₱190M community-based climate-smart model funded by the People's Survival Fund (PSF), driving sustainable development in Balatan, Camarines Sur.
+- WorldSkills Philippines TESDA Strategic Plan 2026–2030: Sole-authored national strategic plan mapping vision, mission, and organizational goals.
+- Risk-Informed CDP of Salcedo, Eastern Samar (2023–2028): Comprehensive development plan integrating CCA/DRR and sustainability.
+- MHPSS Intervention Module for Emergency Responders (WHO & DOH, 2023): Mental Health and Psychosocial Support for PEMAT members.
+- IRRM for BARMM (USAID & Action Against Hunger, 2022): Integrated Risk & Resilience Management for CSOs and communities.
+
+PUBLICATIONS:
+- "Personal Resilience: The Path to Oneness" (Cognitio+, 2025) — transformative approaches to personal and collective resilience
+- "Resilient Futures: Nurturing Oneness in Education" (Cognitio+, 2024) — resilience in education and beyond
+- "Building Resilience: The Path to a More Fulfilling Life" (Cognitio+, 2023) — foundational guide to building and sustaining resilience
+- Shock-Responsive & Sustainable Livelihoods Process Manual (MOVEUP Mindanao, 2022) — four-chapter operations manual
+
+CREDENTIALS:
+- MDM, Asian Institute of Management
+- Certified SRMP (Security Risk Management Professional)
+- Certified International Humanitarian Practitioner
+- Certified DRR Practitioner
+
+METHODOLOGY:
+- BIRD strategic planning methodology (ecosystem-based development frameworks)
+- Balanced Scorecard perspectives
+- SWOT analysis and strategic mapping
+- Survey lifecycle orchestration and validation
+- Systems thinking and complex adaptive systems
+- Long-term frameworks spanning 2026–2035
+
+TONE & GUIDELINES:
+- Professional yet approachable. Direct and outcome-focused.
+- Always tie responses back to measurable impact when possible.
+- Use "Alvin" or "Mr. Silva" when referring to him — never "I" unless speaking as the assistant.
+- If asked about availability, services, or collaboration, guide visitors to:
+  • Email: alvin.silva@asilvainnovations.com
+  • LinkedIn: https://alvin-silva-linkedin.asilvainnovations.com
+  • Contact form on the main site: index.html#contact
+- If you don't know something specific, be honest and offer to connect the visitor directly with Alvin.
+- Keep responses concise (2–4 sentences) unless the user asks for detail.
+- Use bullet points for lists when helpful.
+- Never make up projects, dates, or metrics not listed above.`;
+
+  const panel = document.getElementById('chatbotPanel');
+  const trigger = document.getElementById('chatbotTrigger');
+  const closeBtn = document.getElementById('chatbotClose');
+  const messagesEl = document.getElementById('chatbotMessages');
+  const inputEl = document.getElementById('chatbotInput');
+  const sendBtn = document.getElementById('chatbotSend');
+  const typingEl = document.getElementById('chatbotTyping');
+
+  if (!panel || !trigger) return;
+
+  let messages = [];
+  let isOpen = false;
+  let isTyping = false;
+
+  // Load conversation history
+  try {
+    const saved = localStorage.getItem(WIDGET_KEY);
+    if (saved) messages = JSON.parse(saved);
+  } catch (e) {}
+
+  function saveMessages() {
+    try { localStorage.setItem(WIDGET_KEY, JSON.stringify(messages.slice(-50))); } catch (e) {}
+  }
+
+  function renderMessages() {
+    messagesEl.innerHTML = '';
+    if (messages.length === 0) {
+      // Show welcome + setup if needed
+      const apiKey = localStorage.getItem(API_KEY_KEY);
+      if (!apiKey) {
+        messagesEl.innerHTML = `
+          <div class="chatbot-message bot">
+            <div class="chatbot-bubble">Hello! I'm <strong>ASilva</strong>, Alvin's AI assistant. I can tell you about his work, expertise, or help you explore how he might support your project.</div>
+          </div>
+          <div class="chatbot-message bot">
+            <div class="chatbot-bubble">To enable AI responses, please enter your Kimi API key below. Your key stays in your browser only.</div>
+          </div>
+          <div class="chatbot-setup">
+            <input type="password" id="chatbotApiKey" placeholder="Paste your Kimi API key here">
+            <button class="btn btn-primary btn-sm" id="chatbotSaveKey" style="width:100%;margin-top:.4rem"><span>Save Key & Start Chatting</span></button>
+          </div>`;
+        const saveKeyBtn = document.getElementById('chatbotSaveKey');
+        const keyInput = document.getElementById('chatbotApiKey');
+        if (saveKeyBtn && keyInput) {
+          saveKeyBtn.addEventListener('click', () => {
+            const key = keyInput.value.trim();
+            if (!key) { toast('Please enter a valid API key'); return; }
+            localStorage.setItem(API_KEY_KEY, key);
+            toast('API key saved!');
+            messages = [];
+            renderMessages();
+            addBotMessage('Great! I\'m ready to help. Ask me anything about Alvin\'s work, expertise, or how he can support your project.');
+          });
+          keyInput.addEventListener('keydown', e => { if (e.key === 'Enter') saveKeyBtn.click(); });
+        }
+        return;
+      }
+      addBotMessage('Hello! I\'m <strong>ASilva</strong>, Alvin\'s AI assistant. I can tell you about his 18+ years of impact across 15 countries, his platforms like BIRD and DDRiVE-M, or how he can help with your project. What would you like to know?');
+      return;
+    }
+    messages.forEach(m => {
+      const div = document.createElement('div');
+      div.className = `chatbot-message ${m.role}`;
+      div.innerHTML = `<div class="chatbot-bubble">${escapeHtml(m.content)}</div>`;
+      messagesEl.appendChild(div);
+    });
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.innerHTML = text;
+    // Allow basic formatting
+    return div.innerHTML;
+  }
+
+  function addUserMessage(text) {
+    messages.push({ role: 'user', content: text, ts: Date.now() });
+    saveMessages();
+    renderMessages();
+  }
+
+  function addBotMessage(text) {
+    messages.push({ role: 'bot', content: text, ts: Date.now() });
+    saveMessages();
+    renderMessages();
+  }
+
+  function setTyping(show) {
+    isTyping = show;
+    typingEl.classList.toggle('active', show);
+    if (show) messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  async function sendMessage(text) {
+    const apiKey = localStorage.getItem(API_KEY_KEY);
+    if (!apiKey) {
+      addBotMessage('Please set your Kimi API key first to enable AI responses.');
+      return;
+    }
+    addUserMessage(text);
+    setTyping(true);
+
+    const apiMessages = [
+      { role: 'system', content: SYSTEM_PROMPT },
+      ...messages.slice(-20).map(m => ({ role: m.role === 'bot' ? 'assistant' : 'user', content: m.content }))
+    ];
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: MODEL,
+          messages: apiMessages,
+          temperature: 0.7,
+          max_tokens: 800
+        })
+      });
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(`API error ${res.status}: ${err}`);
+      }
+      const data = await res.json();
+      const reply = data.choices?.[0]?.message?.content || 'I apologize, I did not receive a response. Please try again.';
+      setTyping(false);
+      addBotMessage(reply);
+    } catch (err) {
+      setTyping(false);
+      console.error('ASilva chat error:', err);
+      addBotMessage('I\'m having trouble connecting right now. Please check your API key or try again shortly. You can also reach Alvin directly at <a href="mailto:alvin.silva@asilvainnovations.com">alvin.silva@asilvainnovations.com</a>.');
+    }
+  }
+
+  function openChat() {
+    isOpen = true;
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    trigger.setAttribute('aria-expanded', 'true');
+    renderMessages();
+    setTimeout(() => inputEl?.focus(), 300);
+  }
+
+  function closeChat() {
+    isOpen = false;
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  trigger.addEventListener('click', () => { isOpen ? closeChat() : openChat(); });
+  closeBtn.addEventListener('click', closeChat);
+
+  sendBtn.addEventListener('click', () => {
+    const text = inputEl.value.trim();
+    if (!text || isTyping) return;
+    inputEl.value = '';
+    sendMessage(text);
+  });
+
+  inputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendBtn.click();
+    }
+    if (e.key === 'Escape') closeChat();
+  });
+
+  // Auto-open on first visit after 8 seconds (subtle)
+  const hasVisited = sessionStorage.getItem('asilva-chat-visited');
+  if (!hasVisited) {
+    sessionStorage.setItem('asilva-chat-visited', '1');
+    setTimeout(() => {
+      if (!isOpen) {
+        // Subtle pulse on trigger
+        trigger.style.animation = 'chatbotPulse 2s ease-in-out 2';
+        setTimeout(() => { trigger.style.animation = ''; }, 4000);
+      }
+    }, 8000);
+  }
+})();
 </script>
 </body>
 </html>
