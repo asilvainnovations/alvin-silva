@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASilva Form Assistant — Setup</title>
+<style>
+body{font-family:'Poppins',system-ui,sans-serif;max-width:720px;margin:0 auto;padding:2rem 1rem;line-height:1.7;color:#0d1224;background:#f4f6fb}
+h1{font-family:'Montserrat',system-ui,sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(45deg,#0069a8,#0057c2,#8a6d00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-family:'Montserrat',system-ui,sans-serif;font-size:1.2rem;font-weight:700;margin-top:2rem;margin-bottom:.8rem;color:#0d1224}
+.code{background:#0a0e27;color:#4db8ff;padding:1rem;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.6;overflow-x:auto;word-break:break-all;max-height:200px;overflow-y:auto}
+.step{display:flex;gap:1rem;margin-bottom:1.5rem;padding:1.2rem;background:#fff;border-radius:12px;border:1px solid rgba(10,20,60,.1)}
+.step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat';font-weight:700;font-size:.9rem;flex:none}
+.step-content{flex:1}
+.step-content h3{margin:0 0 .3rem;font-size:1rem;font-weight:700}
+.step-content p{margin:0;color:#2b3350;font-size:.9rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:'Montserrat';font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;margin-top:.5rem}
+.warning{background:rgba(255,215,0,.12);border:1px solid rgba(140,110,0,.4);padding:1rem;border-radius:10px;margin:1.5rem 0;font-size:.88rem}
+.warning strong{color:#8a6d00}
+</style>
+<base target="_blank">
+</head>
+<body>
+<h1>ASilva Form Assistant</h1>
+<p>One-click form filling for job applications. Detects fields, maps them to Alvin's credentials, and suggests content.</p>
+
+<div class="warning">
+<strong>Important:</strong> This is an <em>assistant</em>, not an auto-submitter. It populates fields for your review. You must verify every field before submitting. Never submit applications without human review.
+</div>
+
+<h2>Setup (30 seconds)</h2>
+
+<div class="step">
+  <div class="step-num">1</div>
+  <div class="step-content">
+    <h3>Create a Bookmark</h3>
+    <p>In your browser, press <strong>Ctrl+D</strong> (or Cmd+D on Mac) to bookmark this page. Name it <strong>"ASilva Form Assistant"</strong>.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">2</div>
+  <div class="step-content">
+    <h3>Edit the Bookmark URL</h3>
+    <p>Right-click the bookmark → <strong>Edit</strong>. Replace the URL with the code below (copy the entire block):</p>
+    <div class="code" id="codeBlock">Loading...</div>
+    <button class="btn" id="copyBtn">Copy Code to Clipboard</button>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num">3</div>
+  <div class="step-content">
+    <h3>Use on Any Job Application</h3>
+    <p>Navigate to any job application form (LinkedIn, Indeed, company career page, government portal). Click the <strong>"ASilva Form Assistant"</strong> bookmark. A panel appears on the right with suggested content for each detected field.</p>
+  </div>
+</div>
+
+<h2>What It Detects</h2>
+<ul style="font-size:.9rem;color:#2b3350">
+  <li>Name, Email, Phone, LinkedIn</li>
+  <li>Education / Degrees / Certifications</li>
+  <li>Professional Summary / Bio</li>
+  <li>Skills / Competencies</li>
+  <li>Publications / Research</li>
+  <li>Salary Expectations</li>
+  <li>Availability / Start Date</li>
+  <li>Cover Letter / Why Hire Me</li>
+</ul>
+
+<h2>Privacy</h2>
+<p style="font-size:.88rem;color:#2b3350">All data stays in your browser. No server calls. No tracking. The bookmarklet is self-contained JavaScript that runs entirely client-side.</p>
+
+<script>
+fetch('form-assistant-bookmarklet.js')
+  .then(r => r.text())
+  .then(code => {
+    document.getElementById('codeBlock').textContent = code.substring(0, 400) + '... [truncated — use Copy button for full code]';
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Code to Clipboard', 2000);
+      });
+    });
+  })
+  .catch(() => {
+    document.getElementById('codeBlock').textContent = 'Could not load bookmarklet code. Please open form-assistant-bookmarklet.js and copy its contents manually.';
+  });
+</script>
+</body>
+</html>
