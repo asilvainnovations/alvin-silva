@@ -412,14 +412,25 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block}
 <section class="section" id="input-section">
   <div class="wrap">
     <div class="input-card glass">
-      <label for="jobInput" class="form-label">Paste Job Posting</label>
-      <textarea id="jobInput" placeholder="Paste the full job description here...&#10;&#10;Include:&#10;• Organization name&#10;• Role title&#10;• Required qualifications&#10;• Location&#10;• Application deadline&#10;• How to apply"></textarea>
-      <div class="input-actions">
-        <button class="btn btn-primary" id="analyzeBtn"><span>Analyze Opportunity</span><svg><use href="#i-arrow"/></svg></button>
-        <button class="btn btn-ghost" id="clearBtn">Clear</button>
+      <label for="jobUrl" class="form-label">Job Posting URL</label>
+      <input type="url" id="jobUrl" placeholder="https://careers.example.com/job/12345" style="width:100%;padding:.8rem .95rem;border-radius:11px;color:var(--text);background:var(--input-bg);border:1.5px solid var(--line);font-family:var(--font-body);font-size:.94rem;margin-bottom:1rem;transition:.25s" onfocus="this.style.borderColor='var(--gold)';this.style.boxShadow='0 0 0 3px rgba(255,215,0,.18)';" onblur="this.style.borderColor='';this.style.boxShadow='';">
+      <div class="input-actions" style="margin-bottom:1rem">
+        <button class="btn btn-primary" id="fetchUrlBtn"><span>Fetch from URL</span><svg><use href="#i-arrow"/></svg></button>
         <span style="margin-left:auto;font-size:.78rem;color:var(--text-3);display:flex;align-items:center;gap:.4rem">
           <span id="personaBadge" style="padding:.25rem .7rem;border-radius:999px;border:1px solid var(--line);background:var(--pill-bg);font-family:var(--font-cond);font-weight:600;letter-spacing:.04em">No persona selected</span>
         </span>
+      </div>
+      <div id="fetchStatus" style="display:none;font-size:.85rem;color:var(--text-3);margin-bottom:.8rem;padding:.6rem .8rem;border-radius:8px;background:var(--pill-bg)"></div>
+      <div style="border-top:1px solid var(--divider);padding-top:1rem">
+        <label for="jobInput" class="form-label" style="display:flex;align-items:center;gap:.5rem">
+          <span>Or paste job text manually</span>
+          <span style="font-size:.7rem;color:var(--text-3);font-weight:400;text-transform:none;letter-spacing:0">(if URL fetch is blocked)</span>
+        </label>
+        <textarea id="jobInput" placeholder="Paste the full job description here...&#10;&#10;Include:&#10;• Organization name&#10;• Role title&#10;• Required qualifications&#10;• Location&#10;• Application deadline&#10;• How to apply" style="min-height:120px"></textarea>
+      </div>
+      <div class="input-actions" style="margin-top:1rem">
+        <button class="btn btn-primary" id="analyzeBtn"><span>Analyze Opportunity</span><svg><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-ghost" id="clearBtn">Clear</button>
       </div>
     </div>
   </div>
@@ -1004,13 +1015,78 @@ function exportCSV() {
 }
 
 /* ================================================================
+   URL FETCHER
+   ================================================================ */
+async function fetchFromUrl() {
+  const url = $('#jobUrl').value.trim();
+  if (!url) { alert('Please enter a job posting URL.'); return; }
+  if (!url.startsWith('http')) { alert('Please enter a valid URL starting with http:// or https://'); return; }
+
+  const statusEl = $('#fetchStatus');
+  statusEl.style.display = 'block';
+  statusEl.textContent = 'Fetching job details...';
+  statusEl.style.color = 'var(--text-3)';
+
+  try {
+    // Attempt fetch with no-cors first (for sites that allow it)
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+    const res = await fetch(url, { signal: controller.signal, headers: { 'Accept': 'text/html' } });
+    clearTimeout(timeout);
+
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const html = await res.text();
+
+    // Extract text from HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // Try to find job description in common containers
+    const selectors = [
+      '[class*="job-description"]', '[class*="jobDescription"]',
+      '[class*="description"]', '[class*="posting"]',
+      'article', 'main', '[role="main"]',
+      '.content', '#content', '.details', '#details'
+    ];
+    let extractedText = '';
+    for (const sel of selectors) {
+      const el = doc.querySelector(sel);
+      if (el && el.textContent.length > 200) { extractedText = el.textContent; break; }
+    }
+    // Fallback: body text
+    if (!extractedText && doc.body) extractedText = doc.body.textContent;
+
+    // Clean up
+    extractedText = extractedText.replace(/\s+/g, ' ').replace(/
+\s*
+/g, '
+').trim();
+
+    if (extractedText.length < 100) {
+      statusEl.textContent = 'Fetched the page but could not extract job text. The content may load dynamically via JavaScript, or the page structure is unrecognized. Please paste the job text manually below.';
+      statusEl.style.color = 'var(--gold)';
+      return;
+    }
+
+    $('#jobInput').value = extractedText.substring(0, 8000); // Limit to 8K chars
+    statusEl.textContent = 'Successfully extracted job text. Click "Analyze Opportunity" to proceed.';
+    statusEl.style.color = 'var(--green)';
+
+  } catch (err) {
+    console.error('Fetch error:', err);
+    statusEl.textContent = 'Could not fetch from this URL. Possible reasons: (1) the site requires login, (2) content loads via JavaScript after page load, (3) CORS policy blocks the request, or (4) the URL redirects to a login wall. Please copy the job text and paste it manually below.';
+    statusEl.style.color = 'var(--gold)';
+  }
+}
+
+/* ================================================================
    MAIN FLOW
    ================================================================ */
 let currentJob = null, currentScore = null, currentCV = null, currentLetter = null;
 
 async function analyze() {
   const text = $('#jobInput').value.trim();
-  if (!text) { alert('Please paste a job posting first.'); return; }
+  if (!text) { alert('Please paste a job posting or fetch from URL first.'); return; }
   if (!CREDENTIALS) await loadCredentials();
   currentJob = extractJobDetails(text);
   renderExtracted(currentJob);
@@ -1023,9 +1099,12 @@ async function analyze() {
   $('#results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+$('#fetchUrlBtn').addEventListener('click', fetchFromUrl);
 $('#analyzeBtn').addEventListener('click', analyze);
 $('#clearBtn').addEventListener('click', () => {
+  $('#jobUrl').value = '';
   $('#jobInput').value = '';
+  $('#fetchStatus').style.display = 'none';
   $('#results-section').style.display = 'none';
   currentJob = null; currentScore = null; currentCV = null; currentLetter = null;
 });
