@@ -271,7 +271,7 @@ html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { c
 .hero-banner { position:relative; height:clamp(180px, 30vw, 340px); overflow:hidden; }
 .hero-banner img { width:100%; height:100%; object-fit:cover; object-position:22% 30%; animation:kenburns 22s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.07); } }
-.hero-banner::after { /* fixed dark scrim, not theme-linked, so white hero text stays readable in light mode */ content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.5) 55%, #0a0e27 100%); }
+.hero-banner::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.5) 55%, #0a0e27 100%); }
 .hero-tagline { position:absolute; left:0; right:0; bottom:1rem; z-index:2; display:flex; justify-content:center; padding:0 1rem; }
 .hero-tagline .kicker { background:rgba(8,12,32,.55); backdrop-filter:blur(6px); padding:.5rem 1.1rem; border-radius:999px; border:1px solid var(--line-gold); color:#00BFFF; }
 .hero-tagline .kicker::before, .hero-tagline .kicker::after { background:linear-gradient(90deg,transparent,#00BFFF); }
@@ -609,15 +609,15 @@ html.js .reveal.in { opacity:1; transform:none; }
       <a class="breadcrumb" href="index.html"><svg><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Portfolio</a>
       <p class="kicker">The Work</p>
       <h1>Alvin M. Silva — <span class="grad-text">Building Resilient Futures</span></h1>
-      <p class="hero-sub">Development Management · Systems Innovation · Community Resilience. Thirty-three documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
+      <p class="hero-sub">Development Management · Systems Innovation · Community Resilience. Thirty-two documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
       <div class="cta-row" style="display:flex;justify-content:center;margin-bottom:1.6rem">
         <a href="#portfolio" class="btn btn-primary"><span>Discover My Portfolio</span><svg><use href="#i-arrow"/></svg></a>
       </div>
       <div class="stat-grid">
-        <div><div class="stat-num"><span class="count" data-to="33">33</span></div><div class="stat-label">Featured Works</div></div>
+        <div><div class="stat-num"><span class="count" data-to="32">32</span></div><div class="stat-label">Featured Works</div></div>
         <div><div class="stat-num"><span class="count" data-to="6">6</span></div><div class="stat-label">Digital Platforms</div></div>
         <div><div class="stat-num"><span class="count" data-to="13">13</span></div><div class="stat-label">Technical Reports</div></div>
-        <div><div class="stat-num"><span class="count" data-to="4">4</span></div><div class="stat-label">Books &amp; Manuals</div></div>
+        <div><div class="stat-num"><span class="count" data-to="3">3</span></div><div class="stat-label">Books &amp; Manuals</div></div>
       </div>
       <p style="text-align:center;margin-top:1.2rem;font-size:.85rem;color:var(--text-3);display:flex;align-items:center;justify-content:center;gap:.5rem">
         <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 0 3px rgba(52,211,153,.25)"></span>
@@ -631,10 +631,10 @@ html.js .reveal.in { opacity:1; transform:none; }
 <section class="section" id="portfolio" style="padding-top:1rem">
   <div class="wrap">
     <div class="filter-bar" role="group" aria-label="Filter portfolio items">
-      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">33</span></button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">32</span></button>
       <button class="filter-btn" data-filter="platforms" aria-pressed="false">Platforms <span class="count-pill">6</span></button>
       <button class="filter-btn" data-filter="consulting" aria-pressed="false">Consulting <span class="count-pill">10</span></button>
-      <button class="filter-btn" data-filter="publications" aria-pressed="false">Publications <span class="count-pill">4</span></button>
+      <button class="filter-btn" data-filter="publications" aria-pressed="false">Publications <span class="count-pill">3</span></button>
       <button class="filter-btn" data-filter="reports" aria-pressed="false">Reports <span class="count-pill">13</span></button>
     </div>
     <div class="pf-grid" id="pfGrid"><!-- cards injected by JS --></div>
@@ -981,18 +981,13 @@ const WORKS = [
   { cat:'publications', badge:'Book · 2024', badgeCls:'badge-violet',
     title:'Resilient Futures: Nurturing Oneness in Education', meta:'Cognitio+ · 2024',
     desc:'The extension volume — resilience in education and beyond, for adapting, recovering, and thriving amid rapid change and uncertainty.',
-    img:'https://appimize.app/assets/apps/user_1097/images/82640a49c19d_363_1097.png', ph:'assets/ph-publication.jpg',
+    img:'assets/cover-resilient-futures.jpg', ph:'assets/ph-publication.jpg',
     links:[['Explore the Book','https://asilvainnovations.com/resilient-futures']] },
   { cat:'publications', badge:'Book · 2023', badgeCls:'badge-violet',
     title:'Building Resilience: The Path to a More Fulfilling Life', meta:'Cognitio+ · 2023',
     desc:'The foundational guide to building and sustaining resilience — knowledge, tools, and mindsets to thrive in an ever-changing world.',
     img:'assets/cover-building-resilience.jpg', ph:'assets/ph-publication.jpg',
     links:[['Buy on Amazon','https://www.amazon.com/BUILDING-RESILIENCE-Path-Fulfilling-Resilient-ebook/dp/B0CJ45LDRG'],['Read Online','https://building-resilience.aiwaapp.live/']] },
-  { cat:'publications', badge:'Operations Manual · 2022', badgeCls:'badge-violet',
-    title:'Shock-Responsive & Sustainable Livelihoods — Process Manual', meta:'MOVEUP Mindanao · 2022',
-    desc:'Four interrelated chapters covering Livelihoods and MSMEs, Livelihood Risk Profiling, Asset & Market Assessment, and Resilience Development.',
-    img:'https://appimize.app/assets/apps/user_1097/images/7171389db22b_970_1097.png', ph:'assets/ph-publication.jpg',
-    links:[['Process Manual PDF','https://drive.google.com/file/d/16miLT_qd-pFxc2B2AWV07iN7hNuGp4UL/view?usp=sharing'],['RILHub Entry','https://rilhub.org/2022/02/16/promoting-and-strengthening-shock-responsive-resilient-and-sustainable-livelihoods-and-livelihood-interventions-a-process-manual/']] },
 ];
 
 
