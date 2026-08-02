@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio & Track Record | Alvin Silva</title>
+  <meta name="description" content="Measurable outcomes, not just credentials. Explore case studies, frameworks, and impact metrics." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { dark: '#0A1628', accent: '#3B82F6', light: '#F8FAFC' }
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .glass { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.5); }
+    *:focus-visible { outline: 2px solid #3B82F6; outline-offset: 2px; }
+  </style>
+</head>
+<body class="bg-brand-light text-brand-dark font-sans antialiased">
+
+  <!-- Navigation (Consistent with index) -->
+  <header class="fixed top-0 w-full z-50 glass border-b border-slate-200/50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold tracking-tight text-brand-dark">Alvin Silva<span class="text-brand-accent">.</span></a>
+      <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
+        <a href="index.html#impact" class="hover:text-brand-accent transition-colors">Impact</a>
+        <a href="index.html#capabilities" class="hover:text-brand-accent transition-colors">Capabilities</a>
+        <a href="portfolio.html" class="text-brand-accent font-semibold">Portfolio</a>
+        <a href="index.html#contact" class="hover:text-brand-accent transition-colors">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-brand-accent rounded-lg hover:bg-blue-600 transition shadow-sm">Let's Talk</a>
+    </div>
+  </header>
+
+  <!-- Portfolio Hero -->
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-dark mb-6">What sets me apart: <span class="text-brand-accent">measurable outcomes</span>, not just credentials.</h1>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto">A curated selection of high-impact programs, strategic frameworks, and institutional partnerships spanning 3 continents.</p>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-brand-dark mb-8 flex items-center gap-2">
+        <span class="w-2 h-8 bg-brand-accent rounded-full"></span> Featured Case Studies
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Case Study 1 -->
+        <article class="glass rounded-2xl p-8 hover:shadow-xl transition duration-300 border border-slate-100">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-2 py-1 bg-blue-50 text-brand-accent text-xs font-bold rounded uppercase">Climate Resilience</span>
+            <span class="text-slate-400 text-xs">• UNICEF Partnership</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-dark mb-3">₱190M Climate-Smart Program Design</h3>
+          <p class="text-slate-600 mb-6 leading-relaxed">Partnered with UNICEF to design and deliver a comprehensive climate-smart program that improved systemic resilience and livelihood security for over 50,000 households across vulnerable regions.</p>
+          <div class="flex flex-wrap gap-4 text-sm font-medium text-brand-dark">
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">50,000+</span> Households</div>
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">100%</span> Completion Rate</div>
+          </div>
+        </article>
+
+        <!-- Case Study 2 -->
+        <article class="glass rounded-2xl p-8 hover:shadow-xl transition duration-300 border border-slate-100">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-2 py-1 bg-blue-50 text-brand-accent text-xs font-bold rounded uppercase">Strategic Planning</span>
+            <span class="text-slate-400 text-xs">• Government / BIRD</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-dark mb-3">Bangsamoro Investment Roadmap (2026–2035)</h3>
+          <p class="text-slate-600 mb-6 leading-relaxed">Applying the Pareto Principle and systems mapping to surface the vital few metrics that drive 80% of strategic growth, positioning the region as Southeast Asia’s hub for ethical and sustainable investment.</p>
+          <div class="flex flex-wrap gap-4 text-sm font-medium text-brand-dark">
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">10-Year</span> Horizon</div>
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">Multi-Sector</span> Alignment</div>
+          </div>
+        </article>
+
+        <!-- Case Study 3 -->
+        <article class="glass rounded-2xl p-8 hover:shadow-xl transition duration-300 border border-slate-100">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-2 py-1 bg-blue-50 text-brand-accent text-xs font-bold rounded uppercase">Policy & Governance</span>
+            <span class="text-slate-400 text-xs">• National Agencies</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-dark mb-3">National Resilience Strategy Integration</h3>
+          <p class="text-slate-600 mb-6 leading-relaxed">Facilitated 20+ strategic plans where direct policy inputs were adopted into national resilience strategies, ensuring long-term viability and scalable impact for Philippine agencies.</p>
+          <div class="flex flex-wrap gap-4 text-sm font-medium text-brand-dark">
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">20+</span> Strategic Plans</div>
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">National</span> Adoption</div>
+          </div>
+        </article>
+
+        <!-- Case Study 4 -->
+        <article class="glass rounded-2xl p-8 hover:shadow-xl transition duration-300 border border-slate-100">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-2 py-1 bg-blue-50 text-brand-accent text-xs font-bold rounded uppercase">Intellectual Property</span>
+            <span class="text-slate-400 text-xs">• Academia</span>
+          </div>
+          <h3 class="text-xl font-bold text-brand-dark mb-3">Systems Frameworks & Research</h3>
+          <p class="text-slate-600 mb-6 leading-relaxed">Authored 10+ published frameworks integrating development management, resilience, and governance. Active research collaborations and guest lectures with 5+ leading universities.</p>
+          <div class="flex flex-wrap gap-4 text-sm font-medium text-brand-dark">
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">10+</span> Published Frameworks</div>
+            <div class="flex items-center gap-1"><span class="text-brand-accent font-bold">5+</span> University Partners</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 px-6 bg-brand-dark text-white text-center">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4">Ready to translate vision into measurable resilience?</h2>
+      <p class="text-slate-300 mb-8">Let’s design a solution for your challenge — share your goals and I’ll respond within one business day.</p>
+      <a href="index.html#contact" class="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-brand-dark bg-white rounded-xl hover:bg-slate-100 transition shadow-lg">
+        Start the Conversation
+      </a>
+    </div>
+  </section>
+
+  <footer class="bg-brand-dark border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
+    <p>&copy; 2026 Alvin Silva / ASilva Innovations. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
