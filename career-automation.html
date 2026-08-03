@@ -6,7 +6,12 @@
 <title>Career Automation | Alvin M. Silva, MDM — Opportunity Scanner & Document Generator</title>
 <meta name="description" content="AI-powered career document automation for Alvin M. Silva, MDM. Paste a job posting, get scored alignment analysis, recommended CV, and tailored cover letter.">
 <meta name="author" content="Alvin M. Silva, MDM">
-<meta name="robots" content="index, follow">
+<!-- SECURITY/PRIVACY FIX (audit 2026-08-04): this page contains Alvin's
+     salary-expectation and availability text and is a personal productivity
+     tool, not a public marketing page. It was neither in sitemap.xml nor
+     internally linked, but explicitly told crawlers to index it anyway.
+     noindex closes that gap without changing how the tool works. -->
+<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://alvin-silva.asilvainnovations.com/career-automation.html">
 <meta name="theme-color" content="#0a0e27">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
@@ -694,7 +699,12 @@ let CREDENTIALS = null;
 
 async function loadCredentials() {
   try {
-    const res = await fetch('assets/credentials.json');
+    // BUG FIX (audit 2026-08-04): this previously pointed at
+    // 'assets/credentials.json', which does not exist — the canonical file
+    // lives at the repo root. That typo made this fetch 404 silently on
+    // every load, so the tool always ran on CREDENTIALS_FALLBACK below and
+    // never picked up live edits to credentials.json.
+    const res = await fetch('credentials.json');
     if (res.ok) { CREDENTIALS = await res.json(); return; }
   } catch (e) {}
   CREDENTIALS = CREDENTIALS_FALLBACK;
@@ -1134,6 +1144,14 @@ $('#clearTrackerBtn').addEventListener('click', () => {
 });
 
 loadCredentials().then(() => renderTracker());
+
+// PWA (audit 2026-08-04): this page previously never registered the service
+// worker, so it had no offline support even though it's core to the
+// career-ops workflow. Registration is idempotent — if index.html/
+// portfolio.html already registered it in this browser this is a no-op.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>
