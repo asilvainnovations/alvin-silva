@@ -1,4 +1,18 @@
 javascript:(function(){
+// SECURITY FIX (audit 2026-08-04): findLabel() below reads .textContent off
+// whatever third-party page this bookmarklet is run on (LinkedIn, a
+// government portal, any job-application site). That raw text is later
+// concatenated into an HTML string and assigned via panel.innerHTML — if a
+// label's literal visible text contains characters like <img src=x
+// onerror=...>, those get re-parsed as live markup and execute in the
+// security context of that third-party site (i.e. whatever session Alvin
+// is logged into there), not just this bookmarklet's own sandbox. escapeHtml()
+// neutralizes that before any externally-sourced string touches innerHTML.
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
 const CREDENTIALS = {
   name: "Alvin M. Silva, MDM",
   email: "alvin.silva@asilvainnovations.com",
@@ -75,7 +89,7 @@ function createPanel(detected) {
   detected.forEach((d, i) => {
     const value = CREDENTIALS[d.mapping.key];
     const isLong = value.length > 80;
-    html += '<div style="margin-bottom:.9rem;padding:.7rem;border-radius:10px;background:#f8f9fb;border:1px solid #e9ecf7"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.4rem"><div style="font-family:Roboto Condensed;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0069a8">' + (d.label || d.mapping.key) + '</div><button data-index="' + i + '" class="asilva-fill-btn" style="padding:.3rem .7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap">Fill Field</button></div><div class="asilva-preview" style="font-size:.82rem;color:#2b3350;background:#fff;padding:.5rem .7rem;border-radius:6px;border:1px solid #e9ecf7;max-height:' + (isLong ? '100px' : 'auto') + ';overflow-y:auto;word-break:break-word">' + value.substring(0, 200) + (value.length > 200 ? '...' : '') + '</div></div>';
+    html += '<div style="margin-bottom:.9rem;padding:.7rem;border-radius:10px;background:#f8f9fb;border:1px solid #e9ecf7"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.4rem"><div style="font-family:Roboto Condensed;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0069a8">' + escapeHtml(d.label || d.mapping.key) + '</div><button data-index="' + i + '" class="asilva-fill-btn" style="padding:.3rem .7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap">Fill Field</button></div><div class="asilva-preview" style="font-size:.82rem;color:#2b3350;background:#fff;padding:.5rem .7rem;border-radius:6px;border:1px solid #e9ecf7;max-height:' + (isLong ? '100px' : 'auto') + ';overflow-y:auto;word-break:break-word">' + escapeHtml(value.substring(0, 200)) + (value.length > 200 ? '...' : '') + '</div></div>';
   });
   html += '<div style="margin-top:1rem;padding-top:.8rem;border-top:1px solid #eee;display:flex;gap:.5rem"><button id="asilva-fill-all" style="flex:1;padding:.6rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat;font-weight:700;font-size:.85rem;cursor:pointer">Fill All Fields</button><button id="asilva-clear-all" style="padding:.6rem 1rem;border-radius:999px;border:1px solid #ddd;background:#fff;color:#666;font-family:Montserrat;font-weight:700;font-size:.85rem;cursor:pointer">Clear</button></div><p style="font-size:.7rem;color:#999;text-align:center;margin-top:.8rem">Review all fields before submitting.</p>';
   panel.innerHTML = html; document.body.appendChild(panel);
