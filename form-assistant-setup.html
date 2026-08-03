@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SECURITY/PRIVACY FIX (audit 2026-08-04): this page installs a
+     bookmarklet that autofills forms with Alvin's personal contact info.
+     It had no robots directive at all (defaults to indexable) despite not
+     being linked from anywhere in the site. noindex makes the existing
+     "hidden by obscurity" state an explicit, intentional one. -->
+<meta name="robots" content="noindex, nofollow">
 <title>ASilva Form Assistant — Setup</title>
 <style>
 body{font-family:'Poppins',system-ui,sans-serif;max-width:720px;margin:0 auto;padding:2rem 1rem;line-height:1.7;color:#0d1224;background:#f4f6fb}
