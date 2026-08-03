@@ -2,8 +2,25 @@
    STYLE.CSS — Alvin Silva site, shared stylesheet
    Combines: design tokens, reset/layout/buttons, header/nav/
    footer/accessibility/consent components.
-   Shared by index.html + portfolio.html; page-specific rules
-   stay inline in each page's own <style> block.
+
+   STATUS (verified 2026-08-04): this file is currently UNUSED.
+   No <link> tag anywhere in this repository references it — I
+   checked with a precise `href="style.css"` search across every
+   .html file and found zero matches. index.html and portfolio.html
+   were clearly forked from this file at some point (their inline
+   :root token blocks are still byte-identical to the ones below,
+   e.g. --navy: #f4f6fb) but now each carries its own full inline
+   <style> block instead of linking here, so the two have already
+   started to drift independently. Before deleting or re-linking
+   this file, decide one of:
+     (a) delete it — the two pages' inline styles are now the real
+         source of truth, or
+     (b) actually wire <link rel="stylesheet" href="style.css"> into
+         both pages and migrate their shared tokens/components back
+         out of the inline blocks, to stop the drift and cut ~400
+         duplicated lines per page.
+   Until one of those happens, do not assume edits here affect the
+   live site — they currently don't.
    ============================================================ */
 
 /* ============================================================
