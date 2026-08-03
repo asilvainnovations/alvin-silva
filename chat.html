@@ -607,6 +607,12 @@
           window.location.href = 'index.html';
         }
       });
+
+      // PWA (audit 2026-08-04): this page previously never registered the
+      // service worker. Registration is idempotent across pages/tabs.
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+      }
     })();
   </script>
 
