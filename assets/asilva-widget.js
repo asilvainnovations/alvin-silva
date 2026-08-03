@@ -16,6 +16,20 @@
 
   const WIDGET_KEY = 'asilva-chat-state';
   const API_KEY_KEY = 'asilva-kimi-key';
+
+  // SECURITY FIX (audit 2026-08-04): chat bubbles were rendered via
+  // `div.innerHTML = ...${m.content}` with NO escaping. Both the visitor's
+  // own typed message and the raw Kimi/Moonshot API reply flow into that
+  // template unescaped, so a crafted message (e.g. an <img onerror=...> tag)
+  // executes arbitrary JS in the page — able to read localStorage, including
+  // the visitor's own saved API key (asilva-kimi-key). Escape by default;
+  // only the small set of developer-authored greeting strings (which
+  // intentionally use <strong>/<a> markup) opt in via `trustedHtml: true`.
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str ?? '';
+    return div.innerHTML;
+  }
   const API_URL = 'https://api.moonshot.cn/v1/chat/completions';
   const MODEL = 'moonshot-v1-8k';
   const LOGO_URL = 'https://asilvainnovations.github.io/alvin-silva/assets/logo-192.png';
@@ -240,25 +254,30 @@ TONE:
       }
       const persona = document.documentElement.dataset.persona || localStorage.getItem('as-persona') || 'government';
     const personaLabels = { government: 'Government & Policy', humanitarian: 'NGO & Humanitarian', private: 'Private Sector', academic: 'Academia & Research' };
-    addBotMessage(`Hello! I'm <strong>ASilva AI</strong>, Alvin's assistant. I see you're exploring from a <strong>${personaLabels[persona] || 'Government & Policy'}</strong> perspective. Ask me about his work, expertise, or how he can support your specific context. What would you like to know?`);
+    addBotMessage(`Hello! I'm <strong>ASilva AI</strong>, Alvin's assistant. I see you're exploring from a <strong>${escapeHtml(personaLabels[persona] || 'Government & Policy')}</strong> perspective. Ask me about his work, expertise, or how he can support your specific context. What would you like to know?`, true);
       return;
     }
     messages.forEach(m => {
       const div = document.createElement('div');
       div.className = `asilva-msg ${m.role}`;
-      div.innerHTML = `<div class="asilva-bubble">${m.content}</div>`;
+      const safeContent = m.trustedHtml ? m.content : escapeHtml(m.content);
+      div.innerHTML = `<div class="asilva-bubble">${safeContent}</div>`;
       messagesEl.appendChild(div);
     });
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
   function addUserMessage(text) {
+    // Visitor-typed text is always untrusted — never marked trustedHtml.
     messages.push({ role: 'user', content: text, ts: Date.now() });
     saveMessages(); renderMessages();
   }
 
-  function addBotMessage(text) {
-    messages.push({ role: 'bot', content: text, ts: Date.now() });
+  function addBotMessage(text, trustedHtml = false) {
+    // Default is escaped (safe for raw AI API replies). Pass trustedHtml:true
+    // ONLY for developer-authored literal strings below that intentionally
+    // contain markup (<strong>, <a href="mailto:...">) — never for API output.
+    messages.push({ role: 'bot', content: text, trustedHtml, ts: Date.now() });
     saveMessages(); renderMessages();
   }
 
@@ -291,7 +310,7 @@ TONE:
       setTyping(false); addBotMessage(reply);
     } catch (err) {
       setTyping(false); console.error('ASilva AI error:', err);
-      addBotMessage('I'm having trouble connecting. Please check your API key or try again. You can also reach Alvin at <a href="mailto:alvin.silva@asilvainnovations.com">alvin.silva@asilvainnovations.com</a>.');
+      addBotMessage("I'm having trouble connecting. Please check your API key or try again. You can also reach Alvin at <a href=\"mailto:alvin.silva@asilvainnovations.com\">alvin.silva@asilvainnovations.com</a>.", true);
     }
   }
 
