@@ -240,6 +240,7 @@ html[data-theme="light"] .theme-toggle .icon-sun { display:block; }
 .mm-link:active, .mm-link:hover, .mm-link[aria-current="page"] { background:var(--pill-bg); color:var(--gold); }
 
 .doc-cover { overflow:hidden; aspect-ratio:16/9; background:var(--doc-cover-bg); border-bottom:1px solid var(--line); }
+.doc-cover picture, .pf-media picture { display:block; width:100%; height:100%; }
 .doc-cover img { width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
 
 /* ============ ACCESSIBILITY TOOLS ============ */
@@ -608,14 +609,14 @@ html.js .reveal.in { opacity:1; transform:none; }
       <a class="breadcrumb" href="index.html"><svg><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Portfolio</a>
       <p class="kicker">The Work</p>
       <h1>Alvin M. Silva — <span class="grad-text">Building Resilient Futures</span></h1>
-      <p class="hero-sub">Development Management · Systems Innovation · Community Resilience. Thirty-two documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
+      <p class="hero-sub">Development Management · Systems Innovation · Community Resilience. Twenty-seven documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, an 8-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
       <div class="cta-row" style="display:flex;justify-content:center;margin-bottom:1.6rem">
         <a href="#portfolio" class="btn btn-primary"><span>Discover My Portfolio</span><svg><use href="#i-arrow"/></svg></a>
       </div>
       <div class="stat-grid">
-        <div><div class="stat-num"><span class="count" data-to="32">32</span></div><div class="stat-label">Featured Works</div></div>
+        <div><div class="stat-num"><span class="count" data-to="27">27</span></div><div class="stat-label">Featured Works</div></div>
         <div><div class="stat-num"><span class="count" data-to="6">6</span></div><div class="stat-label">Digital Platforms</div></div>
-        <div><div class="stat-num"><span class="count" data-to="13">13</span></div><div class="stat-label">Technical Reports</div></div>
+        <div><div class="stat-num"><span class="count" data-to="8">8</span></div><div class="stat-label">Technical Reports</div></div>
         <div><div class="stat-num"><span class="count" data-to="3">3</span></div><div class="stat-label">Books &amp; Manuals</div></div>
       </div>
       <p style="text-align:center;margin-top:1.2rem;font-size:.85rem;color:var(--text-3);display:flex;align-items:center;justify-content:center;gap:.5rem">
@@ -630,11 +631,11 @@ html.js .reveal.in { opacity:1; transform:none; }
 <section class="section" id="portfolio" style="padding-top:1rem">
   <div class="wrap">
     <div class="filter-bar" role="group" aria-label="Filter portfolio items">
-      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">32</span></button>
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">27</span></button>
       <button class="filter-btn" data-filter="platforms" aria-pressed="false">Platforms <span class="count-pill">6</span></button>
       <button class="filter-btn" data-filter="consulting" aria-pressed="false">Consulting <span class="count-pill">10</span></button>
       <button class="filter-btn" data-filter="publications" aria-pressed="false">Publications <span class="count-pill">3</span></button>
-      <button class="filter-btn" data-filter="reports" aria-pressed="false">Reports <span class="count-pill">13</span></button>
+      <button class="filter-btn" data-filter="reports" aria-pressed="false">Reports <span class="count-pill">8</span></button>
     </div>
     <div class="pf-grid" id="pfGrid"><!-- cards injected by JS --></div>
   </div>
@@ -644,7 +645,7 @@ html.js .reveal.in { opacity:1; transform:none; }
 <section class="section cta-strip">
   <div class="wrap">
     <p class="kicker">Next</p>
-    <h2 class="section-title">Your project could be <span class="hl">card #34</span></h2>
+    <h2 class="section-title">Your project could be <span class="hl">card #28</span></h2>
     <p class="section-sub">Every engagement above started with one conversation.</p>
     <a href="index.html#contact" class="btn btn-primary"><span>Let's Collaborate</span><svg><use href="#i-arrow"/></svg></a>
     <a href="mailto:alvin.silva@asilvainnovations.com" class="btn btn-gold"><span>alvin.silva@asilvainnovations.com</span></a>
@@ -679,9 +680,9 @@ html.js .reveal.in { opacity:1; transform:none; }
       <div class="footer-col">
         <h4>Flagship Work</h4>
         <ul>
-          <li><a href="https://bangsamoro-investment-roadmap.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
+          <li><a href="https://bird-app.bolt.host" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
           <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
-          <li><a href="#portfolio" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
+          <li><a href="https://asilvainnovations.github.io/strat-planner-pwa/public/index.html" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
           <li><a href="#portfolio" data-jump="Cognitio+">Cognitio+</a></li>
           <li><a href="https://asilvainnovations.github.io/website/rtl.html" target="_blank" rel="noopener noreferrer">RTL ↗</a></li>
         </ul>
@@ -998,27 +999,12 @@ const REPORTS = [
   { doc:true, year:'2022', title:'Shock-Responsive & Sustainable Livelihoods', meta:'Mindanao Programs',
     desc:'Framework and field guidance for livelihoods that absorb shocks and keep households moving forward.',
     links:[['View PDF','https://drive.google.com/file/d/1jIbvbI-GXbfOgnAq8mFZtU8txb27Iubn/view?usp=sharing']] },
-  { doc:true, cover:'assets/cover-cdp-salcedo.jpg', year:'2023', title:'Risk-Informed CDP — Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
-    desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in community engagement.',
-    links:[['View PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
-  { doc:true, cover:'assets/cover-policy-report.jpg', year:'2020', title:'Policy Review to Integrate Resilience', meta:'MMDA · Policy Research',
-    desc:'Policy review framework integrating resilience into organizational strategies and governance across Metro Manila.',
-    links:[['View PDF','https://drive.google.com/file/d/1jhPPG6ov2shDQhEepywDxWBUxTENkfCC/view?usp=sharing']] },
   { doc:true, year:'2020', title:'Policy Research, Recommendations & Validation — DSWD-SLP', meta:'DSWD Sustainable Livelihood Program · 2020',
     desc:'Policy research, recommendations, and validation report on the DSWD Sustainable Livelihood Program.',
     links:[['View PDF','https://drive.google.com/file/d/1ZWsHPOeXQGWmd5L5rum608ZoUKOiv_OO/view?usp=sharing']] },
-  { doc:true, cover:'assets/cover-irrm-barmm.jpg', year:'2022', title:'IRRM — BARMM Completion Report', meta:'USAID & Action Against Hunger · 2022',
-    desc:'Integrated Risk and Resilience Management completion report for CSOs and communities in the Bangsamoro.',
-    links:[['View PDF','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
-  { doc:true, year:'2022', title:'FSL · DRR · WASH Systems Innovation — Final Report', meta:'Mindanao Programs',
-    desc:'Results, methodologies, and recommendations from systems innovation across food security, livelihoods, DRR, and WASH.',
-    links:[['View PDF','https://drive.google.com/file/d/1gYcw9OnsL0JQPifbE16ZaDsoQJeY_B_q/view?usp=sharing']] },
   { doc:true, cover:'assets/cover-vulnerability-indicators.jpg', year:'2021', title:'Review of LGU Vulnerability Indicators in Mindanao', meta:'Mindanao Programs',
     desc:'Critical review of vulnerability indicators used by local government units — toward sharper, decision-grade measurement.',
     links:[['View PDF','https://drive.google.com/file/d/1_5S8JA-WRFA-ID5V2DxwCWFga6Dcezqf/view?usp=sharing']] },
-  { doc:true, cover:'assets/cover-consent-drr.jpg', year:'2021', title:'CONSENT DRR-II Mid-Term Review Report', meta:'Philippine & German Red Cross',
-    desc:'Participatory conflict assessment and mid-term review of DRR programming in fragile, conflict-affected communities and schools.',
-    links:[['View PDF','https://drive.google.com/file/d/1W-Zo5DqCOstJSBnie1CAGH2whvO_rR3V/view?usp=sharing']] },
   { doc:true, year:'2022', title:'Agri-Fishery Situational Assessment — Maguindanao del Norte & Sulu', meta:'BARMM',
     desc:'Situational assessment of agriculture and fishery sectors informing livelihoods and food-security programming.',
     links:[['View PDF','https://drive.google.com/file/d/1Gwemq7EuzKGkNK1cl7nwNlT-ZpLqPRvI/view?usp=sharing']] },
@@ -1040,7 +1026,7 @@ const ALL_WORKS = [...WORKS, ...REPORTS];
 const grid = $('#pfGrid');
 grid.innerHTML = ALL_WORKS.map((w, i) => w.doc ? `
   <article class="pf-card doc-card glass reveal" data-cat="reports" style="animation-delay:${Math.min(i*40, 500)}ms">
-    ${w.cover ? `<div class="doc-cover"><img src="${w.cover}" alt="Cover of ${w.title}" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>` : ''}
+    ${w.cover ? `<div class="doc-cover"><picture>${w.cover.startsWith('assets/') ? `<source type="image/webp" srcset="${w.cover.replace('.jpg','.webp')}">` : ''}<img src="${w.cover}" alt="Cover of ${w.title}" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></picture></div>` : ''}
     <div class="doc-body">
       <div class="doc-top">
         <span class="doc-icon"><svg><use href="#i-file"/></svg></span>
@@ -1057,8 +1043,8 @@ grid.innerHTML = ALL_WORKS.map((w, i) => w.doc ? `
   </article>` : `
   <article class="pf-card glass reveal${w.featured ? ' featured' : ''}" data-cat="${w.cat}" style="animation-delay:${Math.min(i*60, 600)}ms">
     <button class="pf-media${w.cat === 'publications' ? ' book-cover-media' : ''}" data-lb="${i}" aria-label="View image of ${w.title} full-screen">
-      <img class="${w.cat === 'publications' ? 'book-cover' : ''}" src="${w.img}" alt="${w.cat === 'publications' ? 'Book cover: ' + w.title : w.title + ' — visual'}" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async"
-           onerror="this.onerror=null;this.src='${w.ph}';">
+      <picture>${w.img.startsWith('assets/') ? `<source type="image/webp" srcset="${w.img.replace('.jpg','.webp')}">` : ''}<img class="${w.cat === 'publications' ? 'book-cover' : ''}" src="${w.img}" alt="${w.cat === 'publications' ? 'Book cover: ' + w.title : w.title + ' — visual'}" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async"
+           onerror="this.onerror=null;this.src='${w.ph}';"></picture>
       <span class="pf-badge ${w.badgeCls || ''}">${w.badge}</span>
       <span class="zoom-hint"><svg><use href="#i-zoom"/></svg> Tap to explore</span>
     </button>
