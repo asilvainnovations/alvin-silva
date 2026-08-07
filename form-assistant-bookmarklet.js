@@ -1,19 +1,6 @@
 javascript:(function(){
-// SECURITY FIX (audit 2026-08-04): findLabel() below reads .textContent off
-// whatever third-party page this bookmarklet is run on (LinkedIn, a
-// government portal, any job-application site). That raw text is later
-// concatenated into an HTML string and assigned via panel.innerHTML — if a
-// label's literal visible text contains characters like <img src=x
-// onerror=...>, those get re-parsed as live markup and execute in the
-// security context of that third-party site (i.e. whatever session Alvin
-// is logged into there), not just this bookmarklet's own sandbox. escapeHtml()
-// neutralizes that before any externally-sourced string touches innerHTML.
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str == null ? '' : String(str);
-  return div.innerHTML;
-}
-const CREDENTIALS = {
+function escapeHtml(str) { const div = document.createElement('div'); div.textContent = str == null ? '' : String(str); return div.innerHTML; }
+var CREDENTIALS = {
   name: "Alvin M. Silva, MDM",
   email: "alvin.silva@asilvainnovations.com",
   phone: "+63 917 855 5134",
@@ -33,7 +20,7 @@ const CREDENTIALS = {
   start_date: "Immediately available for strategic roles aligned with resilience and systems innovation",
   why_hire: "I bring a systems-level perspective grounded in measurable outcomes — 190M in climate-smart funding designed, 50,000+ households reached, 100% project completion rate. My decade-scale roadmaps (BIRD 2026-2035, TESDA Strategic Plan) demonstrate the ability to align institutional vision with executable frameworks."
 };
-const FIELD_MAP = [
+var FIELD_MAP = [
   { keywords: ['name','full name','applicant name'], key: 'name' },
   { keywords: ['email','e-mail','contact email'], key: 'email' },
   { keywords: ['phone','mobile','contact number','telephone'], key: 'phone' },
@@ -51,74 +38,120 @@ const FIELD_MAP = [
   { keywords: ['achievement','accomplishment','impact','result'], key: 'completion' },
   { keywords: ['funding','budget','grant','financial'], key: 'funding' }
 ];
+function findLabel(input) {
+  if (input.id) { var label = document.querySelector('label[for="' + input.id + '"]'); if (label) return label.textContent.trim(); }
+  var parentLabel = input.closest('label');
+  if (parentLabel) return parentLabel.textContent.trim();
+  var prev = input.previousElementSibling;
+  if (prev && prev.textContent) return prev.textContent.trim();
+  return '';
+}
 function detectFields() {
-  const inputs = document.querySelectorAll('input, textarea, select');
-  const detected = [];
-  inputs.forEach(input => {
-    const label = findLabel(input);
-    const text = (label + ' ' + input.name + ' ' + input.placeholder + ' ' + input.id).toLowerCase();
-    for (const mapping of FIELD_MAP) {
-      if (mapping.keywords.some(k => text.includes(k))) {
-        detected.push({ element: input, mapping, label: label || input.name || input.placeholder || input.id });
+  var inputs = document.querySelectorAll('input, textarea, select');
+  var detected = [];
+  inputs.forEach(function(input) {
+    var type = (input.getAttribute('type') || '').toLowerCase();
+    if (type === 'hidden' || type === 'submit' || type === 'button' || type === 'checkbox' || type === 'radio' || type === 'file' || input.disabled || input.readOnly) return;
+    var label = findLabel(input);
+    var text = (label + ' ' + (input.name || '') + ' ' + (input.placeholder || '') + ' ' + (input.id || '')).toLowerCase();
+    for (var m = 0; m < FIELD_MAP.length; m++) {
+      var mapping = FIELD_MAP[m];
+      if (mapping.keywords.some(function(k) { return text.indexOf(k) !== -1; })) {
+        if (CREDENTIALS[mapping.key] === undefined) break;
+        detected.push({ element: input, mapping: mapping, label: label || input.name || input.placeholder || input.id || mapping.key });
         break;
       }
     }
   });
   return detected;
 }
-function findLabel(input) {
-  if (input.id) { const label = document.querySelector('label[for="' + input.id + '"]'); if (label) return label.textContent.trim(); }
-  const parentLabel = input.closest('label');
-  if (parentLabel) return parentLabel.textContent.trim();
-  const prev = input.previousElementSibling;
-  if (prev && prev.textContent) return prev.textContent.trim();
-  return '';
+function updateCounter(panel, filledCount, total) {
+  var counter = panel.querySelector('#asilva-counter');
+  if (counter) counter.textContent = filledCount + ' of ' + total + ' filled';
 }
 function createPanel(detected) {
-  const existing = document.getElementById('asilva-form-assistant');
+  var existing = document.getElementById('asilva-form-assistant');
   if (existing) existing.remove();
-  const panel = document.createElement('div');
+  var panel = document.createElement('div');
   panel.id = 'asilva-form-assistant';
-  panel.style.cssText = 'position:fixed;top:80px;right:20px;width:380px;max-height:85vh;overflow-y:auto;background:#fff;border:2px solid #FFD700;border-radius:16px;padding:1.2rem;box-shadow:0 20px 60px rgba(0,0,0,.35);z-index:99999;font-family:"Poppins",system-ui,sans-serif;font-size:.9rem;line-height:1.6;color:#0d1224;';
-  let html = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:.8rem;border-bottom:1px solid #eee"><h2 style="margin:0;font-family:Montserrat;font-size:1.1rem;font-weight:800;background:linear-gradient(45deg,#0069a8,#0057c2,#8a6d00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">ASilva Form Assistant</h2><button onclick="this.closest(\'#asilva-form-assistant\').remove()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#999;line-height:1">&times;</button></div>';
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-label', 'ASilva Form Assistant');
+  panel.style.cssText = 'position:fixed;top:80px;right:20px;width:380px;max-height:85vh;overflow-y:auto;background:#fff;border:2px solid #FFD700;border-radius:16px;padding:1.2rem;box-shadow:0 20px 60px rgba(0,0,0,.35);z-index:2147483647;font-family:"Poppins",system-ui,sans-serif;font-size:.9rem;line-height:1.6;color:#0d1224;';
+  var filledCount = 0;
+  var html = '';
+  html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;padding-bottom:.8rem;border-bottom:1px solid #eee">';
+  html += '<h2 style="margin:0;font-family:Montserrat,system-ui,sans-serif;font-size:1.1rem;font-weight:800;background:linear-gradient(45deg,#0069a8,#0057c2,#8a6d00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">ASilva Form Assistant</h2>';
+  html += '<button id="asilva-close" aria-label="Close panel" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#999;line-height:1;padding:.2rem .4rem">&times;</button>';
+  html += '</div>';
   if (detected.length === 0) {
-    html += '<p style="color:#666;text-align:center;padding:1rem">No recognizable form fields found.<br><br>This tool detects fields by label text. If the form uses non-standard labels, copy-paste manually.</p>';
-    panel.innerHTML = html; document.body.appendChild(panel); return;
+    html += '<p style="color:#666;text-align:center;padding:1rem">No recognizable form fields found on this page.<br><br>This tool matches fields by their visible label text, so unusual or icon-only labels may be missed — copy from the fields below manually if needed.</p>';
+    panel.innerHTML = html;
+    document.body.appendChild(panel);
+    document.getElementById('asilva-close').addEventListener('click', function() { panel.remove(); });
+    return;
   }
-  html += '<p style="font-size:.78rem;color:#666;margin-bottom:1rem">Detected <strong>' + detected.length + '</strong> fields. Click "Fill" to populate. Review before submitting.</p>';
-  detected.forEach((d, i) => {
-    const value = CREDENTIALS[d.mapping.key];
-    const isLong = value.length > 80;
-    html += '<div style="margin-bottom:.9rem;padding:.7rem;border-radius:10px;background:#f8f9fb;border:1px solid #e9ecf7"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.4rem"><div style="font-family:Roboto Condensed;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0069a8">' + escapeHtml(d.label || d.mapping.key) + '</div><button data-index="' + i + '" class="asilva-fill-btn" style="padding:.3rem .7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap">Fill Field</button></div><div class="asilva-preview" style="font-size:.82rem;color:#2b3350;background:#fff;padding:.5rem .7rem;border-radius:6px;border:1px solid #e9ecf7;max-height:' + (isLong ? '100px' : 'auto') + ';overflow-y:auto;word-break:break-word">' + escapeHtml(value.substring(0, 200)) + (value.length > 200 ? '...' : '') + '</div></div>';
+  html += '<div id="asilva-counter" style="font-size:.78rem;color:#666;margin-bottom:1rem">0 of ' + detected.length + ' filled — review every field before you submit.</div>';
+  detected.forEach(function(d, i) {
+    var value = CREDENTIALS[d.mapping.key] || '';
+    var isLong = value.length > 80;
+    html += '<div style="margin-bottom:.9rem;padding:.7rem;border-radius:10px;background:#f8f9fb;border:1px solid #e9ecf7">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.4rem">';
+    html += '<div style="font-family:Roboto Condensed,system-ui,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0069a8">' + escapeHtml(d.label || d.mapping.key) + '</div>';
+    html += '<button data-index="' + i + '" class="asilva-fill-btn" style="padding:.3rem .7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat,system-ui,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap">Fill Field</button>';
+    html += '</div>';
+    html += '<div class="asilva-preview" style="font-size:.82rem;color:#2b3350;background:#fff;padding:.5rem .7rem;border-radius:6px;border:1px solid #e9ecf7;max-height:' + (isLong ? '100px' : 'auto') + ';overflow-y:auto;word-break:break-word">' + escapeHtml(value.substring(0, 200)) + (value.length > 200 ? '...' : '') + '</div>';
+    html += '</div>';
   });
-  html += '<div style="margin-top:1rem;padding-top:.8rem;border-top:1px solid #eee;display:flex;gap:.5rem"><button id="asilva-fill-all" style="flex:1;padding:.6rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat;font-weight:700;font-size:.85rem;cursor:pointer">Fill All Fields</button><button id="asilva-clear-all" style="padding:.6rem 1rem;border-radius:999px;border:1px solid #ddd;background:#fff;color:#666;font-family:Montserrat;font-weight:700;font-size:.85rem;cursor:pointer">Clear</button></div><p style="font-size:.7rem;color:#999;text-align:center;margin-top:.8rem">Review all fields before submitting.</p>';
-  panel.innerHTML = html; document.body.appendChild(panel);
-  panel.querySelectorAll('.asilva-fill-btn').forEach((btn, idx) => {
-    btn.addEventListener('click', () => {
-      const d = detected[idx];
-      d.element.value = CREDENTIALS[d.mapping.key];
+  html += '<div style="margin-top:1rem;padding-top:.8rem;border-top:1px solid #eee;display:flex;gap:.5rem">';
+  html += '<button id="asilva-fill-all" style="flex:1;padding:.6rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:.85rem;cursor:pointer">Fill All Fields</button>';
+  html += '<button id="asilva-clear-all" style="padding:.6rem 1rem;border-radius:999px;border:1px solid #ddd;background:#fff;color:#666;font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:.85rem;cursor:pointer">Clear</button>';
+  html += '</div>';
+  html += '<p style="font-size:.7rem;color:#999;text-align:center;margin-top:.8rem">This only fills fields for your review — it never submits anything. Press Esc to close.</p>';
+  panel.innerHTML = html;
+  document.body.appendChild(panel);
+  document.getElementById('asilva-close').addEventListener('click', function() { panel.remove(); });
+  function markFilled(idx) {
+    var btn = panel.querySelector('[data-index="' + idx + '"]');
+    if (btn && btn.textContent !== 'Filled') { btn.textContent = 'Filled'; btn.style.background = '#0f7d51'; filledCount++; updateCounter(panel, filledCount, detected.length); }
+  }
+  panel.querySelectorAll('.asilva-fill-btn').forEach(function(btn, idx) {
+    btn.addEventListener('click', function() {
+      var d = detected[idx];
+      var val = CREDENTIALS[d.mapping.key];
+      if (val === undefined) return;
+      d.element.value = val;
       d.element.dispatchEvent(new Event('input', { bubbles: true }));
       d.element.dispatchEvent(new Event('change', { bubbles: true }));
-      btn.textContent = 'Filled'; btn.style.background = '#0f7d51';
-      d.element.style.borderColor = '#0f7d51'; d.element.style.boxShadow = '0 0 0 3px rgba(15,125,81,.2)';
+      markFilled(idx);
+      d.element.style.borderColor = '#0f7d51';
+      d.element.style.boxShadow = '0 0 0 3px rgba(15,125,81,.2)';
+      d.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
-  panel.querySelector('#asilva-fill-all').addEventListener('click', () => {
-    detected.forEach((d, i) => {
-      d.element.value = CREDENTIALS[d.mapping.key];
+  var fillAllBtn = panel.querySelector('#asilva-fill-all');
+  if (fillAllBtn) fillAllBtn.addEventListener('click', function() {
+    detected.forEach(function(d, i) {
+      var val = CREDENTIALS[d.mapping.key];
+      if (val === undefined) return;
+      d.element.value = val;
       d.element.dispatchEvent(new Event('input', { bubbles: true }));
       d.element.dispatchEvent(new Event('change', { bubbles: true }));
-      const btn = panel.querySelector('[data-index="' + i + '"]');
-      if (btn) { btn.textContent = 'Filled'; btn.style.background = '#0f7d51'; }
+      markFilled(i);
       d.element.style.borderColor = '#0f7d51';
     });
   });
-  panel.querySelector('#asilva-clear-all').addEventListener('click', () => {
-    detected.forEach(d => { d.element.value = ''; d.element.dispatchEvent(new Event('input', { bubbles: true })); d.element.style.borderColor = ''; d.element.style.boxShadow = ''; });
-    panel.querySelectorAll('.asilva-fill-btn').forEach(btn => { btn.textContent = 'Fill Field'; btn.style.background = 'linear-gradient(135deg,#0057c2,#0069a8)'; });
+  var clearAllBtn = panel.querySelector('#asilva-clear-all');
+  if (clearAllBtn) clearAllBtn.addEventListener('click', function() {
+    detected.forEach(function(d) { d.element.value = ''; d.element.dispatchEvent(new Event('input', { bubbles: true })); d.element.style.borderColor = ''; d.element.style.boxShadow = ''; });
+    panel.querySelectorAll('.asilva-fill-btn').forEach(function(btn) { btn.textContent = 'Fill Field'; btn.style.background = 'linear-gradient(135deg,#0057c2,#0069a8)'; });
+    filledCount = 0;
+    updateCounter(panel, filledCount, detected.length);
+  });
+  document.addEventListener('keydown', function escHandler(e) {
+    if (e.key === 'Escape') { panel.remove(); document.removeEventListener('keydown', escHandler); }
   });
 }
-const detected = detectFields();
+var detected = detectFields();
 createPanel(detected);
 if (detected.length > 0) detected[0].element.scrollIntoView({ behavior: 'smooth', block: 'center' });
 })();
