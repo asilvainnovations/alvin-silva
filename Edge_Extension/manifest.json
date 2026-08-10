@@ -6,12 +6,13 @@
   "action": {
     "default_title": "ASilva Form Assistant — click to scan this page's form",
     "default_icon": {
-      "32": "icon32.png",
-      "48": "icon48.png"
+      "32": "Edge_Extension/icons/icon32.png",
+      "48": "Edge_Extension/icons/icon48.png"
     }
   },
   "icons": {
-    "48": "icon48.png"
+      "32": "Edge_Extension/icons/icon32.png",
+      "48": "Edge_Extension/icons/icon48.png"
   },
   "background": {
     "service_worker": "background.js"
