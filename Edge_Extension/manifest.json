@@ -5,10 +5,6 @@
   "description": "One-click form filling for job applications and procurement portals. Detects fields, maps them to Alvin Silva's structured profile, and suggests content — with confidence scoring, validation, undo, and sensitive-field protection. Never auto-submits.",
   "action": {
     "default_title": "ASilva Form Assistant — click to scan this page's form",
-    "default_icon": {
-      "32": "https://github.com/asilvainnovations/alvin-silva/blob/main/Edge_Extension/icons/icon32.png",
-      "48": "https://github.com/asilvainnovations/alvin-silva/blob/main/Edge_Extension/icons/icon48.png"
-    }
   },
   "background": {
     "service_worker": "background.js"
