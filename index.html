@@ -787,6 +787,104 @@ html.js .reveal.in { opacity:1; transform:none; }
 .switch input:disabled + .track { background:rgba(255,215,0,.25); border-color:var(--line-gold); }
 @media print { .consent-banner { display:none !important; } }
 </style>
+<style>
+/* ============================================================
+   FLOATING CHAT WIDGET — ASilva AI Assistant
+   ============================================================ */
+.chat-widget { position:fixed; bottom:1.2rem; right:1.2rem; z-index:1100; font-family:var(--font-body); }
+.chat-fab {
+  width:60px; height:60px; border-radius:50%; border:none; cursor:pointer;
+  background:linear-gradient(135deg, var(--blue), var(--sky));
+  box-shadow:0 8px 28px rgba(0,102,255,.45), 0 0 0 0 rgba(0,102,255,.35);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .3s var(--ease), box-shadow .3s;
+  position:relative; padding:0;
+}
+.chat-fab:hover { transform:translateY(-4px) scale(1.05); box-shadow:0 12px 36px rgba(0,102,255,.55), 0 0 0 8px rgba(0,102,255,.12); }
+.chat-fab img { width:36px; height:36px; border-radius:50%; object-fit:cover; }
+.chat-fab-pulse {
+  position:absolute; inset:-4px; border-radius:50%;
+  border:2px solid var(--sky); opacity:0;
+  animation:fabPulse 2.4s ease-out infinite;
+}
+@keyframes fabPulse { 0% { transform:scale(1); opacity:.6; } 100% { transform:scale(1.4); opacity:0; } }
+.chat-fab-badge {
+  position:absolute; top:-2px; right:-2px; width:18px; height:18px; border-radius:50%;
+  background:var(--green); border:2px solid var(--navy);
+  box-shadow:0 0 0 2px rgba(52,211,153,.35);
+}
+
+.chat-panel {
+  position:absolute; bottom:76px; right:0; width:min(380px, 92vw); height:520px;
+  border-radius:20px; overflow:hidden;
+  background:var(--card);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2);
+  display:flex; flex-direction:column;
+  opacity:0; visibility:hidden; transform:translateY(16px) scale(.96);
+  transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
+}
+.chat-panel.open { opacity:1; visibility:visible; transform:none; }
+
+.chat-panel-header {
+  display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+  padding:.85rem 1rem; background:linear-gradient(135deg, var(--blue), var(--sky));
+  color:#fff; flex-shrink:0;
+}
+.chat-panel-brand { display:flex; align-items:center; gap:.7rem; }
+.chat-panel-brand img { width:34px; height:34px; border-radius:50%; border:2px solid rgba(255,255,255,.35); object-fit:cover; }
+.chat-panel-brand strong { font-family:var(--font-display); font-size:.95rem; font-weight:700; display:block; line-height:1.2; }
+.chat-panel-brand span { font-size:.72rem; opacity:.85; }
+.chat-panel-actions { display:flex; gap:.35rem; }
+.chat-panel-btn {
+  width:32px; height:32px; border-radius:50%; border:none; cursor:pointer;
+  background:rgba(255,255,255,.18); color:#fff; font-size:1rem; line-height:1;
+  display:flex; align-items:center; justify-content:center; transition:.2s;
+}
+.chat-panel-btn:hover { background:rgba(255,255,255,.3); }
+
+.chat-panel-body { flex:1; position:relative; overflow:hidden; background:var(--navy-2); }
+.chat-panel-body iframe { width:100%; height:100%; border:none; display:block; }
+
+.chat-panel-loading {
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:1rem;
+  background:var(--navy-2); z-index:2;
+  transition:opacity .4s, visibility .4s;
+}
+.chat-panel-loading.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+.chat-panel-loading .spinner {
+  width:36px; height:36px; border:3px solid var(--line);
+  border-top-color:var(--sky); border-radius:50%; animation:spin 1s linear infinite;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+.chat-panel-loading p { font-size:.85rem; color:var(--text-3); }
+
+.chat-panel-prompts {
+  position:absolute; bottom:0; left:0; right:0; z-index:3;
+  padding:.7rem; display:flex; flex-wrap:wrap; gap:.4rem; justify-content:center;
+  background:linear-gradient(to top, var(--navy-2) 60%, transparent);
+  transition:opacity .3s, transform .3s;
+}
+.chat-panel-prompts.hidden { opacity:0; transform:translateY(10px); pointer-events:none; }
+.chat-panel-prompts button {
+  padding:.35rem .75rem; border-radius:999px; border:1px solid var(--line);
+  background:var(--pill-bg); color:var(--text-2); font-size:.75rem; font-family:var(--font-body);
+  cursor:pointer; transition:.2s;
+}
+.chat-panel-prompts button:hover { background:var(--pill-bg-hover); border-color:var(--sky); color:var(--sky); }
+
+@media (max-width:480px) {
+  .chat-widget { bottom:.8rem; right:.8rem; }
+  .chat-fab { width:54px; height:54px; }
+  .chat-fab img { width:32px; height:32px; }
+  .chat-panel { width:calc(100vw - 1.6rem); height:70vh; bottom:68px; right:0; border-radius:16px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .chat-fab, .chat-panel, .chat-panel-loading, .chat-panel-prompts { transition:none; animation:none; }
+  .chat-fab-pulse { display:none; }
+}
+</style>
 <script type="module">
   // Supabase client — shared with portfolio.html. Not required for anything
   // on this page today, but kept available (e.g. for a future contact-form
@@ -889,8 +987,8 @@ html.js .reveal.in { opacity:1; transform:none; }
           <a class="drop-item" href="#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
           <a class="drop-item" href="#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
           <a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Publications</a>
-          <a class="drop-item" href="career-automation.html" role="menuitem"><svg><use href="career-automation.html"/></svg> Career</a>
-          <a class="drop-item" href="form-assistant-setup.html" role="menuitem"><svg><use href="form-assistant-setup.html"/></svg> Forms</a>
+          <a class="drop-item" href="career-automation.html" role="menuitem"><svg><use href="#i-brief"/></svg> Career</a>
+          <a class="drop-item" href="form-assistant-setup.html" role="menuitem"><svg><use href="#i-send"/></svg> Forms</a>
         </div>
       </li>
       <li class="drop" data-drop>
@@ -1319,26 +1417,67 @@ html.js .reveal.in { opacity:1; transform:none; }
     <p class="kicker">Straight Answers</p>
     <h2 class="section-title">Before you <span class="hl">ask</span></h2>
     <div class="faq-list">
+
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">What does a development management consultant actually deliver?<span class="chev"></span></button>
-        <div class="faq-a"><p>Fundable strategies, investment roadmaps, and evaluation systems. Recent work includes BIRD 2026–2035, a national TVET plan, and a ₱190M climate-smart design.</p></div>
+        <div class="faq-a"><p>Fundable strategies, investment roadmaps, program designs, and evaluation systems. Recent deliverables include the BIRD 2026–2035 Bangsamoro investment framework, a national TVET strategic plan for TESDA, and a ₱190M climate-smart resilience project design for Balatan, Camarines Sur. Every output is built for implementation — not shelf-ware.</p></div>
       </div>
+
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">Can you work within government or UN procurement systems?<span class="chev"></span></button>
-        <div class="faq-a"><p>Yes. Full compliance with government and UN standards across BoI-MTIT, TESDA, MMDA, DOH, ECHO, USAID, World Bank, UNICEF, and WHO.</p></div>
+        <div class="faq-a"><p>Yes. Engagements have spanned government agencies (BoI–MTIT, TESDA, MMDA, DOH) and international organizations (ECHO, USAID, World Bank, UNICEF, WHO), with full compliance to each institution's contracting, reporting, and audit standards. I understand procurement cycles, transition protocols, and the documentation burden that comes with public-sector accountability.</p></div>
       </div>
+
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">What is the BIRD 2026–2035, and what was your role?<span class="chev"></span></button>
-        <div class="faq-a"><p>The Bangsamoro Investment and Roadmap for Development is the region's decade-long binding investment framework. Alvin served as lead technical architect for BoI–MTIT, end to end.</p></div>
+        <div class="faq-a"><p>The Bangsamoro Investment and Roadmap for Development 2026–2035 is the decade-long binding investment framework for the Bangsamoro Autonomous Region. I served as lead technical architect for the Bureau of Investments–MTIT, owning the process from multi-stakeholder workshop design through synthesis, drafting, and final publication in professional book format with technical annexes and investment profiles.</p></div>
       </div>
+
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">Do you take short-term or fractional engagements?<span class="chev"></span></button>
-        <div class="faq-a"><p>Yes — from advisory sprints to multi-year embedded consulting. Scoped to your mandate and budget cycle.</p></div>
+        <div class="faq-a"><p>Yes — from focused advisory sprints and workshop facilitation to multi-year embedded consulting, scoped to the client's mandate and budget cycle. I have delivered one-week strategy intensives, three-month roadmap formulations, and multi-year institutional support engagements. The scope is always calibrated to the outcome you need, not a pre-packaged hour count.</p></div>
       </div>
+
       <div class="faq-item glass reveal">
         <button class="faq-q" aria-expanded="false">How do engagements usually start?<span class="chev"></span></button>
-        <div class="faq-a"><p>With a 30-minute scoping call. You bring the problem; Alvin brings a structured read on feasibility and the fastest path to results.</p></div>
+        <div class="faq-a"><p>With a 30-minute scoping call. You bring the problem, deadline, and stakeholder map; I bring a structured read on feasibility, risks your brief hasn't named yet, and the fastest path to results. If there's a fit, I deliver a one-page engagement proposal with scope, timeline, deliverables, and investment within 48 hours.</p></div>
       </div>
+
+      <div class="faq-item glass reveal">
+        <button class="faq-q" aria-expanded="false">What is your educational and professional background?<span class="chev"></span></button>
+        <div class="faq-a"><p>I hold a Master in Development Management (MDM) from the Asian Institute of Management and am a Certified Security Risk Management Professional (SRMP). My 18+ years span climate change adaptation, disaster risk reduction, systems innovation, strategic planning, organizational development, capacity building, and mental health and psychosocial support (MHPSS) — with field experience across 15+ countries alongside ECHO, USAID, the World Bank, UNICEF, and WHO.</p></div>
+      </div>
+
+      <div class="faq-item glass reveal">
+        <button class="faq-q" aria-expanded="false">What is the CASE Equation from your latest book?<span class="chev"></span></button>
+        <div class="faq-a"><p><em>Personal Resilience: The Path to Oneness</em> (2025) introduces the CASE Equation — a systems-based, measurable framework for resilience under compounding crisis. CASE stands for <strong>C</strong>oping capacity, <strong>A</strong>daptability, <strong>S</strong>ensitivity reduction, and <strong>E</strong>xposure control. It translates abstract resilience concepts into diagnosable, trainable, and trackable competencies for individuals, teams, and organizations.</p></div>
+      </div>
+
+      <div class="faq-item glass reveal">
+        <button class="faq-q" aria-expanded="false">What digital platforms and tools have you developed?<span class="chev"></span></button>
+        <div class="faq-a"><p>I have architected five digital platforms: <strong>DDRiVE-M</strong> (data-driven risk and vulnerability evaluation, RA 10121 / ISO 31000 compliant); <strong>Strat Planner Pro</strong> (AI-powered strategy OS with offline PWA support); <strong>Cognitio+</strong> (knowledge ecosystem for resilience practice); <strong>RTL — Real-Time Leadership</strong> (digital learning for growth and wellness); and the <strong>BIRD Investment Roadmapping Platform</strong> (interactive home of the Bangsamoro framework). Each is designed for institutional ownership, not vendor lock-in.</p></div>
+      </div>
+
+      <div class="faq-item glass reveal">
+        <button class="faq-q" aria-expanded="false">In which countries and regions have you worked?<span class="chev"></span></button>
+        <div class="faq-a"><p>My field experience spans 15+ countries across Asia, the Middle East, and Africa — with deep specialization in the Philippines, particularly conflict-affected and climate-vulnerable regions such as the Bangsamoro Autonomous Region, Eastern Samar, and Camarines Sur. I have designed protocols for barangay-level implementation and authored frameworks for national-scale institutions, often within the same engagement cycle.</p></div>
+      </div>
+
+      <div class="faq-item glass reveal">
+        <button class="faq-q" aria-expanded="false">Do you offer speaking engagements, workshops, or executive training?<span class="chev"></span></button>
+        <div class="faq-a"><p>Yes. I facilitate executive strategy retreats, design multi-stakeholder consultation workshops, and deliver frontline responder training — calibrated from boardrooms to community halls. Partners include WHO, DOH, TESDA, and the Asian Institute of Management. Every session is designed for transfer: participants leave with tools they can use on Monday, not just inspiration.</p></div>
+      </div>
+
+      <div class="faq-item glass reveal">
+        <button class="faq-q" aria-expanded="false">What distinguishes your approach from other development consultants?<span class="chev"></span></button>
+        <div class="faq-a"><p>Three things: <strong>Systems integration</strong> — I connect climate adaptation, DRR, organizational performance, and investment strategy instead of treating them as silos. <strong>End-to-end accountability</strong> — one senior partner from workshop to published framework, with zero hand-offs. <strong>Digital durability</strong> — every engagement leaves behind platforms, playbooks, and trained teams that outlast the contract. I build for the day after handover.</p></div>
+      </div>
+
+      <div class="faq-item glass reveal">
+        <button class="faq-q" aria-expanded="false">How do you handle data privacy and intellectual property?<span class="chev"></span></button>
+        <div class="faq-a"><p>Client data remains client-owned at all times. I work under clear NDAs where required, and all frameworks, methodologies, and digital tools are documented for full institutional handover. My platforms are designed for client self-hosting or independent operation — no proprietary lock-in, no hidden dependencies. For this website specifically, the contact form composes a pre-filled email locally; no message data is stored or transmitted through third-party servers unless you explicitly send the email.</p></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1557,6 +1696,52 @@ html.js .reveal.in { opacity:1; transform:none; }
     <button class="btn btn-ghost" id="consentCustomize"><span>Customize</span></button>
   </div>
 </div>
+
+<!-- ============ FLOATING CHAT WIDGET ============ -->
+<div class="chat-widget" id="chatWidget" aria-label="ASilva AI Chat">
+  <button class="chat-fab" id="chatFab" aria-label="Open chat with ASilva" aria-expanded="false" title="Chat with ASilva">
+    <img src="assets/logo-192.png" alt="" width="36" height="36" loading="lazy">
+    <span class="chat-fab-pulse" aria-hidden="true"></span>
+    <span class="chat-fab-badge" aria-hidden="true"></span>
+  </button>
+
+  <div class="chat-panel" id="chatPanel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cw-title">
+    <div class="chat-panel-header">
+      <div class="chat-panel-brand">
+        <img src="assets/logo-192.png" alt="" width="34" height="34" loading="lazy">
+        <div>
+          <strong id="cw-title">ASilva</strong>
+          <span>AI Assistant · Alvin M. Silva</span>
+        </div>
+      </div>
+      <div class="chat-panel-actions">
+        <button class="chat-panel-btn" id="chatMinimize" aria-label="Minimize chat" title="Minimize">−</button>
+        <button class="chat-panel-btn" id="chatClose" aria-label="Close chat" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="chat-panel-body">
+      <div class="chat-panel-loading" id="chatPanelLoading">
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Connecting to ASilva…</p>
+      </div>
+      <div class="chat-panel-prompts" id="chatPanelPrompts">
+        <button onclick="sendWidgetPrompt('Tell me about Alvin\'s experience with BIRD 2026-2035')">BIRD 2026-2035</button>
+        <button onclick="sendWidgetPrompt('What are Alvin\'s key expertise areas?')">Expertise</button>
+        <button onclick="sendWidgetPrompt('How can I hire Alvin for strategic planning?')">Hire Alvin</button>
+        <button onclick="sendWidgetPrompt('Tell me about the Strat Planner Pro platform')">Strat Planner Pro</button>
+      </div>
+      <iframe id="chatWidgetIframe"
+        src="about:blank"
+        title="ASilva AI Chat Interface"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+        allow="clipboard-write; encrypted-media"
+        loading="lazy"
+        aria-label="ASilva AI Chat Interface">
+      </iframe>
+    </div>
+  </div>
+</div>
+
 <script>
 document.documentElement.classList.add('js');
 
@@ -1568,13 +1753,14 @@ document.documentElement.classList.add('js');
   const root = document.documentElement;
   function apply(theme) {
     root.dataset.theme = theme;
-    localStorage.setItem(THEME_KEY, theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
     document.querySelectorAll('#themeToggle, #themeToggleMobile').forEach(btn => {
       btn.setAttribute('aria-pressed', theme === 'light');
       btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
     });
   }
-  const saved = localStorage.getItem(THEME_KEY);
+  let saved = null;
+  try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
   const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
   apply(saved || (prefersLight ? 'light' : 'dark'));
   function toggle() { apply(root.dataset.theme === 'light' ? 'dark' : 'light'); }
@@ -1640,7 +1826,7 @@ document.documentElement.classList.add('js');
   try { sessions = JSON.parse(localStorage.getItem(KEY)) || []; } catch { sessions = []; }
   sessions = sessions.filter(t => now - t < 30 * 60 * 1000); // 30-minute rolling window
   sessions.push(now);
-  localStorage.setItem(KEY, JSON.stringify(sessions));
+  try { localStorage.setItem(KEY, JSON.stringify(sessions)); } catch (e) {}
   const base = 3; // small baseline so the widget reads naturally on a first, single-device visit
   const count = base + sessions.length;
   el.textContent = `${count} people viewing pages like this in the last 30 min`;
@@ -1877,7 +2063,7 @@ const PROFILES = {
       sub: 'Frontier and post-conflict markets price risk they cannot read. Clarity is the arbitrage.',
       c1num: '01', c1title: 'Market-entry risk, mapped before you commit', c1body: 'Political, climate, and community risk surfaced as structured intelligence before capital is exposed.',
       c2num: '02', c2title: 'Frameworks boards can underwrite', c2body: 'Investment profiles built to the standard financiers rely on — the same rigor behind a regional decade-long framework.',
-      c3num: '03', c3title: 'ESG that survives due diligence', c3body: 'Climate and social safeguards integrated into project design. Verifiable, not performative.'
+      c3num: '03', c3title: 'ESG that survives due diligence', c2body: 'Climate and social safeguards integrated into project design. Verifiable, not performative.'
     },
     expNote: 'Re-ranked for commercial priorities — risk, returns, and compliance.',
     expOrder: ['strategy','sysinno','cca','orgdev','security','drr','capacity'],
@@ -2225,6 +2411,65 @@ $('#cookieSettings').addEventListener('click', () => {
   showConsent();
 });
 if (!getConsent()) setTimeout(showConsent, 1800);
+
+/* ================================================================
+   FLOATING CHAT WIDGET — ASilva AI Assistant
+   ================================================================ */
+(function chatWidgetInit() {
+  const fab = document.getElementById('chatFab');
+  const panel = document.getElementById('chatPanel');
+  const closeBtn = document.getElementById('chatClose');
+  const minBtn = document.getElementById('chatMinimize');
+  const iframe = document.getElementById('chatWidgetIframe');
+  const loading = document.getElementById('chatPanelLoading');
+  const prompts = document.getElementById('chatPanelPrompts');
+  const KIMI_URL = 'https://www.kimi.com/bot/chat/19f6b511-b922-86c1-8000-0000fc88d7e5';
+  let isOpen = false, isLoaded = false;
+
+  function openPanel() {
+    isOpen = true;
+    panel.classList.add('open');
+    fab.setAttribute('aria-expanded', 'true');
+    panel.setAttribute('aria-hidden', 'false');
+    if (!isLoaded) {
+      iframe.src = KIMI_URL;
+      isLoaded = true;
+      // Hide loading after a reasonable delay
+      setTimeout(() => {
+        loading.classList.add('hidden');
+        setTimeout(() => prompts.classList.add('hidden'), 4000);
+      }, 2500);
+    }
+  }
+  function closePanel() {
+    isOpen = false;
+    panel.classList.remove('open');
+    fab.setAttribute('aria-expanded', 'false');
+    panel.setAttribute('aria-hidden', 'true');
+  }
+  function togglePanel() { isOpen ? closePanel() : openPanel(); }
+
+  fab.addEventListener('click', togglePanel);
+  closeBtn.addEventListener('click', closePanel);
+  minBtn.addEventListener('click', closePanel);
+
+  // Close on Escape or click outside
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && isOpen) closePanel();
+  });
+  document.addEventListener('click', e => {
+    if (isOpen && !panel.contains(e.target) && !fab.contains(e.target)) closePanel();
+  });
+
+  // Expose prompt sender globally
+  window.sendWidgetPrompt = function(text) {
+    openPanel();
+    // Store prompt for potential cross-origin use
+    try { sessionStorage.setItem('asilva_pending_prompt', text); } catch (e) {}
+    // Try to focus iframe
+    try { iframe.focus(); } catch (e) {}
+  };
+})();
 </script>
 </body>
 </html>
