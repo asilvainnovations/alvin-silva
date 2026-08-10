@@ -10,10 +10,6 @@
       "48": "https://github.com/asilvainnovations/alvin-silva/blob/main/Edge_Extension/icons/icon48.png"
     }
   },
-  "icons": {
-      "32": "https://github.com/asilvainnovations/alvin-silva/blob/main/Edge_Extension/icons/icon32.png",
-      "48": "https://github.com/asilvainnovations/alvin-silva/blob/main/Edge_Extension/icons/icon48.png"
-  },
   "background": {
     "service_worker": "background.js"
   },
