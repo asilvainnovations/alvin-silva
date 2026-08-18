@@ -11,22 +11,20 @@
 
   <link rel="icon" type="image/png" href="assets/logo-192.png">
   <link rel="apple-touch-icon" href="assets/logo-192.png">
-
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://www.kimi.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ===== CSS RESET & BASE ===== */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --primary: #02583f;
       --primary-light: #047a5a;
       --primary-dark: #013d2c;
+      --accent: #0066FF;
+      --gold: #8a6d00;
       --bg: #f8fafc;
       --surface: #ffffff;
       --text: #1e293b;
@@ -40,9 +38,7 @@
       --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -59,31 +55,26 @@
     .chat-header {
       background: var(--primary);
       color: white;
-      padding: 16px 24px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       box-shadow: var(--shadow-sm);
       position: relative;
       z-index: 10;
       flex-shrink: 0;
     }
 
-    .chat-header .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex: 1;
-    }
+    .logo-group { display: flex; align-items: center; gap: 12px; flex: 1; }
 
-    .chat-header .logo-wrapper {
+    .logo-wrapper {
       position: relative;
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       flex-shrink: 0;
     }
 
-    .chat-header .logo-wrapper::after {
+    .logo-wrapper::after {
       content: '';
       position: absolute;
       inset: -3px;
@@ -97,9 +88,9 @@
       100% { transform: scale(1.3); opacity: 0; }
     }
 
-    .chat-header img {
-      width: 48px;
-      height: 48px;
+    .logo-wrapper img {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
       display: block;
@@ -108,78 +99,46 @@
       z-index: 1;
     }
 
-    .chat-header .header-text h1 {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-    }
+    .header-text h1 { font-size: 17px; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; }
+    .header-text p { font-size: 12px; opacity: 0.75; margin-top: 2px; }
 
-    .chat-header .header-text p {
-      font-size: 13px;
-      opacity: 0.75;
-      margin-top: 2px;
-      line-height: 1.4;
-    }
-
-    .chat-header .status-indicator {
+    .status-indicator {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 12px;
+      font-size: 11px;
       opacity: 0.9;
-      margin-left: auto;
       padding: 4px 10px;
       background: rgba(255,255,255,0.15);
       border-radius: 20px;
     }
 
-    .chat-header .status-dot {
-      width: 8px;
-      height: 8px;
+    .status-dot {
+      width: 7px; height: 7px;
       background: #4ade80;
       border-radius: 50%;
       animation: pulse-dot 2s ease-in-out infinite;
     }
 
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
-    /* Back button */
     .back-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: white;
-      text-decoration: none;
-      font-size: 13px;
-      opacity: 0.85;
-      transition: opacity var(--transition), transform var(--transition);
-      padding: 6px 12px;
-      border-radius: 8px;
+      display: flex; align-items: center; gap: 6px;
+      color: white; text-decoration: none; font-size: 12px;
+      opacity: 0.85; transition: var(--transition);
+      padding: 6px 10px; border-radius: 8px;
       background: rgba(255,255,255,0.1);
-      white-space: nowrap;
     }
 
-    .back-btn:hover {
-      opacity: 1;
-      background: rgba(255,255,255,0.2);
-      transform: translateX(-2px);
-    }
-
-    .back-btn svg {
-      width: 16px;
-      height: 16px;
-    }
+    .back-btn:hover { opacity: 1; background: rgba(255,255,255,0.2); transform: translateX(-2px); }
+    .back-btn svg { width: 15px; height: 15px; }
 
     /* ===== MAIN CONTENT ===== */
     .chat-container {
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding: 20px;
+      padding: 16px;
       position: relative;
       overflow: hidden;
     }
@@ -198,272 +157,201 @@
       flex-direction: column;
     }
 
-    /* Loading state */
+    /* Loading */
     .loading-overlay {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: var(--surface);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      z-index: 5;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px; z-index: 5;
       transition: opacity 0.5s ease, visibility 0.5s ease;
     }
-
-    .loading-overlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+    .loading-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
     .loading-spinner {
-      width: 48px;
-      height: 48px;
+      width: 40px; height: 40px;
       border: 3px solid var(--border);
       border-top-color: var(--primary);
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    .loading-text { color: var(--text-muted); font-size: 13px; text-align: center; }
+    .loading-text strong { color: var(--text); display: block; margin-bottom: 4px; font-size: 15px; }
 
-    .loading-text {
-      color: var(--text-muted);
-      font-size: 14px;
-      text-align: center;
-    }
-
-    .loading-text strong {
-      color: var(--text);
-      display: block;
-      margin-bottom: 4px;
-      font-size: 16px;
-    }
-
-    /* Suggested prompts */
     .suggested-prompts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      max-width: 600px;
-      padding: 0 20px;
+      display: flex; flex-wrap: wrap; gap: 6px;
+      justify-content: center; max-width: 560px; padding: 0 16px;
     }
 
     .prompt-chip {
-      padding: 8px 16px;
+      padding: 7px 14px;
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
       cursor: pointer;
-      transition: all var(--transition);
-      user-select: none;
+      transition: var(--transition);
+    }
+    .prompt-chip:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-1px); }
+
+    iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ===== FALLBACK CHAT (Automated Script) ===== */
+    .fallback-chat {
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+    .fallback-chat.active { display: flex; }
+
+    .fallback-header {
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .fallback-header h2 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .fallback-header p { font-size: 12px; opacity: 0.85; }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    .prompt-chip:hover {
+    .msg {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+      animation: msgIn 0.3s ease;
+    }
+
+    @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .msg.bot {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .msg.user {
       background: var(--primary);
       color: white;
-      border-color: var(--primary);
-      transform: translateY(-1px);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .msg.bot strong { color: var(--primary); }
+    .msg.bot a { color: var(--accent); text-decoration: underline; }
+
+    .msg .msg-meta {
+      font-size: 10px;
+      opacity: 0.6;
+      margin-top: 6px;
       display: block;
     }
 
-    /* ===== FALLBACK STATE ===== */
-    .fallback-state {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      padding: 40px;
-      text-align: center;
-      height: 100%;
-    }
-
-    .fallback-state.active {
+    .quick-replies {
       display: flex;
-    }
-
-    .fallback-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--bg);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .fallback-icon svg {
-      width: 32px;
-      height: 32px;
-      color: var(--primary);
-    }
-
-    .fallback-state h2 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .fallback-state p {
-      color: var(--text-muted);
-      font-size: 15px;
-      line-height: 1.6;
-      max-width: 400px;
-    }
-
-    .fallback-actions {
-      display: flex;
-      gap: 12px;
       flex-wrap: wrap;
-      justify-content: center;
+      gap: 6px;
+      padding: 0 20px 12px;
+      flex-shrink: 0;
     }
 
-    .btn {
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all var(--transition);
+    .quick-reply {
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--text);
       cursor: pointer;
-      border: none;
-      display: inline-flex;
-      align-items: center;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .quick-reply:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .chat-input-area {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
       gap: 8px;
+      flex-shrink: 0;
     }
 
-    .btn-primary {
+    .chat-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition);
+    }
+    .chat-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2,88,63,0.1); }
+
+    .send-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: none;
       background: var(--primary);
       color: white;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+      flex-shrink: 0;
     }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn-secondary {
-      background: var(--bg);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--border);
-    }
+    .send-btn:hover { background: var(--primary-dark); transform: scale(1.05); }
+    .send-btn svg { width: 16px; height: 16px; }
 
     /* ===== FOOTER ===== */
     .chat-footer {
-      padding: 12px 24px;
+      padding: 10px 20px;
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
       background: var(--surface);
       flex-shrink: 0;
     }
-
-    .chat-footer a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .chat-footer a:hover {
-      text-decoration: underline;
-    }
+    .chat-footer a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .chat-footer a:hover { text-decoration: underline; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .chat-header {
-        padding: 12px 16px;
-        gap: 12px;
-      }
-
-      .chat-header .logo-wrapper,
-      .chat-header img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .chat-header .header-text h1 {
-        font-size: 16px;
-      }
-
-      .chat-header .header-text p {
-        font-size: 12px;
-      }
-
-      .chat-header .status-indicator {
-        display: none; /* Hide on mobile to save space */
-      }
-
-      .back-btn span {
-        display: none; /* Show only icon on mobile */
-      }
-
-      .chat-container {
-        padding: 0;
-      }
-
-      .chat-iframe-wrapper {
-        border-radius: 0;
-        box-shadow: none;
-        max-width: 100%;
-      }
-
-      .suggested-prompts {
-        display: none; /* Hide on small screens */
-      }
+      .chat-header { padding: 10px 14px; gap: 10px; }
+      .logo-wrapper, .logo-wrapper img { width: 38px; height: 38px; }
+      .header-text h1 { font-size: 15px; }
+      .header-text p { font-size: 11px; }
+      .status-indicator { display: none; }
+      .back-btn span { display: none; }
+      .chat-container { padding: 0; }
+      .chat-iframe-wrapper { border-radius: 0; box-shadow: none; }
+      .suggested-prompts { display: none; }
+      .msg { max-width: 92%; font-size: 13px; }
     }
 
-    @media (max-width: 480px) {
-      .chat-header {
-        padding: 10px 12px;
-      }
-
-      .fallback-state {
-        padding: 24px;
-      }
-
-      .fallback-state h2 {
-        font-size: 18px;
-      }
-    }
-
-    /* ===== ACCESSIBILITY ===== */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
 
     .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
     }
   </style>
 <base target="_blank">
@@ -481,7 +369,7 @@
 
     <div class="logo-group">
       <div class="logo-wrapper">
-        <img src="assets/logo-192.png" alt="ASilva AI Assistant Logo" width="48" height="48" loading="eager">
+        <img src="assets/logo-192.png" alt="ASilva AI Assistant Logo" width="44" height="44" loading="eager">
       </div>
       <div class="header-text">
         <h1>ASilva</h1>
@@ -491,7 +379,7 @@
 
     <div class="status-indicator" aria-live="polite">
       <span class="status-dot" aria-hidden="true"></span>
-      <span>Online</span>
+      <span id="statusText">Connecting...</span>
     </div>
   </header>
 
@@ -507,30 +395,28 @@
           <span>Loading your AI assistant</span>
         </div>
         <div class="suggested-prompts" role="list" aria-label="Suggested conversation starters">
-          <button class="prompt-chip" role="listitem" onclick="sendPrompt('Tell me about Alvin\'s experience with BIRD 2026-2035')">BIRD 2026-2035</button>
+          <button class="prompt-chip" role="listitem" onclick="sendPrompt('Tell me about BIRD 2026-2035')">BIRD 2026-2035</button>
           <button class="prompt-chip" role="listitem" onclick="sendPrompt('What are Alvin\'s key expertise areas?')">Expertise</button>
-          <button class="prompt-chip" role="listitem" onclick="sendPrompt('How can I hire Alvin for strategic planning?')">Hire Alvin</button>
-          <button class="prompt-chip" role="listitem" onclick="sendPrompt('Tell me about the Strat Planner Pro platform')">Strat Planner Pro</button>
+          <button class="prompt-chip" role="listitem" onclick="sendPrompt('How can I hire Alvin?')">Hire Alvin</button>
+          <button class="prompt-chip" role="listitem" onclick="sendPrompt('Tell me about APM LDI')">APM LDI</button>
         </div>
       </div>
 
-      <!-- Fallback State (shown if iframe fails) -->
-      <div class="fallback-state" id="fallbackState" role="alert">
-        <div class="fallback-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-          </svg>
+      <!-- Fallback Automated Chat -->
+      <div class="fallback-chat" id="fallbackChat">
+        <div class="fallback-header">
+          <h2><i class="fas fa-robot"></i> ASilva — Offline Mode</h2>
+          <p>AI assistant is temporarily unavailable. Here's what I can help with:</p>
         </div>
-        <h2>Connection Issue</h2>
-        <p>Unable to load ASilva directly. You can still chat by opening Kimi in a new tab, or return to the main website.</p>
-        <div class="fallback-actions">
-          <a href="https://www.kimi.com/bot/chat/19f6b511-b922-86c1-8000-0000fc88d7e5" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            Open Chat in New Tab
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="quick-replies" id="quickReplies"></div>
+        <div class="chat-input-area">
+          <input type="text" class="chat-input" id="chatInput" placeholder="Type your question..." autocomplete="off">
+          <button class="send-btn" id="sendBtn" aria-label="Send message">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
             </svg>
-          </a>
-          <a href="index.html" class="btn btn-secondary">Back to Website</a>
+          </button>
         </div>
       </div>
 
@@ -549,67 +435,292 @@
 
   <!-- Footer -->
   <footer class="chat-footer" role="contentinfo">
-    <a href="index.html">Alvin M. Silva</a> · All rights reserved</p>
+    <a href="index.html">Alvin M. Silva, MDM</a> · A. Silva Innovations · All rights reserved
   </footer>
 
   <script>
-    // ===== LOADING & FALLBACK HANDLING =====
+    // ===== AUTOMATED FAQ KNOWLEDGE BASE =====
+    const FAQ = {
+      // ---- GREETING & GENERAL ----
+      greeting: {
+        keywords: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings'],
+        response: "Hello! 👋 I'm ASilva, Alvin M. Silva's AI assistant. I can help you learn about his work in <strong>Development Management</strong>, <strong>Resilience</strong>, <strong>Systems Innovation</strong>, and <strong>Strategic Planning</strong>. What would you like to know?",
+        followUp: ['Tell me about Alvin', 'What is BIRD 2026-2035?', 'How can I hire Alvin?', 'Tell me about APM LDI']
+      },
+
+      // ---- ABOUT ALVIN ----
+      about: {
+        keywords: ['who is alvin', 'about alvin', 'tell me about alvin', 'alvin silva', 'background', 'profile', 'experience'],
+        response: "Alvin M. Silva, MDM is a <strong>Development Management Professional</strong> with 18+ years of experience across 15+ countries. He's a systems innovator and certified international humanitarian practitioner (SRMP). His work spans climate change adaptation, disaster risk reduction, strategic planning, and organizational development. He's the lead architect of the <strong>Bangsamoro Investment Roadmap (BIRD) 2026–2035</strong> and has authored two books on resilience. He holds a Master in Development Management from the Asian Institute of Management.",
+        followUp: ['What is BIRD 2026-2035?', 'What books has he written?', 'What are his expertise areas?', 'How can I contact him?']
+      },
+
+      // ---- BIRD 2026-2035 ----
+      bird: {
+        keywords: ['bird', 'bangsamoro', 'investment roadmap', '2026-2035', 'barmm', 'mtit'],
+        response: "The <strong>Bangsamoro Investment and Roadmap for Development (BIRD) 2026–2035</strong> is the decade-long binding investment framework for the Bangsamoro Autonomous Region in Muslim Mindanao. Alvin served as the <strong>lead technical architect</strong> for the Bureau of Investments–MTIT, owning the entire process from multi-stakeholder workshop design through synthesis, drafting, and final publication in professional book format with technical annexes and investment profiles. It's his flagship mandate — a framework designed to outlast political transitions.",
+        followUp: ['What was Alvin\'s role in BIRD?', 'What other projects has he done?', 'How can I hire Alvin?', 'Tell me about his books']
+      },
+
+      // ---- EXPERTISE ----
+      expertise: {
+        keywords: ['expertise', 'skills', 'capabilities', 'what does he do', 'specialties', 'services'],
+        response: "Alvin brings seven integrated disciplines: <strong>1) Climate Change Adaptation</strong> — 15+ years with ECHO, USAID, World Bank. <strong>2) Disaster Risk Reduction</strong> — Certified SRMP, from barangay to regional scale. <strong>3) Systems Innovation</strong> — Architect of DDRiVE-M, Strat Planner Pro, and Cognitio+. <strong>4) Organizational Development</strong> — Performance systems for government and NGOs. <strong>5) Strategic Planning</strong> — Sole author of a national TVET strategic plan. <strong>6) Capacity Building</strong> — MDM-trained facilitator, WHO and DOH partnerships. <strong>7) Security Risk Management</strong> — Certified SRMP for complex environments.",
+        followUp: ['Tell me about BIRD 2026-2035', 'What digital platforms has he built?', 'What books has he written?', 'How can I hire him?']
+      },
+
+      // ---- BOOKS ----
+      books: {
+        keywords: ['book', 'books', 'publication', 'publications', 'author', 'wrote', 'written', 'resilience book', 'personal resilience'],
+        response: "Alvin has published two books: <strong>1) \"Personal Resilience: The Path to Oneness\" (2025)</strong> — introduces the CASE Equation (Coping capacity, Adaptability, Sensitivity reduction, Exposure control), a systems-based framework for resilience under compounding crisis. <strong>2) \"Building Resilience\" (2023)</strong> — the foundational text of the Cognitio+ resilience practice, translating 15+ years of field experience into an applicable method. Both are available through his platforms.",
+        followUp: ['What is the CASE Equation?', 'Tell me about Cognitio+', 'What digital platforms has he built?', 'How can I contact him?']
+      },
+
+      // ---- CASE EQUATION ----
+      case: {
+        keywords: ['case equation', 'case', 'coping', 'adaptability', 'sensitivity', 'exposure'],
+        response: "The <strong>CASE Equation</strong> is Alvin's measurable framework for resilience, introduced in \"Personal Resilience: The Path to Oneness\" (2025). It stands for: <strong>C</strong> — Coping capacity (your ability to absorb shocks), <strong>A</strong> — Adaptability (how you adjust to changing conditions), <strong>S</strong> — Sensitivity reduction (lowering your exposure to unnecessary stressors), <strong>E</strong> — Exposure control (managing what you're exposed to). It translates abstract resilience into diagnosable, trainable, and trackable competencies for individuals, teams, and organizations.",
+        followUp: ['Tell me about his books', 'What digital platforms has he built?', 'How can I hire Alvin?', 'What is Cognitio+?']
+      },
+
+      // ---- DIGITAL PLATFORMS ----
+      platforms: {
+        keywords: ['platform', 'platforms', 'digital', 'tools', 'ddrive', 'strat planner', 'cognitio', 'rtl', 'software', 'app'],
+        response: "Alvin has architected five digital platforms: <strong>1) BIRD Investment Roadmapping Platform</strong> — the interactive home of the Bangsamoro framework. <strong>2) DDRiVE-M</strong> — data-driven risk and vulnerability evaluation, RA 10121 / ISO 31000 compliant. <strong>3) Strat Planner Pro</strong> — AI-powered strategy OS with offline PWA support. <strong>4) Cognitio+</strong> — knowledge ecosystem for resilience practice. <strong>5) RTL — Real-Time Leadership</strong> — digital learning for growth and wellness. Each is designed for institutional ownership, not vendor lock-in.",
+        followUp: ['Tell me about BIRD 2026-2035', 'What is the CASE Equation?', 'How can I hire Alvin?', 'What books has he written?']
+      },
+
+      // ---- APM LDI (Advanced Program Management) ----
+      apm: {
+        keywords: ['apm', 'advanced program management', 'ldi', 'program management', 'deped', 'bhrod', 'sg-15', 'sg15', 'pap', 'program activity project'],
+        response: "The <strong>Advanced Program Management LDI</strong> is a four-day Learning & Development Intervention designed for SG-15+ officers at the Department of Education Central Office. It uses the <strong>Live-PAP Methodology</strong> — every participant enrols one real Program, Activity, or Project they currently manage. The advanced increment is <strong>judgment under complexity</strong>, not more technique. It features Standing Peer Review Triads, a diagnostic pre-assessment (\"The PAP Under Pressure\"), and signature exercises like \"The Problem Behind the Problem\" and \"Fixes That Fail.\"",
+        followUp: ['What is the Leverage Ladder?', 'What is the 5-minute demo?', 'What is Fixes That Fail?', 'How does the pre-assessment work?']
+      },
+
+      // ---- LEVERAGE LADDER ----
+      leverage: {
+        keywords: ['leverage', 'leverage ladder', 'leverage points', 'leverage hierarchy', 'intervention point'],
+        response: "The <strong>Leverage Ladder</strong> is a hierarchy of intervention points from parameters (lowest) to system goals (highest): <strong>Rung 1</strong> — Parameters (budgets, timelines). <strong>Rung 2</strong> — Stocks & Buffers (materials, trained teachers). <strong>Rung 3</strong> — System Structure. <strong>Rung 4</strong> — Information Flows ← <em>Advanced target</em>. <strong>Rung 5</strong> — Rules of the System. <strong>Rung 6</strong> — The Goal / Paradigm. Standard public sector programs cluster at rungs 1–2. Advanced program management intervenes one rung higher — targeting information flows, rules, or structure.",
+        followUp: ['What is the Reading Proficiency illustration?', 'What is the Mandate Test?', 'Tell me about APM LDI', 'What is Fixes That Fail?']
+      },
+
+      // ---- 5-MINUTE DEMO ----
+      demo: {
+        keywords: ['5-minute', 'five minute', 'demo', 'demonstration', 'interview', 'panel', 'non-linear'],
+        response: "The <strong>5-Minute Interview Panel Exercise</strong> demonstrates live problem analysis in four phases: <strong>Phase 1 (0:00–0:45)</strong> — Name the presenting symptom. <strong>Phase 2 (0:45–2:15)</strong> — Ask \"why\" three times to reveal non-linear feedback loops (balancing and reinforcing). <strong>Phase 3 (2:15–3:45)</strong> — Locate the current intervention on the leverage ladder and move one rung higher. <strong>Phase 4 (3:45–5:00)</strong> — Apply the Mandate Test to confirm the reframe survives within discretionary authority. This shows how the facilitator thinks — not just what slides they use.",
+        followUp: ['What is the Mandate Test?', 'What are non-linear relationships?', 'What is the Leverage Ladder?', 'Tell me about APM LDI']
+      },
+
+      // ---- FIXES THAT FAIL ----
+      fixes: {
+        keywords: ['fixes that fail', 'fixes', 'quick fix', 'unintended consequence', 'causal loop', 'balancing loop', 'reinforcing loop'],
+        response: "<strong>\"Fixes That Fail\"</strong> is a systems thinking archetype where a quick fix produces short-term improvement but generates unintended consequences that worsen the problem over time. The exercise maps two loops: <strong>Balancing Loop</strong> — Quick fix → Short-term improvement → Problem symptom decreases. <strong>Reinforcing Loop</strong> — Quick fix → Unintended consequence → Problem symptom increases → Need for more fixing. Participants work through six steps: identify the symptom, note the story, summarize, list variables, draw behavior-over-time patterns, and diagram the causal loops.",
+        followUp: ['What is the Leverage Ladder?', 'What is the Mandate Test?', 'Tell me about APM LDI', 'What is the 5-minute demo?']
+      },
+
+      // ---- PRE-ASSESSMENT ----
+      preassessment: {
+        keywords: ['pre-assessment', 'pre assessment', 'diagnostic', 'pap under pressure', 'strain', 'assessment'],
+        response: "<strong>\"The PAP Under Pressure\"</strong> is a 20-minute diagnostic completed before arrival. It's NOT a knowledge test — it measures where each participant's live PAP is actually under strain across six domains: Problem Definition, Results Logic, Risk Anticipation, Governance, Information Flow, and Continuity. It uses 12 statements on a 4-point scale (no midpoint). The results dynamically adjust Day 1's opening, triad composition, and the worked illustration used. Some post-assessment scores may go down — and that's the intervention working, because participants learn what a causal chain actually requires.",
+        followUp: ['What are the six strain domains?', 'How does calibration work?', 'Tell me about APM LDI', 'What is the Leverage Ladder?']
+      },
+
+      // ---- MANDATE TEST ----
+      mandate: {
+        keywords: ['mandate test', 'mandate', 'discretionary', 'fixed', 'round 4'],
+        response: "The <strong>Mandate Test</strong> is Round 4 of \"The Problem Behind the Problem\" exercise (10 minutes). Participants name what is <strong>fixed</strong> by law or appropriation and what is <strong>discretionary</strong> in design. The reframed intervention must survive inside the discretionary space — it cannot require changing something that is legally or politically locked. This is what keeps the exercise from becoming either an academic exercise or a complaint session. It forces officers to work within real constraints.",
+        followUp: ['What is the Leverage Ladder?', 'What is the 5-minute demo?', 'Tell me about APM LDI', 'What is Fixes That Fail?']
+      },
+
+      // ---- 3-DAY VARIANT ----
+      variant: {
+        keywords: ['3-day', 'three day', 'variant', 'contract of service', 'cos', 'compression'],
+        response: "The <strong>3-Day Contract of Service Batch</strong> applies compression to depth of application, not coverage — all 6 TOR modules are preserved. The diagnosis segment is retained at full length (it's load-bearing). The indicator clinic becomes a facilitated demonstration. Notably, <strong>sustainability receives proportionally MORE time</strong> because COS-managed PAPs carry the sharpest continuity risk — program memory is tied to contract cycles. Named trade-off: ROI analysis becomes a worked example rather than individual application.",
+        followUp: ['Tell me about APM LDI', 'What is the pre-assessment?', 'How does the 4-day arc work?', 'What is the Leverage Ladder?']
+      },
+
+      // ---- FOUR-DAY ARC ----
+      fourday: {
+        keywords: ['four day', '4-day', 'four-day', 'arc', 'day 1', 'day 2', 'day 3', 'day 4', 'diagnose', 'design', 'de-risk', 'sustain'],
+        response: "The <strong>Four-Day Arc</strong> sequences all six TOR modules around one question per day: <strong>Day 1 — Diagnose:</strong> \"Is this the right program, aimed at the right problem?\" (Modules 1 & 2). <strong>Day 2 — Design:</strong> \"Will this design produce the change it promises?\" (Module 3). <strong>Day 3 — De-Risk & Deliver:</strong> \"What will break, and will we know early enough?\" (Modules 4 & 5). <strong>Day 4 — Sustain:</strong> \"What outlives the program?\" (Module 6). Diagnosis comes first because a program cannot be designed against an unspecified problem.",
+        followUp: ['What is the pre-assessment?', 'What is the Leverage Ladder?', 'Tell me about APM LDI', 'What is the 3-day variant?']
+      },
+
+      // ---- CONTACT / HIRE ----
+      contact: {
+        keywords: ['contact', 'hire', 'email', 'phone', 'reach', 'collaborate', 'engage', 'book', 'schedule', 'call'],
+        response: "You can reach Alvin through: <strong>📧 Email:</strong> <a href=\"mailto:alvin.silva@asilvainnovations.com\">alvin.silva@asilvainnovations.com</a> · <strong>📱 Mobile:</strong> +63 917 855 5134 · <strong>🌐 Website:</strong> <a href=\"https://alvin-silva.asilvainnovations.com\">alvin-silva.asilvainnovations.com</a> · <strong>💼 LinkedIn:</strong> <a href=\"https://alvin-silva-linkedin.asilvainnovations.com\">LinkedIn Profile</a>. He replies within one business day with a structured read on feasibility, risks, and the fastest path to results. Engagements start with a 30-minute scoping call.",
+        followUp: ['What does Alvin deliver?', 'What is BIRD 2026-2035?', 'Tell me about his expertise', 'What are his books?']
+      },
+
+      // ---- WHAT HE DELIVERS ----
+      delivers: {
+        keywords: ['deliver', 'deliverable', 'output', 'what does he provide', 'consulting', 'engagement'],
+        response: "Alvin delivers <strong>fundable strategies, investment roadmaps, program designs, and evaluation systems</strong>. Recent deliverables include: the BIRD 2026–2035 Bangsamoro investment framework, a national TVET strategic plan for TESDA, a ₱190M climate-smart resilience project design for Balatan, Camarines Sur, WHO MHPSS modules for emergency responders, and the Advanced Program Management LDI for DepEd BHROD-HRDD. Every output is built for implementation — not shelf-ware. He works within government and UN procurement systems with full compliance.",
+        followUp: ['Tell me about BIRD 2026-2035', 'How can I hire Alvin?', 'What is APM LDI?', 'What digital platforms has he built?']
+      },
+
+      // ---- NON-LINEAR RELATIONSHIPS ----
+      nonlinear: {
+        keywords: ['non-linear', 'nonlinear', 'feedback loop', 'system loop', 'complexity', 'systems thinking'],
+        response: "<strong>Non-linear relationships</strong> in the education sector mean cause and effect are not proportional or straightforward. For example, procuring more materials (a linear fix) doesn't produce proportional improvement because the system has feedback loops: teachers improvise when materials are late → this masks the gap from the center → which deprioritizes timing changes → which keeps materials late. The problem <em>persists</em> because the system is structured to absorb the failure. The APM LDI teaches officers to see these loops and intervene at the right leverage point.",
+        followUp: ['What is the Leverage Ladder?', 'What is Fixes That Fail?', 'What is the Reading Proficiency illustration?', 'Tell me about APM LDI']
+      },
+
+      // ---- READING PROFICIENCY ILLUSTRATION ----
+      reading: {
+        keywords: ['reading', 'reading proficiency', 'illustration', 'procurement', 'materials arrive late', 'fiscal calendar'],
+        response: "The <strong>Reading Proficiency Illustration</strong> is a constructed example used for facilitator modeling. <strong>Presenting Problem:</strong> Reading materials arrive late due to a fiscal (not instructional) procurement calendar. <strong>Balancing Loop:</strong> Teachers improvise substitutes → outcomes held \"just high enough\" → gap masked from center → timing deprioritized. <strong>Reinforcing Loop:</strong> Late arrival → low uptake → weak demand signal → timing deprioritized → later arrival next cycle. <strong>Leverage Placement:</strong> Instead of procuring more materials (Rung 1–2), the intervention moves one rung up to Information Flows (Rung 4) — creating a short-cycle read on school-level readiness to inform the timing decision before it locks.",
+        followUp: ['What is the Leverage Ladder?', 'What are non-linear relationships?', 'What is the Mandate Test?', 'Tell me about APM LDI']
+      },
+
+      // ---- COGNITIO+ ----
+      cognitio: {
+        keywords: ['cognitio', 'cognitio+', 'knowledge ecosystem'],
+        response: "<strong>Cognitio+</strong> is the knowledge ecosystem behind Alvin's resilience practice — it encompasses publishing, learning, and evaluation tooling. It's the platform that compounds knowledge across engagements, turning field experience into citable, replicable methods. It supports the CASE Equation framework and connects to his published books.",
+        followUp: ['What is the CASE Equation?', 'What are his books?', 'What digital platforms has he built?', 'How can I contact him?']
+      },
+
+      // ---- DEFAULT / FALLBACK ----
+      default: {
+        response: "I'm not sure I have a specific answer for that, but I can help you with topics like: <strong>Alvin's background and expertise</strong>, the <strong>BIRD 2026-2035</strong> investment roadmap, the <strong>Advanced Program Management LDI</strong>, the <strong>Leverage Ladder</strong>, <strong>Fixes That Fail</strong>, his <strong>books and platforms</strong>, or <strong>how to hire him</strong>. What would you like to explore?",
+        followUp: ['Tell me about Alvin', 'What is BIRD 2026-2035?', 'Tell me about APM LDI', 'How can I hire Alvin?']
+      }
+    };
+
+    // ===== CHAT ENGINE =====
+    const chatMessages = document.getElementById('chatMessages');
+    const quickReplies = document.getElementById('quickReplies');
+    const chatInput = document.getElementById('chatInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const fallbackChat = document.getElementById('fallbackChat');
+
+    function addMessage(text, type = 'bot') {
+      const msg = document.createElement('div');
+      msg.className = `msg ${type}`;
+      msg.innerHTML = text;
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showQuickReplies(options) {
+      quickReplies.innerHTML = '';
+      if (!options || options.length === 0) return;
+      options.forEach(text => {
+        const btn = document.createElement('button');
+        btn.className = 'quick-reply';
+        btn.textContent = text;
+        btn.addEventListener('click', () => handleUserInput(text));
+        quickReplies.appendChild(btn);
+      });
+    }
+
+    function findResponse(input) {
+      const lower = input.toLowerCase().trim();
+      
+      // Check each FAQ category
+      for (const [key, category] of Object.entries(FAQ)) {
+        if (key === 'default') continue;
+        if (category.keywords && category.keywords.some(kw => lower.includes(kw))) {
+          return category;
+        }
+      }
+      
+      return FAQ.default;
+    }
+
+    function handleUserInput(text) {
+      if (!text.trim()) return;
+      
+      // Add user message
+      addMessage(text, 'user');
+      
+      // Clear input
+      chatInput.value = '';
+      quickReplies.innerHTML = '';
+      
+      // Find and show response with slight delay for natural feel
+      setTimeout(() => {
+        const response = findResponse(text);
+        addMessage(response.response, 'bot');
+        showQuickReplies(response.followUp);
+      }, 400);
+    }
+
+    // Event listeners
+    sendBtn.addEventListener('click', () => handleUserInput(chatInput.value));
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') handleUserInput(chatInput.value);
+    });
+
+    // Initialize fallback chat with greeting
+    function initFallbackChat() {
+      addMessage(FAQ.greeting.response, 'bot');
+      showQuickReplies(FAQ.greeting.followUp);
+    }
+
+    // ===== IFRAME LOADING & FALLBACK =====
     (function() {
       const iframe = document.getElementById('chatIframe');
       const loadingOverlay = document.getElementById('loadingOverlay');
-      const fallbackState = document.getElementById('fallbackState');
+      const statusText = document.getElementById('statusText');
       let loadTimeout;
       let hasLoaded = false;
 
-      // Hide loading when iframe loads
       iframe.addEventListener('load', function() {
         hasLoaded = true;
         clearTimeout(loadTimeout);
         loadingOverlay.classList.add('hidden');
+        statusText.textContent = 'Online';
       });
 
-      // Show fallback if iframe fails to load after 15 seconds
+      // Show fallback after 12 seconds if iframe fails
       loadTimeout = setTimeout(function() {
         if (!hasLoaded) {
           loadingOverlay.classList.add('hidden');
-          fallbackState.classList.add('active');
-
-          // Log for debugging (non-critical)
-          console.warn('ASilva iframe failed to load within timeout. Showing fallback.');
+          iframe.style.display = 'none';
+          fallbackChat.classList.add('active');
+          statusText.textContent = 'Offline Mode';
+          initFallbackChat();
+          console.warn('ASilva iframe failed to load. Activating automated FAQ fallback.');
         }
-      }, 15000);
+      }, 12000);
 
-      // Handle iframe errors
       iframe.addEventListener('error', function() {
         loadingOverlay.classList.add('hidden');
-        fallbackState.classList.add('active');
+        iframe.style.display = 'none';
+        fallbackChat.classList.add('active');
+        statusText.textContent = 'Offline Mode';
+        initFallbackChat();
       });
 
-      // Expose prompt function globally for suggested chips
+      // Expose prompt function for suggested chips
       window.sendPrompt = function(text) {
-        // Store prompt in sessionStorage for potential cross-origin communication
-        sessionStorage.setItem('asilva_pending_prompt', text);
-
-        // Try to focus iframe (may be blocked by sandbox)
-        try {
-          iframe.focus();
-        } catch(e) {
-          // Silently fail - user can manually type
-        }
-
-        // Hide loading to show chat
         loadingOverlay.classList.add('hidden');
+        // If iframe loaded, try to pass prompt
+        if (hasLoaded) {
+          try {
+            sessionStorage.setItem('asilva_pending_prompt', text);
+            iframe.focus();
+          } catch(e) {}
+        } else {
+          // Use fallback
+          iframe.style.display = 'none';
+          fallbackChat.classList.add('active');
+          statusText.textContent = 'Offline Mode';
+          initFallbackChat();
+          setTimeout(() => handleUserInput(text), 600);
+        }
       };
 
-      // Keyboard shortcut: Escape to go back
+      // Keyboard shortcut
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           window.location.href = 'index.html';
         }
       });
 
-      // PWA (audit 2026-08-04): this page previously never registered the
-      // service worker. Registration is idempotent across pages/tabs.
+      // Service worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
       }
