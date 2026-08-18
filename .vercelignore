@@ -1,0 +1,14 @@
+# Sensitive files (CRITICAL)
+credentials.json
+
+# Directories not needed for the live web deployment
+Alvin_Silva_CV_Versions/
+Edge_Extension/
+personal-resilience/
+
+# Documentation and local OS files
+README.md
+DOCUMENT_CUSTOMIZATION_TEMPLATE.md
+.DS_Store
+Thumbs.db
+*.log
