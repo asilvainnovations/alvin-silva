@@ -15,89 +15,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-/* ============================================================
-DESIGN TOKENS — Consistent with index.html
-============================================================ */
 :root {
---navy:        #f4f6fb;
---navy-2:      #eef1f8;
---card:        #ffffff;
---blue:        #0057c2;
---sky:         #0069a8;
---gold:        #8a6d00;
---green:       #0f7d51;
---violet:      #5b34c9;
---red:         #c62828;
---link:        #0052cc;
---link-hover:  #003d99;
---text:        #0d1224;
---text-2:      #2b3350;
---text-3:      rgba(20,26,46,.72);
---glass:       linear-gradient(135deg, rgba(10,20,60,.06), rgba(10,20,60,.025));
---glass-strong:linear-gradient(135deg, rgba(255,255,255,.94), rgba(240,244,252,.9));
---line:        rgba(10,20,60,.16);
---line-gold:   rgba(140,110,0,.4);
---divider:     rgba(10,20,60,.12);
---radius:      14px;
---accent:      #0069a8;
---accent-soft: rgba(0,105,168,.12);
---on-gold:     #ffffff;
---header-bg:       rgba(244,246,251,.9);
---header-border:   rgba(0,102,255,.3);
---footer-bg:       rgba(255,255,255,.94);
---footer-border:   rgba(0,102,255,.25);
---mobile-menu-bg:  linear-gradient(160deg,#ffffff,#eef1fb);
---input-bg:        rgba(255,255,255,.85);
---pill-bg:         rgba(90,110,160,.1);
---pill-bg-hover:   rgba(90,110,160,.18);
+--navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
+--blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+--link:#4db8ff; --link-hover:#8ad4ff;
+--text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+--glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+--glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+--line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28); --divider:rgba(255,255,255,.09);
+--radius:14px;
+--accent:#00BFFF; --accent-soft:rgba(0,191,255,.14); --on-gold:#0a0e27;
+--header-bg:rgba(10,14,39,.86); --header-border:rgba(0,102,255,.45);
+--footer-bg:rgba(6,9,24,.96); --footer-border:rgba(0,102,255,.4);
+--mobile-menu-bg:linear-gradient(160deg,#0d1430,#070b1d);
+--input-bg:rgba(10,16,42,.7); --pill-bg:rgba(255,255,255,.06); --pill-bg-hover:rgba(255,255,255,.12);
+--shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+--shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+--ease:cubic-bezier(.22,.8,.28,1);
+--body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%), linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
 --font-display:'Montserrat', system-ui, sans-serif;
---font-body:   'Poppins', system-ui, sans-serif;
---font-cond:   'Roboto Condensed', system-ui, sans-serif;
---font-mono:   'JetBrains Mono', ui-monospace, monospace;
---shadow-1:    0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
---shadow-2:    0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
---ease:        cubic-bezier(.22,.8,.28,1);
---body-bg:     radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%), linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
+--font-body:'Poppins', system-ui, sans-serif;
+--font-cond:'Roboto Condensed', system-ui, sans-serif;
+--font-mono:'JetBrains Mono', ui-monospace, monospace;
 }
-
-@media (prefers-color-scheme: dark) {
-:root {
---navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
---blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
---link:#4db8ff; --link-hover:#8ad4ff;
---text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
---glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
---glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
---line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28); --divider:rgba(255,255,255,.09);
---accent:#00BFFF; --accent-soft:rgba(0,191,255,.14); --on-gold:#0a0e27;
---header-bg:rgba(10,14,39,.86); --header-border:rgba(0,102,255,.45);
---footer-bg:rgba(6,9,24,.96); --footer-border:rgba(0,102,255,.4);
---mobile-menu-bg:linear-gradient(160deg,#0d1430,#070b1d);
---input-bg:rgba(10,16,42,.7); --pill-bg:rgba(255,255,255,.06); --pill-bg-hover:rgba(255,255,255,.12);
---shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
---shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
---body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%), linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
-}
-}
-
-html[data-theme="dark"] {
---navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
---blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
---link:#4db8ff; --link-hover:#8ad4ff;
---text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
---glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
---glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
---line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28); --divider:rgba(255,255,255,.09);
---accent:#00BFFF; --accent-soft:rgba(0,191,255,.14); --on-gold:#0a0e27;
---header-bg:rgba(10,14,39,.86); --header-border:rgba(0,102,255,.45);
---footer-bg:rgba(6,9,24,.96); --footer-border:rgba(0,102,255,.4);
---mobile-menu-bg:linear-gradient(160deg,#0d1430,#070b1d);
---input-bg:rgba(10,16,42,.7); --pill-bg:rgba(255,255,255,.06); --pill-bg-hover:rgba(255,255,255,.12);
---shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
---shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
---body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%), linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
-}
-
 html[data-theme="light"] {
 --navy:#f4f6fb; --navy-2:#eef1f8; --card:#ffffff;
 --blue:#0057c2; --sky:#0069a8; --gold:#8a6d00; --green:#0f7d51; --violet:#5b34c9; --red:#c62828;
@@ -116,22 +56,16 @@ html[data-theme="light"] {
 --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%), linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
 }
 
-/* ============================================================
-RESET & BASE
-============================================================ */
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:92px; }
 body {
 font-family:var(--font-body); font-weight:400; line-height:1.65;
-color:var(--text);
-background: var(--body-bg);
-background-attachment:fixed;
+color:var(--text); background:var(--body-bg); background-attachment:fixed;
 min-height:100vh; overflow-x:hidden;
 }
 img { max-width:100%; display:block; }
 h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.15; letter-spacing:-.01em; }
 a { color:var(--sky); }
-button { font-family:inherit; }
 ::selection { background:rgba(255,215,0,.35); color:#fff; }
 :focus-visible { outline:3px solid var(--gold); outline-offset:2px; border-radius:4px; }
 .skip-link {
@@ -141,12 +75,10 @@ padding:.6rem 1.1rem; border-radius:0 0 10px 10px; text-decoration:none; transit
 }
 .skip-link:focus { top:0; }
 
-/* ============================================================
-HEADER / NAV — Same as index.html
-============================================================ */
+/* ===== HEADER ===== */
 .site-header {
 position:sticky; top:0; z-index:1000;
-background:var(--header-bg); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%);
+background:var(--header-bg); backdrop-filter:blur(20px) saturate(180%);
 border-bottom:1px solid var(--header-border); box-shadow:0 8px 30px rgba(0,0,0,.2);
 }
 .nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem clamp(1rem,4vw,2.5rem); max-width:1400px; margin:0 auto; }
@@ -158,8 +90,7 @@ border-bottom:1px solid var(--header-border); box-shadow:0 8px 30px rgba(0,0,0,.
 .nav-links > li > a, .drop-btn {
 font-family:var(--font-cond); font-size:.92rem; font-weight:600; letter-spacing:.06em;
 color:var(--text); text-decoration:none; padding:.55rem .85rem; border-radius:8px;
-display:inline-flex; align-items:center; gap:.4rem; background:none; border:1px solid transparent; cursor:pointer;
-transition:.25s;
+display:inline-flex; align-items:center; gap:.4rem; background:none; border:1px solid transparent; cursor:pointer; transition:.25s;
 }
 .nav-links a:hover, .drop-btn:hover, .drop.open .drop-btn { color:var(--gold); background:rgba(255,215,0,.08); }
 .drop { position:relative; }
@@ -168,13 +99,12 @@ transition:.25s;
 .drop-menu {
 position:absolute; top:calc(100% + .6rem); left:50%; transform:translate(-50%, -8px);
 min-width:260px; padding:.6rem; border-radius:14px; opacity:0; visibility:hidden; transition:.28s var(--ease);
-background:var(--mobile-menu-bg);
-border:1px solid var(--line-gold); box-shadow:0 20px 50px rgba(0,0,0,.35); z-index:1001;
+background:var(--mobile-menu-bg); border:1px solid var(--line-gold); box-shadow:0 20px 50px rgba(0,0,0,.35); z-index:1001;
 }
 .drop.open .drop-menu { opacity:1; visibility:visible; transform:translate(-50%, 0); }
 .drop-head { font-family:var(--font-cond); font-size:.66rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); padding:.45rem .8rem .55rem; border-bottom:1px solid var(--line); margin-bottom:.4rem; }
 .drop-item { display:flex; align-items:center; gap:.7rem; padding:.6rem .8rem; border-radius:9px; color:var(--text); text-decoration:none; font-size:.9rem; transition:.2s; }
-.drop-item svg { width:16px; height:16px; color:var(--sky); flex:none; }
+.drop-item i { width:16px; text-align:center; color:var(--sky); flex:none; }
 .drop-item:hover { background:rgba(255,215,0,.12); color:var(--gold); }
 .drop-item.active { background:rgba(255,215,0,.15); color:var(--gold); font-weight:600; }
 .nav-cta { display:none; align-items:center; gap:.6rem; }
@@ -184,11 +114,23 @@ width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
 background:var(--pill-bg); color:var(--text); flex:none; transition:.25s;
 }
 .theme-toggle:hover { border-color:var(--gold); transform:translateY(-2px); }
-.theme-toggle svg { width:19px; height:19px; }
+.theme-toggle i { font-size:1rem; }
 .theme-toggle .icon-moon { display:block; }
 .theme-toggle .icon-sun { display:none; }
 html[data-theme="light"] .theme-toggle .icon-moon { display:none; }
 html[data-theme="light"] .theme-toggle .icon-sun { display:block; }
+.btn {
+display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+font-family:var(--font-display); font-weight:700; font-size:.92rem; letter-spacing:.03em;
+padding:.85rem 1.7rem; border-radius:999px; border:2px solid transparent; cursor:pointer;
+text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s;
+position:relative; overflow:hidden; min-height:48px;
+}
+.btn-primary { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 8px 24px rgba(0,102,255,.35); }
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
+.btn-gold { background:transparent; color:var(--gold); border-color:var(--gold); }
+.btn-gold:hover { background:var(--gold); color:var(--on-gold); transform:translateY(-3px); }
+.btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
 .menu-btn { display:inline-flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:.55rem; z-index:1102; }
 .menu-btn span { width:24px; height:2.5px; background:var(--text); border-radius:2px; transition:.3s; }
 .menu-btn[aria-expanded="true"] span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
@@ -199,8 +141,7 @@ html[data-theme="light"] .theme-toggle .icon-sun { display:block; }
 .mobile-menu {
 position:fixed; top:0; right:-105%; width:min(84vw, 340px); height:100dvh; z-index:1099;
 background:var(--mobile-menu-bg); border-left:1px solid var(--line);
-padding:1.4rem; transition:right .35s var(--ease); overflow-y:auto;
-display:flex; flex-direction:column;
+padding:1.4rem; transition:right .35s var(--ease); overflow-y:auto; display:flex; flex-direction:column;
 }
 .mobile-menu.open { right:0; }
 .mobile-menu .mm-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4rem; }
@@ -209,13 +150,11 @@ display:flex; flex-direction:column;
 .mm-group { margin-bottom:1.1rem; }
 .mm-group-title { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-bottom:.5rem; padding-left:.2rem; }
 .mm-link { display:flex; align-items:center; gap:.7rem; padding:.68rem .6rem; color:var(--text); text-decoration:none; font-size:1rem; border-radius:9px; }
-.mm-link svg { width:16px; height:16px; color:var(--sky); }
+.mm-link i { width:16px; text-align:center; color:var(--sky); }
 .mm-link:active, .mm-link:hover { background:var(--pill-bg); color:var(--gold); }
 .mm-link.active { background:rgba(255,215,0,.12); color:var(--gold); font-weight:600; }
 
-/* ============================================================
-LAYOUT
-============================================================ */
+/* ===== LAYOUT ===== */
 .wrap { width:100%; max-width:1280px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
 .section { padding:clamp(3.5rem,8vw,6rem) 0; position:relative; }
 .section-alt { background:linear-gradient(180deg, var(--navy-2) 0%, transparent 100%); border-block:1px solid var(--divider); }
@@ -226,47 +165,18 @@ display:flex; align-items:center; gap:.7rem; justify-content:center;
 }
 .kicker::before,.kicker::after { content:''; height:1px; width:34px; background:linear-gradient(90deg,transparent,var(--accent)); }
 .kicker::after { transform:scaleX(-1); }
-.section-title {
-font-size:clamp(1.7rem,4.6vw,2.6rem); font-weight:800; text-align:center; margin-bottom:.9rem;
-}
-.section-title .hl, .grad-text {
-background:linear-gradient(92deg, var(--sky) 0%, var(--blue) 45%, var(--gold) 100%);
--webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-}
+.section-title { font-size:clamp(1.7rem,4.6vw,2.6rem); font-weight:800; text-align:center; margin-bottom:.9rem; }
+.section-title .hl, .grad-text { background:linear-gradient(92deg, var(--sky) 0%, var(--blue) 45%, var(--gold) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
 .section-sub { text-align:center; color:var(--text-3); max-width:720px; margin:0 auto clamp(2rem,5vw,3.2rem); font-weight:300; font-size:clamp(.95rem,2.4vw,1.05rem); }
-.glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); border-radius:var(--radius); }
-.glass-strong { background:var(--glass-strong); border:1px solid var(--line); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:var(--shadow-1); border-radius:var(--radius); }
-.glass-gold { background:linear-gradient(135deg, rgba(255,215,0,.14), rgba(255,215,0,.04)); border:1px solid var(--line-gold); backdrop-filter:blur(14px); border-radius:var(--radius); }
-.btn {
-display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
-font-family:var(--font-display); font-weight:700; font-size:.92rem; letter-spacing:.03em;
-padding:.85rem 1.7rem; border-radius:999px; border:2px solid transparent; cursor:pointer;
-text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s;
-position:relative; overflow:hidden; min-height:48px;
-}
-.btn svg { width:17px; height:17px; flex:none; }
-.btn-primary { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 8px 24px rgba(0,102,255,.35); }
-.btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
-.btn-gold { background:transparent; color:var(--gold); border-color:var(--gold); }
-.btn-gold:hover { background:var(--gold); color:var(--on-gold); transform:translateY(-3px); }
-.btn-ghost { background:var(--pill-bg); color:var(--text); border-color:var(--line); }
-.btn-ghost:hover { background:var(--pill-bg-hover); transform:translateY(-2px); }
-.btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
-.chip {
-display:inline-flex; align-items:center; gap:.45rem; padding:.42rem 1rem; border-radius:999px;
-font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em;
-border:1px solid var(--line); background:var(--pill-bg); color:var(--text-2);
-}
+.glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); border-radius:var(--radius); }
 
-/* ============================================================
-HERO — APM LDI Banner
-============================================================ */
+/* ===== HERO ===== */
 .apm-hero { position:relative; padding:0 0 clamp(3rem,7vw,5rem); background:#0a0e27; overflow:hidden; }
 .apm-hero-banner { position:absolute; inset:0; z-index:0; height:100%; overflow:hidden; }
 .apm-hero-banner img { width:100%; height:100%; object-fit:cover; object-position:center; }
 .apm-hero-banner::after {
 content:''; position:absolute; inset:0;
-background:linear-gradient(180deg, rgba(10,14,39,.6) 0%, rgba(10,14,39,.82) 50%, rgba(10,14,39,.96) 100%);
+background:linear-gradient(180deg, rgba(10,14,39,.55) 0%, rgba(10,14,39,.78) 50%, rgba(10,14,39,.96) 100%);
 }
 .apm-hero-content { position:relative; z-index:2; padding-top:clamp(5rem,12vw,8rem); }
 .apm-hero-eyebrow { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.24em; text-transform:uppercase; color:#FFD700; margin-bottom:.8rem; text-align:center; }
@@ -283,26 +193,50 @@ font-family:var(--font-cond); font-size:.82rem; font-weight:500;
 .apm-hero-meta-item i { color:var(--gold); }
 .apm-hero-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:.8rem; }
 
-/* ============================================================
-VISUAL BANNER — Image Display
-============================================================ */
-.visual-banner {
-margin:0 auto 2.5rem; max-width:960px; padding:0 clamp(1rem,4vw,2.5rem);
+/* ===== FULL-WIDTH IMAGE BANNERS ===== */
+.full-image-banner {
+width:100%;
+max-width:1280px;
+margin:0 auto 2.5rem;
+padding:0 clamp(1rem,4vw,2.5rem);
 }
-.visual-banner img {
-width:100%; border-radius:var(--radius); border:1px solid var(--line);
-box-shadow:var(--shadow-1); transition:transform .3s var(--ease);
+.full-image-banner img {
+width:100%;
+height:auto;
+border-radius:var(--radius);
+border:1px solid var(--line);
+box-shadow:var(--shadow-2);
+transition:transform .4s var(--ease), box-shadow .4s;
+cursor:zoom-in;
 }
-.visual-banner img:hover { transform:scale(1.01); }
-.visual-banner-caption {
-text-align:center; margin-top:.8rem;
+.full-image-banner img:hover {
+transform:scale(1.005);
+box-shadow:0 24px 60px rgba(0,102,255,.25), 0 8px 24px rgba(255,215,0,.1);
+}
+.full-image-banner-caption {
+text-align:center; margin-top:.9rem;
 font-family:var(--font-cond); font-size:.78rem; color:var(--text-3);
 letter-spacing:.06em; font-style:italic;
 }
 
-/* ============================================================
-SG-15+ GRID
-============================================================ */
+/* ===== LIGHTBOX ===== */
+.lightbox {
+position:fixed; inset:0; z-index:1300; display:flex; align-items:center; justify-content:center;
+padding:1.2rem; background:rgba(4,6,16,.92); backdrop-filter:blur(6px);
+opacity:0; visibility:hidden; transition:.3s;
+}
+.lightbox.show { opacity:1; visibility:visible; }
+.lightbox-inner { max-width:min(1100px, 95vw); max-height:92dvh; text-align:center; }
+.lightbox-inner img { max-width:100%; max-height:85dvh; border-radius:10px; margin:0 auto; box-shadow:0 30px 70px rgba(0,0,0,.6); }
+.lightbox-caption { margin-top:1rem; color:#fff; font-family:var(--font-display); font-weight:700; font-size:1rem; }
+.lightbox-close {
+position:absolute; top:1rem; right:1rem; width:44px; height:44px; border-radius:50%;
+background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); color:#fff; cursor:pointer;
+display:flex; align-items:center; justify-content:center; font-size:1.2rem;
+}
+.lightbox-close:hover { background:rgba(255,255,255,.2); }
+
+/* ===== SG-15+ GRID ===== */
 .sg15-grid { display:grid; gap:1.2rem; grid-template-columns:1fr; }
 .sg15-card { border-radius:var(--radius); padding:1.6rem; position:relative; overflow:hidden; transition:transform .3s var(--ease), box-shadow .3s; }
 .sg15-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--accent); opacity:.85; }
@@ -315,9 +249,7 @@ SG-15+ GRID
 .sg15-list li:last-child { border-bottom:none; }
 .sg15-list li i { margin-top:.25rem; font-size:.6rem; flex-shrink:0; }
 
-/* ============================================================
-PARADIGM TABLE
-============================================================ */
+/* ===== PARADIGM TABLE ===== */
 .paradigm-table-wrap { overflow-x:auto; margin:2rem 0; border-radius:var(--radius); border:1px solid var(--line); }
 .paradigm-table { width:100%; border-collapse:collapse; font-size:.88rem; }
 .paradigm-table th { padding:1rem 1.2rem; text-align:left; font-family:var(--font-cond); font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; border-bottom:2px solid var(--line); }
@@ -330,9 +262,7 @@ PARADIGM TABLE
 .paradigm-table td:nth-child(3) { color:var(--text-2); font-weight:500; }
 .paradigm-table tr:last-child td { border-bottom:none; }
 
-/* ============================================================
-TIMELINE — 4-DAY ARC
-============================================================ */
+/* ===== TIMELINE ===== */
 .timeline { position:relative; max-width:960px; margin:0 auto; padding-left:34px; }
 .timeline::before { content:''; position:absolute; left:9px; top:6px; bottom:6px; width:3px; border-radius:3px; background:linear-gradient(180deg, var(--blue), var(--sky), var(--gold)); }
 .tl-item { position:relative; margin-bottom:1.4rem; }
@@ -358,9 +288,7 @@ font-family:var(--font-cond); font-size:.76rem; font-weight:600;
 .tl-expand .chev { width:9px; height:9px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg); transition:transform .3s; }
 .tl-card.open .tl-expand .chev { transform:rotate(225deg); }
 
-/* ============================================================
-DIAGNOSTIC ENGINE
-============================================================ */
+/* ===== DIAGNOSTIC BOX ===== */
 .diagnostic-box {
 border-radius:var(--radius); padding:clamp(1.5rem,4vw,2.5rem);
 background:linear-gradient(135deg, rgba(0,102,255,.12), rgba(0,191,255,.05));
@@ -377,9 +305,7 @@ padding:1rem; text-align:center; transition:var(--ease);
 .strain-domain i { font-size:1.3rem; color:var(--gold); margin-bottom:.5rem; display:block; }
 .strain-domain span { font-family:var(--font-cond); font-size:.76rem; font-weight:600; color:var(--text-2); letter-spacing:.04em; }
 
-/* ============================================================
-CALIBRATION FLOW
-============================================================ */
+/* ===== CALIBRATION FLOW ===== */
 .calibration-flow { display:grid; grid-template-columns:1fr; gap:1rem; margin-top:1.5rem; }
 .calibration-step {
 background:var(--glass); border:1px solid var(--line); border-radius:var(--radius);
@@ -389,9 +315,7 @@ padding:1.2rem 1.4rem; position:relative; transition:var(--ease);
 .calibration-step h5 { font-family:var(--font-cond); font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); margin-bottom:.5rem; }
 .calibration-step p { font-size:.85rem; color:var(--text-2); line-height:1.6; font-weight:300; }
 
-/* ============================================================
-LEVERAGE LADDER
-============================================================ */
+/* ===== LEVERAGE LADDER ===== */
 .ladder-visual {
 background:var(--glass); border:1px solid var(--line); border-radius:var(--radius);
 padding:clamp(1.5rem,4vw,2rem); margin-top:1.5rem;
@@ -418,9 +342,7 @@ font-family:var(--font-mono); font-size:.75rem; font-weight:800; flex-shrink:0;
 .ladder-info h5 { font-size:.88rem; color:var(--text); margin-bottom:.15rem; }
 .ladder-info p { font-size:.78rem; color:var(--text-3); }
 
-/* ============================================================
-EXERCISE CARDS
-============================================================ */
+/* ===== EXERCISE CARDS ===== */
 .exercise-grid { display:grid; gap:1.2rem; grid-template-columns:1fr; }
 .exercise-card {
 background:var(--glass); border:1px solid var(--line); border-radius:var(--radius);
@@ -434,9 +356,7 @@ padding:1.5rem; transition:transform .3s var(--ease), box-shadow .3s; position:r
 .exercise-card p { font-size:.86rem; color:var(--text-2); line-height:1.7; font-weight:300; }
 .exercise-time { display:inline-flex; align-items:center; gap:.4rem; margin-top:.8rem; font-family:var(--font-cond); font-size:.74rem; color:var(--text-3); font-weight:600; }
 
-/* ============================================================
-5-MINUTE LIVE DEMO — INTERVIEW PANEL
-============================================================ */
+/* ===== 5-MINUTE LIVE DEMO ===== */
 .live-demo { margin-top:2.5rem; }
 .live-demo-header { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin-bottom:1.5rem; }
 .live-demo-badge {
@@ -494,9 +414,7 @@ transition:var(--ease);
 .demo-dialogue.a .tag { color:var(--gold); }
 .demo-dialogue.insight .tag { color:var(--green); }
 
-/* ============================================================
-FIXES THAT FAIL
-============================================================ */
+/* ===== FIXES THAT FAIL ===== */
 .ftf-section { background:var(--glass); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:2rem; }
 .ftf-header { background:linear-gradient(135deg, rgba(0,102,255,.15), rgba(0,191,255,.08)); padding:1.5rem; border-bottom:1px solid var(--line); }
 .ftf-header h3 { font-size:1.2rem; margin-bottom:.5rem; display:flex; align-items:center; gap:.6rem; }
@@ -538,9 +456,16 @@ text-align:center; transition:var(--ease); min-width:100px;
 .loop-label-badge.B { background:rgba(0,102,255,.12); color:var(--sky); }
 .loop-label-badge.R { background:rgba(248,113,113,.12); color:var(--red); }
 
-/* ============================================================
-ASSESSMENT CARDS
-============================================================ */
+/* ===== ILLUSTRATION BOX ===== */
+.illustration-box {
+background:linear-gradient(135deg, rgba(255,215,0,.06), rgba(255,215,0,.02));
+border:1px solid rgba(255,215,0,.2); border-radius:var(--radius);
+padding:1.5rem; margin-top:1.5rem;
+}
+.illustration-box h4 { font-size:1.1rem; color:var(--text); margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
+.illustration-box h4 i { color:var(--gold); }
+
+/* ===== ASSESSMENT CARDS ===== */
 .assessment-grid { display:grid; gap:1.2rem; grid-template-columns:1fr; }
 .assessment-card {
 background:var(--glass); border:1px solid var(--line); border-radius:var(--radius);
@@ -555,9 +480,7 @@ margin:0 auto 1rem; font-size:1.2rem; color:var(--accent);
 .assessment-card h4 { font-size:.92rem; margin-bottom:.5rem; color:var(--text); }
 .assessment-card p { font-size:.82rem; color:var(--text-2); line-height:1.7; font-weight:300; }
 
-/* ============================================================
-INSTRUMENT TABLE
-============================================================ */
+/* ===== INSTRUMENT TABLE ===== */
 .instrument-section { background:var(--glass); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; margin-top:1.5rem; }
 .instrument-header { background:linear-gradient(135deg, rgba(0,102,255,.15), rgba(0,191,255,.08)); padding:1.5rem; border-bottom:1px solid var(--line); }
 .instrument-header h3 { font-size:1.2rem; margin-bottom:.4rem; }
@@ -573,9 +496,7 @@ INSTRUMENT TABLE
 .strain-table tr:last-child td { border-bottom:none; }
 .domain-badge { display:inline-block; padding:.2rem .6rem; border-radius:999px; font-family:var(--font-cond); font-size:.68rem; font-weight:600; background:rgba(255,215,0,.1); color:var(--gold); border:1px solid rgba(255,215,0,.25); white-space:nowrap; }
 
-/* ============================================================
-VARIANT BOX
-============================================================ */
+/* ===== VARIANT BOX ===== */
 .variant-box { background:var(--glass); border:1px solid var(--line); border-radius:var(--radius); padding:1.5rem; margin-top:1.5rem; }
 .variant-box h4 { font-size:1rem; color:var(--text); margin-bottom:1rem; display:flex; align-items:center; gap:.6rem; }
 .variant-box h4 i { color:var(--gold); }
@@ -584,25 +505,7 @@ VARIANT BOX
 .variant-item h5 { font-size:.85rem; color:var(--text); margin-bottom:.3rem; }
 .variant-item p { font-size:.78rem; color:var(--text-2); line-height:1.6; font-weight:300; }
 
-/* ============================================================
-ILLUSTRATION BOX
-============================================================ */
-.illustration-box {
-background:linear-gradient(135deg, rgba(255,215,0,.06), rgba(255,215,0,.02));
-border:1px solid rgba(255,215,0,.2); border-radius:var(--radius);
-padding:1.5rem; margin-top:1.5rem;
-}
-.illustration-box h4 { font-size:1.1rem; color:var(--text); margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
-.illustration-box h4 i { color:var(--gold); }
-.loop-diagram { display:flex; flex-wrap:wrap; gap:.8rem; margin:1rem 0; align-items:center; }
-.loop-diagram .loop-node { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:.7rem 1rem; font-size:.8rem; display:flex; align-items:center; gap:.5rem; transition:var(--ease); }
-.loop-diagram .loop-node:hover { border-color:var(--gold); box-shadow:var(--shadow-1); }
-.loop-diagram .loop-node i { color:var(--gold); }
-.loop-arrow { display:flex; align-items:center; color:var(--text-3); font-size:1.1rem; }
-
-/* ============================================================
-TOR DELIVERY
-============================================================ */
+/* ===== TOR DELIVERY ===== */
 .tor-flow { display:grid; gap:1rem; grid-template-columns:1fr; }
 .tor-step {
 background:var(--glass); border:1px solid var(--line); border-radius:var(--radius);
@@ -613,9 +516,7 @@ padding:1.3rem; text-align:center; transition:var(--ease); position:relative;
 .tor-step h5 { font-size:.88rem; color:var(--text); margin-bottom:.4rem; }
 .tor-step p { font-size:.78rem; color:var(--text-2); line-height:1.6; font-weight:300; }
 
-/* ============================================================
-FAQ
-============================================================ */
+/* ===== FAQ ===== */
 .faq-list { max-width:860px; margin:0 auto; display:grid; gap:.8rem; }
 .faq-item { border-radius:var(--radius); overflow:hidden; }
 .faq-q { width:100%; display:flex; justify-content:space-between; align-items:center; gap:1rem; text-align:left; background:none; border:none; color:var(--text); font-family:var(--font-display); font-weight:700; font-size:.95rem; padding:1.1rem 1.3rem; cursor:pointer; }
@@ -625,9 +526,7 @@ FAQ
 .faq-item.open .faq-a { max-height:400px; }
 .faq-a p { padding:0 1.3rem 1.2rem; font-size:.88rem; font-weight:300; color:var(--text-2); line-height:1.75; }
 
-/* ============================================================
-FOOTER — Same as index.html
-============================================================ */
+/* ===== FOOTER ===== */
 .site-footer { background:var(--footer-bg); border-top:1px solid var(--footer-border); padding:3.2rem 0 1.6rem; margin-top:2rem; }
 .footer-grid { display:grid; gap:2rem; grid-template-columns:1fr; margin-bottom:2.2rem; }
 .footer-brand p { font-size:.86rem; font-weight:300; color:var(--text-3); line-height:1.7; margin-top:.8rem; max-width:340px; }
@@ -637,15 +536,12 @@ FOOTER — Same as index.html
 .footer-col a { color:var(--text-3); text-decoration:none; font-size:.88rem; transition:.2s; }
 .footer-col a:hover { color:var(--sky); padding-left:4px; }
 .socials { display:flex; gap:.7rem; margin-top:1.1rem; }
-.socials a { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--blue), var(--sky)); transition:transform .3s var(--ease), box-shadow .3s; }
-.socials a svg { width:18px; height:18px; fill:#fff; }
+.socials a { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--blue), var(--sky)); transition:transform .3s var(--ease), box-shadow .3s; color:#fff; text-decoration:none; }
 .socials a:hover { transform:translateY(-4px) rotate(8deg); box-shadow:0 10px 24px rgba(0,191,255,.45); }
 .footer-base { border-top:1px solid var(--divider); padding-top:1.4rem; display:flex; flex-direction:column; gap:.8rem; align-items:center; text-align:center; }
 .footer-base p { font-size:.8rem; color:var(--text-3); font-weight:300; }
 
-/* ============================================================
-FLOATING AI CHAT WIDGET — FAQ Fallback
-============================================================ */
+/* ===== AI CHAT WIDGET ===== */
 .chat-widget { position:fixed; bottom:1.2rem; right:1.2rem; z-index:1100; font-family:var(--font-body); }
 .chat-fab {
 width:60px; height:60px; border-radius:50%; border:none; cursor:pointer;
@@ -682,7 +578,6 @@ color:#fff; flex-shrink:0;
 .chat-panel-btn { width:32px; height:32px; border-radius:50%; border:none; cursor:pointer; background:rgba(255,255,255,.18); color:#fff; font-size:1rem; line-height:1; display:flex; align-items:center; justify-content:center; transition:.2s; }
 .chat-panel-btn:hover { background:rgba(255,255,255,.3); }
 .chat-panel-body { flex:1; overflow-y:auto; padding:1.2rem; background:var(--navy-2); }
-.chat-message { margin-bottom:1rem; }
 .chat-message p { font-size:.84rem; color:var(--text-2); line-height:1.7; background:var(--glass); padding:.8rem 1rem; border-radius:12px 12px 12px 4px; border:1px solid var(--line); }
 .chat-suggestions { display:flex; flex-direction:column; gap:.5rem; margin-top:1rem; }
 .chat-suggestion {
@@ -695,22 +590,15 @@ transition:var(--ease); text-align:left; width:100%; font-family:var(--font-body
 .chat-response.visible { display:block; animation:fadeIn .3s ease; }
 @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
 
-/* ============================================================
-BACK TO TOP
-============================================================ */
-.back-to-top { position:fixed; bottom:1.2rem; left:1.2rem; z-index:900; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg, var(--blue), var(--sky)); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transform:translateY(12px); transition:.3s; box-shadow:0 8px 22px rgba(0,102,255,.4); }
+/* ===== BACK TO TOP ===== */
+.back-to-top { position:fixed; bottom:1.2rem; left:1.2rem; z-index:900; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg, var(--blue), var(--sky)); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transform:translateY(12px); transition:.3s; box-shadow:0 8px 22px rgba(0,102,255,.4); color:#fff; font-size:1.2rem; }
 .back-to-top.visible { opacity:1; visibility:visible; transform:none; }
-.back-to-top svg { width:20px; height:20px; fill:#fff; }
 
-/* ============================================================
-SCROLL REVEAL
-============================================================ */
+/* ===== SCROLL REVEAL ===== */
 html.js .reveal { opacity:0; transform:translateY(34px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 html.js .reveal.in { opacity:1; transform:none; }
 
-/* ============================================================
-RESPONSIVE
-============================================================ */
+/* ===== RESPONSIVE ===== */
 @media (min-width:600px) {
 .sg15-grid { grid-template-columns:1fr 1fr; }
 .exercise-grid { grid-template-columns:1fr 1fr; }
@@ -746,19 +634,6 @@ body { background:#fff; color:#000; }
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
-
-<!-- SVG Icon Sprite -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-<defs>
-<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
-<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
-<symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></symbol>
-<symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
-<symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
-<symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
-<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9z"/></symbol>
-</defs>
-</svg>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header">
@@ -797,8 +672,8 @@ body { background:#fff; color:#000; }
 </ul>
 <div class="nav-cta">
 <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Toggle light / dark theme">
-<svg class="icon-moon"><use href="#i-moon"/></svg>
-<svg class="icon-sun"><use href="#i-sun"/></svg>
+<i class="fas fa-moon icon-moon"></i>
+<i class="fas fa-sun icon-sun"></i>
 </button>
 <a href="index.html#contact" class="btn btn-primary btn-sm"><span>Let's Collaborate</span></a>
 </div>
@@ -834,10 +709,10 @@ body { background:#fff; color:#000; }
 
 <main id="main">
 
-<!-- ============ HERO ============ -->
+<!-- ============ 1. HERO — apm-ldi.png ============ -->
 <section class="apm-hero">
 <div class="apm-hero-banner">
-<img src="assets/images/apm-ldi.png" alt="Advanced Program Management LDI" fetchpriority="high" decoding="async">
+<img src="assets/images/apm-ldi.png" alt="Advanced Program Management LDI — Session Design for DepEd BHROD-HRDD" fetchpriority="high" decoding="async">
 </div>
 <div class="apm-hero-content wrap">
 <p class="apm-hero-eyebrow">Learning & Development Intervention</p>
@@ -850,22 +725,22 @@ body { background:#fff; color:#000; }
 <span class="apm-hero-meta-item"><i class="fas fa-building"></i> DepEd Central Office</span>
 </div>
 <div class="apm-hero-actions">
-<a href="#architecture" class="btn btn-primary"><span>Explore the Architecture</span><svg><use href="#i-arrow"/></svg></a>
+<a href="#architecture" class="btn btn-primary"><span>Explore the Architecture</span></a>
 <a href="#livedemo" class="btn btn-gold"><span>Watch Live Demo</span></a>
 </div>
 </div>
 </section>
 
-<!-- ============ DESIGNING FOR SG-15+ ============ -->
+<!-- ============ 2. DESIGNING FOR SG-15+ — designing-for-sf-15.png ============ -->
 <section class="section" id="sg15">
 <div class="wrap">
 <p class="kicker">Target Cohort</p>
 <h2 class="section-title">Designing for the <span class="hl">SG-15+ Cohort</span></h2>
 <p class="section-sub">The single most consequential fact in the design is in your own Terms of Reference. These are not learners acquiring a first framework.</p>
 
-<div class="visual-banner">
-<img src="assets/images/designing-for-sf-15.png" alt="Designing for SG-15+ Cohort" loading="lazy">
-<p class="visual-banner-caption">Foundational Frameworks vs. Judgment Under Complexity</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/designing-for-sf-15.png" alt="Designing for SG-15+ Cohort — Foundational Frameworks vs. Judgment Under Complexity" loading="lazy" data-lightbox-src="assets/images/designing-for-sf-15.png" data-lightbox-title="Designing for the SG-15+ Cohort">
+<p class="full-image-banner-caption">Foundational Frameworks vs. Judgment Under Complexity — Click to enlarge</p>
 </div>
 
 <div class="sg15-grid">
@@ -890,16 +765,16 @@ body { background:#fff; color:#000; }
 </div>
 </section>
 
-<!-- ============ PARADIGM SHIFT ============ -->
+<!-- ============ 3. PARADIGM SHIFT — paradign-shift.png ============ -->
 <section class="section section-alt" id="paradigm">
 <div class="wrap">
 <p class="kicker">Design Philosophy</p>
 <h2 class="section-title">The Paradigm Shift in <span class="hl">Delivery</span></h2>
 <p class="section-sub">Adults holding institutional authority do not learn efficiently by receiving frameworks. They learn by defending decisions in front of competent peers.</p>
 
-<div class="visual-banner">
-<img src="assets/images/paradign-shift.png" alt="Paradigm Shift in Delivery" loading="lazy">
-<p class="visual-banner-caption">From Foundational LDI to Advanced LDI — A Fundamental Redesign</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/paradign-shift.png" alt="Paradigm Shift in Delivery — From Foundational LDI to Advanced LDI" loading="lazy" data-lightbox-src="assets/images/paradign-shift.png" data-lightbox-title="The Paradigm Shift in Delivery">
+<p class="full-image-banner-caption">From Foundational LDI to Advanced LDI — A Fundamental Redesign — Click to enlarge</p>
 </div>
 
 <div class="paradigm-table-wrap glass">
@@ -919,16 +794,16 @@ body { background:#fff; color:#000; }
 </div>
 </section>
 
-<!-- ============ FOUR-DAY ARC ============ -->
+<!-- ============ 4. FOUR-DAY ARC — 4-day-arc.png ============ -->
 <section class="section" id="architecture">
 <div class="wrap">
 <p class="kicker">Architecture</p>
 <h2 class="section-title">The Four-Day <span class="hl">Arc</span></h2>
 <p class="section-sub">All six TOR modules, sequenced around one question per day. Diagnosis first, because a program cannot be designed against an unspecified problem.</p>
 
-<div class="visual-banner">
-<img src="assets/images/4-day-arc.png" alt="Four-Day Architecture" loading="lazy">
-<p class="visual-banner-caption">Seeds Sustainability — Four progressive stages from Diagnose to Sustain</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/4-day-arc.png" alt="Four-Day Architecture — Diagnose, Design, De-Risk & Deliver, Sustain" loading="lazy" data-lightbox-src="assets/images/4-day-arc.png" data-lightbox-title="The Four-Day Arc">
+<p class="full-image-banner-caption">Seeds Sustainability — Four progressive stages from Diagnose to Sustain — Click to enlarge</p>
 </div>
 
 <div class="timeline">
@@ -1002,16 +877,16 @@ body { background:#fff; color:#000; }
 </div>
 </section>
 
-<!-- ============ DIAGNOSTIC ENGINE ============ -->
+<!-- ============ 5. DIAGNOSTIC ENGINE — diagnostic.png ============ -->
 <section class="section section-alt" id="diagnostic">
 <div class="wrap">
 <p class="kicker">Pre-Assessment</p>
 <h2 class="section-title">The Diagnostic <span class="hl">Engine</span></h2>
 <p class="section-sub">Standard knowledge tests produce defensive performance, hit a terminology ceiling, and tell the facilitator nothing about what to do on Day 1.</p>
 
-<div class="visual-banner">
-<img src="assets/images/diagnostic.png" alt="The PAP Under Pressure Diagnostic" loading="lazy">
-<p class="visual-banner-caption">The PAP Under Pressure — From Raw Inputs to Calibrated Pressure</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/diagnostic.png" alt="The PAP Under Pressure Diagnostic — From Raw Inputs to Calibrated Pressure" loading="lazy" data-lightbox-src="assets/images/diagnostic.png" data-lightbox-title="The Diagnostic Engine: The PAP Under Pressure">
+<p class="full-image-banner-caption">The PAP Under Pressure — From Raw Inputs to Calibrated Pressure — Click to enlarge</p>
 </div>
 
 <div class="diagnostic-box">
@@ -1027,13 +902,14 @@ body { background:#fff; color:#000; }
 </div>
 </div>
 
+<!-- ============ 6. CALIBRATION — calibration.png ============ -->
 <div style="margin-top:3rem">
 <h3 style="font-size:1.3rem; text-align:center; margin-bottom:.5rem">Calibration Flow: How Data Redesigns Day 1</h3>
 <p style="text-align:center; color:var(--text-3); font-size:.92rem; margin-bottom:1.5rem; font-weight:300">An instrument that does not change the session is decoration. Three specific uses, each committed to in advance.</p>
 
-<div class="visual-banner">
-<img src="assets/images/calibration.png" alt="Calibration Flow" loading="lazy">
-<p class="visual-banner-caption">From Diagnostic Data to Live Session Calibration</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/calibration.png" alt="Calibration Flow — From Diagnostic Data to Live Session Calibration" loading="lazy" data-lightbox-src="assets/images/calibration.png" data-lightbox-title="Calibration Flow: How Data Redesigns Day 1">
+<p class="full-image-banner-caption">From Diagnostic Data to Live Session Calibration — Click to enlarge</p>
 </div>
 
 <div class="calibration-flow">
@@ -1054,16 +930,16 @@ body { background:#fff; color:#000; }
 </div>
 </section>
 
-<!-- ============ LEVERAGE POINTS ============ -->
+<!-- ============ 7. LEVERAGE POINTS — Leverage-points.png ============ -->
 <section class="section" id="leverage">
 <div class="wrap">
 <p class="kicker">Advanced Increment</p>
 <h2 class="section-title">The Leverage <span class="hl">Hierarchy</span></h2>
 <p class="section-sub">Advanced program management intervenes higher up the ladder, shifting the underlying structure — not just adjusting parameters.</p>
 
-<div class="visual-banner">
-<img src="assets/images/Leverage-points.pmg.png" alt="Leverage Points Hierarchy" loading="lazy">
-<p class="visual-banner-caption">The Leverage Ladder — From Parameters to System Goals</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/Leverage-points.png" alt="Leverage Points Hierarchy — The Leverage Ladder from Parameters to System Goals" loading="lazy" data-lightbox-src="assets/images/Leverage-points.png" data-lightbox-title="The Leverage Hierarchy">
+<p class="full-image-banner-caption">The Leverage Ladder — From Parameters to System Goals — Click to enlarge</p>
 </div>
 
 <div class="ladder-visual">
@@ -1097,16 +973,16 @@ body { background:#fff; color:#000; }
 </div>
 </section>
 
-<!-- ============ DEEP DIVE EXERCISE ============ -->
+<!-- ============ 8. DEEP DIVE EXERCISE — deep-dive.png ============ -->
 <section class="section section-alt" id="exercise">
 <div class="wrap">
 <p class="kicker">Signature Exercise</p>
 <h2 class="section-title">The Problem Behind the <span class="hl">Problem</span></h2>
 <p class="section-sub">Sixty minutes. Standing triads. Four timed rounds. The goal is system structure, not a tidy root cause. Round 4 is what keeps this from becoming either an academic exercise or a complaint session.</p>
 
-<div class="visual-banner">
-<img src="assets/images/deep-dive.png" alt="Deep Dive: The Problem Behind the Problem" loading="lazy">
-<p class="visual-banner-caption">Four-Round Structured Diagnostic Exercise</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/deep-dive.png" alt="Deep Dive: The Problem Behind the Problem — Four-Round Structured Diagnostic Exercise" loading="lazy" data-lightbox-src="assets/images/deep-dive.png" data-lightbox-title="Deep Dive: The Problem Behind the Problem">
+<p class="full-image-banner-caption">Four-Round Structured Diagnostic Exercise — Click to enlarge</p>
 </div>
 
 <div class="exercise-grid">
@@ -1136,12 +1012,14 @@ body { background:#fff; color:#000; }
 </div>
 </div>
 
-<!-- Systems Loop Analysis -->
+<!-- ============ 9. SYSTEMS LOOP ANALYSIS — systems-loop-analysis.png ============ -->
 <div class="illustration-box" style="margin-top:2.5rem">
 <h4><i class="fas fa-sync-alt"></i> System Loop Analysis: The Reading Proficiency Illustration</h4>
-<div style="margin:1rem 0">
-<img src="assets/images/systems-loop-analysis.png" alt="Systems Loop Analysis" style="width:100%; border-radius:10px; border:1px solid var(--line);" loading="lazy">
+
+<div class="full-image-banner" style="padding:0; margin-bottom:1rem">
+<img src="assets/images/systems-loop-analysis.png" alt="Systems Loop Analysis — The Reading Proficiency Illustration with Balancing and Reinforcing Loops" loading="lazy" data-lightbox-src="assets/images/systems-loop-analysis.png" data-lightbox-title="System Loop Analysis: The Reading Proficiency Illustration">
 </div>
+
 <p style="font-size:.86rem; color:var(--text-2); margin-bottom:.8rem"><strong style="color:var(--text)">Presenting Problem:</strong> Reading materials arrive late due to a fiscal, rather than instructional, procurement calendar.</p>
 <p style="font-size:.84rem; color:var(--text-2); margin-bottom:.8rem"><strong style="color:var(--sky)">The Balancing Loop:</strong> Teachers improvise substitutes. This holds outcomes just high enough that the procurement timing never registers as a critical failure at the central office.</p>
 <p style="font-size:.84rem; color:var(--text-2)"><strong style="color:var(--gold)">The Leverage Placement:</strong> Instead of procuring more materials (Stocks), the intervention moves one rung up — creating a short-cycle information flow on school-level readiness to inform the timing decision before it locks.</p>
@@ -1177,144 +1055,64 @@ body { background:#fff; color:#000; }
 </div>
 
 <div class="demo-phases">
-<!-- Phase 1 -->
 <div class="demo-phase" id="phase1" onclick="activatePhase(1)">
 <div class="demo-phase-header">
-<div class="demo-phase-left">
-<div class="demo-phase-num">1</div>
-<div class="demo-phase-title">Name the Problem — The Presenting Symptom</div>
-</div>
+<div class="demo-phase-left"><div class="demo-phase-num">1</div><div class="demo-phase-title">Name the Problem — The Presenting Symptom</div></div>
 <div class="demo-phase-time">0:00 – 0:45</div>
 </div>
 <div class="demo-phase-body">
 <div class="demo-phase-content">
-<div class="demo-dialogue q">
-<span class="tag"><i class="fas fa-user-tie"></i> Facilitator (Interviewer)</span>
-"Think of a recurring problem in your PAP — one that has persisted despite interventions. State it in one sentence. What is the symptom you keep seeing?"
-</div>
-<div class="demo-dialogue a">
-<span class="tag"><i class="fas fa-user"></i> Participant (Officer)</span>
-"Reading proficiency in our target schools remains below the standard the program was funded to raise it to, despite three years of supplementary material distribution."
-</div>
-<div class="demo-dialogue insight">
-<span class="tag"><i class="fas fa-lightbulb"></i> Facilitator Note</span>
-Notice: the participant stated an <strong>outcome gap</strong>, not a problem. The symptom is "below standard." The question is: what system structure produces this symptom repeatedly?
-</div>
+<div class="demo-dialogue q"><span class="tag"><i class="fas fa-user-tie"></i> Facilitator (Interviewer)</span>"Think of a recurring problem in your PAP — one that has persisted despite interventions. State it in one sentence. What is the symptom you keep seeing?"</div>
+<div class="demo-dialogue a"><span class="tag"><i class="fas fa-user"></i> Participant (Officer)</span>"Reading proficiency in our target schools remains below the standard the program was funded to raise it to, despite three years of supplementary material distribution."</div>
+<div class="demo-dialogue insight"><span class="tag"><i class="fas fa-lightbulb"></i> Facilitator Note</span>Notice: the participant stated an <strong>outcome gap</strong>, not a problem. The symptom is "below standard." The question is: what system structure produces this symptom repeatedly?</div>
 </div>
 </div>
 </div>
 
-<!-- Phase 2 -->
 <div class="demo-phase" id="phase2" onclick="activatePhase(2)">
 <div class="demo-phase-header">
-<div class="demo-phase-left">
-<div class="demo-phase-num">2</div>
-<div class="demo-phase-title">Three Times Why — Revealing Non-Linear Relationships</div>
-</div>
+<div class="demo-phase-left"><div class="demo-phase-num">2</div><div class="demo-phase-title">Three Times Why — Revealing Non-Linear Relationships</div></div>
 <div class="demo-phase-time">0:45 – 2:15</div>
 </div>
 <div class="demo-phase-body">
 <div class="demo-phase-content">
-<div class="demo-dialogue q">
-<span class="tag"><i class="fas fa-user-tie"></i> Facilitator — Why #1</span>
-"Why does reading proficiency remain low despite materials being distributed?"
-</div>
-<div class="demo-dialogue a">
-<span class="tag"><i class="fas fa-user"></i> Participant</span>
-"Because the materials arrive late — usually three months into the school year. Teachers have already settled into their own improvised routines by then."
-</div>
-<div class="demo-dialogue q">
-<span class="tag"><i class="fas fa-user-tie"></i> Facilitator — Why #2</span>
-"Why do materials arrive late? Is it a logistics failure, or something structural?"
-</div>
-<div class="demo-dialogue a">
-<span class="tag"><i class="fas fa-user"></i> Participant</span>
-"It's the procurement calendar. The cycle is keyed to the fiscal year, not the instructional calendar. The request locks in January for a September delivery — but schools need them in June."
-</div>
-<div class="demo-dialogue q">
-<span class="tag"><i class="fas fa-user-tie"></i> Facilitator — Why #3</span>
-"And why hasn't anyone connected school readiness timing to the procurement decision? What's the missing link?"
-</div>
-<div class="demo-dialogue a">
-<span class="tag"><i class="fas fa-user"></i> Participant</span>
-"Because nothing carries school-level readiness data back to the central office before the timing decision locks. The information flow doesn't exist."
-</div>
-<div class="demo-dialogue insight">
-<span class="tag"><i class="fas fa-lightbulb"></i> Non-Linear Relationship Revealed</span>
-This is not a linear chain (A→B→C). It's a <strong>system with feedback loops</strong>:<br><br>
-<strong>Balancing Loop:</strong> Teachers improvise → outcomes held "just high enough" → gap masked from center → timing deprioritized → materials still late → teachers keep improvising.<br><br>
-<strong>Reinforcing Loop:</strong> Late arrival → low uptake → weak demand signal → timing deprioritized → later arrival next cycle.<br><br>
-The problem <em>persists</em> because the system is structured to absorb the failure.
-</div>
+<div class="demo-dialogue q"><span class="tag"><i class="fas fa-user-tie"></i> Facilitator — Why #1</span>"Why does reading proficiency remain low despite materials being distributed?"</div>
+<div class="demo-dialogue a"><span class="tag"><i class="fas fa-user"></i> Participant</span>"Because the materials arrive late — usually three months into the school year. Teachers have already settled into their own improvised routines by then."</div>
+<div class="demo-dialogue q"><span class="tag"><i class="fas fa-user-tie"></i> Facilitator — Why #2</span>"Why do materials arrive late? Is it a logistics failure, or something structural?"</div>
+<div class="demo-dialogue a"><span class="tag"><i class="fas fa-user"></i> Participant</span>"It's the procurement calendar. The cycle is keyed to the fiscal year, not the instructional calendar. The request locks in January for a September delivery — but schools need them in June."</div>
+<div class="demo-dialogue q"><span class="tag"><i class="fas fa-user-tie"></i> Facilitator — Why #3</span>"And why hasn't anyone connected school readiness timing to the procurement decision? What's the missing link?"</div>
+<div class="demo-dialogue a"><span class="tag"><i class="fas fa-user"></i> Participant</span>"Because nothing carries school-level readiness data back to the central office before the timing decision locks. The information flow doesn't exist."</div>
+<div class="demo-dialogue insight"><span class="tag"><i class="fas fa-lightbulb"></i> Non-Linear Relationship Revealed</span>This is not a linear chain (A→B→C). It's a <strong>system with feedback loops</strong>:<br><br><strong>Balancing Loop:</strong> Teachers improvise → outcomes held "just high enough" → gap masked from center → timing deprioritized → materials still late → teachers keep improvising.<br><br><strong>Reinforcing Loop:</strong> Late arrival → low uptake → weak demand signal → timing deprioritized → later arrival next cycle.<br><br>The problem <em>persists</em> because the system is structured to absorb the failure.</div>
 </div>
 </div>
 </div>
 
-<!-- Phase 3 -->
 <div class="demo-phase" id="phase3" onclick="activatePhase(3)">
 <div class="demo-phase-header">
-<div class="demo-phase-left">
-<div class="demo-phase-num">3</div>
-<div class="demo-phase-title">Locate the Intervention — Apply Leverage Points</div>
-</div>
+<div class="demo-phase-left"><div class="demo-phase-num">3</div><div class="demo-phase-title">Locate the Intervention — Apply Leverage Points</div></div>
 <div class="demo-phase-time">2:15 – 3:45</div>
 </div>
 <div class="demo-phase-body">
 <div class="demo-phase-content">
-<div class="demo-dialogue q">
-<span class="tag"><i class="fas fa-user-tie"></i> Facilitator</span>
-"Where is the current intervention on the leverage ladder? What rung are you operating on?"
-</div>
-<div class="demo-dialogue a">
-<span class="tag"><i class="fas fa-user"></i> Participant</span>
-"We're at the bottom — procuring more materials (Stocks) and adjusting timelines (Parameters). We've been trying to fix this with more of the same."
-</div>
-<div class="demo-dialogue q">
-<span class="tag"><i class="fas fa-user-tie"></i> Facilitator</span>
-"Now move exactly ONE rung up. Not to the top — one rung. What changes?"
-</div>
-<div class="demo-dialogue a">
-<span class="tag"><i class="fas fa-user"></i> Participant</span>
-"One rung up is Information Flows. Instead of procuring more materials, we create a short-cycle read on school-level readiness — a signal that reaches the procurement decision before it locks. We don't change what we buy. We change <em>when</em> the decision is informed."
-</div>
-<div class="demo-dialogue insight">
-<span class="tag"><i class="fas fa-lightbulb"></i> Leverage Point Applied</span>
-<strong>Current (Rung 1–2):</strong> More materials, adjusted timelines — parameters and stocks.<br>
-<strong>Advanced (Rung 4):</strong> Create an information flow that carries school readiness data to the timing decision point before it closes.<br><br>
-This is the same budget. Same appropriation. Same coverage. But the <em>structure of information</em> changes — and with it, the decision quality.
-</div>
+<div class="demo-dialogue q"><span class="tag"><i class="fas fa-user-tie"></i> Facilitator</span>"Where is the current intervention on the leverage ladder? What rung are you operating on?"</div>
+<div class="demo-dialogue a"><span class="tag"><i class="fas fa-user"></i> Participant</span>"We're at the bottom — procuring more materials (Stocks) and adjusting timelines (Parameters). We've been trying to fix this with more of the same."</div>
+<div class="demo-dialogue q"><span class="tag"><i class="fas fa-user-tie"></i> Facilitator</span>"Now move exactly ONE rung up. Not to the top — one rung. What changes?"</div>
+<div class="demo-dialogue a"><span class="tag"><i class="fas fa-user"></i> Participant</span>"One rung up is Information Flows. Instead of procuring more materials, we create a short-cycle read on school-level readiness — a signal that reaches the procurement decision before it locks. We don't change what we buy. We change <em>when</em> the decision is informed."</div>
+<div class="demo-dialogue insight"><span class="tag"><i class="fas fa-lightbulb"></i> Leverage Point Applied</span><strong>Current (Rung 1–2):</strong> More materials, adjusted timelines — parameters and stocks.<br><strong>Advanced (Rung 4):</strong> Create an information flow that carries school readiness data to the timing decision point before it closes.<br><br>This is the same budget. Same appropriation. Same coverage. But the <em>structure of information</em> changes — and with it, the decision quality.</div>
 </div>
 </div>
 </div>
 
-<!-- Phase 4 -->
 <div class="demo-phase" id="phase4" onclick="activatePhase(4)">
 <div class="demo-phase-header">
-<div class="demo-phase-left">
-<div class="demo-phase-num">4</div>
-<div class="demo-phase-title">The Mandate Test — Does It Survive Reality?</div>
-</div>
+<div class="demo-phase-left"><div class="demo-phase-num">4</div><div class="demo-phase-title">The Mandate Test — Does It Survive Reality?</div></div>
 <div class="demo-phase-time">3:45 – 5:00</div>
 </div>
 <div class="demo-phase-body">
 <div class="demo-phase-content">
-<div class="demo-dialogue q">
-<span class="tag"><i class="fas fa-user-tie"></i> Facilitator</span>
-"Last question. Name what is fixed by law or appropriation — and what is discretionary in your design. Does your reframe survive inside the discretionary space?"
-</div>
-<div class="demo-dialogue a">
-<span class="tag"><i class="fas fa-user"></i> Participant</span>
-"Fixed: the appropriation amount, the material specifications, the coverage targets. Discretionary: when the procurement request is initiated, how teacher training is sequenced, and whether a feedback mechanism exists at all. My information flow intervention lives entirely in the discretionary space."
-</div>
-<div class="demo-dialogue insight">
-<span class="tag"><i class="fas fa-check-circle"></i> Demonstration Complete</span>
-<strong>What the panel observed:</strong><br><br>
-1. <strong>Problem analysis:</strong> Moved from symptom ("low proficiency") to system structure (misaligned calendars, masked gaps).<br>
-2. <strong>Non-linear relationships:</strong> Revealed balancing and reinforcing loops that explain why the problem persists despite interventions.<br>
-3. <strong>Leverage points:</strong> Located current intervention at Rung 1–2, moved to Rung 4 (Information Flows) — one rung, not to the top.<br>
-4. <strong>Mandate test:</strong> Confirmed the reframe survives within discretionary authority.<br><br>
-<em>This is the part of the design that a slide cannot show you. You are hiring a facilitator, not a document.</em>
-</div>
+<div class="demo-dialogue q"><span class="tag"><i class="fas fa-user-tie"></i> Facilitator</span>"Last question. Name what is fixed by law or appropriation — and what is discretionary in your design. Does your reframe survive inside the discretionary space?"</div>
+<div class="demo-dialogue a"><span class="tag"><i class="fas fa-user"></i> Participant</span>"Fixed: the appropriation amount, the material specifications, the coverage targets. Discretionary: when the procurement request is initiated, how teacher training is sequenced, and whether a feedback mechanism exists at all. My information flow intervention lives entirely in the discretionary space."</div>
+<div class="demo-dialogue insight"><span class="tag"><i class="fas fa-check-circle"></i> Demonstration Complete</span><strong>What the panel observed:</strong><br><br>1. <strong>Problem analysis:</strong> Moved from symptom ("low proficiency") to system structure (misaligned calendars, masked gaps).<br>2. <strong>Non-linear relationships:</strong> Revealed balancing and reinforcing loops that explain why the problem persists despite interventions.<br>3. <strong>Leverage points:</strong> Located current intervention at Rung 1–2, moved to Rung 4 (Information Flows) — one rung, not to the top.<br>4. <strong>Mandate test:</strong> Confirmed the reframe survives within discretionary authority.<br><br><em>This is the part of the design that a slide cannot show you. You are hiring a facilitator, not a document.</em></div>
 </div>
 </div>
 </div>
@@ -1323,16 +1121,16 @@ This is the same budget. Same appropriation. Same coverage. But the <em>structur
 </div>
 </section>
 
-<!-- ============ FIXES THAT FAIL ============ -->
+<!-- ============ 10. FIXES THAT FAIL — fixes-that-fail.png ============ -->
 <section class="section section-alt" id="fixes-that-fail">
 <div class="wrap">
 <p class="kicker">Systems Thinking Exercise</p>
 <h2 class="section-title">Fixes That <span class="hl">Fail</span></h2>
 <p class="section-sub">A structured exercise to identify when quick fixes maintain or worsen the problem symptom over time — mapping non-linear relationships through causal loop diagrams.</p>
 
-<div class="visual-banner">
-<img src="assets/images/fixes-that-fail.png" alt="Fixes That Fail Archetype" loading="lazy">
-<p class="visual-banner-caption">The Fixes That Fail Systems Archetype — Balancing Loop meets Reinforcing Loop</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/fixes-that-fail.png" alt="Fixes That Fail Systems Archetype — Balancing Loop meets Reinforcing Loop" loading="lazy" data-lightbox-src="assets/images/fixes-that-fail.png" data-lightbox-title="Fixes That Fail — The Systems Archetype">
+<p class="full-image-banner-caption">The Fixes That Fail Systems Archetype — Balancing Loop meets Reinforcing Loop — Click to enlarge</p>
 </div>
 
 <div class="ftf-section">
@@ -1342,96 +1140,56 @@ This is the same budget. Same appropriation. Same coverage. But the <em>structur
 </div>
 <div class="ftf-body">
 <div class="ftf-step">
-<div class="ftf-step-header">
-<div class="ftf-step-num">1</div>
-<div class="ftf-step-title">Think of a Recurring Problem Symptom</div>
-</div>
+<div class="ftf-step-header"><div class="ftf-step-num">1</div><div class="ftf-step-title">Think of a Recurring Problem Symptom</div></div>
 <p>Think of a recurring problem symptom from your work, home, community, or elsewhere — a problem that has some history so you can see actual trends and the impact of actual interventions.</p>
 <div class="ftf-input-group">
 <div class="ftf-label">Problem Symptom</div>
 <textarea class="ftf-input" rows="2" placeholder="e.g., Reading proficiency in target schools remains below standard despite three years of material distribution..."></textarea>
 </div>
 </div>
-
 <div class="ftf-step">
-<div class="ftf-step-header">
-<div class="ftf-step-num">2</div>
-<div class="ftf-step-title">Make Notes About the Story</div>
-</div>
-<p>Make some notes about the story, enough to remind yourself of what has been happening. What is the history? What interventions have been tried?</p>
+<div class="ftf-step-header"><div class="ftf-step-num">2</div><div class="ftf-step-title">Make Notes About the Story</div></div>
+<p>Make some notes about the story, enough to remind yourself of what has been happening.</p>
 <div class="ftf-input-group">
 <div class="ftf-label">Story Notes</div>
 <textarea class="ftf-input" rows="3" placeholder="Describe what has happened over time, what was tried, and what the results were..."></textarea>
 </div>
 </div>
-
 <div class="ftf-step">
-<div class="ftf-step-header">
-<div class="ftf-step-num">3</div>
-<div class="ftf-step-title">Summarize the Story</div>
-</div>
-<p>Summarize the story in a couple of sentences. (You may find it easier to come back to this after working with the variables and loop diagram.)</p>
+<div class="ftf-step-header"><div class="ftf-step-num">3</div><div class="ftf-step-title">Summarize the Story</div></div>
+<p>Summarize the story in a couple of sentences.</p>
 <div class="ftf-row">
-<div class="ftf-input-group">
-<div class="ftf-label">Problem Symptom</div>
-<input class="ftf-input" type="text" placeholder="The recurring symptom...">
-</div>
-<div class="ftf-input-group">
-<div class="ftf-label">Quick Fix Applied</div>
-<input class="ftf-input" type="text" placeholder="The fix that was tried...">
-</div>
+<div class="ftf-input-group"><div class="ftf-label">Problem Symptom</div><input class="ftf-input" type="text" placeholder="The recurring symptom..."></div>
+<div class="ftf-input-group"><div class="ftf-label">Quick Fix Applied</div><input class="ftf-input" type="text" placeholder="The fix that was tried..."></div>
 </div>
 <div class="ftf-row" style="margin-top:.8rem">
-<div class="ftf-input-group">
-<div class="ftf-label">Intended Consequence(s)</div>
-<input class="ftf-input" type="text" placeholder="What the fix was supposed to achieve...">
-</div>
-<div class="ftf-input-group">
-<div class="ftf-label">Unintended Consequence(s)</div>
-<input class="ftf-input" type="text" placeholder="What the fix actually produced over time...">
+<div class="ftf-input-group"><div class="ftf-label">Intended Consequence(s)</div><input class="ftf-input" type="text" placeholder="What the fix was supposed to achieve..."></div>
+<div class="ftf-input-group"><div class="ftf-label">Unintended Consequence(s)</div><input class="ftf-input" type="text" placeholder="What the fix actually produced over time..."></div>
 </div>
 </div>
-</div>
-
 <div class="ftf-step">
-<div class="ftf-step-header">
-<div class="ftf-step-num">4</div>
-<div class="ftf-step-title">List the Key Variables</div>
-</div>
-<p>List the key variables in the story. If your initial list is quite long (more than six or seven), try aggregating some of them. Or narrow the focus of the story.</p>
+<div class="ftf-step-header"><div class="ftf-step-num">4</div><div class="ftf-step-title">List the Key Variables</div></div>
+<p>List the key variables in the story. If your initial list is quite long (more than six or seven), try aggregating some of them.</p>
 <div class="ftf-input-group">
 <div class="ftf-label">Key Variables (comma-separated)</div>
-<input class="ftf-input" type="text" placeholder="e.g., Material Delivery Timing, Teacher Improvisation, Central Office Awareness, Procurement Calendar, School Readiness Data">
+<input class="ftf-input" type="text" placeholder="e.g., Material Delivery Timing, Teacher Improvisation, Central Office Awareness...">
 </div>
 </div>
-
 <div class="ftf-step">
-<div class="ftf-step-header">
-<div class="ftf-step-num">5</div>
-<div class="ftf-step-title">Draw the Pattern of Behavior Over Time</div>
-</div>
-<p>Draw the pattern of behavior over time of the problem symptom. Show the impact of the quick fixes. The key to identifying a "Fixes That Fail" dynamic is to notice when the problem symptom persists and possibly worsens in spite of repeated attempts to "solve" it.</p>
+<div class="ftf-step-header"><div class="ftf-step-num">5</div><div class="ftf-step-title">Draw the Pattern of Behavior Over Time</div></div>
+<p>Draw the pattern of behavior over time of the problem symptom. Show the impact of the quick fixes.</p>
 <div class="ftf-input-group">
 <div class="ftf-label">Describe the behavior-over-time pattern</div>
-<textarea class="ftf-input" rows="2" placeholder="e.g., Proficiency dips → quick fix applied → temporary improvement → decline resumes lower than before → fix repeated with greater intensity..."></textarea>
+<textarea class="ftf-input" rows="2" placeholder="e.g., Proficiency dips → quick fix applied → temporary improvement → decline resumes lower..."></textarea>
 </div>
 </div>
-
 <div class="ftf-step">
-<div class="ftf-step-header">
-<div class="ftf-step-num">6</div>
-<div class="ftf-step-title">Diagram Your Situation — Causal Loop Map</div>
-</div>
-<p>Using the "Fixes That Fail" causal loop template, diagram your situation. Label each arrow with an "s" (same direction) or an "o" (opposite direction), and label each loop with a "B" (balancing) or an "R" (reinforcing).</p>
-
+<div class="ftf-step-header"><div class="ftf-step-num">6</div><div class="ftf-step-title">Diagram Your Situation — Causal Loop Map</div></div>
+<p>Using the "Fixes That Fail" causal loop template, diagram your situation. Label each arrow with an "s" or "o," and label each loop with a "B" or "R."</p>
 <div class="loop-builder">
 <h5><i class="fas fa-project-diagram"></i> Causal Loop Diagram</h5>
-<p style="font-size:.82rem; color:var(--text-3); margin-bottom:1rem; font-weight:300">Walk through the logic of both loops. In what sense does the quick-fix loop represent expected short-term effects? In what sense does the unintended-consequences loop represent an undesirable, long-term impact?</p>
-
 <div class="loop-visual">
-<div style="width:100%; text-align:center; margin-bottom:1rem">
-<span class="loop-label-badge B">B — Balancing Loop (Quick Fix)</span>
-</div>
+<div style="width:100%; text-align:center; margin-bottom:1rem"><span class="loop-label-badge B">B — Balancing Loop (Quick Fix)</span></div>
 <div class="loop-node symptom">Problem<br>Symptom</div>
 <div class="loop-arrow-label"><span class="arrow">→</span><span>o</span></div>
 <div class="loop-node fix">Quick Fix<br>Applied</div>
@@ -1439,10 +1197,7 @@ This is the same budget. Same appropriation. Same coverage. But the <em>structur
 <div class="loop-node" style="border-color:var(--green); color:var(--green)">Short-Term<br>Improvement</div>
 <div class="loop-arrow-label"><span class="arrow">→</span><span>o</span></div>
 <div class="loop-node symptom">Problem<br>Symptom ↓</div>
-
-<div style="width:100%; text-align:center; margin:1.5rem 0 1rem">
-<span class="loop-label-badge R">R — Reinforcing Loop (Unintended Consequences)</span>
-</div>
+<div style="width:100%; text-align:center; margin:1.5rem 0 1rem"><span class="loop-label-badge R">R — Reinforcing Loop (Unintended Consequences)</span></div>
 <div class="loop-node fix">Quick Fix<br>Applied</div>
 <div class="loop-arrow-label"><span class="arrow">→</span><span>s</span></div>
 <div class="loop-node unintended">Unintended<br>Consequence</div>
@@ -1451,14 +1206,8 @@ This is the same budget. Same appropriation. Same coverage. But the <em>structur
 <div class="loop-arrow-label"><span class="arrow">→</span><span>s</span></div>
 <div class="loop-node fix">Need for<br>More Fixing</div>
 </div>
-
 <div style="margin-top:1.2rem; padding:1rem; background:rgba(255,215,0,.05); border-radius:10px; border:1px solid rgba(255,215,0,.15)">
-<p style="font-size:.84rem; color:var(--text-2); line-height:1.7">
-<strong><i class="fas fa-check-circle" style="color:var(--gold)"></i> Validation Check:</strong>
-Ask whether the quick fix actually contributed to maintaining or worsening the problem symptom.
-Show your diagram to a colleague. Explain your theory behind the fix and the unintended side-effect.
-Remember: everyone's version is a unique mental model — the point is to learn which mental models are at work.
-</p>
+<p style="font-size:.84rem; color:var(--text-2); line-height:1.7"><strong><i class="fas fa-check-circle" style="color:var(--gold)"></i> Validation Check:</strong> Ask whether the quick fix actually contributed to maintaining or worsening the problem symptom. Show your diagram to a colleague. Remember: everyone's version is a unique mental model — the point is to learn which mental models are at work.</p>
 </div>
 </div>
 </div>
@@ -1473,28 +1222,11 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 <p class="kicker">Measurement</p>
 <h2 class="section-title">Assessment <span class="hl">Strategy</span></h2>
 <p class="section-sub">Measuring judgment over recall. Some post-assessment scores will go down — and that is the intervention working.</p>
-
 <div class="assessment-grid">
-<div class="assessment-card">
-<div class="assessment-icon"><i class="fas fa-stethoscope"></i></div>
-<h4>Pre-Assessment</h4>
-<p>Diagnostic strain on live PAP. Avoids the ceiling of terminology quizzes. Calibrates Day 1 dynamically.</p>
-</div>
-<div class="assessment-card">
-<div class="assessment-icon"><i class="fas fa-heartbeat"></i></div>
-<h4>Reaction</h4>
-<p>Three-item end-of-day pulse. Read overnight; the adjustment is named to the room the next morning.</p>
-</div>
-<div class="assessment-card">
-<div class="assessment-icon"><i class="fas fa-brain"></i></div>
-<h4>Learning</h4>
-<p>Same scenario before and after, scored on diagnostic reasoning and choice of intervention point.</p>
-</div>
-<div class="assessment-card">
-<div class="assessment-icon"><i class="fas fa-clipboard-check"></i></div>
-<h4>Application</h4>
-<p>The Program Improvement Brief on a real PAP, reviewed by peers on Day 4.</p>
-</div>
+<div class="assessment-card"><div class="assessment-icon"><i class="fas fa-stethoscope"></i></div><h4>Pre-Assessment</h4><p>Diagnostic strain on live PAP. Avoids the ceiling of terminology quizzes. Calibrates Day 1 dynamically.</p></div>
+<div class="assessment-card"><div class="assessment-icon"><i class="fas fa-heartbeat"></i></div><h4>Reaction</h4><p>Three-item end-of-day pulse. Read overnight; the adjustment is named to the room the next morning.</p></div>
+<div class="assessment-card"><div class="assessment-icon"><i class="fas fa-brain"></i></div><h4>Learning</h4><p>Same scenario before and after, scored on diagnostic reasoning and choice of intervention point.</p></div>
+<div class="assessment-card"><div class="assessment-icon"><i class="fas fa-clipboard-check"></i></div><h4>Application</h4><p>The Program Improvement Brief on a real PAP, reviewed by peers on Day 4.</p></div>
 </div>
 </div>
 </section>
@@ -1505,7 +1237,6 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 <p class="kicker">Instrument</p>
 <h2 class="section-title">The Strain <span class="hl">Diagnostic</span></h2>
 <p class="section-sub">Twelve statements, four-point scale, no midpoint. Locates where the PAP is straining across six domains — one pair per module.</p>
-
 <div class="instrument-section">
 <div class="instrument-header">
 <h3><i class="fas fa-clipboard-list" style="color:var(--gold)"></i> The PAP Under Pressure</h3>
@@ -1548,33 +1279,24 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 </div>
 </section>
 
-<!-- ============ 3-DAY VARIANT ============ -->
+<!-- ============ 11. 3-DAY VARIANT — 3-day-variant.png ============ -->
 <section class="section" id="variant">
 <div class="wrap">
 <p class="kicker">Variant</p>
 <h2 class="section-title">The 3-Day Contract of Service <span class="hl">Batch</span></h2>
 <p class="section-sub">Same spine. Compression applied to depth of application, not to coverage. All 6 TOR modules are preserved.</p>
 
-<div class="visual-banner">
-<img src="assets/images/3-day-variant.png" alt="3-Day Variant" loading="lazy">
-<p class="visual-banner-caption">Compression Applied to Depth, Not Coverage — Sustainability Gets More Time, Not Less</p>
+<div class="full-image-banner reveal">
+<img src="assets/images/3-day-variant.png" alt="3-Day Variant — Compression Applied to Depth, Not Coverage" loading="lazy" data-lightbox-src="assets/images/3-day-variant.png" data-lightbox-title="The 3-Day Contract of Service Batch">
+<p class="full-image-banner-caption">Compression Applied to Depth, Not Coverage — Sustainability Gets More Time, Not Less — Click to enlarge</p>
 </div>
 
 <div class="variant-box">
 <h4><i class="fas fa-compress-alt"></i> Compression Applied to Depth, Not Coverage</h4>
 <div class="variant-grid">
-<div class="variant-item">
-<h5>Modules 1 & 2</h5>
-<p>The diagnosis segment is retained at full length. It is load-bearing and is not compressed.</p>
-</div>
-<div class="variant-item">
-<h5>Modules 3 & 4</h5>
-<p>The indicator clinic runs as a facilitated demonstration on two volunteered PAPs rather than individual application.</p>
-</div>
-<div class="variant-item">
-<h5>Modules 5 & 6</h5>
-<p>Closes with peer review panel and action planning. Sustainability gets proportionally more time, not less.</p>
-</div>
+<div class="variant-item"><h5>Modules 1 & 2</h5><p>The diagnosis segment is retained at full length. It is load-bearing and is not compressed.</p></div>
+<div class="variant-item"><h5>Modules 3 & 4</h5><p>The indicator clinic runs as a facilitated demonstration on two volunteered PAPs rather than individual application.</p></div>
+<div class="variant-item"><h5>Modules 5 & 6</h5><p>Closes with peer review panel and action planning. Sustainability gets proportionally more time, not less.</p></div>
 </div>
 </div>
 
@@ -1586,87 +1308,21 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 </div>
 </section>
 
-<!-- ============ TOR DELIVERY ============ -->
-<section class="section section-alt" id="tor">
-<div class="wrap">
-<p class="kicker">Post-Work Linkage</p>
-<h2 class="section-title">Delivering the <span class="hl">TOR</span></h2>
-<p class="section-sub">Debriefing input is drawn from daily pulse data and harvest patterns, yielding specific operational observations rather than general impressions.</p>
-
-<div class="visual-banner">
-<img src="assets/images/TOR-delivery.png" alt="TOR Delivery Post-Work Linkage" loading="lazy">
-<p class="visual-banner-caption">From Activity Evaluation to Program Improvement Brief — A Complete Post-Work Chain</p>
-</div>
-
-<div class="tor-flow">
-<div class="tor-step">
-<div class="tor-step-num">1</div>
-<h5>Activity Evaluation</h5>
-<p>Debriefing input drawn from daily pulse data and harvest patterns — specific operational observations.</p>
-</div>
-<div class="tor-step">
-<div class="tor-step-num">2</div>
-<h5>Training Design Recommendations</h5>
-<p>Leverage ladder distribution and encountered failure modes provide a data-driven basis for inter-batch improvements.</p>
-</div>
-<div class="tor-step">
-<div class="tor-step-num">3</div>
-<h5>Action Plan Recommendations</h5>
-<p>Documented basis for follow-through, with optional 60-day check on action plan movement offered to BHROD-HRDD.</p>
-</div>
-<div class="tor-step">
-<div class="tor-step-num">4</div>
-<h5>Program Improvement Brief</h5>
-<p>Fulfilled substantively through actual Brief produced for each participant's live PAP, reviewed by a peer panel.</p>
-</div>
-</div>
-</div>
-</section>
-
 <!-- ============ FAQ ============ -->
-<section class="section" id="faq">
+<section class="section section-alt" id="faq">
 <div class="wrap">
 <p class="kicker">Frequently Asked Questions</p>
 <h2 class="section-title">Common <span class="hl">Questions</span></h2>
 <p class="section-sub">Everything you need to know about the Advanced Program Management LDI.</p>
-
 <div class="faq-list">
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">Who is this program designed for?<span class="chev"></span></button>
-<div class="faq-a"><p>This LDI is designed for Salary Grade 15 and above officers at the Department of Education Central Office who are already facilitating or managing live Programs, Activities, and Projects (PAPs). These are not learners acquiring a first framework — the advanced increment is judgment under complexity, not more technique.</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">What is the "Live PAP Methodology"?<span class="chev"></span></button>
-<div class="faq-a"><p>Every participant enrols one real PAP they currently manage, and works it through all modules across the four days. This replaces generic case studies with live, personally accountable program work. The participant must have at least some influence over its design or execution.</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">Why is the pre-assessment a diagnostic and not a knowledge test?<span class="chev"></span></button>
-<div class="faq-a"><p>A conventional pre-test on senior officers produces three problems: defensive performance, a terminology ceiling, and it is not actionable. The diagnostic measures where each participant's live PAP is actually under strain — something the facilitator can act on to adjust Day 1.</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">What are "Standing Peer Review Triads"?<span class="chev"></span></button>
-<div class="faq-a"><p>Fixed groups of three that persist across all four days. They are composed to mix strain profiles, not match them — so each person encounters a failure mode that is not their own. Every triad also contains at least one person with design authority.</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">What is the Leverage Ladder?<span class="chev"></span></button>
-<div class="faq-a"><p>A hierarchy of intervention points from parameters (lowest) to system goals (highest). Standard public sector programs cluster at the two lowest rungs. Advanced program management intervenes higher up the ladder, targeting information flows, rules, or structure.</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">Why might post-assessment scores go down?<span class="chev"></span></button>
-<div class="faq-a"><p>A participant who confidently agreed on Day 0 that they could explain their causal chain, and who disagrees on Day 4, has not deteriorated — they have learned what a causal chain actually requires. On problem-definition and results-logic items, a modest decline in self-assessment is the expected signature of the intervention working.</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">What is the "Fixes That Fail" exercise?<span class="chev"></span></button>
-<div class="faq-a"><p>A structured six-step exercise where participants map a recurring problem using causal loop diagrams. They identify the problem symptom, the quick fix, intended and unintended consequences, key variables, behavior-over-time patterns, and finally diagram both the balancing loop (quick fix) and the reinforcing loop (unintended consequences).</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">How does the 5-minute interview panel demonstration work?<span class="chev"></span></button>
-<div class="faq-a"><p>The facilitator demonstrates live problem analysis in four phases: (1) naming the presenting symptom, (2) asking "why" three times to reveal non-linear feedback loops, (3) locating the current intervention on the leverage ladder and moving one rung higher, and (4) applying the mandate test to confirm the reframe survives within discretionary authority.</p></div>
-</div>
-<div class="faq-item glass">
-<button class="faq-q" aria-expanded="false">How does the 3-day variant differ from the 4-day?<span class="chev"></span></button>
-<div class="faq-a"><p>Compression is applied to depth of application, not coverage — all 6 TOR modules are preserved. The diagnosis segment is retained at full length. The indicator clinic becomes a facilitated demonstration. Notably, sustainability receives proportionally more time because COS-managed PAPs carry the sharpest continuity risk.</p></div>
-</div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">Who is this program designed for?<span class="chev"></span></button><div class="faq-a"><p>This LDI is designed for Salary Grade 15 and above officers at the Department of Education Central Office who are already facilitating or managing live Programs, Activities, and Projects (PAPs). These are not learners acquiring a first framework — the advanced increment is judgment under complexity, not more technique.</p></div></div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">What is the "Live PAP Methodology"?<span class="chev"></span></button><div class="faq-a"><p>Every participant enrols one real PAP they currently manage, and works it through all modules across the four days. This replaces generic case studies with live, personally accountable program work.</p></div></div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">What is the Leverage Ladder?<span class="chev"></span></button><div class="faq-a"><p>A hierarchy of intervention points from parameters (lowest) to system goals (highest). Standard public sector programs cluster at the two lowest rungs. Advanced program management intervenes higher up the ladder, targeting information flows, rules, or structure.</p></div></div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">Why might post-assessment scores go down?<span class="chev"></span></button><div class="faq-a"><p>A participant who confidently agreed on Day 0 that they could explain their causal chain, and who disagrees on Day 4, has learned what a causal chain actually requires. A modest decline in self-assessment on problem-definition items is the expected signature of the intervention working.</p></div></div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">What is "Fixes That Fail"?<span class="chev"></span></button><div class="faq-a"><p>A systems thinking archetype where a quick fix produces short-term improvement but generates unintended consequences that worsen the problem over time. The exercise maps both the balancing loop (quick fix → improvement) and the reinforcing loop (unintended consequences → more fixing needed).</p></div></div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">How does the 5-minute demo work?<span class="chev"></span></button><div class="faq-a"><p>The facilitator demonstrates live problem analysis in four phases: (1) naming the presenting symptom, (2) asking "why" three times to reveal non-linear feedback loops, (3) locating the current intervention on the leverage ladder and moving one rung higher, and (4) applying the mandate test to confirm the reframe survives within discretionary authority.</p></div></div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">What are non-linear relationships?<span class="chev"></span></button><div class="faq-a"><p>Non-linear relationships in the education sector mean that cause and effect are not proportional or straightforward. For example, procuring more materials (a linear fix) doesn't produce proportional improvement because the system has feedback loops — teachers improvise when materials are late, which masks the gap from the center, which deprioritizes timing changes, which keeps materials late.</p></div></div>
+<div class="faq-item glass"><button class="faq-q" aria-expanded="false">How does the 3-day variant work?<span class="chev"></span></button><div class="faq-a"><p>The 3-day variant applies compression to depth of application, not coverage — all 6 TOR modules are preserved. The diagnosis segment is retained at full length. The indicator clinic becomes a facilitated demonstration. Sustainability receives proportionally more time because COS-managed PAPs carry the sharpest continuity risk.</p></div></div>
 </div>
 </div>
 </section>
@@ -1681,10 +1337,10 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
 <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
 <div class="socials">
-<a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-<a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
-<a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
-<a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Website"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-globe"/></svg></a>
+<a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+<a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><i class="fab fa-facebook-f"></i></a>
+<a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+<a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Website"><i class="fas fa-globe"></i></a>
 </div>
 </div>
 <div class="footer-col">
@@ -1712,7 +1368,6 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 <ul>
 <li><a href="#instrument">Pre-Assessment</a></li>
 <li><a href="#variant">3-Day Variant</a></li>
-<li><a href="#tor">TOR Delivery</a></li>
 <li><a href="index.html#contact">Contact Alvin</a></li>
 <li><a href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer">Full Portfolio ↗</a></li>
 </ul>
@@ -1726,9 +1381,16 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 </footer>
 
 <!-- Back to Top -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-<svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
-</button>
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image view">
+<button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged view">✕</button>
+<div class="lightbox-inner">
+<img id="lightboxImg" src="" alt="">
+<p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+</div>
 
 <!-- ============ FLOATING AI CHAT WIDGET — FAQ FALLBACK ============ -->
 <div class="chat-widget" id="chatWidget">
@@ -1740,19 +1402,14 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 <div class="chat-panel-header">
 <div class="chat-panel-brand">
 <i class="fas fa-robot"></i>
-<div>
-<strong id="cw-title">APM Assistant</strong>
-<span>FAQ · Advanced Program Management LDI</span>
-</div>
+<div><strong id="cw-title">APM Assistant</strong><span>FAQ · Advanced Program Management LDI</span></div>
 </div>
 <div class="chat-panel-actions">
 <button class="chat-panel-btn" id="chatClose" aria-label="Close chat" title="Close">✕</button>
 </div>
 </div>
 <div class="chat-panel-body" id="chatBody">
-<div class="chat-message">
-<p>Hello! I can help answer questions about the Advanced Program Management LDI. Try one of these common questions:</p>
-</div>
+<div class="chat-message"><p>Hello! I can help answer questions about the Advanced Program Management LDI. Try one of these common questions:</p></div>
 <div class="chat-suggestions" id="chatSuggestions">
 <button class="chat-suggestion" onclick="showChatResponse(0)">What is the Live PAP Methodology?</button>
 <button class="chat-suggestion" onclick="showChatResponse(1)">How does the pre-assessment work?</button>
@@ -1773,9 +1430,7 @@ Remember: everyone's version is a unique mental model — the point is to learn 
 <script>
 document.documentElement.classList.add('js');
 
-/* ================================================================
-THEME TOGGLE
-================================================================ */
+/* ===== THEME TOGGLE ===== */
 (function themeInit() {
 const THEME_KEY = 'as-theme';
 const root = document.documentElement;
@@ -1795,9 +1450,7 @@ function toggle() { apply(root.dataset.theme === 'light' ? 'dark' : 'light'); }
 document.getElementById('themeToggle')?.addEventListener('click', toggle);
 })();
 
-/* ================================================================
-NAV: dropdowns, mobile menu
-================================================================ */
+/* ===== NAV DROPDOWNS ===== */
 document.querySelectorAll('[data-drop] > .drop-btn').forEach(btn => {
 btn.addEventListener('click', e => {
 e.stopPropagation();
@@ -1810,6 +1463,7 @@ document.addEventListener('click', e => {
 if (!e.target.closest('[data-drop]')) document.querySelectorAll('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
 });
 
+/* ===== MOBILE MENU ===== */
 const mm = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay'), menuBtn = document.getElementById('menuBtn');
 function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
 function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
@@ -1821,90 +1475,87 @@ document.addEventListener('keydown', e => {
 if (e.key === 'Escape') { closeMobile(); document.querySelectorAll('[data-drop]').forEach(d => d.classList.remove('open')); }
 });
 
-/* ================================================================
-TIMELINE CARD TOGGLE
-================================================================ */
+/* ===== LIGHTBOX ===== */
+(function lightboxInit() {
+const lb = document.getElementById('lightbox');
+if (!lb) return;
+const lbImg = document.getElementById('lightboxImg');
+const lbCaption = document.getElementById('lightboxCaption');
+function open(src, title) {
+lbImg.src = src; lbImg.alt = title; lbCaption.textContent = title;
+lb.classList.add('show'); document.body.style.overflow = 'hidden';
+}
+function close() {
+lb.classList.remove('show'); document.body.style.overflow = '';
+setTimeout(() => { lbImg.src = ''; }, 250);
+}
+document.querySelectorAll('[data-lightbox-src]').forEach(el => {
+el.addEventListener('click', () => open(el.dataset.lightboxSrc, el.dataset.lightboxTitle || ''));
+});
+document.getElementById('lightboxClose')?.addEventListener('click', close);
+lb.addEventListener('click', e => { if (e.target === lb) close(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('show')) close(); });
+})();
+
+/* ===== TIMELINE CARD TOGGLE ===== */
 function toggleTlCard(card) {
 const wasOpen = card.classList.contains('open');
 document.querySelectorAll('.tl-card').forEach(c => c.classList.remove('open'));
 if (!wasOpen) card.classList.add('open');
 }
 
-/* ================================================================
-FAQ TOGGLE
-================================================================ */
+/* ===== FAQ TOGGLE ===== */
 document.querySelectorAll('.faq-q').forEach(btn => btn.addEventListener('click', () => {
 const item = btn.parentElement, wasOpen = item.classList.contains('open');
 document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
 if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
 }));
 
-/* ================================================================
-SCROLL: reveal, back-to-top
-================================================================ */
+/* ===== SCROLL REVEAL ===== */
 const revealIO = new IntersectionObserver(es => es.forEach(en => {
 if (en.isIntersecting) { en.target.classList.add('in'); revealIO.unobserve(en.target); }
 }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
 document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
 
+/* ===== BACK TO TOP ===== */
 const btt = document.getElementById('backToTop');
 window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
 
-/* ================================================================
-5-MINUTE DEMO TIMER
-================================================================ */
-let demoInterval = null;
-let demoSeconds = 300;
-let demoRunning = false;
-
+/* ===== 5-MINUTE DEMO TIMER ===== */
+let demoInterval = null, demoSeconds = 300, demoRunning = false;
 function startDemo() {
 if (demoRunning) {
-clearInterval(demoInterval);
-demoRunning = false;
-document.getElementById('demoStart').innerHTML = '<i class="fas fa-play"></i> Start';
-return;
+clearInterval(demoInterval); demoRunning = false;
+document.getElementById('demoStart').innerHTML = '<i class="fas fa-play"></i> Start'; return;
 }
 demoRunning = true;
 document.getElementById('demoStart').innerHTML = '<i class="fas fa-pause"></i> Pause';
 activatePhase(1);
 demoInterval = setInterval(() => {
 demoSeconds--;
-if (demoSeconds <= 0) {
-clearInterval(demoInterval);
-demoRunning = false;
-demoSeconds = 0;
-document.getElementById('demoStart').innerHTML = '<i class="fas fa-play"></i> Start';
-}
-const min = Math.floor(demoSeconds / 60);
-const sec = demoSeconds % 60;
+if (demoSeconds <= 0) { clearInterval(demoInterval); demoRunning = false; demoSeconds = 0; document.getElementById('demoStart').innerHTML = '<i class="fas fa-play"></i> Start'; }
+const min = Math.floor(demoSeconds / 60), sec = demoSeconds % 60;
 document.getElementById('demoTimer').textContent = min + ':' + (sec < 10 ? '0' : '') + sec;
 if (demoSeconds === 255) activatePhase(2);
 if (demoSeconds === 165) activatePhase(3);
 if (demoSeconds === 75) activatePhase(4);
 }, 1000);
 }
-
 function resetDemo() {
-clearInterval(demoInterval);
-demoRunning = false;
-demoSeconds = 300;
+clearInterval(demoInterval); demoRunning = false; demoSeconds = 300;
 document.getElementById('demoTimer').textContent = '5:00';
 document.getElementById('demoStart').innerHTML = '<i class="fas fa-play"></i> Start';
-document.querySelectorAll('.demo-phase').forEach(p => { p.classList.remove('active', 'completed'); });
+document.querySelectorAll('.demo-phase').forEach(p => p.classList.remove('active', 'completed'));
 }
-
 function activatePhase(num) {
 document.querySelectorAll('.demo-phase').forEach((p, i) => {
 p.classList.remove('active');
-if (i + 1 < num) p.classList.add('completed');
-else p.classList.remove('completed');
+if (i + 1 < num) p.classList.add('completed'); else p.classList.remove('completed');
 });
 document.getElementById('phase' + num).classList.add('active');
 }
 
-/* ================================================================
-AI CHAT WIDGET — FAQ FALLBACK
-================================================================ */
+/* ===== AI CHAT WIDGET ===== */
 const chatResponses = [
 "The Live-PAP Methodology means every participant enrols one real Program, Activity, or Project they currently manage, and works it through all six modules across the four days. This replaces generic case studies with live, personally accountable program work.",
 "The pre-assessment (\"The PAP Under Pressure\") is a 20-minute diagnostic completed online before arrival. It measures strain across 6 domains using 12 statements on a 4-point scale. Results dynamically adjust Day 1's opening, triad composition, and the worked illustration used.",
@@ -1927,21 +1578,16 @@ const isOpen = chatPanel.classList.toggle('open');
 chatFab.setAttribute('aria-expanded', isOpen);
 chatPanel.setAttribute('aria-hidden', !isOpen);
 });
-
 chatClose.addEventListener('click', () => {
 chatPanel.classList.remove('open');
 chatFab.setAttribute('aria-expanded', 'false');
 chatPanel.setAttribute('aria-hidden', 'true');
 });
-
 document.addEventListener('click', e => {
 if (!chatPanel.contains(e.target) && !chatFab.contains(e.target) && chatPanel.classList.contains('open')) {
-chatPanel.classList.remove('open');
-chatFab.setAttribute('aria-expanded', 'false');
-chatPanel.setAttribute('aria-hidden', 'true');
+chatPanel.classList.remove('open'); chatFab.setAttribute('aria-expanded', 'false'); chatPanel.setAttribute('aria-hidden', 'true');
 }
 });
-
 function showChatResponse(index) {
 const responseEl = document.getElementById('chatResponse');
 responseEl.textContent = chatResponses[index];
