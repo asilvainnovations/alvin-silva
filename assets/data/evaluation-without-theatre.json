@@ -1,0 +1,47 @@
+{
+  "slug": "evaluation-without-theatre",
+  "title": "Evaluation Without Theatre",
+  "date": "2026-06-30",
+  "tags": [
+    "MEL",
+    "evaluation",
+    "practice"
+  ],
+  "readingMinutes": 7,
+  "excerpt": "Most mid-term reviews are performed rather than used. A short argument for designing evaluations that a programme manager would voluntarily read.",
+  "body": [
+    {
+      "type": "p",
+      "text": "There is a version of evaluation that exists to satisfy a clause in a grant agreement. It is competent, it is on time, and nobody reads past the executive summary. The programme continues exactly as it would have without it."
+    },
+    {
+      "type": "h2",
+      "text": "The diagnostic question"
+    },
+    {
+      "type": "p",
+      "text": "Would the programme manager have commissioned this review if no donor required it? If the honest answer is no, the design is wrong regardless of how rigorous the methods section is."
+    },
+    {
+      "type": "h2",
+      "text": "Three shifts that help"
+    },
+    {
+      "type": "list",
+      "items": [
+        "**Ask questions with consequences.** An evaluation question whose every possible answer leads to the same decision is decoration.",
+        "**Report the uncomfortable finding first.** Burying it at position seven of nine guarantees it dies in the summary.",
+        "**Separate the verdict from the explanation.** Managers need to know what to change on Monday; the methodology defence belongs in an annex."
+      ]
+    },
+    {
+      "type": "quote",
+      "text": "An evaluation is useful to the extent that someone could act differently because of it.",
+      "cite": "Working definition"
+    },
+    {
+      "type": "p",
+      "text": "None of this lowers the evidentiary bar. Rigour is what makes an uncomfortable finding survivable when it is contested. The argument is only that rigour serves use, and when the two are traded against each other, the trade is usually being made in the wrong direction."
+    }
+  ]
+}
