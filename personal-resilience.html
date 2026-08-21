@@ -958,6 +958,20 @@ if (!getConsent()) setTimeout(showConsent, 1800);
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
+  <!-- Load the visual theme as early as possible. -->
+<script src="assets/js/core/theme.js" defer></script>
+
+<!-- Load accessibility behavior. -->
+<script src="assets/js/core/accessibility.js" defer></script>
+
+<!-- Load responsive navigation behavior. -->
+<script src="assets/js/core/navigation.js" defer></script>
+
+<!-- Load audience-persona behavior. -->
+<script src="assets/js/core/persona.js" defer></script>
+
+<!-- Load the platform orchestrator last. -->
+<script src="assets/js/core/platform.js" defer></script>
 </script>
 </body>
 </html>
