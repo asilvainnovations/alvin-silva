@@ -1,0 +1,425 @@
+{
+  "$schema": "internal://asilva/kb/v1",
+  "note": "Authored conversational knowledge for the internal-intelligence chat engine. Facts that belong to the structured record (metrics, project fields, CV variants) live in credentials.json and are read from there — do NOT duplicate them here. This file holds phrasing, framing, and answers that have no home in the structured schema.",
+  "updated": "2026-08-21",
+  "suggestions": [
+    "What makes his profile unusual?",
+    "What can he actually build?",
+    "MSME and private-sector work",
+    "How do engagements start?"
+  ],
+  "entries": [
+    {
+      "id": "deliverables",
+      "q": "What does a development management consultant actually deliver?",
+      "variants": [
+        "what do you deliver",
+        "what are the outputs",
+        "what do I get",
+        "deliverables",
+        "what does he produce",
+        "tangible outputs"
+      ],
+      "tags": [
+        "deliverable",
+        "output",
+        "scope",
+        "product"
+      ],
+      "a": "Fundable strategies, investment roadmaps, and evaluation systems — documents that survive procurement review and actually get implemented.\n\nConcretely: strategic plans, results frameworks, theories of change, MEL systems, risk-informed development plans, situational analyses, and mid-term reviews. Recent examples include BIRD 2026-2035, a national TVET strategic plan, and a ₱190M climate-smart programme design.",
+      "actions": [
+        "Notable projects",
+        "Which sectors?",
+        "Contact details"
+      ],
+      "weight": 1.2
+    },
+    {
+      "id": "procurement",
+      "q": "Can you work within government or UN procurement systems?",
+      "variants": [
+        "procurement",
+        "compliance",
+        "un standards",
+        "government tender",
+        "framework agreement",
+        "can you be contracted",
+        "vendor registration"
+      ],
+      "tags": [
+        "procurement",
+        "compliance",
+        "contracting",
+        "tender"
+      ],
+      "a": "Yes. Engagements have run under government and UN procurement standards across BoI-MTIT, TESDA, MMDA, DOH, ECHO, USAID, World Bank, UNICEF, and WHO.\n\nThat includes the documentation side of it — inception reports, milestone-linked deliverables, and the reporting cadence donors expect.",
+      "actions": [
+        "Which sectors?",
+        "Contact details"
+      ],
+      "weight": 1.15
+    },
+    {
+      "id": "bird",
+      "q": "What is BIRD 2026-2035 and what was his role?",
+      "variants": [
+        "bird",
+        "bangsamoro investment roadmap",
+        "barmm roadmap",
+        "investment roadmap",
+        "boi mtit",
+        "bangsamoro"
+      ],
+      "tags": [
+        "bird",
+        "bangsamoro",
+        "barmm",
+        "investment",
+        "roadmap",
+        "government"
+      ],
+      "a": "The **Bangsamoro Investment Roadmap for Development (BIRD) 2026-2035** is the region's decade-long binding investment framework, developed for the BARMM Bureau of Investments under MTIT.\n\nAlvin served as lead technical architect, end to end — framework design, the validation survey platform used to ground it in stakeholder input, and the scoring methodology behind the investment prioritization.",
+      "actions": [
+        "Other government work",
+        "Which sectors?",
+        "Contact details"
+      ],
+      "weight": 1.25
+    },
+    {
+      "id": "engagement-start",
+      "q": "How do engagements usually start?",
+      "variants": [
+        "how do we start",
+        "first step",
+        "onboarding",
+        "how to begin",
+        "process",
+        "what happens first",
+        "next steps"
+      ],
+      "tags": [
+        "process",
+        "start",
+        "onboarding",
+        "scoping"
+      ],
+      "a": "With a 30-minute scoping call. You bring the problem; Alvin brings a structured read on feasibility and the fastest defensible path to a result.\n\nIf it's a fit, that becomes a short concept note with scope, timeline, and deliverables before any contracting conversation.",
+      "actions": [
+        "Contact details",
+        "What engagements does he take?"
+      ],
+      "weight": 1.1
+    },
+    {
+      "id": "systems-thinking",
+      "q": "What does he mean by systems thinking?",
+      "variants": [
+        "systems thinking",
+        "causal loop",
+        "complex adaptive systems",
+        "systems approach",
+        "feedback loops",
+        "archetypes",
+        "cas"
+      ],
+      "tags": [
+        "systems",
+        "methodology",
+        "causal",
+        "complexity"
+      ],
+      "a": "Applied, not decorative. In practice it means mapping causal structure before proposing interventions — causal loop diagrams, stock-and-flow reasoning, and system archetypes such as *Fixes that Fail* and *Shifting the Burden* used to find where a programme's leverage actually sits.\n\nIt shows up most visibly in the Complex Adaptive Systems framing of *Seamless Care*, and in how strategic plans get structured around leverage points rather than activity lists.",
+      "actions": [
+        "Areas of expertise",
+        "Published work"
+      ],
+      "weight": 1.1
+    },
+    {
+      "id": "languages-location",
+      "q": "Where is he based and what languages does he work in?",
+      "variants": [
+        "where is he based",
+        "location",
+        "philippines",
+        "timezone",
+        "language",
+        "remote",
+        "travel",
+        "where does he live"
+      ],
+      "tags": [
+        "location",
+        "language",
+        "remote",
+        "travel"
+      ],
+      "a": "Based in Metro Manila, Philippines (UTC+8), working in **English** and **Filipino**.\n\nEngagements have run across Asia, Africa, and the Pacific, both remote and in-country — including extended fieldwork in BARMM and Mindanao.",
+      "actions": [
+        "Contact details",
+        "Which sectors?"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "cognitio-plus",
+      "q": "What is Cognitio+?",
+      "variants": [
+        "cognitio",
+        "cognitio plus",
+        "cognitioplus",
+        "his platform",
+        "wellbeing platform",
+        "his company"
+      ],
+      "tags": [
+        "cognitio",
+        "platform",
+        "brand",
+        "wellbeing"
+      ],
+      "a": "**Cognitio+** is the inclusive well-being and digital services platform Alvin founded, built, and architects — operating since 2020.\n\nIt's the home for his published resilience work and the digital tools that come out of consulting practice. **ASilva Innovations** is the separate consulting brand under which client engagements are contracted.",
+      "actions": [
+        "Published work",
+        "Notable projects"
+      ],
+      "weight": 1.05
+    },
+    {
+      "id": "mel",
+      "q": "What monitoring and evaluation work has he done?",
+      "variants": [
+        "mel",
+        "m&e",
+        "monitoring evaluation",
+        "evaluation",
+        "mid-term review",
+        "impact assessment",
+        "results framework",
+        "theory of change",
+        "mtr"
+      ],
+      "tags": [
+        "mel",
+        "evaluation",
+        "monitoring",
+        "review",
+        "assessment"
+      ],
+      "a": "Evaluation and MEL work spans mid-term reviews, process evaluations, and results-framework design — including the CONSENT DRR II mid-term review for German Red Cross / Philippine Red Cross, the MOVE UP process evaluation under ECHO, and performance-management system design for DLSU.\n\nThere's a dedicated CV variant for this: [MEL CV](Alvin_Silva_CV_Versions/Alvin_Silva_MEL_CV.pdf).",
+      "actions": [
+        "Notable projects",
+        "Areas of expertise",
+        "Contact details"
+      ],
+      "weight": 1.15
+    },
+    {
+      "id": "training",
+      "q": "Does he design and facilitate training?",
+      "variants": [
+        "training",
+        "facilitation",
+        "workshop",
+        "capacity building",
+        "learning intervention",
+        "course design",
+        "curriculum",
+        "resource person"
+      ],
+      "tags": [
+        "training",
+        "facilitation",
+        "capacity",
+        "workshop",
+        "learning"
+      ],
+      "a": "Yes — capacity building and facilitation is a 15-year strand of the practice.\n\nThat covers full learning-intervention design (session architecture, pre-assessment instruments, facilitator guides), live facilitation for senior government and NGO cohorts, and MHPSS module development for WHO and DOH.\n\nSee the [Capacity Building CV](Alvin_Silva_CV_Versions/Alvin_Silva_Capacity-Building-Training_CV.pdf).",
+      "actions": [
+        "Areas of expertise",
+        "Contact details"
+      ],
+      "weight": 1.1
+    },
+    {
+      "id": "data-privacy",
+      "q": "What happens to what I type here?",
+      "variants": [
+        "privacy",
+        "data",
+        "is this stored",
+        "do you track me",
+        "gdpr",
+        "what do you do with my data",
+        "is this recorded"
+      ],
+      "tags": [
+        "privacy",
+        "data",
+        "storage",
+        "tracking"
+      ],
+      "a": "Nothing leaves your browser. This assistant runs entirely client-side — there's no API call, no server, and no logging of what you type.\n\nThe conversation is held in your own browser's local storage so it survives a page reload, and clearing it removes it permanently. Full detail is in the [privacy policy](privacy-policy.html).",
+      "actions": [
+        "How do you work?",
+        "Contact details"
+      ],
+      "weight": 1.2
+    },
+    {
+      "id": "hybrid-positioning",
+      "q": "Is he a development consultant or a tech/private-sector person?",
+      "variants": [
+        "hybrid",
+        "what kind of consultant",
+        "is he technical",
+        "development or private",
+        "what makes him different",
+        "why him",
+        "differentiator",
+        "unusual combination"
+      ],
+      "tags": [
+        "hybrid",
+        "positioning",
+        "private",
+        "digital",
+        "differentiator"
+      ],
+      "a": "Both, and the combination is the point.\n\nHe designs the resilience and investment frameworks (BIRD 2026–2035, CCA-DRR, ₱190M climate-smart programming), **and** builds the technology that executes them (Azure Synapse data warehousing, Power Automate, the MSME AI & Automation Toolkit), **and** knows how to take them to market (*Brand Secrets*, digital growth strategy).\n\nMost development professionals stop at the first. Most technologists never learn the first. Ask about any one of the three.",
+      "actions": [
+        "Private sector work",
+        "Technical capability",
+        "Published work"
+      ],
+      "weight": 1.3
+    },
+    {
+      "id": "private-sector",
+      "q": "What private-sector and MSME work has he done?",
+      "variants": [
+        "msme",
+        "sme",
+        "private sector",
+        "business",
+        "enterprise",
+        "commercial",
+        "market systems",
+        "inclusive growth",
+        "investment pipeline",
+        "ppp",
+        "public private partnership"
+      ],
+      "tags": [
+        "msme",
+        "private",
+        "ppp",
+        "investment",
+        "inclusive growth",
+        "enterprise"
+      ],
+      "a": "MSME and private-sector work runs across three strands:\n\n• **Investment pipeline design** — BIRD 2026–2035 for BARMM's Bureau of Investments, aligning regional priorities with national PPP guidelines and de-risking private participation.\n• **MSME digital enablement** — the *MSME AI & Automation Toolkit* and the *2024 SME Report*, both aimed at cooperatives, CSOs and small enterprises rather than institutions.\n• **Startup mentorship** — PhilDev Labs' Financing the Future Challenge, advising early-stage ventures on business modeling, market validation and investment readiness.\n\nBacked by ADB Institute training in financial inclusion and inclusive urban growth.",
+      "actions": [
+        "Technical capability",
+        "Published work",
+        "Contact details"
+      ],
+      "weight": 1.25
+    },
+    {
+      "id": "technical-capability",
+      "q": "What can he actually build?",
+      "variants": [
+        "technical",
+        "azure",
+        "data engineering",
+        "synapse",
+        "power bi",
+        "power automate",
+        "automation",
+        "can he code",
+        "developer",
+        "data warehouse",
+        "analytics stack",
+        "ai",
+        "platform"
+      ],
+      "tags": [
+        "azure",
+        "technical",
+        "data",
+        "automation",
+        "platform",
+        "build",
+        "digital"
+      ],
+      "a": "He builds, not just specifies.\n\n**Data & cloud** — 24 Microsoft Learn modules (17h 28m, 2024): the full Azure Synapse Analytics stack, Data Lake Storage Gen2, modern data warehouse design, and data engineering on Azure.\n**Automation & low-code** — Power Automate (including AI Builder and multi-source flows), Power Apps, Power Pages, Power BI.\n**Shipped platforms** — DDRiVE-M, Strat Planner Pro, Cognitio+, and the BIRD validation survey platform (offline-capable, PWA).\n\nGrounded further by DAP/SPARTA data analytics certification and NRCP recognition in Data Analytics and Innovation Management.",
+      "actions": [
+        "Private sector work",
+        "Notable projects",
+        "Contact details"
+      ],
+      "weight": 1.25
+    },
+    {
+      "id": "credentials",
+      "q": "What are his certifications and credentials?",
+      "variants": [
+        "certification",
+        "certificate",
+        "credential",
+        "qualified",
+        "training",
+        "harvard",
+        "mit",
+        "adb",
+        "accredited",
+        "member",
+        "nrcp",
+        "what has he studied"
+      ],
+      "tags": [
+        "certification",
+        "credential",
+        "training",
+        "harvard",
+        "mit",
+        "adbi",
+        "nrcp"
+      ],
+      "a": "Formal education: **MDM** from the Asian Institute of Management (ADB Scholar) and **BS Social Sciences, Political Science** from UP Visayas.\n\nSelected credentials: **Technology Entrepreneurship: Lab to Market** (HarvardX, 2021), **u.lab: Leading From the Emerging Future** (MITx/Otto Scharmer, 2021), two **ADB Institute** courses on financial inclusion and inclusive urban growth (2021), the **DAP/SPARTA** data analytics track, and **PDRF** business continuity and EOC design.\n\nHe is an **Associate Member of the National Research Council of the Philippines** (DOST, 2021), recognized in DRR, Inclusive Growth, Innovation Management and Data Analytics — and served as a **Mentor in the AIM CSO Mentorship Program** (Cycle 6, 2024).",
+      "actions": [
+        "Technical capability",
+        "Areas of expertise",
+        "Contact details"
+      ],
+      "weight": 1.2
+    },
+    {
+      "id": "srmp-status",
+      "q": "Is his security risk management certification current?",
+      "variants": [
+        "srmp",
+        "security risk management",
+        "inssa",
+        "is it current",
+        "expired",
+        "still certified"
+      ],
+      "tags": [
+        "srmp",
+        "security",
+        "risk",
+        "certification",
+        "expiry"
+      ],
+      "a": "Direct answer: **the SRMP-C lapsed.** INSSA certified him as a Security Risk Management Professional – Country level on 17 February 2022, on a three-year term, so it expired 17 February 2025.\n\nThe underlying practice didn't lapse with the certificate — security risk management remains a live discipline in his work, alongside PDRF business continuity and EOC design training. But the credential itself should be read as **SRMP-C (INSSA, 2022–2025)**.",
+      "actions": [
+        "Areas of expertise",
+        "Contact details"
+      ],
+      "weight": 1.15
+    }
+  ]
+}
