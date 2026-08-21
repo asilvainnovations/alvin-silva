@@ -1,0 +1,62 @@
+{
+  "description": "Local intelligence layer for the Alvin Silva professional platform. The assistant consumes the canonical credentials dataset and system architecture, then applies deterministic semantic retrieval, strategic reasoning, systems thinking, resilience analysis, futures thinking, cognitive-science framing, and carefully bounded physical-science analogies.",
+  "modules": [
+    {
+      "name": "Profile",
+      "purpose": "Professional identity, credentials, experience, disciplines, and mission."
+    },
+    {
+      "name": "Portfolio",
+      "purpose": "Projects, strategic plans, platforms, publications, and documented engagements."
+    },
+    {
+      "name": "Career Operations",
+      "purpose": "Career automation, CV variants, application analysis, and professional positioning."
+    },
+    {
+      "name": "Blog",
+      "purpose": "Future knowledge publishing and professional thought leadership."
+    },
+    {
+      "name": "Chorus-AI",
+      "purpose": "Planned intelligent knowledge and decision-support experience."
+    },
+    {
+      "name": "Electoral Strategy Hub",
+      "purpose": "Planned electoral strategy research, scenario analysis, and decision-support workspace."
+    },
+    {
+      "name": "Elektrametrics",
+      "purpose": "Planned electoral survey instrument and measurement architecture."
+    },
+    {
+      "name": "Knowledge Layer",
+      "purpose": "Canonical credentials, portfolio, publications, and architecture data."
+    }
+  ],
+  "capabilities": [
+    "Credential-aware question answering",
+    "Portfolio-aware retrieval",
+    "Local semantic similarity matching",
+    "Strategic thinking",
+    "Systems thinking",
+    "Futures thinking",
+    "Resilience and risk analysis",
+    "Cognitive-science framing",
+    "Innovation and digital-transformation reasoning",
+    "Decision architecture",
+    "Scenario stress testing",
+    "Second-order-effect analysis",
+    "Leverage-point identification",
+    "Implementation and learning-loop design"
+  ],
+  "reasoning_principles": [
+    "Separate documented evidence from inference.",
+    "Do not invent credentials, projects, dates, clients, metrics, or outcomes.",
+    "Use physical-science concepts as disciplined analytical analogies rather than unsupported proof.",
+    "Treat quantum physics as a scientific domain, not as a justification for speculative management or consciousness claims.",
+    "Prefer system-level interventions over isolated optimization.",
+    "Expose assumptions, constraints, trade-offs, feedback loops, and second-order effects.",
+    "Translate analysis into decisions, owners, milestones, indicators, and learning loops."
+  ]
+}
