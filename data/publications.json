@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "professional_publications",
+  "author": "Alvin Silva",
+  "publications": [],
+  "publication_schema": {
+    "id": "Unique stable publication identifier.",
+    "title": "Authoritative publication title.",
+    "publication_type": "Article | Report | Policy Brief | Research | Book Chapter | Other.",
+    "date": "Publication date in ISO 8601 format when available.",
+    "publisher": "Documented publisher or institution.",
+    "url": "Canonical public URL when available.",
+    "doi": "DOI when available.",
+    "abstract": "Source-supported abstract or summary.",
+    "topics": "Array of documented topics.",
+    "co_authors": "Array of documented co-authors.",
+    "evidence_source": "Reference to the authoritative source."
+  },
+  "data_note": "No publication titles, dates, publishers, URLs, DOI values, or authorship claims have been fabricated. Populate this collection only from authoritative publication records or the authoritative curriculum vitae."
+}

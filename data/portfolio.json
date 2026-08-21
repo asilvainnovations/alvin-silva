@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "professional_portfolio",
+  "portfolio_owner": "Alvin Silva",
+  "portfolio_positioning": {
+    "primary": "Development Management Professional",
+    "secondary": [
+      "Disaster Risk Reduction and Climate Change Adaptation Consultant",
+      "Systems Innovation Practitioner",
+      "Certified International Humanitarian"
+    ]
+  },
+  "focus_areas": [
+    "Sustainability reporting",
+    "Climate resilience",
+    "Circular economy",
+    "Inclusive governance",
+    "Program design",
+    "Donor-funded project management",
+    "Start-up acceleration",
+    "Multi-stakeholder engagement",
+    "Capacity development",
+    "Policy advocacy",
+    "Cross-sector partnerships"
+  ],
+  "engagement_contexts": [
+    "Small and medium-sized enterprises",
+    "Local government units",
+    "National government agencies",
+    "Multilateral organizations",
+    "Cross-sector partnerships"
+  ],
+  "geographic_scope": [
+    "Philippines",
+    "Asia"
+  ],
+  "selected_collaborators": [
+    "USAID",
+    "GIZ",
+    "WHO",
+    "German Red Cross",
+    "The Asia Foundation"
+  ],
+  "projects": [],
+  "project_schema": {
+    "id": "Unique stable project identifier.",
+    "title": "Authoritative project title.",
+    "organization": "Client, partner, employer, or commissioning organization when documented.",
+    "role": "Alvin Silva's documented role.",
+    "location": "Documented geographic location.",
+    "start_date": "Documented start date in ISO 8601 format when available.",
+    "end_date": "Documented end date in ISO 8601 format when available.",
+    "status": "planned | active | completed | archived when documented.",
+    "themes": "Array of documented thematic areas.",
+    "summary": "Source-supported project summary.",
+    "outcomes": "Array of source-supported outcomes.",
+    "frameworks": "Array of documented frameworks or standards.",
+    "partners": "Array of documented partners.",
+    "evidence_source": "Reference to the authoritative source."
+  },
+  "data_note": "No individual project records have been fabricated. Populate the projects array from the authoritative portfolio or curriculum vitae before presenting project-specific claims as factual."
+}
