@@ -1,43 +1,13 @@
 {
-  "package": "Alvin Silva Services and Visualizations",
-  "files": [
-    "01-credentials-service.js",
-    "02-analytics-service.js",
-    "03-career-map.js",
-    "04-impact-dashboard.js",
-    "05-expertise-radar.js",
-    "06-visualizations.css",
-    "07-README.md"
+  "package": "alvin-silva-production-update",
+  "review_date": "2026-08-21",
+  "architecture": "static-html-css-vanilla-js",
+  "changes": [
+    "Add shared component stylesheet",
+    "Add visualization stylesheet",
+    "Add dependency-aware static-site validator",
+    "Strengthen GitHub Actions validation",
+    "Repair malformed visualization stylesheet links in index.html and portfolio.html"
   ],
-  "javascript_validation": {
-    "01-credentials-service.js": {
-      "status": "PASS",
-      "error": ""
-    },
-    "02-analytics-service.js": {
-      "status": "PASS",
-      "error": ""
-    },
-    "03-career-map.js": {
-      "status": "PASS",
-      "error": ""
-    },
-    "04-impact-dashboard.js": {
-      "status": "PASS",
-      "error": ""
-    },
-    "05-expertise-radar.js": {
-      "status": "PASS",
-      "error": ""
-    }
-  },
-  "file_hashes": {
-    "01-credentials-service.js": "a47ff788e12fc338c3b1a71b44c186b01067e6877fd09068cbcdf7460a47d540",
-    "02-analytics-service.js": "17e3e3a940f2934b51775d76cf63ba5d3a703740a26b9ef7ca87a68b0c4dfc30",
-    "03-career-map.js": "2b6dd81ede723c7e35764d1fc5d707b12314b9987732acd7edbbf6c77b3a69f5",
-    "04-impact-dashboard.js": "b5ad7d0608bd88b27d59b824cf149fd982810fa3168729ab07ec442f91e71030",
-    "05-expertise-radar.js": "014098ed716e31a1a0dd554ea865d54cb316403d902e45960ba675ceb24ccf31",
-    "06-visualizations.css": "e0c7c66534174c2a23135e5b8903178e25d3a644de22dd0a059a04fde5cd1617",
-    "07-README.md": "bc072619a31d6f7727c9cd0e7c89c506738650cd9689cca182d74efebd0947ad"
-  }
+  "design_preserved": true
 }
