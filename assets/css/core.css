@@ -1,0 +1,117 @@
+/* Define the base reduced-motion behavior for the accessibility module. */
+html.as-reduced-motion *,
+html.as-reduced-motion *::before,
+html.as-reduced-motion *::after {
+  /* Disable transitions and animations when the user requests reduced motion. */
+  animation-duration: 0.01ms !important;
+
+  /* Disable animation repetition for accessibility. */
+  animation-iteration-count: 1 !important;
+
+  /* Remove transition delays. */
+  transition-duration: 0.01ms !important;
+
+  /* Remove smooth scrolling. */
+  scroll-behavior: auto !important;
+}
+
+/* Give keyboard users a clear focus indicator throughout the platform. */
+html.as-keyboard-navigation :focus-visible {
+  /* Use the platform's gold accent for consistent focus visibility. */
+  outline: 3px solid #ffd700;
+
+  /* Keep the focus outline separated from the focused element. */
+  outline-offset: 3px;
+}
+
+/* Improve contrast for users who explicitly request enhanced contrast. */
+html.as-high-contrast {
+  /* Increase the base contrast without replacing the site's entire visual identity. */
+  filter: contrast(1.08);
+}
+
+/* Increase readable text sizes without changing layout dimensions globally. */
+html.as-larger-text {
+  /* Increase the document's root text size modestly. */
+  font-size: 106%;
+}
+
+/* Prevent background scrolling while a mobile navigation menu is active. */
+html.navigation-open,
+body.navigation-open {
+  /* Prevent the page behind the menu from scrolling. */
+  overflow: hidden;
+}
+
+/* Provide a predictable base for persona-aware content. */
+[data-persona-content][hidden] {
+  /* Ensure hidden persona content cannot affect layout. */
+  display: none !important;
+}
+
+/* Hide inactive custom navigation states without removing semantic links. */
+[data-set-persona].is-active,
+[data-theme-option].is-active {
+  /* Communicate active state through the existing design system. */
+  font-weight: 700;
+}
+
+/* Provide a default smooth scrolling experience for users without reduced-motion preferences. */
+html:not(.as-reduced-motion) {
+  /* Enable smooth anchor navigation. */
+  scroll-behavior: smooth;
+}
+
+/* Respect explicit dark theme state. */
+html.theme-dark {
+  /* Tell compatible browser controls that the page uses a dark color scheme. */
+  color-scheme: dark;
+}
+
+/* Respect explicit light theme state. */
+html.theme-light {
+  /* Tell compatible browser controls that the page uses a light color scheme. */
+  color-scheme: light;
+}
+
+/* Provide a safe skip-link foundation for keyboard navigation. */
+.skip-link {
+  /* Position the skip link outside the normal visual flow until focused. */
+  position: absolute;
+
+  /* Place the link above the page content. */
+  top: 0;
+
+  /* Move the link out of sight until it receives focus. */
+  left: -9999px;
+
+  /* Keep the link visually prominent when revealed. */
+  z-index: 9999;
+
+  /* Give the control sufficient padding. */
+  padding: 0.75rem 1rem;
+
+  /* Use the site's professional dark surface. */
+  background: #0d1224;
+
+  /* Use white text for contrast. */
+  color: #ffffff;
+
+  /* Remove the default text underline. */
+  text-decoration: none;
+}
+
+/* Reveal the skip link when keyboard users reach it. */
+.skip-link:focus {
+  /* Bring the skip link back into the visible viewport. */
+  left: 1rem;
+
+  /* Place the link below the top edge of the browser window. */
+  top: 1rem;
+}
+
+/* Ensure the main content has a useful focus target after skip navigation. */
+main:focus {
+  /* Remove the browser's default focus outline when focus is intentionally assigned programmatically. */
+  outline: none;
+}
