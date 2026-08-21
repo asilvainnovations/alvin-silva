@@ -1,64 +1,44 @@
 # Give the workflow a descriptive name.
 name: Validate Static Site
 
-# Run validation whenever code reaches or targets the main branch.
 on:
-  # Validate direct pushes.
   push:
-    # Restrict validation to the production branch.
     branches:
       - main
-  # Validate proposed changes before they are merged.
   pull_request:
-    # Restrict validation to pull requests targeting production.
     branches:
       - main
 
-# Apply least-privilege permissions.
 permissions:
-  # The workflow only needs repository read access.
   contents: read
 
-# Define the validation job.
 jobs:
-  # Create one deterministic validation job.
   validate:
-    # Use the current Ubuntu runner.
     runs-on: ubuntu-latest
 
-    # Define the validation sequence.
     steps:
-      # Download the repository.
       - name: Checkout repository
-        # Use GitHub's maintained checkout action.
         uses: actions/checkout@v4
 
-      # Install Node.js for JavaScript syntax validation.
       - name: Configure Node.js
-        # Use GitHub's maintained Node setup action.
         uses: actions/setup-node@v4
-        # Configure the runtime.
         with:
-          # Use the current long-term-support generation.
           node-version: "22"
 
-      # Validate every standalone JavaScript file.
       - name: Validate JavaScript syntax
-        # Stop immediately when any JavaScript file is invalid.
         shell: bash
-        # Execute Node's parser against every JavaScript source file.
         run: |
           set -euo pipefail
           while IFS= read -r -d '' javascript_file; do
             echo "Checking ${javascript_file}"
             node --check "${javascript_file}"
-          done < <(find . -type f -name "*.js" -print0)
+          done < <(find . -type f -name "*.js" -not -path "./.git/*" -print0)
 
-      # Detect the historically broken credentials reference.
-      - name: Validate credentials path
-        # Use Bash for a lightweight static regression test.
+      - name: Validate static-site dependencies and HTML
+        run: node scripts/validate-static-site.mjs
+
+      - name: Validate credentials path regression
         shell: bash
-        # Fail when the obsolete path reappears.
         run: |
           set -euo pipefail
           if grep -R --line-number \
@@ -68,11 +48,8 @@ jobs:
             exit 1
           fi
 
-      # Check required production files.
-      - name: Validate required files
-        # Use Bash for deterministic file checks.
+      - name: Validate required production files
         shell: bash
-        # Verify the critical static-site resources.
         run: |
           set -euo pipefail
           test -f index.html
@@ -80,4 +57,9 @@ jobs:
           test -f credentials.json
           test -f manifest.webmanifest
           test -f sw.js
-          echo "Required files are present."
+          test -f assets/css/core.css
+          test -f assets/css/components.css
+          test -f assets/css/visualizations.css
+          test -f assets/asilva-widget.js
+          test -f assets/data/system-architecture.json
+          echo "Required production files are present."
