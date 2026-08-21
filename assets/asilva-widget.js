@@ -1,354 +1,846 @@
 /**
- * ASilva AI Chatbot Widget
- * A self-contained, reusable chatbot widget for any page on the ASilva ecosystem.
- * 
- * Usage: <script src="assets/asilva-widget.js" defer></script>
- * 
- * Requires: Kimi API key stored in localStorage as 'asilva-kimi-key'
- * Shares state with inline chatbot via 'asilva-chat-state' localStorage key.
+ * ASilva Intelligent Chatbot Assistant.
+ * This browser-native assistant replaces the external artificial-intelligence service dependency.
+ * It builds its knowledge base from credentials.json, profile context, portfolio data, and system architecture.
+ * It performs deterministic semantic matching, strategic reasoning, systems thinking, futures thinking, and recommendation generation locally.
  */
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
-  // Prevent double-init
-  if (window.__ASILVA_WIDGET_INIT__) return;
-  window.__ASILVA_WIDGET_INIT__ = true;
+  /* Prevent duplicate initialization when the script is loaded more than once. */
+  if (window.__ASILVA_INTELLIGENT_ASSISTANT__) return;
+  window.__ASILVA_INTELLIGENT_ASSISTANT__ = true;
 
-  const WIDGET_KEY = 'asilva-chat-state';
-  const API_KEY_KEY = 'asilva-kimi-key';
+  /* Define the assistant configuration in one place. */
+  const CONFIG = {
+    credentialsPath: "credentials.json",
+    architecturePath: "assets/data/system-architecture.json",
+    widgetStorageKey: "asilva-intelligent-chat-state",
+    personaStorageKey: "as-persona",
+    logoPath: "assets/logo-192.png",
+    maximumHistoryMessages: 12,
+    minimumSimilarityScore: 0.08
+  };
 
-  // SECURITY FIX (audit 2026-08-04): chat bubbles were rendered via
-  // `div.innerHTML = ...${m.content}` with NO escaping. Both the visitor's
-  // own typed message and the raw Kimi/Moonshot API reply flow into that
-  // template unescaped, so a crafted message (e.g. an <img onerror=...> tag)
-  // executes arbitrary JS in the page — able to read localStorage, including
-  // the visitor's own saved API key (asilva-kimi-key). Escape by default;
-  // only the small set of developer-authored greeting strings (which
-  // intentionally use <strong>/<a> markup) opt in via `trustedHtml: true`.
-  function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str ?? '';
-    return div.innerHTML;
-  }
-  const API_URL = 'https://api.moonshot.cn/v1/chat/completions';
-  const MODEL = 'moonshot-v1-8k';
-  const LOGO_URL = 'https://asilvainnovations.github.io/alvin-silva/assets/logo-192.png';
+  /* Define the supported reasoning lenses. */
+  const REASONING_LENSES = {
+    strategic: "Strategic Thinking",
+    systems: "Systems Thinking",
+    futures: "Futures Thinking",
+    cognitive: "Cognitive Science",
+    physical: "Modern Physical Science",
+    resilience: "Resilience Thinking",
+    innovation: "Systems Innovation"
+  };
 
-  // Persona-aware directive — reads the active audience lens from the page
-  function getPersonaDirective() {
-    const persona = document.documentElement.dataset.persona || localStorage.getItem('as-persona');
-    const directives = {
-      government: `The user is a GOVERNMENT OFFICIAL or POLICYMAKER. Emphasize: strategic planning (BIRD 2026–2035, TESDA Strategic Plan), policy research (MMDA Urban Resilience), national frameworks, institutional strengthening, and measurable governance outcomes. Lead with decade-scale roadmaps and policy adoption metrics.`,
-      humanitarian: `The user is an NGO / HUMANITARIAN PROFESSIONAL. Emphasize: DRR-CCA (RA 10121, ISO 31000, UNDRR compliance), community resilience (Balatan PSF, Salcedo CDP), MHPSS (WHO & DOH modules), food security and livelihoods, and fragile-context programming (BARMM, Mindanao). Lead with household reach and field-tested methodologies.`,
-      private: `The user is a PRIVATE SECTOR / CORPORATE LEADER. Emphasize: systems innovation (DDRiVE-M, Strat Planner Pro, Cognitio+), organizational development (DLSU Performance Management), digital transformation, AI-powered platforms, and ROI-driven resilience. Lead with platform capabilities, completion rates, and scalable frameworks.`,
-      academic: `The user is an ACADEMIC / RESEARCHER. Emphasize: published frameworks (10+ IP contributions), university collaborations (5+ institutions), research methodology (complex adaptive systems, survey validation), and the three published books. Lead with theoretical grounding, citation-ready metrics, and peer-reviewed outputs.`
-    };
-    return directives[persona] || directives.government;
-  }
+  /* Define the public professional identity supplied for the assistant. */
+  const PROFESSIONAL_IDENTITY = {
+    title: "Development Management Professional",
+    specialization: "Disaster Risk Reduction and Climate Change Adaptation Consultant",
+    innovationRole: "Systems Innovation Practitioner",
+    humanitarianCredential: "Certified International Humanitarian",
+    mission: "Driving impactful solutions and fostering co-creation for a more sustainable and resilient future through strategic innovation and resilience-building."
+  };
 
-  const BASE_PROMPT = `You are ASilva AI, the professional assistant for Alvin M. Silva, MDM. You represent Alvin with authority, warmth, and precision.
+  /* Store the local knowledge base after it has been loaded. */
+  let knowledgeBase = {
+    credentials: null,
+    architecture: null,
+    searchDocuments: []
+  };
 
-IDENTITY:
-- Full name: Alvin M. Silva, MDM (Asian Institute of Management)
-- Title: Development Management Professional & Resilience Consultant
-- Affiliations: Cognitio+ (alvin.silva@cognitioplus.com) and ASilva Innovations
+  /* Store the conversation state locally. */
+  let conversationState = {
+    messages: []
+  };
 
-IMPACT METRICS:
-- 18+ years in development management and resilience consulting
-- 15 countries across Asia, Africa, and the Pacific
-- ₱190 million in climate-smart program funding designed and delivered
-- 50,000+ households reached through resilience and livelihood interventions
-- 30+ institutions: UNICEF, UNDP, ECHO, USAID, World Bank, WHO, TESDA, MMDA, DOH, BARMM BoI–MTIT, Action Against Hunger, AIM, SOLHUM
-- 100% project completion rate with measurable outcomes documented
-- 20+ strategic plans facilitated for governments, NGOs, and private sector
-- 10+ published frameworks and intellectual property contributions
-- 5+ university academic collaborations
-- Policy inputs adopted into national resilience strategies in the Philippines
-
-SEVEN DISCIPLINES:
-1. Climate Change Adaptation — 15+ years with ECHO, USAID, World Bank
-2. Disaster Risk Reduction — Certified DRR practitioner
-3. Systems Innovation — Architect of DDRiVE-M, Strat Planner Pro, Cognitio+
-4. Organizational Development — Performance systems for government and NGOs
-5. Strategic Thinking & Planning — Sole author of national TESDA Strategic Plan 2026–2030
-6. Capacity Building — MDM-trained facilitator, WHO/DOH frontline training
-7. Security Risk Management — Certified SRMP
-
-KEY PROJECTS:
-- BIRD 2026–2035: Bangsamoro Investment Roadmapping Platform, lead technical architect
-- DDRiVE-M: AI-powered DRR platform, RA 10121 / ISO 31000 / UNDRR compliant
-- Strat Planner Pro: AI-powered PWA for systems diagnosis and execution
-- RTL: Digital learning for growth, resilience, and wellness
-- Cognitio+: Knowledge ecosystem for publishing, learning, evaluation
-- Balatan Climate Resilience Hub: ₱190M PSF-funded community-based model
-- WorldSkills Philippines TESDA Strategic Plan 2026–2030: Sole-authored national plan
-- Risk-Informed CDP of Salcedo, Eastern Samar (2023–2028)
-- MHPSS Intervention Module for Emergency Responders (WHO & DOH, 2023)
-- IRRM for BARMM (USAID & Action Against Hunger, 2022)
-
-PUBLICATIONS:
-- "Personal Resilience: The Path to Oneness" (Cognitio+, 2025)
-- "Resilient Futures: Nurturing Oneness in Education" (Cognitio+, 2024)
-- "Building Resilience: The Path to a More Fulfilling Life" (Cognitio+, 2023)
-- Shock-Responsive & Sustainable Livelihoods Process Manual (MOVEUP Mindanao, 2022)
-
-CREDENTIALS:
-- MDM, Asian Institute of Management
-- Certified SRMP
-- Certified International Humanitarian Practitioner
-- Certified DRR Practitioner
-
-TONE:
-- Professional yet approachable. Direct and outcome-focused.
-- Always tie responses to measurable impact.
-- Use "Alvin" or "Mr. Silva" when referring to him.
-- For availability/services, guide to: alvin.silva@asilvainnovations.com, LinkedIn, or index.html#contact
-- Be honest if you don't know something. Keep responses concise (2–4 sentences) unless detail requested.
-- Use bullet points for lists. Never make up projects, dates, or metrics.`;
-
-  // Inject CSS
-  const style = document.createElement('style');
-  style.textContent = `
-    .asilva-widget { position:fixed; bottom:1.2rem; right:1.2rem; z-index:2000; font-family:'Poppins',system-ui,sans-serif; }
-    .asilva-trigger { width:60px; height:60px; border-radius:50%; border:3px solid #FFD700; background:#fff; cursor:pointer; box-shadow:0 8px 32px rgba(0,0,0,.35); transition:transform .3s cubic-bezier(.22,.8,.28,1), box-shadow .3s; padding:0; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-    .asilva-trigger:hover { transform:scale(1.08) rotate(5deg); box-shadow:0 12px 40px rgba(255,215,0,.3); }
-    .asilva-trigger img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
-    .asilva-tooltip { position:absolute; right:70px; top:50%; transform:translateY(-50%); background:#fff; color:#0d1224; padding:.45rem .85rem; border-radius:10px; font-size:.78rem; font-family:'Roboto Condensed',system-ui,sans-serif; font-weight:600; white-space:nowrap; border:1px solid rgba(10,20,60,.16); box-shadow:0 8px 32px rgba(20,30,60,.10); opacity:0; visibility:hidden; transition:.25s; pointer-events:none; }
-    .asilva-trigger:hover .asilva-tooltip { opacity:1; visibility:visible; }
-    .asilva-panel { position:absolute; bottom:76px; right:0; width:min(400px, 92vw); height:560px; border-radius:20px; background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(240,244,252,.9)); border:1px solid rgba(255,215,0,.28); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12); display:flex; flex-direction:column; overflow:hidden; opacity:0; visibility:hidden; transform:translateY(16px) scale(.96); transition:all .35s cubic-bezier(.22,.8,.28,1); }
-    .asilva-panel.open { opacity:1; visibility:visible; transform:none; }
-    .asilva-header { display:flex; align-items:center; gap:.75rem; padding:1rem 1.2rem; border-bottom:1px solid rgba(10,20,60,.16); background:linear-gradient(135deg, rgba(255,215,0,.08), rgba(0,102,255,.05)); flex:none; }
-    .asilva-avatar { width:40px; height:40px; border-radius:50%; border:2px solid #FFD700; object-fit:cover; background:#fff; }
-    .asilva-header-info { flex:1; min-width:0; }
-    .asilva-name { display:block; font-family:'Montserrat',system-ui,sans-serif; font-weight:700; font-size:.95rem; color:#0d1224; line-height:1.2; }
-    .asilva-status { font-size:.72rem; color:#0f7d51; font-family:'Roboto Condensed',system-ui,sans-serif; letter-spacing:.04em; }
-    .asilva-close { width:32px; height:32px; border-radius:50%; border:1px solid rgba(10,20,60,.16); background:rgba(90,110,160,.1); color:#0d1224; cursor:pointer; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:.2s; flex:none; }
-    .asilva-close:hover { background:#c62828; color:#fff; border-color:#c62828; }
-    .asilva-messages { flex:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:.8rem; min-height:0; }
-    .asilva-msg { display:flex; gap:.6rem; max-width:92%; animation:asilvaFadeUp .3s cubic-bezier(.22,.8,.28,1); }
-    .asilva-msg.bot { align-self:flex-start; }
-    .asilva-msg.user { align-self:flex-end; flex-direction:row-reverse; }
-    .asilva-bubble { padding:.8rem 1rem; border-radius:14px; font-size:.88rem; line-height:1.65; color:#0d1224; word-break:break-word; }
-    .asilva-msg.bot .asilva-bubble { background:rgba(90,110,160,.1); border:1px solid rgba(10,20,60,.16); border-bottom-left-radius:4px; }
-    .asilva-msg.user .asilva-bubble { background:linear-gradient(135deg, #0057c2, #0069a8); color:#fff; border-bottom-right-radius:4px; }
-    .asilva-typing { display:none; gap:4px; padding:.5rem 1rem; align-self:flex-start; }
-    .asilva-typing.active { display:flex; }
-    .asilva-typing span { width:7px; height:7px; border-radius:50%; background:rgba(20,26,46,.72); animation:asilvaTyping 1.4s infinite ease-in-out both; }
-    .asilva-typing span:nth-child(1) { animation-delay:-.32s; }
-    .asilva-typing span:nth-child(2) { animation-delay:-.16s; }
-    @keyframes asilvaTyping { 0%,80%,100%{transform:scale(0);opacity:.5;} 40%{transform:scale(1);opacity:1;} }
-    @keyframes asilvaFadeUp { from{opacity:0;transform:translateY(12px);} to{opacity:1;transform:none;} }
-    .asilva-input-area { display:flex; gap:.5rem; padding:.75rem 1rem; border-top:1px solid rgba(10,20,60,.16); background:linear-gradient(135deg, rgba(10,20,60,.06), rgba(10,20,60,.025)); flex:none; }
-    .asilva-input-area input { flex:1; padding:.65rem 1rem; border-radius:999px; border:1.5px solid rgba(10,20,60,.16); background:rgba(255,255,255,.85); color:#0d1224; font-family:'Poppins',system-ui,sans-serif; font-size:.9rem; outline:none; transition:.2s; }
-    .asilva-input-area input:focus { border-color:#FFD700; box-shadow:0 0 0 3px rgba(255,215,0,.15); }
-    .asilva-input-area input::placeholder { color:rgba(20,26,46,.72); }
-    .asilva-input-area button { width:40px; height:40px; border-radius:50%; border:none; background:linear-gradient(135deg, #0057c2, #0069a8); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.2s; flex:none; }
-    .asilva-input-area button:hover { transform:scale(1.08); box-shadow:0 4px 14px rgba(0,102,255,.4); }
-    .asilva-input-area button svg { width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-    .asilva-setup { padding:1rem; text-align:center; }
-    .asilva-setup p { font-size:.85rem; color:rgba(20,26,46,.72); line-height:1.6; margin-bottom:.8rem; }
-    .asilva-setup input { width:100%; padding:.65rem 1rem; border-radius:11px; border:1.5px solid rgba(10,20,60,.16); background:rgba(255,255,255,.85); color:#0d1224; font-family:'Poppins',system-ui,sans-serif; font-size:.9rem; margin-bottom:.5rem; }
-    .asilva-setup input:focus { outline:none; border-color:#FFD700; box-shadow:0 0 0 3px rgba(255,215,0,.15); }
-    .asilva-setup button { width:100%; padding:.5rem 1.05rem; border-radius:999px; border:2px solid transparent; cursor:pointer; font-family:'Montserrat',system-ui,sans-serif; font-weight:700; font-size:.8rem; letter-spacing:.03em; background:linear-gradient(135deg, #0057c2, #0069a8); color:#fff; box-shadow:0 8px 24px rgba(0,102,255,.35); }
-    .asilva-setup button:hover { transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
-    .asilva-disclaimer { font-size:.7rem; color:rgba(20,26,46,.72); text-align:center; padding:.5rem 1rem; border-top:1px solid rgba(10,20,60,.12); }
-    @media (max-width:480px) {
-      .asilva-panel { width:100vw; height:70vh; bottom:76px; right:-1.2rem; border-radius:20px 20px 0 0; }
-      .asilva-widget { right:.8rem; bottom:.8rem; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .asilva-panel { background:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78)); border-color:rgba(255,215,0,.28); }
-      .asilva-header { background:linear-gradient(135deg, rgba(255,215,0,.08), rgba(0,102,255,.05)); }
-      .asilva-name { color:#fff; }
-      .asilva-close { background:rgba(255,255,255,.06); color:#fff; border-color:rgba(255,255,255,.13); }
-      .asilva-msg.bot .asilva-bubble { background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.13); color:#fff; }
-      .asilva-msg.user .asilva-bubble { color:#fff; }
-      .asilva-input-area { background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03)); border-color:rgba(255,255,255,.13); }
-      .asilva-input-area input { background:rgba(10,16,42,.7); color:#fff; border-color:rgba(255,255,255,.13); }
-      .asilva-input-area input::placeholder { color:rgba(224,230,237,.62); }
-      .asilva-disclaimer { color:rgba(224,230,237,.62); border-color:rgba(255,255,255,.09); }
-      .asilva-setup p { color:rgba(224,230,237,.62); }
-      .asilva-setup input { background:rgba(10,16,42,.7); color:#fff; border-color:rgba(255,255,255,.13); }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Create DOM
-  const widget = document.createElement('div');
-  widget.className = 'asilva-widget';
-  widget.setAttribute('aria-label', 'ASilva AI assistant');
-  widget.innerHTML = `
-    <div class="asilva-panel" id="asilvaPanel" role="dialog" aria-label="ASilva AI chat" aria-hidden="true">
-      <div class="asilva-header">
-        <img src="${LOGO_URL}" alt="ASilva AI" class="asilva-avatar" loading="lazy">
-        <div class="asilva-header-info">
-          <span class="asilva-name">ASilva AI</span>
-          <span class="asilva-status">● Online</span>
-        </div>
-        <button class="asilva-close" id="asilvaClose" aria-label="Close chat">✕</button>
-      </div>
-      <div class="asilva-messages" id="asilvaMessages" role="log" aria-live="polite" aria-atomic="false"></div>
-      <div class="asilva-typing" id="asilvaTyping" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="asilva-input-area">
-        <input type="text" id="asilvaInput" placeholder="Ask about Alvin's work..." autocomplete="off" aria-label="Type your message">
-        <button id="asilvaSend" aria-label="Send message">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-        </button>
-      </div>
-      <div class="asilva-disclaimer">Powered by Kimi AI · Responses are AI-generated</div>
-    </div>
-    <button class="asilva-trigger" id="asilvaTrigger" aria-label="Open ASilva AI chat assistant">
-      <span class="asilva-tooltip">Ask ASilva AI</span>
-      <img src="${LOGO_URL}" alt="ASilva AI" loading="lazy">
-    </button>
-  `;
-  document.body.appendChild(widget);
-
-  // Elements
-  const panel = document.getElementById('asilvaPanel');
-  const trigger = document.getElementById('asilvaTrigger');
-  const closeBtn = document.getElementById('asilvaClose');
-  const messagesEl = document.getElementById('asilvaMessages');
-  const inputEl = document.getElementById('asilvaInput');
-  const sendBtn = document.getElementById('asilvaSend');
-  const typingEl = document.getElementById('asilvaTyping');
-
-  let messages = [];
-  let isOpen = false;
-  let isTyping = false;
-
-  try {
-    const saved = localStorage.getItem(WIDGET_KEY);
-    if (saved) messages = JSON.parse(saved);
-  } catch (e) {}
-
-  function saveMessages() {
-    try { localStorage.setItem(WIDGET_KEY, JSON.stringify(messages.slice(-50))); } catch (e) {}
+  /* Escape user and knowledge-base text before placing it into the document. */
+  function escapeHtml(value) {
+    const temporaryElement = document.createElement("div");
+    temporaryElement.textContent = String(value ?? "");
+    return temporaryElement.innerHTML;
   }
 
-  function renderMessages() {
-    messagesEl.innerHTML = '';
-    if (messages.length === 0) {
-      const apiKey = localStorage.getItem(API_KEY_KEY);
-      if (!apiKey) {
-        messagesEl.innerHTML = `
-          <div class="asilva-msg bot"><div class="asilva-bubble">Hello! I'm <strong>ASilva AI</strong>, Alvin's assistant. Ask me about his work, expertise, or how he can support your project.</div></div>
-          <div class="asilva-msg bot"><div class="asilva-bubble">To enable AI responses, enter your Kimi API key below. Your key stays in your browser only.</div></div>
-          <div class="asilva-setup">
-            <input type="password" id="asilvaApiKey" placeholder="Paste your Kimi API key here">
-            <button id="asilvaSaveKey"><span>Save Key & Start Chatting</span></button>
-          </div>`;
-        const saveKeyBtn = document.getElementById('asilvaSaveKey');
-        const keyInput = document.getElementById('asilvaApiKey');
-        if (saveKeyBtn && keyInput) {
-          saveKeyBtn.addEventListener('click', () => {
-            const key = keyInput.value.trim();
-            if (!key) { alert('Please enter a valid API key'); return; }
-            localStorage.setItem(API_KEY_KEY, key);
-            messages = []; renderMessages();
-            addBotMessage("Great! I'm ready. Ask me anything about Alvin's work, expertise, or how he can support your project.");
-          });
-          keyInput.addEventListener('keydown', e => { if (e.key === 'Enter') saveKeyBtn.click(); });
-        }
-        return;
-      }
-      const persona = document.documentElement.dataset.persona || localStorage.getItem('as-persona') || 'government';
-    const personaLabels = { government: 'Government & Policy', humanitarian: 'NGO & Humanitarian', private: 'Private Sector', academic: 'Academia & Research' };
-    addBotMessage(`Hello! I'm <strong>ASilva AI</strong>, Alvin's assistant. I see you're exploring from a <strong>${escapeHtml(personaLabels[persona] || 'Government & Policy')}</strong> perspective. Ask me about his work, expertise, or how he can support your specific context. What would you like to know?`, true);
-      return;
-    }
-    messages.forEach(m => {
-      const div = document.createElement('div');
-      div.className = `asilva-msg ${m.role}`;
-      const safeContent = m.trustedHtml ? m.content : escapeHtml(m.content);
-      div.innerHTML = `<div class="asilva-bubble">${safeContent}</div>`;
-      messagesEl.appendChild(div);
+  /* Normalize text for local semantic comparison. */
+  function normalizeText(value) {
+    return String(value ?? "")
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[^\w\s₱–—.-]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  /* Tokenize normalized text while removing very common English words. */
+  function tokenize(value) {
+    const stopWords = new Set([
+      "a", "an", "and", "are", "as", "at", "be", "by", "can", "do", "for",
+      "from", "has", "how", "i", "in", "is", "it", "me", "of", "on", "or",
+      "the", "to", "was", "what", "when", "where", "which", "who", "with",
+      "would", "you", "your"
+    ]);
+
+    return normalizeText(value)
+      .split(" ")
+      .filter((token) => token.length > 2 && !stopWords.has(token));
+  }
+
+  /* Calculate a simple weighted semantic similarity score without an external service. */
+  function calculateSimilarity(query, documentText) {
+    const queryTokens = new Set(tokenize(query));
+    const documentTokens = new Set(tokenize(documentText));
+
+    if (!queryTokens.size || !documentTokens.size) return 0;
+
+    let sharedTokenCount = 0;
+
+    queryTokens.forEach((token) => {
+      if (documentTokens.has(token)) sharedTokenCount += 1;
     });
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    return sharedTokenCount / Math.sqrt(queryTokens.size * documentTokens.size);
   }
 
-  function addUserMessage(text) {
-    // Visitor-typed text is always untrusted — never marked trustedHtml.
-    messages.push({ role: 'user', content: text, ts: Date.now() });
-    saveMessages(); renderMessages();
+  /* Build a searchable document from an arbitrary JavaScript value. */
+  function createSearchDocument(title, category, value) {
+    const serializedValue = JSON.stringify(value, null, 2);
+
+    return {
+      title,
+      category,
+      content: serializedValue,
+      normalizedContent: normalizeText(serializedValue)
+    };
   }
 
-  function addBotMessage(text, trustedHtml = false) {
-    // Default is escaped (safe for raw AI API replies). Pass trustedHtml:true
-    // ONLY for developer-authored literal strings below that intentionally
-    // contain markup (<strong>, <a href="mailto:...">) — never for API output.
-    messages.push({ role: 'bot', content: text, trustedHtml, ts: Date.now() });
-    saveMessages(); renderMessages();
+  /* Build the complete local search index from the supplied system data. */
+  function buildKnowledgeIndex() {
+    const credentials = knowledgeBase.credentials || {};
+    const architecture = knowledgeBase.architecture || {};
+
+    knowledgeBase.searchDocuments = [
+      createSearchDocument("Professional Profile", "profile", credentials.profile || {}),
+      createSearchDocument("Institutions", "institutions", credentials.institutions || []),
+      createSearchDocument("Disciplines", "disciplines", credentials.disciplines || []),
+      createSearchDocument("Portfolio Projects", "projects", credentials.projects || []),
+      createSearchDocument("Publications", "publications", credentials.publications || []),
+      createSearchDocument("CV Versions", "cv_versions", credentials.cv_versions || []),
+      createSearchDocument("System Architecture", "architecture", architecture),
+      createSearchDocument("Professional Identity", "identity", PROFESSIONAL_IDENTITY)
+    ];
   }
 
-  function setTyping(show) {
-    isTyping = show;
-    typingEl.classList.toggle('active', show);
-    if (show) messagesEl.scrollTop = messagesEl.scrollHeight;
+  /* Search the local knowledge graph and return the strongest matching records. */
+  function searchKnowledge(query, maximumResults = 5) {
+    return knowledgeBase.searchDocuments
+      .map((document) => ({
+        ...document,
+        score: calculateSimilarity(query, document.normalizedContent)
+      }))
+      .filter((document) => document.score >= CONFIG.minimumSimilarityScore)
+      .sort((first, second) => second.score - first.score)
+      .slice(0, maximumResults);
   }
 
-  async function sendMessage(text) {
-    const apiKey = localStorage.getItem(API_KEY_KEY);
-    if (!apiKey) { addBotMessage('Please set your Kimi API key first.'); return; }
-    addUserMessage(text);
-    setTyping(true);
+  /* Determine the user's requested reasoning mode from language cues. */
+  function detectReasoningLenses(query) {
+    const normalizedQuery = normalizeText(query);
+    const detectedLenses = [];
 
-    const apiMessages = [
-      { role: 'system', content: BASE_PROMPT + '\n\n' + getPersonaDirective() },
-      ...messages.slice(-20).map(m => ({ role: m.role === 'bot' ? 'assistant' : 'user', content: m.content }))
+    const lensSignals = {
+      strategic: ["strategy", "strategic", "roadmap", "decision", "priority", "governance"],
+      systems: ["system", "systems", "ecosystem", "interdependency", "feedback", "complexity"],
+      futures: ["future", "futures", "scenario", "foresight", "horizon", "2030", "2035", "2050"],
+      cognitive: ["cognitive", "behavior", "decision bias", "learning", "human behavior", "mental model"],
+      physical: ["physics", "quantum", "entropy", "energy", "network", "complex adaptive"],
+      resilience: ["resilience", "risk", "shock", "adaptation", "disaster", "climate"],
+      innovation: ["innovation", "innovate", "platform", "digital", "ai", "technology", "transformation"]
+    };
+
+    Object.entries(lensSignals).forEach(([lens, signals]) => {
+      if (signals.some((signal) => normalizedQuery.includes(signal))) {
+        detectedLenses.push(lens);
+      }
+    });
+
+    return detectedLenses.length ? detectedLenses : ["strategic", "systems"];
+  }
+
+  /* Detect the dominant conversational intent. */
+  function detectIntent(query) {
+    const normalizedQuery = normalizeText(query);
+
+    if (/\b(hi|hello|hey|good morning|good afternoon|good evening)\b/.test(normalizedQuery)) {
+      return "greeting";
+    }
+
+    if (/\b(who is|who are|profile|background|credentials|experience|cv|resume)\b/.test(normalizedQuery)) {
+      return "profile";
+    }
+
+    if (/\b(portfolio|project|projects|publication|book|work)\b/.test(normalizedQuery)) {
+      return "portfolio";
+    }
+
+    if (/\b(architecture|system architecture|modules|platforms|chorus|elektrametrics|electoral strategy|blog)\b/.test(normalizedQuery)) {
+      return "architecture";
+    }
+
+    if (/\b(analy[sz]e|review|assess|evaluate|diagnose|audit)\b/.test(normalizedQuery)) {
+      return "analysis";
+    }
+
+    if (/\b(recommend|recommendation|solution|solve|improve|innovate|design|propose)\b/.test(normalizedQuery)) {
+      return "recommendation";
+    }
+
+    if (/\b(strategy|strategic plan|roadmap|priorit)\b/.test(normalizedQuery)) {
+      return "strategy";
+    }
+
+    return "general";
+  }
+
+  /* Format professional profile facts for concise responses. */
+  function createProfileResponse() {
+    const profile = knowledgeBase.credentials?.profile || {};
+
+    return [
+      `<strong>${escapeHtml(profile.name || "Alvin M. Silva, MDM")}</strong>`,
+      escapeHtml(PROFESSIONAL_IDENTITY.title),
+      escapeHtml(PROFESSIONAL_IDENTITY.specialization),
+      escapeHtml(PROFESSIONAL_IDENTITY.innovationRole),
+      escapeHtml(PROFESSIONAL_IDENTITY.humanitarianCredential),
+      "",
+      `Experience: ${escapeHtml(profile.years_total || "almost two decades")} years`,
+      `Geographic experience: ${escapeHtml(profile.countries || "multiple")} countries`,
+      `Climate-smart funding designed: ${escapeHtml(profile.funding_designed || "documented portfolio value")}`,
+      `Households reached: ${escapeHtml(profile.households_reached || "documented portfolio reach")}`,
+      `Strategic plans facilitated: ${escapeHtml(profile.strategic_plans_facilitated || "multiple")}`,
+      "",
+      escapeHtml(PROFESSIONAL_IDENTITY.mission)
+    ].join("<br>");
+  }
+
+  /* Extract portfolio records that best match a user query. */
+  function findRelevantProjects(query) {
+    const projects = knowledgeBase.credentials?.projects || [];
+
+    return projects
+      .map((project) => ({
+        project,
+        score: calculateSimilarity(query, JSON.stringify(project))
+      }))
+      .sort((first, second) => second.score - first.score)
+      .filter((entry) => entry.score >= CONFIG.minimumSimilarityScore)
+      .slice(0, 5)
+      .map((entry) => entry.project);
+  }
+
+  /* Create a portfolio-focused answer from local data. */
+  function createPortfolioResponse(query) {
+    const relevantProjects = findRelevantProjects(query);
+
+    if (!relevantProjects.length) {
+      return "The local portfolio knowledge base does not identify a sufficiently strong match for that request. Try naming a project, sector, discipline, organization, or outcome.";
+    }
+
+    return [
+      "<strong>Relevant portfolio evidence</strong>",
+      ...relevantProjects.map((project) => {
+        const year = project.year ? ` (${escapeHtml(project.year)})` : "";
+        const funding = project.funding ? ` — ${escapeHtml(project.funding)}` : "";
+        return `• <strong>${escapeHtml(project.name)}</strong>${year}${funding}<br>&nbsp;&nbsp;${escapeHtml((project.keywords || []).slice(0, 7).join(" · "))}`;
+      })
+    ].join("<br>");
+  }
+
+  /* Describe the planned and existing system architecture without inventing capabilities. */
+  function createArchitectureResponse() {
+    const architecture = knowledgeBase.architecture || {};
+
+    const modules = architecture.modules || [];
+    const capabilities = architecture.capabilities || [];
+
+    return [
+      "<strong>System architecture awareness</strong>",
+      escapeHtml(architecture.description || "The assistant operates as a local knowledge and reasoning layer over the Alvin Silva platform ecosystem."),
+      "",
+      modules.length
+        ? `<strong>Known modules</strong><br>${modules.map((module) => `• ${escapeHtml(module.name)} — ${escapeHtml(module.purpose)}`).join("<br>")}`
+        : "",
+      "",
+      capabilities.length
+        ? `<strong>Reasoning capabilities</strong><br>${capabilities.map((capability) => `• ${escapeHtml(capability)}`).join("<br>")}`
+        : ""
+    ].join("<br>");
+  }
+
+  /* Produce an explicit strategic reasoning frame rather than pretending to be a general-purpose artificial intelligence model. */
+  function createReasoningResponse(query, intent, lenses, searchResults) {
+    const lensNames = lenses.map((lens) => REASONING_LENSES[lens]).join(", ");
+
+    const evidence = searchResults
+      .slice(0, 3)
+      .map((result) => `• ${escapeHtml(result.title)}`)
+      .join("<br>");
+
+    const response = [
+      `<strong>Reasoning frame: ${escapeHtml(lensNames)}</strong>`,
+      "",
+      `<strong>1. Situation</strong><br>${escapeHtml(query)}`,
+      "",
+      "<strong>2. System diagnosis</strong><br>Identify actors, constraints, incentives, dependencies, feedback loops, second-order effects, and the measurable outcome that matters.",
+      "",
+      "<strong>3. Strategic choice</strong><br>Prioritize interventions that improve system conditions rather than optimizing one isolated component.",
+      "",
+      "<strong>4. Future test</strong><br>Stress-test the preferred option against alternative futures, shocks, unintended consequences, and implementation constraints.",
+      "",
+      "<strong>5. Action architecture</strong><br>Convert the recommendation into owners, decisions, resources, milestones, indicators, learning loops, and escalation triggers.",
+      "",
+      "<strong>Local evidence considered</strong>",
+      evidence || "No sufficiently strong local evidence match was identified."
     ];
 
+    if (lenses.includes("physical")) {
+      response.push(
+        "",
+        "<strong>Scientific boundary</strong><br>Physical-science concepts can be used as disciplined analogies or analytical lenses. Quantum mechanics should not be presented as evidence for unsupported management, consciousness, or organizational claims."
+      );
+    }
+
+    if (intent === "recommendation") {
+      response.push(
+        "",
+        "<strong>Recommended next move</strong><br>Define the decision to be made, establish a baseline, map the system, identify leverage points, compare at least three intervention pathways, and select the option with the strongest balance of impact, feasibility, resilience, and learning value."
+      );
+    }
+
+    return response.join("<br>");
+  }
+
+  /* Generate a useful response entirely from local data and deterministic reasoning rules. */
+  function generateResponse(query) {
+    const intent = detectIntent(query);
+    const lenses = detectReasoningLenses(query);
+    const searchResults = searchKnowledge(query);
+
+    if (intent === "greeting") {
+      return `Hello. I am the ASilva Intelligent Assistant. I am designed around Alvin Silva's professional profile, credentials, portfolio, and system architecture. I can help you explore his work, analyze a problem, review a strategy, or develop an innovation pathway.`;
+    }
+
+    if (intent === "profile") {
+      return createProfileResponse();
+    }
+
+    if (intent === "portfolio") {
+      return createPortfolioResponse(query);
+    }
+
+    if (intent === "architecture") {
+      return createArchitectureResponse();
+    }
+
+    return createReasoningResponse(query, intent, lenses, searchResults);
+  }
+
+  /* Persist the conversation locally so the assistant can maintain short-term continuity. */
+  function persistConversation() {
+    localStorage.setItem(CONFIG.widgetStorageKey, JSON.stringify(conversationState));
+  }
+
+  /* Restore the previous short conversation when possible. */
+  function restoreConversation() {
     try {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
-        body: JSON.stringify({ model: MODEL, messages: apiMessages, temperature: 0.7, max_tokens: 800 })
-      });
-      if (!res.ok) throw new Error(`API error ${res.status}`);
-      const data = await res.json();
-      const reply = data.choices?.[0]?.message?.content || 'I did not receive a response. Please try again.';
-      setTyping(false); addBotMessage(reply);
-    } catch (err) {
-      setTyping(false); console.error('ASilva AI error:', err);
-      addBotMessage("I'm having trouble connecting. Please check your API key or try again. You can also reach Alvin at <a href=\"mailto:alvin.silva@asilvainnovations.com\">alvin.silva@asilvainnovations.com</a>.", true);
+      const savedState = JSON.parse(localStorage.getItem(CONFIG.widgetStorageKey) || "null");
+
+      if (savedState && Array.isArray(savedState.messages)) {
+        conversationState = {
+          messages: savedState.messages.slice(-CONFIG.maximumHistoryMessages)
+        };
+      }
+    } catch (error) {
+      conversationState = { messages: [] };
     }
   }
 
-  function openChat() {
-    isOpen = true; panel.classList.add('open');
-    panel.setAttribute('aria-hidden', 'false'); trigger.setAttribute('aria-expanded', 'true');
-    renderMessages(); setTimeout(() => inputEl?.focus(), 300);
-  }
-  function closeChat() {
-    isOpen = false; panel.classList.remove('open');
-    panel.setAttribute('aria-hidden', 'true'); trigger.setAttribute('aria-expanded', 'false');
+  /* Add one message to the local conversation history. */
+  function addMessage(role, content) {
+    conversationState.messages.push({
+      role,
+      content,
+      timestamp: Date.now()
+    });
+
+    conversationState.messages = conversationState.messages.slice(-CONFIG.maximumHistoryMessages);
+    persistConversation();
   }
 
-  trigger.addEventListener('click', () => { isOpen ? closeChat() : openChat(); });
-  closeBtn.addEventListener('click', closeChat);
-  sendBtn.addEventListener('click', () => {
-    const text = inputEl.value.trim(); if (!text || isTyping) return;
-    inputEl.value = ''; sendMessage(text);
-  });
-  inputEl.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendBtn.click(); }
-    if (e.key === 'Escape') closeChat();
-  });
+  /* Create the visual widget shell. */
+  function createWidget() {
+    const container = document.createElement("aside");
 
-  // Subtle pulse on first visit
-  const hasVisited = sessionStorage.getItem('asilva-widget-visited');
-  if (!hasVisited) {
-    sessionStorage.setItem('asilva-widget-visited', '1');
-    setTimeout(() => {
-      if (!isOpen) {
-        trigger.style.animation = 'asilvaPulse 2s ease-in-out 2';
-        setTimeout(() => { trigger.style.animation = ''; }, 4000);
+    container.className = "asilva-intelligent-widget";
+    container.setAttribute("aria-label", "ASilva Intelligent Assistant");
+
+    container.innerHTML = `
+      <button class="asilva-intelligent-trigger" type="button" aria-expanded="false" aria-controls="asilva-intelligent-panel">
+        <img src="${escapeHtml(CONFIG.logoPath)}" alt="ASilva Assistant">
+        <span class="asilva-intelligent-tooltip">Ask ASilva Intelligent Assistant</span>
+      </button>
+      <section class="asilva-intelligent-panel" id="asilva-intelligent-panel" aria-hidden="true">
+        <header class="asilva-intelligent-header">
+          <img src="${escapeHtml(CONFIG.logoPath)}" alt="Alvin Silva" class="asilva-intelligent-avatar">
+          <div class="asilva-intelligent-header-copy">
+            <strong>ASilva Intelligent Assistant</strong>
+            <span>Local knowledge · Strategic reasoning · Systems thinking</span>
+          </div>
+          <button class="asilva-intelligent-close" type="button" aria-label="Close assistant">×</button>
+        </header>
+        <div class="asilva-intelligent-messages" aria-live="polite"></div>
+        <div class="asilva-intelligent-suggestions">
+          <button type="button" data-question="Who is Alvin Silva?">Profile</button>
+          <button type="button" data-question="What are Alvin's strongest portfolio projects?">Portfolio</button>
+          <button type="button" data-question="How does the system architecture work?">Architecture</button>
+          <button type="button" data-question="Analyze this problem using systems and strategic thinking.">Analyze</button>
+        </div>
+        <form class="asilva-intelligent-input">
+          <input type="text" autocomplete="off" placeholder="Ask about Alvin, his work, or a strategic problem…" aria-label="Message">
+          <button type="submit" aria-label="Send message">➤</button>
+        </form>
+        <div class="asilva-intelligent-disclaimer">Local reasoning assistant. No external artificial-intelligence service or API key is required.</div>
+      </section>
+    `;
+
+    document.body.appendChild(container);
+    return container;
+  }
+
+  /* Inject the assistant's visual design without changing the site's global theme. */
+  function injectStyles() {
+    const style = document.createElement("style");
+
+    style.textContent = `
+      .asilva-intelligent-widget {
+        position: fixed;
+        right: 1.2rem;
+        bottom: 1.2rem;
+        z-index: 2000;
+        font-family: "Poppins", system-ui, sans-serif;
       }
-    }, 8000);
+
+      .asilva-intelligent-trigger {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        border: 3px solid #FFD700;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #fff;
+        cursor: pointer;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, .35);
+        transition: transform .25s ease, box-shadow .25s ease;
+      }
+
+      .asilva-intelligent-trigger:hover {
+        transform: scale(1.06);
+        box-shadow: 0 12px 40px rgba(255, 215, 0, .28);
+      }
+
+      .asilva-intelligent-trigger img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .asilva-intelligent-tooltip {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        width: max-content;
+        padding: .45rem .8rem;
+        border: 1px solid rgba(10, 20, 60, .16);
+        border-radius: 9px;
+        background: #fff;
+        color: #0d1224;
+        font-size: .74rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-50%);
+        transition: .2s ease;
+        pointer-events: none;
+      }
+
+      .asilva-intelligent-trigger:hover .asilva-intelligent-tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .asilva-intelligent-panel {
+        position: absolute;
+        right: 0;
+        bottom: 74px;
+        display: flex;
+        width: min(430px, calc(100vw - 1.6rem));
+        height: min(640px, calc(100vh - 110px));
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid rgba(255, 215, 0, .28);
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, .97), rgba(240, 244, 252, .94));
+        box-shadow: 0 18px 48px rgba(20, 30, 60, .18);
+        backdrop-filter: blur(24px) saturate(180%);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px) scale(.97);
+        transition: .3s ease;
+      }
+
+      .asilva-intelligent-panel.open {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+
+      .asilva-intelligent-header {
+        display: flex;
+        align-items: center;
+        gap: .7rem;
+        padding: .9rem 1rem;
+        border-bottom: 1px solid rgba(10, 20, 60, .12);
+        background: linear-gradient(135deg, rgba(255, 215, 0, .09), rgba(0, 105, 168, .06));
+      }
+
+      .asilva-intelligent-avatar {
+        width: 42px;
+        height: 42px;
+        flex: none;
+        border: 2px solid #FFD700;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #fff;
+      }
+
+      .asilva-intelligent-header-copy {
+        display: flex;
+        min-width: 0;
+        flex: 1;
+        flex-direction: column;
+      }
+
+      .asilva-intelligent-header-copy strong {
+        color: #0d1224;
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-size: .9rem;
+      }
+
+      .asilva-intelligent-header-copy span {
+        color: rgba(20, 26, 46, .68);
+        font-family: "Roboto Condensed", system-ui, sans-serif;
+        font-size: .68rem;
+      }
+
+      .asilva-intelligent-close {
+        width: 32px;
+        height: 32px;
+        border: 1px solid rgba(10, 20, 60, .15);
+        border-radius: 50%;
+        background: rgba(90, 110, 160, .08);
+        color: #0d1224;
+        cursor: pointer;
+        font-size: 1.1rem;
+      }
+
+      .asilva-intelligent-messages {
+        display: flex;
+        min-height: 0;
+        flex: 1;
+        flex-direction: column;
+        gap: .7rem;
+        overflow-y: auto;
+        padding: 1rem;
+      }
+
+      .asilva-intelligent-message {
+        max-width: 94%;
+        padding: .75rem .9rem;
+        border-radius: 13px;
+        color: #0d1224;
+        font-size: .84rem;
+        line-height: 1.62;
+      }
+
+      .asilva-intelligent-message.assistant {
+        align-self: flex-start;
+        border: 1px solid rgba(10, 20, 60, .12);
+        border-bottom-left-radius: 4px;
+        background: rgba(90, 110, 160, .08);
+      }
+
+      .asilva-intelligent-message.user {
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+        background: linear-gradient(135deg, #0057c2, #0069a8);
+        color: #fff;
+      }
+
+      .asilva-intelligent-suggestions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .4rem;
+        padding: .55rem .75rem;
+        border-top: 1px solid rgba(10, 20, 60, .08);
+      }
+
+      .asilva-intelligent-suggestions button {
+        padding: .38rem .65rem;
+        border: 1px solid rgba(10, 20, 60, .15);
+        border-radius: 999px;
+        background: rgba(90, 110, 160, .07);
+        color: #0d1224;
+        cursor: pointer;
+        font: 600 .7rem "Roboto Condensed", system-ui, sans-serif;
+      }
+
+      .asilva-intelligent-suggestions button:hover {
+        border-color: #8a6d00;
+        background: rgba(255, 215, 0, .09);
+      }
+
+      .asilva-intelligent-input {
+        display: flex;
+        gap: .5rem;
+        padding: .7rem .8rem;
+        border-top: 1px solid rgba(10, 20, 60, .12);
+      }
+
+      .asilva-intelligent-input input {
+        min-width: 0;
+        flex: 1;
+        padding: .68rem .9rem;
+        border: 1px solid rgba(10, 20, 60, .18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .9);
+        color: #0d1224;
+        outline: none;
+        font: .82rem "Poppins", system-ui, sans-serif;
+      }
+
+      .asilva-intelligent-input input:focus {
+        border-color: #0069a8;
+        box-shadow: 0 0 0 3px rgba(0, 105, 168, .12);
+      }
+
+      .asilva-intelligent-input button {
+        width: 42px;
+        height: 42px;
+        flex: none;
+        border: 0;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0057c2, #0069a8);
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .asilva-intelligent-disclaimer {
+        padding: .4rem .8rem .55rem;
+        color: rgba(20, 26, 46, .58);
+        font-size: .61rem;
+        text-align: center;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .asilva-intelligent-panel {
+          border-color: rgba(255, 215, 0, .25);
+          background: linear-gradient(135deg, rgba(10, 20, 60, .97), rgba(10, 14, 39, .97));
+        }
+
+        .asilva-intelligent-header-copy strong,
+        .asilva-intelligent-close,
+        .asilva-intelligent-suggestions button,
+        .asilva-intelligent-message {
+          color: #fff;
+        }
+
+        .asilva-intelligent-header,
+        .asilva-intelligent-input,
+        .asilva-intelligent-suggestions {
+          border-color: rgba(255, 255, 255, .1);
+        }
+
+        .asilva-intelligent-header-copy span,
+        .asilva-intelligent-disclaimer {
+          color: rgba(224, 230, 237, .64);
+        }
+
+        .asilva-intelligent-message.assistant {
+          border-color: rgba(255, 255, 255, .1);
+          background: rgba(255, 255, 255, .06);
+        }
+
+        .asilva-intelligent-input input {
+          border-color: rgba(255, 255, 255, .14);
+          background: rgba(10, 16, 42, .8);
+          color: #fff;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .asilva-intelligent-widget {
+          right: .8rem;
+          bottom: .8rem;
+        }
+
+        .asilva-intelligent-panel {
+          right: -.8rem;
+          bottom: 70px;
+          width: calc(100vw - 1.6rem);
+          height: min(680px, calc(100vh - 90px));
+          border-radius: 18px;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
   }
 
-  // Add pulse keyframe dynamically
-  const pulseStyle = document.createElement('style');
-  pulseStyle.textContent = `@keyframes asilvaPulse { 0%,100%{box-shadow:0 8px 32px rgba(0,0,0,.35);} 50%{box-shadow:0 8px 32px rgba(255,215,0,.5), 0 0 0 8px rgba(255,215,0,.1);} }`;
-  document.head.appendChild(pulseStyle);
+  /* Render one message safely. */
+  function renderMessage(messagesElement, role, content, alreadyFormatted = false) {
+    const messageElement = document.createElement("div");
+
+    messageElement.className = `asilva-intelligent-message ${role}`;
+
+    if (alreadyFormatted) {
+      messageElement.innerHTML = content;
+    } else {
+      messageElement.innerHTML = escapeHtml(content).replace(/\n/g, "<br>");
+    }
+
+    messagesElement.appendChild(messageElement);
+    messagesElement.scrollTop = messagesElement.scrollHeight;
+  }
+
+  /* Send a user question through the local reasoning engine. */
+  function handleQuestion(question, messagesElement, inputElement) {
+    const trimmedQuestion = question.trim();
+
+    if (!trimmedQuestion) return;
+
+    renderMessage(messagesElement, "user", trimmedQuestion);
+    addMessage("user", trimmedQuestion);
+
+    inputElement.value = "";
+
+    const response = generateResponse(trimmedQuestion);
+
+    window.setTimeout(() => {
+      renderMessage(messagesElement, "assistant", response, true);
+      addMessage("assistant", response);
+    }, 180);
+  }
+
+  /* Restore visible messages after creating the widget. */
+  function renderConversation(messagesElement) {
+    messagesElement.innerHTML = "";
+
+    if (!conversationState.messages.length) {
+      renderMessage(
+        messagesElement,
+        "assistant",
+        "Hello. I am the ASilva Intelligent Assistant.<br><br>I work from Alvin Silva's local professional knowledge base and system architecture. Ask me about his credentials, portfolio, strategy work, resilience practice, systems innovation, or give me a problem to analyze.",
+        true
+      );
+      return;
+    }
+
+    conversationState.messages.forEach((message) => {
+      renderMessage(messagesElement, message.role, message.content, message.role === "assistant");
+    });
+  }
+
+  /* Load local knowledge resources. */
+  async function loadKnowledge() {
+    const [credentialsResponse, architectureResponse] = await Promise.all([
+      fetch(CONFIG.credentialsPath, { cache: "no-store" }),
+      fetch(CONFIG.architecturePath, { cache: "no-store" })
+    ]);
+
+    if (!credentialsResponse.ok) {
+      throw new Error(`Unable to load credentials.json: HTTP ${credentialsResponse.status}`);
+    }
+
+    if (!architectureResponse.ok) {
+      throw new Error(`Unable to load system architecture: HTTP ${architectureResponse.status}`);
+    }
+
+    knowledgeBase.credentials = await credentialsResponse.json();
+    knowledgeBase.architecture = await architectureResponse.json();
+
+    buildKnowledgeIndex();
+  }
+
+  /* Initialize the assistant after the page has loaded. */
+  async function initialize() {
+    restoreConversation();
+    injectStyles();
+
+    const widget = createWidget();
+    const trigger = widget.querySelector(".asilva-intelligent-trigger");
+    const panel = widget.querySelector(".asilva-intelligent-panel");
+    const closeButton = widget.querySelector(".asilva-intelligent-close");
+    const messagesElement = widget.querySelector(".asilva-intelligent-messages");
+    const inputForm = widget.querySelector(".asilva-intelligent-input");
+    const inputElement = inputForm.querySelector("input");
+
+    try {
+      await loadKnowledge();
+      renderConversation(messagesElement);
+    } catch (error) {
+      renderMessage(
+        messagesElement,
+        "assistant",
+        "The local knowledge files could not be loaded. Please serve this site through HTTP or HTTPS rather than opening the HTML file directly.",
+        false
+      );
+      console.error("[ASilva Intelligent Assistant]", error);
+    }
+
+    function openPanel() {
+      panel.classList.add("open");
+      panel.setAttribute("aria-hidden", "false");
+      trigger.setAttribute("aria-expanded", "true");
+      inputElement.focus();
+    }
+
+    function closePanel() {
+      panel.classList.remove("open");
+      panel.setAttribute("aria-hidden", "true");
+      trigger.setAttribute("aria-expanded", "false");
+    }
+
+    trigger.addEventListener("click", () => {
+      panel.classList.contains("open") ? closePanel() : openPanel();
+    });
+
+    closeButton.addEventListener("click", closePanel);
+
+    inputForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      handleQuestion(inputElement.value, messagesElement, inputElement);
+    });
+
+    widget.querySelectorAll("[data-question]").forEach((button) => {
+      button.addEventListener("click", () => {
+        handleQuestion(button.dataset.question || "", messagesElement, inputElement);
+      });
+    });
+  }
+
+  /* Start after the document is ready. */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialize, { once: true });
+  } else {
+    initialize();
+  }
 })();
