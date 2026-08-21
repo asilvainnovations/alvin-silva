@@ -1,82 +1,80 @@
-/* A. Silva Innovations — offline-first service worker */
-const VERSION = 'as-pwa-v1.4.0';
-const CORE = [
-  './',
-  './index.html',
-  './portfolio.html',
-  './personal-resilience.html',
-  './building-resilience.html',
-  './policies.html',
-  './privacy-policy.html',
-  './cookie-policy.html',
-  './terms-of-services.html',
-  './accessibility-policy.html',
-  './manifest.webmanifest',
-  './assets/hero-banner.jpg',
-  './assets/hero-portrait-banner.jpg',
-  './assets/og-image.jpg',
-  './assets/card-bird.jpg',
-  './assets/cover-personal-resilience-3d.jpg',
-  './assets/cover-building-resilience.jpg',
-  './assets/cover-resilient-futures.jpg',
-  './assets/cover-2024-sme-report.jpg',
-  './assets/cover-cdp-salcedo.jpg',
-  './assets/cover-consent-drr.jpg',
-  './assets/cover-dlsu-oupms.jpg',
-  './assets/cover-irrm-barmm.jpg',
-  './assets/cover-mhpss-module.jpg',
-  './assets/cover-policy-report.jpg',
-  './assets/cover-vulnerability-indicators.jpg',
-  './assets/ph-platform.jpg',
-  './assets/ph-consulting.jpg',
-  './assets/ph-publication.jpg',
-  './assets/logo-32.png',
-  './assets/logo-180.png',
-  './assets/logo-192.png',
-  './assets/logo-512.png',
-  './assets/logo-512-maskable.png'
+// VERSION BUMP (audit 2026-08-04): CACHE_NAME had stayed 'asilva-v2' since
+// introduction despite ongoing content edits to precached pages. The fetch
+// handler below returns the cached response immediately whenever one
+// exists and only refreshes the cache in the background for the *next*
+// load — so without a version bump, repeat visitors can be stuck one (or
+// more) deploys behind indefinitely. Bump this string on any deploy that
+// changes a precached file, to force activate() to clear the old cache.
+const CACHE_NAME = 'asilva-v6';
+const PRECACHE = [
+  '/',
+  '/index.html',
+  '/portfolio.html',
+  '/building-resilience.html',
+  '/personal-resilience.html',
+  '/policies.html',
+  '/privacy-policy.html',
+  '/cookie-policy.html',
+  '/terms-of-services.html',
+  '/accessibility-policy.html',
+  // Added (audit 2026-08-04): these two tools previously never registered
+  // the service worker and were absent from precache, so they had zero
+  // offline support even though they're core to the career-ops workflow.
+  '/career-automation.html',
+  '/chat.html',
+  // Added (audit 2026-08-21): 15 pages <link> this stylesheet but it was
+  // never precached, so offline loads rendered unstyled.
+  '/style.css',
+  // Added (audit 2026-08-21): platform module tree + new surfaces. The chat
+  // engine is now fully client-side, so precaching these makes the assistant
+  // work offline — previously impossible when it depended on a remote API.
+  '/blog.html',
+  '/chorus.html',
+  '/404.html',
+  '/assets/js/boot.js',
+  '/assets/js/core/util.js',
+  '/assets/js/core/nlp.js',
+  '/assets/js/core/data.js',
+  '/assets/js/core/registry.js',
+  '/assets/js/core/router.js',
+  '/assets/js/chat/engine.js',
+  '/assets/js/chat/widget.js',
+  '/assets/js/modules/blog.js',
+  '/assets/js/modules/ai-chorus.js',
+  '/assets/data/kb.json',
+  '/assets/data/blog/index.json',
+  '/credentials.json',
+  '/manifest.webmanifest',
+  '/assets/logo-32.png',
+  '/assets/logo-192.png',
+  '/assets/logo-512.png',
+  '/assets/og-image.jpg',
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(VERSION).then(c => c.addAll(CORE)).then(() => self.skipWaiting())
-  );
+  self.skipWaiting();
+  e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(PRECACHE)));
 });
 
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k))))
-      .then(() => self.clients.claim())
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', e => {
-  const { request } = e;
-  if (request.method !== 'GET') return;
-
-  // HTML: network-first, fall back to cache (fresh content, offline resilient)
-  if (request.mode === 'navigate') {
-    e.respondWith(
-      fetch(request)
-        .then(res => {
-          const copy = res.clone();
-          caches.open(VERSION).then(c => c.put(request, copy));
-          return res;
-        })
-        .catch(() => caches.match(request).then(hit => hit || caches.match('./index.html')))
-    );
-    return;
-  }
-
-  // Assets & fonts: cache-first, then network + cache
   e.respondWith(
-    caches.match(request).then(hit => hit || fetch(request).then(res => {
-      if (res.ok || res.type === 'opaque') {
-        const copy = res.clone();
-        caches.open(VERSION).then(c => c.put(request, copy));
-      }
-      return res;
-    }).catch(() => hit))
+    caches.match(e.request).then(cached => {
+      const fetchPromise = fetch(e.request).then(networkRes => {
+        if (networkRes && networkRes.status === 200) {
+          const clone = networkRes.clone();
+          caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
+        }
+        return networkRes;
+      }).catch(() => cached);
+      return cached || fetchPromise;
+    })
   );
 });

@@ -3,676 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- SECURITY/PRIVACY (audit 2026-08-04, revised 2026-08-07): this page installs
+     a bookmarklet that autofills forms with Alvin's personal contact info. It
+     has no robots directive that would let it be indexed, despite not being
+     linked from anywhere in the site. noindex makes the existing "hidden by
+     obscurity" state an explicit, intentional one.
+
+     FUNCTIONALITY FIX (2026-08-07): the previous version of this page fetched
+     form-assistant-bookmarklet.js at runtime and asked the user to copy-paste
+     it into a bookmark's URL field. Two problems: (1) that file used to contain
+     `//` comments, and browser bookmark-edit URL fields are single-line inputs
+     that strip newlines on paste — once newlines are gone, `//` comments
+     swallow the rest of the script and the bookmarklet does nothing at all.
+     Confirmed with `new Function(code)` throwing "Unexpected end of input"
+     once newlines are stripped. (2) fetch() of a relative file fails under
+     file:// (no web server), which is a realistic way this page gets opened
+     for a personal utility that isn't linked from the site nav.
+     Fixed by shipping a newline-safe, comment-free bookmarklet (see
+     form-assistant-bookmarklet.js) and embedding it directly in this page —
+     no fetch, no separate file that can go out of sync or fail to load. Also
+     added a one-step "drag to bookmarks bar" install as the primary method,
+     which is the standard, more intuitive way to install a bookmarklet;
+     manual copy-paste is kept as a documented fallback. -->
 <meta name="robots" content="noindex, nofollow">
 <title>ASilva Form Assistant — Setup</title>
-<link rel="icon" type="image/png" href="assets/logo-192.png">
 <style>
-/* ===== RESET & BASE ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --primary: #0057c2;
-  --primary-light: #0069a8;
-  --gold: #8a6d00;
-  --gold-light: #FFD700;
-  --bg: #f4f6fb;
-  --surface: #ffffff;
-  --text: #0d1224;
-  --text-2: #2b3350;
-  --text-3: #64748b;
-  --border: #e2e8f0;
-  --radius: 12px;
-  --radius-lg: 16px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
-  --shadow-md: 0 4px 20px rgba(0,0,0,.08);
-  --shadow-lg: 0 10px 40px rgba(0,0,0,.12);
-  --font-display: 'Montserrat', system-ui, sans-serif;
-  --font-body: 'Poppins', system-ui, sans-serif;
-  --font-cond: 'Roboto Condensed', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-}
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.65;
-  padding: 0;
-}
-
-/* ===== HEADER ===== */
-.header {
-  background: linear-gradient(135deg, #0a0e27 0%, #0d1430 100%);
-  color: #fff;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('assets/logo-512.png') center/400px no-repeat;
-  opacity: .04;
-  pointer-events: none;
-}
-.header-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
-.header img { width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--gold-light); margin-bottom: 1rem; background: #fff; padding: 3px; }
-.header h1 {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: 800;
-  background: linear-gradient(45deg, #4db8ff, #5c8aff, var(--gold-light));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: .4rem;
-}
-.header p { color: rgba(255,255,255,.75); font-size: 1rem; max-width: 480px; margin: 0 auto; }
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  color: rgba(255,255,255,.7);
-  text-decoration: none;
-  font-size: .85rem;
-  margin-bottom: 1rem;
-  transition: .2s;
-}
-.back-link:hover { color: #fff; }
-
-/* ===== LAYOUT ===== */
-.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem; }
-.section { margin-bottom: 2.5rem; }
-.section h2 {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
-.section h2 .num {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: #fff; display: flex; align-items: center; justify-content: center;
-  font-size: .85rem; font-weight: 700; flex: none;
-}
-
-/* ===== CARDS ===== */
-.card {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
-  margin-bottom: 1.2rem;
-}
-.card h3 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: .6rem;
-  color: var(--text);
-}
-
-/* ===== INSTALL CARD ===== */
-.install-card {
-  background: linear-gradient(135deg, #fff, #f8f9fb);
-  border: 2px solid var(--gold-light);
-  border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-.drag-target {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  padding: 1rem 2rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light), var(--gold));
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.05rem;
-  text-decoration: none;
-  cursor: grab;
-  box-shadow: 0 8px 28px rgba(0,87,194,.35);
-  user-select: none;
-  border: 3px solid #fff;
-  outline: 2px dashed rgba(255,215,0,.7);
-  outline-offset: 3px;
-  transition: transform .2s, box-shadow .2s;
-}
-.drag-target:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,87,194,.45); }
-.drag-target:active { cursor: grabbing; }
-.drag-target svg { width: 20px; height: 20px; }
-.install-hint { font-size: .85rem; color: var(--text-3); margin-top: 1rem; line-height: 1.6; }
-.bar-hint {
-  font-size: .78rem; color: var(--gold);
-  background: rgba(255,215,0,.12);
-  display: inline-block;
-  padding: .4rem .9rem;
-  border-radius: 8px;
-  margin-top: .6rem;
-  font-weight: 500;
-}
-
-/* ===== WARNING ===== */
-.warning {
-  background: rgba(255,215,0,.1);
-  border: 1px solid rgba(140,110,0,.3);
-  padding: 1rem 1.2rem;
-  border-radius: var(--radius);
-  margin-bottom: 1.5rem;
-  font-size: .9rem;
-  color: var(--text-2);
-}
-.warning strong { color: var(--gold); }
-
-/* ===== BUTTONS ===== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .7rem 1.4rem;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: .9rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: .2s;
-}
-.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.btn-secondary {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.btn-secondary:hover { background: var(--bg); }
-
-/* ===== CODE BLOCK ===== */
-.code-block {
-  background: #0a0e27;
-  color: #4db8ff;
-  padding: 1rem;
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  line-height: 1.6;
-  overflow-x: auto;
-  word-break: break-all;
-  max-height: 220px;
-  overflow-y: auto;
-  position: relative;
-}
-.code-block .copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(255,255,255,.1);
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 11px;
-  cursor: pointer;
-  transition: .2s;
-}
-.code-block .copy-btn:hover { background: rgba(255,255,255,.2); }
-
-/* ===== DETAILS / ACCORDION ===== */
-details {
-  background: var(--surface);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  margin-bottom: .8rem;
-  overflow: hidden;
-}
-details summary {
-  padding: 1rem 1.2rem;
-  cursor: pointer;
-  font-weight: 700;
-  font-family: var(--font-display);
-  font-size: .95rem;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
-details summary::-webkit-details-marker { display: none; }
-details summary::before { content: "+"; color: var(--primary); font-weight: 800; width: 18px; }
-details[open] summary::before { content: "–"; }
-details .details-body { padding: 0 1.2rem 1.2rem; }
-
-/* ===== DEMO FORM ===== */
-.demo-form {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
-}
-.demo-form .form-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-@media (min-width: 600px) {
-  .demo-form .form-row { grid-template-columns: 1fr 1fr; }
-}
-.demo-form label {
-  display: block;
-  font-family: var(--font-cond);
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--primary-light);
-  margin-bottom: .35rem;
-}
-.demo-form input,
-.demo-form textarea,
-.demo-form select {
-  width: 100%;
-  padding: .7rem .9rem;
-  border-radius: 10px;
-  border: 1.5px solid var(--border);
-  font-family: var(--font-body);
-  font-size: .9rem;
-  color: var(--text);
-  background: #fff;
-  transition: .2s;
-}
-.demo-form input:focus,
-.demo-form textarea:focus,
-.demo-form select:focus {
-  outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(255,215,0,.15);
-}
-.demo-form textarea { min-height: 100px; resize: vertical; }
-
-/* ===== JSON PREVIEW ===== */
-.json-preview {
-  background: #0a0e27;
-  color: #a5d6ff;
-  padding: 1rem;
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: .75rem;
-  line-height: 1.7;
-  overflow-x: auto;
-  max-height: 300px;
-  overflow-y: auto;
-}
-.json-preview .key { color: #7ee787; }
-.json-preview .string { color: #a5d6ff; }
-.json-preview .number { color: #79c0ff; }
-
-/* ===== FEATURE GRID ===== */
-.feature-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-@media (min-width: 600px) {
-  .feature-grid { grid-template-columns: 1fr 1fr; }
-}
-.feature-item {
-  background: var(--surface);
-  border-radius: var(--radius);
-  padding: 1.2rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-.feature-item h4 {
-  font-family: var(--font-display);
-  font-size: .95rem;
-  font-weight: 700;
-  margin-bottom: .4rem;
-  color: var(--text);
-}
-.feature-item p { font-size: .85rem; color: var(--text-3); line-height: 1.6; }
-
-/* ===== FOOTER ===== */
-.site-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  border-top: 1px solid var(--border);
-  color: var(--text-3);
-  font-size: .85rem;
-}
-.site-footer a { color: var(--primary-light); text-decoration: none; }
-
-/* ===== ACCESSIBILITY ===== */
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-}
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0);
-  white-space: nowrap; border: 0;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 480px) {
-  .header { padding: 1.5rem 1rem; }
-  .container { padding: 1.2rem 1rem; }
-  .drag-target { padding: .8rem 1.4rem; font-size: .95rem; }
-  .card { padding: 1.2rem; }
-}
+body{font-family:'Poppins',system-ui,sans-serif;max-width:720px;margin:0 auto;padding:2rem 1rem;line-height:1.7;color:#0d1224;background:#f4f6fb}
+h1{font-family:'Montserrat',system-ui,sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(45deg,#0069a8,#0057c2,#8a6d00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-family:'Montserrat',system-ui,sans-serif;font-size:1.2rem;font-weight:700;margin-top:2rem;margin-bottom:.8rem;color:#0d1224}
+.code{background:#0a0e27;color:#4db8ff;padding:1rem;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.6;overflow-x:auto;word-break:break-all;max-height:200px;overflow-y:auto}
+.step{display:flex;gap:1rem;margin-bottom:1.5rem;padding:1.2rem;background:#fff;border-radius:12px;border:1px solid rgba(10,20,60,.1)}
+.step-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Montserrat';font-weight:700;font-size:.9rem;flex:none}
+.step-content{flex:1}
+.step-content h3{margin:0 0 .3rem;font-size:1rem;font-weight:700}
+.step-content p{margin:0;color:#2b3350;font-size:.9rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:'Montserrat';font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:none;margin-top:.5rem}
+.warning{background:rgba(255,215,0,.12);border:1px solid rgba(140,110,0,.4);padding:1rem;border-radius:10px;margin:1.5rem 0;font-size:.88rem}
+.warning strong{color:#8a6d00}
+.install-card{background:#fff;border:2px solid #FFD700;border-radius:16px;padding:1.5rem;margin:1.5rem 0;text-align:center}
+.drag-target{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.8rem;border-radius:999px;background:linear-gradient(135deg,#0057c2,#0069a8,#8a6d00);color:#fff;font-family:'Montserrat';font-weight:800;font-size:1rem;text-decoration:none;cursor:grab;box-shadow:0 8px 24px rgba(0,87,194,.35);user-select:none;border:3px solid #fff;outline:2px dashed rgba(255,215,0,.7);outline-offset:3px}
+.drag-target:active{cursor:grabbing}
+.install-hint{font-size:.82rem;color:#666;margin-top:1rem}
+.bar-hint{font-size:.78rem;color:#8a6d00;background:rgba(255,215,0,.15);display:inline-block;padding:.4rem .8rem;border-radius:8px;margin-top:.6rem}
+details{background:#fff;border-radius:12px;border:1px solid rgba(10,20,60,.1);margin-top:1rem;padding:0}
+details summary{padding:1rem 1.2rem;cursor:pointer;font-weight:700;font-family:'Montserrat',system-ui,sans-serif;font-size:.95rem;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+ ";color:#0057c2}
+details[open] summary::before{content:"– "}
+details .details-body{padding:0 1.2rem 1.2rem}
+.verify{background:rgba(15,125,81,.08);border:1px solid rgba(15,125,81,.3);padding:1rem;border-radius:10px;margin:1.5rem 0;font-size:.88rem}
+.verify strong{color:#0f7d51}
 </style>
-<base target="_blank">
 <base target="_blank">
 </head>
 <body>
+<h1>ASilva Form Assistant</h1>
+<p>One-click form filling for job applications. Detects fields, maps them to Alvin's credentials, and suggests content.</p>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <a href="index.html" class="back-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Back to alvin-silva.asilvainnovations.com
-    </a>
-    <img src="assets/logo-192.png" alt="Alvin Silva logo" width="64" height="64" loading="eager">
-    <h1>ASilva Form Assistant</h1>
-    <p>One-click form filling for job applications, procurement portals, and institutional forms. Detects fields, maps them to Alvin's structured profile, and suggests content — with full preview, validation, and undo.</p>
-  </div>
-</header>
-
-<div class="container">
-
-  <!-- WARNING -->
-  <div class="warning">
-    <strong>Important:</strong> This is an <em>assistant</em>, not an auto-submitter. It populates fields for your review. You must verify every field before submitting. Never submit applications without human review. Sensitive fields (salary, etc.) require explicit confirmation.
-  </div>
-
-  <!-- INSTALL -->
-  <section class="section">
-    <h2><span class="num">1</span> Install (one step)</h2>
-    <div class="install-card">
-      <p style="margin:0 0 1.2rem;font-size:.95rem;color:var(--text-2)">Drag this button up to your browser's bookmarks bar:</p>
-      <a class="drag-target" id="dragInstall"
-         href="javascript:(function (){'use strict';if (window.__asilvaFormAssistantLoaded){const existing=document.getElementById('asilva-fa-panel');if (existing){existing.remove();window.__asilvaFormAssistantLoaded=false;}else{return;}}window.__asilvaFormAssistantLoaded=true;const PROFILE={name:&quot;Alvin M. Silva,MDM&quot;,title:&quot;Development Management Professional&amp;Resilience Consultant&quot;,email:&quot;alvin.silva@asilvainnovations.com&quot;,phone:&quot;+63 917 855 5134&quot;,linkedin:&quot;https://alvin-silva-linkedin.asilvainnovations.com&quot;,degrees:&quot;MDM — Master in Development Management,Asian Institute of Management&quot;,certifications:&quot;Certified SRMP(Security Risk Management Professional),Certified International Humanitarian Practitioner,Certified DRR Practitioner&quot;,years_experience:&quot;18+&quot;,countries:&quot;15&quot;,funding_designed:&quot;₱190M&quot;,households_reached:&quot;50,000+&quot;,completion_rate:&quot;100%&quot;,strategic_plans:&quot;20&quot;,frameworks_published:&quot;10&quot;,university_collaborations:&quot;5&quot;,books_published:&quot;3&quot;,summary:&quot;Development Management Professional&amp;Resilience Consultant with 18+years across 15 countries. Architect of BIRD 2026-2035,DDRiVE-M,and Strat Planner Pro. Published author of three books including 'Personal Resilience:The Path to Oneness'(2025). MDM,Asian Institute of Management.&quot;,skills:&quot;Strategic Planning,Climate Change Adaptation,Disaster Risk Reduction,Systems Innovation,Organizational Development,Capacity Building,Security Risk Management,Monitoring&amp;Evaluation,Policy Research,Project Management,Investment Roadmapping,Stakeholder Facilitation&quot;,disciplines:&quot;Climate Change Adaptation(15 yrs),Disaster Risk Reduction(15 yrs),Systems Innovation(10 yrs),Organizational Development(12 yrs),Strategic Thinking&amp;Planning(18 yrs),Capacity Building(15 yrs),Security Risk Management(10 yrs)&quot;,projects:&quot;BIRD 2026-2035(Bangsamoro Investment Roadmap),DDRiVE-M Platform,Strat Planner Pro,RTL — Real-Time Leadership,Cognitio+,Balatan Climate Resilience Hub(₱190M),TESDA Strategic Plan 2026-2030,Risk-Informed CDP Salcedo,MHPSS Intervention Module(WHO/DOH),IRRM BARMM(USAID/Action Against Hunger)&quot;,publications:&quot;Personal Resilience:The Path to Oneness(2025);Resilient Futures:Nurturing Oneness in Education(2024);Building Resilience:The Path to a More Fulfilling Life(2023);Shock-Responsive&amp;Sustainable Livelihoods Process Manual(2022)&quot;,institutions:&quot;UNICEF,UNDP,ECHO,USAID,World Bank,WHO,TESDA,MMDA,DOH,BARMM BoI-MTIT,Action Against Hunger,Asian Institute of Management,SOLHUM,Philippine Red Cross,German Red Cross,DLSU&quot;,references:&quot;Available upon request&quot;,salary:&quot;Negotiable based on role scope and organizational mandate&quot;,start_date:&quot;Immediately available for strategic roles aligned with resilience and systems innovation&quot;,why_hire:&quot;I bring a systems-level perspective grounded in measurable outcomes — ₱190M in climate-smart funding designed,50,000+households reached,100% project completion rate. My decade-scale roadmaps(BIRD 2026-2035,TESDA Strategic Plan)demonstrate the ability to align institutional vision with executable frameworks. I architect platforms,not just documents — DDRiVE-M,Strat Planner Pro,and Cognitio+are live tools that outlast engagements.&quot;,cover_letter:&quot;Dear Hiring Committee,\n\nWith 18+years of development management experience across 15 countries,I have consistently delivered systems-level solutions that outlast project cycles. As lead architect of the Bangsamoro Investment Roadmap 2026-2035 and sole author of the TESDA Strategic Plan 2026-2030,I bring proven ability to translate institutional vision into executable frameworks.\n\nMy approach integrates climate adaptation,disaster risk reduction,and organizational performance — disciplines typically kept in silos. I have designed ₱190M in climate-smart projects,trained emergency responders with WHO,and published three books on resilience methodology.\n\nI am available immediately for roles that demand strategic thinking,stakeholder alignment,and measurable outcomes.\n\nRespectfully,\nAlvin M. Silva,MDM&quot;};const FIELD_RULES=[{key:'name',keywords:['name','full name','applicant name','candidate name','your name','first and last name'],type:'text',priority:100},{key:'email',keywords:['email','e-mail','contact email','your email','mail address','email address'],type:'email',priority:100},{key:'phone',keywords:['phone','mobile','contact number','telephone','cell','cellphone','mobile number','phone number'],type:'tel',priority:100},{key:'linkedin',keywords:['linkedin','linked in','profile url','social profile','linkedin url','linked-in'],type:'url',priority:90},{key:'degrees',keywords:['degree','education','qualification','academic','highest degree','educational background','degree earned'],type:'text',priority:80},{key:'certifications',keywords:['certification','license','credential','professional cert','certifications','licenses'],type:'text',priority:80},{key:'years_experience',keywords:['experience','years','professional experience','years of experience','work experience','total experience'],type:'text',priority:80},{key:'summary',keywords:['summary','profile','about','bio','overview','personal statement','professional summary','career summary','about yourself','tell us about yourself'],type:'textarea',priority:70},{key:'skills',keywords:['skill','competency','expertise','technical skill','core competency','key skills','specializations','capabilities'],type:'textarea',priority:70},{key:'disciplines',keywords:['discipline','area of expertise','field of practice','technical areas','practice areas'],type:'textarea',priority:65},{key:'projects',keywords:['project','portfolio','key projects','relevant projects','project experience'],type:'textarea',priority:65},{key:'publications',keywords:['publication','book','paper','research','published work','authored works','publications'],type:'textarea',priority:60},{key:'institutions',keywords:['institution','organization','affiliation','employer','previous employer','worked with'],type:'textarea',priority:60},{key:'why_hire',keywords:['why','motivation','cover letter','statement of purpose','why hire','why you','why should we hire','coverletter','statement','personal statement'],type:'textarea',priority:60},{key:'cover_letter',keywords:['cover letter','coverletter','letter of intent','application letter','motivation letter'],type:'textarea',priority:60},{key:'salary',keywords:['salary','compensation','expected salary','pay','remuneration','desired salary','expected pay','wage'],type:'text',priority:50,sensitive:true},{key:'start_date',keywords:['start','availability','notice','when can you start','available from','notice period','earliest start','start date'],type:'text',priority:50},{key:'references',keywords:['reference','referee','professional reference','character reference'],type:'textarea',priority:40},{key:'funding_designed',keywords:['funding','budget','grant','financial','project value','funding designed'],type:'text',priority:40},{key:'households_reached',keywords:['household','beneficiary','reach','population served','beneficiaries'],type:'text',priority:40},{key:'countries',keywords:['country','countries','nation','geographic coverage','regions'],type:'text',priority:40},{key:'completion_rate',keywords:['completion','success rate','delivery rate','project completion'],type:'text',priority:30},{key:'title',keywords:['title','job title','position','current position','professional title'],type:'text',priority:30}];const SENSITIVE_PATTERNS=['password','credit','card','cvv','ssn','social security','tax id','tin','bank account','routing','iban'];function $(sel,ctx){return (ctx||document).querySelector(sel);}function $$(sel,ctx){return Array.from((ctx||document).querySelectorAll(sel));}function escapeHtml(str){const div=document.createElement('div');div.textContent=str==null?'':String(str);return div.innerHTML;}function similarity(a,b){a=String(a).toLowerCase().replace(/[^a-z0-9]/g,'');b=String(b).toLowerCase().replace(/[^a-z0-9]/g,'');if (a===b)return 1;if (a.includes(b)||b.includes(a))return 0.85;let matches=0;for (let i=0;i<Math.min(a.length,b.length);i++)if (a[i]===b[i])matches++;return matches/Math.max(a.length,b.length);}function isSensitiveInput(input,labelText){const text=(labelText+' '+(input.name||'')+' '+(input.id||'')+' '+(input.getAttribute('aria-label')||'')).toLowerCase();return SENSITIVE_PATTERNS.some(p=>text.includes(p));}function isEditable(input){if (input.disabled||input.readOnly)return false;const type=(input.type||input.getAttribute('type')||'text').toLowerCase();const tag=input.tagName.toLowerCase();if (tag==='textarea')return true;if (tag==='select')return true;if (tag==='input'){return!['hidden','submit','button','reset','image','file'].includes(type);}return false;}function findLabel(input){if (input.id){const label=document.querySelector('label[for=&quot;'+input.id.replace(/&quot;/g,'\\&quot;')+'&quot;]');if (label)return label.textContent.trim();}const parentLabel=input.closest('label');if (parentLabel)return parentLabel.textContent.trim();let prev=input.previousElementSibling;while (prev){if (prev.tagName==='LABEL'||prev.textContent.trim())return prev.textContent.trim();prev=prev.previousElementSibling;}const aria=input.getAttribute('aria-label');if (aria)return aria.trim();return '';}function detectFields(){const inputs=$$('input,textarea,select');const fields=[];inputs.forEach((input,idx)=>{if (!isEditable(input))return;const label=findLabel(input);const name=(input.name||'').toLowerCase();const id=(input.id||'').toLowerCase();const placeholder=(input.placeholder||'').toLowerCase();const type=(input.type||input.getAttribute('type')||'text').toLowerCase();const tag=input.tagName.toLowerCase();const context=(label+' '+name+' '+id+' '+placeholder).toLowerCase();fields.push({element:input,label,name,id,placeholder,type,tag,context,index:idx});});return fields;}function mapFields(fields){const mappings=[];const usedKeys=new Set();fields.forEach(field=>{let bestMatch=null;let bestScore=0;FIELD_RULES.forEach(rule=>{if (usedKeys.has(rule.key)&amp;&amp;rule.type!=='textarea')return;let score=0;const ctx=field.context;if (field.name&amp;&amp;rule.keywords.some(k=>field.name===k))score=Math.max(score,1.0);else if (field.name&amp;&amp;rule.keywords.some(k=>field.name.includes(k)))score=Math.max(score,0.95);if (field.id&amp;&amp;rule.keywords.some(k=>field.id===k))score=Math.max(score,0.95);else if (field.id&amp;&amp;rule.keywords.some(k=>field.id.includes(k)))score=Math.max(score,0.85);if (field.label&amp;&amp;rule.keywords.some(k=>ctx.includes(k)))score=Math.max(score,0.8);if (field.placeholder&amp;&amp;rule.keywords.some(k=>field.placeholder.includes(k)))score=Math.max(score,0.75);const sim=rule.keywords.reduce((max,k)=>Math.max(max,similarity(ctx,k)),0);if (sim>0.6)score=Math.max(score,sim*0.7);if (score>0.5&amp;&amp;rule.type&amp;&amp;field.type===rule.type)score+=0.05;if (score>0.5&amp;&amp;rule.type==='textarea'&amp;&amp;field.tag==='textarea')score+=0.1;if (score>bestScore&amp;&amp;score>=0.35){bestScore=score;bestMatch=rule;}});if (bestMatch){const value=PROFILE[bestMatch.key];if (value!==undefined){mappings.push({field,rule:bestMatch,value:String(value),confidence:bestScore,sensitive:bestMatch.sensitive||isSensitiveInput(field.element,field.label)});if (bestMatch.type!=='textarea')usedKeys.add(bestMatch.key);}}});mappings.sort((a,b)=>b.confidence-a.confidence);return mappings;}function validateAndFormat(mapping){const input=mapping.field.element;let value=mapping.value;const warnings=[];const maxLen=input.getAttribute('maxlength');if (maxLen&amp;&amp;value.length>parseInt(maxLen,10)){value=value.substring(0,parseInt(maxLen,10));warnings.push('Truncated to '+maxLen+' chars');}const minLen=input.getAttribute('minlength');if (minLen&amp;&amp;value.length<parseInt(minLen,10)){warnings.push('Below minimum '+minLen+' chars');}const pattern=input.getAttribute('pattern');if (pattern&amp;&amp;value){try{const re=new RegExp('^(?:'+pattern+')$');if (!re.test(value))warnings.push('Does not match required pattern');}catch (e){}}const type=input.type||'text';if (type==='number'&amp;&amp;isNaN(Number(value))){warnings.push('Expected numeric value');}if (type==='email'&amp;&amp;!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)){warnings.push('Invalid email format');}if (type==='url'&amp;&amp;!/^https?:\/\ warnings.push('Expected URL starting with http://or https://');}return{value,warnings};}const History={stack:[],push(changes){this.stack.push(changes);if (this.stack.length>10)this.stack.shift();},undo(){if (this.stack.length===0)return false;const changes=this.stack.pop();changes.forEach(c=>{c.element.value=c.oldValue;c.element.dispatchEvent(new Event('input',{bubbles:true}));c.element.dispatchEvent(new Event('change',{bubbles:true}));c.element.style.borderColor='';c.element.style.boxShadow='';});return true;}};let filledCount=0;let totalCount=0;let allMappings=[];function getConfidenceColor(score){if (score>=0.85)return '#0f7d51';if (score>=0.6)return '#8a6d00';return '#c62828';}function getConfidenceLabel(score){if (score>=0.85)return 'High';if (score>=0.6)return 'Medium';return 'Low';}function createPanel(){const existing=document.getElementById('asilva-fa-panel');if (existing)existing.remove();const panel=document.createElement('div');panel.id='asilva-fa-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-label','ASilva Form Assistant');panel.style.cssText='position:fixed;top:16px;right:16px;width:420px;max-height:92vh;overflow:hidden;background:#fff;border:2px solid #FFD700;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.4);z-index:2147483647;font-family:&quot;Poppins&quot;,system-ui,-apple-system,sans-serif;font-size:13px;line-height:1.55;color:#0d1224;display:flex;flex-direction:column;';const header=document.createElement('div');header.style.cssText='display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px;border-bottom:1px solid #e9ecf7;background:linear-gradient(135deg,#f8f9fb,#fff);border-radius:16px 16px 0 0;flex-shrink:0;';header.innerHTML='<h2 style=&quot;margin:0;font-family:Montserrat,system-ui,sans-serif;font-size:15px;font-weight:800;background:linear-gradient(45deg,#0069a8,#0057c2,#8a6d00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;&quot;>ASilva Form Assistant</h2>';const closeBtn=document.createElement('button');closeBtn.innerHTML='&amp;times;';closeBtn.setAttribute('aria-label','Close assistant');closeBtn.style.cssText='background:none;border:none;font-size:22px;cursor:pointer;color:#999;line-height:1;padding:2px 6px;border-radius:6px;transition:.2s;';closeBtn.onmouseenter=()=>closeBtn.style.background='#f0f0f0';closeBtn.onmouseleave=()=>closeBtn.style.background='none';closeBtn.onclick=()=>{panel.remove();window.__asilvaFormAssistantLoaded=false;};header.appendChild(closeBtn);panel.appendChild(header);const counter=document.createElement('div');counter.id='asilva-fa-counter';counter.style.cssText='padding:8px 16px;font-size:11px;color:#666;font-weight:600;border-bottom:1px solid #e9ecf7;background:#fafbfc;flex-shrink:0;';counter.textContent='Detecting form fields…';panel.appendChild(counter);const filterWrap=document.createElement('div');filterWrap.style.cssText='padding:8px 16px;border-bottom:1px solid #e9ecf7;flex-shrink:0;';const filterInput=document.createElement('input');filterInput.type='text';filterInput.placeholder='Search fields…';filterInput.setAttribute('aria-label','Search detected fields');filterInput.style.cssText='width:100%;padding:8px 12px;border:1px solid #d0d7de;border-radius:8px;font-family:inherit;font-size:12px;outline:none;box-sizing:border-box;';filterInput.onfocus=()=>filterInput.style.borderColor='#0069a8';filterInput.onblur=()=>filterInput.style.borderColor='#d0d7de';filterWrap.appendChild(filterInput);panel.appendChild(filterWrap);const listWrap=document.createElement('div');listWrap.id='asilva-fa-list';listWrap.style.cssText='overflow-y:auto;flex:1;padding:8px 12px;';panel.appendChild(listWrap);const footer=document.createElement('div');footer.style.cssText='padding:12px 16px;border-top:1px solid #e9ecf7;display:flex;gap:8px;flex-wrap:wrap;background:#fafbfc;border-radius:0 0 16px 16px;flex-shrink:0;';const btnStyle='padding:8px 14px;border-radius:999px;border:none;font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:.2s;flex:1;min-width:80px;';const fillAllBtn=document.createElement('button');fillAllBtn.textContent='Fill All';fillAllBtn.setAttribute('aria-label','Fill all detected fields');fillAllBtn.style.cssText=btnStyle+'background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;';fillAllBtn.onmouseenter=()=>fillAllBtn.style.boxShadow='0 4px 12px rgba(0,105,168,.35)';fillAllBtn.onmouseleave=()=>fillAllBtn.style.boxShadow='none';const undoBtn=document.createElement('button');undoBtn.textContent='Undo';undoBtn.setAttribute('aria-label','Undo last fill');undoBtn.style.cssText=btnStyle+'background:#fff;color:#333;border:1px solid #d0d7de;';const clearBtn=document.createElement('button');clearBtn.textContent='Clear';clearBtn.setAttribute('aria-label','Clear all filled fields');clearBtn.style.cssText=btnStyle+'background:#fff;color:#c62828;border:1px solid #d0d7de;';footer.appendChild(fillAllBtn);footer.appendChild(undoBtn);footer.appendChild(clearBtn);panel.appendChild(footer);const toast=document.createElement('div');toast.id='asilva-fa-toast';toast.setAttribute('role','status');toast.setAttribute('aria-live','polite');toast.style.cssText='position:absolute;bottom:70px;left:50%;transform:translateX(-50%)translateY(20px);padding:8px 16px;border-radius:999px;font-size:12px;font-weight:600;opacity:0;transition:all .35s;pointer-events:none;z-index:10;white-space:nowrap;';panel.appendChild(toast);document.body.appendChild(panel);function trapFocus(e){const focusables=panel.querySelectorAll('button,input,select,textarea,[tabindex]:not([tabindex=&quot;-1&quot;])');const first=focusables[0];const last=focusables[focusables.length-1];if (e.key==='Tab'){if (e.shiftKey&amp;&amp;document.activeElement===first){e.preventDefault();last.focus();}else if (!e.shiftKey&amp;&amp;document.activeElement===last){e.preventDefault();first.focus();}}if (e.key==='Escape'){panel.remove();window.__asilvaFormAssistantLoaded=false;}}panel.addEventListener('keydown',trapFocus);return{panel,listWrap,counter,fillAllBtn,undoBtn,clearBtn,filterInput,toast};}function showToast(toastEl,msg,type){const colors={success:'#0f7d51',error:'#c62828',warning:'#8a6d00',info:'#0069a8'};const bg={success:'rgba(15,125,81,.1)',error:'rgba(198,40,40,.1)',warning:'rgba(138,109,0,.1)',info:'rgba(0,105,168,.1)'};toastEl.textContent=msg;toastEl.style.color=colors[type]||colors.info;toastEl.style.background=bg[type]||bg.info;toastEl.style.border='1px solid '+(colors[type]||colors.info);toastEl.style.opacity='1';toastEl.style.transform='translateX(-50%)translateY(0)';clearTimeout(toastEl._t);toastEl._t=setTimeout(()=>{toastEl.style.opacity='0';toastEl.style.transform='translateX(-50%)translateY(20px)';},2800);}function renderFieldRow(mapping,ui,index){const row=document.createElement('div');row.className='asilva-fa-row';row.dataset.index=index;row.dataset.search=(mapping.field.label+' '+mapping.rule.key).toLowerCase();row.style.cssText='margin-bottom:8px;padding:10px 12px;border-radius:10px;background:#f8f9fb;border:1px solid #e9ecf7;transition:.2s;';const validation=validateAndFormat(mapping);const isLong=validation.value.length>100;const confColor=getConfidenceColor(mapping.confidence);let html='';html+='<div style=&quot;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;&quot;>';html+='<div style=&quot;flex:1;min-width:0;&quot;>';html+='<div style=&quot;font-family:Roboto Condensed,system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0069a8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;&quot;>'+escapeHtml(mapping.field.label||mapping.field.name||mapping.field.id||'Field')+'</div>';html+='<div style=&quot;font-size:10px;color:#888;margin-top:2px;&quot;>&amp;lt;'+escapeHtml(mapping.field.tag)+(mapping.field.type!==mapping.field.tag?' type='+mapping.field.type:'')+'&amp;gt;· '+getConfidenceLabel(mapping.confidence)+' match</div>';html+='</div>';html+='<div style=&quot;display:flex;gap:6px;align-items:center;flex-shrink:0;&quot;>';if (mapping.sensitive){html+='<span title=&quot;Sensitive field — requires confirmation&quot; style=&quot;font-size:10px;padding:2px 6px;border-radius:999px;background:rgba(198,40,40,.1);color:#c62828;font-weight:700;&quot;>SENSITIVE</span>';}html+='<span style=&quot;font-size:10px;padding:2px 6px;border-radius:999px;background:'+confColor+'15;color:'+confColor+';font-weight:700;&quot;>'+Math.round(mapping.confidence*100)+'%</span>';html+='<button data-idx=&quot;'+index+'&quot; class=&quot;asilva-fa-fillone&quot; style=&quot;padding:4px 10px;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat,system-ui,sans-serif;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;&quot;>Fill</button>';html+='</div>';html+='</div>';html+='<div style=&quot;font-size:12px;color:#2b3350;background:#fff;padding:8px 10px;border-radius:6px;border:1px solid #e9ecf7;max-height:'+(isLong?'90px':'auto')+';overflow-y:auto;word-break:break-word;&quot;>'+escapeHtml(validation.value.substring(0,250))+(validation.value.length>250?'…':'')+'</div>';if (validation.warnings.length>0){html+='<div style=&quot;margin-top:6px;font-size:11px;color:#8a6d00;background:rgba(255,215,0,.08);padding:5px 8px;border-radius:6px;border-left:3px solid #8a6d00;&quot;>';html+='<strong>Warning:</strong>'+escapeHtml(validation.warnings.join(';'));html+='</div>';}row.innerHTML=html;const fillOneBtn=row.querySelector('.asilva-fa-fillone');fillOneBtn.onclick=()=>{if (mapping.sensitive){if (!confirm('This field is flagged as sensitive('+(mapping.field.label||mapping.rule.key)+'). Fill it anyway?'))return;}const v=validateAndFormat(mapping).value;const oldValue=mapping.field.element.value;mapping.field.element.value=v;mapping.field.element.dispatchEvent(new Event('input',{bubbles:true}));mapping.field.element.dispatchEvent(new Event('change',{bubbles:true}));mapping.field.element.style.borderColor='#0f7d51';mapping.field.element.style.boxShadow='0 0 0 3px rgba(15,125,81,.18)';History.push([{element:mapping.field.element,oldValue}]);fillOneBtn.textContent='Filled';fillOneBtn.style.background='#0f7d51';filledCount++;ui.counter.textContent=filledCount+' of '+totalCount+' filled — review every field before submitting.';showToast(ui.toast,'Field filled:'+(mapping.field.label||mapping.rule.key),'success');mapping.field.element.scrollIntoView({behavior:'smooth',block:'center'});};return row;}function init(){const fields=detectFields();allMappings=mapFields(fields);totalCount=allMappings.length;filledCount=0;const ui=createPanel();if (totalCount===0){ui.listWrap.innerHTML='<div style=&quot;text-align:center;padding:24px 16px;color:#666;&quot;><div style=&quot;font-size:32px;margin-bottom:8px;&quot;>🔍</div><strong>No recognizable form fields found</strong><br><br>This tool matches fields by label text,name,id,and placeholder. Try scrolling to the form first,or fill fields manually using the profile data below.<br><br><div style=&quot;text-align:left;background:#f8f9fb;padding:12px;border-radius:8px;font-size:12px;margin-top:12px;&quot;><strong>Available data:</strong><br>Name,Email,Phone,LinkedIn,Degrees,Certifications,Years of Experience,Summary,Skills,Disciplines,Projects,Publications,Institutions,Cover Letter,Salary,Start Date,References,Funding Designed,Households Reached</div></div>';ui.counter.textContent='0 fields detected';ui.fillAllBtn.disabled=true;ui.fillAllBtn.style.opacity='0.5';ui.undoBtn.disabled=true;ui.undoBtn.style.opacity='0.5';ui.clearBtn.disabled=true;ui.clearBtn.style.opacity='0.5';}else{ui.counter.textContent='0 of '+totalCount+' filled — review every field before submitting.';allMappings.forEach((m,i)=>ui.listWrap.appendChild(renderFieldRow(m,ui,i)));ui.filterInput.addEventListener('input',()=>{const q=ui.filterInput.value.toLowerCase();$$('.asilva-fa-row',ui.listWrap).forEach(row=>{row.style.display=row.dataset.search.includes(q)?'':'none';});});ui.fillAllBtn.onclick=()=>{let filled=0;const changes=[];const sensitiveSkipped=[];allMappings.forEach((m,i)=>{if (m.sensitive){sensitiveSkipped.push(m.field.label||m.rule.key);return;}const v=validateAndFormat(m).value;const oldValue=m.field.element.value;m.field.element.value=v;m.field.element.dispatchEvent(new Event('input',{bubbles:true}));m.field.element.dispatchEvent(new Event('change',{bubbles:true}));m.field.element.style.borderColor='#0f7d51';changes.push({element:m.field.element,oldValue});const btn=ui.listWrap.querySelector('[data-idx=&quot;'+i+'&quot;]');if (btn){btn.textContent='Filled';btn.style.background='#0f7d51';}filled++;});if (changes.length>0){History.push(changes);filledCount+=filled;ui.counter.textContent=filledCount+' of '+totalCount+' filled — review every field before submitting.';let msg=filled+' field'+(filled>1?'s':'')+' filled';if (sensitiveSkipped.length>0)msg+='('+sensitiveSkipped.length+' sensitive skipped)';showToast(ui.toast,msg,'success');}else if (sensitiveSkipped.length>0){showToast(ui.toast,'All fields are sensitive — fill individually','warning');}};ui.undoBtn.onclick=()=>{if (History.undo()){filledCount=Math.max(0,filledCount-1);ui.counter.textContent=filledCount+' of '+totalCount+' filled — review every field before submitting.';$$('.asilva-fa-fillone',ui.listWrap).forEach(btn=>{if (btn.style.background==='rgb(15,125,81)'){btn.textContent='Fill';btn.style.background='linear-gradient(135deg,#0057c2,#0069a8)';}});showToast(ui.toast,'Undo successful','info');}else{showToast(ui.toast,'Nothing to undo','warning');}};ui.clearBtn.onclick=()=>{if (!confirm('Clear all values that were filled by the assistant?'))return;allMappings.forEach((m,i)=>{m.field.element.value='';m.field.element.dispatchEvent(new Event('input',{bubbles:true}));m.field.element.style.borderColor='';m.field.element.style.boxShadow='';const btn=ui.listWrap.querySelector('[data-idx=&quot;'+i+'&quot;]');if (btn){btn.textContent='Fill';btn.style.background='linear-gradient(135deg,#0057c2,#0069a8)';}});History.stack=[];filledCount=0;ui.counter.textContent='0 of '+totalCount+' filled — review every field before submitting.';showToast(ui.toast,'All fields cleared','info');};}setTimeout(()=>ui.filterInput.focus(),100);}init();})();"
-         draggable="true"
-         onclick="return false;"
-         title="Drag to bookmarks bar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-        ASilva Form Assistant
-      </a>
-      <p class="install-hint">Clicking it here does nothing on purpose — <strong>drag</strong> it to your bookmarks bar.<br>Once installed, click the bookmark on any form page to launch the assistant.</p>
-      <p class="bar-hint">Bookmarks bar hidden? Press <strong>Ctrl+Shift+B</strong> (Win/Linux) or <strong>Cmd+Shift+B</strong> (Mac)</p>
-    </div>
-
-    <details>
-      <summary>Drag-and-drop not working? Install manually</summary>
-      <div class="details-body">
-        <div class="card">
-          <h3>Step 1: Create a bookmark</h3>
-          <p style="font-size:.9rem;color:var(--text-2);margin-bottom:.8rem">Press <strong>Ctrl+D</strong> (or <strong>Cmd+D</strong> on Mac) to bookmark this page. Name it <strong>"ASilva Form Assistant"</strong>.</p>
-        </div>
-        <div class="card">
-          <h3>Step 2: Edit the bookmark URL</h3>
-          <p style="font-size:.9rem;color:var(--text-2);margin-bottom:.8rem">Right-click the bookmark → <strong>Edit</strong>. Replace the URL with the code below:</p>
-          <div class="code-block" id="codeBlock">
-            <button class="copy-btn" id="copyBtn" type="button">Copy</button>
-            <code id="codeContent">javascript:(function(){...})();</code>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Step 3: Use on any form</h3>
-          <p style="font-size:.9rem;color:var(--text-2)">Navigate to any job application or procurement form. Click the <strong>"ASilva Form Assistant"</strong> bookmark. A panel appears on the page listing detected fields with suggested content.</p>
-        </div>
-      </div>
-    </details>
-
-    <div class="card" style="background: rgba(15,125,81,.06); border-color: rgba(15,125,81,.25);">
-      <h3 style="color: #0f7d51;">✓ How to verify it worked</h3>
-      <p style="font-size:.9rem;color:var(--text-2)">After installing, open the demo form below (or any real job application) and click the bookmark. A white panel with a gold border should appear on the right, listing detected fields with confidence scores. If nothing appears, the bookmark URL may have been truncated — use the manual method above.</p>
-    </div>
-  </section>
-
-  <!-- DEMO FORM -->
-  <section class="section">
-    <h2><span class="num">2</span> Try it now (demo form)</h2>
-    <p style="font-size:.9rem;color:var(--text-3);margin-bottom:1rem">Install the bookmark above, then click it while viewing this page. The assistant will detect these fields and suggest Alvin's profile data.</p>
-
-    <div class="demo-form" id="demoForm">
-      <div class="form-row">
-        <div>
-          <label for="demo-name">Full Name</label>
-          <input type="text" id="demo-name" name="full_name" placeholder="Enter your full name">
-        </div>
-        <div>
-          <label for="demo-email">Email Address</label>
-          <input type="email" id="demo-email" name="email" placeholder="you@organization.org">
-        </div>
-      </div>
-      <div class="form-row">
-        <div>
-          <label for="demo-phone">Phone Number</label>
-          <input type="tel" id="demo-phone" name="phone" placeholder="+63 XXX XXX XXXX">
-        </div>
-        <div>
-          <label for="demo-linkedin">LinkedIn Profile</label>
-          <input type="url" id="demo-linkedin" name="linkedin_url" placeholder="https://linkedin.com/in/...">
-        </div>
-      </div>
-      <div class="form-row">
-        <div>
-          <label for="demo-degrees">Highest Degree / Education</label>
-          <input type="text" id="demo-degrees" name="education" placeholder="e.g., Master in Development Management">
-        </div>
-        <div>
-          <label for="demo-years">Years of Professional Experience</label>
-          <input type="text" id="demo-years" name="years_experience" placeholder="e.g., 18+">
-        </div>
-      </div>
-      <div style="margin-bottom:1rem">
-        <label for="demo-summary">Professional Summary / Bio</label>
-        <textarea id="demo-summary" name="professional_summary" placeholder="Brief overview of your career..."></textarea>
-      </div>
-      <div style="margin-bottom:1rem">
-        <label for="demo-skills">Key Skills & Competencies</label>
-        <textarea id="demo-skills" name="skills" placeholder="List your core competencies..."></textarea>
-      </div>
-      <div style="margin-bottom:1rem">
-        <label for="demo-why">Why should we hire you? / Cover Letter</label>
-        <textarea id="demo-why" name="cover_letter" placeholder="Your motivation and value proposition..."></textarea>
-      </div>
-      <div class="form-row">
-        <div>
-          <label for="demo-salary">Expected Salary</label>
-          <input type="text" id="demo-salary" name="expected_salary" placeholder="Negotiable">
-        </div>
-        <div>
-          <label for="demo-start">Availability / Notice Period</label>
-          <input type="text" id="demo-start" name="availability" placeholder="e.g., Immediately">
-        </div>
-      </div>
-      <div class="form-row">
-        <div>
-          <label for="demo-publications">Publications</label>
-          <input type="text" id="demo-publications" name="publications" placeholder="Books, papers, manuals...">
-        </div>
-        <div>
-          <label for="demo-references">References</label>
-          <input type="text" id="demo-references" name="references" placeholder="Available upon request">
-        </div>
-      </div>
-      <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
-        <button type="button" class="btn" style="opacity:.5;cursor:not-allowed;" disabled>Submit (demo only)</button>
-        <span style="font-size:.8rem;color:var(--text-3);margin-left:.8rem">This is a test form — data goes nowhere.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="section">
-    <h2><span class="num">3</span> What it does</h2>
-    <div class="feature-grid">
-      <div class="feature-item">
-        <h4>🔍 Smart Field Detection</h4>
-        <p>Scans the page for text inputs, textareas, and selects. Matches fields using 5 strategies: label text, name attribute, id, placeholder, and heuristic similarity scoring.</p>
-      </div>
-      <div class="feature-item">
-        <h4>📊 Confidence Scoring</h4>
-        <p>Every match shows a confidence percentage (High ≥85%, Medium ≥60%, Low &lt;60%). You decide which fields to fill individually or all at once.</p>
-      </div>
-      <div class="feature-item">
-        <h4>🔒 Sensitive Field Protection</h4>
-        <p>Fields flagged as sensitive (salary, compensation) require explicit confirmation before filling. Never auto-fills passwords or payment fields.</p>
-      </div>
-      <div class="feature-item">
-        <h4>✅ Validation & Warnings</h4>
-        <p>Checks maxlength, pattern, minlength, and type constraints before filling. Warns you if a value will be truncated or doesn't match expected format.</p>
-      </div>
-      <div class="feature-item">
-        <h4>↩️ Undo & Clear</h4>
-        <p>Full undo stack restores original values. Clear button resets all assistant-filled fields in one action. History persists until you close the panel.</p>
-      </div>
-      <div class="feature-item">
-        <h4>🔎 Search & Filter</h4>
-        <p>Type in the search box to filter detected fields by label or data key. Quickly find the field you want to review in long forms.</p>
-      </div>
-      <div class="feature-item">
-        <h4>♿ Accessible Design</h4>
-        <p>Full keyboard navigation (Tab, Shift+Tab, Enter, Escape), ARIA labels, focus trapping, and screen-reader compatible live regions.</p>
-      </div>
-      <div class="feature-item">
-        <h4>🔐 Privacy-First</h4>
-        <p>All data stays in your browser. No external servers, no tracking, no cookies. The bookmarklet is entirely self-contained and runs client-side only.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DATA PREVIEW -->
-  <section class="section">
-    <h2><span class="num">4</span> Data source</h2>
-    <p style="font-size:.9rem;color:var(--text-3);margin-bottom:1rem">The assistant draws from this structured profile. It maps these keys to form fields using keyword matching.</p>
-    <div class="json-preview" id="jsonPreview"></div>
-  </section>
-
-  <!-- SUPPORTED FORMS -->
-  <section class="section">
-    <h2><span class="num">5</span> Supported form types</h2>
-    <div class="card">
-      <ul style="font-size:.9rem;color:var(--text-2);line-height:1.9;padding-left:1.2rem;">
-        <li><strong>Job applications:</strong> LinkedIn, Indeed, Workday, Greenhouse, Lever, company career portals</li>
-        <li><strong>Government procurement:</strong> PhilGEPS, UNGM, World Bank eProcurement, donor portals</li>
-        <li><strong>Academic applications:</strong> University faculty portals, research grant applications</li>
-        <li><strong>NGO/humanitarian:</strong> ReliefWeb, Devex, NGO recruitment platforms</li>
-        <li><strong>Contact & inquiry:</strong> Any standard HTML form with labeled text inputs</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- TROUBLESHOOTING -->
-  <section class="section">
-    <h2><span class="num">6</span> Troubleshooting</h2>
-    <details>
-      <summary>The bookmarklet does nothing when clicked</summary>
-      <div class="details-body">
-        <p style="font-size:.9rem;color:var(--text-2);line-height:1.7">Most likely the bookmark URL was truncated during copy-paste. Browsers silently cut very long URLs. Try the manual installation method above and ensure you copy the entire code block. Alternatively, some corporate browsers block <code>javascript:</code> URLs via Group Policy — in that case, use the extension version (coming soon).</p>
-      </div>
-    </details>
-    <details>
-      <summary>Fields are not detected on a specific page</summary>
-      <div class="details-body">
-        <p style="font-size:.9rem;color:var(--text-2);line-height:1.7">The assistant matches fields by visible label text, name attribute, id, and placeholder. If a form uses icon-only labels, custom React components without standard HTML attributes, or shadow DOM, detection may fail. Scroll to the form section first to ensure it's in the DOM, then click the bookmark again.</p>
-      </div>
-    </details>
-    <details>
-      <summary>Wrong value mapped to a field</summary>
-      <div class="details-body">
-        <p style="font-size:.9rem;color:var(--text-2);line-height:1.7">Check the confidence score. Low-confidence matches (&lt;60%) are guesses — always review before submitting. You can also use the <strong>Fill</strong> button on individual rows instead of <strong>Fill All</strong> for more control.</p>
-      </div>
-    </details>
-    <details>
-      <summary>How do I update the profile data?</summary>
-      <div class="details-body">
-        <p style="font-size:.9rem;color:var(--text-2);line-height:1.7">The data is embedded in the bookmarklet itself. To update, regenerate the bookmarklet from this setup page after the JSON source has been updated, then replace your old bookmark with the new one.</p>
-      </div>
-    </details>
-  </section>
-
+<div class="warning">
+<strong>Important:</strong> This is an <em>assistant</em>, not an auto-submitter. It populates fields for your review. You must verify every field before submitting. Never submit applications without human review.
 </div>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <p>© 2026 Alvin M. Silva, MDM · <a href="index.html">alvin-silva.asilvainnovations.com</a></p>
-  <p style="margin-top:.4rem;font-size:.78rem">ASilva Form Assistant v2.0 · Self-contained bookmarklet · No data leaves your browser</p>
-</footer>
+<h2>Install (one step)</h2>
+<div class="install-card">
+  <p style="margin:0 0 1rem;font-size:.92rem;color:#2b3350">Drag this button up to your browser's bookmarks bar:</p>
+  <a class="drag-target" id="dragInstall" href="javascript:(function(){
+function escapeHtml(str) { const div = document.createElement(&#x27;div&#x27;); div.textContent = str == null ? &#x27;&#x27; : String(str); return div.innerHTML; }
+var CREDENTIALS = {
+  name: &quot;Alvin M. Silva, MDM&quot;,
+  email: &quot;alvin.silva@asilvainnovations.com&quot;,
+  phone: &quot;+63 917 855 5134&quot;,
+  linkedin: &quot;https://alvin-silva-linkedin.asilvainnovations.com&quot;,
+  degrees: &quot;MDM — Master in Development Management, Asian Institute of Management&quot;,
+  certifications: &quot;Certified SRMP, Certified International Humanitarian Practitioner, Certified DRR Practitioner&quot;,
+  years: &quot;18+&quot;,
+  countries: &quot;15&quot;,
+  funding: &quot;190M&quot;,
+  households: &quot;50,000+&quot;,
+  completion: &quot;100%&quot;,
+  summary: &quot;Development Management Professional &amp; Resilience Consultant with 18+ years across 15 countries. Architect of BIRD 2026-2035, DDRiVE-M, and Strat Planner Pro. Published author. MDM, AIM.&quot;,
+  skills: &quot;Strategic Planning, Climate Change Adaptation, Disaster Risk Reduction, Systems Innovation, Organizational Development, Capacity Building, Security Risk Management, M&amp;E, Policy Research, Project Management&quot;,
+  publications: &quot;Personal Resilience: The Path to Oneness (2025); Resilient Futures: Nurturing Oneness in Education (2024); Building Resilience: The Path to a More Fulfilling Life (2023)&quot;,
+  references: &quot;Available upon request&quot;,
+  salary: &quot;Negotiable based on role scope and organizational mandate&quot;,
+  start_date: &quot;Immediately available for strategic roles aligned with resilience and systems innovation&quot;,
+  why_hire: &quot;I bring a systems-level perspective grounded in measurable outcomes — 190M in climate-smart funding designed, 50,000+ households reached, 100% project completion rate. My decade-scale roadmaps (BIRD 2026-2035, TESDA Strategic Plan) demonstrate the ability to align institutional vision with executable frameworks.&quot;
+};
+var FIELD_MAP = [
+  { keywords: [&#x27;name&#x27;,&#x27;full name&#x27;,&#x27;applicant name&#x27;], key: &#x27;name&#x27; },
+  { keywords: [&#x27;email&#x27;,&#x27;e-mail&#x27;,&#x27;contact email&#x27;], key: &#x27;email&#x27; },
+  { keywords: [&#x27;phone&#x27;,&#x27;mobile&#x27;,&#x27;contact number&#x27;,&#x27;telephone&#x27;], key: &#x27;phone&#x27; },
+  { keywords: [&#x27;linkedin&#x27;,&#x27;linked in&#x27;,&#x27;profile url&#x27;], key: &#x27;linkedin&#x27; },
+  { keywords: [&#x27;degree&#x27;,&#x27;education&#x27;,&#x27;qualification&#x27;,&#x27;academic&#x27;], key: &#x27;degrees&#x27; },
+  { keywords: [&#x27;certification&#x27;,&#x27;license&#x27;,&#x27;credential&#x27;], key: &#x27;certifications&#x27; },
+  { keywords: [&#x27;experience&#x27;,&#x27;years&#x27;,&#x27;professional experience&#x27;], key: &#x27;years&#x27; },
+  { keywords: [&#x27;summary&#x27;,&#x27;profile&#x27;,&#x27;about&#x27;,&#x27;bio&#x27;,&#x27;overview&#x27;,&#x27;personal statement&#x27;], key: &#x27;summary&#x27; },
+  { keywords: [&#x27;skill&#x27;,&#x27;competency&#x27;,&#x27;expertise&#x27;,&#x27;technical skill&#x27;], key: &#x27;skills&#x27; },
+  { keywords: [&#x27;publication&#x27;,&#x27;book&#x27;,&#x27;paper&#x27;,&#x27;research&#x27;], key: &#x27;publications&#x27; },
+  { keywords: [&#x27;reference&#x27;,&#x27;referee&#x27;], key: &#x27;references&#x27; },
+  { keywords: [&#x27;salary&#x27;,&#x27;compensation&#x27;,&#x27;expected salary&#x27;,&#x27;pay&#x27;], key: &#x27;salary&#x27; },
+  { keywords: [&#x27;start&#x27;,&#x27;availability&#x27;,&#x27;notice&#x27;,&#x27;when can you start&#x27;], key: &#x27;start_date&#x27; },
+  { keywords: [&#x27;why&#x27;,&#x27;motivation&#x27;,&#x27;cover letter&#x27;,&#x27;statement of purpose&#x27;,&#x27;why hire&#x27;,&#x27;why you&#x27;], key: &#x27;why_hire&#x27; },
+  { keywords: [&#x27;achievement&#x27;,&#x27;accomplishment&#x27;,&#x27;impact&#x27;,&#x27;result&#x27;], key: &#x27;completion&#x27; },
+  { keywords: [&#x27;funding&#x27;,&#x27;budget&#x27;,&#x27;grant&#x27;,&#x27;financial&#x27;], key: &#x27;funding&#x27; }
+];
+function findLabel(input) {
+  if (input.id) { var label = document.querySelector(&#x27;label[for=&quot;&#x27; + input.id + &#x27;&quot;]&#x27;); if (label) return label.textContent.trim(); }
+  var parentLabel = input.closest(&#x27;label&#x27;);
+  if (parentLabel) return parentLabel.textContent.trim();
+  var prev = input.previousElementSibling;
+  if (prev &amp;&amp; prev.textContent) return prev.textContent.trim();
+  return &#x27;&#x27;;
+}
+function detectFields() {
+  var inputs = document.querySelectorAll(&#x27;input, textarea, select&#x27;);
+  var detected = [];
+  inputs.forEach(function(input) {
+    var type = (input.getAttribute(&#x27;type&#x27;) || &#x27;&#x27;).toLowerCase();
+    if (type === &#x27;hidden&#x27; || type === &#x27;submit&#x27; || type === &#x27;button&#x27; || type === &#x27;checkbox&#x27; || type === &#x27;radio&#x27; || type === &#x27;file&#x27; || input.disabled || input.readOnly) return;
+    var label = findLabel(input);
+    var text = (label + &#x27; &#x27; + (input.name || &#x27;&#x27;) + &#x27; &#x27; + (input.placeholder || &#x27;&#x27;) + &#x27; &#x27; + (input.id || &#x27;&#x27;)).toLowerCase();
+    for (var m = 0; m &lt; FIELD_MAP.length; m++) {
+      var mapping = FIELD_MAP[m];
+      if (mapping.keywords.some(function(k) { return text.indexOf(k) !== -1; })) {
+        if (CREDENTIALS[mapping.key] === undefined) break;
+        detected.push({ element: input, mapping: mapping, label: label || input.name || input.placeholder || input.id || mapping.key });
+        break;
+      }
+    }
+  });
+  return detected;
+}
+function updateCounter(panel, filledCount, total) {
+  var counter = panel.querySelector(&#x27;#asilva-counter&#x27;);
+  if (counter) counter.textContent = filledCount + &#x27; of &#x27; + total + &#x27; filled&#x27;;
+}
+function createPanel(detected) {
+  var existing = document.getElementById(&#x27;asilva-form-assistant&#x27;);
+  if (existing) existing.remove();
+  var panel = document.createElement(&#x27;div&#x27;);
+  panel.id = &#x27;asilva-form-assistant&#x27;;
+  panel.setAttribute(&#x27;role&#x27;, &#x27;dialog&#x27;);
+  panel.setAttribute(&#x27;aria-label&#x27;, &#x27;ASilva Form Assistant&#x27;);
+  panel.style.cssText = &#x27;position:fixed;top:80px;right:20px;width:380px;max-height:85vh;overflow-y:auto;background:#fff;border:2px solid #FFD700;border-radius:16px;padding:1.2rem;box-shadow:0 20px 60px rgba(0,0,0,.35);z-index:2147483647;font-family:&quot;Poppins&quot;,system-ui,sans-serif;font-size:.9rem;line-height:1.6;color:#0d1224;&#x27;;
+  var filledCount = 0;
+  var html = &#x27;&#x27;;
+  html += &#x27;&lt;div style=&quot;display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;padding-bottom:.8rem;border-bottom:1px solid #eee&quot;&gt;&#x27;;
+  html += &#x27;&lt;h2 style=&quot;margin:0;font-family:Montserrat,system-ui,sans-serif;font-size:1.1rem;font-weight:800;background:linear-gradient(45deg,#0069a8,#0057c2,#8a6d00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;&quot;&gt;ASilva Form Assistant&lt;/h2&gt;&#x27;;
+  html += &#x27;&lt;button id=&quot;asilva-close&quot; aria-label=&quot;Close panel&quot; style=&quot;background:none;border:none;font-size:1.4rem;cursor:pointer;color:#999;line-height:1;padding:.2rem .4rem&quot;&gt;&amp;times;&lt;/button&gt;&#x27;;
+  html += &#x27;&lt;/div&gt;&#x27;;
+  if (detected.length === 0) {
+    html += &#x27;&lt;p style=&quot;color:#666;text-align:center;padding:1rem&quot;&gt;No recognizable form fields found on this page.&lt;br&gt;&lt;br&gt;This tool matches fields by their visible label text, so unusual or icon-only labels may be missed — copy from the fields below manually if needed.&lt;/p&gt;&#x27;;
+    panel.innerHTML = html;
+    document.body.appendChild(panel);
+    document.getElementById(&#x27;asilva-close&#x27;).addEventListener(&#x27;click&#x27;, function() { panel.remove(); });
+    return;
+  }
+  html += &#x27;&lt;div id=&quot;asilva-counter&quot; style=&quot;font-size:.78rem;color:#666;margin-bottom:1rem&quot;&gt;0 of &#x27; + detected.length + &#x27; filled — review every field before you submit.&lt;/div&gt;&#x27;;
+  detected.forEach(function(d, i) {
+    var value = CREDENTIALS[d.mapping.key] || &#x27;&#x27;;
+    var isLong = value.length &gt; 80;
+    html += &#x27;&lt;div style=&quot;margin-bottom:.9rem;padding:.7rem;border-radius:10px;background:#f8f9fb;border:1px solid #e9ecf7&quot;&gt;&#x27;;
+    html += &#x27;&lt;div style=&quot;display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.4rem&quot;&gt;&#x27;;
+    html += &#x27;&lt;div style=&quot;font-family:Roboto Condensed,system-ui,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0069a8&quot;&gt;&#x27; + escapeHtml(d.label || d.mapping.key) + &#x27;&lt;/div&gt;&#x27;;
+    html += &#x27;&lt;button data-index=&quot;&#x27; + i + &#x27;&quot; class=&quot;asilva-fill-btn&quot; style=&quot;padding:.3rem .7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat,system-ui,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap&quot;&gt;Fill Field&lt;/button&gt;&#x27;;
+    html += &#x27;&lt;/div&gt;&#x27;;
+    html += &#x27;&lt;div class=&quot;asilva-preview&quot; style=&quot;font-size:.82rem;color:#2b3350;background:#fff;padding:.5rem .7rem;border-radius:6px;border:1px solid #e9ecf7;max-height:&#x27; + (isLong ? &#x27;100px&#x27; : &#x27;auto&#x27;) + &#x27;;overflow-y:auto;word-break:break-word&quot;&gt;&#x27; + escapeHtml(value.substring(0, 200)) + (value.length &gt; 200 ? &#x27;...&#x27; : &#x27;&#x27;) + &#x27;&lt;/div&gt;&#x27;;
+    html += &#x27;&lt;/div&gt;&#x27;;
+  });
+  html += &#x27;&lt;div style=&quot;margin-top:1rem;padding-top:.8rem;border-top:1px solid #eee;display:flex;gap:.5rem&quot;&gt;&#x27;;
+  html += &#x27;&lt;button id=&quot;asilva-fill-all&quot; style=&quot;flex:1;padding:.6rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:.85rem;cursor:pointer&quot;&gt;Fill All Fields&lt;/button&gt;&#x27;;
+  html += &#x27;&lt;button id=&quot;asilva-clear-all&quot; style=&quot;padding:.6rem 1rem;border-radius:999px;border:1px solid #ddd;background:#fff;color:#666;font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:.85rem;cursor:pointer&quot;&gt;Clear&lt;/button&gt;&#x27;;
+  html += &#x27;&lt;/div&gt;&#x27;;
+  html += &#x27;&lt;p style=&quot;font-size:.7rem;color:#999;text-align:center;margin-top:.8rem&quot;&gt;This only fills fields for your review — it never submits anything. Press Esc to close.&lt;/p&gt;&#x27;;
+  panel.innerHTML = html;
+  document.body.appendChild(panel);
+  document.getElementById(&#x27;asilva-close&#x27;).addEventListener(&#x27;click&#x27;, function() { panel.remove(); });
+  function markFilled(idx) {
+    var btn = panel.querySelector(&#x27;[data-index=&quot;&#x27; + idx + &#x27;&quot;]&#x27;);
+    if (btn &amp;&amp; btn.textContent !== &#x27;Filled&#x27;) { btn.textContent = &#x27;Filled&#x27;; btn.style.background = &#x27;#0f7d51&#x27;; filledCount++; updateCounter(panel, filledCount, detected.length); }
+  }
+  panel.querySelectorAll(&#x27;.asilva-fill-btn&#x27;).forEach(function(btn, idx) {
+    btn.addEventListener(&#x27;click&#x27;, function() {
+      var d = detected[idx];
+      var val = CREDENTIALS[d.mapping.key];
+      if (val === undefined) return;
+      d.element.value = val;
+      d.element.dispatchEvent(new Event(&#x27;input&#x27;, { bubbles: true }));
+      d.element.dispatchEvent(new Event(&#x27;change&#x27;, { bubbles: true }));
+      markFilled(idx);
+      d.element.style.borderColor = &#x27;#0f7d51&#x27;;
+      d.element.style.boxShadow = &#x27;0 0 0 3px rgba(15,125,81,.2)&#x27;;
+      d.element.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;center&#x27; });
+    });
+  });
+  var fillAllBtn = panel.querySelector(&#x27;#asilva-fill-all&#x27;);
+  if (fillAllBtn) fillAllBtn.addEventListener(&#x27;click&#x27;, function() {
+    detected.forEach(function(d, i) {
+      var val = CREDENTIALS[d.mapping.key];
+      if (val === undefined) return;
+      d.element.value = val;
+      d.element.dispatchEvent(new Event(&#x27;input&#x27;, { bubbles: true }));
+      d.element.dispatchEvent(new Event(&#x27;change&#x27;, { bubbles: true }));
+      markFilled(i);
+      d.element.style.borderColor = &#x27;#0f7d51&#x27;;
+    });
+  });
+  var clearAllBtn = panel.querySelector(&#x27;#asilva-clear-all&#x27;);
+  if (clearAllBtn) clearAllBtn.addEventListener(&#x27;click&#x27;, function() {
+    detected.forEach(function(d) { d.element.value = &#x27;&#x27;; d.element.dispatchEvent(new Event(&#x27;input&#x27;, { bubbles: true })); d.element.style.borderColor = &#x27;&#x27;; d.element.style.boxShadow = &#x27;&#x27;; });
+    panel.querySelectorAll(&#x27;.asilva-fill-btn&#x27;).forEach(function(btn) { btn.textContent = &#x27;Fill Field&#x27;; btn.style.background = &#x27;linear-gradient(135deg,#0057c2,#0069a8)&#x27;; });
+    filledCount = 0;
+    updateCounter(panel, filledCount, detected.length);
+  });
+  document.addEventListener(&#x27;keydown&#x27;, function escHandler(e) {
+    if (e.key === &#x27;Escape&#x27;) { panel.remove(); document.removeEventListener(&#x27;keydown&#x27;, escHandler); }
+  });
+}
+var detected = detectFields();
+createPanel(detected);
+if (detected.length &gt; 0) detected[0].element.scrollIntoView({ behavior: &#x27;smooth&#x27;, block: &#x27;center&#x27; });
+})();" draggable="true" onclick="return false;">
+    <span aria-hidden="true">&#128190;</span> ASilva Form Assistant
+  </a>
+  <p class="install-hint">Clicking it here does nothing on purpose — <strong>drag</strong>, don't click. Once it's on your bookmarks bar, clicking it there runs it on whatever page you're on.</p>
+  <p class="bar-hint">Bookmarks bar not visible? Press <strong>Ctrl+Shift+B</strong> (Windows/Linux) or <strong>Cmd+Shift+B</strong> (Mac) to show it.</p>
+</div>
+
+<div class="verify">
+  <strong>How to check it worked:</strong> after dragging, open any page with a form (even this one has none, so try a real job application) and click the bookmark. A white panel with a gold border should slide in on the right listing detected fields. If nothing appears, the bookmark's URL may have gotten truncated — try the manual method below instead.
+</div>
+
+<details>
+  <summary>Drag-and-drop not working? Add it manually instead</summary>
+  <div class="details-body">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Create a Bookmark</h3>
+        <p>In your browser, press <strong>Ctrl+D</strong> (or Cmd+D on Mac) to bookmark this page. Name it <strong>"ASilva Form Assistant"</strong>.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Edit the Bookmark URL</h3>
+        <p>Right-click the bookmark &rarr; <strong>Edit</strong>. Replace the URL with the code below (use the Copy button — don't retype it by hand, and don't add line breaks):</p>
+        <div class="code" id="codeBlock"></div>
+        <button class="btn" id="copyBtn" type="button">Copy Code to Clipboard</button>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Use on Any Job Application</h3>
+        <p>Navigate to any job application form (LinkedIn, Indeed, company career page, government portal). Click the <strong>"ASilva Form Assistant"</strong> bookmark. A panel appears on the right with suggested content for each detected field.</p>
+      </div>
+    </div>
+  </div>
+</details>
+
+<h2>What It Detects</h2>
+<ul style="font-size:.9rem;color:#2b3350">
+  <li>Name, Email, Phone, LinkedIn</li>
+  <li>Education / Degrees / Certifications</li>
+  <li>Professional Summary / Bio</li>
+  <li>Skills / Competencies</li>
+  <li>Publications / Research</li>
+  <li>Salary Expectations</li>
+  <li>Availability / Start Date</li>
+  <li>Cover Letter / Why Hire Me</li>
+</ul>
+<p style="font-size:.85rem;color:#666">It skips hidden fields, disabled/read-only fields, checkboxes, radio buttons, file uploads, and submit buttons automatically — only text-style fields it can confidently map get suggested.</p>
+
+<h2>Using the Panel</h2>
+<ul style="font-size:.9rem;color:#2b3350">
+  <li><strong>Fill Field</strong> on any single row, or <strong>Fill All Fields</strong> for everything at once</li>
+  <li>A live counter at the top tracks how many of the detected fields you've filled</li>
+  <li><strong>Clear</strong> resets every field the tool touched, if you want to start over</li>
+  <li>Press <strong>Esc</strong> or click the &times; to close the panel — it never touches the page again after that</li>
+</ul>
+
+<h2>Privacy</h2>
+<p style="font-size:.88rem;color:#2b3350">All data stays in your browser. No server calls. No tracking. The bookmarklet is self-contained JavaScript that runs entirely client-side — this setup page no longer even fetches a separate file to get the code, so there's nothing that can fail to load.</p>
 
 <script>
-// ===== JSON PREVIEW =====
-const profileData = {
-  name: "Alvin M. Silva, MDM",
-  title: "Development Management Professional & Resilience Consultant",
-  email: "alvin.silva@asilvainnovations.com",
-  phone: "+63 917 855 5134",
-  linkedin: "https://alvin-silva-linkedin.asilvainnovations.com",
-  degrees: "MDM — Master in Development Management, Asian Institute of Management",
-  certifications: "Certified SRMP, Certified International Humanitarian Practitioner, Certified DRR Practitioner",
-  years_experience: "18+",
-  countries: 15,
-  funding_designed: "₱190M",
-  households_reached: "50,000+",
-  completion_rate: "100%",
-  strategic_plans: 20,
-  frameworks_published: 10,
-  books_published: 3,
-  summary: "Development Management Professional & Resilience Consultant with 18+ years across 15 countries...",
-  skills: "Strategic Planning, Climate Change Adaptation, Disaster Risk Reduction, Systems Innovation...",
-  disciplines: "CCA (15 yrs), DRR (15 yrs), Systems Innovation (10 yrs), OD (12 yrs), Strategic Planning (18 yrs)...",
-  projects: "BIRD 2026-2035, DDRiVE-M, Strat Planner Pro, TESDA Strategic Plan, Balatan Climate Resilience Hub...",
-  publications: "Personal Resilience: The Path to Oneness (2025); Resilient Futures (2024); Building Resilience (2023)...",
-  institutions: "UNICEF, UNDP, ECHO, USAID, World Bank, WHO, TESDA, MMDA, DOH, BARMM BoI-MTIT...",
-  salary: "Negotiable based on role scope and organizational mandate",
-  start_date: "Immediately available for strategic roles aligned with resilience and systems innovation",
-  why_hire: "I bring a systems-level perspective grounded in measurable outcomes...",
-  cover_letter: "Dear Hiring Committee,\n\nWith 18+ years of development management experience..."
-};
-
-function syntaxHighlight(json) {
-  if (typeof json !== 'string') json = JSON.stringify(json, null, 2);
-  json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  return json.replace(/("(\u[a-zA-Z0-9]{4}|\[^u]|[^\"])*"(\s*:)?)/g, function (match) {
-    let cls = 'string';
-    if (/:$/.test(match)) { cls = 'key'; match = match.slice(0, -1) + '</span>:'; return '<span class="' + cls + '">' + match; }
-    return '<span class="' + cls + '">' + match + '</span>';
-  }).replace(/(true|false|null)/g, '<span style="color:#ff7b72">$1</span>').replace(/(\d+)/g, '<span class="number">$1</span>');
-}
-document.getElementById('jsonPreview').innerHTML = '<pre>' + syntaxHighlight(profileData) + '</pre>';
-
-// ===== COPY BUTTON =====
+document.getElementById('codeBlock').textContent = 'javascript:(function(){ ... } — click Copy below for the full code, it is too long to show here without breaking the page.';
+var BOOKMARKLET_CODE = 'javascript:(function(){\nfunction escapeHtml(str) { const div = document.createElement(\'div\'); div.textContent = str == null ? \'\' : String(str); return div.innerHTML; }\nvar CREDENTIALS = {\n  name: "Alvin M. Silva, MDM",\n  email: "alvin.silva@asilvainnovations.com",\n  phone: "+63 917 855 5134",\n  linkedin: "https://alvin-silva-linkedin.asilvainnovations.com",\n  degrees: "MDM — Master in Development Management, Asian Institute of Management",\n  certifications: "Certified SRMP, Certified International Humanitarian Practitioner, Certified DRR Practitioner",\n  years: "18+",\n  countries: "15",\n  funding: "190M",\n  households: "50,000+",\n  completion: "100%",\n  summary: "Development Management Professional & Resilience Consultant with 18+ years across 15 countries. Architect of BIRD 2026-2035, DDRiVE-M, and Strat Planner Pro. Published author. MDM, AIM.",\n  skills: "Strategic Planning, Climate Change Adaptation, Disaster Risk Reduction, Systems Innovation, Organizational Development, Capacity Building, Security Risk Management, M&E, Policy Research, Project Management",\n  publications: "Personal Resilience: The Path to Oneness (2025); Resilient Futures: Nurturing Oneness in Education (2024); Building Resilience: The Path to a More Fulfilling Life (2023)",\n  references: "Available upon request",\n  salary: "Negotiable based on role scope and organizational mandate",\n  start_date: "Immediately available for strategic roles aligned with resilience and systems innovation",\n  why_hire: "I bring a systems-level perspective grounded in measurable outcomes — 190M in climate-smart funding designed, 50,000+ households reached, 100% project completion rate. My decade-scale roadmaps (BIRD 2026-2035, TESDA Strategic Plan) demonstrate the ability to align institutional vision with executable frameworks."\n};\nvar FIELD_MAP = [\n  { keywords: [\'name\',\'full name\',\'applicant name\'], key: \'name\' },\n  { keywords: [\'email\',\'e-mail\',\'contact email\'], key: \'email\' },\n  { keywords: [\'phone\',\'mobile\',\'contact number\',\'telephone\'], key: \'phone\' },\n  { keywords: [\'linkedin\',\'linked in\',\'profile url\'], key: \'linkedin\' },\n  { keywords: [\'degree\',\'education\',\'qualification\',\'academic\'], key: \'degrees\' },\n  { keywords: [\'certification\',\'license\',\'credential\'], key: \'certifications\' },\n  { keywords: [\'experience\',\'years\',\'professional experience\'], key: \'years\' },\n  { keywords: [\'summary\',\'profile\',\'about\',\'bio\',\'overview\',\'personal statement\'], key: \'summary\' },\n  { keywords: [\'skill\',\'competency\',\'expertise\',\'technical skill\'], key: \'skills\' },\n  { keywords: [\'publication\',\'book\',\'paper\',\'research\'], key: \'publications\' },\n  { keywords: [\'reference\',\'referee\'], key: \'references\' },\n  { keywords: [\'salary\',\'compensation\',\'expected salary\',\'pay\'], key: \'salary\' },\n  { keywords: [\'start\',\'availability\',\'notice\',\'when can you start\'], key: \'start_date\' },\n  { keywords: [\'why\',\'motivation\',\'cover letter\',\'statement of purpose\',\'why hire\',\'why you\'], key: \'why_hire\' },\n  { keywords: [\'achievement\',\'accomplishment\',\'impact\',\'result\'], key: \'completion\' },\n  { keywords: [\'funding\',\'budget\',\'grant\',\'financial\'], key: \'funding\' }\n];\nfunction findLabel(input) {\n  if (input.id) { var label = document.querySelector(\'label[for="\' + input.id + \'"]\'); if (label) return label.textContent.trim(); }\n  var parentLabel = input.closest(\'label\');\n  if (parentLabel) return parentLabel.textContent.trim();\n  var prev = input.previousElementSibling;\n  if (prev && prev.textContent) return prev.textContent.trim();\n  return \'\';\n}\nfunction detectFields() {\n  var inputs = document.querySelectorAll(\'input, textarea, select\');\n  var detected = [];\n  inputs.forEach(function(input) {\n    var type = (input.getAttribute(\'type\') || \'\').toLowerCase();\n    if (type === \'hidden\' || type === \'submit\' || type === \'button\' || type === \'checkbox\' || type === \'radio\' || type === \'file\' || input.disabled || input.readOnly) return;\n    var label = findLabel(input);\n    var text = (label + \' \' + (input.name || \'\') + \' \' + (input.placeholder || \'\') + \' \' + (input.id || \'\')).toLowerCase();\n    for (var m = 0; m < FIELD_MAP.length; m++) {\n      var mapping = FIELD_MAP[m];\n      if (mapping.keywords.some(function(k) { return text.indexOf(k) !== -1; })) {\n        if (CREDENTIALS[mapping.key] === undefined) break;\n        detected.push({ element: input, mapping: mapping, label: label || input.name || input.placeholder || input.id || mapping.key });\n        break;\n      }\n    }\n  });\n  return detected;\n}\nfunction updateCounter(panel, filledCount, total) {\n  var counter = panel.querySelector(\'#asilva-counter\');\n  if (counter) counter.textContent = filledCount + \' of \' + total + \' filled\';\n}\nfunction createPanel(detected) {\n  var existing = document.getElementById(\'asilva-form-assistant\');\n  if (existing) existing.remove();\n  var panel = document.createElement(\'div\');\n  panel.id = \'asilva-form-assistant\';\n  panel.setAttribute(\'role\', \'dialog\');\n  panel.setAttribute(\'aria-label\', \'ASilva Form Assistant\');\n  panel.style.cssText = \'position:fixed;top:80px;right:20px;width:380px;max-height:85vh;overflow-y:auto;background:#fff;border:2px solid #FFD700;border-radius:16px;padding:1.2rem;box-shadow:0 20px 60px rgba(0,0,0,.35);z-index:2147483647;font-family:"Poppins",system-ui,sans-serif;font-size:.9rem;line-height:1.6;color:#0d1224;\';\n  var filledCount = 0;\n  var html = \'\';\n  html += \'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;padding-bottom:.8rem;border-bottom:1px solid #eee">\';\n  html += \'<h2 style="margin:0;font-family:Montserrat,system-ui,sans-serif;font-size:1.1rem;font-weight:800;background:linear-gradient(45deg,#0069a8,#0057c2,#8a6d00);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">ASilva Form Assistant</h2>\';\n  html += \'<button id="asilva-close" aria-label="Close panel" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#999;line-height:1;padding:.2rem .4rem">&times;</button>\';\n  html += \'</div>\';\n  if (detected.length === 0) {\n    html += \'<p style="color:#666;text-align:center;padding:1rem">No recognizable form fields found on this page.<br><br>This tool matches fields by their visible label text, so unusual or icon-only labels may be missed — copy from the fields below manually if needed.</p>\';\n    panel.innerHTML = html;\n    document.body.appendChild(panel);\n    document.getElementById(\'asilva-close\').addEventListener(\'click\', function() { panel.remove(); });\n    return;\n  }\n  html += \'<div id="asilva-counter" style="font-size:.78rem;color:#666;margin-bottom:1rem">0 of \' + detected.length + \' filled — review every field before you submit.</div>\';\n  detected.forEach(function(d, i) {\n    var value = CREDENTIALS[d.mapping.key] || \'\';\n    var isLong = value.length > 80;\n    html += \'<div style="margin-bottom:.9rem;padding:.7rem;border-radius:10px;background:#f8f9fb;border:1px solid #e9ecf7">\';\n    html += \'<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.4rem">\';\n    html += \'<div style="font-family:Roboto Condensed,system-ui,sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0069a8">\' + escapeHtml(d.label || d.mapping.key) + \'</div>\';\n    html += \'<button data-index="\' + i + \'" class="asilva-fill-btn" style="padding:.3rem .7rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat,system-ui,sans-serif;font-size:.72rem;font-weight:700;cursor:pointer;white-space:nowrap">Fill Field</button>\';\n    html += \'</div>\';\n    html += \'<div class="asilva-preview" style="font-size:.82rem;color:#2b3350;background:#fff;padding:.5rem .7rem;border-radius:6px;border:1px solid #e9ecf7;max-height:\' + (isLong ? \'100px\' : \'auto\') + \';overflow-y:auto;word-break:break-word">\' + escapeHtml(value.substring(0, 200)) + (value.length > 200 ? \'...\' : \'\') + \'</div>\';\n    html += \'</div>\';\n  });\n  html += \'<div style="margin-top:1rem;padding-top:.8rem;border-top:1px solid #eee;display:flex;gap:.5rem">\';\n  html += \'<button id="asilva-fill-all" style="flex:1;padding:.6rem;border-radius:999px;border:none;background:linear-gradient(135deg,#0057c2,#0069a8);color:#fff;font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:.85rem;cursor:pointer">Fill All Fields</button>\';\n  html += \'<button id="asilva-clear-all" style="padding:.6rem 1rem;border-radius:999px;border:1px solid #ddd;background:#fff;color:#666;font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:.85rem;cursor:pointer">Clear</button>\';\n  html += \'</div>\';\n  html += \'<p style="font-size:.7rem;color:#999;text-align:center;margin-top:.8rem">This only fills fields for your review — it never submits anything. Press Esc to close.</p>\';\n  panel.innerHTML = html;\n  document.body.appendChild(panel);\n  document.getElementById(\'asilva-close\').addEventListener(\'click\', function() { panel.remove(); });\n  function markFilled(idx) {\n    var btn = panel.querySelector(\'[data-index="\' + idx + \'"]\');\n    if (btn && btn.textContent !== \'Filled\') { btn.textContent = \'Filled\'; btn.style.background = \'#0f7d51\'; filledCount++; updateCounter(panel, filledCount, detected.length); }\n  }\n  panel.querySelectorAll(\'.asilva-fill-btn\').forEach(function(btn, idx) {\n    btn.addEventListener(\'click\', function() {\n      var d = detected[idx];\n      var val = CREDENTIALS[d.mapping.key];\n      if (val === undefined) return;\n      d.element.value = val;\n      d.element.dispatchEvent(new Event(\'input\', { bubbles: true }));\n      d.element.dispatchEvent(new Event(\'change\', { bubbles: true }));\n      markFilled(idx);\n      d.element.style.borderColor = \'#0f7d51\';\n      d.element.style.boxShadow = \'0 0 0 3px rgba(15,125,81,.2)\';\n      d.element.scrollIntoView({ behavior: \'smooth\', block: \'center\' });\n    });\n  });\n  var fillAllBtn = panel.querySelector(\'#asilva-fill-all\');\n  if (fillAllBtn) fillAllBtn.addEventListener(\'click\', function() {\n    detected.forEach(function(d, i) {\n      var val = CREDENTIALS[d.mapping.key];\n      if (val === undefined) return;\n      d.element.value = val;\n      d.element.dispatchEvent(new Event(\'input\', { bubbles: true }));\n      d.element.dispatchEvent(new Event(\'change\', { bubbles: true }));\n      markFilled(i);\n      d.element.style.borderColor = \'#0f7d51\';\n    });\n  });\n  var clearAllBtn = panel.querySelector(\'#asilva-clear-all\');\n  if (clearAllBtn) clearAllBtn.addEventListener(\'click\', function() {\n    detected.forEach(function(d) { d.element.value = \'\'; d.element.dispatchEvent(new Event(\'input\', { bubbles: true })); d.element.style.borderColor = \'\'; d.element.style.boxShadow = \'\'; });\n    panel.querySelectorAll(\'.asilva-fill-btn\').forEach(function(btn) { btn.textContent = \'Fill Field\'; btn.style.background = \'linear-gradient(135deg,#0057c2,#0069a8)\'; });\n    filledCount = 0;\n    updateCounter(panel, filledCount, detected.length);\n  });\n  document.addEventListener(\'keydown\', function escHandler(e) {\n    if (e.key === \'Escape\') { panel.remove(); document.removeEventListener(\'keydown\', escHandler); }\n  });\n}\nvar detected = detectFields();\ncreatePanel(detected);\nif (detected.length > 0) detected[0].element.scrollIntoView({ behavior: \'smooth\', block: \'center\' });\n})();';
 document.getElementById('copyBtn').addEventListener('click', function() {
-  const code = document.getElementById('dragInstall').getAttribute('href');
-  navigator.clipboard.writeText(code).then(() => {
-    const btn = document.getElementById('copyBtn');
+  navigator.clipboard.writeText(BOOKMARKLET_CODE).then(function() {
+    var btn = document.getElementById('copyBtn');
     btn.textContent = 'Copied!';
-    setTimeout(() => btn.textContent = 'Copy', 2000);
-  }).catch(() => {
-    document.getElementById('copyBtn').textContent = 'Copy failed — select manually';
+    setTimeout(function() { btn.textContent = 'Copy Code to Clipboard'; }, 2000);
+  }).catch(function() {
+    var btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copy failed — select the bookmark URL manually';
   });
 });
-
-// ===== POPULATE CODE BLOCK =====
-document.getElementById('codeContent').textContent = document.getElementById('dragInstall').getAttribute('href').substring(0, 200) + '... [truncated for display — use Copy button for full code]';
 </script>
-
 </body>
 </html>

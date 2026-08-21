@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Assistant — Alvin M. Silva, MDM</title>
-<meta name="description" content="A browser-side assistant answering from Alvin Silva's verified credentials record. No AI generation, no data leaves your browser.">
+<title>Writing — Alvin M. Silva, MDM</title>
+<meta name="description" content="Notes on systems thinking, evaluation practice, and development management from Alvin M. Silva, MDM.">
 <meta name="author" content="Alvin M. Silva, MDM">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://alvin-silva.asilvainnovations.com/chat.html">
+<link rel="canonical" href="https://alvin-silva.asilvainnovations.com/blog.html">
 
 <meta name="theme-color" content="#0a0e27">
 <meta name="mobile-web-app-capable" content="yes">
@@ -20,9 +20,9 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="A. Silva Innovations">
-<meta property="og:url" content="https://alvin-silva.asilvainnovations.com/chat.html">
-<meta property="og:title" content="Assistant — Alvin M. Silva, MDM">
-<meta property="og:description" content="A browser-side assistant answering from Alvin Silva's verified credentials record. No AI generation, no data leaves your browser.">
+<meta property="og:url" content="https://alvin-silva.asilvainnovations.com/blog.html">
+<meta property="og:title" content="Writing — Alvin M. Silva, MDM">
+<meta property="og:description" content="Notes on systems thinking, evaluation practice, and development management from Alvin M. Silva, MDM.">
 <meta property="og:image" content="https://alvin-silva.asilvainnovations.com/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -295,7 +295,7 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
 .tooltip .tt strong { color:#FFD700; font-weight:600; display:block; margin-bottom:.2rem; font-family:var(--font-cond); letter-spacing:.05em; text-transform:uppercase; font-size:.72rem; }
 </style>
 </head>
-<body data-asx-autoload="false">
+<body>
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -433,12 +433,11 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
 <main id="main">
 <section class="section">
   <div class="wrap">
-    <p class="kicker">Assistant</p>
-    <h2 class="section-title">Ask about <span class="hl">the work</span></h2>
-    <p class="section-lede">This assistant answers from Alvin&rsquo;s structured credentials
-      record. It runs entirely in your browser &mdash; no API key, no server, no text
-      generation, and nothing you type leaves this page.</p>
-    <div class="chat-shell glass" data-asilva-chat></div>
+    <p class="kicker">Writing</p>
+    <h2 class="section-title">Notes from <span class="hl">practice</span></h2>
+    <p class="section-lede">Short pieces on systems thinking, evaluation, and the
+      unglamorous mechanics of getting development work to actually land.</p>
+    <div data-asilva-blog></div>
   </div>
 </section>
 </main>
@@ -1213,16 +1212,5 @@ $('#cookieSettings').addEventListener('click', () => {
 if (!getConsent()) setTimeout(showConsent, 1800);
 </script>
 <script src="assets/js/boot.js" defer></script>
-<script>
-  /* chat.html renders the assistant inline (full-surface) instead of as a
-     floating launcher. Same Widget class, same engine — one implementation,
-     two mount modes. */
-  window.addEventListener("load", function () {
-    var host = document.querySelector("[data-asilva-chat]");
-    if (host && window.ASilva && window.ASilva.chatWidget) {
-      window.ASilva.chatWidget.mount({ container: host });
-    }
-  });
-</script>
 </body>
 </html>
