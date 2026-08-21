@@ -108,3 +108,256 @@ cd alvin-silva
 python3 -m http.server 8000
 # visit http://localhost:8000
 ```
+# Alvin Silva Private-Sector Profile — Repository Audit Status
+
+## Repository
+
+- Repository: `asilvainnovations/alvin-silva`
+- Default branch: `main`
+- Architecture: static HTML, CSS, and vanilla JavaScript.
+- Build system: none.
+- Framework: none.
+- Deployment model: GitHub Pages/static hosting.
+- Current connected GitHub permission: **pull/read only**.
+- Push permission: **not available**.
+- Administrative permission: **not available**.
+
+## Files reviewed
+
+- `index.html`
+- `portfolio.html`
+- `README.md`
+- The two HTML source files supplied with this request.
+
+The existing profile already establishes the intended positioning as a development-management, resilience, systems-innovation, and advisory practice rather than a generic résumé website. The current `index.html` SEO metadata describes 18+ years of experience across 15+ countries and emphasizes climate adaptation, disaster-risk reduction, investment roadmapping, and systems innovation. :contentReference[oaicite:0]{index=0}
+
+The portfolio is already structured around platforms, consulting engagements, strategic frameworks, climate-resilience work, and publications. :contentReference[oaicite:1]{index=1}
+
+## Confirmed architecture observations
+
+The repository intentionally uses:
+
+1. Persona-aware presentation.
+2. Light and dark themes.
+3. Glass-style visual language.
+4. Montserrat, Poppins, Roboto Condensed, and JetBrains Mono typography.
+5. Progressive Web App support.
+6. Accessibility controls.
+7. Structured SEO metadata.
+8. Portfolio filtering and interactive content.
+9. A career-automation subsystem.
+10. An artificial-intelligence assistant.
+
+These should be preserved rather than replaced with a framework migration.
+
+## High-priority defects already documented in the repository
+
+### 1. Credentials source-of-truth fragmentation
+
+`credentials.json` is intended to be canonical, but profile facts are also duplicated inside:
+
+- `career-automation.html`
+- `assets/asilva-widget.js`
+
+This creates profile-data drift.
+
+### 2. Broken credentials path
+
+The career automation currently references:
+
+`assets/credentials.json`
+
+The repository documentation identifies the actual canonical file as:
+
+`credentials.json`
+
+The reference should therefore resolve from the repository root.
+
+### 3. Sitemap integrity
+
+The existing audit identifies sitemap references to pages that are not present:
+
+- `margallo.html`
+- `margallo-2.html`
+
+These should either be implemented or removed from the sitemap.
+
+### 4. Policy-page canonicalization
+
+The repository contains local policy pages while navigation can point to policy documents in another repository.
+
+One canonical policy location should be selected and used consistently.
+
+### 5. Regression protection
+
+The site currently has no build pipeline.
+
+Because JavaScript syntax failures have previously reached production, a lightweight GitHub Actions workflow should validate JavaScript and HTML on every pull request and push.
+
+## Private-sector webcopy direction
+
+Preserve Alvin Silva's development and humanitarian credibility while making commercial value easier to understand.
+
+Recommended positioning:
+
+**Development Strategy, Resilience & Systems Innovation for Complex Markets**
+
+Supporting proposition:
+
+**I help companies, investors, institutions, and development partners turn complex risks into executable strategies, resilient investments, stronger organizations, and measurable growth.**
+
+Private-sector audiences should encounter outcomes before institutional terminology.
+
+Recommended narrative order:
+
+**Business challenge → strategic capability → evidence → measurable result → engagement path**
+
+Instead of:
+
+**Credential → institution → technical discipline → project history**
+
+## Integration-ready architecture
+
+The next architecture should accommodate four independent modules without destabilizing the existing static website:
+
+- Blog
+- Chorus-AI
+- Electoral Strategy Hub
+- Elektrametrics
+
+Recommended URL boundaries:
+
+`/blog/`
+
+`/chorus-ai/`
+
+`/electoral-strategy/`
+
+`/elektrametrics/`
+
+Shared services should be isolated under:
+
+`/assets/js/core/`
+
+`/assets/js/services/`
+
+`/assets/css/`
+
+`/assets/images/`
+
+`/data/`
+
+## OpenAI integration rule
+
+Chorus-AI, Electoral Strategy Hub, and Elektrametrics must never expose an OpenAI API key in browser JavaScript.
+
+Use:
+
+Browser → authenticated/serverless endpoint → OpenAI API
+
+Do not use:
+
+Browser → embedded OPENAI_API_KEY → OpenAI API
+
+The secure OpenAI Platform key-setup flow has been initiated for the future server-side integration.
+
+## Current blocking concern
+
+The connected GitHub account grants this session **read/pull permission but not push permission**.
+
+Therefore I can audit the repository and prepare exact changes, but I cannot safely commit those changes to `main`, create an implementation branch, or open a pull request from this connection.
+
+A GitHub connection with write permission is required before repository changes can be published.
+
+## CV source concern
+
+The supplied Google Docs CV URL is not accessible through the currently available connected tools in this session.
+
+The CV should therefore be uploaded directly to the conversation or made available through a connected Google Drive integration before credentials and claims are rewritten against it.
+
+No unsupported credential, achievement, project value, client relationship, or professional claim should be added to the public profile until it can be verified against that source.
+
+# Proposed Integration Architecture
+
+alvin-silva/
+├── index.html
+├── portfolio.html
+├── blog/
+│   ├── index.html
+│   └── posts/
+├── chorus-ai/
+│   └── index.html
+├── electoral-strategy/
+│   └── index.html
+├── elektrametrics/
+│   └── index.html
+├── api/
+│   ├── chorus/
+│   ├── strategy/
+│   └── elektrametrics/
+├── assets/
+│   ├── css/
+│   │   ├── core.css
+│   │   ├── components.css
+│   │   └── visualizations.css
+│   ├── js/
+│   │   ├── core/
+│   │   │   ├── accessibility.js
+│   │   │   ├── navigation.js
+│   │   │   ├── persona.js
+│   │   │   └── theme.js
+│   │   ├── services/
+│   │   │   ├── credentials-service.js
+│   │   │   └── analytics-service.js
+│   │   └── visualizations/
+│   │       ├── career-map.js
+│   │       ├── impact-dashboard.js
+│   │       └── expertise-radar.js
+│   └── images/
+│       ├── profile/
+│       ├── portfolio/
+│       ├── visualizations/
+│       └── social/
+├── data/
+│   ├── credentials.json
+│   ├── portfolio.json
+│   └── publications.json
+└── .github/
+    └── workflows/
+        └── validate.yml
+
+## Architectural principle
+
+The existing site's branding, persona logic, accessibility system, progressive-web-app behavior, and visual identity remain intact.
+
+New functionality is added as isolated modules rather than by rewriting the website into a new framework.
+
+## Data principle
+
+Professional credentials should have one canonical structured source.
+
+`credentials.json`
+
+All public profile surfaces should consume or be generated from this source.
+
+## Visualization principle
+
+Professional visualizations should communicate evidence rather than decoration.
+
+Recommended visual assets:
+
+1. International Experience Map
+2. Sector Experience Matrix
+3. Career and Engagement Timeline
+4. Strategic Capability Radar
+5. Portfolio Impact Dashboard
+6. Project Geography Visualization
+7. Selected Engagement Case-Study Graphics
+
+Generated visualization assets belong under:
+
+`assets/images/visualizations/`
+
+Interactive visualization logic belongs under:
+
+`assets/js/visualizations/`
