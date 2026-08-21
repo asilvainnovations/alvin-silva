@@ -1,0 +1,60 @@
+{
+  "slug": "fixes-that-fail-in-education-reform",
+  "title": "Fixes That Fail: Why Education Reforms Keep Rebounding",
+  "date": "2026-08-12",
+  "tags": [
+    "systems thinking",
+    "education",
+    "MEL"
+  ],
+  "readingMinutes": 6,
+  "excerpt": "A systems archetype explains why well-designed curriculum reforms often deliver relief first and regression later — and what to instrument instead.",
+  "body": [
+    {
+      "type": "p",
+      "text": "Every reform cycle produces the same shape of story. A problem is identified, an intervention is designed, indicators improve, and eighteen months later the original problem returns — larger, and now accompanied by a second problem the fix created."
+    },
+    {
+      "type": "h2",
+      "text": "The archetype"
+    },
+    {
+      "type": "p",
+      "text": "**Fixes that Fail** describes a balancing loop that works, coupled to a slower reinforcing loop that undoes it. The fix relieves the symptom quickly. The unintended consequence accumulates quietly. Because the two loops run on different clocks, the causal link is rarely visible from inside the reporting period."
+    },
+    {
+      "type": "quote",
+      "text": "The delay is not a flaw in the analysis. The delay *is* the mechanism.",
+      "cite": "On reading causal structure"
+    },
+    {
+      "type": "h2",
+      "text": "Where it shows up"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Reducing content load raises completion rates, while narrowing the foundation later years depend on.",
+        "Adding remedial sessions lifts short-term scores, while displacing the instructional time that prevented the gap.",
+        "Compressing training to reach more teachers improves coverage metrics, while lowering the fidelity that made the training work."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "What to instrument instead"
+    },
+    {
+      "type": "p",
+      "text": "If a programme only measures the symptom, it cannot see the second loop at all. Three additions usually surface it: a lagging indicator on the downstream capability, an explicit fidelity measure alongside coverage, and at least one indicator the intervention is expected to *worsen*."
+    },
+    {
+      "type": "callout",
+      "tone": "note",
+      "text": "The third one is the hard sell and the one that matters. A results framework with no expected trade-off is not a theory of change, it is a wish list."
+    },
+    {
+      "type": "p",
+      "text": "None of this argues against acting. It argues for acting with the second loop named in the document, so the rebound is a managed expectation rather than a surprise finding in a mid-term review."
+    }
+  ]
+}

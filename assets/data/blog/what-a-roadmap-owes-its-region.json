@@ -1,0 +1,47 @@
+{
+  "slug": "what-a-roadmap-owes-its-region",
+  "title": "What a Roadmap Owes Its Region",
+  "date": "2026-07-28",
+  "tags": [
+    "BIRD",
+    "governance",
+    "investment"
+  ],
+  "readingMinutes": 5,
+  "excerpt": "Notes from building a decade-long binding investment framework: validation is not a formality, it is the load-bearing wall.",
+  "body": [
+    {
+      "type": "p",
+      "text": "A ten-year investment roadmap makes a promise that outlives the administration that signs it. That asymmetry — long commitment, short political cycle — is the actual design constraint, and it determines almost everything about how the document should be built."
+    },
+    {
+      "type": "h2",
+      "text": "Validation is structural, not ceremonial"
+    },
+    {
+      "type": "p",
+      "text": "The common failure is treating stakeholder validation as a sign-off ritual near the end. By then the framework's shape is fixed and consultation can only adjust wording. Validation has to run early enough that it can still change the prioritization logic — which means building the instrument before building the roadmap."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Design the survey against the scoring model, so responses map onto decisions rather than sentiment.",
+        "Make it work offline. Connectivity is not evenly distributed, and the places with the weakest signal are usually the ones the roadmap most needs to hear from.",
+        "Publish the method alongside the result, so a successor administration can re-run it rather than restart it."
+      ]
+    },
+    {
+      "type": "h2",
+      "text": "Binding means auditable"
+    },
+    {
+      "type": "p",
+      "text": "A framework described as binding must expose how any given priority was ranked. If the arithmetic is not reproducible by a third party, the document is advisory no matter what the cover says."
+    },
+    {
+      "type": "callout",
+      "tone": "note",
+      "text": "The test: could a critic who dislikes the conclusion reconstruct it from the published method and arrive at the same ordering? If not, the ordering will not survive its first contested budget cycle."
+    }
+  ]
+}

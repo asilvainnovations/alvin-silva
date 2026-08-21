@@ -1,0 +1,46 @@
+{
+  "$schema": "internal://asilva/blog/v1",
+  "note": "Post manifest. Add an entry here and a matching <slug>.json in this folder. status:'draft' hides a post without deleting it.",
+  "updated": "2026-08-21",
+  "posts": [
+    {
+      "slug": "fixes-that-fail-in-education-reform",
+      "title": "Fixes That Fail: Why Education Reforms Keep Rebounding",
+      "date": "2026-08-12",
+      "tags": [
+        "systems thinking",
+        "education",
+        "MEL"
+      ],
+      "readingMinutes": 6,
+      "status": "published",
+      "excerpt": "A systems archetype explains why well-designed curriculum reforms often deliver relief first and regression later — and what to instrument instead."
+    },
+    {
+      "slug": "what-a-roadmap-owes-its-region",
+      "title": "What a Roadmap Owes Its Region",
+      "date": "2026-07-28",
+      "tags": [
+        "BIRD",
+        "governance",
+        "investment"
+      ],
+      "readingMinutes": 5,
+      "status": "published",
+      "excerpt": "Notes from building a decade-long binding investment framework: validation is not a formality, it is the load-bearing wall."
+    },
+    {
+      "slug": "evaluation-without-theatre",
+      "title": "Evaluation Without Theatre",
+      "date": "2026-06-30",
+      "tags": [
+        "MEL",
+        "evaluation",
+        "practice"
+      ],
+      "readingMinutes": 7,
+      "status": "published",
+      "excerpt": "Most mid-term reviews are performed rather than used. A short argument for designing evaluations that a programme manager would voluntarily read."
+    }
+  ]
+}
