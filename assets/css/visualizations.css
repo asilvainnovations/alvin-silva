@@ -1,131 +1,301 @@
-/**
- * Alvin Silva Platform — Visualization Styles.
- * Provides responsive presentation for the SVG and metric visualizations.
+/*
+ * A. Silva Innovations — Visualization layer
+ * Dependency-free presentation primitives for evidence, timelines,
+ * expertise maps, impact dashboards and architecture views.
  */
 
-.as-visualization-heading {
+.visualization,
+.visualization-card,
+.viz-card,
+.dashboard-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line, rgba(10,20,60,.16));
+  border-radius: var(--radius, 14px);
+  background: var(--glass-strong, #fff);
+  box-shadow: var(--shadow-1, 0 8px 32px rgba(20,30,60,.10));
+}
+
+.visualization { padding: clamp(1rem, 2vw, 1.5rem); }
+
+.viz-header,
+.visualization-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.as-visualization-heading strong {
-  font-family: "Montserrat", system-ui, sans-serif;
-  font-size: 1.15rem;
+.viz-title,
+.visualization-title {
+  margin: 0;
+  font-family: var(--font-display, system-ui, sans-serif);
+  color: var(--text, #0d1224);
 }
 
-.as-visualization-heading span {
-  font-family: "Roboto Condensed", system-ui, sans-serif;
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
+.viz-subtitle,
+.visualization-subtitle { color: var(--text-3, rgba(20,26,46,.72)); }
 
-.as-career-map-scroll {
-  width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  border-radius: 1rem;
-  border: 1px solid rgba(128, 128, 128, 0.16);
-  background: rgba(128, 128, 128, 0.035);
-  scrollbar-width: thin;
-}
-
-.as-career-map-scroll svg {
-  display: block;
-  min-width: 900px;
-  width: 100%;
-  min-height: 360px;
-}
-
-.as-career-event {
-  cursor: pointer;
-  outline: none;
-}
-
-.as-career-event:focus-visible circle,
-.as-career-event:hover circle {
-  stroke: #ffd700;
-  stroke-width: 5;
-}
-
-.as-impact-grid {
+.viz-grid,
+.visualization-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1rem;
 }
 
-.as-impact-card {
-  display: flex;
-  min-height: 150px;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.45rem;
-  padding: 1.25rem;
-  border: 1px solid rgba(128, 128, 128, 0.16);
-  border-radius: 1rem;
-  background: rgba(128, 128, 128, 0.035);
+.viz-span-12 { grid-column: span 12; }
+.viz-span-8 { grid-column: span 8; }
+.viz-span-6 { grid-column: span 6; }
+.viz-span-4 { grid-column: span 4; }
+.viz-span-3 { grid-column: span 3; }
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-.as-impact-label {
-  font: 600 0.78rem "Roboto Condensed", system-ui, sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.68;
+.metric {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--line, rgba(10,20,60,.16));
+  border-radius: 12px;
+  background: var(--glass, rgba(255,255,255,.5));
 }
 
-.as-impact-value {
-  font: 700 clamp(1.5rem, 3vw, 2.4rem) "Montserrat", system-ui, sans-serif;
-  line-height: 1;
-}
-
-.as-impact-description {
-  font: 0.8rem/1.45 "Roboto Condensed", system-ui, sans-serif;
-  opacity: 0.65;
-}
-
-.as-expertise-radar {
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid rgba(128, 128, 128, 0.16);
-  border-radius: 1rem;
-  background: rgba(128, 128, 128, 0.035);
-}
-
-.as-expertise-radar svg {
+.metric-value {
   display: block;
+  margin-top: .25rem;
+  font-family: var(--font-display, system-ui, sans-serif);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent, #0069a8);
+}
+
+.metric-label {
+  display: block;
+  margin-top: .5rem;
+  color: var(--text-3, rgba(20,26,46,.72));
+  font-family: var(--font-cond, system-ui, sans-serif);
+  font-size: .86rem;
+  font-weight: 600;
+}
+
+.bar-chart { display: grid; gap: .7rem; }
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 20%) 1fr auto;
+  align-items: center;
+  gap: .7rem;
+}
+
+.bar-label {
+  font-family: var(--font-cond, system-ui, sans-serif);
+  font-weight: 600;
+}
+
+.bar-track {
+  height: .65rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--pill-bg, rgba(90,110,160,.1));
+}
+
+.bar-fill {
+  height: 100%;
+  width: var(--value, 0%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue, #0057c2), var(--accent, #0069a8));
+}
+
+.bar-value {
+  font-family: var(--font-mono, monospace);
+  font-size: .8rem;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  padding-inline-start: 1.25rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: .35rem;
+  bottom: .35rem;
+  left: .28rem;
+  width: 2px;
+  background: var(--line, rgba(10,20,60,.16));
+}
+
+.timeline-item { position: relative; }
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: .3rem;
+  left: -.99rem;
+  width: .65rem;
+  height: .65rem;
+  border: 2px solid var(--card, #fff);
+  border-radius: 50%;
+  background: var(--accent, #0069a8);
+  box-shadow: 0 0 0 2px var(--accent-soft, rgba(0,105,168,.12));
+}
+
+.timeline-year {
+  font-family: var(--font-mono, monospace);
+  color: var(--accent, #0069a8);
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.matrix {
   width: 100%;
-  height: auto;
-  min-height: 420px;
+  overflow-x: auto;
 }
 
-@media (max-width: 800px) {
-  .as-impact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.matrix table,
+.evidence-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
 
-  .as-expertise-radar svg {
-    min-width: 620px;
-  }
+.matrix th,
+.matrix td,
+.evidence-table th,
+.evidence-table td {
+  padding: .7rem;
+  border-bottom: 1px solid var(--divider, rgba(10,20,60,.12));
+  text-align: left;
+  vertical-align: top;
+}
 
-  .as-expertise-radar {
-    overflow-x: auto;
+.matrix th,
+.evidence-table th {
+  color: var(--text-2, #2b3350);
+  font-family: var(--font-cond, system-ui, sans-serif);
+  font-weight: 700;
+}
+
+.status-dot {
+  display: inline-block;
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: var(--accent, #0069a8);
+}
+
+.status-dot.success { background: var(--green, #0f7d51); }
+.status-dot.warning { background: var(--gold, #8a6d00); }
+.status-dot.danger { background: var(--red, #c62828); }
+
+.architecture-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .75rem;
+  align-items: stretch;
+}
+
+.architecture-node {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100px;
+  padding: .9rem;
+  border: 1px solid var(--line, rgba(10,20,60,.16));
+  border-radius: 12px;
+  background: var(--glass, rgba(255,255,255,.5));
+  text-align: center;
+}
+
+.architecture-node:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -.72rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent, #0069a8);
+  font-weight: 800;
+  z-index: 2;
+}
+
+.progress {
+  height: .65rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--pill-bg, rgba(90,110,160,.1));
+}
+
+.progress > span {
+  display: block;
+  width: var(--progress, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue, #0057c2), var(--sky, #0069a8));
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem 1rem;
+  margin-top: 1rem;
+  color: var(--text-3, rgba(20,26,46,.72));
+  font-size: .82rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+@media (max-width: 900px) {
+  .viz-span-8,
+  .viz-span-6,
+  .viz-span-4,
+  .viz-span-3 { grid-column: span 12; }
+
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .architecture-flow { grid-template-columns: 1fr; }
+
+  .architecture-node:not(:last-child)::after {
+    content: "↓";
+    right: auto;
+    top: auto;
+    bottom: -.8rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
-@media (max-width: 520px) {
-  .as-impact-grid {
+@media (max-width: 600px) {
+  .metric-grid { grid-template-columns: 1fr; }
+
+  .bar-row {
     grid-template-columns: 1fr;
-  }
-
-  .as-career-map-scroll svg {
-    min-width: 780px;
+    gap: .35rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .as-career-event,
-  .as-impact-card {
-    transition: none !important;
+  .visualization,
+  .visualization-card,
+  .viz-card,
+  .dashboard-card {
+    scroll-behavior: auto;
   }
+}
+
+@media print {
+  .visualization,
+  .visualization-card,
+  .viz-card,
+  .dashboard-card { break-inside: avoid; }
 }
