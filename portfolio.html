@@ -15,6 +15,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
 <link rel="apple-touch-icon" href="assets/logo-180.png">
 <link rel="manifest" href="manifest.webmanifest">
+<!-- Load the shared platform component system first. -->
+<link
+  rel="stylesheet"
+  href="assets/css/components.css"
+>
+<!-- Load visualization-specific styles after the component system. -->
+<link
+  rel="stylesheet"
+  href="assets/css/visualizations.css"
 
 <!-- Open Graph / Twitter -->
 <meta property="og:type" content="website">
@@ -1393,16 +1402,12 @@ if ('serviceWorker' in navigator) {
 }
 <!-- Load the visual theme as early as possible. -->
 <script src="assets/js/core/theme.js" defer></script>
-
 <!-- Load accessibility behavior. -->
 <script src="assets/js/core/accessibility.js" defer></script>
-
 <!-- Load responsive navigation behavior. -->
 <script src="assets/js/core/navigation.js" defer></script>
-
 <!-- Load audience-persona behavior. -->
 <script src="assets/js/core/persona.js" defer></script>
-
 <!-- Load the platform orchestrator last. -->
 <script src="assets/js/core/platform.js" defer></script>
 </script>
