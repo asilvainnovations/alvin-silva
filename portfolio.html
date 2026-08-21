@@ -1,582 +1,1409 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#070a12">
-<meta name="color-scheme" content="dark light">
-<title>Portfolio | Alvin M. Silva, MDM — Systems, Resilience & Strategic Innovation</title>
-<meta name="description" content="Alvin M. Silva, MDM — development management, disaster risk reduction, climate change adaptation, systems innovation, strategic planning, humanitarian practice, and sustainability.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ============ SEO CORE ============ -->
+<title>Portfolio | Alvin M. Silva, MDM — Platforms, Consulting & Publications</title>
+<meta name="description" content="The portfolio of Alvin M. Silva, MDM: the BIRD 2026–2035 Investment Roadmapping Platform, DDRiVE-M, Strat Planner Pro, national strategic plans, climate resilience programs, and published books on resilience.">
+<meta name="keywords" content="Alvin Silva portfolio, BIRD platform, Bangsamoro investment roadmap, DDRiVE-M, Strat Planner Pro, resilience books, climate adaptation projects, DRR consulting Philippines">
 <meta name="author" content="Alvin M. Silva, MDM">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://asilvainnovations.github.io/alvin-silva/portfolio.html">
-<link rel="icon" href="assets/logo-32.png" type="image/png">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://alvin-portfolio.asilvainnovations.com/">
+<meta name="theme-color" content="#0a0e27">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
 <link rel="apple-touch-icon" href="assets/logo-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="A. Silva Innovations">
+<meta property="og:url" content="https://alvin-portfolio.asilvainnovations.com/">
+<meta property="og:title" content="Portfolio | Alvin M. Silva, MDM">
+<meta property="og:description" content="Digital platforms, national frameworks, climate resilience programs, and publications — 18+ years of measurable impact.">
+<meta property="og:image" content="https://alvin-portfolio.asilvainnovations.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio | Alvin M. Silva, MDM">
+<meta name="twitter:description" content="Platforms, frameworks, programs, and books in resilience and development.">
+<meta name="twitter:image" content="https://alvin-portfolio.asilvainnovations.com/assets/og-image.jpg">
+
+<!-- Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/core.css">
-<link rel="stylesheet" href="assets/css/components.css">
-<link rel="stylesheet" href="assets/css/visualizations.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Portfolio — Alvin M. Silva, MDM",
+  "url": "https://alvin-portfolio.asilvainnovations.com/",
+  "about": { "@type": "Person", "name": "Alvin M. Silva", "jobTitle": "Development Management Professional & Resilience Consultant" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "BIRD — Bangsamoro Investment Roadmapping Platform 2026–2035" },
+      { "@type": "ListItem", "position": 2, "name": "DDRiVE-M Platform" },
+      { "@type": "ListItem", "position": 3, "name": "Strat Planner Pro" },
+      { "@type": "ListItem", "position": 4, "name": "WorldSkills Philippines – TESDA Strategic Plan 2026–2030" },
+      { "@type": "ListItem", "position": 5, "name": "Personal Resilience: The Path to Oneness" }
+    ]
+  }
+}
+</script>
 
 <style>
-:root{
-  --bg:#070a12; --bg-2:#0c1220; --panel:rgba(18,24,37,.68); --panel-solid:#111827;
-  --glass:rgba(255,255,255,.055); --glass-strong:rgba(255,255,255,.085);
-  --line:rgba(255,255,255,.14); --line-bright:rgba(255,255,255,.28);
-  --text:#f5f7fb; --text-2:#c8d0dc; --text-3:#8793a5;
-  --blue:#53a7ff; --cyan:#54e6ff; --gold:#ffd65a; --green:#4ee0a0; --violet:#b695ff;
-  --shadow:0 28px 80px rgba(0,0,0,.38); --metal:linear-gradient(135deg,#fbfdff 0%,#8993a0 8%,#f9fbff 17%,#687381 35%,#dfe5eb 51%,#7a8491 69%,#f7f9fb 82%,#66717e 100%);
-  --radius:22px; --ease:cubic-bezier(.22,.8,.28,1);
-}
-html[data-theme="light"]{
-  --bg:#e9edf3; --bg-2:#f5f7fa; --panel:rgba(255,255,255,.70); --panel-solid:#fff;
-  --glass:rgba(255,255,255,.64); --glass-strong:rgba(255,255,255,.82);
-  --line:rgba(11,20,34,.14); --line-bright:rgba(11,20,34,.28);
-  --text:#0c1422; --text-2:#354154; --text-3:#657184;
-  --blue:#1266c5; --cyan:#007e9c; --gold:#8a6500; --green:#087a4d; --violet:#6740bd;
-  --shadow:0 24px 70px rgba(22,32,50,.16);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0; min-width:320px; color:var(--text); background:
-  radial-gradient(900px 500px at 8% 0%,rgba(84,230,255,.08),transparent 65%),
-  radial-gradient(1000px 600px at 92% 10%,rgba(83,167,255,.10),transparent 65%),
-  linear-gradient(135deg,var(--bg),var(--bg-2) 52%,var(--bg));
-  font-family:Poppins,system-ui,sans-serif; line-height:1.65; overflow-x:hidden;
-}
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;z-index:-1;
-  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-  background-size:44px 44px; mask-image:linear-gradient(to bottom,#000,transparent 82%);
-}
-a{color:var(--blue)}
-button,input{font:inherit}
-button{color:inherit}
-.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-.skip{position:fixed;left:12px;top:-80px;z-index:9999;padding:10px 14px;background:#fff;color:#000;border-radius:8px}.skip:focus{top:12px}
-.icon{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.icon.sm{width:16px;height:16px}.icon.lg{width:24px;height:24px}
-[data-tooltip]{position:relative}
-[data-tooltip]::after{
-  content:attr(data-tooltip);position:absolute;left:50%;bottom:calc(100% + 9px);transform:translate(-50%,5px);
-  width:max-content;max-width:240px;padding:6px 9px;border:1px solid var(--line-bright);border-radius:8px;
-  background:#080c14;color:#fff;font:600 11px Roboto Condensed,sans-serif;letter-spacing:.02em;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;visibility:hidden;pointer-events:none;transition:.18s var(--ease);z-index:20;
-}
-[data-tooltip]:hover::after,[data-tooltip]:focus-visible::after{opacity:1;visibility:visible;transform:translate(-50%,0)}
-.glass{
-  background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
-  border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),var(--shadow);
-  backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);
-}
-.metal-edge{position:relative}
-.metal-edge::before{
-  content:"";position:absolute;inset:0;padding:1px;border-radius:inherit;
-  background:var(--metal);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:.52;
-}
-.site-header{position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--line);background:rgba(7,10,18,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-html[data-theme="light"] .site-header{background:rgba(233,237,243,.76)}
-.nav{width:min(1240px,calc(100% - 28px));min-height:72px;margin:auto;display:flex;align-items:center;gap:16px}
-.brand{display:flex;align-items:center;gap:11px;color:var(--text);text-decoration:none;min-width:0}
-.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,214,90,.8);box-shadow:0 0 0 3px rgba(255,214,90,.08)}
-.brand strong{display:block;font:800 14px Montserrat,sans-serif}.brand span{display:block;color:var(--text-3);font:600 10px "Roboto Condensed",sans-serif;letter-spacing:.08em;text-transform:uppercase}
-.navlinks{display:flex;gap:4px;margin-left:auto}.navlinks a,.nav-btn{
-  display:inline-flex;align-items:center;gap:6px;padding:9px 11px;border:1px solid transparent;border-radius:10px;background:transparent;color:var(--text-2);
-  text-decoration:none;cursor:pointer;font:700 12px "Roboto Condensed",sans-serif;transition:.2s var(--ease)
-}.navlinks a:hover,.nav-btn:hover{border-color:var(--line);background:var(--glass);color:var(--text)}
-.nav-actions{display:flex;gap:6px}.nav-btn{width:40px;height:40px;justify-content:center;border-color:var(--line)}
-.menu{display:none}
-.mobile-nav{display:none;width:min(1240px,calc(100% - 28px));margin:0 auto 12px;padding:8px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
-.mobile-nav.open{display:grid;gap:4px}.mobile-nav a,.mobile-nav button{padding:11px;border:0;border-radius:8px;background:transparent;text-align:left;color:var(--text);text-decoration:none}.mobile-nav a:hover,.mobile-nav button:hover{background:var(--glass-strong)}
-.container{width:min(1240px,calc(100% - 28px));margin:auto}
-.hero{padding:48px 0 34px}.hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);gap:22px;align-items:stretch}
-.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(24px,5vw,58px)}
-.kicker{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font:800 11px "Roboto Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase}
-.kicker::before{content:"";width:28px;height:1px;background:currentColor}
-h1,h2,h3{font-family:Montserrat,sans-serif;line-height:1.08;letter-spacing:-.035em}
-h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
-.gradient-text{background:linear-gradient(90deg,var(--text),var(--cyan),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-copy p{max-width:760px;color:var(--text-2);font-size:clamp(14px,1.8vw,18px);margin:18px 0 0}
-.hero-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 14px;border-radius:11px;text-decoration:none;cursor:pointer;
-  font:800 12px "Roboto Condensed",sans-serif;letter-spacing:.04em;transition:.22s var(--ease)
-}
-.btn-primary{border:1px solid rgba(84,230,255,.55);background:linear-gradient(135deg,rgba(84,230,255,.22),rgba(83,167,255,.12));color:var(--text);box-shadow:0 10px 30px rgba(0,120,255,.14)}
-.btn-secondary{border:1px solid var(--line);background:var(--glass);color:var(--text-2)}
-.btn:hover{transform:translateY(-2px);border-color:var(--line-bright)}
-.hero-visual{position:relative;min-height:500px;overflow:hidden;border-radius:28px}
-.hero-visual img{width:100%;height:100%;min-height:500px;display:block;object-fit:cover;object-position:center}
-.hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 34%,rgba(0,0,0,.76) 100%)}
-.hero-caption{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;display:flex;justify-content:space-between;align-items:end;gap:14px}
-.hero-caption strong{font:800 16px Montserrat,sans-serif}.hero-caption span{display:block;color:#c8d0dc;font:600 11px "Roboto Condensed",sans-serif;margin-top:3px}
-.status{display:inline-flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid rgba(78,224,160,.35);border-radius:999px;background:rgba(0,0,0,.28);font:700 10px "Roboto Condensed",sans-serif}
-.status i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
-.section{padding:52px 0;scroll-margin-top:86px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:20px}
-.section-head h2{margin:5px 0 0;font-size:clamp(1.7rem,3.5vw,3rem)}.section-head p{max-width:680px;color:var(--text-3);margin:0;font-size:13px}
-.eyebrow{color:var(--cyan);font:800 10px "Roboto Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase}
-.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.metric{padding:17px;border-radius:16px}.metric strong{display:block;font:900 clamp(1.45rem,3vw,2.2rem) Montserrat,sans-serif}.metric span{display:block;color:var(--text-3);font:600 10px "Roboto Condensed",sans-serif;text-transform:uppercase;letter-spacing:.07em;margin-top:5px}
-.control-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-bottom:17px;padding:10px;border-radius:16px}
-.search{min-height:43px;width:100%;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.12);color:var(--text);padding:0 12px;outline:none}.search:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(84,230,255,.08)}
-.filters{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}.filter{border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--text-2);padding:7px 10px;cursor:pointer;font:700 10px "Roboto Condensed",sans-serif}.filter.active,.filter:hover{border-color:rgba(84,230,255,.5);background:rgba(84,230,255,.08);color:var(--text)}
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.project{overflow:hidden;border-radius:20px;display:flex;flex-direction:column;transition:.25s var(--ease)}.project:hover{transform:translateY(-4px)}
-.project-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0b111d}.project-media img{width:100%;height:100%;object-fit:cover;display:block;transition:.45s var(--ease)}.project:hover .project-media img{transform:scale(1.035)}
-.project-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.55));pointer-events:none}
-.project-badge{position:absolute;left:10px;top:10px;z-index:2;padding:5px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(4,7,12,.62);backdrop-filter:blur(8px);font:800 9px "Roboto Condensed",sans-serif;color:#fff}
-.project-open{position:absolute;right:10px;top:10px;z-index:2;width:32px;height:32px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(4,7,12,.62);color:#fff;cursor:pointer}
-.project-body{padding:15px;display:flex;flex-direction:column;flex:1}.project-type{color:var(--cyan);font:800 10px "Roboto Condensed",sans-serif;letter-spacing:.12em;text-transform:uppercase}.project h3{margin:5px 0 0;font-size:17px}.project p{margin:7px 0 0;color:var(--text-3);font-size:12px}.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:11px}.tag{padding:4px 6px;border:1px solid var(--line);border-radius:6px;color:var(--text-3);font:600 9px "Roboto Condensed",sans-serif}.project-footer{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:auto;padding-top:13px;color:var(--text-3);font:700 10px "Roboto Condensed",sans-serif}.project-footer button{border:0;background:none;color:var(--blue);cursor:pointer;padding:0;font:800 10px "Roboto Condensed",sans-serif}
-.visual-shell{padding:18px;border-radius:22px}.visual-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.diagram{min-height:390px;border:1px solid var(--line);border-radius:18px;background:radial-gradient(circle at 50% 50%,rgba(84,230,255,.07),transparent 42%),rgba(0,0,0,.12);position:relative;overflow:hidden}
-.diagram svg{width:100%;height:100%;min-height:390px}.diagram-label{font:700 11px "Roboto Condensed",sans-serif;fill:var(--text-2)}.diagram-node{fill:rgba(16,24,38,.92);stroke:rgba(84,230,255,.45);stroke-width:1.2}.diagram-node.hot{stroke:rgba(255,214,90,.7);fill:rgba(55,43,10,.38)}.diagram-line{fill:none;stroke:rgba(84,230,255,.38);stroke-width:2;stroke-dasharray:6 7;animation:flow 12s linear infinite}@keyframes flow{to{stroke-dashoffset:-120}}
-.visual-side{display:grid;gap:10px}.insight{padding:15px;border-radius:16px}.insight h3{margin:0;font-size:14px}.insight p{margin:6px 0 0;color:var(--text-3);font-size:11px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.legend span{display:inline-flex;align-items:center;gap:5px;color:var(--text-3);font:600 10px "Roboto Condensed",sans-serif}.dot{width:7px;height:7px;border-radius:50%}.dot.cyan{background:var(--cyan)}.dot.gold{background:var(--gold)}.dot.green{background:var(--green)}
-.method{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.method-step{position:relative;padding:13px 10px;min-height:112px;border-radius:15px}.method-step .num{font:700 10px "JetBrains Mono",monospace;color:var(--gold)}.method-step h3{font-size:12px;margin:8px 0 0}.method-step p{font-size:9px;color:var(--text-3);margin:5px 0 0}.method-step::after{content:"→";position:absolute;right:-9px;top:44px;color:var(--cyan);z-index:2}.method-step:last-child::after{display:none}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.gallery-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:14px;cursor:pointer}.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:.35s var(--ease)}.gallery-item:hover img{transform:scale(1.04)}.gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 9px 8px;background:linear-gradient(transparent,rgba(0,0,0,.82));color:#fff;font:700 10px "Roboto Condensed",sans-serif}
-.pub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.pub{overflow:hidden;border-radius:17px}.pub img{width:100%;aspect-ratio:3/4;display:block;object-fit:cover}.pub-body{padding:11px}.pub h3{font-size:12px;margin:0}.pub p{color:var(--text-3);font-size:9px;margin:5px 0 0}
-.cta{padding:28px;border-radius:24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.cta h2{margin:0;font-size:clamp(1.7rem,4vw,3.2rem)}.cta p{max-width:680px;color:var(--text-3);font-size:12px}
-.footer{padding:30px 0 70px;border-top:1px solid var(--line)}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:25px}.footer h3{font-size:13px;margin:0 0 6px}.footer p,.footer a{color:var(--text-3);font-size:10px}.footer a{text-decoration:none}.footer a:hover{text-decoration:underline;color:var(--text)}
-.lightbox{position:fixed;inset:0;z-index:5000;display:none;place-items:center;padding:18px;background:rgba(0,0,0,.82);backdrop-filter:blur(12px)}.lightbox.open{display:grid}.lightbox-card{width:min(1120px,100%);max-height:94vh;overflow:hidden;border-radius:20px;background:#090d15;border:1px solid rgba(255,255,255,.2);box-shadow:0 40px 100px rgba(0,0,0,.65);position:relative}.lightbox-card img{width:100%;max-height:78vh;object-fit:contain;display:block;background:#05070b}.lightbox-info{padding:12px 15px}.lightbox-info strong{font:800 13px Montserrat,sans-serif}.lightbox-info span{display:block;color:#8993a5;font:600 10px "Roboto Condensed",sans-serif;margin-top:3px}.lightbox-close{position:absolute;right:10px;top:10px;width:38px;height:38px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;z-index:2}
-.a11y{position:fixed;left:12px;bottom:12px;z-index:1400}.a11y-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line-bright);background:var(--panel);color:var(--gold);cursor:pointer;box-shadow:var(--shadow)}.a11y-panel{display:none;position:absolute;left:0;bottom:54px;width:300px;padding:14px;border-radius:16px}.a11y-panel.open{display:block}.a11y-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.a11y-row:first-of-type{border-top:0}.a11y-row label{font:700 10px "Roboto Condensed",sans-serif}.a11y-row button{padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:var(--glass);cursor:pointer;font:700 10px "Roboto Condensed",sans-serif}
-.reduced-motion *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.larger-text{font-size:106%}.high-contrast{filter:contrast(1.12)}
-[hidden]{display:none!important}
-@media(max-width:1050px){.hero-grid,.visual-grid{grid-template-columns:1fr}.hero-visual{min-height:420px}.hero-visual img{min-height:420px}.metrics{grid-template-columns:repeat(3,1fr)}.projects{grid-template-columns:repeat(2,1fr)}.method{grid-template-columns:repeat(3,1fr)}.method-step::after{display:none}.gallery{grid-template-columns:repeat(3,1fr)}.pub-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:800px){.navlinks{display:none}.menu{display:grid}.control-bar{grid-template-columns:1fr}.filters{justify-content:flex-start}.footer-grid{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.brand span{display:none}.hero{padding-top:28px}.hero-copy{padding:22px}.hero-visual,.hero-visual img{min-height:350px}.projects{grid-template-columns:1fr}.metrics,.method,.gallery,.pub-grid,.footer-grid{grid-template-columns:1fr}.section{padding:38px 0}.section-head{display:block}.section-head p{margin-top:8px}.cta{display:block}.cta .hero-actions{margin-top:16px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-@media print{.site-header,.a11y,.lightbox,.control-bar{display:none!important}body{background:#fff;color:#000}.glass{box-shadow:none;background:#fff;border:1px solid #ccc}}
-
-:focus-visible{
-  outline:2px solid var(--cyan);
-  outline-offset:3px;
-}
-.project-open:focus-visible,
-.lightbox-close:focus-visible,
-.nav-btn:focus-visible,
-.filter:focus-visible,
-.a11y-btn:focus-visible,
-.a11y-row button:focus-visible{
-  box-shadow:0 0 0 3px rgba(84,230,255,.22);
+/* ============================================================
+   DESIGN TOKENS — shared with index.html
+   ============================================================ */
+:root {
+  /* ---- LIGHT THEME (default / fallback) ---- */
+  --navy:#f4f6fb; --navy-2:#eef1f8; --card:#ffffff;
+  --blue:#0057c2; --sky:#0069a8; --gold:#8a6d00; --green:#0f7d51; --violet:#5b34c9; --red:#c62828;
+  --link:#0052cc; --link-hover:#003d99;
+  --text:#0d1224; --text-2:#2b3350; --text-3:rgba(20,26,46,.72);
+  --glass:linear-gradient(135deg, rgba(10,20,60,.06), rgba(10,20,60,.025));
+  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.94), rgba(240,244,252,.9));
+  --line:rgba(10,20,60,.16); --line-gold:rgba(140,110,0,.4); --divider:rgba(10,20,60,.12);
+  --radius:14px;
+  --on-gold:#ffffff;
+  --header-bg:rgba(244,246,251,.9); --header-border:rgba(0,102,255,.3);
+  --footer-bg:rgba(255,255,255,.94); --footer-border:rgba(0,102,255,.25);
+  --mobile-menu-bg:linear-gradient(160deg,#ffffff,#eef1fb);
+  --input-bg:rgba(255,255,255,.85); --pill-bg:rgba(90,110,160,.1); --pill-bg-hover:rgba(90,110,160,.18);
+  --doc-cover-bg:#f4f6fb;
+  --font-display:'Montserrat',system-ui,sans-serif; --font-body:'Poppins',system-ui,sans-serif;
+  --font-cond:'Roboto Condensed',system-ui,sans-serif; --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --shadow-1:0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-2:0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
+  --ease:cubic-bezier(.22,.8,.28,1);
+  --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%), linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
 }
 
-html.reduced-motion *,
-html.reduced-motion *::before,
-html.reduced-motion *::after{
-  animation-duration:.001ms!important;
-  animation-iteration-count:1!important;
-  scroll-behavior:auto!important;
-  transition-duration:.001ms!important;
-}
-html.larger-text body{font-size:110%}
-html.larger-text .project p,
-html.larger-text .insight p,
-html.larger-text .method-step p,
-html.larger-text .footer p,
-html.larger-text .footer a{font-size:12px}
-html.high-contrast{
-  --line:rgba(255,255,255,.28);
-  --line-bright:rgba(255,255,255,.52);
-  --text-2:#eef4ff;
-  --text-3:#b7c4d6;
-}
-html[data-theme="light"].high-contrast{
-  --line:rgba(11,20,34,.30);
-  --line-bright:rgba(11,20,34,.58);
-  --text-2:#172235;
-  --text-3:#46566e;
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{
-    animation-duration:.001ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:.001ms!important;
+/* ---- Dark theme, applied automatically when the OS/browser prefers dark ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
+    --blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+    --link:#4db8ff; --link-hover:#8ad4ff;
+    --text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+    --glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    --glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+    --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28); --divider:rgba(255,255,255,.09);
+    --on-gold:#0a0e27;
+    --header-bg:rgba(10,14,39,.86); --header-border:rgba(0,102,255,.45);
+    --footer-bg:rgba(6,9,24,.96); --footer-border:rgba(0,102,255,.4);
+    --mobile-menu-bg:linear-gradient(160deg,#0d1430,#070b1d);
+    --input-bg:rgba(10,16,42,.7); --pill-bg:rgba(255,255,255,.06); --pill-bg-hover:rgba(255,255,255,.12);
+    --doc-cover-bg:#1a1f3a;
+    --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+    --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+    --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%), linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
   }
 }
 
-
-.hero-image-open{
-  position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;
-  border-radius:inherit;overflow:hidden;
+/* ---- Explicit manual overrides (theme toggle sets data-theme; always wins) ---- */
+html[data-theme="dark"] {
+  --navy:#0a0e27; --navy-2:#0d1224; --card:#1a1f3a;
+  --blue:#0066FF; --sky:#00BFFF; --gold:#FFD700; --green:#34D399; --violet:#A78BFA; --red:#F87171;
+  --link:#4db8ff; --link-hover:#8ad4ff;
+  --text:#ffffff; --text-2:#e0e6ed; --text-3:rgba(224,230,237,.62);
+  --glass:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+  --glass-strong:linear-gradient(135deg, rgba(10,20,60,.62), rgba(10,14,39,.78));
+  --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28); --divider:rgba(255,255,255,.09);
+  --on-gold:#0a0e27;
+  --header-bg:rgba(10,14,39,.86); --header-border:rgba(0,102,255,.45);
+  --footer-bg:rgba(6,9,24,.96); --footer-border:rgba(0,102,255,.4);
+  --mobile-menu-bg:linear-gradient(160deg,#0d1430,#070b1d);
+  --input-bg:rgba(10,16,42,.7); --pill-bg:rgba(255,255,255,.06); --pill-bg-hover:rgba(255,255,255,.12);
+  --doc-cover-bg:#1a1f3a;
+  --shadow-1:0 8px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.16);
+  --shadow-2:0 18px 48px rgba(0,0,0,.55), 0 6px 18px rgba(0,102,255,.25);
+  --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.20), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.10), transparent 55%), linear-gradient(160deg, #0a0e27 0%, #0b1030 48%, #070b1d 100%);
 }
-.hero-image-open img{cursor:zoom-in}
-.hero-image-open:focus-visible{outline:2px solid var(--cyan);outline-offset:-5px}
-
-
-.image-fallback{
-  background:
-    linear-gradient(135deg,rgba(84,230,255,.12),rgba(255,214,90,.08)),
-    #0b111d;
-  object-fit:contain!important;
-  padding:24px;
+html[data-theme="light"] {
+  --navy:#f4f6fb; --navy-2:#eef1f8; --card:#ffffff;
+  --blue:#0057c2; --sky:#0069a8; --gold:#8a6d00; --green:#0f7d51; --violet:#5b34c9; --red:#c62828;
+  --link:#0052cc; --link-hover:#003d99;
+  --text:#0d1224; --text-2:#2b3350; --text-3:rgba(20,26,46,.72);
+  --glass:linear-gradient(135deg, rgba(10,20,60,.06), rgba(10,20,60,.025));
+  --glass-strong:linear-gradient(135deg, rgba(255,255,255,.94), rgba(240,244,252,.9));
+  --line:rgba(10,20,60,.16); --line-gold:rgba(140,110,0,.4); --divider:rgba(10,20,60,.12);
+  --on-gold:#ffffff;
+  --header-bg:rgba(244,246,251,.9); --header-border:rgba(0,102,255,.3);
+  --footer-bg:rgba(255,255,255,.94); --footer-border:rgba(0,102,255,.25);
+  --mobile-menu-bg:linear-gradient(160deg,#ffffff,#eef1fb);
+  --input-bg:rgba(255,255,255,.85); --pill-bg:rgba(90,110,160,.1); --pill-bg-hover:rgba(90,110,160,.18);
+  --doc-cover-bg:#f4f6fb;
+  --shadow-1:0 8px 32px rgba(20,30,60,.10), inset 0 1px 0 rgba(255,255,255,.6);
+  --shadow-2:0 18px 48px rgba(20,30,60,.14), 0 6px 18px rgba(0,102,255,.12);
+  --body-bg:radial-gradient(1200px 600px at 85% -5%, rgba(0,102,255,.08), transparent 60%), radial-gradient(900px 500px at -10% 30%, rgba(0,191,255,.06), transparent 55%), linear-gradient(160deg, #f4f6fb 0%, #eef1fb 48%, #e9ecf7 100%);
 }
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:92px; --a11y-scale:1; }
+body {
+  font-family:var(--font-body); font-weight:400; line-height:1.65; font-size:calc(1rem * var(--a11y-scale,1)); color:var(--text);
+  background: var(--body-bg);
+  background-attachment:fixed; min-height:100vh; overflow-x:hidden;
+}
+body::before { content:''; position:fixed; inset:0; z-index:0; pointer-events:none; background:url('assets/logo-512.png') center/ min(78vw,560px) no-repeat; opacity:.045; }
+main, header, footer { position:relative; z-index:1; }
+img { max-width:100%; display:block; }
+h1,h2,h3,h4 { font-family:var(--font-display); line-height:1.15; letter-spacing:-.01em; }
+a { color:var(--link); }
+a:hover { color:var(--link-hover); }
+button { font-family:inherit; }
+::selection { background:rgba(255,215,0,.35); color:#fff; }
+::-webkit-scrollbar { width:9px; height:9px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(100,140,200,.35); border-radius:6px; }
+:focus-visible { outline:3px solid var(--gold); outline-offset:2px; border-radius:4px; }
+.skip-link { position:absolute; top:-48px; left:8px; z-index:12000; background:var(--gold); color:var(--on-gold); font-family:var(--font-display); font-weight:700; padding:.6rem 1.1rem; border-radius:0 0 10px 10px; text-decoration:none; transition:top .25s; }
+.skip-link:focus { top:0; }
+.sr-only { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
+.wrap { width:100%; max-width:1280px; margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
+.section { padding:clamp(3rem,7vw,5rem) 0; position:relative; }
+.kicker { font-family:var(--font-cond); font-size:.8rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--sky); margin-bottom:.9rem; display:flex; align-items:center; gap:.7rem; justify-content:center; }
+.kicker::before,.kicker::after { content:''; height:1px; width:34px; background:linear-gradient(90deg,transparent,var(--sky)); }
+.kicker::after { transform:scaleX(-1); }
+.section-title { font-size:clamp(1.7rem,4.6vw,2.6rem); font-weight:800; text-align:center; margin-bottom:.9rem; }
+.grad-text, .section-title .hl { background:linear-gradient(92deg, var(--sky) 0%, var(--blue) 45%, var(--gold) 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.section-sub { text-align:center; color:var(--text-3); max-width:720px; margin:0 auto clamp(2rem,5vw,3rem); font-weight:300; }
+
+.glass { background:var(--glass); border:1px solid var(--line); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); box-shadow:var(--shadow-1); }
+.glass-strong { background:var(--glass-strong); border:1px solid var(--line); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%); box-shadow:var(--shadow-1); }
+.glass-gold { background:linear-gradient(135deg, rgba(255,215,0,.14), rgba(255,215,0,.04)); border:1px solid var(--line-gold); backdrop-filter:blur(14px); }
+
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-family:var(--font-display); font-weight:700; font-size:.92rem; letter-spacing:.03em; padding:.85rem 1.7rem; border-radius:999px; border:2px solid transparent; cursor:pointer; text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s, background .25s, color .25s; min-height:48px; }
+.btn svg { width:17px; height:17px; flex:none; }
+.btn-primary { background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 8px 24px rgba(0,102,255,.35); }
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 14px 34px rgba(0,191,255,.45); }
+.btn-gold { background:transparent; color:var(--gold); border-color:var(--gold); }
+.btn-gold:hover { background:var(--gold); color:var(--on-gold); transform:translateY(-3px); box-shadow:0 12px 30px rgba(255,215,0,.35); }
+.btn-ghost { background:var(--pill-bg); color:var(--text); border-color:var(--line); }
+.btn-ghost:hover { background:var(--pill-bg-hover); transform:translateY(-2px); }
+.btn-sm { padding:.5rem 1.05rem; font-size:.8rem; min-height:40px; }
+.chip { display:inline-flex; align-items:center; gap:.45rem; padding:.42rem 1rem; border-radius:999px; font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em; border:1px solid var(--line); background:var(--pill-bg); color:var(--text-2); }
+.theme-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:.4rem; cursor:pointer;
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+  background:var(--pill-bg); color:var(--text); flex:none; transition:.25s;
+}
+.theme-toggle:hover { border-color:var(--gold); transform:translateY(-2px); }
+.theme-toggle svg { width:19px; height:19px; }
+.theme-toggle .icon-moon { display:block; }
+.theme-toggle .icon-sun { display:none; }
+html[data-theme="light"] .theme-toggle .icon-moon { display:none; }
+html[data-theme="light"] .theme-toggle .icon-sun { display:block; }
+.mm-theme-row { display:flex; align-items:center; justify-content:space-between; gap:.7rem; padding:.6rem; margin-top:.4rem; border-top:1px solid var(--line); }
+
+/* ============ HEADER / NAV (shared) ============ */
+.site-header { position:sticky; top:0; z-index:1000; background:var(--header-bg); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid var(--header-border); box-shadow:0 8px 30px rgba(0,0,0,.2); }
+.nav { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem clamp(1rem,4vw,2.5rem); max-width:1400px; margin:0 auto; }
+.brand { display:flex; align-items:center; gap:.75rem; text-decoration:none; min-width:0; }
+.brand img { width:46px; height:46px; border-radius:50%; border:2px solid var(--gold); background:#fff; padding:2px; flex:none; }
+.brand-name { font-family:var(--font-display); font-weight:800; font-size:1.02rem; letter-spacing:.03em; background:linear-gradient(45deg,var(--sky),var(--blue),var(--gold)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; white-space:nowrap; }
+.brand-sub { font-family:var(--font-cond); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); white-space:nowrap; }
+.nav-links { display:none; list-style:none; align-items:center; gap:.35rem; }
+.nav-links > li > a, .drop-btn { font-family:var(--font-cond); font-size:.92rem; font-weight:600; letter-spacing:.06em; color:var(--text); text-decoration:none; padding:.55rem .85rem; border-radius:8px; display:inline-flex; align-items:center; gap:.4rem; background:none; border:1px solid transparent; cursor:pointer; transition:.25s; }
+.nav-links a:hover, .drop-btn:hover, .drop.open .drop-btn { color:var(--gold); background:rgba(255,215,0,.08); }
+.nav-links a[aria-current="page"] { color:var(--gold); background:rgba(255,215,0,.10); }
+.drop { position:relative; }
+.drop-btn .chev { width:10px; height:10px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform .3s; }
+.drop.open .drop-btn .chev { transform:rotate(225deg) translateY(-1px); }
+.drop-menu { position:absolute; top:calc(100% + .6rem); left:50%; transform:translate(-50%, -8px); min-width:250px; padding:.6rem; border-radius:14px; opacity:0; visibility:hidden; transition:.28s var(--ease); background:var(--mobile-menu-bg); border:1px solid var(--line-gold); box-shadow:0 20px 50px rgba(0,0,0,.35); z-index:1001; }
+.drop.open .drop-menu { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+.drop-head { font-family:var(--font-cond); font-size:.66rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); padding:.45rem .8rem .55rem; border-bottom:1px solid var(--line); margin-bottom:.4rem; }
+.drop-item { display:flex; align-items:center; gap:.7rem; padding:.6rem .8rem; border-radius:9px; color:var(--text); text-decoration:none; font-size:.9rem; transition:.2s; }
+.drop-item svg { width:16px; height:16px; color:var(--sky); flex:none; }
+.drop-item:hover { background:rgba(255,215,0,.12); color:var(--gold); }
+.nav-cta { display:none; align-items:center; gap:.6rem; }
+.menu-btn { display:inline-flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:.55rem; z-index:1102; }
+.menu-btn span { width:24px; height:2.5px; background:var(--text); border-radius:2px; transition:.3s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity:0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform:rotate(-45deg) translate(6px,-6px); }
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:1098; opacity:0; visibility:hidden; transition:.3s; }
+.overlay.show { opacity:1; visibility:visible; }
+.mobile-menu { position:fixed; top:0; right:-105%; width:min(84vw,340px); height:100dvh; z-index:1099; background:var(--mobile-menu-bg); border-left:1px solid var(--line); padding:1.4rem; transition:right .35s var(--ease); overflow-y:auto; }
+.mobile-menu.open { right:0; }
+.mobile-menu .mm-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4rem; }
+.mobile-menu .mm-head img { width:52px; height:52px; border-radius:50%; border:2px solid var(--gold); }
+.mm-close { background:none; border:none; color:var(--text); font-size:1.6rem; cursor:pointer; padding:.4rem; line-height:1; }
+.mm-group { margin-bottom:1.1rem; }
+.mm-group-title { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--text-3); margin-bottom:.5rem; padding-left:.2rem; }
+.mm-link { display:flex; align-items:center; gap:.7rem; padding:.68rem .6rem; color:var(--text); text-decoration:none; font-size:1rem; border-radius:9px; }
+.mm-link svg { width:16px; height:16px; color:var(--sky); }
+.mm-link:active, .mm-link:hover, .mm-link[aria-current="page"] { background:var(--pill-bg); color:var(--gold); }
+
+.doc-cover { overflow:hidden; aspect-ratio:16/9; background:var(--doc-cover-bg); border-bottom:1px solid var(--line); }
+.doc-cover img { width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+html { --a11y-scale:1; }
+.a11y-fab { position:fixed; bottom:1.2rem; left:1.2rem; z-index:950; width:52px; height:52px; border-radius:50%; border:1px solid var(--line-gold); cursor:pointer; background:linear-gradient(135deg, rgba(10,20,60,.92), rgba(10,14,39,.96)); color:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,.45); transition:.3s; }
+html[data-theme="light"] .a11y-fab { background:linear-gradient(135deg, #ffffff, #eef1fb); }
+.a11y-fab:hover { transform:translateY(-3px); box-shadow:0 12px 28px rgba(255,215,0,.25); }
+.a11y-fab svg { width:24px; height:24px; }
+.a11y-panel { position:fixed; top:50%; right:-105%; transform:translateY(-50%); z-index:1140; width:min(320px, 88vw); border-radius:18px 0 0 18px; padding:1.3rem 1.3rem 1.4rem; transition:right .4s var(--ease); max-height:86dvh; overflow-y:auto; }
+.a11y-panel.open { right:0; }
+.a11y-panel h2 { font-size:1rem; font-weight:800; display:flex; align-items:center; gap:.5rem; margin-bottom:1rem; color:var(--text); }
+.a11y-panel h2 svg { width:18px; height:18px; color:var(--gold); }
+.a11y-row { display:flex; align-items:center; justify-content:space-between; gap:.8rem; padding:.6rem 0; border-top:1px solid var(--divider); }
+.a11y-row:first-of-type { border-top:none; }
+.a11y-row .ar-name { font-family:var(--font-cond); font-size:.85rem; font-weight:600; letter-spacing:.04em; color:var(--text); }
+.a11y-row .ar-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.a11y-close { position:absolute; top:.8rem; right:.8rem; background:none; border:none; color:var(--text-3); font-size:1.1rem; cursor:pointer; padding:.3rem; }
+html.a11y-contrast body { background:#000 !important; }
+html.a11y-contrast .glass, html.a11y-contrast .glass-strong, html.a11y-contrast .glass-gold { background:#0a0a0a !important; border-color:#FFD700 !important; }
+html.a11y-contrast p, html.a11y-contrast li, html.a11y-contrast td, html.a11y-contrast .section-sub { color:#fff !important; }
+html.a11y-grayscale body { filter:grayscale(1); }
+html.a11y-links a { text-decoration:underline !important; text-underline-offset:3px; }
+html.a11y-largecursor, html.a11y-largecursor a, html.a11y-largecursor button { cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M6 3 L34 20 L20 23 L15 36 Z' fill='%23FFD700' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") 6 3, auto !important; }
+@media print { .a11y-fab, .a11y-panel { display:none !important; } }
 </style>
+<style>
+/* ============ HERO ============ */
+.hero { position:relative; padding:0 0 clamp(2.5rem,6vw,4rem); }
+.hero-banner { position:relative; height:clamp(180px, 30vw, 340px); overflow:hidden; }
+.hero-banner img { width:100%; height:100%; object-fit:cover; object-position:22% 30%; animation:kenburns 22s ease-in-out infinite alternate; }
+@keyframes kenburns { from { transform:scale(1); } to { transform:scale(1.07); } }
+.hero-banner::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,14,39,.25) 0%, rgba(10,14,39,.5) 55%, #0a0e27 100%); }
+.hero-tagline { position:absolute; left:0; right:0; bottom:1rem; z-index:2; display:flex; justify-content:center; padding:0 1rem; }
+.hero-tagline .kicker { background:rgba(8,12,32,.55); backdrop-filter:blur(6px); padding:.5rem 1.1rem; border-radius:999px; border:1px solid var(--line-gold); color:#00BFFF; }
+.hero-tagline .kicker::before, .hero-tagline .kicker::after { background:linear-gradient(90deg,transparent,#00BFFF); }
+.hero-inner { margin-top:clamp(-6rem,-10vw,-3.4rem); position:relative; z-index:2; text-align:center; }
+.breadcrumb { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-cond); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-bottom:1rem; text-decoration:none; }
+.breadcrumb:hover { color:var(--gold); }
+.breadcrumb svg { width:13px; height:13px; }
+.hero h1 { font-size:clamp(2rem,6.5vw,3.4rem); font-weight:900; margin-bottom:.8rem; }
+.hero-sub { font-size:clamp(.98rem,2.6vw,1.12rem); font-weight:300; color:var(--text-2); line-height:1.8; max-width:720px; margin:0 auto 1.6rem; }
+.hero-stats { display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin-bottom:1.6rem; }
+.stat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; max-width:640px; margin:0 auto; }
+.stat-num { font-family:var(--font-display); font-size:clamp(1.6rem,4.2vw,2.1rem); font-weight:800; background:linear-gradient(45deg, var(--gold), var(--sky)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-variant-numeric:tabular-nums; }
+.stat-label { font-family:var(--font-cond); font-size:.72rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--text-3); margin-top:.15rem; }
+
+/* ============ FILTERS ============ */
+.filter-bar { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-bottom:2rem; }
+.filter-btn { font-family:var(--font-display); font-weight:700; font-size:.85rem; letter-spacing:.04em; padding:.65rem 1.4rem; border-radius:999px; cursor:pointer; color:var(--text); background:var(--pill-bg); border:1px solid var(--line); transition:.28s var(--ease); }
+.filter-btn:hover { background:var(--pill-bg-hover); }
+.filter-btn.active { background:linear-gradient(135deg, var(--blue), var(--sky)); border-color:transparent; box-shadow:0 8px 22px rgba(0,102,255,.4); }
+.filter-btn .count-pill { font-family:var(--font-mono); font-size:.68rem; opacity:.8; margin-left:.35rem; }
+
+/* ============ PORTFOLIO GRID ============ */
+.pf-grid { display:grid; gap:1.3rem; grid-template-columns:1fr; }
+.pf-card { border-radius:18px; overflow:hidden; transition:transform .35s var(--ease), box-shadow .35s, border-color .35s; display:flex; flex-direction:column; animation:fadeUp .5s var(--ease) backwards; }
+.pf-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-2); border-color:rgba(0,191,255,.4); }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+.pf-media { position:relative; height:210px; overflow:hidden; cursor:zoom-in; border:none; padding:0; background:#0d1224; width:100%; display:block; }
+.pf-media::before { content:''; position:absolute; inset:0 0 55% 0; z-index:1; background:linear-gradient(180deg, rgba(8,12,32,.72), transparent); pointer-events:none; }
+.pf-media .pf-badge, .pf-media .zoom-hint { z-index:2; }
+.pf-media img { width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .5s var(--ease); }
+.pf-card:hover .pf-media img { transform:scale(1.06); }
+.pf-media .zoom-hint { position:absolute; right:.8rem; bottom:.8rem; display:inline-flex; align-items:center; gap:.4rem; font-family:var(--font-cond); font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; background:rgba(8,12,32,.85); border:1px solid var(--line); padding:.35rem .7rem; border-radius:999px; opacity:0; transition:.3s; }
+.pf-media:hover .zoom-hint, .pf-media:focus-visible .zoom-hint { opacity:1; }
+.pf-media .zoom-hint svg { width:12px; height:12px; color:var(--gold); }
+.pf-badge { position:absolute; top:.9rem; left:.9rem; padding:.3rem .85rem; border-radius:999px; font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(135deg, var(--blue), var(--sky)); color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.4); }
+.pf-badge.badge-gold { background:linear-gradient(135deg, #c9a400, var(--gold)); color:var(--on-gold); }
+html[data-theme="light"] .pf-badge.badge-gold { background:linear-gradient(135deg, #8a6d00, #b3902a); }
+.pf-badge.badge-violet { background:linear-gradient(135deg, #7c5cd6, var(--violet)); }
+.pf-badge.badge-green { background:linear-gradient(135deg, #0e9f6e, var(--green)); color:#06281c; }
+
+/* ============ DOCUMENT CARDS (technical reports) ============ */
+.doc-card { border-left:4px solid var(--green); }
+.doc-body { padding:1.3rem 1.4rem 1.4rem; display:flex; flex-direction:column; flex:1; }
+.doc-top { display:flex; align-items:center; gap:.7rem; margin-bottom:.9rem; }
+.doc-icon { width:44px; height:44px; flex:none; border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(52,211,153,.12); border:1px solid rgba(52,211,153,.4); }
+.doc-icon svg { width:20px; height:20px; color:var(--green); }
+.doc-year { font-family:var(--font-mono); font-size:.78rem; font-weight:700; color:var(--gold); letter-spacing:.06em; }
+.doc-card .pf-badge { position:static; margin-left:auto; }
+.doc-card h3 { font-size:1rem; line-height:1.35; }
+.pf-body { padding:1.4rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
+.pf-body h3 { font-size:1.08rem; font-weight:700; color:var(--text); margin-bottom:.3rem; }
+.pf-meta { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
+.pf-body p { font-size:.88rem; font-weight:300; color:var(--text-2); line-height:1.7; flex:1; }
+.pf-desc.clamped { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.read-more-btn { background:none; border:none; color:var(--sky); font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; cursor:pointer; padding:.3rem 0; margin-top:.2rem; }
+.read-more-btn:hover { color:var(--gold); }
+.pf-actions { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.1rem; }
+.pf-actions .btn { flex:1 1 130px; }
+.pf-card.featured { border:1px solid var(--line-gold); background:linear-gradient(135deg, rgba(255,215,0,.08), rgba(26,31,58,.8)); box-shadow:0 12px 40px rgba(255,215,0,.12), var(--shadow-1); }
+.pf-card.featured .pf-media { height:230px; }
+
+.pf-media.book-cover-media { background:#fff; }
+.pf-media.book-cover-media::before { display:none; }
+.pf-media.book-cover-media img.book-cover { object-fit:contain; padding:.75rem; }
+.pf-media.book-cover-media .pf-badge { background:linear-gradient(135deg, #7c5cd6, var(--violet)); }
+
+.form-group { margin-bottom:1rem; text-align:left; }
+.form-group label { display:block; font-family:var(--font-cond); font-size:.76rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--sky); margin-bottom:.35rem; }
+.form-group input {
+  width:100%; padding:.8rem .95rem; border-radius:11px; color:var(--text);
+  background:var(--input-bg); border:1.5px solid var(--line);
+  font-family:var(--font-body); font-size:.94rem; transition:.25s;
+}
+.form-group input::placeholder { color:var(--text-3); }
+.form-group input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(255,215,0,.18); }
+
+/* ============ LEAD CAPTURE MODAL ============ */
+.lead-modal { position:fixed; inset:0; z-index:1400; display:flex; align-items:center; justify-content:center; padding:1rem; background:rgba(4,6,16,.86); backdrop-filter:blur(8px); opacity:0; visibility:hidden; transition:.3s; }
+.lead-modal.show { opacity:1; visibility:visible; }
+.lead-card { width:min(440px, 100%); max-height:92dvh; overflow-y:auto; border-radius:20px; padding:1.8rem; position:relative; transform:translateY(18px) scale(.97); transition:.35s var(--ease); }
+.lead-modal.show .lead-card { transform:none; }
+.lead-close { position:absolute; top:.9rem; right:.9rem; width:36px; height:36px; border-radius:50%; background:var(--pill-bg); border:1px solid var(--line); color:var(--text); cursor:pointer; }
+.lead-icon { width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center; background:rgba(255,215,0,.12); border:1px solid var(--line-gold); margin-bottom:1rem; }
+.lead-icon svg { width:22px; height:22px; color:var(--gold); }
+.lead-card h2 { font-size:1.25rem; font-weight:800; margin-bottom:.4rem; padding-right:2rem; }
+.lead-sub { font-size:.9rem; font-weight:300; color:var(--text-2); line-height:1.6; margin-bottom:.6rem; }
+.lead-target { font-family:var(--font-cond); font-size:.78rem; font-weight:600; letter-spacing:.06em; color:var(--gold); margin-bottom:1.1rem; }
+.lead-privacy { font-size:.74rem; color:var(--text-3); font-weight:300; margin-top:.8rem; line-height:1.5; }
+.lead-status { display:none; margin-top:.8rem; padding:.7rem .9rem; border-radius:10px; font-size:.85rem; }
+.lead-status.error { display:block; background:rgba(248,113,113,.12); border:1px solid var(--red); color:var(--red); }
+.lead-status.success { display:block; background:rgba(52,211,153,.12); border:1px solid var(--green); color:var(--green); }
+@media (max-width:520px) {
+  .lead-modal { padding:0; align-items:stretch; }
+  .lead-card { width:100%; max-width:none; height:100dvh; max-height:none; border-radius:0; display:flex; flex-direction:column; justify-content:center; }
+}
+
+/* ============ LIGHTBOX ============ */
+.lightbox { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; padding:1rem; background:rgba(4,7,18,.92); backdrop-filter:blur(12px); opacity:0; visibility:hidden; transition:.35s; }
+.lightbox.show { opacity:1; visibility:visible; }
+.lb-frame { width:min(1080px, 100%); max-height:92dvh; display:flex; flex-direction:column; border-radius:18px; overflow:hidden; transform:scale(.96) translateY(14px); transition:.35s var(--ease); }
+.lightbox.show .lb-frame { transform:none; }
+.lb-media { background:#070b1d; display:flex; align-items:center; justify-content:center; min-height:0; flex:1; }
+.lb-media img { max-width:100%; max-height:68dvh; object-fit:contain; }
+.lb-caption { display:flex; flex-wrap:wrap; align-items:center; gap:.8rem; padding:1rem 1.2rem; background:rgba(10,14,39,.95); border-top:1px solid var(--line); }
+.lb-caption .lb-title { font-family:var(--font-display); font-weight:700; font-size:.98rem; flex:1 1 220px; color:#fff; }
+.lb-caption .lb-meta { font-family:var(--font-cond); font-size:.74rem; letter-spacing:.08em; text-transform:uppercase; color:#FFD700; }
+.lb-close { position:absolute; top:1rem; right:1rem; width:44px; height:44px; border-radius:50%; background:rgba(10,14,39,.9); border:1px solid var(--line); color:#fff; font-size:1.2rem; cursor:pointer; z-index:2; transition:.25s; }
+.lb-close:hover { background:var(--gold); color:var(--on-gold); transform:rotate(90deg); }
+
+/* ============ CTA STRIP ============ */
+.cta-strip { border-block:1px solid var(--divider); background:linear-gradient(135deg, rgba(0,102,255,.12), rgba(0,191,255,.05)); text-align:center; }
+.cta-strip .btn { margin:.4rem; }
+
+/* ============ FOOTER (shared) ============ */
+.site-footer { background:var(--footer-bg); border-top:1px solid var(--footer-border); padding:3.2rem 0 1.6rem; margin-top:2rem; }
+.footer-grid { display:grid; gap:2rem; margin-bottom:2.2rem; }
+.footer-brand p { font-size:.86rem; font-weight:300; color:var(--text-3); line-height:1.7; margin-top:.8rem; max-width:340px; }
+.footer-col h4 { font-family:var(--font-cond); font-size:.74rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.9rem; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:.45rem; }
+.footer-col a { color:var(--text-3); text-decoration:none; font-size:.88rem; transition:.2s; }
+.footer-col a:hover { color:var(--sky); padding-left:4px; }
+.socials { display:flex; gap:.7rem; margin-top:1.1rem; }
+.socials a { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, var(--blue), var(--sky)); transition:transform .3s var(--ease), box-shadow .3s; }
+.socials a svg { width:18px; height:18px; fill:#fff; }
+.socials a:hover { transform:translateY(-4px) rotate(8deg); box-shadow:0 10px 24px rgba(0,191,255,.45); }
+.footer-base { border-top:1px solid var(--divider); padding-top:1.4rem; display:flex; flex-direction:column; gap:.8rem; align-items:center; text-align:center; }
+.footer-base p { font-size:.8rem; color:var(--text-3); font-weight:300; }
+.footer-legal a, .linklike { color:var(--text-3); font-size:.8rem; text-decoration:none; background:none; border:none; cursor:pointer; font-family:inherit; padding:0; }
+.footer-legal a:hover, .linklike:hover { color:var(--gold); text-decoration:underline; }
+.pwa-badge { display:inline-flex; align-items:center; gap:.45rem; font-family:var(--font-cond); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--green); border:1px solid rgba(52,211,153,.4); background:rgba(52,211,153,.08); padding:.3rem .8rem; border-radius:999px; }
+.pwa-badge svg { width:13px; height:13px; }
+
+/* ============ FLOATING ============ */
+.back-to-top { position:fixed; bottom:1.2rem; right:1.2rem; z-index:900; width:48px; height:48px; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg, var(--blue), var(--sky)); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transform:translateY(12px); transition:.3s; box-shadow:0 8px 22px rgba(0,102,255,.4); }
+.back-to-top.visible { opacity:1; visibility:visible; transform:none; }
+.back-to-top svg { width:20px; height:20px; fill:#fff; }
+.toast { position:fixed; top:88px; left:50%; transform:translate(-50%, -16px); z-index:1300; padding:.75rem 1.3rem; border-radius:999px; font-family:var(--font-cond); font-size:.85rem; letter-spacing:.05em; opacity:0; visibility:hidden; transition:.35s var(--ease); white-space:nowrap; color:var(--text); }
+.toast.show { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+
+/* ============ COOKIE CONSENT (shared) ============ */
+.consent-banner { position:fixed; bottom:.75rem; left:50%; transform:translate(-50%, 140%); z-index:1150; width:min(560px, calc(100% - 1.5rem)); border-radius:16px; padding:.9rem 1.05rem; transition:transform .5s var(--ease); }
+.consent-banner.show { transform:translate(-50%, 0); }
+.consent-close { position:absolute; top:.55rem; right:.55rem; width:30px; height:30px; border-radius:50%; background:var(--pill-bg); border:1px solid var(--line); color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.consent-close svg { width:13px; height:13px; }
+.consent-banner h3 { font-size:.92rem; font-weight:700; display:flex; align-items:center; gap:.5rem; margin-bottom:.3rem; color:var(--text); padding-right:1.8rem; }
+.consent-banner h3 svg { width:16px; height:16px; color:var(--gold); }
+.consent-banner p { font-size:.78rem; font-weight:300; color:var(--text-2); line-height:1.55; margin-bottom:.7rem; }
+.consent-banner p a { color:var(--sky); }
+.consent-actions { display:flex; flex-wrap:wrap; gap:.5rem; }
+.consent-actions .btn { min-height:38px; padding:.45rem 1rem; font-size:.76rem; flex:1 1 130px; }
+.consent-prefs { display:none; margin:.9rem 0; padding:.9rem 1rem; border:1px dashed var(--line); border-radius:12px; }
+.consent-prefs.open { display:block; }
+.pref-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.45rem 0; }
+.pref-row + .pref-row { border-top:1px solid var(--divider); }
+.pref-row .pr-name { font-family:var(--font-cond); font-size:.82rem; font-weight:600; letter-spacing:.06em; }
+.pref-row .pr-desc { font-size:.72rem; color:var(--text-3); font-weight:300; }
+.switch { position:relative; width:46px; height:26px; flex:none; }
+.switch input { opacity:0; width:100%; height:100%; position:absolute; margin:0; cursor:pointer; z-index:2; }
+.switch .track { position:absolute; inset:0; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid var(--line); transition:.25s; }
+.switch .track::after { content:''; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:#fff; transition:.25s var(--ease); }
+.switch input:checked + .track { background:linear-gradient(135deg, var(--blue), var(--sky)); border-color:transparent; }
+.switch input:checked + .track::after { transform:translateX(20px); }
+.switch input:disabled { cursor:not-allowed; }
+.switch input:disabled + .track { background:rgba(255,215,0,.25); border-color:var(--line-gold); }
+
+/* ============ REVEAL / RESPONSIVE ============ */
+html.js .reveal { opacity:0; transform:translateY(34px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+html.js .reveal.in { opacity:1; transform:none; }
+@media (min-width:640px) {
+  .pf-grid { grid-template-columns:repeat(2, 1fr); }
+  .stat-grid { grid-template-columns:repeat(4, 1fr); }
+  .pf-card.featured { grid-column:span 2; }
+  .pf-card.featured .pf-media { height:260px; }
+}
+@media (min-width:900px) {
+  .nav-links { display:flex; }
+  .nav-cta { display:flex; }
+  .menu-btn { display:none; }
+  .footer-grid { grid-template-columns:1.4fr 1fr 1fr 1fr; }
+  .footer-base { flex-direction:row; justify-content:space-between; }
+}
+@media (min-width:1200px) {
+  .pf-grid { grid-template-columns:repeat(3, 1fr); }
+  .pf-card.featured { grid-column:span 3; flex-direction:row; }
+  .pf-card.featured .pf-media { width:46%; height:auto; min-height:280px; flex:none; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+  html.js .reveal { opacity:1; transform:none; }
+}
+@media print {
+  .site-header, .back-to-top, .consent-banner, .filter-bar, .lightbox, .hero-banner, .cta-strip { display:none !important; }
+  body { background:#fff; color:#000; }
+  body::before { display:none; }
+  .glass, .glass-strong, .glass-gold { background:#fff; border:1px solid #999; box-shadow:none; }
+  .pf-body h3, .section-title, .hero h1 { color:#000; -webkit-text-fill-color:#000; }
+}
+</style>
+<script type="module">
+  // Supabase client — used by the lead-capture form (see leadCaptureInit below).
+  // The anon/public key is safe to ship in client-side code; access is
+  // governed entirely by the RLS policies on the `leads` table in Supabase.
+  // If this fails to load (offline, blocked script, etc.) the lead-capture
+  // form still works and falls back to a local-only record.
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+  window.supabase = createClient(
+    'https://cwmmcktsnomlpbxbsntp.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3bW1ja3Rzbm9tbHBieGJzbnRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NDE3OTcsImV4cCI6MjA4NTUxNzc5N30.j6VnkA8Pbodd13osqTj9Xbe9NSn1U1sbG8ofCNT5ns0'
+  );
+</script>
+<base target="_blank">
 </head>
 <body>
-<a class="skip" href="#main">Skip to portfolio</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-a11y" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2.2"/><path d="M4 9.5c2.6.8 5.3 1.2 8 1.2s5.4-.4 8-1.2M12 10.8v5.2m0 0-3.5 6m3.5-6 3.5 6"/></symbol>
+    <symbol id="i-speak" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5 2.5 2.5 0 0 0 6.5 19H19"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
+    <symbol id="i-zoom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6m-3-3v6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4h6v6M20 4 10 14M9 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V6m0 14h16M8 16v-5m4 5V8m4 8v-3"/></symbol>
+    <symbol id="i-app" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10 5h4M12 18.5h.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
 <header class="site-header">
-  <div class="nav">
-    <a class="brand" href="index.html" aria-label="Alvin M. Silva home">
-      <img src="assets/logo-192.png" alt="A. Silva Innovations" width="40" height="40">
-      <span><strong>Alvin M. Silva, MDM</strong><span>Systems · Resilience · Strategic Innovation</span></span>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="brand" aria-label="Alvin Silva Home">
+      <img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="eager">
+      <span>
+        <span class="brand-name">ALVIN M. SILVA</span><br>
+        <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
+      </span>
     </a>
-    <nav class="navlinks" aria-label="Primary navigation">
-      <a href="index.html">Profile</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#visualizations">Visualizations</a>
-      <a href="#publications">Publications</a>
-    </nav>
-    <div class="nav-actions">
-      <button class="nav-btn" id="theme" type="button" data-tooltip="Toggle light / dark theme" aria-label="Toggle theme">
-        <svg class="icon"><use href="#i-moon"/></svg>
+
+    <ul class="nav-links">
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">The Professional</div>
+          <a class="drop-item" href="index.html#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
+          <a class="drop-item" href="index.html#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
+        </div>
+      </li>
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Projects <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">What I Deliver</div>
+          <a class="drop-item" href="index.html#value" role="menuitem"><svg><use href="#i-target"/></svg> See the Value</a>
+          <a class="drop-item" href="index.html#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
+          <a class="drop-item" href="#portfolio" data-filter-link="all" role="menuitem"><svg><use href="#i-star"/></svg> Explore Projects</a>
+        </div>
+      </li>
+      <li><a href="portfolio.html" class="drop-btn" style="text-decoration:none" aria-current="page">Portfolio</a></li>
+      <li><a href="#portfolio" class="drop-btn" style="text-decoration:none" data-filter-link="publications">Publications</a></li>
+      <li><a href="index.html#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Light/Dark Mode">
+        <svg class="icon-moon"><use href="#i-moon"/></svg>
+        <svg class="icon-sun"><use href="#i-sun"/></svg>
       </button>
-      <button class="nav-btn menu" id="menu" type="button" data-tooltip="Open navigation" aria-label="Open navigation" aria-expanded="false">
-        <svg class="icon"><use href="#i-menu"/></svg>
-      </button>
+      <a href="#portfolio" class="btn btn-primary btn-sm"><span>Explore My Work</span></a>
     </div>
-  </div>
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    <a href="index.html">Profile</a><a href="#portfolio">Portfolio</a><a href="#visualizations">Visualizations</a><a href="#publications">Publications</a>
-    <button id="mobile-theme" type="button">Toggle theme</button>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
 
-<!-- Reusable, consistent SVG icon definitions. -->
-<svg aria-hidden="true" width="0" height="0" style="position:absolute">
-  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M3 3l7 7M16 21h5v-5M21 21l-7-7M21 8V3h-5M21 3l-7 7M3 16v5h5M3 21l7-7"/></symbol>
-  <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
-  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
-  <symbol id="i-accessibility" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5h14M12 8.5v12M8 20l4-6 4 6M8 12l-3 5M16 12l3 5"/></symbol>
-</svg>
+<div class="overlay" id="overlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <div class="mm-head">
+    <a href="index.html" aria-label="Alvin Silva Home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="52" height="52"></a>
+    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">Navigate</div>
+    <a class="mm-link" href="index.html#about"><svg><use href="#i-user"/></svg> About</a>
+    <a class="mm-link" href="index.html#expertise"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
+    <a class="mm-link" href="#portfolio" data-filter-link="all"><svg><use href="#i-star"/></svg> Explore Projects</a>
+    <a class="mm-link" href="portfolio.html" aria-current="page"><svg><use href="#i-book"/></svg> Portfolio</a>
+    <a class="mm-link" href="#portfolio" data-filter-link="publications"><svg><use href="#i-book"/></svg> Publications</a>
+    <a class="mm-link" href="index.html#contact"><svg><use href="#i-mail"/></svg> Contact</a>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-title">External</div>
+    <a class="mm-link" href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-shield"/></svg> Policies ↗</a>
+    <a class="mm-link" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
+    <a class="mm-link" href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-fb"/></svg> Facebook ↗</a>
+    <div class="mm-theme-row">
+      <span class="mm-group-title" style="margin:0">Light/Dark Mode</span>
+      <button class="theme-toggle" id="themeToggleMobile" aria-label="Switch to light mode" aria-pressed="false">
+        <svg class="icon-moon"><use href="#i-moon"/></svg>
+        <svg class="icon-sun"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
 
 <main id="main">
+
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy glass metal-edge">
-      <div class="kicker">Portfolio intelligence · 18 years · 15 countries</div>
-      <h1>Turning complex development challenges into <span class="gradient-text">resilient systems.</span></h1>
-      <p>Development Management Professional · Disaster Risk Reduction and Climate Change Adaptation Consultant · Systems Innovation Practitioner · Certified International Humanitarian.</p>
-      <p>Selected work across strategy, climate resilience, humanitarian practice, institutional transformation, capacity development, digital platforms, and sustainability.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#portfolio">Explore the work <svg class="icon sm"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-secondary" href="#visualizations">See the systems <svg class="icon sm"><use href="#i-grid"/></svg></a>
+  <div class="hero-banner">
+    <img src="assets/hero-portrait-banner.jpg" alt="Alvin M. Silva portrait over a digital resilience-systems backdrop" fetchpriority="high" decoding="async">
+    <div class="hero-tagline"><span class="kicker" style="margin-bottom:0">MDM · Resilience · Systems Innovation</span></div>
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <a class="breadcrumb" href="index.html"><svg><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Portfolio</a>
+      <p class="kicker">The Work</p>
+      <h1>Alvin M. Silva — <span class="grad-text">Building Resilient Futures</span></h1>
+      <p class="hero-sub">Development Management · Systems Innovation · Community Resilience. Thirty-two documented works that moved systems — from the <strong style="color:var(--gold)">BIRD 2026–2035 Investment Roadmapping Platform</strong> to national strategic plans, a 13-volume technical report library, and three published books. Tap any image to view it full-screen.</p>
+      <div class="cta-row" style="display:flex;justify-content:center;margin-bottom:1.6rem">
+        <a href="#portfolio" class="btn btn-primary"><span>Discover My Portfolio</span><svg><use href="#i-arrow"/></svg></a>
       </div>
-    </div>
-    <figure class="hero-visual glass metal-edge">
-      <button class="hero-image-open" type="button" data-image="assets/hero-banner.jpg" data-title="Alvin M. Silva — Portfolio Banner" data-caption="Strategic innovation · resilience · sustainable development" data-tooltip="Open hero image" aria-label="Open hero image"><img src="assets/hero-banner.jpg" alt="Alvin Silva professional portfolio banner" width="1600" height="900" loading="eager"></button>
-      <figcaption class="hero-caption">
-        <div><strong>Alvin M. Silva, MDM</strong><span>Strategic innovation · resilience · sustainable development</span></div>
-        <span class="status"><i></i> Active professional portfolio</span>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="evidence-title">
-  <div class="container">
-    <div class="section-head">
-      <div><span class="eyebrow">Evidence dashboard</span><h2 id="evidence-title">Experience, translated into evidence.</h2></div>
-      <p>Selected indicators from the current professional knowledge base.</p>
-    </div>
-    <div class="metrics">
-      <div class="metric glass metal-edge" data-tooltip="Documented total professional experience"><strong>18+</strong><span>Years experience</span></div>
-      <div class="metric glass metal-edge" data-tooltip="Countries represented in the documented portfolio"><strong>15</strong><span>Countries</span></div>
-      <div class="metric glass metal-edge" data-tooltip="Climate-smart funding designed in the documented profile"><strong>₱190M</strong><span>Funding designed</span></div>
-      <div class="metric glass metal-edge" data-tooltip="Documented households reached through professional work"><strong>50,000+</strong><span>Households reached</span></div>
-      <div class="metric glass metal-edge" data-tooltip="Strategic plans facilitated in the professional record"><strong>20</strong><span>Plans facilitated</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="portfolio" aria-labelledby="portfolio-title">
-  <div class="container">
-    <div class="section-head">
-      <div><span class="eyebrow">Selected portfolio</span><h2 id="portfolio-title">Work with a visible trail of evidence.</h2></div>
-      <p>Search, filter, open the visuals, and inspect the work by domain.</p>
-    </div>
-
-    <div class="control-bar glass metal-edge">
-      <label><span class="sr-only">Search portfolio</span><input id="search" class="search" type="search" placeholder="Search projects, sectors, methods, organizations…"></label>
-      <div class="filters" id="filters" role="group" aria-label="Portfolio filters">
-        <button class="filter active" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter" data-filter="strategy" aria-pressed="false">Strategy</button>
-        <button class="filter" data-filter="resilience" aria-pressed="false">Resilience</button>
-        <button class="filter" data-filter="platform" aria-pressed="false">Platforms</button>
-        <button class="filter" data-filter="humanitarian" aria-pressed="false">Humanitarian</button>
-        <button class="filter" data-filter="publication" aria-pressed="false">Publications</button>
+      <div class="stat-grid">
+        <div><div class="stat-num"><span class="count" data-to="32">32</span></div><div class="stat-label">Featured Works</div></div>
+        <div><div class="stat-num"><span class="count" data-to="6">6</span></div><div class="stat-label">Digital Platforms</div></div>
+        <div><div class="stat-num"><span class="count" data-to="13">13</span></div><div class="stat-label">Technical Reports</div></div>
+        <div><div class="stat-num"><span class="count" data-to="3">3</span></div><div class="stat-label">Books &amp; Manuals</div></div>
       </div>
-    </div>
-
-    <div class="projects" id="projects">
-      <article class="project glass metal-edge" data-cat="strategy platform" data-search="BIRD Bangsamoro Investment Roadmap Development 2026 2035 BARMM BoI MTIT investment roadmap">
-        <div class="project-media"><img src="assets/card-bird.jpg" alt="BIRD Bangsamoro Investment Roadmap" loading="lazy"><span class="project-badge">STRATEGY · PLATFORM</span><button class="project-open" data-image="assets/card-bird.jpg" data-title="BIRD 2026–2035" data-caption="Bangsamoro Investment and Roadmap for Development" data-tooltip="View project image" aria-label="View BIRD project image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Investment strategy</span><h3>BIRD 2026–2035</h3><p>A decade-scale investment and development roadmap for the Bangsamoro context.</p><div class="tags"><span class="tag">Bangsamoro</span><span class="tag">Investment</span><span class="tag">Roadmap</span></div><div class="project-footer"><span>2026–2035</span><button data-scroll="#visualizations">System view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="resilience platform" data-search="DDRiVE-M disaster risk reduction resilience vulnerability exposure AI platform RA 10121 ISO 31000 UNDRR">
-        <div class="project-media"><img src="assets/1-apm-ldi-banner.png" alt="DDRiVE-M and systems innovation banner" loading="lazy"><span class="project-badge">RESILIENCE · DIGITAL</span><button class="project-open" data-image="assets/1-apm-ldi-banner.png" data-title="DDRiVE-M" data-caption="Digital risk, resilience, vulnerability and exposure practice" data-tooltip="View project image" aria-label="View DDRiVE-M image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Risk intelligence</span><h3>DDRiVE-M Platform</h3><p>Digital systems innovation for disaster risk, resilience, vulnerability, exposure and decision support.</p><div class="tags"><span class="tag">DRR</span><span class="tag">AI</span><span class="tag">Digital</span></div><div class="project-footer"><span>Platform</span><button data-scroll="#visualizations">System view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="strategy platform" data-search="Strat Planner Pro AI PWA planning strategy diagnosis execution">
-        <div class="project-media"><img src="assets/2-designing-for-sf-15.png" alt="Strategic planning design visual" loading="lazy"><span class="project-badge">STRATEGY · DIGITAL</span><button class="project-open" data-image="assets/2-designing-for-sf-15.png" data-title="Strat Planner Pro" data-caption="Strategy diagnosis, design and execution architecture" data-tooltip="View project image" aria-label="View Strat Planner Pro image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Strategic planning platform</span><h3>Strat Planner Pro</h3><p>A digital planning architecture connecting diagnosis, strategy design, execution and learning.</p><div class="tags"><span class="tag">PWA</span><span class="tag">Strategy</span><span class="tag">Execution</span></div><div class="project-footer"><span>Platform</span><button data-scroll="#method">Method view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="resilience strategy" data-search="Balatan Climate Resilience Hub 190M PSF Camarines Sur coastal SOLHUM climate smart">
-        <div class="project-media"><img src="assets/cover-building-resilience.jpg" alt="Building resilience project cover" loading="lazy"><span class="project-badge">CLIMATE · RESILIENCE</span><button class="project-open" data-image="assets/cover-building-resilience.jpg" data-title="Balatan Climate Resilience Hub" data-caption="₱190M climate-smart resilience project design" data-tooltip="View project image" aria-label="View climate resilience project image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Climate adaptation</span><h3>Balatan Climate Resilience Hub</h3><p>Climate-smart, community-based resilience work documented in the professional portfolio.</p><div class="tags"><span class="tag">₱190M</span><span class="tag">PSF</span><span class="tag">CCA</span></div><div class="project-footer"><span>2024</span><button data-scroll="#visualizations">Risk view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="strategy" data-search="TESDA Strategic Plan 2026 2030 WorldSkills Philippines TVET national strategy">
-        <div class="project-media"><img src="assets/cover-policy-report.jpg" alt="Strategic policy report cover" loading="lazy"><span class="project-badge">INSTITUTIONAL</span><button class="project-open" data-image="assets/cover-policy-report.jpg" data-title="TESDA Strategic Plan 2026–2030" data-caption="National TVET and WorldSkills strategic planning" data-tooltip="View project image" aria-label="View TESDA strategy image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Institutional strategy</span><h3>TESDA Strategic Plan 2026–2030</h3><p>National strategic planning work connected with WorldSkills Philippines and TESDA.</p><div class="tags"><span class="tag">TESDA</span><span class="tag">TVET</span><span class="tag">Strategy</span></div><div class="project-footer"><span>2026–2030</span><button data-scroll="#method">Method view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="resilience humanitarian" data-search="IRRM BARMM USAID Action Against Hunger food security livelihoods WASH Bangsamoro">
-        <div class="project-media"><img src="assets/cover-irrm-barmm.jpg" alt="IRRM BARMM project cover" loading="lazy"><span class="project-badge">HUMANITARIAN</span><button class="project-open" data-image="assets/cover-irrm-barmm.jpg" data-title="IRRM BARMM" data-caption="Integrated risk and resilience management in the Bangsamoro" data-tooltip="View project image" aria-label="View IRRM image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Humanitarian resilience</span><h3>IRRM BARMM</h3><p>Risk and resilience practice across food security, livelihoods, WASH and humanitarian systems.</p><div class="tags"><span class="tag">USAID</span><span class="tag">BARMM</span><span class="tag">IRRM</span></div><div class="project-footer"><span>2022</span><button data-scroll="#visualizations">Risk view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="resilience humanitarian" data-search="CONSENT DRR Review Philippine Red Cross German Red Cross conflict sensitive Mindanao">
-        <div class="project-media"><img src="assets/cover-consent-drr.jpg" alt="CONSENT DRR review cover" loading="lazy"><span class="project-badge">DRR · REVIEW</span><button class="project-open" data-image="assets/cover-consent-drr.jpg" data-title="CONSENT DRR Review" data-caption="Conflict-sensitive disaster risk reduction review" data-tooltip="View project image" aria-label="View CONSENT image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Disaster risk reduction</span><h3>CONSENT DRR Review</h3><p>Mid-term review work connecting disaster risk reduction with conflict-sensitive practice in Mindanao.</p><div class="tags"><span class="tag">PRC</span><span class="tag">GRC</span><span class="tag">DRR</span></div><div class="project-footer"><span>2021</span><button data-scroll="#visualizations">Risk view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="resilience strategy" data-search="Risk-Informed CDP Salcedo Eastern Samar LGU CCA DRR comprehensive development plan">
-        <div class="project-media"><img src="assets/cover-cdp-salcedo.jpg" alt="Risk-informed CDP Salcedo cover" loading="lazy"><span class="project-badge">LGU · PLANNING</span><button class="project-open" data-image="assets/cover-cdp-salcedo.jpg" data-title="Risk-Informed CDP Salcedo" data-caption="Climate and disaster risk-informed local development planning" data-tooltip="View project image" aria-label="View Salcedo CDP image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Local development planning</span><h3>Risk-Informed CDP Salcedo</h3><p>Integrating climate and disaster risk into comprehensive development planning for an LGU.</p><div class="tags"><span class="tag">LGU</span><span class="tag">CCA</span><span class="tag">DRR</span></div><div class="project-footer"><span>2023</span><button data-scroll="#method">Method view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="humanitarian publication" data-search="MHPSS Intervention Module WHO DOH PEMAT emergency psychosocial mental health">
-        <div class="project-media"><img src="assets/cover-mhpss-module.jpg" alt="MHPSS intervention module cover" loading="lazy"><span class="project-badge">HEALTH · HUMANITARIAN</span><button class="project-open" data-image="assets/cover-mhpss-module.jpg" data-title="MHPSS Intervention Module" data-caption="Mental health and psychosocial support intervention module" data-tooltip="View project image" aria-label="View MHPSS image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Humanitarian capacity</span><h3>MHPSS Intervention Module</h3><p>Capacity-building and intervention design for emergency mental health and psychosocial support.</p><div class="tags"><span class="tag">WHO</span><span class="tag">DOH</span><span class="tag">MHPSS</span></div><div class="project-footer"><span>2023</span><button data-scroll="#method">Method view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="platform" data-search="MSME AI automation small medium enterprise digital automation report Philippines">
-        <div class="project-media"><img src="assets/cover-msme-ai-automation.jpg" alt="MSME AI automation cover" loading="lazy"><span class="project-badge">MSME · AI</span><button class="project-open" data-image="assets/cover-msme-ai-automation.jpg" data-title="MSME AI Automation" data-caption="Digital transformation and AI automation for SMEs" data-tooltip="View project image" aria-label="View MSME AI image"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Enterprise innovation</span><h3>MSME AI Automation</h3><p>Applied systems innovation for small and medium enterprises through digital and AI-enabled process improvement.</p><div class="tags"><span class="tag">SME</span><span class="tag">AI</span><span class="tag">Automation</span></div><div class="project-footer"><span>Innovation</span><button data-scroll="#visualizations">Systems view →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="publication resilience" data-search="Personal Resilience Path to Oneness book resilience">
-        <div class="project-media"><img src="assets/cover-personal-resilience.jpg" alt="Personal Resilience book cover" loading="lazy"><span class="project-badge">PUBLICATION</span><button class="project-open" data-image="assets/cover-personal-resilience.jpg" data-title="Personal Resilience: The Path to Oneness" data-caption="Published resilience work" data-tooltip="View publication cover" aria-label="View Personal Resilience cover"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Book</span><h3>Personal Resilience: The Path to Oneness</h3><p>A published work extending resilience thinking into personal development and reflective practice.</p><div class="tags"><span class="tag">Book</span><span class="tag">Resilience</span></div><div class="project-footer"><span>2025</span><button data-scroll="#publications">Publication shelf →</button></div></div>
-      </article>
-
-      <article class="project glass metal-edge" data-cat="publication resilience" data-search="Resilient Futures Nurturing Oneness Education book">
-        <div class="project-media"><img src="assets/cover-resilient-futures.jpg" alt="Resilient Futures cover" loading="lazy"><span class="project-badge">PUBLICATION</span><button class="project-open" data-image="assets/cover-resilient-futures.jpg" data-title="Resilient Futures" data-caption="Nurturing oneness in education" data-tooltip="View publication cover" aria-label="View Resilient Futures cover"><svg class="icon sm"><use href="#i-expand"/></svg></button></div>
-        <div class="project-body"><span class="project-type">Book</span><h3>Resilient Futures</h3><p>Thought leadership connecting resilience, education, systems and future-oriented practice.</p><div class="tags"><span class="tag">Education</span><span class="tag">Futures</span></div><div class="project-footer"><span>2024</span><button data-scroll="#publications">Publication shelf →</button></div></div>
-      </article>
-    </div>
-    <p id="empty" class="glass" style="display:none;padding:22px;border-radius:16px;color:var(--text-3);text-align:center">No matching portfolio evidence found.</p>
-  </div>
-</section>
-
-<section class="section" id="visualizations" aria-labelledby="viz-title">
-  <div class="container">
-    <div class="section-head">
-      <div><span class="eyebrow">Visual intelligence</span><h2 id="viz-title">See the thinking behind the work.</h2></div>
-      <p>Visuals are not decoration here: they expose the process, feedback loops and leverage logic behind systems practice.</p>
-    </div>
-
-    <div class="visual-shell glass metal-edge">
-      <div class="visual-grid">
-        <div class="diagram" aria-label="Systems innovation feedback visualization">
-          <svg viewBox="0 0 720 390" role="img">
-            <defs>
-              <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#54e6ff"/></marker>
-            </defs>
-            <path class="diagram-line" marker-end="url(#arrow)" d="M140 95 C240 20 370 20 480 92"/>
-            <path class="diagram-line" marker-end="url(#arrow)" d="M480 92 C590 145 590 245 480 300"/>
-            <path class="diagram-line" marker-end="url(#arrow)" d="M480 300 C350 355 230 355 140 292"/>
-            <path class="diagram-line" marker-end="url(#arrow)" d="M140 292 C60 235 60 150 140 95"/>
-            <path class="diagram-line" marker-end="url(#arrow)" d="M205 95 C290 125 380 125 445 95" opacity=".55"/>
-            <circle cx="140" cy="95" r="54" class="diagram-node"/><text x="140" y="91" text-anchor="middle" class="diagram-label">SYSTEM</text><text x="140" y="107" text-anchor="middle" class="diagram-label">CONTEXT</text>
-            <circle cx="480" cy="92" r="54" class="diagram-node hot"/><text x="480" y="88" text-anchor="middle" class="diagram-label">LEVERAGE</text><text x="480" y="104" text-anchor="middle" class="diagram-label">POINTS</text>
-            <circle cx="480" cy="300" r="54" class="diagram-node"/><text x="480" y="296" text-anchor="middle" class="diagram-label">ACTION</text><text x="480" y="312" text-anchor="middle" class="diagram-label">ARCHITECTURE</text>
-            <circle cx="140" cy="292" r="54" class="diagram-node"/><text x="140" y="288" text-anchor="middle" class="diagram-label">LEARNING</text><text x="140" y="304" text-anchor="middle" class="diagram-label">&amp; ADAPTATION</text>
-            <circle cx="310" cy="195" r="68" fill="rgba(84,230,255,.04)" stroke="rgba(255,214,90,.6)" stroke-width="1.4" filter="url(#glow)"/>
-            <text x="310" y="190" text-anchor="middle" class="diagram-label">RESILIENT</text><text x="310" y="206" text-anchor="middle" class="diagram-label">OUTCOMES</text>
-            <text x="360" y="42" class="diagram-label" fill="#54e6ff">feedback</text>
-            <text x="584" y="199" class="diagram-label" fill="#ffd65a">intervention</text>
-            <text x="345" y="350" class="diagram-label" fill="#54e6ff">evidence</text>
-            <text x="72" y="198" class="diagram-label" fill="#4ee0a0">adapt</text>
-          </svg>
-        </div>
-        <div class="visual-side">
-          <article class="insight glass">
-            <h3>Systems lens</h3>
-            <p>Map actors, incentives, constraints, dependencies and feedback loops before choosing an intervention.</p>
-            <div class="legend"><span><i class="dot cyan"></i>system flow</span><span><i class="dot gold"></i>leverage</span><span><i class="dot green"></i>learning</span></div>
-          </article>
-          <article class="insight glass">
-            <h3>Risk lens</h3>
-            <p>Connect hazard, exposure, vulnerability, capacity and institutional response to the decision that actually matters.</p>
-          </article>
-          <article class="insight glass">
-            <h3>Innovation lens</h3>
-            <p>Move from isolated fixes toward platforms, feedback, capability and governance that can keep adapting after the project ends.</p>
-          </article>
-          <article class="insight glass">
-            <h3>Futures lens</h3>
-            <p>Stress-test strategies against alternative futures, shocks, second-order effects and implementation constraints.</p>
-          </article>
-        </div>
-      </div>
+      <p style="text-align:center;margin-top:1.2rem;font-size:.85rem;color:var(--text-3);display:flex;align-items:center;justify-content:center;gap:.5rem">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 0 3px rgba(52,211,153,.25)"></span>
+        Trusted by leaders and communities — <span id="visitorCount">see live engagement below</span>
+      </p>
     </div>
   </div>
 </section>
 
-<section class="section" id="method" aria-labelledby="method-title">
-  <div class="container">
-    <div class="section-head">
-      <div><span class="eyebrow">Practice architecture</span><h2 id="method-title">A repeatable pathway from diagnosis to delivery.</h2></div>
-      <p>The visual method aligns with the systems-oriented assets in the portfolio.</p>
+<!-- ============ PORTFOLIO ============ -->
+<section class="section" id="portfolio" style="padding-top:1rem">
+  <div class="wrap">
+    <div class="filter-bar" role="group" aria-label="Filter portfolio items">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count-pill">32</span></button>
+      <button class="filter-btn" data-filter="platforms" aria-pressed="false">Platforms <span class="count-pill">6</span></button>
+      <button class="filter-btn" data-filter="consulting" aria-pressed="false">Consulting <span class="count-pill">10</span></button>
+      <button class="filter-btn" data-filter="publications" aria-pressed="false">Publications <span class="count-pill">3</span></button>
+      <button class="filter-btn" data-filter="reports" aria-pressed="false">Reports <span class="count-pill">13</span></button>
     </div>
-    <div class="method">
-      <article class="method-step glass metal-edge"><span class="num">01</span><h3>Frame</h3><p>Clarify the challenge, decision and system boundary.</p></article>
-      <article class="method-step glass metal-edge"><span class="num">02</span><h3>Explore</h3><p>Surface actors, patterns, evidence and competing mental models.</p></article>
-      <article class="method-step glass metal-edge"><span class="num">03</span><h3>Diagnose</h3><p>Trace feedback loops, vulnerabilities and leverage points.</p></article>
-      <article class="method-step glass metal-edge"><span class="num">04</span><h3>Design</h3><p>Co-create options, scenarios, governance and delivery pathways.</p></article>
-      <article class="method-step glass metal-edge"><span class="num">05</span><h3>Deliver</h3><p>Translate strategy into owners, milestones, resources and indicators.</p></article>
-      <article class="method-step glass metal-edge"><span class="num">06</span><h3>Learn</h3><p>Measure, adapt, document and strengthen the system.</p></article>
-    </div>
+    <div class="pf-grid" id="pfGrid"><!-- cards injected by JS --></div>
   </div>
 </section>
 
-<section class="section" aria-labelledby="process-title">
-  <div class="container">
-    <div class="section-head">
-      <div><span class="eyebrow">Visual archive</span><h2 id="process-title">Systems thinking in diagrams.</h2></div>
-      <p>Selected original visual assets from the portfolio's systems innovation and strategy work.</p>
-    </div>
-    <div class="gallery">
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/3-paradign-shift.png" alt="Paradigm shift visualization" loading="lazy"><figcaption>Paradigm shift</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/4-day-arc.png" alt="Four-day arc visualization" loading="lazy"><figcaption>Four-day arc</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/5-calibration.png" alt="Calibration visualization" loading="lazy"><figcaption>Calibration</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/6-deep-dive.png" alt="Deep dive visualization" loading="lazy"><figcaption>Deep dive</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/7-systems-loop-analysis.png" alt="Systems loop analysis visualization" loading="lazy"><figcaption>Systems loop analysis</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/8-Leverage-points.pmg.png" alt="Leverage points visualization" loading="lazy"><figcaption>Leverage points</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/8.1-fixes-that-fail.png" alt="Fixes that fail visualization" loading="lazy"><figcaption>Fixes that fail</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/9.1-diagnostic-engine.png" alt="Diagnostic engine visualization" loading="lazy"><figcaption>Diagnostic engine</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/9-assessment-strategy.png" alt="Assessment strategy visualization" loading="lazy"><figcaption>Assessment strategy</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/12-TOR-delivery.png" alt="Terms of reference delivery visualization" loading="lazy"><figcaption>TOR → delivery</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/2-designing-for-sf-15.png" alt="Designing for strategic foresight visualization" loading="lazy"><figcaption>Designing for foresight</figcaption></figure>
-      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/4.1-3day-variant.png" alt="Three-day variant visualization" loading="lazy"><figcaption>Three-day variant</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="publications" aria-labelledby="pub-title">
-  <div class="container">
-    <div class="section-head">
-      <div><span class="eyebrow">Publications</span><h2 id="pub-title">Knowledge products that extend the practice.</h2></div>
-      <p>Selected books, manuals and reports represented by the repository's existing cover assets.</p>
-    </div>
-    <div class="pub-grid">
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-personal-resilience-3d.jpg" alt="Personal Resilience 3D cover" loading="lazy"><div class="pub-body"><h3>Personal Resilience</h3><p>2025 · Book</p></div></article>
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-resilient-futures.jpg" alt="Resilient Futures cover" loading="lazy"><div class="pub-body"><h3>Resilient Futures</h3><p>2024 · Book</p></div></article>
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-building-resilience.jpg" alt="Building Resilience cover" loading="lazy"><div class="pub-body"><h3>Building Resilience</h3><p>2023 · Book</p></div></article>
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-2024-sme-report.jpg" alt="2024 SME report cover" loading="lazy"><div class="pub-body"><h3>SME 2024 Report</h3><p>2024 · Report</p></div></article>
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-vulnerability-indicators.jpg" alt="Vulnerability indicators cover" loading="lazy"><div class="pub-body"><h3>Vulnerability Indicators</h3><p>2021 · Research</p></div></article>
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-policy-report.jpg" alt="Policy report cover" loading="lazy"><div class="pub-body"><h3>Policy & Strategy Reports</h3><p>Selected professional work</p></div></article>
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-dlsu-oupms.jpg" alt="DLSU performance management cover" loading="lazy"><div class="pub-body"><h3>DLSU Performance Management</h3><p>2024 · Organizational development</p></div></article>
-      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-msme-ai-automation.jpg" alt="MSME AI automation cover" loading="lazy"><div class="pub-body"><h3>MSME AI Automation</h3><p>Digital innovation</p></div></article>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="cta glass metal-edge">
-      <div><span class="eyebrow">Engagement</span><h2>Build the next resilient system.</h2><p>Strategic planning, climate resilience, DRR, systems innovation, capacity development and cross-sector collaboration.</p></div>
-      <div class="hero-actions"><a class="btn btn-primary" href="mailto:alvin.silva@asilvainnovations.com">Start a conversation <svg class="icon sm"><use href="#i-arrow"/></svg></a><a class="btn btn-secondary" href="index.html">Return to profile</a></div>
-    </div>
+<!-- ============ CTA STRIP ============ -->
+<section class="section cta-strip">
+  <div class="wrap">
+    <p class="kicker">Next</p>
+    <h2 class="section-title">Your project could be <span class="hl">card #34</span></h2>
+    <p class="section-sub">Every engagement above started with one conversation.</p>
+    <a href="index.html#contact" class="btn btn-primary"><span>Let's Collaborate</span><svg><use href="#i-arrow"/></svg></a>
+    <a href="mailto:alvin.silva@asilvainnovations.com" class="btn btn-gold"><span>alvin.silva@asilvainnovations.com</span></a>
   </div>
 </section>
 </main>
 
-<footer class="footer">
-  <div class="container footer-grid">
-    <div><h3>Alvin M. Silva, MDM</h3><p>Development management · resilience · systems innovation · sustainable development.</p></div>
-    <div><h3>Explore</h3><p><a href="#portfolio">Portfolio</a> · <a href="#visualizations">Visualizations</a> · <a href="#publications">Publications</a></p></div>
-    <div><h3>Professional identity</h3><p>DRR & CCA Consultant · Systems Innovation Practitioner · Certified International Humanitarian.</p></div>
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
+        <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
+        <div class="socials">
+          <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
+          <a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
+          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
+          <a href="tel:+639178555134" aria-label="Call +63 917 855 5134"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-phone"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#expertise">Core Expertise</a></li>
+          <li><a href="index.html#impact">Explore Projects</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="index.html#contact">Let's Collaborate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Flagship Work</h4>
+        <ul>
+          <li><a href="https://bangsamoro-investment-roadmap.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
+          <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
+          <li><a href="#portfolio" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
+          <li><a href="#portfolio" data-jump="Cognitio+">Cognitio+</a></li>
+          <li><a href="https://asilvainnovations.github.io/website/rtl.html" target="_blank" rel="noopener noreferrer">RTL ↗</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Credentials</h4>
+        <ul>
+          <li><a href="index.html#about">MDM — Asian Institute of Management</a></li>
+          <li><a href="index.html#expertise">Certified SRMP</a></li>
+          <li><a href="#portfolio" data-jump="Personal Resilience">Published Author ×3</a></li>
+          <li><a href="index.html">Main Site ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
+      <p style="font-size:.8rem;color:var(--text-3);font-weight:300;max-width:520px">We use minimal cookies to improve your experience. No tracking beyond this site — see the full policy below.</p>
+      <p class="footer-legal">
+        <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/terms-of-services.html" target="_blank" rel="noopener noreferrer">Terms</a> ·
+        <a href="https://asilvainnovations.github.io/website/policies/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility</a> ·
+        <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
+      </p>
+      <span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
+    </div>
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Portfolio image viewer">
-  <div class="lightbox-card">
-    <button class="lightbox-close" id="lightbox-close" data-tooltip="Close image viewer" aria-label="Close image viewer">×</button>
-    <img id="lightbox-img" src="" alt="">
-    <div class="lightbox-info"><strong id="lightbox-title"></strong><span id="lightbox-caption"></span></div>
+<!-- ============ LEAD CAPTURE MODAL ============ -->
+<div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
+  <div class="lead-card glass-strong">
+    <button class="lead-close" id="leadClose" aria-label="Close">✕</button>
+    <span class="lead-icon"><svg><use href="#i-lock"/></svg></span>
+    <h2 id="leadTitle">Before you access this work…</h2>
+    <p class="lead-sub">Please share your contact details so I can keep you updated on new publications and insights.</p>
+    <p class="lead-target" id="leadTargetTitle"></p>
+    <form id="leadForm" novalidate>
+      <div class="form-group">
+        <label for="leadName">Name *</label>
+        <input id="leadName" name="name" type="text" placeholder="Juan Dela Cruz" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label for="leadEmail">Email *</label>
+        <input id="leadEmail" name="email" type="email" placeholder="you@organization.org" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="leadOrg">Organization / Role (optional)</label>
+        <input id="leadOrg" name="org" type="text" placeholder="e.g., Program Officer, ABC Foundation" autocomplete="organization">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%"><span>Access Now</span><svg><use href="#i-arrow"/></svg></button>
+      <p class="lead-privacy">Your details are collected only to share updates on my work. No spam, no third-party sharing. <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</p>
+      <div class="lead-status" id="leadStatus" role="status" aria-live="polite"></div>
+    </form>
   </div>
 </div>
 
-<div class="a11y">
-  <button class="a11y-btn" id="a11y-toggle" type="button" data-tooltip="Accessibility controls" aria-expanded="false" aria-label="Open accessibility controls"><svg class="icon" aria-hidden="true"><use href="#i-accessibility"/></svg></button>
-  <div class="a11y-panel glass" id="a11y-panel">
-    <div class="eyebrow">Accessibility</div>
-    <div class="a11y-row"><label>Reduced motion</label><button data-a11y="reduced-motion">Off</button></div>
-    <div class="a11y-row"><label>Larger text</label><button data-a11y="larger-text">Off</button></div>
-    <div class="a11y-row"><label>Higher contrast</label><button data-a11y="high-contrast">Off</button></div>
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close viewer">✕</button>
+  <div class="lb-frame glass-strong">
+    <div class="lb-media"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-caption">
+      <div><div class="lb-title" id="lbTitle"></div><div class="lb-meta" id="lbMeta"></div></div>
+      <a href="#" class="btn btn-gold btn-sm" id="lbLink" data-gate-url="" data-gate-title="" target="_blank" rel="noopener noreferrer"><span>Visit project</span><svg><use href="#i-ext"/></svg></a>
+    </div>
   </div>
 </div>
 
+<!-- ============ ACCESSIBILITY TOOLS ============ -->
+<button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
+<aside class="a11y-panel glass-strong" id="a11yPanel" role="dialog" aria-label="Accessibility tools" aria-hidden="true">
+  <button class="a11y-close" id="a11yClose" aria-label="Close accessibility tools">✕</button>
+  <h2><svg><use href="#i-a11y"/></svg> Accessibility</h2>
+  <div class="a11y-row">
+    <div><div class="ar-name">Read page aloud</div><div class="ar-desc">Text-to-speech of the full page</div></div>
+    <button class="btn btn-gold btn-sm" id="a11ySpeak" aria-pressed="false"><svg style="width:14px;height:14px"><use href="#i-speak"/></svg><span>Listen</span></button>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Text size</div><div class="ar-desc">Scale content font</div></div>
+    <div style="display:flex;gap:.4rem">
+      <button class="btn btn-ghost btn-sm" id="a11yFontDown" aria-label="Decrease text size">A&minus;</button>
+      <button class="btn btn-ghost btn-sm" id="a11yFontUp" aria-label="Increase text size">A+</button>
+    </div>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">High contrast</div><div class="ar-desc">Maximum legibility</div></div>
+    <span class="switch"><input type="checkbox" id="a11yContrast" aria-label="Toggle high contrast"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Grayscale</div><div class="ar-desc">Reduce color stimulation</div></div>
+    <span class="switch"><input type="checkbox" id="a11yGray" aria-label="Toggle grayscale"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Highlight links</div><div class="ar-desc">Underline every link</div></div>
+    <span class="switch"><input type="checkbox" id="a11yLinks" aria-label="Toggle link highlighting"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Large cursor</div><div class="ar-desc">Easier pointer tracking</div></div>
+    <span class="switch"><input type="checkbox" id="a11yCursor" aria-label="Toggle large cursor"><span class="track"></span></span>
+  </div>
+  <div class="a11y-row">
+    <div><div class="ar-name">Reset all</div><div class="ar-desc">Back to defaults</div></div>
+    <button class="btn btn-ghost btn-sm" id="a11yReset">Reset</button>
+  </div>
+</aside>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
+<div class="toast glass-strong" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ COOKIE CONSENT ============ -->
+<div class="consent-banner glass-strong" id="consentBanner" role="dialog" aria-labelledby="consentTitle" aria-describedby="consentDesc" hidden>
+  <button class="consent-close" id="consentClose" aria-label="Close"><svg><use href="#i-close"/></svg></button>
+  <h3 id="consentTitle"><svg><use href="#i-shield"/></svg> Your privacy, your choice</h3>
+  <p id="consentDesc">We use minimal cookies to improve your experience. No tracking beyond this site. Full
+    <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy</a> ·
+    <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+  </p>
+  <div class="consent-prefs" id="consentPrefs">
+    <div class="pref-row">
+      <div><div class="pr-name">Essential</div><div class="pr-desc">Required — remembers your consent choice. Always on.</div></div>
+      <span class="switch"><input type="checkbox" checked disabled aria-label="Essential cookies (always on)"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Analytics</div><div class="pr-desc">Anonymous usage statistics that help improve this site.</div></div>
+      <span class="switch"><input type="checkbox" id="prefAnalytics" aria-label="Analytics cookies"><span class="track"></span></span>
+    </div>
+    <div class="pref-row">
+      <div><div class="pr-name">Marketing</div><div class="pr-desc">Used to measure outreach and referrals.</div></div>
+      <span class="switch"><input type="checkbox" id="prefMarketing" aria-label="Marketing cookies"><span class="track"></span></span>
+    </div>
+  </div>
+  <div class="consent-actions">
+    <button class="btn btn-primary" id="consentAccept"><span>Got it</span></button>
+    <button class="btn btn-gold" id="consentSave" style="display:none"><span>Save Choices</span></button>
+    <button class="btn btn-ghost" id="consentDecline"><span>Decline Optional</span></button>
+    <button class="btn btn-ghost" id="consentCustomize"><span>Customize</span></button>
+  </div>
+</div>
 <script>
-(function(){
-"use strict";
-const root=document.documentElement;
-const theme=document.getElementById("theme"), mobileTheme=document.getElementById("mobile-theme");
-const menu=document.getElementById("menu"), mobileNav=document.getElementById("mobile-nav");
-const search=document.getElementById("search"), filters=[...document.querySelectorAll(".filter")];
-const cards=[...document.querySelectorAll(".project")], empty=document.getElementById("empty");
-const lightbox=document.getElementById("lightbox"), lbImg=document.getElementById("lightbox-img"), lbTitle=document.getElementById("lightbox-title"), lbCaption=document.getElementById("lightbox-caption"), lbClose=document.getElementById("lightbox-close");
-
-function setTheme(t){root.dataset.theme=t;localStorage.setItem("as-theme",t);const use=theme.querySelector("use");use.setAttribute("href",t==="dark"?"#i-sun":"#i-moon");theme.setAttribute("aria-label",t==="dark"?"Switch to light theme":"Switch to dark theme");}
-setTheme(localStorage.getItem("as-theme")==="light"?"light":"dark");
-function toggleTheme(){setTheme(root.dataset.theme==="dark"?"light":"dark")}
-theme.addEventListener("click",toggleTheme);mobileTheme.addEventListener("click",()=>{toggleTheme();mobileNav.classList.remove("open");menu.setAttribute("aria-expanded","false")});
-menu.addEventListener("click",()=>{const open=mobileNav.classList.toggle("open");menu.setAttribute("aria-expanded",open?"true":"false")});
-mobileNav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{mobileNav.classList.remove("open");menu.setAttribute("aria-expanded","false")}));
-
-let active="all";
-function applyFilters(){
-  const q=search.value.trim().toLowerCase();let count=0;
-  cards.forEach(c=>{const cat=(c.dataset.cat||"").split(" ");const text=(c.dataset.search||"").toLowerCase();const ok=(active==="all"||cat.includes(active))&&(!q||text.includes(q));c.hidden=!ok;if(ok)count++});
-  empty.style.display=count?"none":"block";
-}
-filters.forEach(b=>b.addEventListener("click",()=>{filters.forEach(x=>x.classList.remove("active"));b.classList.add("active");active=b.dataset.filter;applyFilters()}));
-search.addEventListener("input",applyFilters);
-
-function openLightbox(src,title,caption){
-  lbImg.src=src;lbImg.alt=title;lbTitle.textContent=title;lbCaption.textContent=caption||"";
-  lightbox.classList.add("open");lightbox.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";lbClose.focus();
-}
-function closeLightbox(){lightbox.classList.remove("open");lightbox.setAttribute("aria-hidden","true");lbImg.src="";document.body.style.overflow=""}
-document.querySelectorAll(".project-open").forEach(b=>b.addEventListener("click",()=>openLightbox(b.dataset.image,b.dataset.title,b.dataset.caption)));
-document.querySelectorAll(".gallery-item").forEach(f=>f.addEventListener("click",()=>{const img=f.querySelector("img");openLightbox(img.src,f.querySelector("figcaption")?.textContent||img.alt,"Visual archive")}));
-document.querySelectorAll(".pub img").forEach(img=>img.addEventListener("click",()=>openLightbox(img.src,img.alt,"Publication cover")));
-lbClose.addEventListener("click",closeLightbox);lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&lightbox.classList.contains("open"))closeLightbox()});
-
-document.querySelectorAll("[data-scroll]").forEach(b=>b.addEventListener("click",()=>document.querySelector(b.dataset.scroll)?.scrollIntoView({behavior:"smooth",block:"start"})));
-
-const a11y=document.getElementById("a11y-toggle"), panel=document.getElementById("a11y-panel");
-a11y.addEventListener("click",()=>{const open=panel.classList.toggle("open");a11y.setAttribute("aria-expanded",open?"true":"false")});
-document.querySelectorAll("[data-a11y]").forEach(b=>b.addEventListener("click",()=>{const cls=b.dataset.a11y;const on=root.classList.toggle(cls);b.textContent=on?"On":"Off"}));
-applyFilters();
+document.documentElement.classList.add('js');
+// Restore persisted persona from index.html onboarding
+(function restorePersona() {
+  const saved = localStorage.getItem('as-persona');
+  if (saved) { document.documentElement.dataset.persona = saved; }
 })();
-</script>
+const $  = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
 
-<script src="assets/asilva-widget.js" defer></script>
-<script>
-window.addEventListener("load",function(){if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});});
+/* ================================================================
+   THEME TOGGLE — light / dark (parity with index.html)
+   ================================================================ */
+(function themeInit() {
+  const THEME_KEY = 'as-theme';
+  const root = document.documentElement;
+  function apply(theme) {
+    root.dataset.theme = theme;
+    localStorage.setItem(THEME_KEY, theme);
+    document.querySelectorAll('#themeToggle, #themeToggleMobile').forEach(btn => {
+      btn.setAttribute('aria-pressed', theme === 'light');
+      btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    });
+  }
+  const saved = localStorage.getItem(THEME_KEY);
+  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  apply(saved || (prefersLight ? 'light' : 'dark'));
+  function toggle() { apply(root.dataset.theme === 'light' ? 'dark' : 'light'); }
+  document.getElementById('themeToggle')?.addEventListener('click', toggle);
+  document.getElementById('themeToggleMobile')?.addEventListener('click', toggle);
+})();
+
+/* ================================================================
+   VISITOR / ENGAGEMENT COUNTER (local approximation — see index.html
+   for notes on wiring a real Supabase/Firebase Realtime backend)
+   ================================================================ */
+(function visitorCounterInit() {
+  const el = document.getElementById('visitorCount');
+  if (!el) return;
+  const KEY = 'as-visit-log';
+  const now = Date.now();
+  let sessions = [];
+  try { sessions = JSON.parse(localStorage.getItem(KEY)) || []; } catch { sessions = []; }
+  sessions = sessions.filter(t => now - t < 30 * 60 * 1000);
+  sessions.push(now);
+  localStorage.setItem(KEY, JSON.stringify(sessions));
+  const count = 3 + sessions.length;
+  el.textContent = `${count} people exploring this portfolio in the last 30 min`;
+})();
+
+/* ================================================================
+   NAV "filter-link" — jump to #portfolio and pre-select a filter
+   ================================================================ */
+$$('[data-filter-link]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const key = a.dataset.filterLink;
+  const btn = $$('.filter-btn').find(b => b.dataset.filter === key);
+  if (btn) btn.click();
+  document.getElementById('portfolio')?.scrollIntoView({ behavior:'smooth', block:'start' });
+  closeMobile();
+}));
+
+/* ================================================================
+   PORTFOLIO DATA — 20 works, newest flagship first
+   img: primary screenshot URL · ph: branded local fallback
+   ================================================================ */
+const WORKS = [
+  { cat:'platforms', badge:'★ Latest · Platform', badgeCls:'badge-gold', featured:true,
+    title:'BIRD — Investment Roadmapping Platform of BARMM',
+    meta:'BARMM Bureau of Investments–MTIT · 2026',
+    desc:'Strategic Investment Roadmap 2026–2035 — guiding Bangsamoro’s emerging future. The digital home of the decade-long, binding investment framework for the Bangsamoro Autonomous Region, architected end-to-end and published as an interactive platform.',
+    img:'assets/card-bird.jpg', ph:'assets/card-bird.jpg',
+    links:[['Platform','https://bangsamro-investment-roadmapp.asilvainnovations.com'],['App','https://bird-app.ailvainnovations.com']] },
+  { cat:'platforms', badge:'Platform',
+    title:'DDRiVE-M Platform', meta:'ASilva Innovations',
+    desc:'Comprehensive intelligence platform compliant with RA 10121, ISO 31000, and UNDRR frameworks — AI-powered disaster risk management from detection to recovery.',
+    img:'https://appimize.app/assets/apps/user_1097/images/4750f689086d_379_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Learn More','https://asilvainnovations.github.io/ddrive-m/']] },
+  { cat:'platforms', badge:'Platform',
+    title:'Strat Planner Pro', meta:'ASilva Innovations',
+    desc:'All-in-one, AI-powered progressive web app for deep systems diagnosis, structured planning, and disciplined execution. Works offline and prints beautifully.',
+    img:'https://appimize.app/assets/apps/user_1097/images/d6780c531792_34_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Get Started','https://preview-ljjsipjm--strategy-ai-planner.deploypad.app/']] },
+  { cat:'platforms', badge:'Platform',
+    title:'RTL — Real-Time Leadership', meta:'ASilva Innovations',
+    desc:'Rooted in culture, powered by awareness, enhanced with technology — digital learning experiences for growth, resilience, and wellness.',
+    img:'https://appimize.app/assets/apps/user_1097/images/1c6d5db02bde_433_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Explore RTL','https://asilvainnovations.github.io/website/rtl.html']] },
+  { cat:'platforms', badge:'Platform',
+    title:'Cognitio+: Your Partner in Resilience', meta:'Cognitio+',
+    desc:'The knowledge ecosystem behind the resilience practice — your path to growth, resilience, and wellness through digital learning experiences.',
+    img:'https://appimize.app/assets/apps/user_1097/images/40bb2a1c6ec0_322_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Explore Cognitio+','https://cognitio-plus.com/']] },
+  { cat:'platforms', badge:'Platform',
+    title:'Balatan Climate Resilience Hub', meta:'SOLHUM · People’s Survival Fund · 2024–2025',
+    desc:'Pioneering climate-smart model funded by the People’s Survival Fund (PSF), driving sustainable development in Balatan, Camarines Sur — a ₱190M project design.',
+    img:'https://appimize.app/assets/apps/user_1097/images/c74671719bdd_217_1097.png', ph:'assets/ph-platform.jpg',
+    links:[['Learn More','https://balatan-psf.aiwaapp.live/']] },
+
+  { cat:'consulting', badge:'Strategy',
+    title:'WorldSkills Philippines – TESDA Strategic Plan', meta:'TESDA · 2026–2030',
+    desc:'National Quality Engine: sole-authored strategic plan mapping vision, mission, and organizational goals toward long-term resilience and sustainability.',
+    img:'https://appimize.app/assets/apps/user_1097/images/e472511f68cc_607_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['View Plan','https://asilvainnovations.com/wsp-strategic-plan']] },
+  { cat:'consulting', badge:'Health',
+    title:'Seamless Care Guidebook', meta:'Cognitio+ · 2024',
+    desc:'Rigorous analysis of the Philippine health sector as a Complex Adaptive System, identifying critical systemic barriers to mental health integration.',
+    img:'https://appimize.app/assets/apps/user_1097/images/2a0918113bfa_696_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Read Guidebook','https://asilvainnovations.com/seamless-care']] },
+  { cat:'consulting', badge:'DRR Planning',
+    title:'Risk-Informed CDP of Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
+    desc:'A blueprint for resilient local governance — comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in rigorous analysis and community engagement.',
+    img:'assets/cover-cdp-salcedo.jpg', ph:'assets/ph-consulting.jpg',
+    links:[['Report PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
+  { cat:'consulting', badge:'Mental Health',
+    title:'MHPSS Intervention Module for Emergency Responders', meta:'WHO & DOH · 2023',
+    desc:'Mental Health and Psychosocial Support intervention module for PEMAT members, aligned with WHO guidance on mental health as a determinant of health outcomes.',
+    img:'assets/cover-mhpss-module.jpg', ph:'assets/ph-consulting.jpg',
+    links:[['Request Details','mailto:alvin.silva@asilvainnovations.com?subject=MHPSS%20Module%20—%20details%20request']] },
+  { cat:'consulting', badge:'Resilience',
+    title:'Integrated Risk & Resilience Management — BARMM', meta:'USAID & Action Against Hunger · 2022',
+    desc:'Final report on IRRM for CSOs and communities in the Bangsamoro — Food Security, Livelihoods, DRR, and WASH systems innovation.',
+    img:'assets/cover-irrm-barmm.jpg', ph:'assets/ph-consulting.jpg',
+    links:[['Completion Report','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
+  { cat:'consulting', badge:'DRR Review',
+    title:'Conflict-Sensitive DRR Project Review — Mindanao', meta:'Philippine & German Red Cross',
+    desc:'Participatory conflict assessment and mid-term review of a DRR project in fragile, conflict-affected Mindanao communities and schools.',
+    img:'assets/cover-consent-drr.jpg', ph:'assets/ph-consulting.jpg',
+    links:[['MTR Report PDF','https://drive.google.com/file/d/1W-Zo5DqCOstJSBnie1CAGH2whvO_rR3V/view?usp=sharing']] },
+  { cat:'consulting', badge:'Performance',
+    title:'Performance Management at DLSU Manila', meta:'DLSU · 2024',
+    desc:'Baseline and needs assessment with a performance management hub — frameworks, prototypes, metrics, and guides for organizational effectiveness.',
+    img:'assets/cover-dlsu-oupms.jpg', ph:'assets/ph-consulting.jpg',
+    links:[['Access Hub','https://oupms-dlsu.aiwaapp.live/']] },
+  { cat:'consulting', badge:'Policy Research',
+    title:'Urban Resilience Policy Review — Metro Manila', meta:'MMDA · Policy Research',
+    desc:'Policy review framework integrating resilience into organizational strategies and governance, with actionable insights for vulnerable communities.',
+    img:'assets/cover-policy-report.jpg', ph:'assets/ph-consulting.jpg',
+    links:[['Policy Review PDF','https://drive.google.com/file/d/1jhPPG6ov2shDQhEepywDxWBUxTENkfCC/view?usp=sharing']] },
+  { cat:'consulting', badge:'Systems Innovation',
+    title:'Systems Innovation — DRR-CCA, WASH, FSL in Mindanao', meta:'Mindanao Programs',
+    desc:'Results, methodologies, and recommendations tied to innovation in DRR-CCA, Food Security and Livelihoods, and WASH systems across Mindanao.',
+    img:'https://appimize.app/assets/apps/user_1097/images/6b106eabab8e_230_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Final Report PDF','https://drive.google.com/file/d/1gYcw9OnsL0JQPifbE16ZaDsoQJeY_B_q/view?usp=sharing']] },
+  { cat:'consulting', badge:'Climate Resilience',
+    title:'₱190M Climate-Smart Resilience Project Design', meta:'SOLHUM · Balatan, Camarines Sur · 2024–2025',
+    desc:'Community-based, climate-smart resilience project design engineered to attract climate finance and protect coastal livelihoods.',
+    img:'https://appimize.app/assets/apps/user_1097/images/c74671719bdd_217_1097.png', ph:'assets/ph-consulting.jpg',
+    links:[['Learn More','https://balatan-psf.aiwaapp.live/']] },
+
+  { cat:'publications', badge:'Book · 2025', badgeCls:'badge-violet',
+    title:'Personal Resilience: The Path to Oneness', meta:'Cognitio+ · 2025',
+    desc:'The deeper ground of human experience — the sacred space of spirituality beyond psychological resilience. Timeless wisdom for personal transformation.',
+    img:'assets/cover-personal-resilience-3d.jpg', ph:'assets/ph-publication.jpg',
+    links:[['Read Online','https://personal-resilience.aiwaapp.live']] },
+  { cat:'publications', badge:'Book · 2024', badgeCls:'badge-violet',
+    title:'Resilient Futures: Nurturing Oneness in Education', meta:'Cognitio+ · 2024',
+    desc:'The extension volume — resilience in education and beyond, for adapting, recovering, and thriving amid rapid change and uncertainty.',
+    img:'assets/cover-resilient-futures.jpg', ph:'assets/ph-publication.jpg',
+    links:[['Explore the Book','https://asilvainnovations.com/resilient-futures']] },
+  { cat:'publications', badge:'Book · 2023', badgeCls:'badge-violet',
+    title:'Building Resilience: The Path to a More Fulfilling Life', meta:'Cognitio+ · 2023',
+    desc:'The foundational guide to building and sustaining resilience — knowledge, tools, and mindsets to thrive in an ever-changing world.',
+    img:'assets/cover-building-resilience.jpg', ph:'assets/ph-publication.jpg',
+    links:[['Buy on Amazon','https://www.amazon.com/BUILDING-RESILIENCE-Path-Fulfilling-Resilient-ebook/dp/B0CJ45LDRG'],['Read Online','https://building-resilience.aiwaapp.live/']] },
+];
+
+
+/* Technical Reports — full document library (Google Drive PDFs) */
+const REPORTS = [
+  { doc:true, cover:'assets/cover-2024-sme-report.jpg', year:'2024', title:'SME 2024 Report', meta:'ASilva Innovations · 2024',
+    desc:'Annual SME report — analysis and recommendations for small and medium enterprise development.',
+    links:[['View PDF','https://drive.google.com/file/d/1hKzp1S2jjK5THTeFjU7jdFJRX79v-JXf/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'Shock-Responsive & Sustainable Livelihoods', meta:'Mindanao Programs',
+    desc:'Framework and field guidance for livelihoods that absorb shocks and keep households moving forward.',
+    links:[['View PDF','https://drive.google.com/file/d/1jIbvbI-GXbfOgnAq8mFZtU8txb27Iubn/view?usp=sharing']] },
+  { doc:true, cover:'assets/cover-cdp-salcedo.jpg', year:'2023', title:'Risk-Informed CDP — Salcedo, Eastern Samar', meta:'LGU of Salcedo · 2023–2028',
+    desc:'Comprehensive development plan integrating CCA/DRR and sustainability measures, grounded in community engagement.',
+    links:[['View PDF','https://drive.google.com/file/d/1SoeP-5AbA07SIPy7Vx2X37HRyN0HOCtz/view?usp=sharing']] },
+  { doc:true, cover:'assets/cover-policy-report.jpg', year:'2020', title:'Policy Review to Integrate Resilience', meta:'MMDA · Policy Research',
+    desc:'Policy review framework integrating resilience into organizational strategies and governance across Metro Manila.',
+    links:[['View PDF','https://drive.google.com/file/d/1jhPPG6ov2shDQhEepywDxWBUxTENkfCC/view?usp=sharing']] },
+  { doc:true, year:'2020', title:'Policy Research, Recommendations & Validation — DSWD-SLP', meta:'DSWD Sustainable Livelihood Program · 2020',
+    desc:'Policy research, recommendations, and validation report on the DSWD Sustainable Livelihood Program.',
+    links:[['View PDF','https://drive.google.com/file/d/1ZWsHPOeXQGWmd5L5rum608ZoUKOiv_OO/view?usp=sharing']] },
+  { doc:true, cover:'assets/cover-irrm-barmm.jpg', year:'2022', title:'IRRM — BARMM Completion Report', meta:'USAID & Action Against Hunger · 2022',
+    desc:'Integrated Risk and Resilience Management completion report for CSOs and communities in the Bangsamoro.',
+    links:[['View PDF','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'FSL · DRR · WASH Systems Innovation — Final Report', meta:'Mindanao Programs',
+    desc:'Results, methodologies, and recommendations from systems innovation across food security, livelihoods, DRR, and WASH.',
+    links:[['View PDF','https://drive.google.com/file/d/1gYcw9OnsL0JQPifbE16ZaDsoQJeY_B_q/view?usp=sharing']] },
+  { doc:true, cover:'assets/cover-vulnerability-indicators.jpg', year:'2021', title:'Review of LGU Vulnerability Indicators in Mindanao', meta:'Mindanao Programs',
+    desc:'Critical review of vulnerability indicators used by local government units — toward sharper, decision-grade measurement.',
+    links:[['View PDF','https://drive.google.com/file/d/1_5S8JA-WRFA-ID5V2DxwCWFga6Dcezqf/view?usp=sharing']] },
+  { doc:true, cover:'assets/cover-consent-drr.jpg', year:'2021', title:'CONSENT DRR-II Mid-Term Review Report', meta:'Philippine & German Red Cross',
+    desc:'Participatory conflict assessment and mid-term review of DRR programming in fragile, conflict-affected communities and schools.',
+    links:[['View PDF','https://drive.google.com/file/d/1W-Zo5DqCOstJSBnie1CAGH2whvO_rR3V/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'Agri-Fishery Situational Assessment — Maguindanao del Norte & Sulu', meta:'BARMM',
+    desc:'Situational assessment of agriculture and fishery sectors informing livelihoods and food-security programming.',
+    links:[['View PDF','https://drive.google.com/file/d/1Gwemq7EuzKGkNK1cl7nwNlT-ZpLqPRvI/view?usp=sharing']] },
+  { doc:true, year:'2021', title:'BDA Strategic Directions Strengthening', meta:'Bangsamoro Development Agency',
+    desc:'Strategic directions and institutional strengthening recommendations for the Bangsamoro Development Agency.',
+    links:[['View PDF','https://drive.google.com/file/d/1rBQmBq_kYQSbVu5eZRvrcjA5w354KK53/view?usp=sharing']] },
+  { doc:true, year:'2022', title:'Shock-Responsive, Resilient & Sustainable Livelihoods — Process Manual', meta:'MOVEUP Mindanao · 2022',
+    desc:'Four-chapter operations manual: Livelihoods & MSMEs, Risk Profiling, Asset & Market Assessment, Resilience Development.',
+    links:[['View PDF','https://drive.google.com/file/d/16miLT_qd-pFxc2B2AWV07iN7hNuGp4UL/view?usp=sharing']] },
+  { doc:true, year:'2021', title:'Shock-Responsive Livelihood Options for Urban Poor Households in Mindanao', meta:'Mindanao Programs',
+    desc:'Assessment of shock-responsive, resilient, and sustainable livelihood options and modalities for urban poor households.',
+    links:[['View PDF','https://drive.google.com/file/d/1XD5IeF8xdkQKVn3Vu65IcyF6RulBWS9t/view?usp=sharing']] },
+];
+const ALL_WORKS = [...WORKS, ...REPORTS];
+
+/* ================================================================
+   RENDER CARDS
+   ================================================================ */
+const grid = $('#pfGrid');
+grid.innerHTML = ALL_WORKS.map((w, i) => w.doc ? `
+  <article class="pf-card doc-card glass reveal" data-cat="reports" style="animation-delay:${Math.min(i*40, 500)}ms">
+    ${w.cover ? `<div class="doc-cover"><img src="${w.cover}" alt="Cover of ${w.title}" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'"></div>` : ''}
+    <div class="doc-body">
+      <div class="doc-top">
+        <span class="doc-icon"><svg><use href="#i-file"/></svg></span>
+        <span class="doc-year">${w.year}</span>
+        <span class="pf-badge badge-green">PDF Report</span>
+      </div>
+      <h3>${w.title}</h3>
+      <p class="pf-meta">${w.meta}</p>
+      <p class="pf-desc" data-full="${w.desc.replace(/"/g,'&quot;')}">${w.desc}</p>
+      <div class="pf-actions">
+        <a class="btn btn-primary btn-sm" href="${w.links[0][1]}" data-gate-url="${w.links[0][1]}" data-gate-title="${w.title.replace(/"/g,'&quot;')}" target="_blank" rel="noopener noreferrer"><span>${w.links[0][0]}</span><svg><use href="#i-ext"/></svg></a>
+      </div>
+    </div>
+  </article>` : `
+  <article class="pf-card glass reveal${w.featured ? ' featured' : ''}" data-cat="${w.cat}" style="animation-delay:${Math.min(i*60, 600)}ms">
+    <button class="pf-media${w.cat === 'publications' ? ' book-cover-media' : ''}" data-lb="${i}" aria-label="View image of ${w.title} full-screen">
+      <img class="${w.cat === 'publications' ? 'book-cover' : ''}" src="${w.img}" alt="${w.cat === 'publications' ? 'Book cover: ' + w.title : w.title + ' — visual'}" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async"
+           onerror="this.onerror=null;this.src='${w.ph}';">
+      <span class="pf-badge ${w.badgeCls || ''}">${w.badge}</span>
+      <span class="zoom-hint"><svg><use href="#i-zoom"/></svg> Tap to explore</span>
+    </button>
+    <div class="pf-body">
+      <h3>${w.title}</h3>
+      <p class="pf-meta">${w.meta}</p>
+      <p class="pf-desc" data-full="${w.desc.replace(/"/g,'&quot;')}">${w.desc}</p>
+      <div class="pf-actions">
+        ${w.links.map(([t,u],j) => `<a class="btn ${j===0 ? 'btn-primary' : 'btn-ghost'} btn-sm" href="${u}" data-gate-title="${w.title.replace(/"/g,'&quot;')}" ${u.startsWith('mailto:') ? '' : 'data-gate-url="'+u+'" target="_blank" rel="noopener noreferrer"'}><span>${t}</span>${u.startsWith('mailto:') ? '' : '<svg><use href="#i-ext"/></svg>'}</a>`).join('')}
+      </div>
+    </div>
+  </article>`).join('');
+
+/* ================================================================
+   PROGRESSIVE DISCLOSURE — "Read more" for long descriptions
+   ================================================================ */
+$$('.pf-desc').forEach(p => {
+  const full = p.dataset.full || p.textContent;
+  if (full.length <= 150) return;
+  p.classList.add('clamped');
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'read-more-btn';
+  btn.textContent = 'Read more';
+  btn.setAttribute('aria-expanded', 'false');
+  btn.addEventListener('click', () => {
+    const open = p.classList.toggle('clamped') === false;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Read less' : 'Read more';
+  });
+  p.insertAdjacentElement('afterend', btn);
+});
+
+/* ================================================================
+   FILTERS
+   ================================================================ */
+$$('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+  $$('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+  btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+  const f = btn.dataset.filter;
+  $$('.pf-card').forEach(card => {
+    const show = f === 'all' || card.dataset.cat === f;
+    card.style.display = show ? '' : 'none';
+  });
+}));
+
+/* footer "jump to card" links */
+$$('[data-jump]').forEach(a => a.addEventListener('click', e => {
+  const q = a.dataset.jump.toLowerCase();
+  const card = $$('.pf-card').find(c => c.querySelector('h3').textContent.toLowerCase().includes(q));
+  if (card) {
+    e.preventDefault();
+    $$('.filter-btn')[0].click();
+    card.scrollIntoView({behavior:'smooth', block:'center'});
+    card.style.borderColor = 'var(--gold)';
+    setTimeout(() => card.style.borderColor = '', 2400);
+  }
+}));
+
+/* ================================================================
+   LIGHTBOX — full view of portfolio images
+   ================================================================ */
+const lb = $('#lightbox'), lbImg = $('#lbImg');
+function openLB(i) {
+  const w = ALL_WORKS[i];
+  lbImg.src = w.img;
+  lbImg.onerror = () => { lbImg.onerror = null; lbImg.src = w.ph; };
+  lbImg.alt = `${w.title} — full view`;
+  $('#lbTitle').textContent = w.title;
+  $('#lbMeta').textContent = w.meta;
+  const first = w.links[0];
+  const lbLink = $('#lbLink');
+  lbLink.href = first[1];
+  lbLink.querySelector('span').textContent = first[0].startsWith('Request') ? 'Request details' : 'View Project';
+  if (first[1].startsWith('mailto:')) {
+    lbLink.removeAttribute('target');
+    lbLink.removeAttribute('data-gate-url');
+  } else {
+    lbLink.setAttribute('target','_blank');
+    lbLink.setAttribute('data-gate-url', first[1]);
+    lbLink.setAttribute('data-gate-title', w.title);
+  }
+  lb.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  $('#lbClose').focus();
+}
+function closeLB() { lb.classList.remove('show'); document.body.style.overflow = ''; }
+grid.addEventListener('click', e => {
+  const m = e.target.closest('.pf-media');
+  if (m) openLB(+m.dataset.lb);
+});
+$('#lbClose').addEventListener('click', closeLB);
+lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+
+/* ================================================================
+   NAV: dropdowns + mobile menu
+   ================================================================ */
+$$('[data-drop] > .drop-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const drop = btn.parentElement, wasOpen = drop.classList.contains('open');
+    $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+    if (!wasOpen) { drop.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
+});
+const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
+function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn.addEventListener('click', openMobile);
+$('#mmClose').addEventListener('click', closeMobile);
+overlay.addEventListener('click', closeMobile);
+$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeMobile(); closeLB(); closeA11y(); document.getElementById('leadModal')?.classList.remove('show'); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
+});
+
+/* ================================================================
+   SCROLL: reveal, counters, back-to-top
+   ================================================================ */
+const revealIO = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) { en.target.classList.add('in'); revealIO.unobserve(en.target); }
+}), {threshold:.1, rootMargin:'0px 0px -5% 0px'});
+$$('.reveal').forEach(el => revealIO.observe(el));
+setTimeout(() => {
+  const sweep = () => $$('.reveal:not(.in)').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight * .95) el.classList.add('in');
+  });
+  sweep(); addEventListener('scroll', sweep, {passive:true});
+}, 1500);
+
+const countIO = new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return;
+  const el = en.target; countIO.unobserve(el);
+  const to = +el.dataset.to, dur = 1200, t0 = performance.now();
+  el.textContent = '0';
+  const step = now => {
+    const p = Math.min((now - t0) / dur, 1), e2 = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(to * e2);
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}), {threshold:.5});
+$$('.count').forEach(el => countIO.observe(el));
+
+const btt = $('#backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
+btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ================================================================
+   COOKIE CONSENT — shared with index.html
+   ================================================================ */
+
+/* ============ ACCESSIBILITY TOOLS ============ */
+const A11Y_KEY = 'as-a11y-prefs';
+const a11yPanelEl = document.getElementById('a11yPanel');
+let a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false };
+try { Object.assign(a11yState, JSON.parse(localStorage.getItem(A11Y_KEY)) || {}); } catch (e) {}
+function applyA11y() {
+  const root = document.documentElement;
+  root.style.setProperty('--a11y-scale', a11yState.scale);
+  root.classList.toggle('a11y-contrast', a11yState.contrast);
+  root.classList.toggle('a11y-grayscale', a11yState.gray);
+  root.classList.toggle('a11y-links', a11yState.links);
+  root.classList.toggle('a11y-largecursor', a11yState.cursor);
+  document.getElementById('a11yContrast').checked = a11yState.contrast;
+  document.getElementById('a11yGray').checked = a11yState.gray;
+  document.getElementById('a11yLinks').checked = a11yState.links;
+  document.getElementById('a11yCursor').checked = a11yState.cursor;
+  localStorage.setItem(A11Y_KEY, JSON.stringify(a11yState));
+}
+function openA11y() { a11yPanelEl.classList.add('open'); a11yPanelEl.setAttribute('aria-hidden','false'); }
+function closeA11y() { a11yPanelEl.classList.remove('open'); a11yPanelEl.setAttribute('aria-hidden','true'); }
+document.getElementById('a11yFab').addEventListener('click', openA11y);
+document.getElementById('a11yClose').addEventListener('click', closeA11y);
+document.getElementById('a11yFontUp').addEventListener('click', () => { a11yState.scale = Math.min(1.4, +(a11yState.scale + 0.1).toFixed(2)); applyA11y(); toast('Text size increased'); });
+document.getElementById('a11yFontDown').addEventListener('click', () => { a11yState.scale = Math.max(0.85, +(a11yState.scale - 0.1).toFixed(2)); applyA11y(); toast('Text size decreased'); });
+document.getElementById('a11yContrast').addEventListener('change', e => { a11yState.contrast = e.target.checked; applyA11y(); });
+document.getElementById('a11yGray').addEventListener('change', e => { a11yState.gray = e.target.checked; applyA11y(); });
+document.getElementById('a11yLinks').addEventListener('change', e => { a11yState.links = e.target.checked; applyA11y(); });
+document.getElementById('a11yCursor').addEventListener('change', e => { a11yState.cursor = e.target.checked; applyA11y(); });
+document.getElementById('a11yReset').addEventListener('click', () => { a11yState = { scale:1, contrast:false, gray:false, links:false, cursor:false }; applyA11y(); toast('Accessibility settings reset'); });
+applyA11y();
+let a11ySpeaking = false;
+document.getElementById('a11ySpeak').addEventListener('click', () => {
+  const btn = document.getElementById('a11ySpeak');
+  if (!('speechSynthesis' in window)) { toast('Read-aloud is not supported in this browser'); return; }
+  if (a11ySpeaking) { speechSynthesis.cancel(); a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; return; }
+  const mainEl = document.getElementById('main') || document.querySelector('main') || document.body;
+  const u = new SpeechSynthesisUtterance(mainEl.innerText.replace(/\s+\n/g,'\n').slice(0, 12000));
+  u.rate = 1; u.lang = document.documentElement.lang || 'en';
+  u.onend = () => { a11ySpeaking = false; btn.setAttribute('aria-pressed','false'); btn.querySelector('span').textContent = 'Listen'; };
+  speechSynthesis.speak(u);
+  a11ySpeaking = true;
+  btn.setAttribute('aria-pressed','true');
+  btn.querySelector('span').textContent = 'Stop';
+  toast('Reading page aloud — tap again to stop');
+});
+
+const CONSENT_KEY = 'as-cookie-consent-v1';
+const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
+function getConsent() { try { return JSON.parse(localStorage.getItem(CONSENT_KEY)); } catch { return null; } }
+function setConsent(analytics, marketing) {
+  const rec = { essential:true, analytics:!!analytics, marketing:!!marketing, ts:new Date().toISOString(), v:1 };
+  localStorage.setItem(CONSENT_KEY, JSON.stringify(rec));
+  window.dispatchEvent(new CustomEvent('as:consent', { detail:rec }));
+}
+function showConsent() { cBanner.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => cBanner.classList.add('show'))); }
+function hideConsent() { cBanner.classList.remove('show'); setTimeout(() => { cBanner.hidden = true; }, 500); }
+$('#consentClose')?.addEventListener('click', () => { hideConsent(); });
+$('#consentAccept').addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
+$('#consentDecline').addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
+$('#consentSave').addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
+$('#consentCustomize').addEventListener('click', () => {
+  cPrefs.classList.toggle('open');
+  $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
+});
+$('#cookieSettings').addEventListener('click', () => {
+  const c = getConsent();
+  if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
+  cPrefs.classList.add('open'); $('#consentSave').style.display = '';
+  showConsent();
+});
+if (!getConsent()) setTimeout(showConsent, 1800);
+
+/* ================================================================
+   LEAD CAPTURE — gate access to project/book links behind a short
+   contact form. Leads are stored locally; wire a real backend
+   (Supabase table, Firebase collection, or a serverless endpoint)
+   at the point marked below to persist submissions server-side and
+   optionally send a confirmation email with the access link.
+   ================================================================ */
+(function leadCaptureInit() {
+  const LEAD_KEY = 'as-lead-contact';
+  const modal = document.getElementById('leadModal');
+  const form = document.getElementById('leadForm');
+  const status = document.getElementById('leadStatus');
+  const targetTitleEl = document.getElementById('leadTargetTitle');
+  if (!modal || !form) return;
+  let pending = null; // { url, target }
+
+  function getSavedLead() {
+    try { return JSON.parse(localStorage.getItem(LEAD_KEY)); } catch { return null; }
+  }
+  function openModal(url, title, target) {
+    pending = { url, target: target || '_blank' };
+    targetTitleEl.textContent = title ? `Unlocking: ${title}` : '';
+    status.className = 'lead-status';
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('leadName')?.focus(), 250);
+  }
+  function closeModal() {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+    pending = null;
+  }
+  function unlock(url, target) {
+    window.open(url, target || '_blank', 'noopener,noreferrer');
+  }
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-gate-url]');
+    if (!a) return;
+    const url = a.dataset.gateUrl;
+    if (!url) return;
+    e.preventDefault();
+    const saved = getSavedLead();
+    if (saved && saved.email) { unlock(url, a.getAttribute('target')); return; }
+    openModal(url, a.dataset.gateTitle || '', a.getAttribute('target'));
+  });
+
+  document.getElementById('leadClose')?.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = document.getElementById('leadName').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+    const org = document.getElementById('leadOrg').value.trim();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const fail = msg => { status.textContent = msg; status.className = 'lead-status error'; };
+
+    if (!name || !email) return fail('Please fill in your name and email.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('That email address doesn\u2019t look right.');
+
+    const lead = { name, email, org, ts: new Date().toISOString(), source: pending?.url || null };
+
+    if (submitBtn) submitBtn.disabled = true;
+    status.textContent = 'Saving your details\u2026';
+    status.className = 'lead-status';
+
+    // ---- Backend integration ----
+    // Persists to the `leads` table in Supabase when the client is configured
+    // and reachable. Requires a `leads` table with an RLS policy allowing
+    // anon inserts (see project setup notes). Falls back to a local-only
+    // record so the visitor is never blocked from accessing the work, even
+    // if the network call fails.
+    let savedRemotely = false;
+    if (window.supabase && typeof window.supabase.from === 'function') {
+      try {
+        const { error } = await window.supabase.from('leads').insert({
+          name, email, org: org || null, source_url: lead.source,
+        });
+        if (error) throw error;
+        savedRemotely = true;
+      } catch (err) {
+        console.warn('Supabase lead insert failed, continuing with local-only record:', err);
+      }
+    }
+
+    try { localStorage.setItem(LEAD_KEY, JSON.stringify(lead)); } catch (err) {}
+
+    status.textContent = savedRemotely
+      ? 'Thanks — opening the work now\u2026'
+      : 'Thanks — opening the work now\u2026 (saved on this device; reconnect later to sync)';
+    status.className = 'lead-status success';
+
+    const toOpen = pending;
+    setTimeout(() => {
+      if (submitBtn) submitBtn.disabled = false;
+      closeModal();
+      form.reset();
+      if (toOpen) unlock(toOpen.url, toOpen.target);
+      toast('Thanks! You can now access every work without re-entering your details.');
+    }, 700);
+  });
+})();
+
+/* ================================================================
+   PWA
+   ================================================================ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+}
 </script>
 </body>
 </html>
