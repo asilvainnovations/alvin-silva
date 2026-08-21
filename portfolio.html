@@ -145,6 +145,72 @@ h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
 @media(max-width:600px){.brand span{display:none}.hero{padding-top:28px}.hero-copy{padding:22px}.hero-visual,.hero-visual img{min-height:350px}.projects{grid-template-columns:1fr}.metrics,.method,.gallery,.pub-grid,.footer-grid{grid-template-columns:1fr}.section{padding:38px 0}.section-head{display:block}.section-head p{margin-top:8px}.cta{display:block}.cta .hero-actions{margin-top:16px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 @media print{.site-header,.a11y,.lightbox,.control-bar{display:none!important}body{background:#fff;color:#000}.glass{box-shadow:none;background:#fff;border:1px solid #ccc}}
+
+:focus-visible{
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+}
+.project-open:focus-visible,
+.lightbox-close:focus-visible,
+.nav-btn:focus-visible,
+.filter:focus-visible,
+.a11y-btn:focus-visible,
+.a11y-row button:focus-visible{
+  box-shadow:0 0 0 3px rgba(84,230,255,.22);
+}
+
+html.reduced-motion *,
+html.reduced-motion *::before,
+html.reduced-motion *::after{
+  animation-duration:.001ms!important;
+  animation-iteration-count:1!important;
+  scroll-behavior:auto!important;
+  transition-duration:.001ms!important;
+}
+html.larger-text body{font-size:110%}
+html.larger-text .project p,
+html.larger-text .insight p,
+html.larger-text .method-step p,
+html.larger-text .footer p,
+html.larger-text .footer a{font-size:12px}
+html.high-contrast{
+  --line:rgba(255,255,255,.28);
+  --line-bright:rgba(255,255,255,.52);
+  --text-2:#eef4ff;
+  --text-3:#b7c4d6;
+}
+html[data-theme="light"].high-contrast{
+  --line:rgba(11,20,34,.30);
+  --line-bright:rgba(11,20,34,.58);
+  --text-2:#172235;
+  --text-3:#46566e;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+}
+
+
+.hero-image-open{
+  position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;
+  border-radius:inherit;overflow:hidden;
+}
+.hero-image-open img{cursor:zoom-in}
+.hero-image-open:focus-visible{outline:2px solid var(--cyan);outline-offset:-5px}
+
+
+.image-fallback{
+  background:
+    linear-gradient(135deg,rgba(84,230,255,.12),rgba(255,214,90,.08)),
+    #0b111d;
+  object-fit:contain!important;
+  padding:24px;
+}
+
 </style>
 </head>
 <body>
@@ -186,6 +252,7 @@ h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
   <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M3 3l7 7M16 21h5v-5M21 21l-7-7M21 8V3h-5M21 3l-7 7M3 16v5h5M3 21l7-7"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-accessibility" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5h14M12 8.5v12M8 20l4-6 4 6M8 12l-3 5M16 12l3 5"/></symbol>
 </svg>
 
 <main id="main">
@@ -202,7 +269,7 @@ h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
       </div>
     </div>
     <figure class="hero-visual glass metal-edge">
-      <img src="assets/hero-banner.jpg" alt="Alvin Silva professional portfolio banner" width="1600" height="900" loading="eager">
+      <button class="hero-image-open" type="button" data-image="assets/hero-banner.jpg" data-title="Alvin M. Silva — Portfolio Banner" data-caption="Strategic innovation · resilience · sustainable development" data-tooltip="Open hero image" aria-label="Open hero image"><img src="assets/hero-banner.jpg" alt="Alvin Silva professional portfolio banner" width="1600" height="900" loading="eager"></button>
       <figcaption class="hero-caption">
         <div><strong>Alvin M. Silva, MDM</strong><span>Strategic innovation · resilience · sustainable development</span></div>
         <span class="status"><i></i> Active professional portfolio</span>
@@ -237,12 +304,12 @@ h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
     <div class="control-bar glass metal-edge">
       <label><span class="sr-only">Search portfolio</span><input id="search" class="search" type="search" placeholder="Search projects, sectors, methods, organizations…"></label>
       <div class="filters" id="filters" role="group" aria-label="Portfolio filters">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="strategy">Strategy</button>
-        <button class="filter" data-filter="resilience">Resilience</button>
-        <button class="filter" data-filter="platform">Platforms</button>
-        <button class="filter" data-filter="humanitarian">Humanitarian</button>
-        <button class="filter" data-filter="publication">Publications</button>
+        <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" data-filter="strategy" aria-pressed="false">Strategy</button>
+        <button class="filter" data-filter="resilience" aria-pressed="false">Resilience</button>
+        <button class="filter" data-filter="platform" aria-pressed="false">Platforms</button>
+        <button class="filter" data-filter="humanitarian" aria-pressed="false">Humanitarian</button>
+        <button class="filter" data-filter="publication" aria-pressed="false">Publications</button>
       </div>
     </div>
 
@@ -391,18 +458,18 @@ h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
       <p>Selected original visual assets from the portfolio's systems innovation and strategy work.</p>
     </div>
     <div class="gallery">
-      <figure class="gallery-item glass"><img src="assets/3-paradign-shift.png" alt="Paradigm shift visualization" loading="lazy"><figcaption>Paradigm shift</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/4-day-arc.png" alt="Four-day arc visualization" loading="lazy"><figcaption>Four-day arc</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/5-calibration.png" alt="Calibration visualization" loading="lazy"><figcaption>Calibration</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/6-deep-dive.png" alt="Deep dive visualization" loading="lazy"><figcaption>Deep dive</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/7-systems-loop-analysis.png" alt="Systems loop analysis visualization" loading="lazy"><figcaption>Systems loop analysis</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/8-Leverage-points.pmg.png" alt="Leverage points visualization" loading="lazy"><figcaption>Leverage points</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/8.1-fixes-that-fail.png" alt="Fixes that fail visualization" loading="lazy"><figcaption>Fixes that fail</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/9.1-diagnostic-engine.png" alt="Diagnostic engine visualization" loading="lazy"><figcaption>Diagnostic engine</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/9-assessment-strategy.png" alt="Assessment strategy visualization" loading="lazy"><figcaption>Assessment strategy</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/12-TOR-delivery.png" alt="Terms of reference delivery visualization" loading="lazy"><figcaption>TOR → delivery</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/2-designing-for-sf-15.png" alt="Designing for strategic foresight visualization" loading="lazy"><figcaption>Designing for foresight</figcaption></figure>
-      <figure class="gallery-item glass"><img src="assets/4.1-3day-variant.png" alt="Three-day variant visualization" loading="lazy"><figcaption>Three-day variant</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/3-paradign-shift.png" alt="Paradigm shift visualization" loading="lazy"><figcaption>Paradigm shift</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/4-day-arc.png" alt="Four-day arc visualization" loading="lazy"><figcaption>Four-day arc</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/5-calibration.png" alt="Calibration visualization" loading="lazy"><figcaption>Calibration</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/6-deep-dive.png" alt="Deep dive visualization" loading="lazy"><figcaption>Deep dive</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/7-systems-loop-analysis.png" alt="Systems loop analysis visualization" loading="lazy"><figcaption>Systems loop analysis</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/8-Leverage-points.pmg.png" alt="Leverage points visualization" loading="lazy"><figcaption>Leverage points</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/8.1-fixes-that-fail.png" alt="Fixes that fail visualization" loading="lazy"><figcaption>Fixes that fail</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/9.1-diagnostic-engine.png" alt="Diagnostic engine visualization" loading="lazy"><figcaption>Diagnostic engine</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/9-assessment-strategy.png" alt="Assessment strategy visualization" loading="lazy"><figcaption>Assessment strategy</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/12-TOR-delivery.png" alt="Terms of reference delivery visualization" loading="lazy"><figcaption>TOR → delivery</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/2-designing-for-sf-15.png" alt="Designing for strategic foresight visualization" loading="lazy"><figcaption>Designing for foresight</figcaption></figure>
+      <figure class="gallery-item glass" tabindex="0" role="button" aria-label="Open visualization"><img src="assets/4.1-3day-variant.png" alt="Three-day variant visualization" loading="lazy"><figcaption>Three-day variant</figcaption></figure>
     </div>
   </div>
 </section>
@@ -414,14 +481,14 @@ h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
       <p>Selected books, manuals and reports represented by the repository's existing cover assets.</p>
     </div>
     <div class="pub-grid">
-      <article class="pub glass"><img src="assets/cover-personal-resilience-3d.jpg" alt="Personal Resilience 3D cover" loading="lazy"><div class="pub-body"><h3>Personal Resilience</h3><p>2025 · Book</p></div></article>
-      <article class="pub glass"><img src="assets/cover-resilient-futures.jpg" alt="Resilient Futures cover" loading="lazy"><div class="pub-body"><h3>Resilient Futures</h3><p>2024 · Book</p></div></article>
-      <article class="pub glass"><img src="assets/cover-building-resilience.jpg" alt="Building Resilience cover" loading="lazy"><div class="pub-body"><h3>Building Resilience</h3><p>2023 · Book</p></div></article>
-      <article class="pub glass"><img src="assets/cover-2024-sme-report.jpg" alt="2024 SME report cover" loading="lazy"><div class="pub-body"><h3>SME 2024 Report</h3><p>2024 · Report</p></div></article>
-      <article class="pub glass"><img src="assets/cover-vulnerability-indicators.jpg" alt="Vulnerability indicators cover" loading="lazy"><div class="pub-body"><h3>Vulnerability Indicators</h3><p>2021 · Research</p></div></article>
-      <article class="pub glass"><img src="assets/cover-policy-report.jpg" alt="Policy report cover" loading="lazy"><div class="pub-body"><h3>Policy & Strategy Reports</h3><p>Selected professional work</p></div></article>
-      <article class="pub glass"><img src="assets/cover-dlsu-oupms.jpg" alt="DLSU performance management cover" loading="lazy"><div class="pub-body"><h3>DLSU Performance Management</h3><p>2024 · Organizational development</p></div></article>
-      <article class="pub glass"><img src="assets/cover-msme-ai-automation.jpg" alt="MSME AI automation cover" loading="lazy"><div class="pub-body"><h3>MSME AI Automation</h3><p>Digital innovation</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-personal-resilience-3d.jpg" alt="Personal Resilience 3D cover" loading="lazy"><div class="pub-body"><h3>Personal Resilience</h3><p>2025 · Book</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-resilient-futures.jpg" alt="Resilient Futures cover" loading="lazy"><div class="pub-body"><h3>Resilient Futures</h3><p>2024 · Book</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-building-resilience.jpg" alt="Building Resilience cover" loading="lazy"><div class="pub-body"><h3>Building Resilience</h3><p>2023 · Book</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-2024-sme-report.jpg" alt="2024 SME report cover" loading="lazy"><div class="pub-body"><h3>SME 2024 Report</h3><p>2024 · Report</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-vulnerability-indicators.jpg" alt="Vulnerability indicators cover" loading="lazy"><div class="pub-body"><h3>Vulnerability Indicators</h3><p>2021 · Research</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-policy-report.jpg" alt="Policy report cover" loading="lazy"><div class="pub-body"><h3>Policy & Strategy Reports</h3><p>Selected professional work</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-dlsu-oupms.jpg" alt="DLSU performance management cover" loading="lazy"><div class="pub-body"><h3>DLSU Performance Management</h3><p>2024 · Organizational development</p></div></article>
+      <article class="pub glass" tabindex="0" role="button" aria-label="Open publication cover"><img src="assets/cover-msme-ai-automation.jpg" alt="MSME AI automation cover" loading="lazy"><div class="pub-body"><h3>MSME AI Automation</h3><p>Digital innovation</p></div></article>
     </div>
   </div>
 </section>
@@ -453,7 +520,7 @@ h1{font-size:clamp(2.5rem,6vw,5.8rem);margin:13px 0 0;font-weight:900}
 </div>
 
 <div class="a11y">
-  <button class="a11y-btn" id="a11y-toggle" type="button" data-tooltip="Accessibility controls" aria-expanded="false" aria-label="Open accessibility controls">◉</button>
+  <button class="a11y-btn" id="a11y-toggle" type="button" data-tooltip="Accessibility controls" aria-expanded="false" aria-label="Open accessibility controls"><svg class="icon" aria-hidden="true"><use href="#i-accessibility"/></svg></button>
   <div class="a11y-panel glass" id="a11y-panel">
     <div class="eyebrow">Accessibility</div>
     <div class="a11y-row"><label>Reduced motion</label><button data-a11y="reduced-motion">Off</button></div>
