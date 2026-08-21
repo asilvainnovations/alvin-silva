@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500" role="img" aria-labelledby="title desc">
+<title id="title">Alvin Silva private-sector strategic decision pathway</title>
+<desc id="desc">A five-stage pathway from context and risk intelligence through options and investment design to resilient execution.</desc>
+<rect width="1400" height="500" rx="36" fill="#0a0e27"/>
+<g font-family="Montserrat,Arial,sans-serif" text-anchor="middle">
+<text x="700" y="72" fill="#ffffff" font-size="34" font-weight="800">Private-Sector Decision Lens</text>
+<text x="700" y="108" fill="#b8c4dc" font-size="18">Read context → frame risk → choose options → design investment → deliver resilience</text>
+</g>
+<g stroke="#00BFFF" stroke-width="4" fill="none" opacity=".8">
+<path d="M240 270 H370"/><path d="M510 270 H640"/><path d="M780 270 H910"/><path d="M1050 270 H1180"/>
+</g>
+<g font-family="Montserrat,Arial,sans-serif" text-anchor="middle">
+<g><circle cx="170" cy="270" r="70" fill="#1a1f3a" stroke="#FFD700" stroke-width="3"/><text x="170" y="248" fill="#60A5FA" font-size="17" font-weight="700">01</text><text x="170" y="278" fill="#ffffff" font-size="21" font-weight="800">READ</text><text x="170" y="304" fill="#b8c4dc" font-size="14">Context</text></g><g><circle cx="440" cy="270" r="70" fill="#1a1f3a" stroke="#FFD700" stroke-width="3"/><text x="440" y="248" fill="#60A5FA" font-size="17" font-weight="700">02</text><text x="440" y="278" fill="#ffffff" font-size="21" font-weight="800">FRAME</text><text x="440" y="304" fill="#b8c4dc" font-size="14">Risk</text></g><g><circle cx="710" cy="270" r="70" fill="#1a1f3a" stroke="#FFD700" stroke-width="3"/><text x="710" y="248" fill="#60A5FA" font-size="17" font-weight="700">03</text><text x="710" y="278" fill="#ffffff" font-size="21" font-weight="800">CHOOSE</text><text x="710" y="304" fill="#b8c4dc" font-size="14">Options</text></g><g><circle cx="980" cy="270" r="70" fill="#1a1f3a" stroke="#FFD700" stroke-width="3"/><text x="980" y="248" fill="#60A5FA" font-size="17" font-weight="700">04</text><text x="980" y="278" fill="#ffffff" font-size="21" font-weight="800">DESIGN</text><text x="980" y="304" fill="#b8c4dc" font-size="14">Investment</text></g><g><circle cx="1250" cy="270" r="70" fill="#1a1f3a" stroke="#FFD700" stroke-width="3"/><text x="1250" y="248" fill="#60A5FA" font-size="17" font-weight="700">05</text><text x="1250" y="278" fill="#ffffff" font-size="21" font-weight="800">DELIVER</text><text x="1250" y="304" fill="#b8c4dc" font-size="14">Resilience</text></g>
+</g>
+</svg>
