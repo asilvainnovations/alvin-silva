@@ -361,3 +361,53 @@ Generated visualization assets belong under:
 Interactive visualization logic belongs under:
 
 `assets/js/visualizations/`
+
+alvin-silva/
+├── index.html
+├── portfolio.html
+├── credentials.json
+├── manifest.webmanifest
+├── sw.js
+├── blog/
+│   ├── index.html
+│   └── posts/
+├── chorus-ai/
+│   └── index.html
+├── electoral-strategy/
+│   └── index.html
+├── elektrametrics/
+│   └── index.html
+├── api/
+│   ├── chorus/
+│   ├── strategy/
+│   └── elektrametrics/
+├── assets/
+│   ├── css/
+│   │   ├── core.css
+│   │   ├── components.css
+│   │   └── visualizations.css
+│   ├── js/
+│   │   ├── core/
+│   │   │   ├── accessibility.js
+│   │   │   ├── navigation.js
+│   │   │   ├── persona.js
+│   │   │   └── theme.js
+│   │   ├── services/
+│   │   │   ├── credentials-service.js
+│   │   │   └── analytics-service.js
+│   │   └── visualizations/
+│   │       ├── career-map.js
+│   │       ├── impact-dashboard.js
+│   │       └── expertise-radar.js
+│   └── images/
+│       ├── profile/
+│       ├── portfolio/
+│       ├── visualizations/
+│       └── social/
+├── data/
+│   ├── credentials.json
+│   ├── portfolio.json
+│   └── publications.json
+└── .github/
+    └── workflows/
+        └── validate.yml
