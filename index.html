@@ -2353,7 +2353,112 @@ $('#cookieSettings').addEventListener('click', () => {
 });
 if (!getConsent()) setTimeout(showConsent, 1800);
 </script>
-<script src="assets/js/boot.js" defer></script>
+
+  <!-- ============ QUICK CONNECT MODAL (QR SCAN LANDING) ============ -->
+<div class="persona-modal" id="quickConnectModal" role="dialog" aria-modal="true" aria-labelledby="qc-title">
+    <div class="persona-card glass-strong" style="text-align:center; max-width:480px;">
+        <button class="pc-close" id="qcClose" aria-label="Close dialog">✕</button>
+        <div style="width:64px;height:64px;margin:0 auto 1rem;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;">
+            <svg style="width:32px;height:32px;color:var(--accent)"><use href="#i-app"/></svg>
+        </div>
+        <h2 id="qc-title" style="font-size:1.5rem;">Quick <span class="grad-text">Connect</span></h2>
+        <p class="pc-sub">Get offline access to my portfolio and save my direct contact details to your phone.</p>
+        
+        <div style="display:grid; gap:1rem; margin-top:1.5rem;">
+            <!-- PWA INSTALL BUTTON -->
+            <button id="qcInstallBtn" class="btn btn-primary" style="width:100%; justify-content:center;">
+                <svg style="width:18px;height:18px;"><use href="#i-dl"/></svg>
+                <span>Install App to Home Screen</span>
+            </button>
+            
+            <!-- iOS FALLBACK GUIDE (Hidden by default, shown via JS if iOS) -->
+            <div id="qcIosGuide" class="glass" style="display:none; padding:1rem; border-radius:12px; text-align:left; border:1px dashed var(--gold);">
+                <p style="font-size:.85rem; color:var(--text-2); margin-bottom:.5rem;"><strong>iOS detected:</strong> To install, tap the <strong>Share</strong> icon <svg style="width:14px;height:14px;vertical-align:middle;"><use href="#i-swap"/></svg> at the bottom of Safari, then select <strong>"Add to Home Screen"</strong>.</p>
+            </div>
+
+            <!-- SAVE CONTACT BUTTON -->
+            <a href="assets/contact.vcf" download="Alvin_Silva.vcf" id="qcContactBtn" class="btn btn-gold" style="width:100%; justify-content:center; text-decoration:none;">
+                <svg style="width:18px;height:18px;"><use href="#i-user"/></svg>
+                <span>Save Contact to Phonebook</span>
+            </a>
+        </div>
+        
+        <button class="persona-skip" id="qcSkip" style="margin-top:1.5rem;">Just browse the website</button>
+    </div>
+</div>
+  /* ================================================================
+QR CODE QUICK CONNECT & vCard HANDLER
+================================================================ */
+(function quickConnectInit() {
+    const modal = document.getElementById('quickConnectModal');
+    if (!modal) return;
+
+    const installBtn = document.getElementById('qcInstallBtn');
+    const iosGuide = document.getElementById('qcIosGuide');
+    const closeBtn = document.getElementById('qcClose');
+    const skipBtn = document.getElementById('qcSkip');
+
+    // Detect iOS for PWA installation fallback
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+    function openModal() {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        // If already installed, hide install button and show a success message
+        if (isStandalone) {
+            installBtn.innerHTML = '<svg style="width:18px;height:18px;"><use href="#i-check"/></svg><span>App Already Installed</span>';
+            installBtn.disabled = true;
+            installBtn.style.opacity = '0.6';
+        }
+
+        // Show iOS specific instructions if on Safari/iOS
+        if (isIOS && !isStandalone) {
+            installBtn.style.display = 'none'; // Hide the button that relies on beforeinstallprompt
+            iosGuide.style.display = 'block';
+        }
+    }
+
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    // 1. Check URL for QR Code trigger
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('action') === 'connect') {
+        // Small delay to let the page render and PWA service worker register
+        setTimeout(openModal, 800); 
+    }
+
+    // 2. Hook up the Install Button to your existing deferredPrompt logic
+    installBtn.addEventListener('click', async () => {
+        if (window.deferredPrompt) {
+            window.deferredPrompt.prompt();
+            const { outcome } = await window.deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                toast('App installed! See you on the home screen.');
+                closeModal();
+            }
+            window.deferredPrompt = null;
+        } else {
+            // Fallback if browser doesn't support beforeinstallprompt
+            toast('Please use your browser\'s "Add to Home Screen" option.');
+        }
+    });
+
+    // 3. Close / Skip events
+    closeBtn.addEventListener('click', closeModal);
+    skipBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    
+    // 4. Enhance vCard download with a toast notification
+    document.getElementById('qcContactBtn').addEventListener('click', () => {
+        toast('Opening phonebook... Tap "Add" to save.');
+    });
+})();
+  <script src="assets/js/boot.js" defer></script>
 <script src="assets/js/visualizations/career-map.js" defer></script>
 <script src="assets/js/visualizations/expertise-radar.js" defer></script>
 <script src="assets/js/visualizations/impact-dashboard.js" defer></script>
