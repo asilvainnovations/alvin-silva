@@ -15,11 +15,19 @@
   const { el, renderInline, escapeHtml, storage, ready, bus } = NS.util;
 
   const STATE_KEY = 'asilva:chat:v2';
+  /* Resolve against the script's own location so personal-resilience/*.html
+     gets the right path without ../ juggling. */
+  const LOGO = (function () {
+    const base = (document.currentScript && document.currentScript.src) ||
+      (Array.from(document.scripts).find((x) => /chat\/widget\.js/.test(x.src)) || {}).src || '';
+    return base ? base.replace(/assets\/js\/chat\/widget\.js.*$/, 'assets/logo-192.png')
+                : 'assets/logo-192.png';
+  })();
   const MAX_TURNS = 60;
 
   const CSS = `
 .asx-fab{position:fixed;right:20px;bottom:20px;z-index:9998;width:56px;height:56px;border-radius:50%;
- border:1px solid var(--line,rgba(0,0,0,.15));background:var(--accent,#0069a8);color:#fff;cursor:pointer;
+ border:1px solid var(--line,rgba(0,0,0,.15));background:var(--card,#fff);color:var(--accent,#0069a8);cursor:pointer;
  display:grid;place-items:center;box-shadow:0 8px 28px rgba(0,0,0,.24);transition:transform .18s ease}
 .asx-fab:hover{transform:translateY(-2px)}
 .asx-fab:focus-visible{outline:3px solid var(--accent,#0069a8);outline-offset:3px}
@@ -38,8 +46,11 @@
  border-bottom:1px solid var(--line,rgba(0,0,0,.12));background:var(--glass-strong,transparent)}
 .asx-head h2{margin:0;font-size:.95rem;font-weight:650;letter-spacing:-.01em}
 .asx-head p{margin:1px 0 0;font-size:.72rem;color:var(--text-3,#667);line-height:1.3}
-.asx-avatar{width:34px;height:34px;border-radius:9px;flex:0 0 auto;display:grid;place-items:center;
- background:var(--accent,#0069a8);color:#fff;font-weight:700;font-size:.8rem}
+.asx-avatar{width:34px;height:34px;border-radius:9px;flex:0 0 auto;object-fit:contain;
+ background:var(--card,#fff);border:1px solid var(--line,rgba(0,0,0,.12))}
+.asx-avatar-fb{display:grid;place-items:center;background:var(--accent,#0069a8);color:#fff;
+ font-weight:700;font-size:.8rem;border:0}
+.asx-fab-logo{width:30px;height:30px;object-fit:contain;border-radius:7px;background:#fff;padding:2px}
 .asx-x{margin-left:auto;background:none;border:0;color:var(--text-3,#667);cursor:pointer;font-size:1.3rem;
  line-height:1;padding:4px 8px;border-radius:8px}
 .asx-x:hover{background:var(--accent-soft,rgba(0,0,0,.06));color:var(--text,#111)}
@@ -144,7 +155,16 @@
       this.sendBtn.addEventListener('click', () => this._submit());
 
       const head = el('div', { class: 'asx-head' }, [
-        el('div', { class: 'asx-avatar', text: 'AS', 'aria-hidden': 'true' }),
+        /* Alvin's mark, not text initials. Falls back to "AS" if the asset
+           404s, so the header never renders as a broken-image icon. */
+        el('img', {
+          class: 'asx-avatar', src: LOGO, alt: '', 'aria-hidden': 'true',
+          width: '34', height: '34', loading: 'lazy', decoding: 'async',
+          onerror: function () {
+            const d = el('div', { class: 'asx-avatar asx-avatar-fb', text: 'AS', 'aria-hidden': 'true' });
+            this.replaceWith(d);
+          }
+        }),
         el('div', {}, [
           el('h2', { text: 'Ask about Alvin\u2019s work' }),
           el('p', { text: persona ? `${persona.charAt(0).toUpperCase() + persona.slice(1)} lens \u00b7 verified record` : 'Answers from the verified record' })
@@ -179,7 +199,15 @@
 
       this.fab = el('button', {
         class: 'asx-fab', type: 'button', 'aria-label': 'Open assistant',
-        'aria-expanded': 'false', html: ICON_CHAT + '<span class="asx-dot"></span>'
+        'aria-expanded': 'false',
+        html: `<img class="asx-fab-logo" src="${LOGO}" alt="" aria-hidden="true" width="30" height="30">`
+              + '<span class="asx-dot"></span>'
+      });
+      /* If the logo fails to load, fall back to the chat glyph rather than
+         leaving an empty circular button. */
+      const fabImg = this.fab.querySelector('.asx-fab-logo');
+      if (fabImg) fabImg.addEventListener('error', () => {
+        fabImg.outerHTML = ICON_CHAT;
       });
       this.fab.addEventListener('click', () => this.toggle());
       document.body.append(this.panel, this.fab);
