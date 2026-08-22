@@ -5,7 +5,7 @@
 // load — so without a version bump, repeat visitors can be stuck one (or
 // more) deploys behind indefinitely. Bump this string on any deploy that
 // changes a precached file, to force activate() to clear the old cache.
-const CACHE_NAME = 'asilva-v6';
+const CACHE_NAME = 'asilva-v7';
 const PRECACHE = [
   '/',
   '/index.html',

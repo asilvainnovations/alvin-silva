@@ -72,14 +72,14 @@
       ],
       "knowsAbout": ["Climate Change Adaptation","Disaster Risk Reduction","Integrated Risk Management","Systems Innovation","Strategic Planning","Organizational Development","Capacity Building","Security Risk Management","Mental Health and Psychosocial Support","Investment Roadmapping"],
       "sameAs": [
-        "https://www.facebook.com/a7vinsi7va",
-        "https://www.linkedin.com/in/alvinsilva777"
+        "https://alvin-silva-linkedin.asilvainnovations.com",
+        "https://alvin-silva-facebook.asilvainnovations.com"
       ],
       "worksFor": { "@type": "Organization", "name": "A. Silva Innovations", "url": "https://alvin-silva.asilvainnovations.com/" }
     },
     {
       "@type": "WebSite",
-      "@id": "https://alvin-silva.asilvainnovations.com",
+      "@id": "https://alvin-silva.asilvainnovations.com/#website",
       "url": "https://alvin-silva.asilvainnovations.com/",
       "name": "Alvin M. Silva, MDM — Development Management & Resilience Consultant",
       "publisher": { "@id": "https://alvin-silva.asilvainnovations.com/#person" },
@@ -786,6 +786,39 @@ html.js .reveal.in { opacity:1; transform:none; }
 .switch input:disabled { cursor:not-allowed; }
 .switch input:disabled + .track { background:rgba(255,215,0,.25); border-color:var(--line-gold); }
 @media print { .consent-banner { display:none !important; } }
+
+/* ---------- Books for sale (added 2026-08-21) ---------- */
+.books-grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));margin-top:26px}
+.book-offer{display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:var(--radius);
+ border:1px solid var(--line);transition:transform .22s ease,border-color .22s ease}
+.book-offer:hover{transform:translateY(-3px);border-color:var(--accent)}
+.book-offer-covers{position:relative;display:flex;align-items:flex-end;justify-content:center;
+ gap:10px;min-height:210px;padding-top:6px}
+.book-cover-main{width:auto;max-height:230px;object-fit:contain;
+ filter:drop-shadow(0 14px 30px rgba(0,0,0,.28))}
+.book-cover-wide{max-height:210px}
+.book-cover-bonus{width:auto;max-height:132px;object-fit:contain;align-self:flex-end;
+ filter:drop-shadow(0 10px 22px rgba(0,0,0,.26))}
+.book-bonus-tag{position:absolute;top:0;right:4px;font-size:.66rem;letter-spacing:.04em;
+ text-transform:uppercase;padding:4px 10px;border-radius:999px;
+ background:var(--accent-soft);color:var(--accent);border:1px solid var(--line-gold);font-weight:650}
+.book-offer-body h3{margin:0 0 8px;font-size:1.12rem;line-height:1.35;letter-spacing:-.015em}
+.book-sub{display:block;font-weight:500;font-size:.92rem;color:var(--text-2);margin-top:3px}
+.book-offer-body p{margin:0 0 12px;font-size:.92rem;line-height:1.65;color:var(--text-2)}
+.book-bonus{font-size:.86rem;line-height:1.6;padding:12px 14px;border-radius:10px;
+ background:var(--accent-soft);border:1px solid var(--line-gold);margin-bottom:14px}
+.book-meta-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.book-chip{font-size:.7rem;padding:3px 10px;border-radius:999px;border:1px solid var(--line);
+ color:var(--text-3)}
+.book-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+@media (max-width:520px){
+  .book-offer{padding:18px}
+  .book-offer-covers{min-height:170px}
+  .book-cover-main{max-height:180px}
+  .book-cover-bonus{max-height:100px}
+  .book-actions .btn{flex:1 1 100%;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){ .book-offer{transition:none} .book-offer:hover{transform:none} }
 </style>
 <script type="module">
   // Supabase client — shared with portfolio.html. Not required for anything
@@ -906,9 +939,21 @@ html.js .reveal.in { opacity:1; transform:none; }
           <div class="drop-head">Go Deeper</div>
           <a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Books &amp; Platforms</a>
           <a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> Read the FAQ</a>
-          <a class="drop-item" href="https://portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
-          <a class="drop-item" href="https://www.facebook.com/a7vinsi7va" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-fb"/></svg> Facebook ↗</a>
-          <a class="drop-item" href="https://www.linkedin.com/in/alvinsilva777" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-li"/></svg> LinkedIn ↗</a>
+          <a class="drop-item" href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
+          <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
+        </div>
+      </li>
+      <li class="drop" data-drop>
+        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Resources <span class="chev" aria-hidden="true"></span></button>
+        <div class="drop-menu" role="menu">
+          <div class="drop-head">Explore &amp; Connect</div>
+          <a class="drop-item" href="blog.html" role="menuitem"><svg><use href="#i-book"/></svg> Blog</a>
+          <a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
+          <a class="drop-item" href="chat.html" role="menuitem"><svg><use href="#i-bulb"/></svg> ASilva AI</a>
+          <a class="drop-item" href="career-automation.html" role="menuitem"><svg><use href="#i-target"/></svg> Career Scan Automation</a>
+          <a class="drop-item" href="policies.html" role="menuitem"><svg><use href="#i-shield"/></svg> Policies</a>
+          <a class="drop-item" href="#contact" role="menuitem"><svg><use href="#i-mail"/></svg> Support</a>
+          <a class="drop-item" href="#contact" role="menuitem"><svg><use href="#i-user"/></svg> Contact</a>
         </div>
       </li>
       <li><a href="#contact" class="drop-btn" style="text-decoration:none">Let's Collaborate</a></li>
@@ -948,6 +993,12 @@ html.js .reveal.in { opacity:1; transform:none; }
     <a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> Read the FAQ</a>
     <a class="mm-link" href="blog.html"><svg><use href="#i-book"/></svg> Writing</a>
     <a class="mm-link" href="portfolio.html"><svg><use href="#i-globe"/></svg> Portfolio</a>
+    <div class="mm-head">Resources</div>
+    <a class="mm-link" href="blog.html"><svg><use href="#i-book"/></svg> Blog</a>
+    <a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> FAQ</a>
+    <a class="mm-link" href="chat.html"><svg><use href="#i-bulb"/></svg> ASilva AI</a>
+    <a class="mm-link" href="career-automation.html"><svg><use href="#i-target"/></svg> Career Scan Automation</a>
+    <a class="mm-link" href="policies.html"><svg><use href="#i-shield"/></svg> Policies</a>
     <a class="mm-link" href="#contact"><svg><use href="#i-mail"/></svg> Let's Collaborate</a>
   </div>
   <div class="mm-group">
@@ -1000,7 +1051,7 @@ html.js .reveal.in { opacity:1; transform:none; }
       <aside class="hero-card glass-strong" aria-label="Key statistics">
         <div class="hc-title"><span>Proof, not promises</span><span class="chip" style="border-color:var(--accent);color:var(--accent);font-size:.66rem;padding:.2rem .6rem" data-p="hero.badge">EXECUTIVE LENS</span></div>
         <div class="stat-grid">
-          <div><div class="stat-num"><span class="count" data-to="18">0</span>+</div><div class="stat-label">Years of Global Experience</div></div>
+          <div><div class="stat-num"><span class="count" data-to="15">0</span>+</div><div class="stat-label">Years of Global Experience</div></div>
           <div><div class="stat-num"><span class="count" data-to="15">0</span>+</div><div class="stat-label">Countries of Engagement</div></div>
           <div><div class="stat-num">₱<span class="count" data-to="190">0</span>M</div><div class="stat-label">Project Value Designed</div></div>
           <div><div class="stat-num"><span class="count" data-to="27">0</span></div><div class="stat-label">Documented Works</div></div>
@@ -1306,11 +1357,80 @@ html.js .reveal.in { opacity:1; transform:none; }
     <h2 class="section-title">The record, <span class="hl">quantified</span></h2>
     <div class="numbers-grid" id="numbersGrid">
       <div class="num-card glass reveal"><div class="stat-num"><span class="count" data-to="27">27</span></div><div class="stat-label">Documented Works</div></div>
-      <div class="num-card glass reveal"><div class="stat-num"><span class="count" data-to="18">18</span>+</div><div class="stat-label">Years in Practice</div></div>
+      <div class="num-card glass reveal"><div class="stat-num"><span class="count" data-to="15">15</span>+</div><div class="stat-label">Years in Practice</div></div>
       <div class="num-card glass reveal"><div class="stat-num"><span class="count" data-to="15">15</span>+</div><div class="stat-label">Countries Engaged</div></div>
-      <div class="num-card glass reveal"><div class="stat-num"><span class="count" data-to="3">3</span></div><div class="stat-label">Published Books</div></div>
+      <div class="num-card glass reveal"><div class="stat-num"><span class="count" data-to="5">5</span></div><div class="stat-label">Published Books</div></div>
     </div>
     <p class="num-note" data-p="numbers.note">Every figure is tied to a documented engagement above — ask for the evidence pack.</p>
+  </div>
+</section>
+
+<!-- ============ BOOKS FOR SALE ============ -->
+<section class="section" id="books" aria-labelledby="books-title">
+  <div class="wrap">
+    <p class="kicker">Published Works</p>
+    <h2 class="section-title" id="books-title">Resilience, <span class="hl">in your hands</span></h2>
+    <p class="section-lede">Two practical guides drawn from fifteen years of field practice &mdash;
+      written for people building resilience in themselves, their teams, and their institutions.</p>
+
+    <div class="books-grid">
+
+      <!-- 1. Personal Resilience + free companion -->
+      <article class="book-offer glass reveal">
+        <div class="book-offer-covers">
+          <picture>
+            <source type="image/webp" srcset="assets/cover-personal-resilience-boxshot.webp">
+            <img src="assets/cover-personal-resilience-boxshot.jpg" alt="Personal Resilience: The Path to Oneness, by Alvin Silva" class="book-cover-main" loading="lazy" decoding="async" width="420" height="420">
+          </picture>
+          <picture>
+            <source type="image/webp" srcset="assets/cover-resilient-futures.webp">
+            <img src="assets/cover-resilient-futures.jpg" alt="Resilient Futures: Nurturing Oneness in Education and Beyond, by Alvin M. Silva" class="book-cover-bonus" loading="lazy" decoding="async" width="200" height="192">
+          </picture>
+          <span class="book-bonus-tag">Free companion</span>
+        </div>
+        <div class="book-offer-body">
+          <h3>Personal Resilience: <span class="book-sub">The Path to Oneness</span></h3>
+          <p>A framework for building resilience from the inside out &mdash; treating the self as a system
+            rather than a set of habits to fix. Grounded in the same systems thinking Alvin applies to
+            institutions, turned inward.</p>
+          <div class="book-bonus">
+            <strong>Includes free:</strong> <em>Resilient Futures: Nurturing Oneness in Education and Beyond</em>
+            &mdash; extending the same framework into classrooms, faculties, and learning systems.
+          </div>
+          <div class="book-actions">
+            <a class="btn btn-primary" href="personal-resilience.html">Get the book</a>
+            <a class="btn btn-ghost" href="personal-resilience.html#preview">Read a preview</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Building Resilience -->
+      <article class="book-offer glass reveal">
+        <div class="book-offer-covers">
+          <picture>
+            <source type="image/webp" srcset="assets/cover-building-resilience-mockup.webp">
+            <img src="assets/cover-building-resilience-mockup.jpg" alt="Building Resilience: The Path to a More Fulfilling and Resilient Life, by Alvin Silva &mdash; print and digital editions" class="book-cover-main book-cover-wide" loading="lazy" decoding="async" width="480" height="424">
+          </picture>
+        </div>
+        <div class="book-offer-body">
+          <h3>Building Resilience: <span class="book-sub">The Path to a More Fulfilling and Resilient Life</span></h3>
+          <p>The practical counterpart &mdash; what resilience looks like as daily practice rather than
+            theory. Written for readers who want the working method, not the literature review.</p>
+          <div class="book-meta-row">
+            <span class="book-chip">Print &amp; digital</span>
+            <span class="book-chip">ISBN 979-8-8620-7317-1</span>
+            <span class="book-chip">Cognitio+</span>
+          </div>
+          <div class="book-actions">
+            <a class="btn btn-primary" href="building-resilience.html">Get the book</a>
+            <a class="btn btn-ghost" href="building-resilience.html#preview">Read a preview</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="num-note">All titles are published through Cognitio+ and ASilva Innovations.
+      For bulk, institutional, or course-adoption pricing, <a href="#contact">get in touch</a>.</p>
   </div>
 </section>
 
@@ -1422,8 +1542,8 @@ html.js .reveal.in { opacity:1; transform:none; }
         <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
         <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
         <div class="socials">
-          <a href="https://www.linkedin.com/in/alvinsilva777/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-          <a href="https://www.facebook.com/a7vinsi7va" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
+          <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
+          <a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
           <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
           <a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Website"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-globe"/></svg></a>
         </div>
