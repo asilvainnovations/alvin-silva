@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Blog Composer — Alvin M. Silva</title>
+<!--
+  tools/blog-composer.html
+
+  Writing a post by hand means authoring a typed JSON block array AND editing
+  the manifest, with both needing to stay valid JSON. That is a poor authoring
+  experience anywhere and an impossible one on a phone.
+
+  This composer runs entirely in the browser. Nothing is uploaded, no server is
+  involved. It loads the live manifest, lets you write, keeps a draft in local
+  storage as you type, and emits the exact two files to upload.
+
+  Open it directly from the repo — no build step, no install.
+-->
+<style>
+:root{
+  --bg:#0f1115; --card:#161a22; --line:rgba(255,255,255,.11); --text:#e8eaee;
+  --text-2:#a8afbc; --text-3:#78808f; --accent:#4c9be8; --accent-soft:rgba(76,155,232,.13);
+  --ok:#3ecf8e; --warn:#e8b84c; --err:#e86c6c; --radius:12px;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f6f7f9;--card:#fff;--line:rgba(0,0,0,.12);--text:#14171c;--text-2:#4a5260;
+        --text-3:#727a88;--accent:#0069a8;--accent-soft:rgba(0,105,168,.09)}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px 80px}
+h1{font-size:1.4rem;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--text-3);font-size:.85rem;margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;margin-bottom:16px}
+.card h2{font-size:.95rem;margin:0 0 14px;letter-spacing:-.01em}
+label{display:block;font-size:.78rem;color:var(--text-2);margin:0 0 5px;font-weight:600}
+input,textarea,select{width:100%;padding:10px 12px;font:inherit;font-size:.9rem;color:var(--text);
+  background:var(--bg);border:1px solid var(--line);border-radius:9px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+textarea{resize:vertical;min-height:90px;line-height:1.65}
+.row{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin-bottom:12px}
+.row-3{display:grid;gap:12px;grid-template-columns:2fr 1fr 1fr;margin-bottom:12px}
+@media(max-width:620px){.row,.row-3{grid-template-columns:1fr}}
+.field{margin-bottom:12px}
+.hint{font-size:.72rem;color:var(--text-3);margin-top:4px}
+button{font:inherit;font-size:.85rem;font-weight:600;padding:9px 16px;border-radius:9px;
+  border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer}
+button:hover{background:var(--accent-soft);border-color:var(--accent)}
+button.primary{background:var(--accent);color:#fff;border-color:transparent}
+button.primary:hover{filter:brightness(1.08)}
+button.danger{color:var(--err);border-color:rgba(232,108,108,.4)}
+button.tiny{padding:4px 9px;font-size:.74rem}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.block{border:1px solid var(--line);border-radius:10px;padding:13px;margin-bottom:11px;background:var(--bg)}
+.block-head{display:flex;gap:8px;align-items:center;margin-bottom:9px}
+.block-head select{width:auto;flex:0 0 auto;font-size:.8rem;padding:5px 9px}
+.block-head .spacer{flex:1}
+.out{width:100%;min-height:220px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.76rem;line-height:1.5;white-space:pre;overflow:auto}
+.status{font-size:.8rem;padding:9px 12px;border-radius:8px;margin-bottom:12px;display:none}
+.status.show{display:block}
+.status.ok{background:rgba(62,207,142,.12);color:var(--ok)}
+.status.err{background:rgba(232,108,108,.12);color:var(--err)}
+.status.warn{background:rgba(232,184,76,.12);color:var(--warn)}
+.steps{counter-reset:s;padding-left:0;list-style:none;margin:0}
+.steps li{counter-increment:s;position:relative;padding-left:30px;margin-bottom:9px;
+  font-size:.85rem;color:var(--text-2)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:20px;height:20px;
+  border-radius:50%;background:var(--accent-soft);color:var(--accent);font-size:.72rem;
+  font-weight:700;display:grid;place-items:center}
+code{background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-radius:5px;
+  font-size:.82em;font-family:ui-monospace,monospace}
+.preview{border:1px solid var(--line);border-radius:10px;padding:16px;background:var(--bg);
+  max-height:420px;overflow:auto}
+.preview h1{font-size:1.5rem;margin:0 0 8px}
+.preview h2{font-size:1.15rem;margin:1.4em 0 .4em}
+.preview h3{font-size:1rem;margin:1.2em 0 .3em}
+.preview blockquote{border-left:3px solid var(--accent);margin:1.2em 0;padding-left:16px;font-style:italic}
+.preview aside{background:var(--accent-soft);border-radius:9px;padding:12px 14px;margin:1.2em 0;font-size:.9rem}
+.preview p{color:var(--text-2)}
+.tag{display:inline-block;padding:2px 9px;border-radius:99px;background:var(--accent-soft);
+  color:var(--accent);font-size:.72rem;margin-right:5px}
+.muted{color:var(--text-3);font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Blog Composer</h1>
+  <p class="sub">Runs entirely in your browser. Nothing is uploaded. Produces the two
+    files you drop into <code>assets/data/blog/</code>.</p>
+
+  <div id="status" class="status"></div>
+
+  <!-- ---------------------------------------------------------- metadata -->
+  <div class="card">
+    <h2>1 · Post details</h2>
+    <div class="field">
+      <label for="title">Title</label>
+      <input id="title" placeholder="What a Roadmap Owes Its Region">
+    </div>
+    <div class="row-3">
+      <div>
+        <label for="slug">Slug (URL)</label>
+        <input id="slug" placeholder="auto-generated from title">
+        <div class="hint">Becomes <code>&lt;slug&gt;.json</code></div>
+      </div>
+      <div>
+        <label for="date">Date</label>
+        <input id="date" type="date">
+      </div>
+      <div>
+        <label for="status-sel">Status</label>
+        <select id="status-sel">
+          <option value="published">Published</option>
+          <option value="draft">Draft (hidden)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="tags">Tags (comma-separated)</label>
+      <input id="tags" placeholder="systems thinking, evaluation, MEL">
+    </div>
+    <div class="field">
+      <label for="excerpt">Excerpt</label>
+      <textarea id="excerpt" style="min-height:66px"
+        placeholder="One or two sentences. Shown on the blog index and in search results."></textarea>
+    </div>
+  </div>
+
+  <!-- ---------------------------------------------------------- body -->
+  <div class="card">
+    <h2>2 · Body</h2>
+    <div id="blocks"></div>
+    <div class="btnrow">
+      <button onclick="addBlock('p')">+ Paragraph</button>
+      <button onclick="addBlock('h2')">+ Heading</button>
+      <button onclick="addBlock('h3')">+ Subheading</button>
+      <button onclick="addBlock('list')">+ List</button>
+      <button onclick="addBlock('quote')">+ Quote</button>
+      <button onclick="addBlock('callout')">+ Callout</button>
+      <button onclick="addBlock('image')">+ Image</button>
+    </div>
+    <div class="hint" style="margin-top:10px">
+      Inside paragraphs you can use <code>**bold**</code> and
+      <code>[label](url)</code>. Nothing else is rendered as HTML — everything
+      is escaped, so pasted text can never break the page.
+    </div>
+  </div>
+
+  <!-- ---------------------------------------------------------- preview -->
+  <div class="card">
+    <h2>3 · Preview</h2>
+    <div id="preview" class="preview"></div>
+  </div>
+
+  <!-- ---------------------------------------------------------- output -->
+  <div class="card">
+    <h2>4 · Files to upload</h2>
+    <div class="field">
+      <label id="lbl-post">The post file</label>
+      <textarea id="out-post" class="out" readonly></textarea>
+      <div class="btnrow">
+        <button class="primary" onclick="dl('post')">Download post file</button>
+        <button onclick="copy('out-post')">Copy</button>
+      </div>
+    </div>
+    <div class="field" style="margin-top:18px">
+      <label>index.json — the manifest, with your post merged in</label>
+      <textarea id="out-index" class="out" readonly></textarea>
+      <div class="btnrow">
+        <button class="primary" onclick="dl('index')">Download index.json</button>
+        <button onclick="copy('out-index')">Copy</button>
+        <button onclick="loadLive()">Reload live manifest</button>
+      </div>
+      <div class="hint" id="manifest-note">Loading live manifest…</div>
+    </div>
+  </div>
+
+  <!-- ---------------------------------------------------------- publish -->
+  <div class="card">
+    <h2>5 · Publish</h2>
+    <ol class="steps">
+      <li>Download both files above.</li>
+      <li>On GitHub, open <code>assets/data/blog/</code> in your repo.</li>
+      <li><strong>Add file → Upload files</strong>, then select <em>both</em> downloaded files.</li>
+      <li>Commit. The post is live once the deploy finishes.</li>
+      <li>Hard-refresh once (<code>Ctrl/⌘ + Shift + R</code>) — the service worker caches aggressively.</li>
+    </ol>
+    <div class="hint" style="margin-top:12px">
+      Uploading <code>index.json</code> replaces the manifest, so it must contain
+      <em>every</em> post — which is why this tool loads the live one and merges
+      into it rather than starting from scratch.
+    </div>
+    <div class="btnrow">
+      <button class="danger" onclick="clearDraft()">Clear draft</button>
+    </div>
+    <p class="muted" style="margin:12px 0 0">
+      Your work is saved in this browser as you type, so closing the tab won't lose it.
+    </p>
+  </div>
+</div>
+
+<script>
+'use strict';
+const DRAFT_KEY = 'asilva:blog-composer:draft';
+let manifest = null;   // live manifest, posts array
+let blocks = [];
+
+/* ------------------------------------------------------------ helpers */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; };
+
+function slugify(s) {
+  return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 70);
+}
+function say(msg, kind = 'ok') {
+  const el = $('status');
+  el.className = 'status show ' + kind;
+  el.textContent = msg;
+  if (kind === 'ok') setTimeout(() => { el.className = 'status'; }, 3200);
+}
+/* Same restricted inline renderer the site uses: escape everything, then
+   allow only **bold** and [label](url). Keeps preview honest. */
+function inline(s) {
+  let t = esc(s);
+  t = t.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+  t = t.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  return t.replace(/\n/g, '<br>');
+}
+
+/* ------------------------------------------------------------ blocks */
+const BLOCK_LABEL = { p:'Paragraph', h2:'Heading', h3:'Subheading', list:'List',
+                      quote:'Quote', callout:'Callout', image:'Image' };
+
+function addBlock(type, data) {
+  blocks.push(Object.assign({ type, text:'', items:[''], cite:'', tone:'note',
+                              src:'', alt:'', caption:'' }, data || {}));
+  renderBlocks(); sync();
+}
+function moveBlock(i, d) {
+  const j = i + d; if (j < 0 || j >= blocks.length) return;
+  [blocks[i], blocks[j]] = [blocks[j], blocks[i]]; renderBlocks(); sync();
+}
+function delBlock(i) { blocks.splice(i, 1); renderBlocks(); sync(); }
+
+function renderBlocks() {
+  const host = $('blocks'); host.innerHTML = '';
+  blocks.forEach((b, i) => {
+    const d = document.createElement('div'); d.className = 'block';
+    let inner = `<div class="block-head">
+      <select onchange="blocks[${i}].type=this.value;renderBlocks();sync()">` +
+      Object.keys(BLOCK_LABEL).map((k) =>
+        `<option value="${k}"${k === b.type ? ' selected' : ''}>${BLOCK_LABEL[k]}</option>`).join('') +
+      `</select><span class="spacer"></span>
+      <button class="tiny" onclick="moveBlock(${i},-1)" aria-label="Move up">↑</button>
+      <button class="tiny" onclick="moveBlock(${i},1)" aria-label="Move down">↓</button>
+      <button class="tiny danger" onclick="delBlock(${i})" aria-label="Delete">✕</button>
+    </div>`;
+
+    if (b.type === 'list') {
+      inner += `<textarea placeholder="One item per line"
+        oninput="blocks[${i}].items=this.value.split('\\n');sync()">${esc((b.items||[]).join('\n'))}</textarea>`;
+    } else if (b.type === 'image') {
+      inner += `<input placeholder="assets/blog/my-image.jpg"
+        oninput="blocks[${i}].src=this.value;sync()" value="${esc(b.src)}">
+        <input style="margin-top:8px" placeholder="Alt text (describe the image)"
+        oninput="blocks[${i}].alt=this.value;sync()" value="${esc(b.alt)}">
+        <input style="margin-top:8px" placeholder="Caption (optional)"
+        oninput="blocks[${i}].caption=this.value;sync()" value="${esc(b.caption)}">`;
+    } else if (b.type === 'quote') {
+      inner += `<textarea placeholder="The quote"
+        oninput="blocks[${i}].text=this.value;sync()">${esc(b.text)}</textarea>
+        <input style="margin-top:8px" placeholder="Attribution (optional)"
+        oninput="blocks[${i}].cite=this.value;sync()" value="${esc(b.cite)}">`;
+    } else if (b.type === 'callout') {
+      inner += `<textarea placeholder="Callout text"
+        oninput="blocks[${i}].text=this.value;sync()">${esc(b.text)}</textarea>`;
+    } else if (b.type === 'h2' || b.type === 'h3') {
+      inner += `<input placeholder="Heading text"
+        oninput="blocks[${i}].text=this.value;sync()" value="${esc(b.text)}">`;
+    } else {
+      inner += `<textarea placeholder="Paragraph text. **bold** and [links](url) work."
+        oninput="blocks[${i}].text=this.value;sync()">${esc(b.text)}</textarea>`;
+    }
+    d.innerHTML = inner; host.appendChild(d);
+  });
+}
+
+/* ------------------------------------------------------------ build */
+function buildBody() {
+  return blocks.map((b) => {
+    if (b.type === 'list')  return { type:'list', items:(b.items||[]).map(x=>x.trim()).filter(Boolean) };
+    if (b.type === 'image') return { type:'image', src:b.src, alt:b.alt, caption:b.caption || undefined };
+    if (b.type === 'quote') return { type:'quote', text:b.text, cite:b.cite || undefined };
+    if (b.type === 'callout') return { type:'callout', tone:b.tone||'note', text:b.text };
+    return { type:b.type, text:b.text };
+  }).filter((b) => (b.text && b.text.trim()) || (b.items && b.items.length) || b.src);
+}
+
+function readingMinutes(body) {
+  const words = body.reduce((n, b) =>
+    n + String(b.text || (b.items||[]).join(' ') || '').split(/\s+/).filter(Boolean).length, 0);
+  return Math.max(1, Math.round(words / 210));
+}
+
+function sync() {
+  const title = $('title').value.trim();
+  if (!$('slug').value.trim() && title) $('slug').placeholder = slugify(title) || 'auto-generated from title';
+  const slug = $('slug').value.trim() || slugify(title);
+  const body = buildBody();
+  const tags = $('tags').value.split(',').map(s=>s.trim()).filter(Boolean);
+  const date = $('date').value || new Date().toISOString().slice(0,10);
+  const excerpt = $('excerpt').value.trim();
+  const mins = readingMinutes(body);
+
+  /* post file */
+  const post = { slug, title, date, tags, readingMinutes: mins, excerpt, body };
+  $('out-post').value = JSON.stringify(post, null, 2);
+  $('lbl-post').textContent = slug ? `${slug}.json — the post file` : 'The post file';
+
+  /* manifest merged */
+  if (manifest) {
+    const entry = { slug, title, date, tags, readingMinutes: mins,
+                    status: $('status-sel').value, excerpt };
+    const rest = manifest.posts.filter((x) => x.slug !== slug);
+    const merged = [entry, ...rest].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+    const out = Object.assign({}, manifest.raw, { updated: new Date().toISOString().slice(0,10), posts: merged });
+    $('out-index').value = JSON.stringify(out, null, 2);
+    const isNew = !manifest.posts.some((x) => x.slug === slug);
+    $('manifest-note').innerHTML = slug
+      ? `${merged.length} posts total — this one is <strong>${isNew ? 'new' : 'an update to an existing post'}</strong>.`
+      : 'Enter a title to generate the manifest.';
+  }
+  renderPreview(post);
+  saveDraft();
+}
+
+function renderPreview(post) {
+  const h = [];
+  if (post.title) h.push(`<h1>${esc(post.title)}</h1>`);
+  h.push(`<p class="muted">${esc(post.date)} · ${post.readingMinutes} min read ` +
+         post.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('') + `</p>`);
+  if (post.excerpt) h.push(`<p><em>${esc(post.excerpt)}</em></p>`);
+  post.body.forEach((b) => {
+    if (b.type==='h2') h.push(`<h2>${esc(b.text)}</h2>`);
+    else if (b.type==='h3') h.push(`<h3>${esc(b.text)}</h3>`);
+    else if (b.type==='list') h.push(`<ul>${b.items.map(i=>`<li>${inline(i)}</li>`).join('')}</ul>`);
+    else if (b.type==='quote') h.push(`<blockquote><p>${inline(b.text)}</p>${b.cite?`<cite>${esc(b.cite)}</cite>`:''}</blockquote>`);
+    else if (b.type==='callout') h.push(`<aside>${inline(b.text)}</aside>`);
+    else if (b.type==='image') h.push(`<figure><img src="${esc(b.src)}" alt="${esc(b.alt)}" style="max-width:100%;border-radius:8px">${b.caption?`<figcaption class="muted">${esc(b.caption)}</figcaption>`:''}</figure>`);
+    else h.push(`<p>${inline(b.text)}</p>`);
+  });
+  $('preview').innerHTML = h.join('') || '<p class="muted">Nothing to preview yet.</p>';
+}
+
+/* ------------------------------------------------------------ manifest */
+async function loadLive() {
+  const paths = ['../assets/data/blog/index.json', 'assets/data/blog/index.json',
+                 '/assets/data/blog/index.json'];
+  for (const p of paths) {
+    try {
+      const r = await fetch(p, { cache:'no-cache' });
+      if (!r.ok) continue;
+      const j = await r.json();
+      manifest = { raw:j, posts:j.posts || [] };
+      say(`Loaded live manifest — ${manifest.posts.length} existing posts.`, 'ok');
+      sync(); return;
+    } catch (_) { /* try next */ }
+  }
+  /* Opened from the filesystem, where fetch is blocked. Degrade honestly. */
+  manifest = { raw:{ "$schema":"internal://asilva/blog/v1", updated:'', posts:[] }, posts:[] };
+  $('manifest-note').innerHTML =
+    '<strong>Could not load the live manifest.</strong> Open this file through the ' +
+    'site (e.g. <code>/tools/blog-composer.html</code>) rather than from your ' +
+    'downloads folder, or paste your existing index.json posts in manually — ' +
+    'otherwise the generated manifest will drop your other posts.';
+  say('Live manifest unavailable — see the note under index.json.', 'warn');
+  sync();
+}
+
+/* ------------------------------------------------------------ draft */
+function saveDraft() {
+  try {
+    localStorage.setItem(DRAFT_KEY, JSON.stringify({
+      title:$('title').value, slug:$('slug').value, date:$('date').value,
+      tags:$('tags').value, excerpt:$('excerpt').value,
+      status:$('status-sel').value, blocks
+    }));
+  } catch (_) {}
+}
+function loadDraft() {
+  try {
+    const d = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null');
+    if (!d) return false;
+    $('title').value=d.title||''; $('slug').value=d.slug||''; $('date').value=d.date||'';
+    $('tags').value=d.tags||''; $('excerpt').value=d.excerpt||'';
+    $('status-sel').value=d.status||'published';
+    blocks = d.blocks || [];
+    renderBlocks();
+    return true;
+  } catch (_) { return false; }
+}
+function clearDraft() {
+  if (!confirm('Discard this draft? This cannot be undone.')) return;
+  try { localStorage.removeItem(DRAFT_KEY); } catch (_) {}
+  ['title','slug','tags','excerpt'].forEach(id => $(id).value='');
+  $('date').value = new Date().toISOString().slice(0,10);
+  blocks = []; addBlock('p');
+  say('Draft cleared.');
+}
+
+/* ------------------------------------------------------------ output */
+function dl(which) {
+  const slug = $('slug').value.trim() || slugify($('title').value);
+  if (!slug) { say('Add a title first.', 'err'); return; }
+  const name = which === 'post' ? `${slug}.json` : 'index.json';
+  const text = which === 'post' ? $('out-post').value : $('out-index').value;
+  const blob = new Blob([text], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  say(`Downloaded ${name}`);
+}
+async function copy(id) {
+  try { await navigator.clipboard.writeText($(id).value); say('Copied to clipboard.'); }
+  catch (_) { $(id).select(); say('Press Ctrl/⌘ + C to copy.', 'warn'); }
+}
+
+/* ------------------------------------------------------------ init */
+['title','slug','date','tags','excerpt','status-sel'].forEach((id) =>
+  $(id).addEventListener('input', sync));
+$('status-sel').addEventListener('change', sync);
+
+if (!loadDraft()) {
+  $('date').value = new Date().toISOString().slice(0,10);
+  addBlock('p');
+}
+loadLive();
+</script>
+</body>
+</html>
