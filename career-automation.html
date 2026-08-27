@@ -25,7 +25,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/visualizations.css">
 <style>
 /* ============================================================
    DESIGN TOKENS
@@ -1152,6 +1154,26 @@ loadCredentials().then(() => renderTracker());
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
+<script src="assets/js/boot.js" defer></script>
+<script src="assets/js/visualizations/career-map.js" defer></script>
+<script src="assets/js/visualizations/expertise-radar.js" defer></script>
+<script src="assets/js/visualizations/impact-dashboard.js" defer></script>
+<script src="assets/js/visualizations/career-map.js" defer></script>
+<script src="assets/js/chat/engine.js" defer></script>
+<script src="assets/js/chat/widget.js" defer></script>
+<script src="assets/js/core/accessibility.js" defer></script>
+<script src="assets/js/core/data.js" defer></script>
+<script src="assets/js/core/index.js" defer></script>
+<script src="assets/js/core/navigation.js" defer></script>
+<script src="assets/js/core/nlp.js" defer></script>
+<script src="assets/js/core/persona.js" defer></script>
+<script src="assets/js/core/platform.js" defer></script>
+<script src="assets/js/core/registry.js" defer></script>
+<script src="assets/js/core/router.js" defer></script>
+<script src="assets/js/core/theme.js" defer></script>
+<script src="assets/js/core/util.js" defer></script>
+<script src="assets/js/services/credentials-service.js" defer></script>
+<script src="assets/js/services/analytics-service.js" defer></script>
 </script>
 <script src="assets/js/boot.js" defer></script>
 </body>
