@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — A. Silva Innovations</title>
+  <meta name="description" content="Customer support for A. Silva Innovations. Find answers to common questions about engagements, services, documents, accessibility, privacy, and technical issues.">
+  <meta name="author" content="Alvin M. Silva, MDM — A. Silva Innovations">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://alvin-silva.asilvainnovations.com/support.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
+  <link rel="apple-touch-icon" href="assets/logo-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#0a0e27; --card:#151b38; --blue:#0066ff; --sky:#00bfff;
+      --gold:#ffd700; --green:#34d399; --red:#f87171;
+      --text:#fff; --muted:#dce4ee; --subtle:rgba(220,228,238,.68);
+      --line:rgba(255,255,255,.13); --line-gold:rgba(255,215,0,.28);
+      --font-display:'Montserrat',system-ui,sans-serif;
+      --font-body:'Poppins',system-ui,sans-serif;
+      --font-cond:'Roboto Condensed',system-ui,sans-serif;
+      --ease:cubic-bezier(.22,.8,.28,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:var(--font-body);color:var(--text);background:
+      radial-gradient(1000px 500px at 85% -10%,rgba(0,102,255,.22),transparent 60%),
+      radial-gradient(800px 500px at -10% 30%,rgba(0,191,255,.10),transparent 55%),
+      linear-gradient(160deg,#0a0e27,#0b1030 50%,#070b1d);min-height:100vh;line-height:1.7}
+    a{color:var(--sky)}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .skip{position:absolute;left:8px;top:-50px;background:var(--gold);color:var(--navy);padding:.6rem 1rem;border-radius:0 0 10px 10px;font-weight:700;z-index:9999}
+    .skip:focus{top:0}
+    .header{position:sticky;top:0;z-index:1000;background:rgba(10,14,39,.9);backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,102,255,.42)}
+    .nav{max-width:1200px;margin:auto;padding:.8rem clamp(1rem,4vw,2.5rem);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff}
+    .brand img{width:46px;height:46px;border-radius:50%;border:2px solid var(--gold);background:#fff;padding:2px}
+    .brand strong{font-family:var(--font-display);font-size:1rem;letter-spacing:.04em;background:linear-gradient(45deg,var(--sky),var(--blue),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .brand small{display:block;color:var(--subtle);font:600 .62rem var(--font-cond);letter-spacing:.13em;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:.3rem;list-style:none}
+    .nav-links a{display:block;color:#fff;text-decoration:none;padding:.55rem .8rem;border-radius:8px;font:600 .9rem var(--font-cond);letter-spacing:.05em}
+    .nav-links a:hover,.nav-links a[aria-current=page]{color:var(--gold);background:rgba(255,215,0,.09)}
+    .menu{display:none}
+    .wrap{width:min(1080px,calc(100% - 2rem));margin:auto}
+    .hero{text-align:center;padding:4rem 0 2.2rem}
+    .eyebrow{font:700 .75rem var(--font-cond);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.65rem}
+    h1{font:900 clamp(2.2rem,6vw,3.6rem)/1.1 var(--font-display);background:linear-gradient(92deg,var(--sky),var(--blue) 48%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:720px;margin:1rem auto 0;color:var(--muted);font-size:1rem}
+    .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.5rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.65rem 1.2rem;border-radius:999px;border:1px solid var(--line);text-decoration:none;font:700 .85rem var(--font-display);letter-spacing:.03em}
+    .primary{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(0,102,255,.3)}
+    .secondary{color:var(--gold);border-color:var(--gold);background:rgba(255,215,0,.04)}
+    .section{padding:1rem 0 3rem}
+    .section-title{font:800 clamp(1.35rem,3vw,1.8rem)/1.2 var(--font-display);margin-bottom:.55rem}
+    .section-intro{color:var(--subtle);margin-bottom:1.3rem}
+    .panel{background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid var(--line);border-radius:20px;padding:clamp(1.2rem,3vw,2rem);box-shadow:0 12px 36px rgba(0,0,0,.28);backdrop-filter:blur(16px)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+    .card{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:15px;padding:1.2rem;transition:transform .25s var(--ease),border-color .25s}
+    .card:hover{transform:translateY(-3px);border-color:var(--line-gold)}
+    .icon{font-size:1.35rem;margin-bottom:.55rem}
+    .card h3{font:700 1.02rem var(--font-display);margin-bottom:.4rem}
+    .card p{font-size:.87rem;color:var(--muted)}
+    .faq{border-top:1px solid var(--line)}
+    details{border-bottom:1px solid var(--line);padding:0}
+    summary{cursor:pointer;list-style:none;padding:1.05rem 2.1rem 1.05rem 0;position:relative;font:700 .95rem var(--font-display);color:#fff}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';position:absolute;right:.25rem;top:.8rem;color:var(--gold);font:700 1.3rem var(--font-cond)}
+    details[open] summary::after{content:'−'}
+    details p{padding:0 2rem 1.1rem 0;color:var(--muted);font-size:.88rem}
+    .support-box{display:grid;grid-template-columns:1.3fr 1fr;gap:1rem;margin-top:1.2rem}
+    .contact{border:1px solid var(--line-gold);background:linear-gradient(135deg,rgba(255,215,0,.1),rgba(255,215,0,.025));border-radius:16px;padding:1.25rem}
+    .contact h3{font:800 1.05rem var(--font-display);color:var(--gold);margin-bottom:.5rem}
+    .contact p{font-size:.88rem;color:var(--muted)}
+    .contact a{font-weight:600;text-decoration:none}
+    .notice{border-left:4px solid var(--sky);background:rgba(0,191,255,.06);padding:1rem 1.1rem;border-radius:0 12px 12px 0;color:var(--muted);font-size:.82rem}
+    footer{border-top:1px solid rgba(0,102,255,.35);margin-top:2rem;padding:2rem 0;color:var(--subtle);font-size:.8rem;text-align:center}
+    footer a{color:var(--subtle);margin:0 .35rem;text-decoration:none} footer a:hover{color:var(--gold)}
+    @media(max-width:760px){.nav-links{display:none}.menu{display:block;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;border-radius:9px;padding:.5rem .7rem;font:700 .8rem var(--font-cond)}.grid,.support-box{grid-template-columns:1fr}.hero{padding-top:3rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+    @media print{body{background:#fff;color:#000}.header,footer,.actions{display:none}.panel,.card,.contact{background:#fff;border:1px solid #999;box-shadow:none}.hero h1{color:#000;-webkit-text-fill-color:#000}.hero p,.card p,.contact p,details p,.section-intro{color:#222}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to support content</a>
+  <header class="header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="https://alvin-silva.asilvainnovations.com/" aria-label="Alvin M. Silva home">
+        <img src="assets/logo-192.png" alt="A. Silva Innovations logo" width="46" height="46">
+        <span><strong>ALVIN M. SILVA</strong><small>MDM · Resilience · Systems Innovation</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="https://alvin-silva.asilvainnovations.com/#about">About</a></li>
+        <li><a href="https://alvin-silva.asilvainnovations.com/#expertise">Expertise</a></li>
+        <li><a href="https://alvin-portfolio.asilvainnovations.com">Portfolio</a></li>
+        <li><a href="policies.html">Policies</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+      </ul>
+      <button class="menu" type="button" onclick="document.getElementById('quickNav').scrollIntoView({behavior:'smooth'})">Support topics</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Customer Support</div>
+        <h1>How can we help?</h1>
+        <p>Find practical answers to the questions clients and prospective partners commonly need resolved before, during, and after an engagement.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:alvin.silva@asilvainnovations.com?subject=Support%20Request">Email Support</a>
+          <a class="btn secondary" href="#faq">Browse Questions</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quickNav">
+      <div class="wrap">
+        <div class="panel">
+          <h2 class="section-title">Support topics</h2>
+          <p class="section-intro">Start with the area that best matches your concern.</p>
+          <div class="grid">
+            <article class="card"><div class="icon">🤝</div><h3>Engagements &amp; consulting</h3><p>Questions about scopes of work, advisory assignments, workshops, deliverables, timelines, and how an engagement starts.</p></article>
+            <article class="card"><div class="icon">📋</div><h3>Services &amp; proposals</h3><p>Need clarification on a service, statement of work, proposal requirement, quotation, procurement document, or technical approach?</p></article>
+            <article class="card"><div class="icon">📁</div><h3>Documents &amp; downloads</h3><p>Report a broken document link, inaccessible file, missing publication, or difficulty locating a portfolio or policy document.</p></article>
+            <article class="card"><div class="icon">🔐</div><h3>Privacy &amp; security</h3><p>Ask about personal-data handling, consent, account security, privacy requests, or a suspected security concern.</p></article>
+            <article class="card"><div class="icon">♿</div><h3>Accessibility</h3><p>Report keyboard-navigation problems, screen-reader issues, low-contrast content, missing alternative text, or other access barriers.</p></article>
+            <article class="card"><div class="icon">💻</div><h3>Website &amp; technical issues</h3><p>Tell us about broken pages, unexpected behavior, display problems, forms that fail, or links that do not work as expected.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="panel">
+          <h2 class="section-title">Common customer questions</h2>
+          <p class="section-intro">These are representative real-world support questions, presented as an FAQ. They are not presented as verbatim historical customer tickets.</p>
+          <div class="faq">
+            <details><summary>How do I request a consulting or advisory engagement?</summary><p>Send a concise description of the problem, expected outcome, organization or project context, preferred timeframe, and any relevant terms of reference. The support channel can route the request for an appropriate response.</p></details>
+            <details><summary>Can I request a short-term technical review or workshop?</summary><p>Yes. Focused technical reviews, strategic workshops, facilitation, and advisory assignments can be discussed alongside longer-term engagements, subject to scope, availability, and requirements.</p></details>
+            <details><summary>Can you work with government agencies, NGOs, development partners, or private organizations?</summary><p>Yes. The professional portfolio describes work across government, development, humanitarian, resilience, planning, and institutional-strengthening contexts. Provide the mandate and expected deliverable when contacting support.</p></details>
+            <details><summary>How can I obtain a copy of a report, publication, or portfolio item?</summary><p>Identify the title or page where you found the item and explain what you need. If a public download exists, support can direct you to it; otherwise, access depends on the item's publication and distribution status.</p></details>
+            <details><summary>I found a broken link or a page that displays code instead of the website. What should I do?</summary><p>Please send the page address, a short description of what you expected to see, and—if possible—a screenshot. This makes it possible to reproduce and isolate the issue quickly.</p></details>
+            <details><summary>I cannot read some text or use a page with a keyboard or screen reader. Can I report that?</summary><p>Absolutely. Accessibility issues are welcome and should include the page address, the affected control or section, the assistive technology or browser involved when known, and what happened.</p></details>
+            <details><summary>How do I raise a privacy or personal-data concern?</summary><p>Use the support email and mark the subject as “Privacy Request” or “Privacy Concern.” Avoid sending passwords, authentication codes, or other sensitive credentials in the initial message.</p></details>
+            <details><summary>What information should I include in a support request?</summary><p>Include the affected page or service, what you were trying to accomplish, what happened, when it happened, your browser or device when relevant, and any non-sensitive error message. Do not include passwords, OTPs, API keys, or other secrets.</p></details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="support-box">
+          <div class="contact">
+            <h3>Contact support</h3>
+            <p>For a support request, describe the issue clearly and include the relevant page or service.</p>
+            <p style="margin-top:.7rem"><a href="mailto:alvin.silva@asilvainnovations.com?subject=Support%20Request">alvin.silva@asilvainnovations.com</a></p>
+          </div>
+          <div class="notice"><strong>Security reminder:</strong> Never send passwords, one-time passcodes, private keys, API keys, or other authentication secrets through support email.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 A. Silva Innovations · Customer Support</p>
+      <p style="margin-top:.45rem"><a href="policies.html">Policies</a> · <a href="privacy-policy.html">Privacy</a> · <a href="accessibility-policy.html">Accessibility</a> · <a href="https://alvin-silva.asilvainnovations.com/#contact">Contact</a></p>
+    </div>
+  </footer>
+</body>
+</html>
