@@ -19,6 +19,11 @@
   Open it directly from the repo — no build step, no install.
 -->
 <style>
+<link rel="stylesheet" href="style..css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/visualizations.css">
+</style>
 :root{
   --bg:#0f1115; --card:#161a22; --line:rgba(255,255,255,.11); --text:#e8eaee;
   --text-2:#a8afbc; --text-3:#78808f; --accent:#4c9be8; --accent-soft:rgba(76,155,232,.13);
@@ -442,6 +447,32 @@ if (!loadDraft()) {
   addBlock('p');
 }
 loadLive();
+
+<script> 
+<script src="sw.js" defer></script>
+<script src="assets/asilva-widget.js" defer></script> 
+<script src="assets/js/boot.js" defer></script>
+<script src="assets/js/visualizations/career-map.js" defer></script>
+<script src="assets/js/visualizations/expertise-radar.js" defer></script>
+<script src="assets/js/visualizations/impact-dashboard.js" defer></script>
+<script src="assets/js/visualizations/career-map.js" defer></script>
+<script src="assets/js/chat/engine.js" defer></script>
+<script src="assets/js/chat/widget.js" defer></script>
+<script src="assets/js/core/accessibility.js" defer></script>
+<script src="assets/js/core/data.js" defer></script>
+<script src="assets/js/core/index.js" defer></script>
+<script src="assets/js/core/navigation.js" defer></script>
+<script src="assets/js/core/nlp.js" defer></script>
+<script src="assets/js/core/persona.js" defer></script>
+<script src="assets/js/core/platform.js" defer></script>
+<script src="assets/js/core/registry.js" defer></script>
+<script src="assets/js/core/router.js" defer></script>
+<script src="assets/js/core/theme.js" defer></script>
+<script src="assets/js/core/util.js" defer></script>
+<script src="assets/js/services/credentials-service.js" defer></script>
+<script src="assets/js/services/analytics-service.js" defer></script>
+<script src="assets/js/modules/ai-chorus.js" defer></script>  
+<script src="assets/js/modules/blog.js" defer></script>  
 </script>
 </body>
 </html>
