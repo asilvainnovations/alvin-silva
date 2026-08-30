@@ -28,6 +28,7 @@
 <meta name="twitter:description" content="Platforms, frameworks, programs, and books in resilience and development.">
 <meta name="twitter:image" content="https://alvin-portfolio.asilvainnovations.com/assets/og-image.jpg">
 
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/core.css">
 <link rel="stylesheet" href="assets/css/visualizations.css">
@@ -1384,6 +1385,8 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
 </script>
+<script src="sw.js" defer></script>
+<script src="assets/asilva-widget.js" defer></script> 
 <script src="assets/js/boot.js" defer></script>
 <script src="assets/js/visualizations/career-map.js" defer></script>
 <script src="assets/js/visualizations/expertise-radar.js" defer></script>
@@ -1404,5 +1407,7 @@ if ('serviceWorker' in navigator) {
 <script src="assets/js/core/util.js" defer></script>
 <script src="assets/js/services/credentials-service.js" defer></script>
 <script src="assets/js/services/analytics-service.js" defer></script>
+<script src="assets/js/modules/ai-chorus.js" defer></script>  
+<script src="assets/js/modules/blog.js" defer></script>  
 </body>
 </html>
