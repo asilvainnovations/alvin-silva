@@ -1,4 +1,3 @@
-
 # Copyright {.unnumbered}
 
 **PERSONAL RESILIENCE: The Path to Oneness**
