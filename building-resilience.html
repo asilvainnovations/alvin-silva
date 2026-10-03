@@ -385,6 +385,7 @@ html.js .reveal.in { opacity:1; transform:none; }
   h1,h2,h3,p { color:#000; -webkit-text-fill-color:#000; }
 }
 </style>
+<link rel="stylesheet" href="assets/css/app-shell.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -420,82 +421,7 @@ html.js .reveal.in { opacity:1; transform:none; }
 </svg>
 
 <!-- ============ HEADER ============ -->
-<header class="site-header">
-  <nav class="nav" aria-label="Main navigation">
-    <a href="https://building-resilience.aiwaapp.live/" class="brand" aria-label="Building Resilience — home">
-      <img src="assets/logo-192.png" alt="A. Silva Innovations logo" width="46" height="46">
-      <span>
-        <span class="brand-name">BUILDING RESILIENCE</span><br>
-        <span class="brand-sub">Cognitio+ · Alvin Silva</span>
-      </span>
-    </a>
 
-    <ul class="nav-links">
-      <li><a href="https://building-resilience.aiwaapp.live/" class="drop-btn" style="text-decoration:none">Home</a></li>
-      <li><a href="#flipbook" class="drop-btn" style="text-decoration:none">Preview</a></li>
-      <li><a href="#ebook" class="drop-btn" style="text-decoration:none" aria-current="page">Ebook</a></li>
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Explore <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">On This Page</div>
-          <a class="drop-item" href="#guide" role="menuitem"><svg><use href="#i-target"/></svg> Is This Book for You?</a>
-          <a class="drop-item" href="#inside" role="menuitem"><svg><use href="#i-book"/></svg> What's Inside</a>
-          <a class="drop-item" href="#standout" role="menuitem"><svg><use href="#i-star"/></svg> How It Stands Out</a>
-          <a class="drop-item" href="#reviews" role="menuitem"><svg><use href="#i-quote"/></svg> Reader Voices</a>
-          <a class="drop-item" href="#author" role="menuitem"><svg><use href="#i-user"/></svg> About the Author</a>
-        </div>
-      </li>
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Alvin Silva <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">More From Alvin</div>
-          <a class="drop-item" href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-user"/></svg> Main Site ↗</a>
-          <a class="drop-item" href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-book"/></svg> Portfolio ↗</a>
-          <a class="drop-item" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
-        </div>
-      </li>
-    </ul>
-
-    <div class="nav-cta">
-      <button class="a11y-btn" id="a11yOpen" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
-      <a href="https://www.amazon.com/dp/B0CJ45LDRG" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><span>Buy on Amazon</span></a>
-    </div>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-
-<div class="overlay" id="overlay"></div>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-  <div class="mm-head">
-    <img src="assets/logo-192.png" alt="" width="52" height="52">
-    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">Site</div>
-    <a class="mm-link" href="https://building-resilience.aiwaapp.live/"><svg><use href="#i-globe"/></svg> Home</a>
-    <a class="mm-link" href="#flipbook"><svg><use href="#i-play"/></svg> Preview</a>
-    <a class="mm-link" href="#ebook" aria-current="page"><svg><use href="#i-star"/></svg> Ebook</a>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">On This Page</div>
-    <a class="mm-link" href="#guide"><svg><use href="#i-target"/></svg> Is This Book for You?</a>
-    <a class="mm-link" href="#inside"><svg><use href="#i-book"/></svg> What's Inside</a>
-    <a class="mm-link" href="#standout"><svg><use href="#i-star"/></svg> How It Stands Out</a>
-    <a class="mm-link" href="#reviews"><svg><use href="#i-quote"/></svg> Reader Voices</a>
-    <a class="mm-link" href="#author"><svg><use href="#i-user"/></svg> About the Author</a>
-    <a class="mm-link" href="#order"><svg><use href="#i-cart"/></svg> Buy on Amazon</a>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">Alvin Silva</div>
-    <a class="mm-link" href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-user"/></svg> Main Site ↗</a>
-    <a class="mm-link" href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-book"/></svg> Portfolio ↗</a>
-    <a class="mm-link" href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
-    <a class="mm-link" href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer"><svg><use href="#i-fb"/></svg> Facebook ↗</a>
-  </div>
-</nav>
 
 <main id="main">
 <!-- ============ HERO ============ -->
@@ -733,61 +659,6 @@ html.js .reveal.in { opacity:1; transform:none; }
 </section>
 </main>
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="https://building-resilience.aiwaapp.live/" class="brand"><img src="assets/logo-192.png" alt="" width="46" height="46"><span><span class="brand-name">BUILDING RESILIENCE</span><br><span class="brand-sub">Cognitio+ · Alvin Silva</span></span></a>
-        <p>The Path to a More Fulfilling and Resilient Life — practical strategies, systems thinking, and tools to thrive in an ever-changing world.</p>
-        <div class="socials">
-          <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-          <a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
-          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
-          <a href="tel:+639178555134" aria-label="Call +63 917 855 5134"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-phone"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>This Site</h4>
-        <ul>
-          <li><a href="https://building-resilience.aiwaapp.live/">Home</a></li>
-          <li><a href="#flipbook">Preview</a></li>
-          <li><a href="#ebook">Ebook</a></li>
-          <li><a href="https://www.amazon.com/dp/B0CJ45LDRG" target="_blank" rel="noopener noreferrer">Buy on Amazon ↗</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Alvin Silva</h4>
-        <ul>
-          <li><a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer">Main Site ↗</a></li>
-          <li><a href="https://alvin-portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer">Portfolio ↗</a></li>
-          <li><a href="https://cognitio-plus.com/" target="_blank" rel="noopener noreferrer">Cognitio+ ↗</a></li>
-          <li><a href="https://personal-resilience.aiwaapp.live" target="_blank" rel="noopener noreferrer">Personal Resilience ↗</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies ↗</a></li>
-          <li><a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy ↗</a></li>
-          <li><a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie Policy ↗</a></li>
-          <li><a href="https://asilvainnovations.github.io/website/policies/terms-of-services.html" target="_blank" rel="noopener noreferrer">Terms of Service ↗</a></li>
-          <li><a href="https://asilvainnovations.github.io/website/policies/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility Policy ↗</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations · Cognitio+. All rights reserved.</p>
-      <p class="footer-legal">
-        <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/terms-of-services.html" target="_blank" rel="noopener noreferrer">Terms</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility</a> ·
-        <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
-      </p>
-    </div>
-  </div>
-</footer>
 
 <!-- ============ ACCESSIBILITY TOOLS ============ -->
 <button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
@@ -878,12 +749,12 @@ document.addEventListener('click', e => {
   if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
 });
 const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
-function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-menuBtn.addEventListener('click', openMobile);
-$('#mmClose').addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+function openMobile() { mm?.classList.add('open'); overlay?.classList.add('show'); menuBtn?.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm?.classList.remove('open'); overlay?.classList.remove('show'); menuBtn?.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn?.addEventListener('click', openMobile);
+$('#mmClose')?.addEventListener('click', closeMobile);
+overlay?.addEventListener('click', closeMobile);
+$$('.mm-link', mm || document).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMobile(); closeA11y(); $$('[data-drop]').forEach(d => d.classList.remove('open')); } });
 
 /* smooth anchors */
@@ -905,8 +776,8 @@ setTimeout(() => {
 }, 1500);
 
 const btt = $('#backToTop');
-window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
-btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+window.addEventListener('scroll', () => btt?.classList.toggle('visible', scrollY > 400), {passive:true});
+btt?.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
 
 function toast(msg) {
   const t = $('#toast');
@@ -950,7 +821,7 @@ function applyA11y() {
 function openA11y() { panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); }
 function closeA11y() { panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); }
 $('#a11yFab').addEventListener('click', openA11y);
-$('#a11yOpen').addEventListener('click', openA11y);
+$('#a11yOpen')?.addEventListener('click', openA11y);
 $('#a11yClose').addEventListener('click', closeA11y);
 $('#a11yFontUp').addEventListener('click', () => { a11y.scale = Math.min(1.4, +(a11y.scale + 0.1).toFixed(2)); applyA11y(); toast('Text size increased'); });
 $('#a11yFontDown').addEventListener('click', () => { a11y.scale = Math.max(0.85, +(a11y.scale - 0.1).toFixed(2)); applyA11y(); toast('Text size decreased'); });
@@ -1003,7 +874,7 @@ $('#consentCustomize').addEventListener('click', () => {
   cPrefs.classList.toggle('open');
   $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
 });
-$('#cookieSettings').addEventListener('click', () => {
+window.addEventListener('as:cookie-settings', () => {
   const c = getConsent();
   if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
   cPrefs.classList.add('open'); $('#consentSave').style.display = '';
@@ -1012,9 +883,6 @@ $('#cookieSettings').addEventListener('click', () => {
 if (!getConsent()) setTimeout(showConsent, 1800);
 
 /* ============ PWA ============ */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
 </script>
 <script src="assets/js/boot.js" defer></script>
 </body>

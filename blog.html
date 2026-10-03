@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://alvin-silva.asilvainnovations.com/assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="stylesheet" href="style..css">
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/core.css">
 <link rel="stylesheet" href="assets/css/visualizations.css">
@@ -299,6 +299,7 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
 }
 .tooltip .tt strong { color:#FFD700; font-weight:600; display:block; margin-bottom:.2rem; font-family:var(--font-cond); letter-spacing:.05em; text-transform:uppercase; font-size:.72rem; }
 </style>
+<link rel="stylesheet" href="assets/css/app-shell.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -338,105 +339,7 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
   </defs>
 </svg>
 
-<header class="site-header">
-  <nav class="nav" aria-label="Main navigation">
-    <a href="index.html" class="brand" aria-label="Alvin Silva Home">
-      <img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="eager">
-      <span>
-        <span class="brand-name">ALVIN M. SILVA</span><br>
-        <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
-      </span>
-    </a>
 
-    <ul class="nav-links">
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">The Professional</div>
-          <a class="drop-item" href="#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
-          <a class="drop-item" href="#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
-          <a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Publications</a>
-        </div>
-      </li>
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Projects <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">What I Deliver</div>
-          <a class="drop-item" href="#value" role="menuitem"><svg><use href="#i-target"/></svg> See the Value</a>
-          <a class="drop-item" href="#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-          <a class="drop-item" href="#impact" role="menuitem"><svg><use href="#i-star"/></svg> Explore Projects</a>
-        </div>
-      </li>
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Publications <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">Go Deeper</div>
-          <a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Books &amp; Platforms</a>
-          <a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> Read the FAQ</a>
-          <a class="drop-item" href="portfolio.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
-          <a class="drop-item" href="support.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-hand"/></svg> Need support? ↗</a>
-          <a class="drop-item" href="https://www.linkedin.com/in/alvinsilva777" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
-        </div>
-      </li>
-      <li><a href="#contact" class="drop-btn" style="text-decoration:none">Let's Collaborate</a></li>
-    </ul>
-
-    <div class="nav-cta">
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Toggle light / dark theme">
-        <svg class="icon-moon"><use href="#i-moon"/></svg>
-        <svg class="icon-sun"><use href="#i-sun"/></svg>
-      </button>
-      <button class="persona-pill" id="personaPill" aria-label="Change audience profile. Current: Executive Overview" title="Tailor this site to your role">
-        <svg><use href="#i-swap"/></svg><span class="pp-label">Executive</span>
-      </button>
-      <a href="#contact" class="btn btn-primary btn-sm"><span>Let's Collaborate</span></a>
-    </div>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-
-<div class="overlay" id="overlay"></div>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-  <div class="mm-head">
-    <a href="index.html" aria-label="Alvin Silva Home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="52" height="52"></a>
-    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">Navigate</div>
-    <a class="mm-link" href="#about"><svg><use href="#i-user"/></svg> About</a>
-    <a class="mm-link" href="#value"><svg><use href="#i-target"/></svg> See the Value</a>
-    <a class="mm-link" href="#expertise"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-    <a class="mm-link" href="#impact"><svg><use href="#i-star"/></svg> Explore Projects</a>
-    <a class="mm-link" href="https://digicon.cards"><svg><use href="#i-user"/></svg> DigiCon</a>
-    <a class="mm-link" href="https://chorus.asilvainnovations.com"><svg><use href="#i-speak"/></svg> Chorus AI</a>
-    <a class="mm-link" href="#works"><svg><use href="#i-book"/></svg> Browse Publications</a>
-    <a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> Read the FAQ</a>
-    <a class="mm-link" href="#contact"><svg><use href="#i-mail"/></svg> Let's Collaborate</a>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">External</div>
-    <a class="mm-link" href="portfolio.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
-    <a class="mm-link" href="https://www.linkedin.com/alvinsilva777" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
-  </div>
-  <div class="mm-persona">
-    <div class="mm-group-title">Viewing as</div>
-    <button class="chip" data-set-persona="executive"><svg width="13" height="13"><use href="#i-user"/></svg> Executive</button>
-    <button class="chip" data-set-persona="government"><svg width="13" height="13"><use href="#i-gov"/></svg> Government</button>
-    <button class="chip" data-set-persona="humanitarian"><svg width="13" height="13"><use href="#i-heart"/></svg> NGO &amp; Humanitarian</button>
-    <button class="chip" data-set-persona="private"><svg width="13" height="13"><use href="#i-brief"/></svg> Private Sector</button>
-    <button class="chip" data-set-persona="academic"><svg width="13" height="13"><use href="#i-cap"/></svg> Academia</button>
-    <div class="mm-theme-row">
-      <span class="mm-group-title" style="margin:0">Theme</span>
-      <button class="theme-toggle" id="themeToggleMobile" aria-label="Switch to light mode" aria-pressed="false">
-        <svg class="icon-moon"><use href="#i-moon"/></svg>
-        <svg class="icon-sun"><use href="#i-sun"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
 
 <main id="main">
 <section class="section">
@@ -456,62 +359,6 @@ html:not([data-persona="executive"]) .badge-priority.on { opacity:1; transform:s
 </section>
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
-        <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/alvinsilva777" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-          <a href="https://facebook.com/a7vinsi7va" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
-          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
-          <a href="index.html" target="_blank" rel="noopener noreferrer" aria-label="Website"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-globe"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#value">Value For You</a></li>
-          <li><a href="#expertise">Core Expertise</a></li>
-          <li><a href="#impact">Explore Projects</a></li>
-          <li><a href="#contact">Let's Collaborate</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Flagship Work</h4>
-        <ul>
-          <li><a href="#impact">BIRD 2026–2035</a></li>
-          <li><a href="#impact">TESDA Strategic Plan</a></li>
-          <li><a href="#works">DDRiVE-M Platform</a></li>
-          <li><a href="#works">Strategic Planner Pro</a></li>
-          <li><a href="#works">Cognitio+</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Credentials</h4>
-        <ul>
-          <li><a href="#about">MDM — Asian Institute of Management</a></li>
-          <li><a href="#expertise">Certified SRMP</a></li>
-          <li><a href="#works">Published Author ×2</a></li>
-          <li><a href="portfolio.html" target="_blank" rel="noopener noreferrer">Full Portfolio ↗</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
-      <p style="font-size:.8rem;color:var(--text-3);font-weight:300;max-width:520px">Your privacy matters. I only collect data necessary to improve your experience — see the full policy below.</p>
-      <p class="footer-legal">
-        <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
-        <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
-      </p>
-      <span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
-    </div>
-  </div>
-</footer>
 
 <style>
 /* Blog + Chorus module styling — extends the existing token system,
@@ -969,7 +816,7 @@ function applyPersona(key, {announce=true} = {}) {
   const P = PROFILES[key], D = PROFILES.executive;
   document.documentElement.dataset.persona = key;
   localStorage.setItem(STORE_KEY, key);
-  $('#fPersona').value = key;
+  { const _el = $('#fPersona'); if (_el) _el.value = key; }
 
   $$('[data-p]').forEach(el => {
     const v = resolvePath(P, el.dataset.p) ?? resolvePath(D, el.dataset.p);
@@ -995,8 +842,7 @@ function applyPersona(key, {announce=true} = {}) {
     el.classList.toggle('on', P.tlPriority.includes(el.dataset.tlBadge));
   });
 
-  $('#personaPill .pp-label').textContent = P.label;
-  $('#personaPill').setAttribute('aria-label', `Change audience profile. Current: ${P.label}`);
+  document.documentElement.dataset.personaLabel = P.label; window.dispatchEvent(new CustomEvent('as:persona', { detail: { label: P.label } }));
   $$('.mm-persona .chip').forEach(c => c.classList.toggle('active', c.dataset.setPersona === key));
 
   ['#heroCopy', '#valueGrid'].forEach(sel => {
@@ -1019,21 +865,21 @@ function toast(msg) {
 const modal = $('#personaModal');
 function openModal() { modal.classList.add('show'); document.body.style.overflow='hidden'; }
 function closeModal() { modal.classList.remove('show'); document.body.style.overflow=''; }
-$('#pmClose').addEventListener('click', () => { localStorage.setItem(STORE_KEY, currentPersona); closeModal(); });
-$('#pmSkip').addEventListener('click', () => { applyPersona('executive', {announce:false}); closeModal(); toast('Showing everything — Executive lens'); });
+$('#pmClose')?.addEventListener('click', () => { localStorage.setItem(STORE_KEY, currentPersona); closeModal(); });
+$('#pmSkip')?.addEventListener('click', () => { applyPersona('executive', {announce:false}); closeModal(); toast('Showing everything — Executive lens'); });
 $$('[data-set-persona]').forEach(b => b.addEventListener('click', () => {
   applyPersona(b.dataset.setPersona);
   closeModal(); closeMobile();
 }));
-$('#personaPill').addEventListener('click', openModal);
-$('#heroTailor').addEventListener('click', openModal);
-modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+window.ASilvaOpenPersona = openModal;
+$('#heroTailor')?.addEventListener('click', openModal);
+modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
 /* first visit */
 window.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem(STORE_KEY);
   if (saved && PROFILES[saved]) applyPersona(saved, {announce:false});
-  else setTimeout(openModal, 700);
+  else applyPersona('executive', {announce:false});
 });
 
 /* ================================================================
@@ -1052,12 +898,12 @@ document.addEventListener('click', e => {
 });
 
 const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
-function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-menuBtn.addEventListener('click', openMobile);
-$('#mmClose').addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+function openMobile() { mm?.classList.add('open'); overlay?.classList.add('show'); menuBtn?.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm?.classList.remove('open'); overlay?.classList.remove('show'); menuBtn?.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn?.addEventListener('click', openMobile);
+$('#mmClose')?.addEventListener('click', closeMobile);
+overlay?.addEventListener('click', closeMobile);
+$$('.mm-link', mm || document).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeMobile(); closeModal(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
 });
@@ -1128,13 +974,13 @@ const countIO = new IntersectionObserver(es => es.forEach(en => {
 $$('.count').forEach(el => countIO.observe(el));
 
 const btt = $('#backToTop');
-window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
-btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+window.addEventListener('scroll', () => btt?.classList.toggle('visible', scrollY > 400), {passive:true});
+btt?.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
 
 /* ================================================================
    CONTACT FORM → pre-filled email (no backend, privacy-first)
    ================================================================ */
-$('#contactForm').addEventListener('submit', e => {
+$('#contactForm')?.addEventListener('submit', e => {
   e.preventDefault();
   const name = $('#fName').value.trim(), email = $('#fEmail').value.trim(),
         org = $('#fOrg').value.trim(), topic = $('#fTopic').value, msg = $('#fMsg').value.trim();
@@ -1165,25 +1011,22 @@ Site profile selected: ${persona}`);
 /* ================================================================
    PWA — service worker + install prompt
    ================================================================ */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
 let deferredPrompt = null;
 const iBanner = $('#installBanner');
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();
   deferredPrompt = e;
-  if (!localStorage.getItem('as-install-dismissed')) iBanner.classList.add('show');
+  if (!localStorage.getItem('as-install-dismissed')) iBanner?.classList.add('show');
 });
-$('#installBtn').addEventListener('click', async () => {
-  iBanner.classList.remove('show');
+$('#installBtn')?.addEventListener('click', async () => {
+  iBanner?.classList.remove('show');
   if (deferredPrompt) { deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; }
 });
-$('#installDismiss').addEventListener('click', () => {
-  iBanner.classList.remove('show');
+$('#installDismiss')?.addEventListener('click', () => {
+  iBanner?.classList.remove('show');
   localStorage.setItem('as-install-dismissed', '1');
 });
-window.addEventListener('appinstalled', () => { iBanner.classList.remove('show'); toast('Installed — see you on the home screen'); });
+window.addEventListener('appinstalled', () => { iBanner?.classList.remove('show'); toast('Installed — see you on the home screen'); });
 
 /* ================================================================
    COOKIE CONSENT — GDPR / RA 10173 aligned
@@ -1209,45 +1052,25 @@ function hideConsent() {
   setTimeout(() => { cBanner.hidden = true; }, 500);
 }
 $('#consentClose')?.addEventListener('click', () => { hideConsent(); });
-$('#consentAccept').addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
-$('#consentDecline').addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
-$('#consentSave').addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
-$('#consentCustomize').addEventListener('click', () => {
+$('#consentAccept')?.addEventListener('click', () => { setConsent(true, true); hideConsent(); toast('Preferences saved — all cookies accepted'); });
+$('#consentDecline')?.addEventListener('click', () => { setConsent(false, false); hideConsent(); toast('Preferences saved — optional cookies declined'); });
+$('#consentSave')?.addEventListener('click', () => { setConsent($('#prefAnalytics').checked, $('#prefMarketing').checked); hideConsent(); toast('Cookie preferences saved'); });
+$('#consentCustomize')?.addEventListener('click', () => {
   cPrefs.classList.toggle('open');
   $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
 });
-$('#cookieSettings').addEventListener('click', () => {
+window.addEventListener('as:cookie-settings', () => {
   const c = getConsent();
-  if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
+  if (c) { { const _el = $('#prefAnalytics'); if (_el) _el.checked = !!c.analytics; } { const _el = $('#prefMarketing'); if (_el) _el.checked = !!c.marketing; } }
   cPrefs.classList.add('open');
   $('#consentSave').style.display = '';
   showConsent();
 });
 if (!getConsent()) setTimeout(showConsent, 1800);
 </script>
-<script src="sw.js" defer></script>
-<script src="assets/asilva-widget.js" defer></script> 
+ 
 <script src="assets/js/boot.js" defer></script>
-<script src="assets/js/visualizations/career-map.js" defer></script>
-<script src="assets/js/visualizations/expertise-radar.js" defer></script>
-<script src="assets/js/visualizations/impact-dashboard.js" defer></script>
-<script src="assets/js/visualizations/career-map.js" defer></script>
-<script src="assets/js/chat/engine.js" defer></script>
-<script src="assets/js/chat/widget.js" defer></script>
-<script src="assets/js/core/accessibility.js" defer></script>
-<script src="assets/js/core/data.js" defer></script>
-<script src="assets/js/core/index.js" defer></script>
-<script src="assets/js/core/navigation.js" defer></script>
-<script src="assets/js/core/nlp.js" defer></script>
-<script src="assets/js/core/persona.js" defer></script>
-<script src="assets/js/core/platform.js" defer></script>
-<script src="assets/js/core/registry.js" defer></script>
-<script src="assets/js/core/router.js" defer></script>
-<script src="assets/js/core/theme.js" defer></script>
-<script src="assets/js/core/util.js" defer></script>
-<script src="assets/js/services/credentials-service.js" defer></script>
-<script src="assets/js/services/analytics-service.js" defer></script>
-<script src="assets/js/modules/ai-chorus.js" defer></script>  
-<script src="assets/js/modules/blog.js" defer></script>  
+  
+  
 </body>
 </html>

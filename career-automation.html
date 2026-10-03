@@ -310,6 +310,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block}
 }
 </style>
 <base target="_blank">
+<link rel="stylesheet" href="assets/css/app-shell.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -341,64 +342,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block}
 </svg>
 
 <!-- ============ HEADER ============ -->
-<header class="site-header">
-  <nav class="nav" aria-label="Main navigation">
-    <a href="index.html" class="brand" aria-label="Alvin Silva Home">
-      <img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="eager">
-      <span>
-        <span class="brand-name">ALVIN M. SILVA</span><br>
-        <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
-      </span>
-    </a>
-    <ul class="nav-links">
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">The Professional</div>
-          <a class="drop-item" href="index.html#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
-          <a class="drop-item" href="index.html#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
-        </div>
-      </li>
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Projects <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">What I Deliver</div>
-          <a class="drop-item" href="index.html#value" role="menuitem"><svg><use href="#i-target"/></svg> See the Value</a>
-          <a class="drop-item" href="index.html#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-          <a class="drop-item" href="portfolio.html" role="menuitem"><svg><use href="#i-star"/></svg> Explore Projects</a>
-        </div>
-      </li>
-      <li><a href="portfolio.html" class="drop-btn" style="text-decoration:none">Portfolio</a></li>
-      <li><a href="career-automation.html" class="drop-btn" style="text-decoration:none" aria-current="page">Career</a></li>
-      <li><a href="index.html#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
-    </ul>
-    <div class="nav-cta">
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Light/Dark Mode">
-        <svg class="icon-moon"><use href="#i-moon"/></svg>
-        <svg class="icon-sun"><use href="#i-sun"/></svg>
-      </button>
-    </div>
-    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
 
-<div class="overlay" id="overlay"></div>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-  <div class="mm-head">
-    <a href="index.html" aria-label="Alvin Silva Home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="52" height="52"></a>
-    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">Navigate</div>
-    <a class="mm-link" href="index.html"><svg><use href="#i-user"/></svg> Home</a>
-    <a class="mm-link" href="index.html#expertise"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-    <a class="mm-link" href="portfolio.html"><svg><use href="#i-star"/></svg> Portfolio</a>
-    <a class="mm-link" href="career-automation.html" aria-current="page"><svg><use href="#i-target"/></svg> Career Automation</a>
-    <a class="mm-link" href="index.html#contact"><svg><use href="#i-mail"/></svg> Contact</a>
-  </div>
-</nav>
 
 <main id="main">
 
@@ -509,58 +453,6 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block}
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
-        <p>Development management professional, systems innovator, and certified international humanitarian practitioner.</p>
-        <div class="socials">
-          <a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-          <a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
-          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#expertise">Core Expertise</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="career-automation.html">Career Automation</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Flagship Work</h4>
-        <ul>
-          <li><a href="https://bangsamoro-investment-roadmap.asilvainnovations.com" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
-          <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
-          <li><a href="portfolio.html">Strat Planner Pro</a></li>
-          <li><a href="portfolio.html">Cognitio+</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Credentials</h4>
-        <ul>
-          <li><a href="index.html#about">MDM — Asian Institute of Management</a></li>
-          <li><a href="index.html#expertise">Certified SRMP</a></li>
-          <li><a href="portfolio.html">Published Author ×3</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
-      <p class="footer-legal">
-        <a href="policies.html">Policies</a> ·
-        <a href="privacy-policy.html">Privacy</a> ·
-        <a href="cookie-policy.html">Cookies</a> ·
-        <a href="terms-of-services.html">Terms</a> ·
-        <a href="accessibility-policy.html">Accessibility</a>
-      </p>
-    </div>
-  </div>
-</footer>
 
 <script>
 (function() {
@@ -619,12 +511,12 @@ document.addEventListener('click', e => {
 });
 
 const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
-function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
-function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
-menuBtn.addEventListener('click', openMobile);
-$('#mmClose').addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+function openMobile() { mm?.classList.add('open'); overlay?.classList.add('show'); menuBtn?.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+function closeMobile() { mm?.classList.remove('open'); overlay?.classList.remove('show'); menuBtn?.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+menuBtn?.addEventListener('click', openMobile);
+$('#mmClose')?.addEventListener('click', closeMobile);
+overlay?.addEventListener('click', closeMobile);
+$$('.mm-link', mm || document).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMobile(); $$('[data-drop]').forEach(d => d.classList.remove('open')); } });
 
 /* ================================================================
@@ -1154,21 +1046,8 @@ loadCredentials().then(() => renderTracker());
 // worker, so it had no offline support even though it's core to the
 // career-ops workflow. Registration is idempotent — if index.html/
 // portfolio.html already registered it in this browser this is a no-op.
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
   })();
 </script>
 <script src="assets/js/boot.js" defer></script>
-<script src="assets/js/chat/engine.js" defer></script>
-<script src="assets/js/chat/widget.js" defer></script>
-<script src="assets/js/core/accessibility.js" defer></script>
-<script src="assets/js/core/data.js" defer></script>
-<script src="assets/js/core/nlp.js" defer></script>
-<script src="assets/js/core/platform.js" defer></script>
-<script src="assets/js/core/registry.js" defer></script>
-<script src="assets/js/core/util.js" defer></script>
-<script src="assets/js/services/credentials-service.js" defer></script>
-<script src="assets/js/services/analytics-service.js" defer></script>
 </body>
 </html>

@@ -38,9 +38,9 @@
 <meta name="twitter:description" content="Systems innovator and certified international humanitarian practitioner. Lead architect, BIRD 2026–2035.">
 <meta name="twitter:image" content="https://alvin-silva.asilvainnovations.com/assets/og-image.jpg">
 <!-- ============ STYLESHEETS ============ -->
-<link rel="stylesheet" href="assets/components.css">
-<link rel="stylesheet" href="assets/core.css">
-<link rel="stylesheet" href="assets/visualizations.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/core.css">
+<link rel="stylesheet" href="assets/css/visualizations.css">
 <link rel="stylesheet" href="style.css">
 <!-- ============ PERFORMANCE ============ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -353,304 +353,6 @@ display:inline-flex; align-items:center; justify-content:center; gap:.4rem; curs
 width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
 background:var(--pill-bg); color:var(--text); flex:none; transition:.25s;
 }
-/* ================================================================
-   MOBILE APPLICATION NAVIGATION CONTROLLER
-   ================================================================ */
-
-(function initializeMobileApplicationNavigation() {
-
-  "use strict";
-
-
-  /* --------------------------------------------------------------
-     ELEMENT REFERENCES
-     -------------------------------------------------------------- */
-
-  const mobileApplicationMore =
-    document.getElementById("mobileAppMore");
-
-  const mobileMorePanel =
-    document.getElementById("mobileMorePanel");
-
-  const mobileMoreClose =
-    document.getElementById("mobileMoreClose");
-
-
-  /* --------------------------------------------------------------
-     OPEN MORE PANEL
-     -------------------------------------------------------------- */
-
-  function openMorePanel() {
-
-    if (!mobileMorePanel) {
-      return;
-    }
-
-    mobileMorePanel.hidden = false;
-
-    mobileMorePanel.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
-    requestAnimationFrame(() => {
-
-      mobileMorePanel.classList.add(
-        "is-open"
-      );
-
-    });
-
-    mobileApplicationMore?.setAttribute(
-      "aria-expanded",
-      "true"
-    );
-
-    document.body.classList.add(
-      "mobile-more-open"
-    );
-
-  }
-
-
-  /* --------------------------------------------------------------
-     CLOSE MORE PANEL
-     -------------------------------------------------------------- */
-
-  function closeMorePanel() {
-
-    if (!mobileMorePanel) {
-      return;
-    }
-
-    mobileMorePanel.classList.remove(
-      "is-open"
-    );
-
-    mobileMorePanel.setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-    mobileApplicationMore?.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    document.body.classList.remove(
-      "mobile-more-open"
-    );
-
-    window.setTimeout(() => {
-
-      mobileMorePanel.hidden = true;
-
-    }, 300);
-
-  }
-
-
-  /* --------------------------------------------------------------
-     MORE BUTTON
-     -------------------------------------------------------------- */
-
-  mobileApplicationMore?.addEventListener(
-    "click",
-    () => {
-
-      const panelIsOpen =
-        mobileMorePanel?.classList.contains(
-          "is-open"
-        );
-
-      if (panelIsOpen) {
-
-        closeMorePanel();
-
-      } else {
-
-        openMorePanel();
-
-      }
-
-    }
-  );
-
-
-  /* --------------------------------------------------------------
-     CLOSE BUTTON
-     -------------------------------------------------------------- */
-
-  mobileMoreClose?.addEventListener(
-    "click",
-    closeMorePanel
-  );
-
-
-  /* --------------------------------------------------------------
-     CLOSE AFTER DESTINATION SELECTION
-     -------------------------------------------------------------- */
-
-  mobileMorePanel
-    ?.querySelectorAll("a")
-    .forEach((navigationLink) => {
-
-      navigationLink.addEventListener(
-        "click",
-        closeMorePanel
-      );
-
-    });
-
-
-  /* --------------------------------------------------------------
-     ESCAPE KEY
-     -------------------------------------------------------------- */
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (event.key === "Escape") {
-
-        closeMorePanel();
-
-      }
-
-    }
-  );
-
-
-  /* --------------------------------------------------------------
-     ACTIVE NAVIGATION STATE
-     -------------------------------------------------------------- */
-
-  const navigationItems =
-    document.querySelectorAll(
-      ".mobile-app-nav__item[data-nav-destination]"
-    );
-
-
-  function setActiveNavigationItem(
-    destination
-  ) {
-
-    navigationItems.forEach(
-      (navigationItem) => {
-
-        const isCurrent =
-          navigationItem.dataset
-            .navDestination === destination;
-
-        navigationItem.classList.toggle(
-          "is-active",
-          isCurrent
-        );
-
-        if (isCurrent) {
-
-          navigationItem.setAttribute(
-            "aria-current",
-            "page"
-          );
-
-        } else {
-
-          navigationItem.removeAttribute(
-            "aria-current"
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  /* --------------------------------------------------------------
-     SECTION OBSERVER
-     Automatically updates the bottom bar as the user scrolls.
-     -------------------------------------------------------------- */
-
-  const sectionDestinationMap = [
-    {
-      sectionId: "about",
-      destination: "about"
-    },
-    {
-      sectionId: "impact",
-      destination: "work"
-    }
-  ];
-
-
-  if ("IntersectionObserver" in window) {
-
-    const sectionObserver =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach(
-            (entry) => {
-
-              if (!entry.isIntersecting) {
-                return;
-              }
-
-              const matchingDestination =
-                sectionDestinationMap.find(
-                  (mapping) =>
-                    mapping.sectionId ===
-                    entry.target.id
-                );
-
-              if (
-                matchingDestination
-              ) {
-
-                setActiveNavigationItem(
-                  matchingDestination.destination
-                );
-
-              }
-
-            }
-          );
-
-        },
-        {
-          rootMargin:
-            "-35% 0px -55% 0px",
-
-          threshold: 0
-        }
-      );
-
-
-    sectionDestinationMap.forEach(
-      (mapping) => {
-
-        const section =
-          document.getElementById(
-            mapping.sectionId
-          );
-
-        if (section) {
-
-          sectionObserver.observe(
-            section
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-})();
 /* ============================================================
    PROFESSIONAL FAQ PRESENTATION
    ============================================================ */
@@ -882,303 +584,7 @@ background:var(--pill-bg); color:var(--text); flex:none; transition:.25s;
   .faq-highlight-grid {
     grid-template-columns: 1fr;
   }
-}/* ================================================================
-   PERSISTENT MOBILE APPLICATION NAVIGATION
-   ================================================================ */
-
-.mobile-app-nav {
-  position: fixed;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  z-index: 1200;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(5, minmax(0, 1fr));
-
-  align-items: stretch;
-
-  min-height: 68px;
-
-  padding:
-    5px
-    max(8px, env(safe-area-inset-left))
-    calc(5px + env(safe-area-inset-bottom))
-    max(8px, env(safe-area-inset-right));
-
-  background:
-    color-mix(
-      in srgb,
-      var(--footer-bg) 94%,
-      transparent
-    );
-
-  border-top:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--accent) 18%,
-      var(--footer-border)
-    );
-
-  box-shadow:
-    0 -6px 25px
-    rgba(0, 0, 0, .15);
-
-  backdrop-filter:
-    blur(20px)
-    saturate(180%);
-
-  -webkit-backdrop-filter:
-    blur(20px)
-    saturate(180%);
-}
-
-
-/* ---------------------------------------------------------------
-   NAVIGATION ITEM
-   --------------------------------------------------------------- */
-
-.mobile-app-nav__item {
-  position: relative;
-
-  min-width: 0;
-  min-height: 58px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 3px;
-
-  padding:
-    5px
-    3px;
-
-  border: 0;
-
-  border-radius: 12px;
-
-  background: transparent;
-
-  color: var(--text-3);
-
-  font-family: var(--font-cond);
-
-  font-size: .62rem;
-
-  font-weight: 700;
-
-  letter-spacing: .035em;
-
-  line-height: 1;
-
-  text-decoration: none;
-
-  cursor: pointer;
-
-  transition:
-    color .18s ease,
-    background-color .18s ease,
-    transform .18s ease;
-}
-
-
-/* ---------------------------------------------------------------
-   ICON
-   --------------------------------------------------------------- */
-
-.mobile-app-nav__icon {
-  width: 23px;
-  height: 23px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  color: currentColor;
-}
-
-.mobile-app-nav__icon svg {
-  width: 21px;
-  height: 21px;
-
-  fill: currentColor;
-}
-
-
-/* ---------------------------------------------------------------
-   LABEL
-   --------------------------------------------------------------- */
-
-.mobile-app-nav__label {
-  display: block;
-
-  max-width: 100%;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-}
-
-
-/* ---------------------------------------------------------------
-   ACTIVE DESTINATION
-   --------------------------------------------------------------- */
-
-.mobile-app-nav__item.is-active,
-.mobile-app-nav__item[aria-current="page"] {
-  color: var(--accent);
-
-  background:
-    color-mix(
-      in srgb,
-      var(--accent) 10%,
-      transparent
-    );
-}
-
-
-/* ---------------------------------------------------------------
-   ACTIVE INDICATOR
-   --------------------------------------------------------------- */
-
-.mobile-app-nav__item.is-active::before,
-.mobile-app-nav__item[aria-current="page"]::before {
-  content: "";
-
-  position: absolute;
-
-  top: 2px;
-
-  left: 50%;
-
-  width: 20px;
-
-  height: 3px;
-
-  transform:
-    translateX(-50%);
-
-  border-radius: 999px;
-
-  background: var(--accent);
-}
-
-
-/* ---------------------------------------------------------------
-   TOUCH / HOVER FEEDBACK
-   --------------------------------------------------------------- */
-
-.mobile-app-nav__item:hover {
-  color: var(--accent);
-}
-
-.mobile-app-nav__item:active {
-  transform: scale(.94);
-}
-
-.mobile-app-nav__item:focus-visible {
-  outline:
-    2px solid
-    var(--accent);
-
-  outline-offset: -2px;
-}
-
-
-/* ---------------------------------------------------------------
-   MORE BUTTON
-   --------------------------------------------------------------- */
-
-.mobile-app-nav__more {
-  appearance: none;
-
-  -webkit-appearance: none;
-}
-
-
-/* ---------------------------------------------------------------
-   PREVENT CONTENT FROM HIDING BEHIND THE NAVIGATION
-   --------------------------------------------------------------- */
-
-body {
-  padding-bottom:
-    calc(
-      76px +
-      env(safe-area-inset-bottom)
-    );
-}
-
-
-/* ---------------------------------------------------------------
-   DESKTOP
-   --------------------------------------------------------------- */
-
-@media (min-width: 900px) {
-
-  .mobile-app-nav {
-    display: none;
-  }
-
-  body {
-    padding-bottom: 0;
-  }
-
-}
-
-
-/* ---------------------------------------------------------------
-   SMALL MOBILE DEVICES
-   --------------------------------------------------------------- */
-
-@media (max-width: 360px) {
-
-  .mobile-app-nav {
-    min-height: 64px;
-  }
-
-  .mobile-app-nav__item {
-    min-height: 54px;
-
-    font-size: .56rem;
-  }
-
-  .mobile-app-nav__icon {
-    width: 21px;
-    height: 21px;
-  }
-
-  .mobile-app-nav__icon svg {
-    width: 19px;
-    height: 19px;
-  }
-
-}
-
-
-/* ---------------------------------------------------------------
-   REDUCED MOTION
-   --------------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .mobile-app-nav__item {
-    transition: none;
-  }
-
-}
-    
+}    
 .theme-toggle:hover { border-color:var(--gold); transform:translateY(-2px); }
 .theme-toggle svg { width:19px; height:19px; }
 .theme-toggle .icon-moon { display:block; }
@@ -1674,6 +1080,17 @@ color:var(--text-3)}
 .book-actions .btn{flex:1 1 100%;text-align:center}
 }
 @media (prefers-reduced-motion:reduce){ .book-offer{transition:none} .book-offer:hover{transform:none} }
+/* ============ INTENT STRIP (app shell, progressive disclosure) ============ */
+.intent { padding: 1.25rem 0 .5rem; position: relative; }
+.intent-title { font-size: 1.05rem; font-weight: 700; margin: 0 0 .75rem; color: var(--text); }
+.intent-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; grid-template-columns: 1fr 1fr; }
+.intent-card { display: flex; flex-direction: column; gap: .3rem; height: 100%; min-height: 96px; padding: .9rem; border-radius: 14px;
+  text-decoration: none; color: var(--text); background: var(--card); border: 1px solid var(--line); }
+.intent-card:hover { border-color: var(--sky); color: var(--text); }
+.intent-card--primary { border-color: var(--line-gold); }
+.intent-label { font-family: var(--font-display); font-weight: 700; font-size: .98rem; }
+.intent-desc { font-size: .8rem; line-height: 1.4; color: var(--text-3); }
+@media (min-width: 900px) { .intent-grid { grid-template-columns: repeat(4, 1fr); } .intent { padding-top: 2rem; } }
 </style>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
@@ -1682,6 +1099,7 @@ window.supabase = createClient(
 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3bW1ja3Rzbm9tbHBieGJzbnRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NDE3OTcsImV4cCI6MjA4NTUxNzc5N30.j6VnkA8Pbodd13osqTj9Xbe9NSn1U1sbG8ofCNT5ns0'
 );
 </script>
+<link rel="stylesheet" href="assets/css/app-shell.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -1752,125 +1170,9 @@ window.supabase = createClient(
 </div>
 </div>
 
-<header class="site-header">
-<nav class="nav" aria-label="Main navigation">
-<a href="index.html" class="brand" aria-label="Alvin Silva Home">
-<img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="eager">
-<span>
-<span class="brand-name">ALVIN M. SILVA</span><br>
-<span class="brand-sub">MDM · Resilience · Systems Innovation</span>
-</span>
-</a>
-<ul class="nav-links">
-<li class="drop" data-drop>
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
-<div class="drop-menu" role="menu">
-<div class="drop-head">The Professional</div>
-<a class="drop-item" href="#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
-<a class="drop-item" href="#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
-<a class="drop-item" href="portfolio.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full Portfolio ↗</a>
-<a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> Read the FAQ</a>
-<a class="drop-item" href="https://www.linkedin.com/in/alvinsilva777" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-in"/></svg> LinkedIn ↗</a> 
-<a class="drop-item" href="https://www.facebook.com/a7vinsi7va" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-fb"/></svg> Facebook ↗</a>  
-</div>
-</li>
-<li class="drop" data-drop>
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">Projects <span class="chev" aria-hidden="true"></span></button>
-<div class="drop-menu" role="menu">
-<div class="drop-head">What I Deliver</div>
-<a class="drop-item" href="#value" role="menuitem"><svg><use href="#i-target"/></svg> See the Value</a>
-<a class="drop-item" href="#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-<a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Publications</a>
-<a class="drop-item" href="#impact" role="menuitem"><svg><use href="#i-star"/></svg> Explore Projects</a>
-<a class="drop-item" href="https://digicon.cards" role="menuitem"><svg><use href="#i-user"/></svg> DigiCon</a>
-<a class="drop-item" href="https://chorus.asilvainnovations.com" role="menuitem"><svg><use href="#i-speak"/></svg> Chorus AI</a>
-</div>
-</li>
-<li class="drop" data-drop>
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">Publications <span class="chev" aria-hidden="true"></span></button>
-<div class="drop-menu" role="menu">
-<div class="drop-head">Go Deeper</div>
-<a class="drop-item" href="#works" role="menuitem"><svg><use href="#i-book"/></svg> Browse Books &amp; Platforms</a>
-</div>
-</li>
-<li class="drop" data-drop>
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">Resources <span class="chev" aria-hidden="true"></span></button>
-<div class="drop-menu" role="menu">
-<div class="drop-head">Explore &amp; Connect</div>
-<a class="drop-item" href="blog.html" role="menuitem"><svg><use href="#i-book"/></svg> Blog</a>
-<a class="drop-item" href="#faq" role="menuitem"><svg><use href="#i-check"/></svg> FAQ</a>
-<a class="drop-item" href="chat.html" role="menuitem"><svg><use href="#i-chat"/></svg> ASilva AI</a>
-<a class="drop-item" href="career-automation.html" role="menuitem"><svg><use href="#i-target"/></svg> Career Scan Automation</a>
-<a class="drop-item" href="policies.html" role="menuitem"><svg><use href="#i-shield"/></svg> Policies</a>
-<a class="drop-item" href="#contact" role="menuitem"><svg><use href="#i-user"/></svg> Contact</a>
-</div>
-</li>
-<li><a href="#contact" class="drop-btn" style="text-decoration:none">Let's Collaborate</a></li>
-</ul>
-<div class="nav-cta">
-<button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Toggle light / dark theme">
-<svg class="icon-moon"><use href="#i-moon"/></svg>
-<svg class="icon-sun"><use href="#i-sun"/></svg>
-</button>
-<button class="persona-pill" id="personaPill" aria-label="Change audience profile. Current: Executive Overview" title="Tailor this site to your role">
-<svg><use href="#i-swap"/></svg><span class="pp-label">Executive</span>
-</button>
-<a href="#contact" class="btn btn-primary btn-sm"><span>Let's Collaborate</span></a>
-</div>
-<button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-<span></span><span></span><span></span>
-</button>
-</nav>
-</header>
 
-<div class="overlay" id="overlay"></div>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-<div class="mm-head">
-<a href="index.html" aria-label="Alvin Silva Home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="52" height="52"></a>
-<button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
-</div>
-<div class="mm-group">
-<div class="mm-group-title">Navigate</div>
-<a class="mm-link" href="#about"><svg><use href="#i-user"/></svg> About</a>
-<a class="mm-link" href="#value"><svg><use href="#i-target"/></svg> See the Value</a>
-<a class="mm-link" href="#expertise"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-<a class="mm-link" href="#impact"><svg><use href="#i-star"/></svg> Explore Projects</a>
-<a class="mm-link" href="https://digicon.cards"><svg><use href="#i-user"/></svg> DigiCon</a>
-<a class="mm-link" href="https://chorus.asilvainnovations.com"><svg><use href="#i-speak"/></svg> Chorus AI</a>
-<a class="mm-link" href="#works"><svg><use href="#i-book"/></svg> Browse Publications</a>
-<a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> Read the FAQ</a>
-<a class="mm-link" href="blog.html"><svg><use href="#i-book"/></svg> Writing</a>
-<a class="mm-link" href="portfolio.html"><svg><use href="#i-globe"/></svg> Portfolio</a>
-<div class="mm-head">Resources</div>
-<a class="mm-link" href="blog.html"><svg><use href="#i-book"/></svg> Blog</a>
-<a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> FAQ</a>
-<a class="mm-link" href="chat.html"><svg><use href="#i-bulb"/></svg> ASilva AI</a>
-<a class="mm-link" href="career-automation.html"><svg><use href="#i-target"/></svg> Career Scan Automation</a>
-<a class="mm-link" href="policies.html"><svg><use href="#i-shield"/></svg> Policies</a>
-<a class="mm-link" href="#contact"><svg><use href="#i-mail"/></svg> Let's Collaborate</a>
-</div>
-<div class="mm-group">
-<div class="mm-group-title">External</div>
-<a class="mm-link" href="portfolio.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-"/></svg> Full Portfolio ↗</a>
-<a class="mm-link" href="https://www.linkedin.com/in/alvinsilva777" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
-</div>
-<div class="mm-persona">
-<div class="mm-group-title">Viewing as</div>
-<button class="chip" data-set-persona="executive"><svg width="13" height="13"><use href="#i-user"/></svg> Executive</button>
-<button class="chip" data-set-persona="government"><svg width="13" height="13"><use href="#i-gov"/></svg> Government</button>
-<button class="chip" data-set-persona="humanitarian"><svg width="13" height="13"><use href="#i-heart"/></svg> NGO &amp; Humanitarian</button>
-<button class="chip" data-set-persona="private"><svg width="13" height="13"><use href="#i-brief"/></svg> Private Sector</button>
-<button class="chip" data-set-persona="academic"><svg width="13" height="13"><use href="#i-cap"/></svg> Academia</button>
-<div class="mm-theme-row">
-<span class="mm-group-title" style="margin:0">Theme</span>
-<button class="theme-toggle" id="themeToggleMobile" aria-label="Switch to light mode" aria-pressed="false">
-<svg class="icon-moon"><use href="#i-moon"/></svg>
-<svg class="icon-sun"><use href="#i-sun"/></svg>
-</button>
-</div>
-</div>
-</nav>
 
+<noscript><nav class="shl-noscript" aria-label="Primary"><a href="portfolio.html">Portfolio</a><a href="blog.html">Writing</a><a href="chat.html">Assistant</a><a href="#contact">Contact</a><a href="policies.html">Policies</a></nav></noscript>
 <main id="main">
 <section class="hero" id="top">
 <div class="hero-banner">
@@ -1921,6 +1223,18 @@ to
 </div>
 </div>
 </section>
+<section class="intent" id="start" aria-labelledby="start-title">
+<div class="wrap">
+<h2 class="intent-title" id="start-title">What brings you here?</h2>
+<ul class="intent-grid">
+<li><a class="intent-card" href="portfolio.html"><span class="intent-label">See the work</span><span class="intent-desc">Platforms, plans, and reports, with links to each deliverable</span></a></li>
+<li><a class="intent-card" href="blog.html"><span class="intent-label">Read the thinking</span><span class="intent-desc">Books and notes on systems, evaluation, and resilience</span></a></li>
+<li><a class="intent-card" href="chat.html"><span class="intent-label">Ask a question</span><span class="intent-desc">The assistant answers from Alvin&rsquo;s verified record</span></a></li>
+<li><a class="intent-card intent-card--primary" href="#contact"><span class="intent-label">Start a conversation</span><span class="intent-desc">Describe the outcome you&rsquo;re accountable for</span></a></li>
+</ul>
+</div>
+</section>
+
 
 <section class="trust" aria-label="Organizations Alvin has worked with">
 <p class="trust-label">Trusted alongside teams at</p>
@@ -1995,7 +1309,7 @@ That approach has taken me from barangay-level DRR protocols to the lead archite
 <p class="kicker">Capabilities</p>
 <h2 class="section-title">Seven disciplines, <span class="hl">one systems view</span></h2>
 <p class="section-sub">Each discipline is deep enough to lead alone — and engineered to compound when combined. <span data-p="exp.note">Select your profile above and the grid re-ranks around your priorities.</span></p>
-<div class="exp-grid" id="expGrid">
+<div class="exp-grid" id="expGrid" data-disclose-list="3" data-disclose-label="disciplines">
 <article class="exp-card glass reveal" data-exp="cca">
 <div class="exp-icon"><svg><use href="#i-globe"/></svg></div>
 <h3>Climate Change Adaptation</h3>
@@ -2047,7 +1361,7 @@ That approach has taken me from barangay-level DRR protocols to the lead archite
 <p class="kicker">Track Record</p>
 <h2 class="section-title">Milestones that <span class="hl">moved systems</span></h2>
 <p class="section-sub">Selected engagements, newest first. <span data-p="tl.note">Gold badges mark the work most relevant to your profile.</span></p>
-<div class="timeline">
+<div class="timeline" data-disclose-list="3" data-disclose-label="engagements">
 <div class="tl-item flagship reveal" data-tl="bird">
 <div class="tl-dot" aria-hidden="true"></div>
 <div class="tl-card glass-strong">
@@ -2966,64 +2280,6 @@ That approach has taken me from barangay-level DRR protocols to the lead archite
 </section>
 </main>
 
-<footer class="site-footer">
-<div class="wrap">
-<div class="footer-grid">
-<div class="footer-brand">
-<a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
-<p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
-<div class="socials">
-<a href="https://www.linkedin.com/in/alvinsilva777" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-<a href="https://www.facebook.com/a7vinsi7va" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
-<a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
-<a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Website"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-globe"/></svg></a>
-</div>
-</div>
-<div class="footer-col">
-<h4>Navigate</h4>
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#value">Value For You</a></li>
-<li><a href="#expertise">Core Expertise</a></li>
-<li><a href="#impact">Explore Projects</a></li>
-<li><a href="https://digicon.cards">Explore DigiCon</a></li>
-<li><a href="https://chorus.asilvainnovations.com">Explore Chorus AI</a></li>
-<li><a href="#contact">Let's Collaborate</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Flagship Work</h4>
-<ul>
-<li><a href="#impact">BIRD 2026–2035</a></li>
-<li><a href="#impact">TESDA Strategic Plan</a></li>
-<li><a href="#works">DDRiVE-M Platform</a></li>
-<li><a href="#works">Strategic Planner Pro</a></li>
-<li><a href="#works">Cognitio+</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Credentials</h4>
-<ul>
-<li><a href="#about">MDM — Asian Institute of Management</a></li>
-<li><a href="#expertise">Certified SRMP</a></li>
-<li><a href="#works">Published Author ×2</a></li>
-<li><a href="https://portfolio.asilvainnovations.com" target="_blank" rel="noopener noreferrer">Full Portfolio ↗</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-base">
-<p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
-<p style="font-size:.8rem;color:var(--text-3);font-weight:300;max-width:520px">Your privacy matters. I only collect data necessary to improve your experience — see the full policy below.</p>
-<p class="footer-legal">
-<a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
-<a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
-<a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
-<button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
-</p>
-<span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
-</div>
-</div>
-</footer>
 
 <button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
 <aside class="a11y-panel glass-strong" id="a11yPanel" role="dialog" aria-label="Accessibility tools" aria-hidden="true">
@@ -3063,12 +2319,6 @@ That approach has taken me from barangay-level DRR protocols to the lead archite
 </aside>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
-<div class="install-banner glass-gold" id="installBanner" role="region" aria-label="Install app">
-<div class="ib-icon"><svg><use href="#i-dl"/></svg></div>
-<p><strong>Install this site</strong> — offline access, one tap from your home screen.</p>
-<button class="btn btn-gold btn-sm" id="installBtn">Install</button>
-<button class="ib-x" id="installDismiss" aria-label="Dismiss">✕</button>
-</div>
 <div class="toast glass-strong" id="toast" role="status" aria-live="polite"></div>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged book cover">
@@ -3141,24 +2391,6 @@ That approach has taken me from barangay-level DRR protocols to the lead archite
 <script>
 document.documentElement.classList.add('js');
 
-(function themeInit() {
-const THEME_KEY = 'as-theme';
-const root = document.documentElement;
-function apply(theme) {
-root.dataset.theme = theme;
-localStorage.setItem(THEME_KEY, theme);
-document.querySelectorAll('#themeToggle, #themeToggleMobile').forEach(btn => {
-btn.setAttribute('aria-pressed', theme === 'light');
-btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
-});
-}
-const saved = localStorage.getItem(THEME_KEY);
-const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-apply(saved || (prefersLight ? 'light' : 'dark'));
-function toggle() { apply(root.dataset.theme === 'light' ? 'dark' : 'light'); }
-document.getElementById('themeToggle')?.addEventListener('click', toggle);
-document.getElementById('themeToggleMobile')?.addEventListener('click', toggle);
-})();
 
 (function lightboxInit() {
 const lb = document.getElementById('lightbox');
@@ -3529,8 +2761,8 @@ renderNumbers(P.numbersOrder || ['works','years','countries','books']);
 $$('[data-tl-badge]').forEach(el => {
 el.classList.toggle('on', P.tlPriority.includes(el.dataset.tlBadge));
 });
-$('#personaPill .pp-label').textContent = P.label;
-$('#personaPill').setAttribute('aria-label', `Change audience profile. Current: ${P.label}`);
+document.documentElement.dataset.personaLabel = P.label;
+window.dispatchEvent(new CustomEvent('as:persona', { detail: { key, label: P.label } }));
 $$('.mm-persona .chip').forEach(c => c.classList.toggle('active', c.dataset.setPersona === key));
 ['#heroCopy', '#valueGrid'].forEach(sel => {
 const n = $(sel);
@@ -3552,37 +2784,18 @@ $('#pmClose').addEventListener('click', () => { localStorage.setItem(STORE_KEY, 
 $('#pmSkip').addEventListener('click', () => { applyPersona('executive', {announce:false}); closeModal(); toast('Showing everything — Executive lens'); });
 $$('[data-set-persona]').forEach(b => b.addEventListener('click', () => {
 applyPersona(b.dataset.setPersona);
-closeModal(); closeMobile();
+closeModal();
 }));
-$('#personaPill').addEventListener('click', openModal);
-$('#heroTailor').addEventListener('click', openModal);
+window.ASilvaOpenPersona = openModal;
+$('#heroTailor')?.addEventListener('click', openModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 window.addEventListener('DOMContentLoaded', () => {
 const saved = localStorage.getItem(STORE_KEY);
-if (saved && PROFILES[saved]) applyPersona(saved, {announce:false});
-else setTimeout(openModal, 700);
+applyPersona(saved && PROFILES[saved] ? saved : 'executive', {announce:false});
 });
 
-$$('[data-drop] > .drop-btn').forEach(btn => {
-btn.addEventListener('click', e => {
-e.stopPropagation();
-const drop = btn.parentElement, wasOpen = drop.classList.contains('open');
-$$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
-if (!wasOpen) { drop.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
-});
-});
-document.addEventListener('click', e => {
-if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
-});
-const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
-function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-menuBtn.addEventListener('click', openMobile);
-$('#mmClose').addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => {
-if (e.key === 'Escape') { closeMobile(); closeModal(); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
+if (e.key === 'Escape') { closeModal(); }
 });
 
 $$('.tab-btn').forEach(btn => btn.addEventListener('click', () => {
@@ -3683,25 +2896,6 @@ $('#contactForm').addEventListener('submit', e => {
   });
 });
 
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
-window.deferredPrompt = null;
-const iBanner = $('#installBanner');
-window.addEventListener('beforeinstallprompt', e => {
-e.preventDefault();
-window.deferredPrompt = e;
-if (!localStorage.getItem('as-install-dismissed')) iBanner.classList.add('show');
-});
-$('#installBtn').addEventListener('click', async () => {
-iBanner.classList.remove('show');
-if (window.deferredPrompt) { window.deferredPrompt.prompt(); await window.deferredPrompt.userChoice; window.deferredPrompt = null; }
-});
-$('#installDismiss').addEventListener('click', () => {
-iBanner.classList.remove('show');
-localStorage.setItem('as-install-dismissed', '1');
-});
-window.addEventListener('appinstalled', () => { iBanner.classList.remove('show'); toast('Installed — see you on the home screen'); });
 
 const CONSENT_KEY = 'as-cookie-consent-v1';
 const cBanner = $('#consentBanner'), cPrefs = $('#consentPrefs');
@@ -3730,7 +2924,7 @@ $('#consentCustomize').addEventListener('click', () => {
 cPrefs.classList.toggle('open');
 $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
 });
-$('#cookieSettings').addEventListener('click', () => {
+window.addEventListener('as:cookie-settings', () => {
 const c = getConsent();
 if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
 cPrefs.classList.add('open');
@@ -3782,18 +2976,9 @@ QR CODE QUICK CONNECT & vCard HANDLER
         setTimeout(openModal, 800); 
     }
 
-    installBtn.addEventListener('click', async () => {
-        if (window.deferredPrompt) {
-            window.deferredPrompt.prompt();
-            const { outcome } = await window.deferredPrompt.userChoice;
-            if (outcome === 'accepted') {
-                toast('App installed! See you on the home screen.');
-                closeModal();
-            }
-            window.deferredPrompt = null;
-        } else {
-            toast('Please use your browser\'s "Add to Home Screen" option.');
-        }
+    installBtn.addEventListener('click', () => {
+        closeModal();
+        if (window.ASilvaShell) window.ASilvaShell.install();
     });
 
     closeBtn.addEventListener('click', closeModal);
@@ -3805,129 +2990,7 @@ QR CODE QUICK CONNECT & vCard HANDLER
     });
 })();
 </script>
-<script src="sw.js" defer></script>
 <script src="assets/js/boot.js" defer></script>
-<script src="assets/js/visualizations/career-map.js" defer></script>
-<script src="assets/js/visualizations/expertise-radar.js" defer></script>
-<script src="assets/js/visualizations/impact-dashboard.js" defer></script>
-<script src="assets/js/chat/engine.js" defer></script>
-<script src="assets/js/chat/widget.js" defer></script>
-<script src="assets/js/core/accessibility.js" defer></script>
-<script src="assets/js/core/data.js" defer></script>
-<script src="assets/js/core/index.js" defer></script>
-<script src="assets/js/core/navigation.js" defer></script>
-<script src="assets/js/core/nlp.js" defer></script>
-<script src="assets/js/core/persona.js" defer></script>
-<script src="assets/js/core/platform.js" defer></script>
-<script src="assets/js/core/registry.js" defer></script>
-<script src="assets/js/core/router.js" defer></script>
-<script src="assets/js/core/theme.js" defer></script>
-<script src="assets/js/core/util.js" defer></script>
-<script src="assets/js/services/credentials-service.js" defer></script>
-<script src="assets/js/services/analytics-service.js" defer></script>
   
-<!-- ============================================================
-PERSISTENT MOBILE APPLICATION NAVIGATION
-Primary navigation for the mobile-first PWA.
-============================================================ -->
-
-<nav
-  class="mobile-app-nav"
-  id="mobileAppNav"
-  aria-label="Primary application navigation"
->
-
-  <!-- Home -->
-  <a
-    href="index.html"
-    class="mobile-app-nav__item is-active"
-    data-nav-destination="home"
-    aria-current="page"
-  >
-    <span class="mobile-app-nav__icon" aria-hidden="true">
-      <svg>
-        <use href="#i-home"></use>
-      </svg>
-    </span>
-
-    <span class="mobile-app-nav__label">
-      Home
-    </span>
-  </a>
-
-
-  <!-- About -->
-  <a
-    href="#about"
-    class="mobile-app-nav__item"
-    data-nav-destination="about"
-  >
-    <span class="mobile-app-nav__icon" aria-hidden="true">
-      <svg>
-        <use href="#i-user"></use>
-      </svg>
-    </span>
-
-    <span class="mobile-app-nav__label">
-      About
-    </span>
-  </a>
-
-
-  <!-- Work -->
-  <a
-    href="#impact"
-    class="mobile-app-nav__item"
-    data-nav-destination="work"
-  >
-    <span class="mobile-app-nav__icon" aria-hidden="true">
-      <svg>
-        <use href="#i-briefcase"></use>
-      </svg>
-    </span>
-
-    <span class="mobile-app-nav__label">
-      Work
-    </span>
-  </a>
-
-
-  <!-- Tools -->
-  <a
-    href="career-automation.html"
-    class="mobile-app-nav__item"
-    data-nav-destination="tools"
-  >
-    <span class="mobile-app-nav__icon" aria-hidden="true">
-      <svg>
-        <use href="#i-tools"></use>
-      </svg>
-    </span>
-
-    <span class="mobile-app-nav__label">
-      Tools
-    </span>
-  </a>
-
-
-  <!-- More -->
-  <button
-    type="button"
-    class="mobile-app-nav__item mobile-app-nav__more"
-    id="mobileAppMore"
-    aria-expanded="false"
-    aria-controls="mobileMorePanel"
-  >
-    <span class="mobile-app-nav__icon" aria-hidden="true">
-      <svg>
-        <use href="#i-menu"></use>
-      </svg>
-    </span>
-
-    <span class="mobile-app-nav__label">
-      More
-    </span>
-  </button>
-</nav>
 </body>
 </html>

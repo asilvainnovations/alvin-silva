@@ -489,6 +489,7 @@ html.js .reveal.in { opacity:1; transform:none; }
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3bW1ja3Rzbm9tbHBieGJzbnRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5NDE3OTcsImV4cCI6MjA4NTUxNzc5N30.j6VnkA8Pbodd13osqTj9Xbe9NSn1U1sbG8ofCNT5ns0'
   );
 </script>
+<link rel="stylesheet" href="assets/css/app-shell.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -524,83 +525,7 @@ html.js .reveal.in { opacity:1; transform:none; }
 </svg>
 
 <!-- ============ HEADER ============ -->
-<header class="site-header">
-  <nav class="nav" aria-label="Main navigation">
-    <a href="index.html" class="brand" aria-label="Alvin Silva Home">
-      <img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="eager">
-      <span>
-        <span class="brand-name">ALVIN M. SILVA</span><br>
-        <span class="brand-sub">MDM · Resilience · Systems Innovation</span>
-      </span>
-    </a>
 
-    <ul class="nav-links">
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">About <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">The Professional</div>
-          <a class="drop-item" href="index.html#about" role="menuitem"><svg><use href="#i-user"/></svg> Read My Profile</a>
-          <a class="drop-item" href="index.html#numbers" role="menuitem"><svg><use href="#i-chart"/></svg> View Track Record</a>
-        </div>
-      </li>
-      <li class="drop" data-drop>
-        <button class="drop-btn" aria-haspopup="true" aria-expanded="false">Projects <span class="chev" aria-hidden="true"></span></button>
-        <div class="drop-menu" role="menu">
-          <div class="drop-head">What I Deliver</div>
-          <a class="drop-item" href="index.html#value" role="menuitem"><svg><use href="#i-target"/></svg> See the Value</a>
-          <a class="drop-item" href="index.html#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-          <a class="drop-item" href="portfolio.html" data-filter-link="all" role="menuitem"><svg><use href="#i-star"/></svg> Full Portfolio</a>
-           <a class="drop-item" href=."index.html#projects" data-filter-link="all" role="menuitem"><svg><use href="#i-star"/></svg> Explore Projects</a>
-        </div>
-      </li>
-      <li><a href="portfolio.html" class="drop-btn" style="text-decoration:none" aria-current="page">Portfolio</a></li>
-      <li><a href="index.html#publications" class="drop-btn" style="text-decoration:none" data-filter-link="publications">Publications</a></li>
-      <li><a href="index.html#contact" class="drop-btn" style="text-decoration:none">Contact</a></li>
-    </ul>
-
-    <div class="nav-cta">
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Light/Dark Mode">
-        <svg class="icon-moon"><use href="#i-moon"/></svg>
-        <svg class="icon-sun"><use href="#i-sun"/></svg>
-      </button>
-      <a href="#portfolio" class="btn btn-primary btn-sm"><span>Explore My Work</span></a>
-    </div>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-
-<div class="overlay" id="overlay"></div>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-  <div class="mm-head">
-    <a href="index.html" aria-label="Alvin Silva Home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="52" height="52"></a>
-    <button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">Navigate</div>
-    <a class="mm-link" href="index.html#about"><svg><use href="#i-user"/></svg> About</a>
-    <a class="mm-link" href="index.html#expertise"><svg><use href="#i-bulb"/></svg> Explore Expertise</a>
-    <a class="mm-link" href="index.html#projects" data-filter-link="all"><svg><use href="#i-star"/></svg> Explore Projects</a>
-    <a class="mm-link" href="portfolio.html" aria-current="page"><svg><use href="#i-book"/></svg> Portfolio</a>
-    <a class="mm-link" href=""index.html#publications" data-filter-link="publications"><svg><use href="#i-book"/></svg> Publications</a>
-    <a class="mm-link" href="index.html#contact"><svg><use href="#i-mail"/></svg> Contact</a>
-  </div>
-  <div class="mm-group">
-    <div class="mm-group-title">External</div>
-    <a class="mm-link" href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-shield"/></svg> Policies ↗</a>
-    <a class="mm-link" href="https://www.linkedin.com/alvinsilva777" target="_blank" rel="noopener noreferrer"><svg><use href="#i-in"/></svg> LinkedIn ↗</a>
-    <a class="mm-link" href="https://www.facebook.com/a7vinsi7va" target="_blank" rel="noopener noreferrer"><svg><use href="#i-fb"/></svg> Facebook ↗</a>
-    <div class="mm-theme-7varow">
-      <span class="mm-group-title" style="margin:0">Light/Dark Mode</span>
-      <button class="theme-toggle" id="themeToggleMobile" aria-label="Switch to light mode" aria-pressed="false">
-        <svg class="icon-moon"><use href="#i-moon"/></svg>
-        <svg class="icon-sun"><use href="#i-sun"/></svg>
-      </button>
-    </div>
-  </div>
-</nav>
 
 <main id="main">
 
@@ -660,64 +585,6 @@ html.js .reveal.in { opacity:1; transform:none; }
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand" aria-label="Alvin Silva Home"><img src="assets/logo-192.png" alt="Alvin Silva Home" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
-        <p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/alvinsilva777" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-          <a href="https://www.facebook.com/a7vinsi7va" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
-          <a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
-          <a href="tel:+639178555134" aria-label="Call +63 917 855 5134"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-phone"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#expertise">Core Expertise</a></li>
-          <li><a href="index.html#impact">Explore Projects</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="index.html#contact">Let's Collaborate</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Flagship Work</h4>
-        <ul>
-          <li><a href="https://bird-app.bolt.host" target="_blank" rel="noopener noreferrer">BIRD Platform ↗</a></li>
-          <li><a href="https://asilvainnovations.github.io/ddrive-m/" target="_blank" rel="noopener noreferrer">DDRiVE-M ↗</a></li>
-          <li><a href="https://asilvainnovations.github.io/strat-planner-pwa/public/index.html" data-jump="Strat Planner Pro">Strat Planner Pro</a></li>
-          <li><a href="https://" data-jump="Cognitio+">Cognitio+</a></li>
-          <li><a href="https://asilvainnovations.github.io/website/rtl.html" target="_blank" rel="noopener noreferrer">RTL ↗</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Credentials</h4>
-        <ul>
-          <li><a href="index.html#about">MDM — Asian Institute of Management</a></li>
-          <li><a href="index.html#expertise">Certified SRMP</a></li>
-          <li><a href="#portfolio" data-jump="Personal Resilience">Published Author ×3</a></li>
-          <li><a href="index.html">Main Site ↗</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-base">
-      <p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
-      <p style="font-size:.8rem;color:var(--text-3);font-weight:300;max-width:520px">We use minimal cookies to improve your experience. No tracking beyond this site — see the full policy below.</p>
-      <p class="footer-legal">
-        <a href="https://asilvainnovations.github.io/website/policies.html" target="_blank" rel="noopener noreferrer">Policies</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/terms-of-services.html" target="_blank" rel="noopener noreferrer">Terms</a> ·
-        <a href="https://asilvainnovations.github.io/website/policies/accessibility-policy.html" target="_blank" rel="noopener noreferrer">Accessibility</a> ·
-        <button class="linklike" id="cookieSettings" type="button">Cookie Settings</button>
-      </p>
-      <span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
-    </div>
-  </div>
-</footer>
 
 <!-- ============ LEAD CAPTURE MODAL ============ -->
 <div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
@@ -938,11 +805,6 @@ const WORKS = [
     desc:'Rigorous analysis of the Philippine health sector as a Complex Adaptive System, identifying critical systemic barriers to mental health integration.',
     img:'https://appimize.app/assets/apps/user_1097/images/2a0918113bfa_696_1097.png', ph:'assets/ph-consulting.jpg',
     links:[['Read Guidebook','https://cognitioplus.github.io/seamless-care']] },
-
-
-
-
-    links:[['Completion Report','https://drive.google.com/file/d/1sgBUgsqhSdOcQGI7wTkYYJwUaGIh_hTR/view?usp=sharing']] },
   { cat:'consulting', badge:'DRR Review',
     title:'Conflict-Sensitive DRR Project Review — Mindanao', meta:'Philippine & German Red Cross',
     desc:'Participatory conflict assessment and mid-term review of a DRR project in fragile, conflict-affected Mindanao communities and schools.',
@@ -1150,12 +1012,12 @@ document.addEventListener('click', e => {
   if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
 });
 const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
-function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-menuBtn.addEventListener('click', openMobile);
-$('#mmClose').addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+function openMobile() { mm?.classList.add('open'); overlay?.classList.add('show'); menuBtn?.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm?.classList.remove('open'); overlay?.classList.remove('show'); menuBtn?.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn?.addEventListener('click', openMobile);
+$('#mmClose')?.addEventListener('click', closeMobile);
+overlay?.addEventListener('click', closeMobile);
+$$('.mm-link', mm || document).forEach(a => a.addEventListener('click', closeMobile));
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeMobile(); closeLB(); closeA11y(); document.getElementById('leadModal')?.classList.remove('show'); $$('[data-drop]').forEach(d => d.classList.remove('open')); }
 });
@@ -1189,8 +1051,8 @@ const countIO = new IntersectionObserver(es => es.forEach(en => {
 $$('.count').forEach(el => countIO.observe(el));
 
 const btt = $('#backToTop');
-window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
-btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+window.addEventListener('scroll', () => btt?.classList.toggle('visible', scrollY > 400), {passive:true});
+btt?.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
 
 function toast(msg) {
   const t = $('#toast');
@@ -1266,7 +1128,7 @@ $('#consentCustomize').addEventListener('click', () => {
   cPrefs.classList.toggle('open');
   $('#consentSave').style.display = cPrefs.classList.contains('open') ? '' : 'none';
 });
-$('#cookieSettings').addEventListener('click', () => {
+window.addEventListener('as:cookie-settings', () => {
   const c = getConsent();
   if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
   cPrefs.classList.add('open'); $('#consentSave').style.display = '';
@@ -1322,7 +1184,7 @@ if (!getConsent()) setTimeout(showConsent, 1800);
   });
 
   document.getElementById('leadClose')?.addEventListener('click', closeModal);
-  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
 
   form.addEventListener('submit', async e => {
@@ -1382,33 +1244,10 @@ if (!getConsent()) setTimeout(showConsent, 1800);
 /* ================================================================
    PWA
    ================================================================ */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
 </script>
-<script src="sw.js" defer></script>
-<script src="assets/asilva-widget.js" defer></script> 
+ 
 <script src="assets/js/boot.js" defer></script>
-<script src="assets/js/visualizations/career-map.js" defer></script>
-<script src="assets/js/visualizations/expertise-radar.js" defer></script>
-<script src="assets/js/visualizations/impact-dashboard.js" defer></script>
-<script src="assets/js/visualizations/career-map.js" defer></script>
-<script src="assets/js/chat/engine.js" defer></script>
-<script src="assets/js/chat/widget.js" defer></script>
-<script src="assets/js/core/accessibility.js" defer></script>
-<script src="assets/js/core/data.js" defer></script>
-<script src="assets/js/core/index.js" defer></script>
-<script src="assets/js/core/navigation.js" defer></script>
-<script src="assets/js/core/nlp.js" defer></script>
-<script src="assets/js/core/persona.js" defer></script>
-<script src="assets/js/core/platform.js" defer></script>
-<script src="assets/js/core/registry.js" defer></script>
-<script src="assets/js/core/router.js" defer></script>
-<script src="assets/js/core/theme.js" defer></script>
-<script src="assets/js/core/util.js" defer></script>
-<script src="assets/js/services/credentials-service.js" defer></script>
-<script src="assets/js/services/analytics-service.js" defer></script>
-<script src="assets/js/modules/ai-chorus.js" defer></script>  
-<script src="assets/js/modules/blog.js" defer></script>  
+  
+  
 </body>
 </html>

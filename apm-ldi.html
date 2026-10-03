@@ -777,6 +777,7 @@ transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s
 .chat-panel { width:calc(100vw - 1.6rem); bottom:68px; border-radius:16px; }
 }
 </style>
+<link rel="stylesheet" href="assets/css/app-shell.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -829,106 +830,7 @@ transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s
 </defs>
 </svg>
 <!-- ============ HEADER ============ -->
-<header class="site-header">
-<nav class="nav" aria-label="Main navigation">
-<a href="index.html" class="brand" aria-label="Alvin Silva home">
-<img src="assets/logo-192.png" alt="" width="46" height="46" loading="eager">
-<span>
-<span class="brand-name">ALVIN M. SILVA</span><br>
-<span class="brand-sub">MDM · Resilience · Systems Innovation</span>
-</span>
-</a>
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li class="drop" data-drop>
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">Session Design <span class="chev" aria-hidden="true"></span></button>
-<div class="drop-menu" role="menu">
-<div class="drop-head">How the four days are built</div>
-<a class="drop-item" href="#cohort" role="menuitem"><svg><use href="#i-user"/></svg> The SG-15+ cohort</a>
-<a class="drop-item" href="#paradigm" role="menuitem"><svg><use href="#i-sync"/></svg> The delivery shift</a>
-<a class="drop-item" href="#architecture" role="menuitem"><svg><use href="#i-layers"/></svg> The four-day arc</a>
-<a class="drop-item" href="#variant" role="menuitem"><svg><use href="#i-clock"/></svg> The 3-day variant</a>
-<a class="drop-item" href="#calibration" role="menuitem"><svg><use href="#i-target"/></svg> Calibrating Day 1</a>
-</div>
-</li>
-<li class="drop" data-drop>
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">Methodology <span class="chev" aria-hidden="true"></span></button>
-<div class="drop-menu" role="menu">
-<div class="drop-head">What participants actually do</div>
-<a class="drop-item" href="#deep-dive" role="menuitem"><svg><use href="#i-search"/></svg> The problem behind the problem</a>
-<a class="drop-item" href="#fixes-that-fail" role="menuitem"><svg><use href="#i-sync"/></svg> Fixes that fail</a>
-<a class="drop-item" href="#leverage" role="menuitem"><svg><use href="#i-scale"/></svg> The leverage ladder</a>
-<a class="drop-item active" href="#livedemo" role="menuitem"><svg><use href="#i-play"/></svg> Live demonstration</a>
-<a class="drop-item" href="#assessment" role="menuitem"><svg><use href="#i-chart"/></svg> Assessment strategy</a>
-<a class="drop-item" href="#instrument" role="menuitem"><svg><use href="#i-stetho"/></svg> Pre-assessment instrument</a>
-</div>
-</li>
-<li class="drop" data-drop>
-<button class="drop-btn" aria-haspopup="true" aria-expanded="false">More <span class="chev" aria-hidden="true"></span></button>
-<div class="drop-menu" role="menu">
-<div class="drop-head">Elsewhere on this site</div>
-<a class="drop-item" href="index.html#expertise" role="menuitem"><svg><use href="#i-bulb"/></svg> Explore expertise</a>
-<a class="drop-item" href="index.html#impact" role="menuitem"><svg><use href="#i-star"/></svg> Explore projects</a>
-<a class="drop-item" href="index.html#works" role="menuitem"><svg><use href="#i-book"/></svg> Books &amp; platforms</a>
-<a class="drop-item" href="https://portfolio.html" target="_blank" rel="noopener noreferrer" role="menuitem"><svg><use href="#i-globe"/></svg> Full portfolio ↗</a>
-</div>
-</li>
-<li><a href="index.html#contact">Let's Collaborate</a></li>
-</ul>
-<div class="nav-cta">
-<button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false" title="Toggle light / dark theme">
-<svg class="icon-moon"><use href="#i-moon"/></svg>
-<svg class="icon-sun"><use href="#i-sun"/></svg>
-</button>
-<a href="index.html#contact" class="btn btn-primary btn-sm"><span>Let's Collaborate</span></a>
-</div>
-<button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-<span></span><span></span><span></span>
-</button>
-</nav>
-</header>
 <!-- mobile menu -->
-<div class="overlay" id="overlay"></div>
-<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-<div class="mm-head">
-<a href="index.html" aria-label="Alvin Silva home" style="display:flex;align-items:center"><img src="assets/logo-192.png" alt="" width="52" height="52"></a>
-<button class="mm-close" id="mmClose" aria-label="Close menu">✕</button>
-</div>
-<div class="mm-group">
-<div class="mm-group-title">Session design</div>
-<a class="mm-link" href="#cohort"><svg><use href="#i-user"/></svg> The SG-15+ cohort</a>
-<a class="mm-link" href="#paradigm"><svg><use href="#i-sync"/></svg> The delivery shift</a>
-<a class="mm-link" href="#architecture"><svg><use href="#i-layers"/></svg> The four-day arc</a>
-<a class="mm-link" href="#variant"><svg><use href="#i-clock"/></svg> The 3-day variant</a>
-<a class="mm-link" href="#calibration"><svg><use href="#i-target"/></svg> Calibrating Day 1</a>
-</div>
-<div class="mm-group">
-<div class="mm-group-title">Methodology</div>
-<a class="mm-link" href="#deep-dive"><svg><use href="#i-search"/></svg> Problem behind the problem</a>
-<a class="mm-link" href="#fixes-that-fail"><svg><use href="#i-sync"/></svg> Fixes that fail</a>
-<a class="mm-link" href="#leverage"><svg><use href="#i-scale"/></svg> The leverage ladder</a>
-<a class="mm-link active" href="#livedemo"><svg><use href="#i-play"/></svg> Live demonstration</a>
-<a class="mm-link" href="#assessment"><svg><use href="#i-chart"/></svg> Assessment strategy</a>
-<a class="mm-link" href="#instrument"><svg><use href="#i-stetho"/></svg> Pre-assessment</a>
-<a class="mm-link" href="#delivery"><svg><use href="#i-send"/></svg> How it is delivered</a>
-<a class="mm-link" href="#faq"><svg><use href="#i-check"/></svg> FAQ</a>
-</div>
-<div class="mm-group">
-<div class="mm-group-title">Elsewhere</div>
-<a class="mm-link" href="index.html"><svg><use href="#i-globe"/></svg> Home</a>
-<a class="mm-link" href="index.html#contact"><svg><use href="#i-mail"/></svg> Let's Collaborate</a>
-<a class="mm-link" href="portfolio.html" target="_blank" rel="noopener noreferrer"><svg><use href="#i-brief"/></svg> Full portfolio ↗</a>
-</div>
-<div class="mm-foot">
-<div class="mm-theme-row">
-<span class="mm-group-title" style="margin:0">Theme</span>
-<button class="theme-toggle" id="themeToggleMobile" aria-label="Switch to light mode" aria-pressed="false">
-<svg class="icon-moon"><use href="#i-moon"/></svg>
-<svg class="icon-sun"><use href="#i-sun"/></svg>
-</button>
-</div>
-</div>
-</nav>
 <main id="main">
 <!-- ============ 1 · HERO — assets/1-apm-ldi-banner.png ============ -->
 <section class="hero" id="top">
@@ -1605,62 +1507,6 @@ Step 7 is the diagram. Build it in the <a href="#livedemo">live demonstration</a
 </section>
 </main>
 <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-<div class="wrap">
-<div class="footer-grid">
-<div class="footer-brand">
-<a href="index.html" class="brand" aria-label="Alvin Silva home"><img src="assets/logo-192.png" alt="" width="46" height="46" loading="lazy"><span><span class="brand-name">ALVIN M. SILVA</span><br><span class="brand-sub">A. Silva Innovations</span></span></a>
-<p>Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>
-<div class="socials">
-<a href="https://alvin-silva-linkedin.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg><use href="#i-in"/></svg></a>
-<a href="https://alvin-silva-facebook.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><svg><use href="#i-fb"/></svg></a>
-<a href="mailto:alvin.silva@asilvainnovations.com" aria-label="Send email"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-mail"/></svg></a>
-<a href="https://alvin-silva.asilvainnovations.com" target="_blank" rel="noopener noreferrer" aria-label="Website"><svg style="fill:none;stroke:#fff;stroke-width:2"><use href="#i-globe"/></svg></a>
-</div>
-</div>
-<div class="footer-col">
-<h4>Session design</h4>
-<ul>
-<li><a href="#cohort">The SG-15+ cohort</a></li>
-<li><a href="#paradigm">The delivery shift</a></li>
-<li><a href="#architecture">The four-day arc</a></li>
-<li><a href="#variant">The 3-day variant</a></li>
-<li><a href="#calibration">Calibrating Day 1</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Methodology</h4>
-<ul>
-<li><a href="#deep-dive">Problem behind the problem</a></li>
-<li><a href="#fixes-that-fail">Fixes that fail</a></li>
-<li><a href="#leverage">The leverage ladder</a></li>
-<li><a href="#livedemo">Live demonstration</a></li>
-<li><a href="#assessment">Assessment strategy</a></li>
-</ul>
-</div>
-<div class="footer-col">
-<h4>Elsewhere</h4>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="index.html#works">Books &amp; platforms</a></li>
-<li><a href="index.html#contact">Let's collaborate</a></li>
-<li><a href="portfolio.html" target="_blank" rel="noopener noreferrer">Full portfolio ↗</a></li>
-</ul>
-</div>
-</div>
-<div class="footer-base">
-<p>© 2026 Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>
-<p style="font-size:.8rem;max-width:640px">Advanced Program Management LDI — session design and pre-assessment prepared for BHROD-HRDD, Department of Education. Methodology, instruments, and materials on this page remain the intellectual property of the author; use or reproduction requires written permission.</p>
-<p class="footer-legal">
-<a href="policies.html">Policies</a> ·
-<a href="privacy-policy.html">Privacy</a> ·
-<a href="cookie-policy.html">Cookies</a> ·
-<button class="linklike" id="cookieSettings" type="button">Cookie settings</button>
-</p>
-<span class="pwa-badge"><svg><use href="#i-app"/></svg> Installable PWA · Works offline</span>
-</div>
-</div>
-</footer>
 <!-- ============ ACCESSIBILITY TOOLS ============ -->
 <button class="a11y-fab" id="a11yFab" aria-label="Open accessibility tools" title="Accessibility tools"><svg><use href="#i-a11y"/></svg></button>
 <aside class="a11y-panel glass-strong" id="a11yPanel" role="dialog" aria-label="Accessibility tools" aria-hidden="true">
@@ -1817,12 +1663,12 @@ $$('.drop-menu a').forEach(a => a.addEventListener('click', () => {
 $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded','false'); });
 }));
 const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
-function openMobile() { mm.classList.add('open'); overlay.classList.add('show'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeMobile() { mm.classList.remove('open'); overlay.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-menuBtn.addEventListener('click', openMobile);
-$('#mmClose').addEventListener('click', closeMobile);
-overlay.addEventListener('click', closeMobile);
-$$('.mm-link', mm).forEach(a => a.addEventListener('click', closeMobile));
+function openMobile() { mm?.classList.add('open'); overlay?.classList.add('show'); menuBtn?.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+function closeMobile() { mm?.classList.remove('open'); overlay?.classList.remove('show'); menuBtn?.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+menuBtn?.addEventListener('click', openMobile);
+$('#mmClose')?.addEventListener('click', closeMobile);
+overlay?.addEventListener('click', closeMobile);
+$$('.mm-link', mm || document).forEach(a => a.addEventListener('click', closeMobile));
 /* ================================================================
 LIGHTBOX — section banners
 ================================================================ */
@@ -1872,8 +1718,8 @@ const sweep = () => $$('.reveal:not(.in)').forEach(el => { if (el.getBoundingCli
 sweep(); addEventListener('scroll', sweep, {passive:true});
 }, 1500);
 const btt = $('#backToTop');
-addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 400), {passive:true});
-btt.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
+addEventListener('scroll', () => btt?.classList.toggle('visible', scrollY > 400), {passive:true});
+btt?.addEventListener('click', () => scrollTo({top:0, behavior:'smooth'}));
 /* ================================================================
 FIELD PERSISTENCE — worksheet entries stay on this device
 ================================================================ */
@@ -1944,7 +1790,7 @@ $('#consentCustomize').addEventListener('click', () => {
 prefs.classList.toggle('open');
 $('#consentSave').style.display = prefs.classList.contains('open') ? '' : 'none';
 });
-$('#cookieSettings').addEventListener('click', () => {
+window.addEventListener('as:cookie-settings', () => {
 const c = get();
 if (c) { $('#prefAnalytics').checked = !!c.analytics; $('#prefMarketing').checked = !!c.marketing; }
 prefs.classList.add('open'); $('#consentSave').style.display = ''; show();
@@ -2417,9 +2263,7 @@ if (restored && state.nodes.length) $('#lbSaved').querySelector('span').textCont
 /* ================================================================
 PWA
 ================================================================ */
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-}
 </script>
+<script src="assets/js/boot.js" defer></script>
 </body>
 </html>
