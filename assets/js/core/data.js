@@ -39,7 +39,10 @@
   let _cache = null;
 
   function prefix() {
-    return /\/personal-resilience\//.test(location.pathname) ? '../' : '';
+    /* The shell resolves the site root from its own URL, so nested pages
+       (tools/, personal-resilience/) fetch the same files. */
+    if (window.ASilvaShell && window.ASilvaShell.base) return window.ASilvaShell.base;
+    return /\/(personal-resilience|tools)\//.test(location.pathname) ? '../' : '';
   }
 
   async function fetchJSON(path) {
