@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Cognitio Plus - Emotional Wellness Tracker</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="en">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+		
+		
+		<meta content="Track your emotional wellness with Cognitio+'s Emotional Wellness Tracker. Monitor your moods, identify patterns, and improve your mental health with personalized insights and support." name="description">
+<meta content="emotional wellness, mood tracker, mental health, emotional health, Cognitio+" name="keywords">    <meta content="width=device-width, initial-scale=1" name="viewport">
+	    <link href="https://aiwaapp.ai//./cache/media_cache/72876c5c6eeea851b7922843a81f12fc.png" rel="shortcut icon">
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0KQL7KM36"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', "G-W0KQL7KM36");
+</script>
+
+			<link href="https://aiwaapp.ai//./assets/css/bootstrap.min.css?1608368006" rel="stylesheet">
+<link href="https://aiwaapp.ai//./assets/css/mdb.lite.min.css?1637044433" rel="stylesheet">
+<link href="https://aiwaapp.ai//./assets/css/elements.css?1608067460" rel="stylesheet">
+<link href="https://aiwaapp.ai//./assets/css/aos.css?1582997446" rel="stylesheet">
+<link href="https://aiwaapp.ai//./templates/assets/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css?1582997994" rel="stylesheet">
+<link href="https://aiwaapp.ai//./templates/assets/node_modules/datepicker/bootstrap-datepicker.min.css?1606635242" rel="stylesheet">
+<link href="https://aiwaapp.ai//./templates/assets/node_modules/owl.carousel/dist/assets/owl.theme.green.css?1582997956" rel="stylesheet">
+<link href="https://aiwaapp.ai//./templates/demo-landingpage-medical/css/demo.css?1606420924" rel="stylesheet">
+<link href="https://aiwaapp.ai//./templates/demo-landingpage-medical/css/style.css?1606420860" rel="stylesheet">
+		<style>	body > .skiptranslate{	display: none !important;	}	body{	top: 0 !important;	}	.page .bt-top {    position: fixed;    bottom: 20px;    right: 20px;    z-index: 100;    visibility: hidden;	border: none !important;}	.bt-top.btn-circle{	width: 70px;    height: 70px;    padding: 24px 15px;    font-size: 20px;    line-height: 23px;	}					.aiwa-counter.counter-time {    display: flex;	flex-wrap: wrap;}.aiwa-counter.counter-time > div[date-offset] {        padding: 0 10px;	text-align:center;	 margin-left: 1em;    border-radius: 6px;	flex: 1 0 14%;}.aiwa-counter.counter-time .date-header {    display: block;    font-size: inherit;    text-transform: capitalize;    font-weight: bold;}			.page .block[data-dom-type=block][block-type=banner]:first-child,.page .block[data-dom-type=block][block-type=banner]:first-child .card{background-color:#b425aa;color:#fff}.page .block[data-dom-type=block][block-type=banner]:first-child{color:#fff !important}.page .btn.btn-primary{background:#b425aa !important;color:#fff}.page .bg-primary{background: #b425aa !important;color:#fff}.page .block[data-dom-type=block][block-type=banner]:first-child .btn:not(.btn-link):not(.btn-danger){background:#dbc314 !important;color:#fff}.page .btn:not(.btn-link):not(.btn-primary):not(.btn-danger),.page input[type=submit],.page form.site-search{background:#f3e329;color:#000}.page .btn.bt-top svg{fill:#000}.page div[block-type=nav],.page div[block-type=nav] .full-nav,.page div[block-type=nav] .navbar-toggler{background-color:#d7deea;color: #000 !important}.page div[block-type=nav] .bg-here{			background-color:#738bb5;			color: #fff			}.page #navy > li.nav-item >  a:not(.btn){color: #000 !important}.page div[block-type=nav] a[href]:not(.btn):not(.nav-link){color:#000 !important}.page #navy li.nav-item.active,.page #navy > li.nav-item:hover{border-bottom: solid 1.5px #ffffff !important;background: #0000 !important}.page > #sitefooter > *[block-type=footer]{background-color:#c80ec9 !important;color: #fff !important}.page > #sitefooter > *[block-type=footer] a[href]:not(.btn){color: #fff !important}body{color: #5f5f5f;}.page > header:first-child{z-index:99999;position:relative}@font-face{font-family: "oswald";src: url("https://aiwaapp.ai//./library/fonts/oswald/Oswald[wght].ttf")}.page{font-family: "oswald"}	</style>
+</head>
+<body class="p-0 fancyscroll">
+<div class="d-none" id="translate_toolbar"></div>
+<div class="page">
+<header><div class="header17" data-dom-type="block" block-type="nav" block-id="6">
+                    <div class="container">
+                        <!-- Header 13 navabar -->
+                        <nav class="h17-nav">
+                            <div class="">
+                                <a class="navbar-brand" href=""><img src="https://aiwaapp.ai//./cache/media_cache/72876c5c6eeea851b7922843a81f12fc.png" alt="demo" class="sitelogo" height="68" style="transform:scale(0.84)"></a>
+                                <div class="call-info pl-3 border-left align-middle d-inline-block hidden-md-down d-lg-inline-block d-md-none">
+                                    <small>CALL US ON</small>
+                                    <h5 class="mb-0 font-medium sitephone">+63-9541986522</h5>
+                                </div>
+                            </div>
+                            <div class="ml-auto align-self-center">
+                                <ul class="list-inline h17nav-bar">
+                                    <li><a class="btn hidden-md-down m-0 d-lg-block d-md-none sitecontactlink" href="?component=5&amp;view=contact">CONTACT US</a></li>
+                                    <li><a class="nav-link tgl-cl navbar-toggler nav-open" href="home.html"><i class="fa fa-bars"></i></a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- End Header 13 navabar -->
+                    </div>
+                    <div class="h17-main-nav animated fadeInDown justify-content-center full-nav" data-aos="fade-up">
+                        <div class="h-17navbar align-self-center">
+                            <a href="home.html" class="close-icons nav-close tgl-cl navbar-toggler"><i class="fa fa-close fa-lg"></i></a>
+                            <ul class="nav-menu" id="navy">
+<li class="nav-item position-relative"><a href="home.html" class="nav-link">HOME</a></li>
+<li class="nav-item dropdown show">
+<a href="services.html" class="nav-link" aria-haspopup="true" aria-expanded="false" role="button">SERVICES <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu p-0 animated fadeInUp border-0 rounded-0">
+<li class="nav-item border-bottom"><a href="pre-session-assessment.html" class="nav-link">Pre-Session Assessment</a></li>
+<li class="nav-item border-bottom"><a href="professional-registration.html" class="nav-link">Professional Registration</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown show">
+<a href="resources.html" class="nav-link" aria-haspopup="true" aria-expanded="false" role="button">RESOURCES <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu p-0 animated fadeInUp border-0 rounded-0"><li class="nav-item border-bottom"><a href="paraprofessional.html" class="nav-link">Paraprofessional</a></li></ul>
+</li>
+<li class="nav-item position-relative"><a href="blog.html" class="nav-link">BLOG</a></li>
+<li class="nav-item position-relative"><a href="book-appointment.html" class="nav-link">Book Appointment</a></li>
+<li class="nav-item dropdown show">
+<a href="store.html" class="nav-link" aria-haspopup="true" aria-expanded="false" role="button">STORE <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu p-0 animated fadeInUp border-0 rounded-0">
+<li class="nav-item border-bottom"><a href="building-resilience.html" class="nav-link">Building Resilience</a></li>
+<li class="nav-item border-bottom"><a href="master-your-mind.html" class="nav-link">Master Your Mind</a></li>
+<li class="nav-item border-bottom"><a href="tumh.html" class="nav-link">TUMH</a></li>
+</ul>
+</li>
+<li class="nav-item position-relative"><a href="faq.html" class="nav-link">FAQ</a></li>
+<li class="nav-item dropdown show">
+<a href="about.html" class="nav-link" aria-haspopup="true" aria-expanded="false" role="button">ABOUT <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu p-0 animated fadeInUp border-0 rounded-0">
+<li class="nav-item border-bottom"><a href="accessibility.html" class="nav-link">Accessibility</a></li>
+<li class="nav-item border-bottom"><a href="return-and-refund.html" class="nav-link">Return and Refund</a></li>
+</ul>
+</li>
+<li class="nav-item position-relative"><a href="terms-of-service.html" class="nav-link">Terms of Service</a></li>
+<li class="nav-item position-relative"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+<li class="nav-item position-relative"><a href="cookie-settings.html" class="nav-link">Cookie Settings</a></li>
+<li class="nav-item position-relative"><a href="disclaimer.html" class="nav-link">Disclaimer</a></li>
+<li class="nav-item position-relative"><a href="contact.html" class="nav-link">CONTACT</a></li>
+<li class="nav-item position-relative"><a href="login.html" class="nav-link">Login</a></li>
+<li class="nav-item position-relative"><a href="signup.html" class="nav-link">Signup</a></li>
+<li class="nav-item position-relative"><a target="_blank" href="home.html?component=6&amp;view=redirect&amp;redirect=https://growth.cognitio-plus.com" class="nav-link">GROWTH Tribe</a></li>
+<li class="nav-item position-relative"><a href="search.html" class="nav-link">SEARCH</a></li>
+</ul>
+                            <ul class="info-nav">
+                                <li class="half-width"><a class="sitemail-link" href="mail://hello@cognitioplus.com"><i class="fa fa-envelope text-danger"></i> <span class="sitemail">hello@cognitioplus.com</span></a></li>
+                                <li class="half-width"><a href="home.html"><i class="fa fa-phone text-danger"></i> <span class="sitephone">+63-9541986522</span></a></li>
+                            </ul>
+                            <ul class="social-nav">
+                                <li><a href="https://facebook.cognitio-plus.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.tiktok.com/@cognitiolus" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="home.html"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://company/cognitioplus" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="home.html"><i class="fa fa-rss"></i></a></li>
+                                <li><span class="sitecopyright">© 2025 Cognitio Plus</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+</header><main id="pageContent"><div class="container-fluid p-0 overflow-hidden">
+<div class="block" data-dom-type="block" block-type="content" data-block-n="9" dom-id="section1707051484601" style="background-color: #ffffff; color: #000000; text-align: center;" data-bg-color="#fff" id="section1707051484601">
+<header><h1 class="">
+<span style="color: #000000;"></span><br>
+</h1>
+<h1 class=""><strong><span style="color: #000000;">EMOTIONAL WELLNESS TRACKER</span></strong></h1>
+<div style="color: #ffffff;">
+<span style="color: #000000;"></span><br>
+</div>
+<div style="color: #ffffff;">
+<span style="color: #000000;"></span><br>
+</div>
+<div style="color: #ffffff;">
+<h2 class=""><span style="font-size: 18pt;"><strong><span style="font-family: Montserrat, sans-serif; color: #000000;">Track Your Emotions</span></strong></span></h2>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;">Ever feel like your emotions are all over the place? You're not alone. The Emotional Wellness Tracker helps you to track how you feel each day, so you can spot patterns, recognize triggers, and improve your emotional awareness over time.</span></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;">It only takes a few seconds, but it can lead to long-term mental clarity and balance.</span></p>
+<p><span style="color: #000000; font-size: 14pt;"> </span></p>
+<h3 class=""><strong><span style="font-family: Montserrat, sans-serif; font-size: 18pt; color: #000000;">What You Can Do with This Tool</span></strong></h3>
+<p><span style="color: #000000; font-size: 14pt;"> </span><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Rate Your Daily Emotions</strong>: Choose how you feel happy, calm, anxious, sad, tired, or anything in between.</span></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Add Notes</strong>: Want to remember what affected your mood? Add a quick note or keyword (like “slept well” or “stress at work”).</span></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>See Your Emotion Patterns: </strong>Use your entries to reflect over time and discover what helps or hurts your mental state.</span></p>
+<p><span style="color: #000000; font-size: 14pt;"> </span><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Simple, Private, and Free: </strong>No sign-ups, no downloads. Track at your pace, in your way.</span></p>
+<h3><span style="color: #000000; font-size: 14pt;"> </span></h3>
+<h3 class=""><strong><span style="font-family: Montserrat, sans-serif; font-size: 18pt; color: #000000;">Why Track Your Emotions?</span></strong></h3>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Gain emotional awareness</strong>: Notice patterns or triggers (like sleep, food, or people)</span></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Manage anxiety, stress, or emotional calibration</strong>: Track how habits or changes (like journaling, exercise) impact how you feel</span></p>
+<p class=""><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;">Prepare for check-ins with a therapist, doctor, or just for yourself.</span></p>
+</div>
+<div style="color: #000000; text-align: start; font-family: 'Segoe UI'; font-size: 14px; line-height: 20px;">
+<p class=""><br></p>
+<br>
+</div>
+<div style="color: #ffffff;"><br></div>
+<div style="color: #ffffff;"><span style="font-size: 14pt;"><img src="https://1.bp.blogspot.com/-6yryCB-eG-Q/YGf683y8_eI/AAAAAAABJYk/_UtLydqu9qoZqcwi9NnfuIBA9woOOAO2QCLcBGAsYHQ/s1200/robert-plutchik-emotion-wheel.png" alt="Human Emotions Visualized" class="component" width="777" data-mce-src="https://1.bp.blogspot.com/-6yryCB-eG-Q/YGf683y8_eI/AAAAAAABJYk/_UtLydqu9qoZqcwi9NnfuIBA9woOOAO2QCLcBGAsYHQ/s1200/robert-plutchik-emotion-wheel.png"></span></div>
+<div style="color: #ffffff;">
+<p class="p1" style="margin-right: 0px; margin-bottom: 6px; margin-left: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-variant-emoji: normal; font-stretch: normal; font-size: 23.1px; line-height: normal; font-family: '.SF NS'; color: #021b5d; -webkit-text-stroke-color: #021b5d; text-align: start;"><span class="s1" style="font-kerning: none; font-size: 18pt;"></span><br></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;">Exploring Plutchik's Wheel of Emotions offers several benefits that can enhance various aspects of your life:</span></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Enhanced Emotional Intelligence</strong>: By understanding the nuances of different emotions and how they interrelate, you can improve your ability to recognize and manage your own emotions as well as those of others.</span></p>
+<p class=""><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Improved Communication</strong>: Knowing how to identify and articulate emotions can lead to clearer and more effective communication, helping you express yourself better and understand others more deeply.</span></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Better Relationships</strong>: Increased empathy and emotional awareness can strengthen your relationships, as you'll be more attuned to the feelings and needs of those around you.</span></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Stress Management</strong>: Recognizing the sources of your emotions can help you manage stress more effectively, leading to better mental health and overall well-being.</span></p>
+<p class="p1" style="margin-right: 0px; margin-bottom: 6px; margin-left: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-size-adjust: none; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-variant-position: normal; font-variant-emoji: normal; font-stretch: normal; font-size: 23.1px; line-height: normal; font-family: '.SF NS'; color: #021b5d; -webkit-text-stroke-color: #021b5d; text-align: start;"><span class="s1" style="font-kerning: none; font-size: 14pt; color: #000000;"></span><br></p>
+<p><span style="font-family: Montserrat, sans-serif; color: #000000; font-size: 14pt;"><strong>Conflict Resolution</strong>: Understanding the emotional underpinnings of conflicts can aid in resolving disputes more constructively, fostering a more harmonious environment.</span></p>
+</div>
+<div style="color: #ffffff;"><br></div>
+<div style="color: #ffffff;">
+<a href="Applications/OneDrive/Cognitio%2B/EMOTIONAL%20WELLNESS%20TRACKER/Emotional%20Wellness%20Tracker.html" previewlistener="true" style="color: #0056b3;" data-mce-href="file:///Applications/OneDrive/Cognitio%2B/EMOTIONAL%20WELLNESS%20TRACKER/Emotional%20Wellness%20Tracker.html"></a><br>
+</div>
+<a href="https://asilva777.github.io/emotional-wellness-tracker/" data-mce-href="https://asilva777.github.io/emotional-wellness-tracker/" target="_blank"><img block-group="image" data-dom-type="component" block-id="image" alt="" src="https://aiwaapp.ai//./cache/media_cache/f4bc00d064c24b82b293e310039e9b5e.png?1746925711806" class="img-fluid component rounded-pill" width="333" height="116" data-mce-src="cache/media_cache/f4bc00d064c24b82b293e310039e9b5e.png?1746925711806"></a></header><header></header>
+</div>
+<div class="footer1 font-14 block" data-dom-type="block" block-type="footer" data-block-n="0" dom-id="section1693834957868" id="section1693834957868">
+<div style="position: relative; width: 100%; height: 0; padding-top: 70.9459%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;"><iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" src="https://www.canva.com/design/DAGLftVu7Gs/W97wZXQVhQfcrTu7a7cRRw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" class="component" data-mce-src="https://www.canva.com/design/DAGLftVu7Gs/W97wZXQVhQfcrTu7a7cRRw/view?embed">
+  </iframe></div>
+<a href="https://www.canva.com/design/DAGLftVu7Gs/W97wZXQVhQfcrTu7a7cRRw/view?utm_content=DAGLftVu7Gs&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener" data-mce-href="https://www.canva.com/design/DAGLftVu7Gs/W97wZXQVhQfcrTu7a7cRRw/view?utm_content=DAGLftVu7Gs&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"> </a>
+</div>
+
+
+</div></main><a class="bt-top btn btn-circle btn-lg btn-info rounded-circle waves-effect waves-light" href="#top"><span><svg class="w-auto h-100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 512 512" xml:space="preserve"><g>	<g>		<path d="M374.176,110.386l-104-104.504c-0.006-0.006-0.013-0.011-0.019-0.018c-7.818-7.832-20.522-7.807-28.314,0.002			c-0.006,0.006-0.013,0.011-0.019,0.018l-104,104.504c-7.791,7.829-7.762,20.493,0.068,28.285			c7.829,7.792,20.492,7.762,28.284-0.067L236,68.442V492c0,11.046,8.954,20,20,20c11.046,0,20-8.954,20-20V68.442l69.824,70.162			c7.792,7.829,20.455,7.859,28.284,0.067C381.939,130.878,381.966,118.214,374.176,110.386z"></path>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></span></a>
+</div>
+	<script src="https://aiwaapp.ai//./assets/js/jquery.min.js?1582997616" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/popper.min.js?1582998426" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/bootstrap.min.js?1582998328" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/aos.js?1582998320" type="text/javascript"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=TranslateElementInit" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/counter.js?1582997600" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/waves.js?1583058020" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/mdialog.js?1643214055" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/init.js?1594069016" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/site.js?1627336690" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./templates/demo-landingpage-medical/js/custom.min.js?1582998170" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./templates/assets/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js?1582997994" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./templates/assets/node_modules/datepicker/bootstrap-datepicker.min.js?1582997918" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./templates/assets/node_modules/owl.carousel/dist/owl.carousel.min.js?1582997958" type="text/javascript"></script>
+<script id="AIWAAda" src="https://aiwaapp.ai//./templates/assets/node_modules/ada.js?1649240220" type="text/javascript" ada-option='{"position":"bottom_left","defaultColor":"#c80ec9","defaultLanguage":"en","poweredBy":"AIWA","assetUrl":"https:\/\/app.adakits.com\/assets"}'></script>
+<script src="https://www.google.com/recaptcha/api.js" type="text/javascript"></script>
+<script src="https://aiwaapp.ai//./assets/js/form.js?1636994216" type="text/javascript"></script>
+	
+		<script type="text/javascript">
+			
+			
+document.cookie="googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";function getSecondsOffset(time,d,h,m,s){d=Math.floor(time/86400);if(d>0)time-=d*86400;h=Math.floor(time/3600);if(h>0)time-=h*3600;m=Math.floor(time/60);if(m>0)time-=m*60;s=Math.round(time);return{"d":d,"h":h,"m":m,"s":s};}
+$('.aiwa-counter.counter-time').each(function(s,data,el){s=0;data={'seconds':0,'elements':{}};el=$(this).find('[date-offset]').each(function(e,k,v,ve,ini){e=$(this);ve=e.find('.date-value');k=e.attr('date-offset').substr(0,1);v=ve.text();v=ini=parseFloat(v);if(k=='m')v*=60;if(k=='h')v*=3600;if(k=='d')v*=86400;data.elements[k]={'dom':ve,'initial':ini};data.seconds+=v;});data.timer=window.setInterval(function(r,d){r=(el.data('ai-timer-date'));if(r.seconds<=0){window.clearInterval(r.timer);return;}
+r.seconds-=1;d=(getSecondsOffset(r.seconds));$.each(d,function(k,v){r.elements[k].dom.text(v);})},1000);el.data({'ai-timer-date':data})});TranslateElementInit=function(g){g=google;if(!g.translate)return;var TL=new g.translate.TranslateElement({pageLanguage:'en',autoDisplay:true},'translate_toolbar');}		</script>
+	</body>
+</html>
