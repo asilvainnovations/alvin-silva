@@ -1,7 +1,7 @@
 {
   "$schema": "internal://asilva/kb/v1",
   "note": "Authored conversational knowledge for the internal-intelligence chat engine. Facts that belong to the structured record (metrics, project fields, CV variants) live in credentials.json and are read from there — do NOT duplicate them here. This file holds phrasing, framing, and answers that have no home in the structured schema.",
-  "updated": "2026-08-21",
+  "updated": "2026-10-18",
   "suggestions": [
     "What makes his profile unusual?",
     "What can he actually build?",
@@ -420,6 +420,37 @@
         "Contact details"
       ],
       "weight": 1.15
+    },
+    {
+      "id": "eoc-continuity",
+      "q": "Does he write EOC manuals, DRRM operations manuals, or continuity plans?",
+      "variants": [
+        "eoc",
+        "emergency operations center",
+        "manual of operations",
+        "drrm manual",
+        "cdrrmo",
+        "continuity plan",
+        "pscp",
+        "iso 22301",
+        "business continuity",
+        "sop",
+        "standard operating procedures",
+        "ormoc"
+      ],
+      "tags": [
+        "eoc",
+        "drrm",
+        "continuity",
+        "sop",
+        "manual"
+      ],
+      "a": "Yes — it is current work. Alvin is the Professional/Preparer of the Manual of Operations for the City Government of Ormoc's Emergency Operations Center and CDRRMO.\n\nThe manual covers institutional roles under RA 10121, SOPs for preparedness through rehabilitation, activation and command-and-coordination protocols, early warning, evacuation and logistics, GIS dashboards, and cybersecurity and digital continuity — aligned with Public Service Continuity Planning (CSC MC No. 12, s. 2021), ISO 22301, and the Sendai Framework. It runs as a staged engagement: inception, situational analysis, draft, multi-sector validation, and final manual.",
+      "actions": [
+        "Recent projects",
+        "Contact details"
+      ],
+      "weight": 1.2
     }
   ]
 }
