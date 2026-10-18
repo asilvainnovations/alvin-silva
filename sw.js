@@ -13,7 +13,7 @@
  * without any offline support. tools/validate-shell.py checks that
  * every PRECACHE entry exists on disk.
  */
-const CACHE_VERSION = 'asilva-v9-shell';
+const CACHE_VERSION = 'asilva-v10-nav';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -24,7 +24,6 @@ const PRECACHE = [
   '/career-automation.html',
   '/building-resilience.html',
   '/personal-resilience.html',
-  '/apm-ldi.html',
   '/support.html',
   '/policies.html',
   '/privacy-policy.html',
