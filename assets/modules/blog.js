@@ -39,13 +39,16 @@
     return isNaN(dt) ? d : dt.toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
   };
 
-  function card(p) {
+  /* Teaser mode (data-limit on a non-blog page, e.g. index.html): cards
+     link to the full post on blog.html instead of re-rendering in place. */
+  function card(p, teaser) {
+    const href = teaser ? `${PREFIX()}blog.html#/blog/${encodeURIComponent(p.slug)}` : `#/blog/${encodeURIComponent(p.slug)}`;
     return el('article', { class: 'blog-card glass reveal' }, [
       el('div', { class: 'blog-card-meta' }, [
         el('time', { datetime: p.date, text: fmtDate(p.date) }),
         ...(p.tags || []).slice(0, 3).map((t) => el('span', { class: 'blog-tag', text: t }))
       ]),
-      el('h3', {}, [el('a', { href: `#/blog/${encodeURIComponent(p.slug)}`, text: p.title })]),
+      el('h3', {}, [el('a', { href, text: p.title })]),
       el('p', { class: 'blog-excerpt', text: p.excerpt || '' }),
       p.readingMinutes ? el('span', { class: 'blog-read', text: `${p.readingMinutes} min read` }) : null
     ]);
@@ -83,6 +86,7 @@
   function setup(ctx) {
     const mount = ctx.mountEl;
     const limit = parseInt(mount.dataset.limit || '0', 10) || 0;
+    const teaser = !!limit && !/\/blog\.html?$/.test(location.pathname);
     let manifest = null;
 
     const busy = (msg) => { mount.textContent = ''; mount.appendChild(el('p', { class: 'blog-status', text: msg })); };
@@ -93,10 +97,10 @@
         mount.textContent = '';
         if (!manifest.length) { busy('No posts published yet.'); return; }
         const posts = limit ? manifest.slice(0, limit) : manifest;
-        mount.appendChild(el('div', { class: 'blog-grid' }, posts.map(card)));
-        if (limit && manifest.length > limit) {
+        mount.appendChild(el('div', { class: 'blog-grid' }, posts.map((p) => card(p, teaser))));
+        if (teaser || (limit && manifest.length > limit)) {
           mount.appendChild(el('p', { class: 'blog-more' },
-            [el('a', { href: 'blog.html', text: 'All writing \u2192' })]));
+            [el('a', { href: PREFIX() + 'blog.html', text: 'All writing \u2192' })]));
         }
       } catch (e) {
         console.error('[blog]', e);
@@ -130,6 +134,8 @@
         ]));
       }
     }
+
+    if (teaser) { showList(); return { showList, showPost, reload: () => { manifest = null; return showList(); } }; }
 
     if (NS.router) {
       NS.router.on('/blog', () => showList());
