@@ -24,7 +24,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parent.parent
 SHELL_JS = ROOT / 'assets/js/core/app-shell.js'
 SHELL_PAGES = [
-    'index.html', '404.html', 'portfolio.html', 'apm-ldi.html', 'blog.html',
+    'index.html', '404.html', 'portfolio.html', 'blog.html',
     'personal-resilience.html', 'building-resilience.html', 'chat.html', 'chorus.html',
     'career-automation.html', 'form-assistant-setup.html', 'pds.html', 'support.html',
     'policies.html', 'privacy-policy.html', 'cookie-policy.html', 'terms-of-services.html',

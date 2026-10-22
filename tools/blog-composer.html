@@ -193,7 +193,7 @@ code{background:var(--accent-soft);color:var(--accent);padding:1px 6px;border-ra
       <li>On GitHub, open <code>assets/data/blog/</code> in your repo.</li>
       <li><strong>Add file → Upload files</strong>, then select <em>both</em> downloaded files.</li>
       <li>Commit. The post is live once the deploy finishes.</li>
-      <li>Hard-refresh once (<code>Ctrl/⌘ + Shift + R</code>) — the service worker caches aggressively.</li>
+      <li>Open <a href="../blog.html">the blog</a> to check it. Post data is fetched fresh (network first), so no hard refresh is needed.</li>
     </ol>
     <div class="hint" style="margin-top:12px">
       Uploading <code>index.json</code> replaces the manifest, so it must contain
@@ -316,7 +316,8 @@ function readingMinutes(body) {
 function sync() {
   const title = $('title').value.trim();
   if (!$('slug').value.trim() && title) $('slug').placeholder = slugify(title) || 'auto-generated from title';
-  const slug = $('slug').value.trim() || slugify(title);
+  /* typed slugs are normalized too: they become file names and URLs */
+  const slug = slugify($('slug').value.trim() || title);
   const body = buildBody();
   const tags = $('tags').value.split(',').map(s=>s.trim()).filter(Boolean);
   const date = $('date').value || new Date().toISOString().slice(0,10);

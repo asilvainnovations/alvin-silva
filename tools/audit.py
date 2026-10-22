@@ -1,10 +1,26 @@
 #!/usr/bin/env python3
-"""Structural + navigation audit for cognitioplus/alvin-silva."""
+"""Structural + navigation audit for asilvainnovations/alvin-silva.
+
+    python3 tools/audit.py [repo-root] [--json]
+
+Reports unclosed/stray tags, duplicate ids, inline-CSS brace balance,
+undefined <use> symbols, images without alt, links without an accessible
+name, and broken internal links/assets. Exits 1 when structural defects or
+broken links are found outside personal-resilience/_src (CI-friendly).
+
+Fixes (2026-10-22): root-absolute links ("/x") now resolve from the repo
+root, not the page's folder; HTML optional end tags (p, li, td, ...) are no
+longer reported as unclosed; images with alt count as link text; missing alt
+is reported; a real exit code and --json output were added."""
 import os, re, sys, json
 from collections import Counter, defaultdict
 from html.parser import HTMLParser
 
-ROOT = sys.argv[1] if len(sys.argv) > 1 else "."
+ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+ROOT = ARGS[0] if ARGS else "."
+AS_JSON = "--json" in sys.argv
+# end tags HTML lets you omit: implied closes are not defects
+OPTIONAL_END = {"p","li","dt","dd","tr","td","th","thead","tbody","tfoot","option","optgroup","colgroup","caption","rb","rt","rp"}
 VOID = {"area","base","br","col","embed","hr","img","input","link","meta",
         "param","source","track","wbr","path","circle","rect","line","polygon",
         "polyline","ellipse","use","stop","feGaussianBlur","feOffset","feMerge",
@@ -25,6 +41,7 @@ class Auditor(HTMLParser):
             self.links.append((a["href"],ln)); self._in_a=True; self._a_txt=""; self._a_line=ln; self._a_attrs=a
         if tag=="img":
             self.imgs.append((a.get("src",""),ln))
+            if self._in_a and a.get("alt","").strip(): self._a_txt+=a["alt"]
             if not a.get("alt","").strip() and a.get("alt") is None: self.imgs_no_alt.append((a.get("src",""),ln))
         if tag=="script" and "src" in a: self.scripts.append((a["src"],ln))
         if tag=="link" and a.get("rel") in ("stylesheet","icon","apple-touch-icon","manifest"): self.scripts.append((a.get("href",""),ln))
@@ -41,7 +58,8 @@ class Auditor(HTMLParser):
             if not self._a_txt.strip() and not has_label: self.a_no_text+=1
         for i in range(len(self.stack)-1,-1,-1):
             if self.stack[i][0]==tag:
-                for t,l in self.stack[i+1:]: self.unclosed.append((t,l))
+                for t,l in self.stack[i+1:]:
+                    if t not in OPTIONAL_END: self.unclosed.append((t,l))
                 self.stack=self.stack[:i]; return
         self.stray.append((tag,self.getpos()[0]))
     def handle_data(self,d):
@@ -67,6 +85,8 @@ def audit(path):
             "dupe_ids":dupes,"css_brace_delta":css_delta,
             "links":p.links,"imgs":p.imgs,"assets":p.scripts,
             "missing_symbols":missing_sym,"use_refs":len(p.uses),
+            "imgs_no_alt":p.imgs_no_alt,
+            "unclosed_eof":[(t,l) for t,l in p.stack if t not in OPTIONAL_END and t not in ("html","body","head")],
             "symbols_defined":len(p.symbols),
             "a_no_accessible_name":p.a_no_text}
 
@@ -107,6 +127,8 @@ for r in results:
         for k,v in list(r["dupe_ids"].items())[:15]: issues.append(f"  duplicate id '{k}' at lines {v}")
     if r.get("css_brace_delta"): issues.append(f"  inline CSS brace imbalance: {r['css_brace_delta']:+d}")
     if r.get("missing_symbols"): issues.append(f"  <use> -> undefined symbol: {r['missing_symbols']}")
+    if r.get("unclosed_eof"): issues.append(f"  never closed: {r['unclosed_eof'][:12]}")
+    if r.get("imgs_no_alt"): issues.append(f"  <img> without alt: {r['imgs_no_alt'][:6]}")
     if issues:
         clean=False
         print(f"\n### {rel}")
@@ -128,7 +150,7 @@ for r in results:
             h=href.split("#")[0].split("?")[0]
             if not h: continue
             if re.match(r"^(https?:|mailto:|tel:|data:|javascript:|//)",h): continue
-            tgt=os.path.normpath(os.path.join(base,h.lstrip("/"))).replace("\\","/")
+            tgt=os.path.normpath(h.lstrip("/") if h.startswith("/") else os.path.join(base,h)).replace("\\","/")
             if tgt in all_files: continue
             if tgt+".html" in all_files: continue
             if (tgt+"/index.html") in all_files: continue
@@ -151,3 +173,18 @@ for r in results:
     if r["use_refs"]:
         rel=os.path.relpath(r["file"],ROOT)
         print(f"{rel:<46} refs={r['use_refs']:<4} symbols={r['symbols_defined']:<4} missing={r['missing_symbols'] or '-'}")
+
+# ---------------------------------------------------------------- summary / exit code
+structural=[os.path.relpath(r["file"],ROOT) for r in results
+            if r.get("parse_error") or r.get("unclosed") or r.get("stray") or r.get("dupe_ids")
+            or r.get("css_brace_delta") or r.get("missing_symbols") or r.get("unclosed_eof")]
+broken={f:v for f,v in bad.items()}
+print()
+print("="*78)
+print(f"SUMMARY: {len(results)} pages · {len(structural)} with structural defects · "
+      f"{sum(len(v) for v in broken.values())} broken internal refs in {len(broken)} pages")
+if AS_JSON:
+    json.dump({"pages":len(results),"structural":structural,"broken":broken},
+              open(os.path.join(ROOT,"audit-report.json"),"w"),indent=2)
+    print("wrote audit-report.json")
+sys.exit(1 if structural or broken else 0)
