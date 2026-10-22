@@ -20,7 +20,12 @@
   const SELF = document.currentScript && document.currentScript.src;
   const BASE = SELF ? SELF.replace(/assets\/js\/boot\.js.*$/, '') : '';
 
+  /* app-shell.js renders the header, mobile bar, sheet menus, footer,
+     and tooltips. It must load on every page (it was missing here, which
+     silently removed navigation site-wide). It opts out per page with
+     <body data-shell="off">. */
   const CORE = [
+    'assets/js/core/app-shell.js',
     'assets/js/core/util.js',
     'assets/js/core/nlp.js',
     'assets/js/core/data.js',
