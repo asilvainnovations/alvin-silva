@@ -1,7 +1,9 @@
 /**
  * Alvin Silva Platform — Persona Core.
  * Controls audience-aware presentation while preserving one professional identity.
- * Supported audiences: government, humanitarian, private, and academic.
+ * Supported audiences: executive (default), government, humanitarian, private, and academic.
+ * NOTE: index.html runs its own inline lens engine (PROFILES) and does not load this
+ * file. Keys and storage key ("as-persona") are kept identical so both stay compatible.
  */
 (function () {
   "use strict";
@@ -11,6 +13,18 @@
 
   /* Define supported professional audience personas. */
   const PERSONAS = {
+    executive: {
+      label: "Executive",
+      description:
+        "The full picture, fast: flagship mandates, verified outcomes, and how to start an engagement.",
+      emphasis: [
+        "flagship mandates",
+        "verified outcomes",
+        "end-to-end delivery",
+        "systems thinking",
+        "next steps"
+      ]
+    },
     government: {
       label: "Government & Policy",
       description:
@@ -64,8 +78,8 @@
   /* Store persona state. */
   const ASilvaPersona = {
     storageKey: "as-persona",
-    defaultPersona: "private",
-    currentPersona: "private",
+    defaultPersona: "executive",
+    currentPersona: "executive",
     initialized: false
   };
 
@@ -131,6 +145,8 @@
     });
 
     document.querySelectorAll("[data-persona]").forEach(function (element) {
+      /* <html> and <body> carry the active persona as state, not as a control. */
+      if (element === document.documentElement || element === document.body) return;
       const elementPersona = element.dataset.persona;
 
       if (elementPersona === normalizedPersona) {

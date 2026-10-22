@@ -42,56 +42,63 @@
      --------------------------------------------------------------- */
   const IA = {
     home: { label: 'Home', icon: 'home', href: 'index.html' },
+    /* Direct destinations: header links on desktop, top of the mobile
+       Menu sheet, and the footer icon bar. Order is the visitor's order. */
+    primary: [
+      { id: 'portfolio', label: 'Portfolio', desc: 'Platforms, consulting engagements, and reports', href: 'portfolio.html', icon: 'grid' },
+      { id: 'blog', label: 'Blog', desc: 'Notes on systems thinking, evaluation, and resilience', href: 'blog.html', icon: 'pen' },
+      { id: 'faq', label: 'FAQ', desc: 'How engagements, fees, and delivery work', href: 'index.html#faq', icon: 'help' },
+      { id: 'contact', label: 'Contact', desc: 'Replies within one business day', href: 'index.html#contact', icon: 'mail' },
+      { id: 'chat', label: 'Chat', desc: 'Ask the assistant, answered from the verified record', href: 'chat.html', icon: 'chat' }
+    ],
+    /* Header dropdown for "Portfolio" (the grouped-menu style Alvin prefers). */
+    work: {
+      label: 'Portfolio', head: 'The Work', items: [
+        { label: 'Full portfolio', desc: 'Platforms, consulting engagements, and reports', href: 'portfolio.html', icon: 'grid' },
+        { label: 'Track record', desc: 'Flagship engagements, newest first', href: 'index.html#impact', icon: 'flag' },
+        { label: 'Capabilities', desc: 'Seven disciplines, one systems view', href: 'index.html#expertise', icon: 'layers' },
+        { label: 'Books & platforms', desc: 'Intellectual property that outlasts engagements', href: 'index.html#works', icon: 'book' },
+        { label: 'About Alvin', desc: 'Profile and proof', href: 'index.html#about-detail', icon: 'user' }
+      ]
+    },
+    social: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/alvinsilva777', icon: 'in' },
+      { label: 'Facebook', href: 'https://www.facebook.com/a7vinsi7va', icon: 'fb' },
+      { label: 'Email', href: 'mailto:alvin.silva@asilvainnovations.com', icon: 'mail' },
+      { label: 'DigiCon card', href: 'https://digicon.cards', icon: 'card' }
+    ],
     groups: [
       {
-        id: 'work', label: 'Work', icon: 'work',
-        title: 'Work', lede: 'What Alvin has delivered, and how he works.',
-        sections: [{ items: [
-          { label: 'Portfolio', desc: 'Platforms, consulting engagements, and reports', href: 'portfolio.html', icon: 'grid' },
-          { label: 'Track record', desc: 'Flagship engagements, newest first', href: 'index.html#impact', icon: 'flag' },
-          { label: 'Capabilities', desc: 'Seven disciplines and how they combine', href: 'index.html#expertise', icon: 'layers' },
-          { label: 'Training programs', desc: 'Advanced Program Management for DepEd leaders', href: 'apm-ldi.html', icon: 'cap' }
-        ] }]
-      },
-      {
-        id: 'knowledge', label: 'Knowledge', icon: 'book',
-        title: 'Knowledge', lede: 'Books, writing, and frameworks you can use.',
-        sections: [
-          { heading: 'Read', items: [
-            { label: 'Writing', desc: 'Notes on systems thinking and evaluation practice', href: 'blog.html', icon: 'pen' },
-            { label: 'Personal Resilience', desc: 'Book, 2025: the path to oneness', href: 'personal-resilience.html', icon: 'book' },
-            { label: 'Building Resilience', desc: 'Book, 2023: a more fulfilling life', href: 'building-resilience.html', icon: 'book' }
-          ] },
-          { heading: 'Use', items: [
-            { label: 'Platforms and frameworks', desc: 'Tools built to outlast engagements', href: 'index.html#works', icon: 'layers' },
-            { label: 'Questions answered', desc: 'How engagements, fees, and delivery work', href: 'index.html#faq', icon: 'help' }
-          ] }
-        ]
-      },
-      {
-        id: 'tools', label: 'Tools', icon: 'tools',
-        title: 'Tools', lede: 'Interactive tools that answer from Alvin\u2019s verified record.',
+        id: 'tools', label: 'Tools', icon: 'tools', head: 'Interactive Tools',
+        title: 'Tools', lede: 'Interactive tools that answer from Alvin’s verified record.',
         sections: [
           { items: [
             { label: 'Ask the assistant', desc: 'Questions answered from verified credentials', href: 'chat.html', icon: 'chat' },
-            { label: 'AI-Chorus', desc: 'One question, read through five audience lenses', href: 'chorus.html', icon: 'chorus' }
+            { label: 'AI-Chorus', desc: 'One question, read through five audience lenses', href: 'chorus.html', icon: 'chorus' },
+            { label: 'Support center', desc: 'Engagements, documents, and services', href: 'support.html', icon: 'help' },
+            { label: 'Book flipbook preview', desc: 'Read Chapter 1 of Personal Resilience', href: 'personal-resilience/flipbook.html', icon: 'book' },
+            { label: 'BIRD platform', desc: 'Bangsamoro Investment Roadmap 2026–2035', href: 'https://bangsamro-investment-roadmapp.asilvainnovations.com', icon: 'layers', external: true }
           ] },
           { heading: 'Career workspace', audience: 'operator', items: [
             { label: 'Opportunity scanner', desc: 'Score a posting, pick a CV, draft the letter', href: 'career-automation.html', icon: 'target' },
             { label: 'Form assistant', desc: 'Install the browser helper for portals', href: 'form-assistant-setup.html', icon: 'form' },
             { label: 'Personal Data Sheet', desc: 'CS Form 212, revised 2025', href: 'pds.html', icon: 'file' },
-            { label: 'Blog composer', desc: 'Draft and export posts', href: 'tools/blog-composer.html', icon: 'pen' }
+            { label: 'Blog composer', desc: 'Draft and export posts to assets/data/blog', href: 'tools/blog-composer.html', icon: 'pen' }
           ] }
         ]
       },
       {
-        id: 'more', label: 'More', icon: 'more',
-        title: 'More', lede: '',
+        id: 'more', label: 'Menu', icon: 'menu',
+        title: 'Menu', lede: '',
         sections: [
+          { heading: 'Explore', kind: 'primary' },
+          { heading: 'Books', items: [
+            { label: 'Personal Resilience', desc: 'Book, 2025: the path to oneness', href: 'personal-resilience.html', icon: 'book' },
+            { label: 'Building Resilience', desc: 'Book, 2023: a more fulfilling life', href: 'building-resilience.html', icon: 'book' }
+          ] },
           { heading: 'Connect', items: [
             { label: 'About Alvin', desc: '', href: 'index.html#about-detail', icon: 'user' },
-            { label: 'Contact', desc: 'Replies within one business day', href: 'index.html#contact', icon: 'mail' },
-            { label: 'Support', desc: 'Engagements, documents, and services', href: 'support.html', icon: 'help' },
+            { label: 'Track record', desc: 'Flagship engagements, newest first', href: 'index.html#impact', icon: 'flag' },
             { label: 'LinkedIn', desc: '', href: 'https://www.linkedin.com/in/alvinsilva777', icon: 'in', external: true },
             { label: 'DigiCon card', desc: '', href: 'https://digicon.cards', icon: 'card', external: true }
           ] },
@@ -106,15 +113,22 @@
         ]
       }
     ],
-    cta: { label: 'Work with Alvin', href: 'index.html#contact' },
-    /* Which group each page belongs to (filename -> group id). */
+    cta: { label: 'Start a Conversation', href: 'index.html#contact' },
+    contact: {
+      email: 'alvin.silva@asilvainnovations.com',
+      phone: '+639178555134', phoneLabel: '+63 917 855 5134',
+      vcard: 'assets/contact.vcf'
+    },
+    /* Which nav destination each page belongs to (filename -> id). */
     pages: {
       'index': 'home', '': 'home',
-      'portfolio': 'work', 'apm-ldi': 'work',
-      'blog': 'knowledge', 'personal-resilience': 'knowledge', 'building-resilience': 'knowledge',
-      'chat': 'tools', 'chorus': 'tools', 'career-automation': 'tools',
+      'portfolio': 'portfolio',
+      'blog': 'blog',
+      'chat': 'chat',
+      'personal-resilience': 'more', 'building-resilience': 'more',
+      'chorus': 'tools', 'support': 'tools', 'career-automation': 'tools',
       'form-assistant-setup': 'tools', 'pds': 'tools', 'blog-composer': 'tools',
-      'support': 'more', 'policies': 'more', 'privacy-policy': 'more', 'cookie-policy': 'more',
+      'policies': 'more', 'privacy-policy': 'more', 'cookie-policy': 'more',
       'terms-of-services': 'more', 'accessibility-policy': 'more', '404': 'more'
     },
     /* 'operator' keeps the career workspace out of visitors' menus.
@@ -156,7 +170,15 @@
     lens: '<circle cx="8.5" cy="12" r="4.5"/><circle cx="15.5" cy="12" r="4.5"/>',
     cookie: '<path d="M20.5 12.5A8.5 8.5 0 1 1 11.5 3.5a3 3 0 0 0 4 3.5 3 3 0 0 0 5 5.5z"/><path d="M8.5 10.5h.01M11 15h.01M15.5 14.5h.01"/>',
     lock: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/>',
-    share: '<path d="M12 15V3.5m-4 4 4-4 4 4"/><path d="M7 10.5H5.5v10h13v-10H17"/>'
+    share: '<path d="M12 15V3.5m-4 4 4-4 4 4"/><path d="M7 10.5H5.5v10h13v-10H17"/>',
+    menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
+    phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+    up: '<path d="m6 15 6-6 6 6"/>',
+    pin: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/>',
+    swap: '<path d="M7 4v13m0 0-3.5-3.5M7 17l3.5-3.5M17 20V7m0 0 3.5 3.5M17 7l-3.5 3.5"/>',
+    fb: '<path d="M14 8.5h2.5V5H14a3.5 3.5 0 0 0-3.5 3.5V11H8v3.5h2.5V21H14v-6.5h2.5L17 11h-3V9a.5.5 0 0 1 .5-.5z"/>',
+    star: '<path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+    award: '<circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-2.5 5 2.5-1.5-7"/>'
   };
   function icon(name, cls) {
     return '<svg class="' + (cls || 'shl-ico') + '" aria-hidden="true" focusable="false"><use href="#shl-' + name + '"/></svg>';
@@ -384,74 +406,237 @@
     return typeof root.ASilvaOpenPersona === 'function' || !!legacy.persona;
   };
 
+  function primaryCurrent(it) {
+    return it.id === currentGroup || isCurrent(it.href);
+  }
+
+  function dropHTML(id, label, head, items, current) {
+    return '<li class="shl-drop" data-shl-drop>' +
+      '<button type="button" class="shl-topnav-btn" aria-expanded="false" aria-controls="shlDrop-' + id + '"' +
+        (current ? ' aria-current="page"' : '') + '>' + esc(label) + icon('chev', 'shl-chev') + '</button>' +
+      '<div class="shl-drop-menu" id="shlDrop-' + id + '" hidden>' +
+        '<div class="shl-drop-head">' + esc(head) + '</div>' +
+        items.map(function (it) {
+          const ext = !!it.external;
+          return '<a class="shl-drop-item" href="' + esc(url(it.href)) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') +
+            (isCurrent(it.href) ? ' aria-current="page"' : '') + '>' + icon(it.icon, 'shl-ico') +
+            '<span><span class="shl-drop-label">' + esc(it.label) + (ext ? ' ↗<span class="shl-sr"> (opens in a new tab)</span>' : '') + '</span>' +
+            (it.desc ? '<span class="shl-drop-desc">' + esc(it.desc) + '</span>' : '') + '</span></a>';
+        }).join('') +
+      '</div></li>';
+  }
+  function toolItems() {
+    const out = [];
+    groupsById.tools.sections.forEach(function (sec) {
+      if (sec.audience === 'operator' && !operatorMode) return;
+      sec.items.forEach(function (it) { out.push(it); });
+    });
+    return out;
+  }
+
   function renderHeader() {
     const old = doc.querySelector('.site-header');
     const header = doc.createElement('header');
     header.className = 'shl-header';
+    const byId = {}; IA.primary.forEach(function (it) { byId[it.id] = it; });
+    const plain = ['blog', 'faq', 'contact', 'chat'].map(function (id) {
+      const it = byId[id];
+      return '<li><a class="shl-topnav-link" href="' + esc(url(it.href)) + '"' + (primaryCurrent(it) ? ' aria-current="page"' : '') + '>' + esc(it.label) + '</a></li>';
+    }).join('');
     header.innerHTML =
       '<div class="shl-header-inner">' +
-        '<a class="shl-brand" href="' + url(IA.home.href) + '">' +
-          '<img src="' + url('assets/logo-192.png') + '" alt="" width="36" height="36">' +
-          '<span class="shl-brand-text"><span class="shl-brand-name">Alvin M. Silva</span>' +
-          '<span class="shl-brand-sub">Development management and resilience</span></span>' +
+        '<a class="shl-brand" href="' + url(IA.home.href) + '" aria-label="Alvin M. Silva, home">' +
+          '<img src="' + url('assets/logo-192.png') + '" alt="" width="46" height="46">' +
+          '<span class="shl-brand-text"><span class="shl-brand-name">ALVIN M. SILVA</span>' +
+          '<span class="shl-brand-sub">MDM · Resilience · Systems Innovation</span></span>' +
         '</a>' +
-        '<nav class="shl-topnav" aria-label="Primary">' +
-          '<ul>' + IA.groups.map(function (g) {
-            const cur = g.id === currentGroup;
-            return '<li><button type="button" class="shl-topnav-btn" data-shl-open="' + g.id + '" aria-haspopup="dialog" aria-expanded="false"' +
-              (cur ? ' aria-current="page"' : '') + '>' + esc(g.label) + icon('chev', 'shl-chev') + '</button></li>';
-          }).join('') + '</ul>' +
-        '</nav>' +
+        '<nav class="shl-topnav" aria-label="Main navigation"><ul>' +
+          dropHTML('work', IA.work.label, IA.work.head, IA.work.items, currentGroup === 'portfolio') +
+          plain +
+          dropHTML('tools', 'Tools', groupsById.tools.head, toolItems(), currentGroup === 'tools') +
+        '</ul></nav>' +
         '<div class="shl-utils">' +
-          (hasPersona() ? '<button type="button" class="shl-pill" data-shl-action="persona" aria-label="Tailor this site to your role">' + icon('lens') + '<span class="shl-pill-label" data-shl-persona-label>Tailor</span></button>' : '') +
+          (hasPersona() ? '<button type="button" class="shl-pill" data-shl-action="persona" aria-label="Change audience profile" data-tip="Tailor this site to your role — copy, proof points, and next steps re-rank">' + icon('swap') + '<span class="shl-pill-label" data-shl-persona-label>Tailor</span></button>' : '') +
           '<button type="button" class="shl-iconbtn shl-desktop-only" data-shl-action="theme" aria-pressed="false">' + icon('moon', 'shl-ico shl-ico-moon') + icon('sun', 'shl-ico shl-ico-sun') + '</button>' +
-          '<a class="shl-btn shl-btn-primary shl-desktop-only" href="' + url(IA.cta.href) + '">' + esc(IA.cta.label) + '</a>' +
+          '<a class="shl-btn shl-btn-cta shl-desktop-only" href="' + url(IA.cta.href) + '" data-tip="Describe the outcome you’re accountable for — reply within one business day">' + esc(IA.cta.label) + '</a>' +
+          '<button type="button" class="shl-menubtn" data-shl-drawer aria-expanded="false" aria-controls="shlDrawer" aria-label="Open navigation menu">' +
+            '<span></span><span></span><span></span></button>' +
         '</div>' +
       '</div>';
-    /* Top of <body>, after the skip link: never mid-page, even when a
-       page puts its hero outside <main>. */
     const skip = doc.querySelector('body > .skip-link, body > a[href="#main"]');
     if (old) old.remove();
     if (skip) skip.insertAdjacentElement('afterend', header);
     else doc.body.insertBefore(header, doc.body.firstChild);
-    /* Legacy mobile drawer and its overlay are superseded by the sheet. */
     ['mobileMenu', 'overlay', 'mobileAppNav'].forEach(function (id) {
       const n = doc.getElementById(id); if (n) n.remove();
     });
   }
 
-  function renderBottomBar() {
-    const bar = doc.createElement('nav');
-    bar.className = 'shl-bar';
-    bar.setAttribute('aria-label', 'Primary');
-    const homeCur = currentGroup === 'home';
-    bar.innerHTML =
-      '<a class="shl-bar-item" href="' + url(IA.home.href) + '"' + (homeCur ? ' aria-current="page"' : '') + '>' +
-        icon(IA.home.icon) + '<span>' + IA.home.label + '</span></a>' +
-      IA.groups.map(function (g) {
-        const cur = g.id === currentGroup;
-        return '<button type="button" class="shl-bar-item" data-shl-open="' + g.id + '" aria-haspopup="dialog" aria-expanded="false"' +
-          (cur ? ' aria-current="page"' : '') + '>' + icon(g.icon) + '<span>' + esc(g.label) + '</span></button>';
-      }).join('');
-    doc.body.appendChild(bar);
-    doc.documentElement.classList.add('has-shl-bar');
+  /* ---------- header dropdowns ---------- */
+  function closeDrops(except) {
+    doc.querySelectorAll('[data-shl-drop]').forEach(function (d) {
+      if (d === except) return;
+      const b = d.querySelector('button'), m = d.querySelector('.shl-drop-menu');
+      if (b.getAttribute('aria-expanded') === 'true') { b.setAttribute('aria-expanded', 'false'); m.hidden = true; d.classList.remove('is-open'); }
+    });
+  }
+  function toggleDrop(d, focusFirst) {
+    const b = d.querySelector('button'), m = d.querySelector('.shl-drop-menu');
+    const open = b.getAttribute('aria-expanded') !== 'true';
+    closeDrops(d);
+    b.setAttribute('aria-expanded', String(open)); m.hidden = !open; d.classList.toggle('is-open', open);
+    if (open && focusFirst) { const f = m.querySelector('a'); if (f) f.focus(); }
+  }
+  function dropKeys(e) {
+    const d = e.target.closest && e.target.closest('[data-shl-drop]');
+    if (!d) return;
+    const items = [].slice.call(d.querySelectorAll('.shl-drop-item'));
+    const i = items.indexOf(doc.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); if (d.querySelector('button').getAttribute('aria-expanded') !== 'true') toggleDrop(d, true); else (items[i + 1] || items[0]).focus(); }
+    else if (e.key === 'ArrowUp' && i > -1) { e.preventDefault(); (items[i - 1] || items[items.length - 1]).focus(); }
+    else if (e.key === 'Escape') { closeDrops(); d.querySelector('button').focus(); }
   }
 
+  /* ---------- mobile drawer (slide-in, grouped, with "Viewing as") ---------- */
+  let drawer, overlay, drawerTrigger = null;
+  const PERSONAS = [['executive', 'Executive', 'user'], ['government', 'Government', 'home'], ['humanitarian', 'NGO & Humanitarian', 'star'],
+    ['private', 'Private Sector', 'work'], ['academic', 'Academia', 'cap']];
+  function drawerLink(it) {
+    const ext = !!it.external;
+    return '<a class="shl-mm-link" href="' + esc(url(it.href)) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') +
+      (isCurrent(it.href) ? ' aria-current="page"' : '') + '>' + icon(it.icon) + '<span>' + esc(it.label) + (ext ? ' ↗' : '') + '</span></a>';
+  }
+  function buildDrawer() {
+    overlay = doc.createElement('div'); overlay.className = 'shl-overlay'; overlay.hidden = true;
+    drawer = doc.createElement('nav');
+    drawer.className = 'shl-drawer'; drawer.id = 'shlDrawer'; drawer.setAttribute('aria-label', 'Mobile navigation'); drawer.hidden = true;
+    const pol = groupsById.more.sections.filter(function (x) { return x.heading === 'Policies'; })[0].items;
+    drawer.innerHTML =
+      '<div class="shl-mm-head"><img src="' + url('assets/logo-192.png') + '" alt="" width="52" height="52">' +
+        '<button type="button" class="shl-mm-close" data-shl-drawer-close aria-label="Close menu">' + icon('close') + '</button></div>' +
+      '<div class="shl-mm-group"><div class="shl-mm-title">Navigate</div>' + [IA.home].concat(IA.primary).map(drawerLink).join('') + '</div>' +
+      '<div class="shl-mm-group"><div class="shl-mm-title">The Work</div>' + IA.work.items.slice(1).map(drawerLink).join('') + '</div>' +
+      '<div class="shl-mm-group"><div class="shl-mm-title">Tools</div>' + toolItems().map(drawerLink).join('') + '</div>' +
+      '<div class="shl-mm-group"><div class="shl-mm-title">Connect</div>' +
+        IA.social.map(function (x) { return drawerLink({ label: x.label, href: x.href, icon: x.icon, external: /^https?:/.test(x.href) }); }).join('') + '</div>' +
+      (typeof root.ASilvaSetPersona === 'function' ?
+        '<div class="shl-mm-persona"><div class="shl-mm-title">Viewing as</div>' + PERSONAS.map(function (p) {
+          return '<button type="button" class="shl-chip" data-shl-persona="' + p[0] + '" aria-pressed="false">' + icon(p[2]) + esc(p[1]) + '</button>';
+        }).join('') + '</div>' : '') +
+      '<div class="shl-mm-group shl-mm-prefs"><div class="shl-mm-title">Preferences</div>' + prefsHTML() + '</div>' +
+      '<p class="shl-compact shl-mm-legal">' + pol.map(function (i) { return '<a href="' + esc(url(i.href)) + '">' + esc(i.label) + '</a>'; }).join('') + '</p>';
+    doc.body.appendChild(overlay); doc.body.appendChild(drawer);
+  }
+  function syncPersonaChips() {
+    const cur = doc.documentElement.dataset.persona;
+    doc.querySelectorAll('[data-shl-persona]').forEach(function (c) {
+      const on = c.dataset.shlPersona === cur;
+      c.classList.toggle('is-active', on); c.setAttribute('aria-pressed', String(on));
+    });
+  }
+  function openDrawer(trigger) {
+    drawerTrigger = trigger || doc.activeElement;
+    drawer.hidden = false; overlay.hidden = false;
+    applyTheme(currentTheme()); syncPersonaChips();
+    doc.documentElement.classList.add('shl-locked');
+    doc.querySelectorAll('[data-shl-drawer]').forEach(function (b) { b.setAttribute('aria-expanded', 'true'); b.setAttribute('aria-label', 'Close navigation menu'); });
+    requestAnimationFrame(function () {
+      drawer.classList.add('is-open'); overlay.classList.add('is-open');
+      const f = drawer.querySelector('.shl-mm-link'); if (f) f.focus({ preventScroll: true });
+    });
+  }
+  function closeDrawer(instant) {
+    if (drawer.hidden) return;
+    drawer.classList.remove('is-open'); overlay.classList.remove('is-open');
+    doc.documentElement.classList.remove('shl-locked');
+    doc.querySelectorAll('[data-shl-drawer]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-label', 'Open navigation menu'); });
+    const done = function () { drawer.hidden = true; overlay.hidden = true; };
+    if (instant) done(); else setTimeout(done, 260);
+    if (drawerTrigger && drawerTrigger.focus && !instant) drawerTrigger.focus({ preventScroll: true });
+  }
+  function drawerTrap(e) {
+    if (drawer.hidden || e.key !== 'Tab') return;
+    const f = [].slice.call(drawer.querySelectorAll('a[href], button:not([disabled])'));
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && doc.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  /* ---------- footer: icon bar, brand + socials, Navigate / Flagship / Credentials ---------- */
   function renderFooter() {
     const old = doc.querySelector('footer.site-footer, footer.footer, body > footer');
     const f = doc.createElement('footer');
     f.className = 'shl-footer';
     const year = new Date().getFullYear();
     const pol = groupsById.more.sections.filter(function (s) { return s.heading === 'Policies'; })[0].items;
+    const tile = function (it) {
+      return '<li><a class="shl-ftile" href="' + esc(url(it.href)) + '"' + (primaryCurrent(it) ? ' aria-current="page"' : '') + '>' +
+        '<span class="shl-ftile-ico">' + icon(it.icon) + '</span><span>' + esc(it.label) + '</span></a></li>';
+    };
     f.innerHTML =
       '<div class="shl-footer-inner">' +
-        '<p class="shl-footer-id"><strong>Alvin M. Silva, MDM</strong> \u00b7 A. Silva Innovations \u00b7 \u00a9 ' + year + '</p>' +
-        '<p class="shl-footer-links">' + pol.map(function (i) {
-          return '<a href="' + url(i.href) + '">' + esc(i.label) + '</a>';
-        }).join('') +
-        '<button type="button" class="shl-linkbtn" data-shl-action="cookies">Cookie settings</button></p>' +
+        '<nav class="shl-fbar" aria-label="Footer quick links"><ul>' + IA.primary.map(tile).join('') +
+          '<li><button type="button" class="shl-ftile" data-shl-open="tools" aria-haspopup="dialog" aria-expanded="false">' +
+          '<span class="shl-ftile-ico">' + icon('tools') + '</span><span>Tools</span></button></li></ul></nav>' +
+        '<div class="shl-fgrid">' +
+          '<div class="shl-fbrand">' +
+            '<a class="shl-brand" href="' + url(IA.home.href) + '"><img src="' + url('assets/logo-192.png') + '" alt="" width="46" height="46">' +
+            '<span class="shl-brand-text"><span class="shl-brand-name">ALVIN M. SILVA</span><span class="shl-brand-sub">A. Silva Innovations</span></span></a>' +
+            '<p class="shl-fbrand-copy">Development management professional, systems innovator, and certified international humanitarian practitioner — co-creating policies and solutions for growth and sustainability.</p>' +
+            '<div class="shl-socials">' + IA.social.map(function (x) {
+              const ext = /^https?:/.test(x.href);
+              return '<a href="' + esc(x.href) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + ' aria-label="' + esc(x.label) + '" data-tip="' + esc(x.label) + '">' + icon(x.icon) + '</a>';
+            }).join('') + '</div>' +
+          '</div>' +
+          '<div class="shl-fcol"><h2 class="shl-fhead">Navigate</h2><ul>' +
+            [IA.home].concat(IA.primary).map(function (it) { return '<li><a href="' + esc(url(it.href)) + '">' + esc(it.label) + '</a></li>'; }).join('') + '</ul></div>' +
+          '<div class="shl-fcol"><h2 class="shl-fhead">Flagship Work</h2><ul data-shl-flagship>' + FLAGSHIP_FALLBACK + '</ul></div>' +
+          '<div class="shl-fcol"><h2 class="shl-fhead">Credentials</h2><ul data-shl-credentials>' + CRED_FALLBACK + '</ul></div>' +
+        '</div>' +
+        '<div class="shl-flegal">' +
+          '<p class="shl-footer-id">© ' + year + ' Alvin M. Silva, MDM · A. Silva Innovations. All rights reserved.</p>' +
+          '<p class="shl-footer-links">' + pol.map(function (i) { return '<a href="' + url(i.href) + '">' + esc(i.label) + '</a>'; }).join('') +
+            '<button type="button" class="shl-linkbtn" data-shl-action="cookies">Cookie settings</button>' +
+            '<button type="button" class="shl-linkbtn" data-shl-action="top">' + icon('up', 'shl-ico shl-fico') + 'Back to top</button></p>' +
+          '<span class="shl-pwa-badge">' + icon('install') + 'Installable PWA · Works offline</span>' +
+        '</div>' +
       '</div>';
     if (old) old.replaceWith(f); else doc.body.appendChild(f);
+  }
+
+  /* ---------- credentials.json → footer columns (single source of truth) ---------- */
+  const li = function (href, text) { return '<li><a href="' + esc(url(href)) + '">' + esc(text) + '</a></li>'; };
+  const FLAGSHIP_FALLBACK = li('index.html#impact', 'Ormoc City EOC & CDRRMO Manual of Operations') + li('index.html#impact', 'BIRD 2026–2035') +
+    li('index.html#impact', 'TESDA Strategic Plan 2026–2030') + li('portfolio.html', 'DDRiVE-M Platform') + li('portfolio.html', 'Cognitio+');
+  const CRED_FALLBACK = li('index.html#about-detail', 'MDM — Asian Institute of Management') + li('index.html#numbers', '18+ years · 15+ countries') +
+    li('index.html#books', 'Published author ×5') + li('portfolio.html', 'NRCP Associate Member (DOST)');
+  const FLAGSHIP_ORDER = ['BIRD 2026–2035', 'TESDA Strategic Plan 2026–2030', 'Balatan Climate Resilience Hub', 'DDRiVE-M Platform', 'Cognitio+'];
+  const PLATFORMS = /DDRiVE|Strat Planner|RTL|Cognitio\+|Toolkit/;
+  function loadCredentials() {
+    if (!root.fetch) return;
+    root.fetch(url('credentials.json'), { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      if (!d || !d.profile) return;
+      root.ASilvaCredentials = d;
+      const P = d.profile, projects = d.projects || [];
+      const picks = projects.filter(function (p) { return p.status === 'ongoing'; })
+        .concat(FLAGSHIP_ORDER.map(function (n) { return projects.filter(function (p) { return p.name === n; })[0]; }).filter(Boolean))
+        .filter(function (p, i, a) { return a.indexOf(p) === i; }).slice(0, 5);
+      const fl = doc.querySelector('[data-shl-flagship]');
+      if (fl && picks.length) fl.innerHTML = picks.map(function (p) {
+        return li(PLATFORMS.test(p.name) ? 'portfolio.html' : 'index.html#impact', p.name + (p.status === 'ongoing' ? ' (ongoing)' : ''));
+      }).join('');
+      const degree = (P.degrees && P.degrees[0] || '').replace(/^(MDM)\s*[—-]\s*Master in Development Management,\s*/, '$1 — ').replace(/,\s*\d{4}$/, '');
+      const active = (d.certifications || []).filter(function (c) { return c.status !== 'expired'; }).length;
+      const mem = (d.memberships || [])[0];
+      const cr = doc.querySelector('[data-shl-credentials]');
+      if (cr) cr.innerHTML =
+        (degree ? li('index.html#about-detail', degree) : '') +
+        li('index.html#numbers', P.years_total + '+ years · ' + P.countries + '+ countries') +
+        li('index.html#books', 'Published author ×' + P.books_published) +
+        (active ? li('portfolio.html', active + ' current certifications') : '') +
+        (mem ? li('portfolio.html', 'NRCP ' + mem.name + ' (DOST)') : '');
+      root.dispatchEvent(new CustomEvent('as:credentials', { detail: d }));
+    }).catch(function () { /* footer keeps its fallback copy */ });
   }
 
   /* ---------------------------------------------------------------
@@ -529,6 +714,10 @@
           (s.audience === 'operator' ? ' <span class="shl-tag">' + icon('lock', 'shl-tag-ico') + 'Private</span>' : '') + '</h3>';
       }
       if (s.kind === 'prefs') html += prefsHTML();
+      else if (s.kind === 'primary') html += '<ul class="shl-list">' +
+        [IA.home].concat(IA.primary).map(itemHTML).join('') +
+        '<li><button type="button" class="shl-item" data-shl-open="tools"><span class="shl-item-ico">' + icon('tools') +
+        '</span><span class="shl-item-text"><span class="shl-item-label">Tools</span><span class="shl-item-desc">Assistant, AI-Chorus, support, and platforms</span></span></button></li></ul>';
       else if (s.compact) html += '<p class="shl-compact">' + s.items.map(function (i) {
         return '<a href="' + esc(url(i.href)) + '"' + (isCurrent(i.href) ? ' aria-current="page"' : '') + '>' + esc(i.label) + '</a>';
       }).join('') + '</p>';
@@ -611,8 +800,19 @@
      ACTIONS — delegated, so dynamically rendered controls just work
      --------------------------------------------------------------- */
   function onClick(e) {
+    const dropBtn = e.target.closest('[data-shl-drop] > button');
+    if (dropBtn) { e.preventDefault(); toggleDrop(dropBtn.parentElement, false); return; }
+    if (!e.target.closest('[data-shl-drop]')) closeDrops();
+    const dToggle = e.target.closest('[data-shl-drawer]');
+    if (dToggle) { e.preventDefault(); if (drawer.hidden) openDrawer(dToggle); else closeDrawer(); return; }
+    if (e.target.closest('[data-shl-drawer-close]')) { closeDrawer(); return; }
+    const chip = e.target.closest('[data-shl-persona]');
+    if (chip) {
+      if (typeof root.ASilvaSetPersona === 'function') root.ASilvaSetPersona(chip.dataset.shlPersona);
+      syncPersonaChips(); closeDrawer(); return;
+    }
     const opener = e.target.closest('[data-shl-open]');
-    if (opener) { e.preventDefault(); openSheet(opener.dataset.shlOpen, opener); return; }
+    if (opener) { e.preventDefault(); closeDrawer(true); openSheet(opener.dataset.shlOpen, opener); return; }
 
     const act = e.target.closest('[data-shl-action]');
     if (act) {
@@ -621,14 +821,15 @@
       else if (a === 'theme') applyTheme(currentTheme() === 'light' ? 'dark' : 'light');
       else if (a === 'install') { closeSheet(true); Install.install(); }
       else if (a === 'install-dismiss') Install.dismiss();
+      else if (a === 'top') root.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' });
       else if (a === 'persona') {
-        closeSheet(true);
+        closeSheet(true); closeDrawer(true);
         if (typeof root.ASilvaOpenPersona === 'function') root.ASilvaOpenPersona();
         else if (legacy.persona) legacy.persona.click();
       }
-      else if (a === 'a11y') { closeSheet(true); const fab = doc.getElementById('a11yFab'); if (fab) fab.click(); }
+      else if (a === 'a11y') { closeSheet(true); closeDrawer(true); const fab = doc.getElementById('a11yFab'); if (fab) fab.click(); }
       else if (a === 'cookies') {
-        closeSheet(true);
+        closeSheet(true); closeDrawer(true);
         if (legacy.cookies) legacy.cookies.click();
         else if (doc.getElementById('consentBanner')) root.dispatchEvent(new CustomEvent('as:cookie-settings'));
         else root.location.href = url('cookie-policy.html');
@@ -636,19 +837,19 @@
       return;
     }
 
-    /* In-page anchors chosen from the sheet: close first, then scroll. */
-    const link = e.target.closest('.shl-sheet a[href]');
+    /* In-page anchors chosen from a menu: close first, then scroll. */
+    const link = e.target.closest('.shl-sheet a[href], .shl-drawer a[href], .shl-drop-menu a[href]');
     if (link) {
       const u = new URL(link.href, root.location.href);
       if (u.pathname === root.location.pathname && u.hash) {
         const target = doc.getElementById(decodeURIComponent(u.hash.slice(1)));
         if (target) {
-          e.preventDefault(); closeSheet(true);
+          e.preventDefault(); closeSheet(true); closeDrawer(true); closeDrops();
           target.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
           history.replaceState(null, '', u.hash);
           target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
         }
-      } else closeSheet(true);
+      } else { closeSheet(true); closeDrawer(true); closeDrops(); }
       return;
     }
 
@@ -669,6 +870,7 @@
   }
   root.addEventListener('as:persona', function (e) {
     personaLabel = e.detail && e.detail.label; syncPersonaLabel();
+    if (drawer) syncPersonaChips();
   });
 
   /* ---------------------------------------------------------------
@@ -707,6 +909,53 @@
   }
 
   /* ---------------------------------------------------------------
+     TOOLTIPS — any element with data-tip="…" gets an accessible tooltip
+     on hover (mouse) and on keyboard focus. One floating node, linked
+     via aria-describedby, so screen readers hear it too. Used to
+     highlight the lead-generating controls across every page.
+     --------------------------------------------------------------- */
+  function initTips() {
+    const tip = doc.createElement('div');
+    tip.className = 'shl-tip'; tip.id = 'shlTip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true;
+    doc.body.appendChild(tip);
+    let owner = null;
+    function show(el) {
+      const text = el.getAttribute('data-tip');
+      if (!text) return;
+      owner = el;
+      tip.textContent = text; tip.hidden = false;
+      const prev = el.getAttribute('aria-describedby') || '';
+      if (prev.split(' ').indexOf('shlTip') === -1) el.setAttribute('aria-describedby', (prev + ' shlTip').trim());
+      const r = el.getBoundingClientRect();
+      const w = tip.offsetWidth, h = tip.offsetHeight;
+      let top = r.top - h - 10, below = false;
+      if (top < 70) { top = r.bottom + 10; below = true; }
+      const left = Math.max(8, Math.min(r.left + r.width / 2 - w / 2, root.innerWidth - w - 8));
+      tip.style.left = left + 'px'; tip.style.top = top + 'px';
+      tip.classList.toggle('is-below', below);
+      requestAnimationFrame(function () { tip.classList.add('is-in'); });
+    }
+    function hide() {
+      if (!owner) return;
+      const d = (owner.getAttribute('aria-describedby') || '').split(' ').filter(function (x) { return x && x !== 'shlTip'; }).join(' ');
+      if (d) owner.setAttribute('aria-describedby', d); else owner.removeAttribute('aria-describedby');
+      owner = null; tip.classList.remove('is-in'); tip.hidden = true;
+    }
+    doc.addEventListener('pointerover', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      const el = e.target.closest('[data-tip]');
+      if (el && el !== owner) show(el); else if (!el && owner) hide();
+    });
+    doc.addEventListener('focusin', function (e) {
+      const el = e.target.closest && e.target.closest('[data-tip]');
+      if (el && el.matches(':focus-visible')) show(el);
+    });
+    doc.addEventListener('focusout', hide);
+    root.addEventListener('scroll', hide, { passive: true });
+    doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  }
+
+  /* ---------------------------------------------------------------
      TOAST — reuse the page's #toast when present
      --------------------------------------------------------------- */
   function toast(msg) {
@@ -722,6 +971,8 @@
 
   function refreshInstallEntries() {
     if (openId === 'more') { sheetBody.innerHTML = groupHTML(groupsById.more); applyTheme(currentTheme()); syncPersonaLabel(); }
+    const prefs = drawer && drawer.querySelector('.shl-mm-prefs');
+    if (prefs) prefs.innerHTML = '<div class="shl-mm-title">Preferences</div>' + prefsHTML();
   }
 
   /* ---------------------------------------------------------------
@@ -743,9 +994,10 @@
     captureLegacy();
     sprite();
     renderHeader();
-    renderBottomBar();
     renderFooter();
     buildSheet();
+    buildDrawer();
+    loadCredentials();
     applyTheme(currentTheme());
     personaLabel = doc.documentElement.dataset.personaLabel ||
       (legacy.persona && legacy.persona.querySelector('.pp-label') && legacy.persona.querySelector('.pp-label').textContent.trim()) || null;
@@ -756,12 +1008,16 @@
     }
     syncPersonaLabel();
     initDisclosure();
+    initTips();
     doc.addEventListener('click', onClick);
     doc.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && openId) { e.preventDefault(); closeSheet(); }
-      trapFocus(e);
+      else if (e.key === 'Escape' && !drawer.hidden) { e.preventDefault(); closeDrawer(); }
+      trapFocus(e); drawerTrap(e); dropKeys(e);
     });
     backdrop.addEventListener('click', function () { closeSheet(); });
+    overlay.addEventListener('click', function () { closeDrawer(); });
+    root.addEventListener('resize', function () { if (root.matchMedia('(min-width: 1100px)').matches) closeDrawer(true); });
     root.addEventListener('resize', function () { if (openId && sheet.classList.contains('is-popover')) closeSheet(true); });
     if (Install.installed()) doc.documentElement.classList.add('is-installed');
     Install.trackEngagement();
@@ -773,6 +1029,7 @@
   root.ASilvaShell = {
     IA: IA, base: BASE, group: currentGroup, operator: operatorMode,
     open: function (id) { openSheet(id); }, close: closeSheet,
+    openMenu: function () { openDrawer(); }, closeMenu: function () { closeDrawer(); },
     install: function () { return Install.install(); },
     installed: function () { return Install.installed(); },
     toast: toast
