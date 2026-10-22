@@ -13,7 +13,7 @@
  * without any offline support. tools/validate-shell.py checks that
  * every PRECACHE entry exists on disk.
  */
-const CACHE_VERSION = 'asilva-v10-nav';
+const CACHE_VERSION = 'asilva-v11-content';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -117,6 +117,18 @@ async function fromNetworkThenCache(event) {
   }
 }
 
+async function networkFirst(event) {
+  const cache = await caches.open(CACHE_VERSION);
+  try {
+    const res = await fetch(event.request, { cache: 'no-cache' });
+    if (res && res.ok) cache.put(event.request, res.clone());
+    return res;
+  } catch (_) {
+    return (await cache.match(event.request, { ignoreSearch: true })) ||
+      new Response('{}', { status: 503, headers: { 'Content-Type': 'application/json' } });
+  }
+}
+
 async function staleWhileRevalidate(event) {
   const cache = await caches.open(CACHE_VERSION);
   const cached = await cache.match(event.request);
@@ -134,5 +146,8 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
   if (request.mode === 'navigate') { event.respondWith(fromNetworkThenCache(event)); return; }
+  /* Data (blog posts, credentials, KB) must be fresh on the first load after
+     a publish: network first, cache only as the offline fallback. */
+  if (url.pathname.endsWith('.json')) { event.respondWith(networkFirst(event)); return; }
   event.respondWith(staleWhileRevalidate(event));
 });

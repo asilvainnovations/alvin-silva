@@ -2,7 +2,9 @@
 <!-- Regenerated 2026-08-21. Previous version listed margallo.html and
      margallo-2.html (which do not exist) and pointed five policy URLs at the
      retired asilvainnovations.github.io/website/ domain. Canonical host is
-     assumed to be alvin-silva.asilvainnovations.com - confirm before deploy. -->
+     confirmed as alvin-silva.asilvainnovations.com (2026-10-22). Book microsite
+     pages (personal-resilience/) added 2026-10-22; customer-only pages are
+     noindex and deliberately omitted. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://alvin-silva.asilvainnovations.com/</loc>
@@ -93,5 +95,89 @@
     <lastmod>2026-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/flipbook</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/resources</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/resilienceone</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/resilient-futures</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/the-author</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/faq</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/contact</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/resilience-navigator</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/habit-studio</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/menu-behaviors</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/emotional-wellness-tracker</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/oasis</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/terms-and-conditions</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alvin-silva.asilvainnovations.com/personal-resilience/return-and-refund</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
