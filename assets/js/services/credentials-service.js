@@ -1,163 +1,51 @@
-/* Alvin Silva Platform: canonical professional credentials service. */
+/* Alvin Silva Platform — credentials service (compatibility shim).
+ *
+ * CONSOLIDATED 2026-11-02 (CIOMS D1). This file used to be a second,
+ * independent loader for credentials.json with its own localStorage cache
+ * ("asilva-credentials-cache-v1"). Two services both claiming to be the
+ * canonical source recreated the forked-data problem one layer down.
+ *
+ * It is now a thin facade over ASilva.data (assets/js/core/data.js), which is
+ * the only module that fetches credentials.json. The public API is kept so
+ * any external consumer of window.ASilvaCredentialsService keeps working.
+ * No page loads this file today; boot.js does not need it.
+ */
 (function () {
   "use strict";
 
-  /* Avoid registering the service more than once. */
   if (window.ASilvaCredentialsService) return;
 
-  /* Keep the service configuration isolated from application code. */
-  const configuration = {
-    sourcePath: "credentials.json",
-    cacheKey: "asilva-credentials-cache-v1"
-  };
+  /* Purge the old duplicate cache once — it could hold a stale profile. */
+  try { localStorage.removeItem("asilva-credentials-cache-v1"); } catch (_) { /* optional */ }
 
-  /* Store the loaded credentials in memory for this page session. */
-  let credentialsCache = null;
-
-  /* Safely read a non-sensitive cached credentials dataset. */
-  function readLocalCache() {
-    try {
-      const storedValue = localStorage.getItem(configuration.cacheKey);
-      return storedValue ? JSON.parse(storedValue) : null;
-    } catch (error) {
-      return null;
+  function core() {
+    if (!window.ASilva || !window.ASilva.data) {
+      throw new Error("ASilva.data is not loaded. Load assets/js/boot.js before using ASilvaCredentialsService.");
     }
+    return window.ASilva.data;
   }
 
-  /* Safely write the non-sensitive credentials dataset to browser storage. */
-  function writeLocalCache(credentials) {
-    try {
-      localStorage.setItem(
-        configuration.cacheKey,
-        JSON.stringify({
-          version: 1,
-          storedAt: new Date().toISOString(),
-          credentials
-        })
-      );
-    } catch (error) {
-      /* Local caching is optional and never blocks the platform. */
-    }
-  }
-
-  /* Normalize the minimum expected credentials structure. */
-  function normalizeCredentials(credentials) {
-    if (!credentials || typeof credentials !== "object") {
-      throw new Error("credentials.json must contain a JSON object.");
-    }
-
-    if (!credentials.profile || typeof credentials.profile !== "object") {
-      credentials.profile = {};
-    }
-
-    ["institutions", "disciplines", "projects", "publications"].forEach(
-      function (collectionName) {
-        if (!Array.isArray(credentials[collectionName])) {
-          credentials[collectionName] = [];
-        }
-      }
-    );
-
-    return credentials;
-  }
-
-  /* Load the canonical credentials file, using cache only as a fallback. */
   async function load(forceRefresh) {
-    if (credentialsCache && !forceRefresh) return credentialsCache;
-
-    try {
-      const response = await fetch(configuration.sourcePath, {
-        cache: forceRefresh ? "no-store" : "default",
-        headers: { Accept: "application/json" }
-      });
-
-      if (!response.ok) {
-        throw new Error(
-          "Unable to load credentials.json: HTTP " + response.status
-        );
-      }
-
-      credentialsCache = normalizeCredentials(await response.json());
-      writeLocalCache(credentialsCache);
-
-      document.dispatchEvent(
-        new CustomEvent("asilva:credentials-loaded", {
-          detail: { source: configuration.sourcePath }
-        })
-      );
-
-      return credentialsCache;
-    } catch (error) {
-      const cachedPackage = readLocalCache();
-
-      if (cachedPackage && cachedPackage.credentials) {
-        credentialsCache = normalizeCredentials(cachedPackage.credentials);
-        return credentialsCache;
-      }
-
-      throw error;
-    }
+    const data = core();
+    return forceRefresh && data.reload ? data.reload() : data.load();
   }
 
-  /* Return Alvin Silva's professional profile. */
-  async function getProfile() {
-    return (await load()).profile;
-  }
-
-  /* Return documented projects. */
-  async function getProjects() {
-    return (await load()).projects;
-  }
-
-  /* Return documented institutions. */
-  async function getInstitutions() {
-    return (await load()).institutions;
-  }
-
-  /* Return documented professional disciplines. */
-  async function getDisciplines() {
-    return (await load()).disciplines;
-  }
-
-  /* Return documented publications. */
-  async function getPublications() {
-    return (await load()).publications;
-  }
-
-  /* Search projects without sending credentials to an external service. */
   async function searchProjects(searchTerm) {
-    const normalizedSearchTerm = String(searchTerm || "").trim().toLowerCase();
-    const projects = await getProjects();
-
-    if (!normalizedSearchTerm) return projects;
-
-    return projects.filter(function (project) {
-      return JSON.stringify(project)
-        .toLowerCase()
-        .includes(normalizedSearchTerm);
-    });
+    const term = String(searchTerm || "").trim().toLowerCase();
+    const projects = (await load()).projects;
+    if (!term) return projects;
+    return projects.filter((p) => JSON.stringify(p).toLowerCase().includes(term));
   }
 
-  /* Clear the in-memory and browser cache. */
-  function clearCache() {
-    credentialsCache = null;
-
-    try {
-      localStorage.removeItem(configuration.cacheKey);
-    } catch (error) {
-      /* Storage is optional. */
-    }
-  }
-
-  /* Publish the service API. */
   window.ASilvaCredentialsService = {
     load,
-    getProfile,
-    getProjects,
-    getInstitutions,
-    getDisciplines,
-    getPublications,
+    getProfile: async () => (await load()).profile,
+    getProjects: async () => (await load()).projects,
+    getInstitutions: async () => (await load()).institutions,
+    getDisciplines: async () => (await load()).disciplines,
+    getPublications: async () => (await load()).publications,
+    getCertifications: async () => (await load()).certifications,
     searchProjects,
-    clearCache
+    clearCache: () => { const d = core(); return d.reload ? d.reload() : null; }
   };
 })();
