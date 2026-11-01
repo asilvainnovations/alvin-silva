@@ -1049,12 +1049,14 @@ After every significant deployment verify:
 - No external AI key is requested.
 - No external AI endpoint is called.
 
-### Career Automation
+### Career Automation (CIOMS workspace — see `CIOMS.md`)
 
-- Job description parser works.
-- Credentials load from canonical location.
-- CV recommendation works.
-- Application tracker persists correctly.
+- `node scripts/test-career-engine.mjs --report` passes (scenarios + negative controls).
+- The page loads only `boot.js`; `career-workspace` shows as `started` in `ASilva.registry.list()`.
+- The status strip reports `credentials.json` loaded with no schema warnings.
+- Eligibility, alignment, feasibility and career value render with reasons; letters use only selected claims.
+- Records persist in `asilva:career:v3`; legacy `as-career-tracker` data migrates once.
+- `python3 tools/build-profile.py --check` passes (extension and bookmarklet profiles in sync).
 
 ### PWA
 

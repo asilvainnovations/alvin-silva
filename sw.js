@@ -13,7 +13,7 @@
  * without any offline support. tools/validate-shell.py checks that
  * every PRECACHE entry exists on disk.
  */
-const CACHE_VERSION = 'asilva-v12-nav';
+const CACHE_VERSION = 'asilva-v13-cioms';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -47,6 +47,11 @@ const PRECACHE = [
   '/assets/js/chat/widget.js',
   '/assets/js/modules/blog.js',
   '/assets/js/modules/ai-chorus.js',
+  /* Career workspace code only. Private career records live in browser
+     localStorage or the optional private backend, never in this cache. */
+  '/assets/js/modules/career-engine.js',
+  '/assets/js/modules/career-store.js',
+  '/assets/js/modules/career-workspace.js',
   '/assets/data/kb.json',
   '/assets/data/blog/index.json',
   '/credentials.json',
