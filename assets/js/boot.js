@@ -38,7 +38,10 @@
   /* ---- add new feature modules here ---- */
   const MODULES = [
     'assets/js/modules/blog.js',
-    'assets/js/modules/ai-chorus.js'
+    'assets/js/modules/ai-chorus.js',
+    'assets/js/modules/career-engine.js',      // pure scoring engine (no DOM)
+    'assets/js/modules/career-store.js',       // private records: local + optional sync
+    'assets/js/modules/career-workspace.js'    // CIOMS UI, mounts [data-asilva-career]
   ];
 
   function loadScript(path) {
@@ -82,6 +85,7 @@
     const wanted = MODULES.filter((p) => {
       if (/blog\.js$/.test(p)) return !!document.querySelector('[data-asilva-blog]');
       if (/ai-chorus\.js$/.test(p)) return !!document.querySelector('[data-asilva-chorus]');
+      if (/career-[a-z]+\.js$/.test(p)) return !!document.querySelector('[data-asilva-career]');
       return true;
     });
     for (const p of wanted) await loadScript(p);
